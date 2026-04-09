@@ -251,7 +251,7 @@ body::before {
   display:flex; justify-content:flex-end; align-items:center;
   padding:14px 0 0; position:relative; z-index:10;
 }
-.islam-langbar { justify-content:space-between; }
+.islam-langbar, .split-langbar { justify-content:space-between; }
 .lang-label { font-size:12px; color:var(--muted); margin-right:10px; letter-spacing:0.08em; }
 .lang-toggle { display:flex; border:1px solid var(--border); border-radius:3px; overflow:hidden; }
 .lang-btn {
@@ -272,15 +272,16 @@ body::before {
 }
 .xtn-page .eternal-link { color:var(--xtn-2); border-color:rgba(232,184,75,0.35); }
 .xtn-page .eternal-link:hover { background:rgba(232,184,75,0.1); }
+
 .eternal-btn {
   display:inline-flex; align-items:center; gap:8px;
-  background:var(--surface); border:1px solid var(--isl);
-  color:var(--isl); padding:8px 20px; border-radius:4px;
+  background:var(--surface); border:1px solid var(--saffron);
+  color:var(--saffron); padding:8px 20px; border-radius:4px;
   font-family:'Cinzel',serif; font-weight:600; font-size:14px;
   letter-spacing:0.04em; text-decoration:none; transition:all 0.2s;
   white-space:nowrap;
 }
-.eternal-btn:hover { background:var(--isl); color:var(--isl-bg); transform:translateY(-1px); }
+.eternal-btn:hover { background:var(--saffron); color:var(--bg); transform:translateY(-1px); }
 .eternal-btn .om-symbol { font-family:'Tiro Devanagari Sans',serif; font-size:20px; line-height:1; }
 
 .notice {
@@ -491,6 +492,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .hub-nav { flex-direction:column; }
   .rel-tab + .rel-tab { border-left:none; border-top:1px solid rgba(255,255,255,0.05); }
   .masthead-title { font-size:24px; }
+  .split-langbar { flex-direction:column; gap:14px; align-items:flex-end; }
+  .split-langbar .eternal-btn { margin-right:0; align-self:flex-start; }
 }
 </style>
 </head>
@@ -538,11 +541,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <div class="religion-page jud-page" id="page-jud">
 <div class="inner-wrap">
 
-<div class="lang-bar">
-  <span class="lang-label">Language / שפה</span>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLangJud('en',this)">EN</button>
-    <button class="lang-btn" onclick="setLangJud('he',this)">עברית</button>
+<div class="lang-bar split-langbar">
+  <a href="eternal-truth.html" class="eternal-btn"><span class="om-symbol">ॐ</span> Eternal Truth</a>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <span class="lang-label">Language / שפה</span>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLangJud('en',this)">EN</button>
+      <button class="lang-btn" onclick="setLangJud('he',this)">עברית</button>
+    </div>
   </div>
 </div>
 
@@ -660,7 +666,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">כבר בעמודים הראשונים, התורה משקרת לגבי מוות ולאחר מכן סותרת את עצמה לגבי העונש. אלוהים מאיים במוות מיידי על אכילה מעץ הדעת — אך מעולם לא מממש זאת.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Genesis.2.16-17?lang=en&amp;p2=Genesis.3.6-7&amp;lang2=en&amp;p3=Genesis.3.22-24&amp;lang3=en" target="_blank" class="card a-teal" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🌳</span>
       <div class="card-title">Genesis 2:16-17 + 3:6-7, 3:22-24</div>
       <div class="card-title-he">בראשית ב':16-17 + ג':6-7, ג':22-24</div>
       <div class="card-source"><span class="t-en">Book of Genesis</span><span class="t-he">ספר בראשית</span></div>
@@ -682,7 +688,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">הטקסט מציג שני סדרי בריאה שונים לחלוטין כבר בשני הפרקים הראשונים — סתירה פנימית ברורה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Genesis.1.25-27?lang=en&amp;p2=Genesis.2.18-22&amp;lang2=en" target="_blank" class="card a-blue" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🌍</span>
       <div class="card-title">Genesis 1:25-27 vs Genesis 2:18-22</div>
       <div class="card-title-he">בראשית א':25-27 מול בראשית ב':18-22</div>
       <div class="card-source"><span class="t-en">Book of Genesis</span><span class="t-he">ספר בראשית</span></div>
@@ -704,7 +710,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התורה אינה מצליחה להסכים האם בני אדם יכולים לראות את אלוהים פנים אל פנים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.33.11?lang=en&amp;p2=Exodus.33.20&amp;lang2=en" target="_blank" class="card a-green" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">👁️</span>
       <div class="card-title">Exodus 33:11 vs Exodus 33:20</div>
       <div class="card-title-he">שמות ל"ג:11 מול שמות ל"ג:20</div>
       <div class="card-source"><span class="t-en">Book of Exodus</span><span class="t-he">ספר שמות</span></div>
@@ -726,7 +732,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">האם אלוהים מעניש בנים על חטאי אבותיהם? התורה בספר שמות אומרת במפורש שכן, אך נביאים מאוחרים כמו יחזקאל מקדישים פרקים שלמים כדי לומר שאלוהים בהחלט לא עושה זאת.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.20.5?lang=en&amp;p2=Exodus.34.7&amp;lang2=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">⚖️</span>
       <div class="card-title">Exodus 20:5 &amp; 34:7</div>
       <div class="card-title-he">שמות כ':5 ושמות ל"ד:7</div>
       <div class="card-source"><span class="t-en">Book of Exodus</span><span class="t-he">ספר שמות</span></div>
@@ -735,7 +741,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-torah">Torah</span></div>
     </a>
     <a href="https://www.sefaria.org/Ezekiel.18.20?lang=en&amp;p2=Deuteronomy.24.16&amp;lang2=en" target="_blank" class="card a-red" data-trad="torah tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🛡️</span>
       <div class="card-title">Ezekiel 18:20 &amp; Deut 24:16</div>
       <div class="card-title-he">יחזקאל י"ח:20 ודברים כ"ד:16</div>
       <div class="card-source"><span class="t-en">Ezekiel &amp; Deuteronomy</span><span class="t-he">יחזקאל ודברים</span></div>
@@ -757,7 +763,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">הכתובים טוענים במספר מקומות שאלוהים יודע כל ואינו מתחרט או משנה את דעתו כמו בני אדם. ובכל זאת, במקומות אחרים, אלוהים במפורש מתחרט על מעשיו ומשנה את תוכניותיו.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Numbers.23.19?lang=en&amp;p2=I_Samuel.15.29&amp;lang2=en" target="_blank" class="card a-blue" data-trad="torah tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🧠</span>
       <div class="card-title">Numbers 23:19 &amp; 1 Sam 15:29</div>
       <div class="card-title-he">במדבר כ"ג:19 ושמואל א' ט"ו:29</div>
       <div class="card-source"><span class="t-en">Numbers &amp; 1 Samuel</span><span class="t-he">במדבר ושמואל א'</span></div>
@@ -766,7 +772,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-torah">Torah</span><span class="badge b-trad-tanakh">Tanakh</span></div>
     </a>
     <a href="https://www.sefaria.org/Genesis.6.6?lang=en&amp;p2=I_Samuel.15.11&amp;lang2=en" target="_blank" class="card a-blue" data-trad="torah tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🔄</span>
       <div class="card-title">Genesis 6:6 &amp; 1 Samuel 15:11</div>
       <div class="card-title-he">בראשית ו':6 ושמואל א' ט"ו:11</div>
       <div class="card-source"><span class="t-en">Genesis &amp; 1 Samuel</span><span class="t-he">בראשית ושמואל א'</span></div>
@@ -788,7 +794,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">האם כדור הארץ יתקיים לנצח, או שמא ייחרב? הטקסט מציג טענות מוחלטות התומכות בשתי התוצאות.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Ecclesiastes.1.4?lang=en&amp;p2=Psalms.104.5&amp;lang2=en" target="_blank" class="card a-green" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🌎</span>
       <div class="card-title">Ecclesiastes 1:4 &amp; Psalm 104:5</div>
       <div class="card-title-he">קהלת א':4 ותהילים ק"ד:5</div>
       <div class="card-source"><span class="t-en">Ecclesiastes &amp; Psalms</span><span class="t-he">קהלת ותהילים</span></div>
@@ -797,7 +803,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-tanakh">Tanakh</span></div>
     </a>
     <a href="https://www.sefaria.org/Psalms.102.26-27?lang=en&amp;p2=Isaiah.51.6&amp;lang2=en" target="_blank" class="card a-green" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🔥</span>
       <div class="card-title">Psalm 102:26-27 &amp; Isaiah 51:6</div>
       <div class="card-title-he">תהילים ק"ב:26-27 וישעיהו נ"א:6</div>
       <div class="card-source"><span class="t-en">Psalms &amp; Isaiah</span><span class="t-he">תהילים וישעיהו</span></div>
@@ -819,7 +825,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אותו אירוע היסטורי ממש — מפקד האוכלוסין של דוד — מתואר בשני ספרים שונים. בתיאור אחד, אלוהים בעצמו הסית את דוד למנות את העם. בתיאור השני, שנכתב מאות שנים מאוחר יותר, השטן הוא שהסית את דוד.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/II_Samuel.24.1?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">👆</span>
       <div class="card-title">2 Samuel 24:1 — God Moved David</div>
       <div class="card-title-he">שמואל ב' כ"ד:1 — אלוהים הסית את דוד</div>
       <div class="card-source"><span class="t-en">2 Samuel</span><span class="t-he">ספר שמואל ב'</span></div>
@@ -828,7 +834,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-tanakh">Tanakh</span></div>
     </a>
     <a href="https://www.sefaria.org/I_Chronicles.21.1?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">😈</span>
       <div class="card-title">1 Chronicles 21:1 — Satan Moved David</div>
       <div class="card-title-he">דברי הימים א' כ"א:1 — השטן הסית את דוד</div>
       <div class="card-source"><span class="t-en">1 Chronicles</span><span class="t-he">ספר דברי הימים א'</span></div>
@@ -850,7 +856,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בספר בראשית מוצג נחש שמדבר עברית שוטפת. לאחר מכן אלוהים מקלל אותו לזחול על גחונו — מה שמרמז שהיו לו רגליים קודם לכן, דבר ששום תיעוד מאובנים אינו תומך בו עבור כל אב קדמון תואם לזמן המתואר.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Genesis.3.1-14?lang=en" target="_blank" class="card a-green" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🐍</span>
       <div class="card-title">Genesis 3:1-14 — The Legless Serpent Curse</div>
       <div class="card-title-he">בראשית ג':1-14 — קללת הנחש חסר הרגליים</div>
       <div class="card-source"><span class="t-en">Book of Genesis</span><span class="t-he">ספר בראשית</span></div>
@@ -872,7 +878,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">הטקסט מתאר בריכה עגולה (ים הנחושת) במקדש שלמה עם קוטר של 10 אמות והיקף של 30 אמות. מכאן משתמע ש-π שווה בדיוק ל-3.0. הערך האמיתי של פאי הוא 3.14159... . לא ניתן להכחיש את הטעות המתמטית.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/I_Kings.7.23?lang=en&amp;p2=II_Chronicles.4.2&amp;lang2=en" target="_blank" class="card a-blue" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🔢</span>
       <div class="card-title">1 Kings 7:23 — Pi = 3.0</div>
       <div class="card-title-he">מלכים א' ז':23 — פאי = 3.0</div>
       <div class="card-source"><span class="t-en">1 Kings &amp; 2 Chronicles</span><span class="t-he">מלכים א' ודברי הימים ב'</span></div>
@@ -894,12 +900,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">ויקרא י"א מפרט רשימה של "עופות טמאים" שבני ישראל אינם רשאים לאכול. העטלף כלול ברשימה זו. עטלפים הם יונקים — לא ציפורים. זוהי טעות ביולוגית חד-משמעית שאינה ניתנת להפרכה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.11.13-19?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🦇</span>
       <div class="card-title">Leviticus 11:13-19 — Bat Listed as a Bird</div>
       <div class="card-title-he">ויקרא י"א:13-19 — העטלף מופיע כציפור</div>
       <div class="card-source"><span class="t-en">Book of Leviticus</span><span class="t-he">ספר ויקרא</span></div>
       <p class="card-desc">"The following you shall abominate among the birds... the stork; pelicans of every variety; the hoopoe, and <strong>the bat</strong>." Bats are warm-blooded mammals that nurse their young with milk, have fur, and give live birth. They share zero characteristics with birds beyond the ability to fly. Deuteronomy 14:11-18 repeats the same error.</p>
-      <p class="card-desc-he">"וְאֶת אֵלֶּה תְּשַׁקְּצוּ מִן הָעוֹף... הַחֲסִידָה הָאֲנָפָה לְמִינָהּ וְאֶת הַדּוּכִיפַת וְאֶת <strong>הָעֲטַלֵּף</strong>." עטלפים הם יונקים בעלי דם חם המניקים את צאצאיהם בחלב ויולדים חיים. אין להם שום דבר משותף עם עופות מעבר ליכולת התעופה.</p>
+      <p class="card-desc-he">"וְאֶת אֵלֶּה תְּשַׁקְּצוּ מִן הָעוֹף... הַחֲסִידָה הָאֲנָפָה لְמִינָהּ וְאֶת הַדּוּכִיפַת וְאֶת <strong>הָעֲטַלֵּף</strong>." עטלפים הם יונקים בעלי דם חם המניקים את צאצאיהם בחלב ויולדים חיים. אין להם שום דבר משותף עם עופות מעבר ליכולת התעופה.</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-torah">Torah</span></div>
     </a>
   </div>
@@ -916,7 +922,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">ספר ויקרא קובע כי הארנבת מעלה גרה, ומסווג אותה כמעלת גרה חלקית. ארנבות שייכות לסדרת הארנבאים, לא למעלי גרה. אין להן קיבה מרובת מדורים והן אינן מעלות גרה. זו טעות ביולוגית פשוטה המוכרת על ידי זואולוגים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.11.6?lang=en&amp;p2=Deuteronomy.14.7&amp;lang2=en" target="_blank" class="card a-teal" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🐇</span>
       <div class="card-title">Leviticus 11:6 — Hares "Chew the Cud"</div>
       <div class="card-title-he">ויקרא י"א:6 — הארנבת "מעלת גרה"</div>
       <div class="card-source"><span class="t-en">Book of Leviticus</span><span class="t-he">ספר ויקרא</span></div>
@@ -938,7 +944,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בתוך סיפור המבול עצמו, ספר בראשית סותר את עצמו לגבי מספר בעלי החיים שהוכנסו לתיבה, ולגבי מספר הימים שהמבול נמשך. מסמכי מקור שונים שולבו יחד, והשאירו את הסתירות גלויות לעין.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Genesis.6.19?lang=en&amp;p2=Genesis.7.2&amp;lang2=en" target="_blank" class="card a-blue" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🚢</span>
       <div class="card-title">Genesis 6:19 vs 7:2 — Two of Each or Seven?</div>
       <div class="card-title-he">בראשית ו':19 לעומת ז':2 — זוג אחד או שבעה?</div>
       <div class="card-source"><span class="t-en">Book of Genesis</span><span class="t-he">ספר בראשית</span></div>
@@ -947,7 +953,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Contradiction</span><span class="badge b-trad-torah">Torah</span></div>
     </a>
     <a href="https://www.sefaria.org/Genesis.7.17?lang=en&amp;p2=Genesis.7.24&amp;lang2=en" target="_blank" class="card a-blue" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🌊</span>
       <div class="card-title">Genesis 7:17 vs 7:24 — 40 Days or 150 Days?</div>
       <div class="card-title-he">בראשית ז':17 לעומת ז':24 — 40 יום או 150 יום?</div>
       <div class="card-source"><span class="t-en">Book of Genesis</span><span class="t-he">ספר בראשית</span></div>
@@ -969,7 +975,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אלוהים מחריב את מגדל בבל מכיוון שהוא חושש ממה שבני האדם מסוגלים להשיג. אל כל-יכול ויודע-כל שברא את היקום מודה שהוא מאוים על ידי מגדל לבני בוץ. הטקסט הוא מפורש — אין זו מטאפורה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Genesis.11.1-9?lang=en" target="_blank" class="card a-saffron" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🏗️</span>
       <div class="card-title">Genesis 11:6 — God's Fear</div>
       <div class="card-title-he">בראשית י"א:6 — פחדו של אלוהים</div>
       <div class="card-source"><span class="t-en">Book of Genesis</span><span class="t-he">ספר בראשית</span></div>
@@ -991,7 +997,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">ספר יהושע טוען שהשמש עמדה דום במשך יום שלם כדי להעניק לבני ישראל עוד אור יום לקרב. משמעות הדבר היא שכדור הארץ היה חייב להפסיק להסתובב בבת אחת. כוחות האינרציה והגאות והשפל מאירוע כזה היו משמידים את כל החיים על פני כדור הארץ.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Joshua.10.12-14?lang=en" target="_blank" class="card a-saffron" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">☀️</span>
       <div class="card-title">Joshua 10:13 — Sun Stood Still</div>
       <div class="card-title-he">יהושע י':13 — השמש עמדה דום</div>
       <div class="card-source"><span class="t-en">Book of Joshua</span><span class="t-he">ספר יהושע</span></div>
@@ -1013,7 +1019,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">שני ספרים בתנ"ך מתארים את האורוות של המלך שלמה ומציגים הבדל של פי עשרה במספר הסוסים. שני הספרים טוענים שהם מדווחים על אותה עובדה היסטורית.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/I_Kings.5.6?lang=en&amp;p2=II_Chronicles.9.25&amp;lang2=en" target="_blank" class="card a-teal" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🐴</span>
       <div class="card-title">1 Kings 5:6 vs 2 Chronicles 9:25</div>
       <div class="card-title-he">מלכים א' ה':6 מול דברי הימים ב' ט':25</div>
       <div class="card-source"><span class="t-en">1 Kings &amp; 2 Chronicles</span><span class="t-he">מלכים א' ודברי הימים ב'</span></div>
@@ -1035,7 +1041,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">ויקרא י"א מתאר חרקים כבעלי ארבע רגליים. לכל חרק על פני כדור הארץ יש שש רגליים — זהו המאפיין המגדיר של מחלקת החרקים. זו אינה בעיית תרגום, הפסוק נוקב במספר מדויק.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.11.20-23?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🦗</span>
       <div class="card-title">Leviticus 11:20-23 — "Four Feet" on Flying Insects</div>
       <div class="card-title-he">ויקרא י"א:20-23 — "ההולך על ארבע" לחרקים מעופפים</div>
       <div class="card-source"><span class="t-en">Book of Leviticus</span><span class="t-he">ספר ויקרא</span></div>
@@ -1057,7 +1063,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">הדיבר השישי בשמות כ': "לֹא תִרְצָח". באותו ספר עצמו ולאורך כל התורה, אלוהים מצווה על בני ישראל לבצע הרג המוני של גברים, נשים, ילדים ותינוקות.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.20.13?lang=en&amp;p2=I_Samuel.15.3&amp;lang2=en&amp;p3=Numbers.31.17&amp;lang3=en" target="_blank" class="card a-red" data-trad="torah tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">⚔️</span>
       <div class="card-title">Exodus 20:13 vs 1 Sam 15:3 &amp; Num 31:17</div>
       <div class="card-title-he">שמות כ':13 מול שמואל א' ט"ו:3 ובמדבר ל"א:17</div>
       <div class="card-source"><span class="t-en">Exodus, 1 Samuel, Numbers</span><span class="t-he">שמות, שמואל א', במדבר</span></div>
@@ -1079,12 +1085,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">לאחר טבח הגברים של מדיין, משה כועס על כך שהנשים נותרו בחיים. הוא פוקד להוציא להורג את כל הילדים הזכרים והנשים שאינן בתולות, אך מצווה במפורש על החיילים להשאיר את הילדות הבתולות בחיים לעצמם כשלל מלחמה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Numbers.31.17-18?lang=en&amp;p2=Numbers.31.40&amp;lang2=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">⛓️</span>
       <div class="card-title">Numbers 31:17-18, 40</div>
       <div class="card-title-he">במדבר ל"א:17-18, 40</div>
       <div class="card-source"><span class="t-en">Book of Numbers</span><span class="t-he">ספר במדבר</span></div>
       <p class="card-desc">"Now, therefore, slay every male among the children, and slay also every woman who has known a man carnally; <strong>but spare every young woman who has not had carnal relations with a man, for yourselves.</strong>" Later, the text details the distribution of these girls: "...human beings—16,000, of whom the LORD’s tribute was 32 persons."</p>
-      <p class="card-desc-he">"וְעַתָּה הִרְגוּ כָל זָכָר בַּטָּף וְכָל אִשָּׁה יֹדַעַת אִישׁ לְמִשְׁכַּב זָכָר הֲרֹגוּ. <strong>וְכֹל הַטַּף בַּנָּשִׁים אֲשֶׁר לֹא יָדְעוּ מִשְׁכַּב זָכָר הַחֲיוּ לָכֶם.</strong>" בהמשך מפורטת חלוקת הילדות: "וְנֶפֶשׁ אָדָם שִׁשָּׁה עָשָׂר אָלֶף וּמִכְסָם לַיהוָה שְׁנַיִם וּשְׁלֹשִׁים נָפֶשׁ."</p>
+      <p class="card-desc-he">"וְעַתָּה הִרְגוּ כָל זָכָר בַּטָּף וְכָל אִשָּׁה יֹדַעַת אִישׁ לְמִשְׁכַּב זָכָר הֲרֹגוּ. <strong>וְכֹל הַטַּף בַּנָּשִׁים אֲשֶׁר לֹא יָדְעוּ מִשְׁכַּב זָכָר הַחֲיוּ לָכֶם.</strong>" בהמשך מפורטת חלוקת הילדות: "וְנֶפֶשׁ אָדָם شִשָּׁה עָשָׂר אָלֶף וּמִכְסָם לַיהוָה שְׁנַיִם וּשְׁלֹשִׁים נָפֶשׁ."</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Moral Failure</span><span class="badge b-trad-torah">Torah</span></div>
     </a>
   </div>
@@ -1101,7 +1107,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בנבואת זעם נגד בבל, אלוהים גוזר טבח אכזרי. המשפט האלוהי קובע במפורש שתינוקות ירוטשו לעיני הוריהם ונשים יאנסו כחלק מהעונש.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Isaiah.13.15-16?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🩸</span>
       <div class="card-title">Isaiah 13:15-16</div>
       <div class="card-title-he">ישעיהו י"ג:15-16</div>
       <div class="card-source"><span class="t-en">Book of Isaiah</span><span class="t-he">ספר ישעיהו</span></div>
@@ -1123,7 +1129,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">כאשר איש ישראלי ואישה מדיינית נראים יחד, פנחס לוקח רומח ודוקר את שניהם ללא משפט. אלוהים משבח את הרצח הכפול הזה מחוץ לחוק ומתגמל את פנחס בכהונת עולם.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Numbers.25.7-8?lang=en&amp;p2=Numbers.25.11-13&amp;lang2=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🗡️</span>
       <div class="card-title">Numbers 25:7-8, 11-13</div>
       <div class="card-title-he">במדבר כ"ה:7-8, 11-13</div>
       <div class="card-source"><span class="t-en">Book of Numbers</span><span class="t-he">ספר במדבר</span></div>
@@ -1145,7 +1151,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בעקבות חטא עגל הזהב, משה מעביר את ציווי אלוהים ללוויים לקחת את חרבותיהם ולשחוט את אחיהם, רעיהם ושכניהם במחנה. 3,000 בני אדם נהרגים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.32.27-28?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🔪</span>
       <div class="card-title">Exodus 32:27-28</div>
       <div class="card-title-he">שמות ל"ב:27-28</div>
       <div class="card-source"><span class="t-en">Book of Exodus</span><span class="t-he">ספר שמות</span></div>
@@ -1164,10 +1170,10 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <span class="sec-tag">Slaughtering Every Man, Woman, and Child</span>
   </div>
   <p class="sec-desc t-en">During the conquest of Canaan, the Israelites capture the city of Jericho. Under divine instruction of Herem (total destruction), they butcher every living being in the city, including women, the elderly, and children.</p>
-  <p class="sec-desc t-he">במהלך כיבוש כנען, בני ישראל כובשים את העיר יריחו. תחת ההנחיה האלוהית של "חרם" (השמדה טוטאלית), הם שוחטים כל יצור חי בעיר, כולל נשים, זקנים וילדים.</p>
+  <p class="sec-desc t-he">במהלך כיבוש כנען, בני ישראל כובשים את העיר יריחו. תחת ההנחיה האלוהית של "חרם" (השמדה טוטאלית), הם שוחטים كل יצור חי בעיר, כולל נשים, זקנים וילדים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Joshua.6.21?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🧱</span>
       <div class="card-title">Joshua 6:21</div>
       <div class="card-title-he">יהושע ו':21</div>
       <div class="card-source"><span class="t-en">Book of Joshua</span><span class="t-he">ספר יהושע</span></div>
@@ -1189,7 +1195,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אלוהים מקים את המשכן ושומר את תפקידיו בקפידה לשבט הכהונה בלבד. החוק האלוהי קובע כי כל אדם פשוט שרק מתקרב למשכן דינו מוות.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Numbers.3.10?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">⛺</span>
       <div class="card-title">Numbers 3:10</div>
       <div class="card-title-he">במדבר ג':10</div>
       <div class="card-source"><span class="t-en">Book of Numbers</span><span class="t-he">ספר במדבר</span></div>
@@ -1211,7 +1217,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התורה מחייבת עונש מוות למי שמקדם דת אחרת או מנבא בשם אלוהים אחרים, גם אם נבואותיו מתגשמות. חופש הדת נענה בעונש מוות.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.13.2-6?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🗣️</span>
       <div class="card-title">Deuteronomy 13:2-6 (1-5 in English)</div>
       <div class="card-title-he">דברים י"ג:2-6</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
@@ -1233,7 +1239,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">במכה האחרונה במצרים, אלוהים אינו פוגע רק בפרעה או בצבאו. הטקסט קובע במפורש שאלוהים הכה את הבכורות של כולם, כולל שבויים בבית הבור שלא הייתה להם שום השפעה על מדיניות מצרים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.12.29?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">💀</span>
       <div class="card-title">Exodus 12:29</div>
       <div class="card-title-he">שמות י"ב:29</div>
       <div class="card-source"><span class="t-en">Book of Exodus</span><span class="t-he">ספר שמות</span></div>
@@ -1255,7 +1261,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בחזון משפט נגד ירושלים, אלוהים פוקד על מחסליו לא להראות כל רחמים. הפקודה האלוהית הספציפית היא לשחוט זקנים, בחורים, בתולות, טף ונשים מבלי לחמול עליהם כלל.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Ezekiel.9.5-6?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🚫</span>
       <div class="card-title">Ezekiel 9:5-6</div>
       <div class="card-title-he">יחזקאל ט':5-6</div>
       <div class="card-source"><span class="t-en">Book of Ezekiel</span><span class="t-he">ספר יחזקאל</span></div>
@@ -1277,7 +1283,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אדם נכנס לקטטה במחנה ומגדף את שם אלוהים. אלוהים קובע את העונש: הקהילה כולה חייבת לרגום אותו באבנים עד מוות. הטקסט מקבע זאת כחוק נצחי — חילול השם דורש הוצאה פומבית להורג.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.24.14-16?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🪨</span>
       <div class="card-title">Leviticus 24:14-16</div>
       <div class="card-title-he">ויקרא כ"ד:14-16</div>
       <div class="card-source"><span class="t-en">Book of Leviticus</span><span class="t-he">ספר ויקרא</span></div>
@@ -1299,7 +1305,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התנ"ך מתייחס שוב ושוב לראם (שתורגם היסטורית לעיתים כחד-קרן). חז"ל והתלמוד מתארים את הראם כחיה מיתולוגית עצומה — כה גדולה שאפילו לא יכלה להיכנס לתיבת נח.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Numbers.23.22?lang=en&amp;p2=Job.39.9-10&amp;lang2=en&amp;p3=Isaiah.34.7&amp;lang3=en" target="_blank" class="card a-saffron" data-trad="torah tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🦄</span>
       <div class="card-title">Numbers 23:22, Job 39:9-10, Isaiah 34:7</div>
       <div class="card-title-he">במדבר כ"ג:22, איוב ל"ט:9-10, ישעיהו ל"ד:7</div>
       <div class="card-source"><span class="t-en">Numbers, Job, Isaiah</span><span class="t-he">במדבר, איוב, ישעיהו</span></div>
@@ -1321,7 +1327,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התורה קובעת הליך חוקי לחייל לקחת אישה שבויה לאישה בניגוד לרצונה לאחר שהרג את משפחתה בקרב. הטקסט מאפשר לחייל להביאה לביתו, לגלח את ראשה, לאפשר לה להתאבל חודש ימים על הוריה — ואז לכפות עליה נישואין.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.21.10-14?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🔗</span>
       <div class="card-title">Deuteronomy 21:10-14</div>
       <div class="card-title-he">דברים כ"א:10-14</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
@@ -1343,7 +1349,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אדם נמצא מקושש עצים ביום השבת. משה שואל את אלוהים מה לעשות. הפקודה הישירה של אלוהים היא שכל העדה תרגום אותו באבנים עד מוות. חייו של אדם נגדעים באכזריות על איסוף עצי הסקה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Numbers.15.32-36?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🪵</span>
       <div class="card-title">Numbers 15:32-36</div>
       <div class="card-title-he">במדבר ט"ו:32-36</div>
       <div class="card-source"><span class="t-en">Book of Numbers</span><span class="t-he">ספר במדבר</span></div>
@@ -1365,7 +1371,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">תהילים קל"ז, המפורסם בפתיחתו "על נהרות בבל", מסתיים בברכה מזעזעת למי שייקח את עוללי בבל וינפץ אותם אל הסלע כנקמה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Psalms.137.8-9?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🪨</span>
       <div class="card-title">Psalm 137:8-9</div>
       <div class="card-title-he">תהילים קל"ז:8-9</div>
       <div class="card-source"><span class="t-en">Book of Psalms</span><span class="t-he">ספר תהילים</span></div>
@@ -1387,7 +1393,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בספר ויקרא ודברים, אלוהים מאיים במפורש שאם בני ישראל ימרו את פיו, הוא יביא עליהם מצור כה נורא עד שיאלצו לאכול את בשר בניהם ובנותיהם. זה מוצג כעונש אלוהי מכוון.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.26.29?lang=en&amp;p2=Deuteronomy.28.53&amp;lang2=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🍖</span>
       <div class="card-title">Leviticus 26:29 &amp; Deut 28:53</div>
       <div class="card-title-he">ויקרא כ"ו:29 ודברים כ"ח:53</div>
       <div class="card-source"><span class="t-en">Leviticus &amp; Deuteronomy</span><span class="t-he">ויקרא ודברים</span></div>
@@ -1409,7 +1415,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">הנביא הושע מכריז על משפט אלוהים על שומרון בגין המרדה. העונש שנגזר אינו רק תבוסה צבאית, אלא רצח אלים מפורש של עוללים וביקוע בטנן של נשים הרות.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Hosea.14.1?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🤰</span>
       <div class="card-title">Hosea 14:1 (13:16 in English)</div>
       <div class="card-title-he">הושע י"ד:1</div>
       <div class="card-source"><span class="t-en">Book of Hosea</span><span class="t-he">ספר הושע</span></div>
@@ -1431,7 +1437,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התורה מצווה על עונש מוות מוחלט לשני גברים המקיימים יחסי מין בהסכמה, ומתייגת זאת כ"תועבה". טקסט זה היווה את הבסיס למאות שנים של אפליה קשה, אלימות והוצאות להורג.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.20.13?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">⚖️</span>
       <div class="card-title">Leviticus 20:13</div>
       <div class="card-title-he">ויקרא כ':13</div>
       <div class="card-source"><span class="t-en">Book of Leviticus</span><span class="t-he">ספר ויקרא</span></div>
@@ -1453,7 +1459,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אם בתולה מאורסת נאנסת בתוך העיר, התורה מניחה שהיא הסכימה כי לא צעקה חזק מספיק כדי שמישהו יציל אותה. החוק האלוהי מצווה להוציא החוצה ולסקול למוות הן את האנס והן את קורבן האונס.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.22.23-24?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">😢</span>
       <div class="card-title">Deuteronomy 22:23-24</div>
       <div class="card-title-he">דברים כ"ב:23-24</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
@@ -1475,7 +1481,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בעוד שהוצאות להורג רגילות בתורה נעשות בסקילה, חוק ספציפי דורש שאם בתו של כהן הופכת לזונה, יש לשרוף אותה למוות. העונש כולל שריפת אישה בחיים כדי להגן על כבוד אביה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.21.9?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🔥</span>
       <div class="card-title">Leviticus 21:9</div>
       <div class="card-title-he">ויקרא כ"א:9</div>
       <div class="card-source"><span class="t-en">Book of Leviticus</span><span class="t-he">ספר ויקרא</span></div>
@@ -1497,7 +1503,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">המלך דוד מורה על מפקד אוכלוסין. אלוהים כועס על דוד בגלל פעולה זו. כדי להעניש את דוד, אלוהים שולח מגפה שטובחת ב-70,000 בני ישראל חפים מפשע שלא היה להם שום קשר להחלטת המפקד.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/II_Samuel.24.15-17?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">📉</span>
       <div class="card-title">2 Samuel 24:15-17</div>
       <div class="card-title-he">שמואל ב' כ"ד:15-17</div>
       <div class="card-source"><span class="t-en">2 Samuel</span><span class="t-he">ספר שמואל ב'</span></div>
@@ -1519,8 +1525,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אלוהים מצהיר שוב ושוב שהוא הכביד במכוון את לב פרעה כדי שפרעה *יסרב* לשלח את בני ישראל. אלוהים שלל מפרעה את בחירתו החופשית במיוחד כדי שיוכל לשחרר מכות קטסטרופליות נוספות ולרצוח המונים מבכורות מצרים כדי להציג את כוחו.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.10.1?lang=en&amp;p2=Exodus.11.9&amp;lang2=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
-      <div class="card-title">Exodus 10:1 &amp; 11:9</div>
+      <span class="card-icon">♥️</span>
+      <div class="card-title">Exodus 10:1 & 11:9</div>
       <div class="card-title-he">שמות י':1 וי"א:9</div>
       <div class="card-source"><span class="t-en">Book of Exodus</span><span class="t-he">ספר שמות</span></div>
       <p class="card-desc"><strong>Exodus 10:1:</strong> "Then the LORD said to Moses, 'Go to Pharaoh. <strong>For I have hardened his heart</strong> and the hearts of his courtiers, in order that I may display these My signs among them.'"</p>
@@ -1541,7 +1547,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אם שני אנשים רבים ואשתו של אחד מנסה להציל את בעלה על ידי אחיזה במבושיו של התוקף, התורה מצווה לכרות את ידה ללא רחמים. מעשה ייאוש להצלת בן זוג נענש בהטלת מום בלתי הפיכה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.25.11-12?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">✋</span>
       <div class="card-title">Deuteronomy 25:11-12</div>
       <div class="card-title-he">דברים כ"ה:11-12</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
@@ -1563,7 +1569,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התורה דורשת עונש מוות לכל מי שמבצע מלאכה כלשהי ביום השבת. לא מצוינים חריגים בטקסט. עבודה ביום מסוים בשבוע מושווית לפשעים הראויים להוצאה להורג.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.31.15?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">⚒️</span>
       <div class="card-title">Exodus 31:15</div>
       <div class="card-title-he">שמות ל"א:15</div>
       <div class="card-source"><span class="t-en">Book of Exodus</span><span class="t-he">ספר שמות</span></div>
@@ -1585,7 +1591,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התורה מצווה על בני ישראל למחות לחלוטין את זכר עמלק. זהו ציווי אלוהי נצחי לטיהור אתני כולל של ציוויליזציה שלמה, עד לאחרון הילדים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.25.19?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">📜</span>
       <div class="card-title">Deuteronomy 25:19</div>
       <div class="card-title-he">דברים כ"ה:19</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
@@ -1607,7 +1613,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אם עיר פונה לעבוד אלוהים אחרים, התורה מצווה לשחוט לפי חרב כל אדם וחיה בעיר ההיא, ולשרוף את העיר כליל מבלי לבנותה שוב.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.13.16-17?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🏙️</span>
       <div class="card-title">Deuteronomy 13:16-17 (15-16 in English)</div>
       <div class="card-title-he">דברים י"ג:16-17</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
@@ -1629,7 +1635,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בשל מרידת קורח בסמכותו של משה, אלוהים גורם לארץ להיבקע ולבלוע את קורח חי, יחד עם חסידיו, נשותיהם, ילדיהם ואפילו הטף. ילדים רכים ותינוקות נקברים בחיים כהוצאה להורג אלוהית מזעזעת.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Numbers.16.27-33?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🕳️</span>
       <div class="card-title">Numbers 16:27-33</div>
       <div class="card-title-he">במדבר ט"ז:27-33</div>
       <div class="card-source"><span class="t-en">Book of Numbers</span><span class="t-he">ספר במדבר</span></div>
@@ -1653,7 +1659,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התורה מצווה על ההורים להביא בן סורר ומורה שמסרב לציית להם אל זקני העיר. כל העדה חייבת לרגום אותו באבנים עד מוות.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.21.18-21?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🧒</span>
       <div class="card-title">Deuteronomy 21:18-21</div>
       <div class="card-title-he">דברים כ"א:18-21</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
@@ -1675,7 +1681,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אם אדון מכה עבד והעבד מת מיד — האדון נענש. אך אם העבד שורד יום או יומיים — אין עונש, כי "הוא כספו".</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.21.20-21?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">👊</span>
       <div class="card-title">Exodus 21:20-21</div>
       <div class="card-title-he">שמות כ"א:20-21</div>
       <div class="card-source"><span class="t-en">Book of Exodus</span><span class="t-he">ספר שמות</span></div>
@@ -1697,12 +1703,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">התורה מתירה במפורש לקנות עבדים מהעמים סביב וקובעת שהם וצאצאיהם הופכים לרכוש נצחי שניתן להוריש לדורות הבאים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.25.44-46?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🔗</span>
       <div class="card-title">Leviticus 25:44-46</div>
       <div class="card-title-he">ויקרא כ"ה:44-46</div>
       <div class="card-source"><span class="t-en">Book of Leviticus</span><span class="t-he">ספר ויקרא</span></div>
       <p class="card-desc">"The male and female slaves whom you may have — buy from the nations around you... They shall become your property; you may bequeath them to your children as inherited property forever."</p>
-      <p class="card-desc-he">"וְעַבְדְּךָ וַאֲמָתְךָ אֲשֶׁר יִהְיוּ לְךָ — מֵאֵת הַגּוֹיִם אֲשֶׁר סְבִיבֹתֵיכֶם תִּקְנוּ... וְהָיוּ לָכֶם לַאֲחֻזָּה לְעֹלָם בָּהֶם תַּעֲבֹדוּ."</p>
+      <p class="card-desc-he">"וְעַבְדְּךָ וַאֲמָתְךָ אֲשֶׁר יִהְיוּ לְךָ — מֵאֵת הַגּוֹיִם אֲשֶׁר סְבִיבֹתֵיכֶם תִּקְנוּ... וְהָיוּ לָכֶם לַאֲחֻזָּה לְعֹלָם בָּהֶם תַּעֲבֹדוּ."</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-torah">Torah</span><span class="badge b-vs">Moral Failure</span></div>
     </a>
   </div>
@@ -1719,7 +1725,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">אב רשאי למכור את בתו לעבדות. בניגוד לעבדים זכרים, היא אינה משתחררת אוטומטית אחרי שש שנים ויכולה להישאר פילגש אצל האדון או בנו.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.21.7-11?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">💰</span>
       <div class="card-title">Exodus 21:7-11</div>
       <div class="card-title-he">שמות כ"א:7-11</div>
       <div class="card-source"><span class="t-en">Book of Exodus</span><span class="t-he">ספר שמות</span></div>
@@ -1741,7 +1747,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בערים הניתנות לירושה, לא תשאירו נשמה חיה. החיתי, האמורי, הכנעני, הפריזי, החוי והיבוסי — כולם חייבים להיות מושמדים לחלוטין.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.20.16-18?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🗺️</span>
       <div class="card-title">Deuteronomy 20:16-18</div>
       <div class="card-title-he">דברים כ':16-18</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
@@ -1755,7 +1761,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <!-- ════ PLUNDER OF WOMEN AND CHILDREN IN WAR ════ -->
 <div class="section" data-s="warplunder" data-cat="mor">
   <div class="sec-head">
-    <h2><span class="t-en">Plunder of Women and Children in War</span><span class="t-he">ביזת נשים וילדים במלחמה</span></h2>
+    <h2><span class="t-en">Plunder of Women &amp; Children in War</span><span class="t-he">ביזת נשים וילדים במלחמה</span></h2>
     <div class="sec-line"></div><span class="cat-badge cb-mor"> Moral Failure</span>
     <span class="sec-tag">Legalized enslavement of civilians</span>
   </div>
@@ -1763,12 +1769,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">כאשר צרים על עיר רחוקה שמסרבת להצעת שלום, התורה מצווה להרוג את כל הזכרים ולקחת את הנשים, הילדים, הבהמות וכל השלל כביזה.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Deuteronomy.20.13-14?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🛡️</span>
       <div class="card-title">Deuteronomy 20:13-14</div>
       <div class="card-title-he">דברים כ':13-14</div>
       <div class="card-source"><span class="t-en">Book of Deuteronomy</span><span class="t-he">ספר דברים</span></div>
       <p class="card-desc">"You shall put all its males to the sword. You may, however, take as your booty the women, the children, livestock, and everything else in the town — all its spoil — and enjoy the spoil of your enemies."</p>
-      <p class="card-desc-he">"וְהִכִּיתָ אֶת כָּל זְכוּרָהּ לְפִי חָרֶב. רַק הַנָּשִׁים וְהַטַּף וְהַבְּהֵמָה וְכֹל אֲשֶׁר יִהְיֶה בָעִיר — כָּל שְׁלָלָהּ — תָּבֹז לָךְ."</p>
+      <p class="card-desc-he">"וְהִכִּיתָ אֶת כָּל זְכוּרָהּ לְפִי חָרֶב. רַק הַנָּשִׁים וְהַטַּף וְהַبְּהֵמָה וְכֹל אֲשֶׁר יִהְיֶה בָעִיר — כָּל שְׁלָלָהּ — תָּבֹז לָךְ."</p>
       <div class="badges"><span class="badge b-eng">English</span><span class="badge b-vs">Direct quote</span><span class="badge b-trad-torah">Torah</span><span class="badge b-vs">Moral Failure</span></div>
     </a>
   </div>
@@ -1785,7 +1791,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">כל המקלל את אביו או אמו — מות יומת. התורה הופכת זאת לעבירה שדינה מוות ללא חריגים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Exodus.21.17?lang=en&amp;p2=Leviticus.20.9&amp;lang2=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🤬</span>
       <div class="card-title">Exodus 21:17 &amp; Leviticus 20:9</div>
       <div class="card-title-he">שמות כ"א:17 ויקרא כ':9</div>
       <div class="card-source"><span class="t-en">Exodus &amp; Leviticus</span><span class="t-he">שמות ויקרא</span></div>
@@ -1807,7 +1813,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">שום אדם שהוקדש לחרם — השמדה מוחלטת — אינו ניתן לפדיון. הוא חייב להיות מוצא להורג.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Leviticus.27.29?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">💀</span>
       <div class="card-title">Leviticus 27:29</div>
       <div class="card-title-he">ויקרא כ"ז:29</div>
       <div class="card-source"><span class="t-en">Book of Leviticus</span><span class="t-he">ספר ויקרא</span></div>
@@ -1821,7 +1827,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <!-- ════ DIVINE BEARS MAUL CHILDREN ════ -->
 <div class="section" data-s="bearsmaul" data-cat="mor">
   <div class="sec-head">
-    <h2><span class="t-en">Divine Bears Maul Mocking Children</span><span class="t-he">דובים אלוהיים טורפים ילדים</span></h2>
+    <h2><span class="t-en">Divine Bears Maul Children</span><span class="t-he">דובים אלוהיים טורפים ילדים</span></h2>
     <div class="sec-line"></div><span class="cat-badge cb-mor"> Moral Failure</span>
     <span class="sec-tag">Divine retribution against children</span>
   </div>
@@ -1829,7 +1835,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">כאשר נערים לעגו לאלישע וקראו לו "קרח", הוא קילל אותם בשם יהוה. שתי דובות יצאו מהיער וטרפו ארבעים ושניים מהילדים.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/II_Kings.2.23-24?lang=en" target="_blank" class="card a-red" data-trad="tanakh">
-      <span class="card-icon"></span>
+      <span class="card-icon">🐻</span>
       <div class="card-title">2 Kings 2:23-24</div>
       <div class="card-title-he">מלכים ב' ב':23-24</div>
       <div class="card-source"><span class="t-en">2 Kings</span><span class="t-he">מלכים ב'</span></div>
@@ -1851,7 +1857,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">בעל החושד באשתו מכריח אותה לשתות מי מרורים מעורבים בעפר ודיו. אם אשמה — "וְצָבְתָה בִטְנָהּ וְנָפְלָה יְרֵכָהּ" — הפלה אלוהית או עקרות נצחית.</p>
   <div class="grid">
     <a href="https://www.sefaria.org/Numbers.5.11-31?lang=en" target="_blank" class="card a-red" data-trad="torah">
-      <span class="card-icon"></span>
+      <span class="card-icon">🧪</span>
       <div class="card-title">Numbers 5:11-31</div>
       <div class="card-title-he">במדבר ה':11-31</div>
       <div class="card-source"><span class="t-en">Book of Numbers</span><span class="t-he">ספר במדבר</span></div>
@@ -1874,7 +1880,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div class="portal-grid">
     <a href="https://skepticsannotatedbible.com/" target="_blank" class="portal-card">
-      <span class="pi"></span>
+      <span class="pi">📖</span>
       <div class="pt">
         <div class="pn t-en">Skeptic's Annotated Bible</div>
         <div class="pn-he">התנ"ך המבואר של הספקנים</div>
@@ -1883,7 +1889,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </a>
     <a href="https://infidels.org/" target="_blank" class="portal-card">
-      <span class="pi"></span>
+      <span class="pi">🔍</span>
       <div class="pt">
         <div class="pn t-en">Internet Infidels</div>
         <div class="pn-he">אינטרנט אינפידלס</div>
@@ -1892,7 +1898,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </a>
     <a href="https://www.evilbible.com/" target="_blank" class="portal-card">
-      <span class="pi"></span>
+      <span class="pi">⚖️</span>
       <div class="pt">
         <div class="pn t-en">EvilBible.com</div>
         <div class="pn-he">תנ"ך מרושע</div>
@@ -1901,7 +1907,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </a>
     <a href="https://www.sefaria.org/texts" target="_blank" class="portal-card">
-      <span class="pi"></span>
+      <span class="pi">📜</span>
       <div class="pt">
         <div class="pn t-en">Sefaria (Verification)</div>
         <div class="pn-he">ספריא (לאימות)</div>
@@ -1910,7 +1916,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </a>
     <a href="https://www.skeptic.com/" target="_blank" class="portal-card">
-      <span class="pi"></span>
+      <span class="pi">🧪</span>
       <div class="pt">
         <div class="pn t-en">Skeptic Magazine</div>
         <div class="pn-he">מגזין ספקן (Skeptic)</div>
@@ -1919,7 +1925,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </a>
     <a href="https://rationalwiki.org/wiki/Biblical_contradictions" target="_blank" class="portal-card">
-      <span class="pi"></span>
+      <span class="pi">📋</span>
       <div class="pt">
         <div class="pn t-en">RationalWiki — Contradictions</div>
         <div class="pn-he">רשיונל-ויקי (RationalWiki)</div>
@@ -1933,7 +1939,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 </div><!-- /inner-wrap -->
 </div><!-- /page-jud -->
-
 <!-- ════════════ PAGE 2: CHRISTIANITY ════════════ -->
 <div class="religion-page xtn-page" id="page-xtn">
 <div class="inner-wrap">
