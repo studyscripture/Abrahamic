@@ -368,7 +368,7 @@ body::before {
 .isl-page .notice strong { color:var(--isl); }
 
 /* Filters */
-.filter-group { margin-bottom:10px; }
+.filter-group { margin-bottom:10px; min-width:0; }
 .filter-label { font-size:10.5px; letter-spacing:0.13em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
 .filter-label.t-he { text-align:right; letter-spacing:0.05em; font-size:13px; font-family:'Assistant',sans-serif; }
 .tabs { display:flex; gap:6px; flex-wrap:wrap; }
@@ -432,13 +432,13 @@ body::before {
 .sec-head { display:flex; align-items:center; gap:14px; margin-bottom:8px; }
 .sec-head h2 {
   font-family:'Cormorant Garamond','EB Garamond',serif;
-  font-size:26px; font-weight:600; white-space:nowrap; color:var(--white);
+  font-size:26px; font-weight:600; color:var(--white); overflow-wrap:break-word; word-break:break-word;
 }
 .sec-head h2 .t-he { font-family:'Assistant',sans-serif; font-weight:600; font-size:24px; }
 .sec-line { flex:1; height:1px; background:var(--border); }
 .sec-tag {
   font-size:10.5px; letter-spacing:0.13em; text-transform:uppercase;
-  border:1px solid; padding:3px 10px; border-radius:2px; white-space:nowrap;
+  border:1px solid; padding:3px 10px; border-radius:2px; white-space:nowrap; flex-shrink:0;
 }
 .jud-page .sec-tag { color:var(--jud); border-color:rgba(201,168,76,0.3); }
 .xtn-page .sec-tag { color:var(--xtn-2); border-color:rgba(232,184,75,0.3); }
@@ -586,16 +586,21 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .rel-tab-name { font-size:10px; }
   .rel-tab-script { display:none; }
 
-  /* Filter tabs — scroll horizontally instead of causing page overflow */
-  .filter-group { overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; }
+  /* Filter tabs — contained horizontal scroll, never causes page overflow */
+  .filter-group {
+    overflow:hidden;
+    padding-bottom:2px;
+    min-width:0;
+    max-width:100%;
+  }
   .tabs {
     flex-wrap:nowrap;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
-    padding-bottom:4px;
+    padding-bottom:6px;
     gap:5px;
-    /* hide scrollbar visually but keep it functional */
     scrollbar-width:none;
+    max-width:100%;
   }
   .tabs::-webkit-scrollbar { display:none; }
   .tab {
@@ -610,9 +615,22 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .grid { grid-template-columns:1fr; gap:10px; }
   .portal-grid { grid-template-columns:1fr 1fr; gap:8px; }
 
-  /* Section headers */
-  .sec-head { gap:8px; }
-  .sec-head h2 { font-size:18px; }
+  /* Section headers — title full width, badge+tag wrap below */
+  .sec-head {
+    flex-wrap:wrap;
+    gap:6px 10px;
+    align-items:flex-start;
+  }
+  .sec-head h2 {
+    font-size:17px;
+    width:100%;
+    white-space:normal;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .sec-line { display:none; }
+  .cat-badge { flex-shrink:0; margin-bottom:0; }
+  .sec-tag { white-space:normal; flex-shrink:0; }
 
   /* Cards */
   .card { padding:14px 14px 12px; overflow-wrap:break-word; word-break:break-word; }
@@ -622,7 +640,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .card-desc-ar { font-size:14px; }
   .card-verse-ar { font-size:15px; }
   .sec-desc { font-size:13px; }
-  .sec-head h2 { font-size:17px; overflow-wrap:break-word; word-break:break-word; }
 
   /* Notice boxes */
   .notice { padding:12px 14px; font-size:13px; }
