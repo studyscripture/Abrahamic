@@ -659,6 +659,11 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 /* ══════════════════════════════════════════
    ISSUE TYPE CAROUSEL
 ══════════════════════════════════════════ */
+
+/* Desktop drag-scroll cursor feedback */
+.carousel-track.is-dragging { cursor: grabbing; user-select: none; -webkit-user-select: none; }
+.carousel-track:not(.is-dragging) { cursor: grab; }
+
 .carousel-wrap {
   position: relative;
   margin-bottom: 28px;
@@ -744,8 +749,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   scrollbar-width: none;
   padding: 6px 48px 10px;
   align-items: center;
+  /* Smooth momentum on all platforms */
+  overscroll-behavior-x: contain;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
+/* Prevent text selection while dragging */
+.carousel-track.is-dragging * { pointer-events: none; }
 
 /* Each pill chip */
 .carousel-chip {
@@ -2242,58 +2251,58 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p class="sec-desc t-he">ספריות שלמות של ביקורת המקרא — סתירות ישירות פסוק אחר פסוק, ניתוחים היסטוריים ואימות טקסט אובייקטיבי. מצוין ללימוד מעמיק.</p>
 
   <div class="portal-grid">
-    <a href="https://skepticsannotatedbible.com/" target="_blank" class="portal-card">
-      <span class="pi">📖</span>
-      <div class="pt">
-        <div class="pn t-en">Skeptic's Annotated Bible</div>
-        <div class="pn-he">התנ"ך המבואר של הספקנים</div>
-        <div class="pd t-en">Every contradiction, cruelty &amp; absurdity marked</div>
-        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">כל סתירה ואכזריות מסומנות</div>
-      </div>
-    </a>
-    <a href="https://infidels.org/" target="_blank" class="portal-card">
-      <span class="pi">🔍</span>
-      <div class="pt">
-        <div class="pn t-en">Internet Infidels</div>
-        <div class="pn-he">אינטרנט אינפידלס</div>
-        <div class="pd t-en">Scholarly library of scriptural criticism</div>
-        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">ספרייה אקדמית לביקורת כתבי קודש</div>
-      </div>
-    </a>
-    <a href="https://www.evilbible.com/" target="_blank" class="portal-card">
-      <span class="pi">⚖️</span>
-      <div class="pt">
-        <div class="pn t-en">EvilBible.com</div>
-        <div class="pn-he">תנ"ך מרושע</div>
-        <div class="pd t-en">Immoral teachings &amp; slavery verses catalogued</div>
-        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">קיטלוג חוקי העבדות וכשלים מוסריים</div>
-      </div>
-    </a>
     <a href="https://www.sefaria.org/texts" target="_blank" class="portal-card">
       <span class="pi">📜</span>
       <div class="pt">
-        <div class="pn t-en">Sefaria (Verification)</div>
-        <div class="pn-he">ספריא (לאימות)</div>
-        <div class="pd t-en">Read every verse in its original Hebrew</div>
-        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">קרא את הטקסטים ישירות מהמקור</div>
+        <div class="pn t-en">Sefaria — Primary Texts</div>
+        <div class="pn-he">ספריא — מקורות ראשוניים</div>
+        <div class="pd t-en">Read every Tanakh verse in original Hebrew — verify all citations yourself</div>
+        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">קרא כל פסוק בעברית מקורית — אמת את כל הציטוטים בעצמך</div>
       </div>
     </a>
-    <a href="https://www.skeptic.com/" target="_blank" class="portal-card">
-      <span class="pi">🧪</span>
+    <a href="https://skepticsannotatedbible.com/tanakh/index.htm" target="_blank" class="portal-card">
+      <span class="pi">📖</span>
       <div class="pt">
-        <div class="pn t-en">Skeptic Magazine</div>
-        <div class="pn-he">מגזין ספקן (Skeptic)</div>
-        <div class="pd t-en">Scientific &amp; historical debunking</div>
-        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">הפרכות מדעיות והיסטוריות</div>
+        <div class="pn t-en">Skeptic's Annotated Tanakh</div>
+        <div class="pn-he">התנ"ך המבואר של הספקנים</div>
+        <div class="pd t-en">Every contradiction, injustice, absurdity &amp; cruelty annotated verse by verse</div>
+        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">כל סתירה, עוול ואכזריות מסומנים פסוק אחר פסוק</div>
+      </div>
+    </a>
+    <a href="https://infidels.org/library/modern/logic/contradictions.html" target="_blank" class="portal-card">
+      <span class="pi">🔍</span>
+      <div class="pt">
+        <div class="pn t-en">Internet Infidels — OT Contradictions</div>
+        <div class="pn-he">אינטרנט אינפידלס — סתירות</div>
+        <div class="pd t-en">Peer-reviewed scholarly catalogue of Hebrew Bible contradictions</div>
+        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">קטלוג אקדמי של סתירות בתנ"ך</div>
       </div>
     </a>
     <a href="https://rationalwiki.org/wiki/Biblical_contradictions" target="_blank" class="portal-card">
       <span class="pi">📋</span>
       <div class="pt">
-        <div class="pn t-en">RationalWiki — Contradictions</div>
-        <div class="pn-he">רשיונל-ויקי (RationalWiki)</div>
-        <div class="pd t-en">Comprehensive list with sources</div>
-        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">רשימה מקיפה של סתירות עם מקורות</div>
+        <div class="pn t-en">RationalWiki — Biblical Contradictions</div>
+        <div class="pn-he">רשיונל-ויקי — סתירות</div>
+        <div class="pd t-en">Comprehensive sourced list covering Torah through Ketuvim</div>
+        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">רשימה מקיפה עם מקורות מהתורה עד כתובים</div>
+      </div>
+    </a>
+    <a href="https://www.bartehrman.com/conflicting-archaeology-and-the-bible/" target="_blank" class="portal-card">
+      <span class="pi">🏺</span>
+      <div class="pt">
+        <div class="pn t-en">Bart Ehrman — Archaeology vs. Bible</div>
+        <div class="pn-he">ארמן — ארכיאולוגיה מול התנ"ך</div>
+        <div class="pd t-en">10 major archaeological finds that directly contradict Tanakh narratives</div>
+        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">10 ממצאים ארכיאולוגיים שסותרים את נרטיב התנ"ך</div>
+      </div>
+    </a>
+    <a href="https://en.wikipedia.org/wiki/The_Bible_Unearthed" target="_blank" class="portal-card">
+      <span class="pi">⛏️</span>
+      <div class="pt">
+        <div class="pn t-en">Finkelstein &amp; Silberman — Bible Unearthed</div>
+        <div class="pn-he">פינקלשטיין וסילברמן — התנ"ך החפור</div>
+        <div class="pd t-en">Israeli archaeologists prove the Exodus, Conquest &amp; United Monarchy never occurred as written</div>
+        <div class="pd t-he" style="display:none; direction:rtl; text-align:right;">ארכיאולוגים ישראלים מוכיחים שהיציאה ממצרים וכיבוש כנען לא התרחשו כפי שכתוב</div>
       </div>
     </a>
   </div>
@@ -2394,7 +2403,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <button class="carousel-chip" data-val="sun" onclick="carouselPick('xtn','sun',this)">Sun Stands Still</button>
         <button class="carousel-chip" data-val="solomon" onclick="carouselPick('xtn','solomon',this)">Solomon's Horses</button>
         <button class="carousel-chip" data-val="insects" onclick="carouselPick('xtn','insects',this)">Four-Legged Insects</button>
-        <button class="carousel-chip" data-val="unicorns" onclick="carouselPick('xtn','unicorns',this)">Unicorns</button>
+
         <button class="carousel-chip" data-val="age" onclick="carouselPick('xtn','age',this)">Jesus's Age</button>
         <button class="carousel-chip" data-val="flatearth" onclick="carouselPick('xtn','flatearth',this)">Flat Earth</button>
         <button class="carousel-chip" data-val="age2" onclick="carouselPick('xtn','age2',this)">900-Year Lifespans</button>
@@ -3700,28 +3709,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <p class="card-desc"><strong>Exodus 20:13:</strong> "Thou shalt not kill."<br><strong>1 Samuel 15:3:</strong> God commands Saul: "Now go and smite Amalek... kill both man and woman, infant and suckling, ox and sheep, camel and ass."<br><strong>Numbers 31:17:</strong> "Now therefore kill every male among the little ones, and kill every woman that hath known man by lying with him." — God repeatedly commands the exact same act his own commandment forbids.</p>
       <p class="card-desc-hi" style="display:none"><strong>निर्गमन २०:१३:</strong> "हत्या मत करो।"<br><strong>१ शमूएल १५:३:</strong> परमेश्वर आदेश देता है: "पुरुष और स्त्री, बालक और दूध पीते शिशु को भी मार डालो।"</p>
       <div class="badges"><span class="badge b-vs">Contradiction</span><span class="badge b-trad-shaiva">Old Testament</span><span class="badge b-vs">Moral Failure</span></div>
-    </a>
-  </div>
-</div>
-
-<!-- ════ UNICORNS ════ -->
-<div class="section" data-s="unicorns" data-cat="his">
-  <div class="sec-head">
-    <h2><span class="t-en">Unicorns in the King James Bible</span><span class="t-hi" style="display:none">राजा जेम्स बाइबल में एकश्रृंगी</span></h2>
-    <div class="sec-line"></div><span class="cat-badge cb-his">📜 Historical Blunder</span>
-    <span class="sec-tag">Mythical Creature as Real Animal</span>
-  </div>
-  <p class="sec-desc t-en">The King James Bible — the most widely used English Bible for 400 years — mentions the unicorn nine times as a real animal. Modern translations quietly change the word to "wild ox," but the KJV translators chose "unicorn" deliberately based on the Septuagint's use of "monoceros." Either the KJV is wrong, or unicorns are real.</p>
-  <p class="sec-desc t-hi" style="display:none">किंग जेम्स बाइबल — ४०० वर्षों तक सबसे अधिक उपयोग की जाने वाली अंग्रेजी बाइबल — नौ बार एकश्रृंगी का उल्लेख एक वास्तविक पशु के रूप में करती है।</p>
-  <div class="grid">
-    <a href="https://www.biblegateway.com/passage/?search=Numbers+23%3A22%3BJob+39%3A9-10%3BPsalm+22%3A21%3BIsaiah+34%3A7&version=KJV" target="_blank" class="card a-saffron" data-trad="ot">
-      <span class="card-icon">🦄</span>
-      <div class="card-title">Numbers 23:22, Job 39:9-10, Isaiah 34:7</div>
-      <div class="card-title-hi" style="display:none">गिनती २३:२२, अय्यूब ३९:९-१०, यशायाह ३४:७</div>
-      <div class="card-source">King James Version</div>
-      <p class="card-desc"><strong>Numbers 23:22:</strong> "God brought them out of Egypt; he hath as it were the strength of an unicorn."<br><strong>Job 39:9-10:</strong> "Will the unicorn be willing to serve thee... Canst thou bind the unicorn with his band in the furrow?"<br><strong>Isaiah 34:7:</strong> "And the unicorns shall come down with them." The KJV uses "unicorn" at Numbers 23:22, 24:8; Deuteronomy 33:17; Job 39:9,10; Psalm 22:21, 29:6, 92:10; Isaiah 34:7.</p>
-      <p class="card-desc-hi" style="display:none"><strong>गिनती २३:२२:</strong> "परमेश्वर... उसकी शक्ति एकश्रृंगी के समान है।"<br><strong>अय्यूब ३९:९-१०:</strong> "क्या एकश्रृंगी तेरी सेवा करने को तैयार होगा?"</p>
-      <div class="badges"><span class="badge b-vs">Mythological Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
     </a>
   </div>
 </div>
@@ -5954,13 +5941,29 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     isl: (key) => { IslASection = key; applyFiltersIsl(); },
   };
 
+  // Smooth center-scroll a chip within its track
+  function centerChipInTrack(track, chip) {
+    // Temporarily disable smooth scroll so we can set it precisely
+    const prev = track.style.scrollBehavior;
+    track.style.scrollBehavior = 'smooth';
+    const trackRect  = track.getBoundingClientRect();
+    const chipRect   = chip.getBoundingClientRect();
+    const offset = (chipRect.left - trackRect.left) - (trackRect.width / 2) + (chipRect.width / 2);
+    track.scrollLeft += offset;
+    track.style.scrollBehavior = prev;
+  }
+
   function carouselPick(rel, val, chip) {
-    // deactivate all chips in this carousel
     const track = document.getElementById(rel + '-track');
     track.querySelectorAll('.carousel-chip').forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
-    // scroll active chip into centre view
-    chip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    // If "All Issues", always scroll back to the very start first, then center
+    if (val === 'all') {
+      track.style.scrollBehavior = 'smooth';
+      track.scrollLeft = 0;
+    } else {
+      centerChipInTrack(track, chip);
+    }
     // clear search
     const search = document.querySelector('#' + rel + '-carousel .carousel-search');
     if (search) { search.value = ''; carouselShowAll(rel); }
@@ -5988,10 +5991,86 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       chip.style.display = match ? '' : 'none';
       if (match) anyVisible = true;
     });
-    // hide dividers when searching — they make no sense with filtered results
     dividers.forEach(d => d.style.display = 'none');
     document.getElementById(rel + '-carousel-empty').classList.toggle('visible', !anyVisible);
   }
+
+  // ══ DESKTOP DRAG-TO-SCROLL WITH MOMENTUM PHYSICS ══════
+  (function() {
+    // Apply to all carousel tracks
+    function initDragScroll(track) {
+      let isDown   = false;
+      let startX   = 0;
+      let startSL  = 0;
+      let velX     = 0;
+      let lastX    = 0;
+      let lastT    = 0;
+      let rafID    = null;
+
+      function cancelMomentum() {
+        if (rafID) { cancelAnimationFrame(rafID); rafID = null; }
+      }
+
+      function applyMomentum() {
+        velX *= 0.92; // friction coefficient
+        if (Math.abs(velX) < 0.5) { cancelMomentum(); return; }
+        track.scrollLeft += velX;
+        rafID = requestAnimationFrame(applyMomentum);
+      }
+
+      track.addEventListener('mousedown', function(e) {
+        // Only left button, don't intercept chip clicks unless moved
+        if (e.button !== 0) return;
+        isDown  = true;
+        startX  = e.pageX - track.offsetLeft;
+        startSL = track.scrollLeft;
+        velX    = 0;
+        lastX   = e.pageX;
+        lastT   = Date.now();
+        cancelMomentum();
+        track.style.scrollBehavior = 'auto';
+      });
+
+      document.addEventListener('mouseup', function(e) {
+        if (!isDown) return;
+        isDown = false;
+        track.classList.remove('is-dragging');
+        track.style.scrollBehavior = 'smooth';
+        applyMomentum();
+      });
+
+      document.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        const x    = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.4; // scroll speed multiplier
+        if (Math.abs(walk) > 4) {
+          track.classList.add('is-dragging');
+          e.preventDefault();
+        }
+        const now  = Date.now();
+        const dt   = now - lastT || 1;
+        velX       = (lastX - e.pageX) / dt * 14; // momentum factor
+        lastX      = e.pageX;
+        lastT      = now;
+        track.scrollLeft = startSL - walk;
+      });
+
+      // Prevent chip clicks when we were dragging
+      track.addEventListener('click', function(e) {
+        if (track.classList.contains('is-dragging')) {
+          e.stopPropagation();
+          e.preventDefault();
+          track.classList.remove('is-dragging');
+        }
+      }, true);
+    }
+
+    // Init after DOM ready
+    ['jud-track', 'xtn-track', 'isl-track'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) initDragScroll(el);
+    });
+  })();
   // ════════════════════════════════════════════════════════
 
 
@@ -6248,7 +6327,7 @@ function switchReligion(rel) {
     'x-tab-hell':        ['Hell Contradiction',   'नरक विरोधाभास'],
     'x-tab-baptism':     ['Baptism Required?',    'बपतिस्मा जरूरी?'],
     'x-tab-murder':      ['God Commands Murder',  'परमेश्वर ने हत्या का आदेश दिया'],
-    'x-tab-unicorns':    ['Unicorns in Bible',    'बाइबल में एकश्रृंगी'],
+
     'x-tab-divorce':     ['Divorce Contradiction','तलाक विरोधाभास'],
     'x-tab-sabbath':     ['Sabbath Day',          'विश्राम का दिन'],
     'x-tab-age':         ["Jesus's Age",          'यीशु की उम्र'],
