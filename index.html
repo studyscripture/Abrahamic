@@ -6199,6 +6199,22 @@ function switchReligion(rel) {
       const el = document.getElementById(id);
       if (el) el.textContent = he ? h : en;
     }
+    // Translate carousel chips
+    const judChipMap = {};
+    for (const [id, [en, h]] of Object.entries(JudSTabLabels)) {
+      judChipMap[id.replace(/^tab-/, '')] = [en, h];
+    }
+    document.querySelectorAll('#jud-track .carousel-chip').forEach(chip => {
+      const val = chip.dataset.val;
+      if (judChipMap[val]) chip.textContent = he ? judChipMap[val][1] : judChipMap[val][0];
+      chip.style.fontFamily = he ? "'Assistant', sans-serif" : '';
+      chip.style.textTransform = he ? 'none' : '';
+      chip.style.letterSpacing = he ? '0.02em' : '';
+      chip.style.direction = he ? 'rtl' : '';
+    });
+    // Update search placeholder
+    const judSearch = document.querySelector('#jud-carousel .carousel-search');
+    if (judSearch) judSearch.placeholder = he ? 'חפש נושאים…' : 'Search issues…';
     
     document.querySelectorAll('span.t-he, .filter-label.t-he, .card-source .t-he').forEach(el => el.style.display = he ? 'inline-block' : 'none');
     document.querySelectorAll('.card-source .t-en').forEach(el => el.style.display = he ? 'none' : 'inline-block');
@@ -6404,6 +6420,21 @@ function switchReligion(rel) {
       const el = document.getElementById(id);
       if (el) el.textContent = hi ? h : en;
     }
+    // Translate carousel chips
+    const xtnChipMap = {};
+    for (const [id, [en, h]] of Object.entries(XtnSTabLabels)) {
+      xtnChipMap[id.replace(/^x-tab-/, '')] = [en, h];
+    }
+    document.querySelectorAll('#xtn-track .carousel-chip').forEach(chip => {
+      const val = chip.dataset.val;
+      if (xtnChipMap[val]) chip.textContent = hi ? xtnChipMap[val][1] : xtnChipMap[val][0];
+      chip.style.fontFamily = hi ? "'Tiro Devanagari Sans', serif" : '';
+      chip.style.textTransform = hi ? 'none' : '';
+      chip.style.letterSpacing = hi ? '0.02em' : '';
+    });
+    // Update search placeholder
+    const xtnSearch = document.querySelector('#xtn-carousel .carousel-search');
+    if (xtnSearch) xtnSearch.placeholder = hi ? 'समस्याएँ खोजें…' : 'Search issues…';
   }
 
   // ── FILTER STATE ──
@@ -6634,6 +6665,22 @@ function switchReligion(rel) {
     for (const [id, [en, a]] of Object.entries(IslCTabLabels)) {
       const el = document.getElementById(id); if (el) el.textContent = ar ? a : en;
     }
+    // Translate carousel chips
+    const islChipMap = {};
+    for (const [id, [en, a]] of Object.entries(IslSTabLabels)) {
+      islChipMap[id.replace(/^i-tab-/, '')] = [en, a];
+    }
+    document.querySelectorAll('#isl-track .carousel-chip').forEach(chip => {
+      const val = chip.dataset.val;
+      if (islChipMap[val]) chip.textContent = ar ? islChipMap[val][1] : islChipMap[val][0];
+      chip.style.fontFamily = ar ? "'Amiri', serif" : '';
+      chip.style.textTransform = ar ? 'none' : '';
+      chip.style.letterSpacing = ar ? '0.02em' : '';
+      chip.style.direction = ar ? 'rtl' : '';
+    });
+    // Update search placeholder
+    const islSearch = document.querySelector('#isl-carousel .carousel-search');
+    if (islSearch) islSearch.placeholder = ar ? 'ابحث في المسائل…' : 'Search issues…';
   }
 
   let IslASection = 'all';
