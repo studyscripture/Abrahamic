@@ -66,20 +66,6 @@ p, span, div, h1, h2, h3, h4, li, a, strong, em, button {
   word-break: break-word;
   min-width: 0;
 }
-/* Language spans inside pills should be inline, not block */
-.pill-chip .t-en,
-.pill-chip .t-he,
-.pill-chip .t-hi,
-.pill-chip .t-ar {
-  display: inline !important;
-}
-/* pill category labels in alternate language */
-.pill-category-label.t-he,
-.pill-category-label.t-hi,
-.pill-category-label.t-ar {
-  display: none;
-}
-
 @media print { body { display:none!important; } }
 
 html { overflow-x:hidden; max-width:100vw; }
@@ -671,146 +657,199 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 }
 
 /* ══════════════════════════════════════════
-   PILL GRID (replaces carousel)
+   ISSUE TYPE CAROUSEL
 ══════════════════════════════════════════ */
-.pill-wrap {
+
+/* Desktop drag-scroll cursor feedback */
+.carousel-track.is-dragging { cursor: grabbing; user-select: none; -webkit-user-select: none; }
+.carousel-track:not(.is-dragging) { cursor: grab; }
+
+.carousel-wrap {
   position: relative;
   margin-bottom: 28px;
 }
 
-/* Category section headers within pill grid */
-.pill-category-label {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--muted);
-  opacity: 0.55;
-  margin: 18px 0 8px;
-  padding-left: 2px;
+/* Search bar */
+.carousel-search-row {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 10px;
 }
-.pill-category-label::after {
-  content: '';
+.carousel-search {
   flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  padding: 7px 16px 7px 36px;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  width: 100%;
 }
-.pill-category-label:first-child { margin-top: 4px; }
+.carousel-search::placeholder { color: var(--muted); }
+.carousel-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+}
+.carousel-search-wrap {
+  position: relative;
+  flex: 1;
+}
+.jud-page .carousel-search:focus { border-color: var(--jud); box-shadow: 0 0 0 2px rgba(201,168,76,0.15); }
+.xtn-page .carousel-search:focus { border-color: var(--xtn); box-shadow: 0 0 0 2px rgba(192,57,43,0.15); }
+.isl-page .carousel-search:focus { border-color: var(--isl); box-shadow: 0 0 0 2px rgba(46,204,138,0.15); }
 
-/* The pill grid container */
-.pill-grid {
+/* Fade edges */
+.carousel-outer {
+  position: relative;
+}
+.carousel-outer::before,
+.carousel-outer::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 48px;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.2s;
+}
+.carousel-outer::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg), transparent);
+}
+.carousel-outer::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg), transparent);
+}
+.jud-page  .carousel-outer::before { background: linear-gradient(to right, var(--jud-bg), transparent); }
+.jud-page  .carousel-outer::after  { background: linear-gradient(to left,  var(--jud-bg), transparent); }
+.xtn-page  .carousel-outer::before { background: linear-gradient(to right, var(--xtn-bg), transparent); }
+.xtn-page  .carousel-outer::after  { background: linear-gradient(to left,  var(--xtn-bg), transparent); }
+.isl-page  .carousel-outer::before { background: linear-gradient(to right, var(--isl-bg), transparent); }
+.isl-page  .carousel-outer::after  { background: linear-gradient(to left,  var(--isl-bg), transparent); }
+
+/* The scrolling track */
+.carousel-track {
   display: flex;
-  flex-wrap: wrap;
   gap: 7px;
-  padding: 4px 0 6px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 6px 48px 10px;
+  align-items: center;
+  /* Smooth momentum on all platforms */
+  overscroll-behavior-x: contain;
 }
+.carousel-track::-webkit-scrollbar { display: none; }
+/* Prevent text selection while dragging */
+.carousel-track.is-dragging * { pointer-events: none; }
 
-/* Individual pills */
-.pill-chip {
+/* Each pill chip */
+.carousel-chip {
+  flex-shrink: 0;
   border: 1px solid rgba(255,255,255,0.08);
   background: var(--surface);
   color: var(--muted);
   font-family: 'Cinzel', serif;
   font-size: 10px;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 20px;
   cursor: pointer;
-  transition: color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.25s, transform 0.15s;
+  transition: all 0.2s;
   white-space: nowrap;
   user-select: none;
   -webkit-user-select: none;
   position: relative;
   outline: none;
 }
-.pill-chip:hover {
+.carousel-chip:hover {
   color: var(--cream);
   border-color: rgba(255,255,255,0.22);
   background: rgba(255,255,255,0.05);
   transform: translateY(-1px);
 }
-.pill-chip.chip-all {
+/* "All Issues" chip — slightly larger */
+.carousel-chip.chip-all {
   font-size: 10.5px;
   padding: 7px 18px;
   letter-spacing: 0.12em;
 }
 
-/* RTL pills for Arabic/Hebrew */
-.pill-chip.rtl-pill {
-  font-family: 'Assistant', 'Amiri', sans-serif;
-  letter-spacing: 0.02em;
-  font-size: 11px;
-  direction: rtl;
-}
-.isl-page .pill-chip.rtl-pill {
-  font-family: 'Amiri', serif;
-  font-size: 12px;
-}
-
 /* Active states per religion */
-.jud-page .pill-chip.active {
+.jud-page .carousel-chip.active {
   background: rgba(201,168,76,0.14);
   border-color: var(--jud);
   color: var(--jud);
-  box-shadow: 0 0 18px rgba(201,168,76,0.28), inset 0 0 10px rgba(201,168,76,0.08);
-  transform: scale(1.04);
-  z-index: 1;
+  box-shadow: 0 0 14px rgba(201,168,76,0.22), inset 0 0 8px rgba(201,168,76,0.06);
 }
-.xtn-page .pill-chip.active {
+.xtn-page .carousel-chip.active {
   background: rgba(192,57,43,0.14);
   border-color: var(--xtn);
   color: #e87060;
-  box-shadow: 0 0 18px rgba(192,57,43,0.28), inset 0 0 10px rgba(192,57,43,0.08);
-  transform: scale(1.04);
-  z-index: 1;
+  box-shadow: 0 0 14px rgba(192,57,43,0.22), inset 0 0 8px rgba(192,57,43,0.06);
 }
-.isl-page .pill-chip.active {
+.isl-page .carousel-chip.active {
   background: rgba(46,204,138,0.12);
   border-color: var(--isl);
   color: var(--isl);
-  box-shadow: 0 0 18px rgba(46,204,138,0.28), inset 0 0 10px rgba(46,204,138,0.08);
-  transform: scale(1.04);
-  z-index: 1;
+  box-shadow: 0 0 14px rgba(46,204,138,0.22), inset 0 0 8px rgba(46,204,138,0.06);
 }
 
-/* Smooth active animation */
-@keyframes pill-select {
-  0%   { transform: scale(1.04) translateY(-1px); }
-  40%  { transform: scale(1.07) translateY(-2px); }
-  100% { transform: scale(1.04) translateY(0); }
-}
-.pill-chip.active {
-  animation: pill-select 0.28s cubic-bezier(0.34,1.56,0.64,1) forwards;
-}
-
-/* "Portals" pill special styling */
-.pill-chip.chip-portals {
-  border-style: dashed;
-  opacity: 0.75;
+/* Category dividers inside the track */
+.carousel-divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,0.08);
+  margin: 0 4px;
+  align-self: center;
 }
 
+/* No-results state */
+.carousel-empty {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding: 6px 12px;
+  display: none;
+}
+.carousel-empty.visible { display: block; }
+
+/* ── Mobile: bigger touch targets ── */
 @media (max-width: 600px) {
-  .pill-chip {
+  .carousel-chip {
     font-size: 9.5px;
-    padding: 7px 12px;
-    letter-spacing: 0.06em;
+    padding: 8px 13px;
+    letter-spacing: 0.08em;
   }
-  .pill-chip.chip-all {
+  .carousel-chip.chip-all {
     font-size: 10px;
-    padding: 8px 15px;
+    padding: 8px 16px;
   }
-  .pill-chip.rtl-pill {
-    font-size: 10.5px;
+  .carousel-search {
+    font-size: 13px;
+    padding: 9px 16px 9px 38px;
   }
+  .carousel-outer::before,
+  .carousel-outer::after { width: 28px; }
+  .carousel-track { padding: 6px 28px 12px; }
 }
-
-/* Legacy - keep carousel-chip alias for any stray references */
-.carousel-chip { display: none; }
-.carousel-wrap { display: none; }
 </style>
 </head>
 <body>
@@ -883,81 +922,76 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <div class="filter-group">
   <div class="filter-label t-en">Issue Type</div>
   <div class="filter-label t-he">סוג הבעיה</div>
-<div class="pill-wrap" id="jud-pill-wrap">
-    <div class="pill-grid">
-      <button class="pill-chip chip-all active" data-val="all" onclick="carouselPick('jud','all',this)"><span class="t-en">All Issues</span><span class="t-he" style="display:none">כל הנושאים</span></button>
+  <div class="carousel-wrap" id="jud-carousel">
+    <div class="carousel-search-row">
+      <div class="carousel-search-wrap">
+        <span class="carousel-search-icon">⌕</span>
+        <input class="carousel-search" type="text" placeholder="Search issues…" oninput="carouselSearch('jud',this.value)" autocomplete="off" spellcheck="false">
+      </div>
     </div>
-
-    <div class="pill-category-label t-en">Internal Contradictions</div>
-    <div class="pill-category-label t-he" style="display:none;direction:rtl;">סתירות פנימיות</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="eden" onclick="carouselPick('jud','eden',this)"><span class="t-en">Eden Deception</span><span class="t-he rtl-pill" style="display:none">הונאת עדן</span></button>
-      <button class="pill-chip" data-val="creation" onclick="carouselPick('jud','creation',this)"><span class="t-en">Creation Order</span><span class="t-he rtl-pill" style="display:none">סדר הבריאה</span></button>
-      <button class="pill-chip" data-val="visibility" onclick="carouselPick('jud','visibility',this)"><span class="t-en">Seeing God</span><span class="t-he rtl-pill" style="display:none">ראיית אלוהים</span></button>
-      <button class="pill-chip" data-val="punishment" onclick="carouselPick('jud','punishment',this)"><span class="t-en">Generational Punishment</span><span class="t-he rtl-pill" style="display:none">ענישה בין-דורית</span></button>
-      <button class="pill-chip" data-val="repentance" onclick="carouselPick('jud','repentance',this)"><span class="t-en">God Repenting</span><span class="t-he rtl-pill" style="display:none">אלוהים מתחרט</span></button>
-      <button class="pill-chip" data-val="earth" onclick="carouselPick('jud','earth',this)"><span class="t-en">Earth's Fate</span><span class="t-he rtl-pill" style="display:none">גורל הארץ</span></button>
-      <button class="pill-chip" data-val="davidcensus2" onclick="carouselPick('jud','davidcensus2',this)"><span class="t-en">David's Census</span><span class="t-he rtl-pill" style="display:none">מפקד דוד</span></button>
-    </div>
-
-    <div class="pill-category-label t-en">Scientific Errors</div>
-    <div class="pill-category-label t-he" style="display:none;direction:rtl;">שגיאות מדעיות</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="snakes" onclick="carouselPick('jud','snakes',this)"><span class="t-en">Talking Serpent</span><span class="t-he rtl-pill" style="display:none">הנחש המדבר</span></button>
-      <button class="pill-chip" data-val="pi" onclick="carouselPick('jud','pi',this)"><span class="t-en">Wrong Pi</span><span class="t-he rtl-pill" style="display:none">ערך פאי שגוי</span></button>
-      <button class="pill-chip" data-val="bats" onclick="carouselPick('jud','bats',this)"><span class="t-en">Bats as Birds</span><span class="t-he rtl-pill" style="display:none">עטלפים כציפורים</span></button>
-      <button class="pill-chip" data-val="hares" onclick="carouselPick('jud','hares',this)"><span class="t-en">Hares Chew Cud</span><span class="t-he rtl-pill" style="display:none">ארנבות מעלות גרה</span></button>
-      <button class="pill-chip" data-val="flood" onclick="carouselPick('jud','flood',this)"><span class="t-en">Noah's Flood</span><span class="t-he rtl-pill" style="display:none">מבול נח</span></button>
-      <button class="pill-chip" data-val="babel" onclick="carouselPick('jud','babel',this)"><span class="t-en">Tower of Babel</span><span class="t-he rtl-pill" style="display:none">מגדל בבל</span></button>
-      <button class="pill-chip" data-val="sun" onclick="carouselPick('jud','sun',this)"><span class="t-en">Sun Stands Still</span><span class="t-he rtl-pill" style="display:none">השמש עמדה דום</span></button>
-      <button class="pill-chip" data-val="solomon" onclick="carouselPick('jud','solomon',this)"><span class="t-en">Solomon's Horses</span><span class="t-he rtl-pill" style="display:none">סוסי שלמה</span></button>
-      <button class="pill-chip" data-val="insects" onclick="carouselPick('jud','insects',this)"><span class="t-en">Four-Legged Insects</span><span class="t-he rtl-pill" style="display:none">חרקים בעלי ארבע רגליים</span></button>
-    </div>
-
-    <div class="pill-category-label t-en">Moral Failures</div>
-    <div class="pill-category-label t-he" style="display:none;direction:rtl;">כשלים מוסריים</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="murder" onclick="carouselPick('jud','murder',this)"><span class="t-en">God Commands Murder</span><span class="t-he rtl-pill" style="display:none">אלוהים מצווה רצח</span></button>
-      <button class="pill-chip" data-val="midianites" onclick="carouselPick('jud','midianites',this)"><span class="t-en">Midianite Virgins</span><span class="t-he rtl-pill" style="display:none">בתולות מדיין</span></button>
-      <button class="pill-chip" data-val="isaiah13" onclick="carouselPick('jud','isaiah13',this)"><span class="t-en">Dashed Infants</span><span class="t-he rtl-pill" style="display:none">ניפוץ תינוקות</span></button>
-      <button class="pill-chip" data-val="phinehas" onclick="carouselPick('jud','phinehas',this)"><span class="t-en">Rewarded Murder</span><span class="t-he rtl-pill" style="display:none">רצח מתוגמל</span></button>
-      <button class="pill-chip" data-val="exodus32" onclick="carouselPick('jud','exodus32',this)"><span class="t-en">Slaughtering Neighbors</span><span class="t-he rtl-pill" style="display:none">שחיטת שכנים</span></button>
-      <button class="pill-chip" data-val="jericho" onclick="carouselPick('jud','jericho',this)"><span class="t-en">Annihilating Jericho</span><span class="t-he rtl-pill" style="display:none">השמדת יריחו</span></button>
-      <button class="pill-chip" data-val="tabernacle" onclick="carouselPick('jud','tabernacle',this)"><span class="t-en">Death for Tabernacle</span><span class="t-he rtl-pill" style="display:none">מוות על המשכן</span></button>
-      <button class="pill-chip" data-val="falseprophet" onclick="carouselPick('jud','falseprophet',this)"><span class="t-en">Kill False Prophets</span><span class="t-he rtl-pill" style="display:none">הריגת נביאי שקר</span></button>
-      <button class="pill-chip" data-val="firstborn" onclick="carouselPick('jud','firstborn',this)"><span class="t-en">Kill Captives' Firstborn</span><span class="t-he rtl-pill" style="display:none">הריגת בכורות שבויים</span></button>
-      <button class="pill-chip" data-val="ezekiel9" onclick="carouselPick('jud','ezekiel9',this)"><span class="t-en">No Pity on Children</span><span class="t-he rtl-pill" style="display:none">אין חמלה על ילדים</span></button>
-      <button class="pill-chip" data-val="blasphemy" onclick="carouselPick('jud','blasphemy',this)"><span class="t-en">Stoning for Blasphemy</span><span class="t-he rtl-pill" style="display:none">סקילה על גידוף</span></button>
-      <button class="pill-chip" data-val="unicorns" onclick="carouselPick('jud','unicorns',this)"><span class="t-en">Mythical Re'em</span><span class="t-he rtl-pill" style="display:none">הראם המיתי</span></button>
-      <button class="pill-chip" data-val="captive" onclick="carouselPick('jud','captive',this)"><span class="t-en">Captive Women</span><span class="t-he rtl-pill" style="display:none">נשות שבויות</span></button>
-      <button class="pill-chip" data-val="sabbathdeath" onclick="carouselPick('jud','sabbathdeath',this)"><span class="t-en">Sabbath Execution</span><span class="t-he rtl-pill" style="display:none">הוצאה להורג בשבת</span></button>
-      <button class="pill-chip" data-val="psalm137" onclick="carouselPick('jud','psalm137',this)"><span class="t-en">Smashing Infants</span><span class="t-he rtl-pill" style="display:none">ניפוץ עוללים</span></button>
-      <button class="pill-chip" data-val="cannibalism" onclick="carouselPick('jud','cannibalism',this)"><span class="t-en">Forced Cannibalism</span><span class="t-he rtl-pill" style="display:none">קניבליזם כפוי</span></button>
-      <button class="pill-chip" data-val="hosea" onclick="carouselPick('jud','hosea',this)"><span class="t-en">Ripping Pregnant Women</span><span class="t-he rtl-pill" style="display:none">קריעת נשים הרות</span></button>
-      <button class="pill-chip" data-val="homosexuality" onclick="carouselPick('jud','homosexuality',this)"><span class="t-en">Homosexuality Penalty</span><span class="t-he rtl-pill" style="display:none">עונש על הומוסקסואליות</span></button>
-      <button class="pill-chip" data-val="rapedstone" onclick="carouselPick('jud','rapedstone',this)"><span class="t-en">Execute Rape Victims</span><span class="t-he rtl-pill" style="display:none">הוצאה להורג של קורבנות</span></button>
-      <button class="pill-chip" data-val="burnpriest" onclick="carouselPick('jud','burnpriest',this)"><span class="t-en">Burn Priest's Daughter</span><span class="t-he rtl-pill" style="display:none">שריפת בת הכוהן</span></button>
-      <button class="pill-chip" data-val="70k" onclick="carouselPick('jud','70k',this)"><span class="t-en">70,000 Innocents Killed</span><span class="t-he rtl-pill" style="display:none">70,000 חפים נרצחו</span></button>
-      <button class="pill-chip" data-val="pharaoh" onclick="carouselPick('jud','pharaoh',this)"><span class="t-en">Hardening Pharaoh's Heart</span><span class="t-he rtl-pill" style="display:none">הקשחת לב פרעה</span></button>
-      <button class="pill-chip" data-val="mutilation" onclick="carouselPick('jud','mutilation',this)"><span class="t-en">Mutilation Command</span><span class="t-he rtl-pill" style="display:none">פקודת קטיעה</span></button>
-      <button class="pill-chip" data-val="sabbathwork" onclick="carouselPick('jud','sabbathwork',this)"><span class="t-en">Death for Working</span><span class="t-he rtl-pill" style="display:none">מוות על עבודה בשבת</span></button>
-      <button class="pill-chip" data-val="amalek" onclick="carouselPick('jud','amalek',this)"><span class="t-en">Eradicate Amalek</span><span class="t-he rtl-pill" style="display:none">מחיית עמלק</span></button>
-      <button class="pill-chip" data-val="apostate" onclick="carouselPick('jud','apostate',this)"><span class="t-en">Apostate City</span><span class="t-he rtl-pill" style="display:none">עיר המודחת</span></button>
-      <button class="pill-chip" data-val="korah" onclick="carouselPick('jud','korah',this)"><span class="t-en">Korah's Children</span><span class="t-he rtl-pill" style="display:none">ילדי קורח</span></button>
-      <button class="pill-chip" data-val="rebelliousson" onclick="carouselPick('jud','rebelliousson',this)"><span class="t-en">Stone Rebellious Son</span><span class="t-he rtl-pill" style="display:none">סקילת בן סורר</span></button>
-      <button class="pill-chip" data-val="slavebeating" onclick="carouselPick('jud','slavebeating',this)"><span class="t-en">Beat Slaves</span><span class="t-he rtl-pill" style="display:none">הכאת עבדים</span></button>
-      <button class="pill-chip" data-val="foreignslaves" onclick="carouselPick('jud','foreignslaves',this)"><span class="t-en">Hereditary Slaves</span><span class="t-he rtl-pill" style="display:none">עבדות תורשתית</span></button>
-      <button class="pill-chip" data-val="solddaughter" onclick="carouselPick('jud','solddaughter',this)"><span class="t-en">Sell Daughters</span><span class="t-he rtl-pill" style="display:none">מכירת בנות</span></button>
-      <button class="pill-chip" data-val="canaandestroy" onclick="carouselPick('jud','canaandestroy',this)"><span class="t-en">Destroy Canaanites</span><span class="t-he rtl-pill" style="display:none">השמדת הכנענים</span></button>
-      <button class="pill-chip" data-val="warplunder" onclick="carouselPick('jud','warplunder',this)"><span class="t-en">Plunder Women in War</span><span class="t-he rtl-pill" style="display:none">ביזת נשים במלחמה</span></button>
-      <button class="pill-chip" data-val="cursingparents" onclick="carouselPick('jud','cursingparents',this)"><span class="t-en">Death for Cursing Parents</span><span class="t-he rtl-pill" style="display:none">מוות על קללת הורים</span></button>
-      <button class="pill-chip" data-val="heremdeath" onclick="carouselPick('jud','heremdeath',this)"><span class="t-en">Devoted to Death</span><span class="t-he rtl-pill" style="display:none">החרמה למוות</span></button>
-      <button class="pill-chip" data-val="bearsmaul" onclick="carouselPick('jud','bearsmaul',this)"><span class="t-en">Bears Maul Children</span><span class="t-he rtl-pill" style="display:none">דבים קורעים ילדים</span></button>
-      <button class="pill-chip" data-val="sotah" onclick="carouselPick('jud','sotah',this)"><span class="t-en">Sotah Ordeal</span><span class="t-he rtl-pill" style="display:none">מעשה סוטה</span></button>
-    </div>
-
-    <div class="pill-grid" style="margin-top:12px;">
-      <button class="pill-chip chip-portals" data-val="portals" onclick="carouselPick('jud','portals',this)"><span class="t-en">⬡ Full Portals</span><span class="t-he rtl-pill" style="display:none">⬡ כל הפורטלים</span></button>
+    <div class="carousel-outer">
+      <div class="carousel-track" id="jud-track">
+        <button class="carousel-chip chip-all active" data-val="all" onclick="carouselPick('jud','all',this)">All Issues</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="eden" onclick="carouselPick('jud','eden',this)">Eden Deception</button>
+        <button class="carousel-chip" data-val="creation" onclick="carouselPick('jud','creation',this)">Creation Order</button>
+        <button class="carousel-chip" data-val="visibility" onclick="carouselPick('jud','visibility',this)">Seeing God</button>
+        <button class="carousel-chip" data-val="punishment" onclick="carouselPick('jud','punishment',this)">Generational Punishment</button>
+        <button class="carousel-chip" data-val="repentance" onclick="carouselPick('jud','repentance',this)">God Repenting</button>
+        <button class="carousel-chip" data-val="earth" onclick="carouselPick('jud','earth',this)">Earth's Fate</button>
+        <button class="carousel-chip" data-val="davidcensus2" onclick="carouselPick('jud','davidcensus2',this)">David's Census</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="snakes" onclick="carouselPick('jud','snakes',this)">Talking Serpent</button>
+        <button class="carousel-chip" data-val="pi" onclick="carouselPick('jud','pi',this)">Wrong Pi</button>
+        <button class="carousel-chip" data-val="bats" onclick="carouselPick('jud','bats',this)">Bats as Birds</button>
+        <button class="carousel-chip" data-val="hares" onclick="carouselPick('jud','hares',this)">Hares Chew Cud</button>
+        <button class="carousel-chip" data-val="flood" onclick="carouselPick('jud','flood',this)">Noah's Flood</button>
+        <button class="carousel-chip" data-val="babel" onclick="carouselPick('jud','babel',this)">Tower of Babel</button>
+        <button class="carousel-chip" data-val="sun" onclick="carouselPick('jud','sun',this)">Sun Stands Still</button>
+        <button class="carousel-chip" data-val="solomon" onclick="carouselPick('jud','solomon',this)">Solomon's Horses</button>
+        <button class="carousel-chip" data-val="insects" onclick="carouselPick('jud','insects',this)">Four-Legged Insects</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="murder" onclick="carouselPick('jud','murder',this)">God Commands Murder</button>
+        <button class="carousel-chip" data-val="midianites" onclick="carouselPick('jud','midianites',this)">Midianite Virgins</button>
+        <button class="carousel-chip" data-val="isaiah13" onclick="carouselPick('jud','isaiah13',this)">Dashed Infants</button>
+        <button class="carousel-chip" data-val="phinehas" onclick="carouselPick('jud','phinehas',this)">Rewarded Murder</button>
+        <button class="carousel-chip" data-val="exodus32" onclick="carouselPick('jud','exodus32',this)">Slaughtering Neighbors</button>
+        <button class="carousel-chip" data-val="jericho" onclick="carouselPick('jud','jericho',this)">Annihilating Jericho</button>
+        <button class="carousel-chip" data-val="tabernacle" onclick="carouselPick('jud','tabernacle',this)">Death for Tabernacle</button>
+        <button class="carousel-chip" data-val="falseprophet" onclick="carouselPick('jud','falseprophet',this)">Kill False Prophets</button>
+        <button class="carousel-chip" data-val="firstborn" onclick="carouselPick('jud','firstborn',this)">Kill Captives' Firstborn</button>
+        <button class="carousel-chip" data-val="ezekiel9" onclick="carouselPick('jud','ezekiel9',this)">No Pity on Children</button>
+        <button class="carousel-chip" data-val="blasphemy" onclick="carouselPick('jud','blasphemy',this)">Stoning for Blasphemy</button>
+        <button class="carousel-chip" data-val="unicorns" onclick="carouselPick('jud','unicorns',this)">Mythical Re'em</button>
+        <button class="carousel-chip" data-val="captive" onclick="carouselPick('jud','captive',this)">Captive Women</button>
+        <button class="carousel-chip" data-val="sabbathdeath" onclick="carouselPick('jud','sabbathdeath',this)">Sabbath Execution</button>
+        <button class="carousel-chip" data-val="psalm137" onclick="carouselPick('jud','psalm137',this)">Smashing Infants</button>
+        <button class="carousel-chip" data-val="cannibalism" onclick="carouselPick('jud','cannibalism',this)">Forced Cannibalism</button>
+        <button class="carousel-chip" data-val="hosea" onclick="carouselPick('jud','hosea',this)">Ripping Pregnant Women</button>
+        <button class="carousel-chip" data-val="homosexuality" onclick="carouselPick('jud','homosexuality',this)">Homosexuality Penalty</button>
+        <button class="carousel-chip" data-val="rapedstone" onclick="carouselPick('jud','rapedstone',this)">Execute Rape Victims</button>
+        <button class="carousel-chip" data-val="burnpriest" onclick="carouselPick('jud','burnpriest',this)">Burn Priest's Daughter</button>
+        <button class="carousel-chip" data-val="70k" onclick="carouselPick('jud','70k',this)">70,000 Innocents Killed</button>
+        <button class="carousel-chip" data-val="pharaoh" onclick="carouselPick('jud','pharaoh',this)">Hardening Pharaoh's Heart</button>
+        <button class="carousel-chip" data-val="mutilation" onclick="carouselPick('jud','mutilation',this)">Mutilation Command</button>
+        <button class="carousel-chip" data-val="sabbathwork" onclick="carouselPick('jud','sabbathwork',this)">Death for Working</button>
+        <button class="carousel-chip" data-val="amalek" onclick="carouselPick('jud','amalek',this)">Eradicate Amalek</button>
+        <button class="carousel-chip" data-val="apostate" onclick="carouselPick('jud','apostate',this)">Apostate City</button>
+        <button class="carousel-chip" data-val="korah" onclick="carouselPick('jud','korah',this)">Korah's Children</button>
+        <button class="carousel-chip" data-val="rebelliousson" onclick="carouselPick('jud','rebelliousson',this)">Stone Rebellious Son</button>
+        <button class="carousel-chip" data-val="slavebeating" onclick="carouselPick('jud','slavebeating',this)">Beat Slaves</button>
+        <button class="carousel-chip" data-val="foreignslaves" onclick="carouselPick('jud','foreignslaves',this)">Hereditary Slaves</button>
+        <button class="carousel-chip" data-val="solddaughter" onclick="carouselPick('jud','solddaughter',this)">Sell Daughters</button>
+        <button class="carousel-chip" data-val="canaandestroy" onclick="carouselPick('jud','canaandestroy',this)">Destroy Canaanites</button>
+        <button class="carousel-chip" data-val="warplunder" onclick="carouselPick('jud','warplunder',this)">Plunder Women in War</button>
+        <button class="carousel-chip" data-val="cursingparents" onclick="carouselPick('jud','cursingparents',this)">Death for Cursing Parents</button>
+        <button class="carousel-chip" data-val="heremdeath" onclick="carouselPick('jud','heremdeath',this)">Devoted to Death</button>
+        <button class="carousel-chip" data-val="bearsmaul" onclick="carouselPick('jud','bearsmaul',this)">Bears Maul Children</button>
+        <button class="carousel-chip" data-val="sotah" onclick="carouselPick('jud','sotah',this)">Sotah Ordeal</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="portals" onclick="carouselPick('jud','portals',this)">Full Portals</button>
+      </div>
+      <div class="carousel-empty" id="jud-carousel-empty">No matches</div>
     </div>
   </div>
 </div>
@@ -2306,106 +2340,103 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <div class="filter-group">
   <div class="filter-label t-en">Issue Type</div>
   <div class="filter-label t-hi" style="display:none">समस्या का प्रकार</div>
-  <div class="pill-wrap" id="xtn-pill-wrap">
-    <div class="pill-grid">
-      <button class="pill-chip chip-all active" data-val="all" onclick="carouselPick('xtn','all',this)"><span class="t-en">All Issues</span><span class="t-hi" style="display:none">सभी मुद्दे</span></button>
+  <div class="carousel-wrap" id="xtn-carousel">
+    <div class="carousel-search-row">
+      <div class="carousel-search-wrap">
+        <span class="carousel-search-icon">⌕</span>
+        <input class="carousel-search" type="text" placeholder="Search issues…" oninput="carouselSearch('xtn',this.value)" autocomplete="off" spellcheck="false">
+      </div>
     </div>
+    <div class="carousel-outer">
+      <div class="carousel-track" id="xtn-track">
+        <button class="carousel-chip chip-all active" data-val="all" onclick="carouselPick('xtn','all',this)">All Issues</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="slavery" onclick="carouselPick('xtn','slavery',this)">NT Slavery</button>
+        <button class="carousel-chip" data-val="sign" onclick="carouselPick('xtn','sign',this)">Sign on Cross</button>
+        <button class="carousel-chip" data-val="spirit" onclick="carouselPick('xtn','spirit',this)">Holy Spirit</button>
+        <button class="carousel-chip" data-val="touch" onclick="carouselPick('xtn','touch',this)">Touching Jesus</button>
+        <button class="carousel-chip" data-val="rooster" onclick="carouselPick('xtn','rooster',this)">The Rooster</button>
+        <button class="carousel-chip" data-val="crucifixion" onclick="carouselPick('xtn','crucifixion',this)">Crucifixion Date</button>
+        <button class="carousel-chip" data-val="jairus" onclick="carouselPick('xtn','jairus',this)">Jairus's Daughter</button>
+        <button class="carousel-chip" data-val="staff" onclick="carouselPick('xtn','staff',this)">Traveling Staff</button>
+        <button class="carousel-chip" data-val="disciples" onclick="carouselPick('xtn','disciples',this)">Calling Disciples</button>
+        <button class="carousel-chip" data-val="words" onclick="carouselPick('xtn','words',this)">Last Words</button>
+        <button class="carousel-chip" data-val="cross" onclick="carouselPick('xtn','cross',this)">Carrying Cross</button>
+        <button class="carousel-chip" data-val="birth" onclick="carouselPick('xtn','birth',this)">Nativity Conflict</button>
+        <button class="carousel-chip" data-val="temple" onclick="carouselPick('xtn','temple',this)">Temple Cleansing</button>
+        <button class="carousel-chip" data-val="ascension" onclick="carouselPick('xtn','ascension',this)">The Ascension</button>
+        <button class="carousel-chip" data-val="tomb_silence" onclick="carouselPick('xtn','tomb_silence',this)">Empty Tomb</button>
+        <button class="carousel-chip" data-val="paul" onclick="carouselPick('xtn','paul',this)">Paul's Vision</button>
+        <button class="carousel-chip" data-val="centurion" onclick="carouselPick('xtn','centurion',this)">The Centurion</button>
+        <button class="carousel-chip" data-val="fig" onclick="carouselPick('xtn','fig',this)">The Fig Tree</button>
+        <button class="carousel-chip" data-val="judas" onclick="carouselPick('xtn','judas',this)">Judas's Death</button>
+        <button class="carousel-chip" data-val="resurrection" onclick="carouselPick('xtn','resurrection',this)">Resurrection</button>
+        <button class="carousel-chip" data-val="genealogy" onclick="carouselPick('xtn','genealogy',this)">Genealogies</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="faith" onclick="carouselPick('xtn','faith',this)">Faith vs Works</button>
+        <button class="carousel-chip" data-val="punishment" onclick="carouselPick('xtn','punishment',this)">Punishing Sons</button>
+        <button class="carousel-chip" data-val="repentance" onclick="carouselPick('xtn','repentance',this)">God Repenting</button>
+        <button class="carousel-chip" data-val="earth" onclick="carouselPick('xtn','earth',this)">Earth's Fate</button>
+        <button class="carousel-chip" data-val="prayer" onclick="carouselPick('xtn','prayer',this)">Prayer Promised</button>
+        <button class="carousel-chip" data-val="woman" onclick="carouselPick('xtn','woman',this)">Women Silent</button>
+        <button class="carousel-chip" data-val="hell" onclick="carouselPick('xtn','hell',this)">Hell Contradiction</button>
+        <button class="carousel-chip" data-val="baptism" onclick="carouselPick('xtn','baptism',this)">Baptism Required?</button>
+        <button class="carousel-chip" data-val="divorce" onclick="carouselPick('xtn','divorce',this)">Divorce Contradiction</button>
+        <button class="carousel-chip" data-val="sabbath" onclick="carouselPick('xtn','sabbath',this)">Sabbath Day</button>
+        <button class="carousel-chip" data-val="secondcoming" onclick="carouselPick('xtn','secondcoming',this)">Failed Prophecy</button>
+        <button class="carousel-chip" data-val="bloodatonement" onclick="carouselPick('xtn','bloodatonement',this)">Blood Atonement</button>
+        <button class="carousel-chip" data-val="hell2" onclick="carouselPick('xtn','hell2',this)">Hell Didn't Exist</button>
+        <button class="carousel-chip" data-val="godevil" onclick="carouselPick('xtn','godevil',this)">God Creates Evil</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="provoke" onclick="carouselPick('xtn','provoke',this)">David's Census</button>
+        <button class="carousel-chip" data-val="eden" onclick="carouselPick('xtn','eden',this)">Eden Deception</button>
+        <button class="carousel-chip" data-val="creation" onclick="carouselPick('xtn','creation',this)">Creation Order</button>
+        <button class="carousel-chip" data-val="visibility" onclick="carouselPick('xtn','visibility',this)">Seeing God</button>
+        <button class="carousel-chip" data-val="snakes" onclick="carouselPick('xtn','snakes',this)">Talking Serpent</button>
+        <button class="carousel-chip" data-val="pi" onclick="carouselPick('xtn','pi',this)">Wrong Pi</button>
+        <button class="carousel-chip" data-val="bats" onclick="carouselPick('xtn','bats',this)">Bats as Birds</button>
+        <button class="carousel-chip" data-val="mustard" onclick="carouselPick('xtn','mustard',this)">Mustard Seed</button>
+        <button class="carousel-chip" data-val="stars" onclick="carouselPick('xtn','stars',this)">Stars Will Fall</button>
+        <button class="carousel-chip" data-val="hares" onclick="carouselPick('xtn','hares',this)">Hares Chew Cud</button>
+        <button class="carousel-chip" data-val="flood" onclick="carouselPick('xtn','flood',this)">Noah's Flood</button>
+        <button class="carousel-chip" data-val="babel" onclick="carouselPick('xtn','babel',this)">Tower of Babel</button>
+        <button class="carousel-chip" data-val="sun" onclick="carouselPick('xtn','sun',this)">Sun Stands Still</button>
+        <button class="carousel-chip" data-val="solomon" onclick="carouselPick('xtn','solomon',this)">Solomon's Horses</button>
+        <button class="carousel-chip" data-val="insects" onclick="carouselPick('xtn','insects',this)">Four-Legged Insects</button>
 
-    <div class="pill-category-label t-en">New Testament Contradictions</div>
-    <div class="pill-category-label t-hi" style="display:none">नए नियम के विरोधाभास</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="slavery" onclick="carouselPick('xtn','slavery',this)"><span class="t-en">NT Slavery</span><span class="t-hi rtl-pill" style="display:none">दासता समर्थन</span></button>
-      <button class="pill-chip" data-val="sign" onclick="carouselPick('xtn','sign',this)"><span class="t-en">Sign on Cross</span><span class="t-hi rtl-pill" style="display:none">क्रूस पर संकेत</span></button>
-      <button class="pill-chip" data-val="spirit" onclick="carouselPick('xtn','spirit',this)"><span class="t-en">Holy Spirit</span><span class="t-hi rtl-pill" style="display:none">पवित्र आत्मा</span></button>
-      <button class="pill-chip" data-val="touch" onclick="carouselPick('xtn','touch',this)"><span class="t-en">Touching Jesus</span><span class="t-hi rtl-pill" style="display:none">यीशु को छूना</span></button>
-      <button class="pill-chip" data-val="rooster" onclick="carouselPick('xtn','rooster',this)"><span class="t-en">The Rooster</span><span class="t-hi rtl-pill" style="display:none">मुर्गे की बाँग</span></button>
-      <button class="pill-chip" data-val="crucifixion" onclick="carouselPick('xtn','crucifixion',this)"><span class="t-en">Crucifixion Date</span><span class="t-hi rtl-pill" style="display:none">क्रूसीकरण की तिथि</span></button>
-      <button class="pill-chip" data-val="jairus" onclick="carouselPick('xtn','jairus',this)"><span class="t-en">Jairus's Daughter</span><span class="t-hi rtl-pill" style="display:none">याईर की बेटी</span></button>
-      <button class="pill-chip" data-val="staff" onclick="carouselPick('xtn','staff',this)"><span class="t-en">Traveling Staff</span><span class="t-hi rtl-pill" style="display:none">यात्रा में लाठी</span></button>
-      <button class="pill-chip" data-val="disciples" onclick="carouselPick('xtn','disciples',this)"><span class="t-en">Calling Disciples</span><span class="t-hi rtl-pill" style="display:none">चेलों का बुलावा</span></button>
-      <button class="pill-chip" data-val="words" onclick="carouselPick('xtn','words',this)"><span class="t-en">Last Words</span><span class="t-hi rtl-pill" style="display:none">अंतिम शब्द</span></button>
-      <button class="pill-chip" data-val="cross" onclick="carouselPick('xtn','cross',this)"><span class="t-en">Carrying Cross</span><span class="t-hi rtl-pill" style="display:none">क्रूस उठाना</span></button>
-      <button class="pill-chip" data-val="birth" onclick="carouselPick('xtn','birth',this)"><span class="t-en">Nativity Conflict</span><span class="t-hi rtl-pill" style="display:none">जन्म विरोधाभास</span></button>
-      <button class="pill-chip" data-val="temple" onclick="carouselPick('xtn','temple',this)"><span class="t-en">Temple Cleansing</span><span class="t-hi rtl-pill" style="display:none">मंदिर की शुद्धि</span></button>
-      <button class="pill-chip" data-val="ascension" onclick="carouselPick('xtn','ascension',this)"><span class="t-en">The Ascension</span><span class="t-hi rtl-pill" style="display:none">स्वर्गारोहण</span></button>
-      <button class="pill-chip" data-val="tomb_silence" onclick="carouselPick('xtn','tomb_silence',this)"><span class="t-en">Empty Tomb</span><span class="t-hi rtl-pill" style="display:none">खाली कब्र</span></button>
-      <button class="pill-chip" data-val="paul" onclick="carouselPick('xtn','paul',this)"><span class="t-en">Paul's Vision</span><span class="t-hi rtl-pill" style="display:none">पौलुस का दर्शन</span></button>
-      <button class="pill-chip" data-val="centurion" onclick="carouselPick('xtn','centurion',this)"><span class="t-en">The Centurion</span><span class="t-hi rtl-pill" style="display:none">सूबेदार</span></button>
-      <button class="pill-chip" data-val="fig" onclick="carouselPick('xtn','fig',this)"><span class="t-en">The Fig Tree</span><span class="t-hi rtl-pill" style="display:none">अंजीर का पेड़</span></button>
-      <button class="pill-chip" data-val="judas" onclick="carouselPick('xtn','judas',this)"><span class="t-en">Judas's Death</span><span class="t-hi rtl-pill" style="display:none">यहूदा की मृत्यु</span></button>
-      <button class="pill-chip" data-val="resurrection" onclick="carouselPick('xtn','resurrection',this)"><span class="t-en">Resurrection</span><span class="t-hi rtl-pill" style="display:none">पुनरुत्थान</span></button>
-      <button class="pill-chip" data-val="genealogy" onclick="carouselPick('xtn','genealogy',this)"><span class="t-en">Genealogies</span><span class="t-hi rtl-pill" style="display:none">वंशावलियाँ</span></button>
-      <button class="pill-chip" data-val="faith" onclick="carouselPick('xtn','faith',this)"><span class="t-en">Faith vs Works</span><span class="t-hi rtl-pill" style="display:none">विश्वास बनाम कर्म</span></button>
-      <button class="pill-chip" data-val="punishment" onclick="carouselPick('xtn','punishment',this)"><span class="t-en">Punishing Sons</span><span class="t-hi rtl-pill" style="display:none">पुत्रों को दंड</span></button>
-      <button class="pill-chip" data-val="repentance" onclick="carouselPick('xtn','repentance',this)"><span class="t-en">God Repenting</span><span class="t-hi rtl-pill" style="display:none">ईश्वर का पश्चाताप</span></button>
-      <button class="pill-chip" data-val="earth" onclick="carouselPick('xtn','earth',this)"><span class="t-en">Earth's Fate</span><span class="t-hi rtl-pill" style="display:none">पृथ्वी का भाग्य</span></button>
-      <button class="pill-chip" data-val="prayer" onclick="carouselPick('xtn','prayer',this)"><span class="t-en">Prayer Promised</span><span class="t-hi rtl-pill" style="display:none">प्रार्थना का वादा</span></button>
-      <button class="pill-chip" data-val="woman" onclick="carouselPick('xtn','woman',this)"><span class="t-en">Women Silent</span><span class="t-hi rtl-pill" style="display:none">स्त्रियाँ मौन रहें</span></button>
-      <button class="pill-chip" data-val="hell" onclick="carouselPick('xtn','hell',this)"><span class="t-en">Hell Contradiction</span><span class="t-hi rtl-pill" style="display:none">नरक विरोधाभास</span></button>
-      <button class="pill-chip" data-val="baptism" onclick="carouselPick('xtn','baptism',this)"><span class="t-en">Baptism Required?</span><span class="t-hi rtl-pill" style="display:none">बपतिस्मा आवश्यक?</span></button>
-      <button class="pill-chip" data-val="divorce" onclick="carouselPick('xtn','divorce',this)"><span class="t-en">Divorce Contradiction</span><span class="t-hi rtl-pill" style="display:none">तलाक विरोधाभास</span></button>
-      <button class="pill-chip" data-val="sabbath" onclick="carouselPick('xtn','sabbath',this)"><span class="t-en">Sabbath Day</span><span class="t-hi rtl-pill" style="display:none">सब्त का दिन</span></button>
-      <button class="pill-chip" data-val="secondcoming" onclick="carouselPick('xtn','secondcoming',this)"><span class="t-en">Failed Prophecy</span><span class="t-hi rtl-pill" style="display:none">विफल भविष्यवाणी</span></button>
-      <button class="pill-chip" data-val="bloodatonement" onclick="carouselPick('xtn','bloodatonement',this)"><span class="t-en">Blood Atonement</span><span class="t-hi rtl-pill" style="display:none">रक्त प्रायश्चित</span></button>
-      <button class="pill-chip" data-val="hell2" onclick="carouselPick('xtn','hell2',this)"><span class="t-en">Hell Didn't Exist</span><span class="t-hi rtl-pill" style="display:none">नरक था ही नहीं</span></button>
-      <button class="pill-chip" data-val="godevil" onclick="carouselPick('xtn','godevil',this)"><span class="t-en">God Creates Evil</span><span class="t-hi rtl-pill" style="display:none">ईश्वर बुराई रचता है</span></button>
-    </div>
-
-    <div class="pill-category-label t-en">Old Testament Errors</div>
-    <div class="pill-category-label t-hi" style="display:none">पुराने नियम की त्रुटियाँ</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="provoke" onclick="carouselPick('xtn','provoke',this)"><span class="t-en">David's Census</span><span class="t-hi rtl-pill" style="display:none">दाऊद की जनगणना</span></button>
-      <button class="pill-chip" data-val="eden" onclick="carouselPick('xtn','eden',this)"><span class="t-en">Eden Deception</span><span class="t-hi rtl-pill" style="display:none">ईडन धोखा</span></button>
-      <button class="pill-chip" data-val="creation" onclick="carouselPick('xtn','creation',this)"><span class="t-en">Creation Order</span><span class="t-hi rtl-pill" style="display:none">सृष्टि क्रम</span></button>
-      <button class="pill-chip" data-val="visibility" onclick="carouselPick('xtn','visibility',this)"><span class="t-en">Seeing God</span><span class="t-hi rtl-pill" style="display:none">ईश्वर दर्शन</span></button>
-      <button class="pill-chip" data-val="snakes" onclick="carouselPick('xtn','snakes',this)"><span class="t-en">Talking Serpent</span><span class="t-hi rtl-pill" style="display:none">बोलने वाला साँप</span></button>
-      <button class="pill-chip" data-val="pi" onclick="carouselPick('xtn','pi',this)"><span class="t-en">Wrong Pi</span><span class="t-hi rtl-pill" style="display:none">गलत पाई मान</span></button>
-      <button class="pill-chip" data-val="bats" onclick="carouselPick('xtn','bats',this)"><span class="t-en">Bats as Birds</span><span class="t-hi rtl-pill" style="display:none">चमगादड़ पक्षी</span></button>
-      <button class="pill-chip" data-val="mustard" onclick="carouselPick('xtn','mustard',this)"><span class="t-en">Mustard Seed</span><span class="t-hi rtl-pill" style="display:none">राई का बीज</span></button>
-      <button class="pill-chip" data-val="stars" onclick="carouselPick('xtn','stars',this)"><span class="t-en">Stars Will Fall</span><span class="t-hi rtl-pill" style="display:none">तारे गिरेंगे</span></button>
-      <button class="pill-chip" data-val="hares" onclick="carouselPick('xtn','hares',this)"><span class="t-en">Hares Chew Cud</span><span class="t-hi rtl-pill" style="display:none">खरगोश जुगाली</span></button>
-      <button class="pill-chip" data-val="flood" onclick="carouselPick('xtn','flood',this)"><span class="t-en">Noah's Flood</span><span class="t-hi rtl-pill" style="display:none">नूह की बाढ़</span></button>
-      <button class="pill-chip" data-val="babel" onclick="carouselPick('xtn','babel',this)"><span class="t-en">Tower of Babel</span><span class="t-hi rtl-pill" style="display:none">बाबेल का मीनार</span></button>
-      <button class="pill-chip" data-val="sun" onclick="carouselPick('xtn','sun',this)"><span class="t-en">Sun Stands Still</span><span class="t-hi rtl-pill" style="display:none">सूर्य रुक गया</span></button>
-      <button class="pill-chip" data-val="solomon" onclick="carouselPick('xtn','solomon',this)"><span class="t-en">Solomon's Horses</span><span class="t-hi rtl-pill" style="display:none">सुलेमान के घोड़े</span></button>
-      <button class="pill-chip" data-val="insects" onclick="carouselPick('xtn','insects',this)"><span class="t-en">Four-Legged Insects</span><span class="t-hi rtl-pill" style="display:none">चार पैर वाले कीड़े</span></button>
-      <button class="pill-chip" data-val="age" onclick="carouselPick('xtn','age',this)"><span class="t-en">Jesus's Age</span><span class="t-hi rtl-pill" style="display:none">यीशु की आयु</span></button>
-      <button class="pill-chip" data-val="flatearth" onclick="carouselPick('xtn','flatearth',this)"><span class="t-en">Flat Earth</span><span class="t-hi rtl-pill" style="display:none">चपटी पृथ्वी</span></button>
-      <button class="pill-chip" data-val="age2" onclick="carouselPick('xtn','age2',this)"><span class="t-en">900-Year Lifespans</span><span class="t-hi rtl-pill" style="display:none">९०० वर्ष जीवनकाल</span></button>
-      <button class="pill-chip" data-val="giants" onclick="carouselPick('xtn','giants',this)"><span class="t-en">Nephilim Giants</span><span class="t-hi rtl-pill" style="display:none">नेफिलिम दानव</span></button>
-      <button class="pill-chip" data-val="twosuns" onclick="carouselPick('xtn','twosuns',this)"><span class="t-en">Two Suns</span><span class="t-hi rtl-pill" style="display:none">दो सूर्य</span></button>
-      <button class="pill-chip" data-val="pigeon" onclick="carouselPick('xtn','pigeon',this)"><span class="t-en">Dove Contradictions</span><span class="t-hi rtl-pill" style="display:none">कबूतर विरोधाभास</span></button>
-      <button class="pill-chip" data-val="pillarsalt" onclick="carouselPick('xtn','pillarsalt',this)"><span class="t-en">Pillars of Heaven</span><span class="t-hi rtl-pill" style="display:none">स्वर्ग के स्तम्भ</span></button>
-    </div>
-
-    <div class="pill-category-label t-en">Moral Failures</div>
-    <div class="pill-category-label t-hi" style="display:none">नैतिक कमियाँ</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="murder" onclick="carouselPick('xtn','murder',this)"><span class="t-en">God Commands Murder</span><span class="t-hi rtl-pill" style="display:none">ईश्वर हत्या का आदेश</span></button>
-      <button class="pill-chip" data-val="genocide" onclick="carouselPick('xtn','genocide',this)"><span class="t-en">God's Genocide</span><span class="t-hi rtl-pill" style="display:none">ईश्वर का नरसंहार</span></button>
-      <button class="pill-chip" data-val="rape" onclick="carouselPick('xtn','rape',this)"><span class="t-en">Rape Laws</span><span class="t-hi rtl-pill" style="display:none">बलात्कार के नियम</span></button>
-      <button class="pill-chip" data-val="stoning" onclick="carouselPick('xtn','stoning',this)"><span class="t-en">Stone Your Children</span><span class="t-hi rtl-pill" style="display:none">बच्चों को पत्थर मारो</span></button>
-      <button class="pill-chip" data-val="bears" onclick="carouselPick('xtn','bears',this)"><span class="t-en">God Sends Bears</span><span class="t-hi rtl-pill" style="display:none">ईश्वर ने भेजे भालू</span></button>
-      <button class="pill-chip" data-val="geocide2" onclick="carouselPick('xtn','geocide2',this)"><span class="t-en">Lot's Daughters</span><span class="t-hi rtl-pill" style="display:none">लूत की बेटियाँ</span></button>
-      <button class="pill-chip" data-val="godknows" onclick="carouselPick('xtn','godknows',this)"><span class="t-en">God's Ignorance</span><span class="t-hi rtl-pill" style="display:none">ईश्वर की अज्ञानता</span></button>
-      <button class="pill-chip" data-val="concubines" onclick="carouselPick('xtn','concubines',this)"><span class="t-en">Solomon's Harem</span><span class="t-hi rtl-pill" style="display:none">सुलेमान का हरम</span></button>
-      <button class="pill-chip" data-val="slavery2" onclick="carouselPick('xtn','slavery2',this)"><span class="t-en">OT Slavery Rules</span><span class="t-hi rtl-pill" style="display:none">दासता नियम</span></button>
-      <button class="pill-chip" data-val="slavery3" onclick="carouselPick('xtn','slavery3',this)"><span class="t-en">Women Chattel</span><span class="t-hi rtl-pill" style="display:none">स्त्री संपत्ति</span></button>
-      <button class="pill-chip" data-val="humanritual" onclick="carouselPick('xtn','humanritual',this)"><span class="t-en">Human Sacrifice</span><span class="t-hi rtl-pill" style="display:none">मानव बलि</span></button>
-      <button class="pill-chip" data-val="exodus" onclick="carouselPick('xtn','exodus',this)"><span class="t-en">Exodus Never Happened</span><span class="t-hi rtl-pill" style="display:none">पलायन कभी नहीं हुआ</span></button>
-      <button class="pill-chip" data-val="davidcensus2" onclick="carouselPick('xtn','davidcensus2',this)"><span class="t-en">Who Tempted David?</span><span class="t-hi rtl-pill" style="display:none">दाऊद को किसने बहकाया?</span></button>
-      <button class="pill-chip" data-val="godface" onclick="carouselPick('xtn','godface',this)"><span class="t-en">God Has a Face?</span><span class="t-hi rtl-pill" style="display:none">क्या ईश्वर का चेहरा है?</span></button>
-      <button class="pill-chip" data-val="abortion" onclick="carouselPick('xtn','abortion',this)"><span class="t-en">God's Abortion Ritual</span><span class="t-hi rtl-pill" style="display:none">ईश्वर का गर्भपात अनुष्ठान</span></button>
-      <button class="pill-chip" data-val="lazarus" onclick="carouselPick('xtn','lazarus',this)"><span class="t-en">Lazarus Order</span><span class="t-hi rtl-pill" style="display:none">लाजर का क्रम</span></button>
-      <button class="pill-chip" data-val="snakebite" onclick="carouselPick('xtn','snakebite',this)"><span class="t-en">Snakebite Immunity</span><span class="t-hi rtl-pill" style="display:none">साँप के काटने से मुक्ति</span></button>
-      <button class="pill-chip" data-val="jonah" onclick="carouselPick('xtn','jonah',this)"><span class="t-en">Jonah Sign Fails</span><span class="t-hi rtl-pill" style="display:none">योना का चिह्न विफल</span></button>
-      <button class="pill-chip" data-val="hosea" onclick="carouselPick('xtn','hosea',this)"><span class="t-en">God Commands Adultery</span><span class="t-hi rtl-pill" style="display:none">ईश्वर व्यभिचार का आदेश</span></button>
-      <button class="pill-chip" data-val="witches" onclick="carouselPick('xtn','witches',this)"><span class="t-en">Kill All Witches</span><span class="t-hi rtl-pill" style="display:none">जादूगरनियों को मारो</span></button>
-      <button class="pill-chip" data-val="incest2" onclick="carouselPick('xtn','incest2',this)"><span class="t-en">God's Incest Required</span><span class="t-hi rtl-pill" style="display:none">ईश्वर की योजना में अनाचार</span></button>
-    </div>
-
-    <div class="pill-grid" style="margin-top:12px;">
-      <button class="pill-chip chip-portals" data-val="portals" onclick="carouselPick('xtn','portals',this)"><span class="t-en">⬡ Full Portals</span><span class="t-hi" style="display:none">⬡ सभी पोर्टल</span></button>
+        <button class="carousel-chip" data-val="age" onclick="carouselPick('xtn','age',this)">Jesus's Age</button>
+        <button class="carousel-chip" data-val="flatearth" onclick="carouselPick('xtn','flatearth',this)">Flat Earth</button>
+        <button class="carousel-chip" data-val="age2" onclick="carouselPick('xtn','age2',this)">900-Year Lifespans</button>
+        <button class="carousel-chip" data-val="giants" onclick="carouselPick('xtn','giants',this)">Nephilim Giants</button>
+        <button class="carousel-chip" data-val="twosuns" onclick="carouselPick('xtn','twosuns',this)">Two Suns</button>
+        <button class="carousel-chip" data-val="pigeon" onclick="carouselPick('xtn','pigeon',this)">Dove Contradictions</button>
+        <button class="carousel-chip" data-val="pillarsalt" onclick="carouselPick('xtn','pillarsalt',this)">Pillars of Heaven</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="murder" onclick="carouselPick('xtn','murder',this)">God Commands Murder</button>
+        <button class="carousel-chip" data-val="genocide" onclick="carouselPick('xtn','genocide',this)">God's Genocide</button>
+        <button class="carousel-chip" data-val="rape" onclick="carouselPick('xtn','rape',this)">Rape Laws</button>
+        <button class="carousel-chip" data-val="stoning" onclick="carouselPick('xtn','stoning',this)">Stone Your Children</button>
+        <button class="carousel-chip" data-val="bears" onclick="carouselPick('xtn','bears',this)">God Sends Bears</button>
+        <button class="carousel-chip" data-val="geocide2" onclick="carouselPick('xtn','geocide2',this)">Lot's Daughters</button>
+        <button class="carousel-chip" data-val="godknows" onclick="carouselPick('xtn','godknows',this)">God's Ignorance</button>
+        <button class="carousel-chip" data-val="concubines" onclick="carouselPick('xtn','concubines',this)">Solomon's Harem</button>
+        <button class="carousel-chip" data-val="slavery2" onclick="carouselPick('xtn','slavery2',this)">OT Slavery Rules</button>
+        <button class="carousel-chip" data-val="slavery3" onclick="carouselPick('xtn','slavery3',this)">Women Chattel</button>
+        <button class="carousel-chip" data-val="humanritual" onclick="carouselPick('xtn','humanritual',this)">Human Sacrifice</button>
+        <button class="carousel-chip" data-val="exodus" onclick="carouselPick('xtn','exodus',this)">Exodus Never Happened</button>
+        <button class="carousel-chip" data-val="davidcensus2" onclick="carouselPick('xtn','davidcensus2',this)">Who Tempted David?</button>
+        <button class="carousel-chip" data-val="godface" onclick="carouselPick('xtn','godface',this)">God Has a Face?</button>
+        <button class="carousel-chip" data-val="abortion" onclick="carouselPick('xtn','abortion',this)">God's Abortion Ritual</button>
+        <button class="carousel-chip" data-val="lazarus" onclick="carouselPick('xtn','lazarus',this)">Lazarus Order</button>
+        <button class="carousel-chip" data-val="snakebite" onclick="carouselPick('xtn','snakebite',this)">Snakebite Immunity</button>
+        <button class="carousel-chip" data-val="jonah" onclick="carouselPick('xtn','jonah',this)">Jonah Sign Fails</button>
+        <button class="carousel-chip" data-val="hosea" onclick="carouselPick('xtn','hosea',this)">God Commands Adultery</button>
+        <button class="carousel-chip" data-val="witches" onclick="carouselPick('xtn','witches',this)">Kill All Witches</button>
+        <button class="carousel-chip" data-val="incest2" onclick="carouselPick('xtn','incest2',this)">God's Incest Required</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="portals" onclick="carouselPick('xtn','portals',this)">Full Portals</button>
+      </div>
+      <div class="carousel-empty" id="xtn-carousel-empty">No matches</div>
     </div>
   </div>
 </div>
@@ -4646,126 +4677,117 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <!-- FILTER ROW 1: Issue Type (individual cards) -->
 <div class="filter-group">
   <div class="filter-label t-en">Issue Type</div><div class="filter-label t-ar" style="display:none">نوع المشكلة</div>
-  <div class="pill-wrap" id="isl-pill-wrap">
-    <div class="pill-grid">
-      <button class="pill-chip chip-all active" data-val="all" onclick="carouselPick('isl','all',this)"><span class="t-en">All Issues</span><span class="t-ar" style="display:none">جميع الآيات</span></button>
+  <div class="carousel-wrap" id="isl-carousel">
+    <div class="carousel-search-row">
+      <div class="carousel-search-wrap">
+        <span class="carousel-search-icon">⌕</span>
+        <input class="carousel-search" type="text" placeholder="Search issues…" oninput="carouselSearch('isl',this.value)" autocomplete="off" spellcheck="false">
+      </div>
     </div>
-
-    <div class="pill-category-label t-en">Scientific Errors</div>
-    <div class="pill-category-label t-ar" style="display:none;direction:rtl;">الأخطاء العلمية</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="sun-mud" onclick="carouselPick('isl','sun-mud',this)"><span class="t-en">Sun in Muddy Spring</span><span class="t-ar rtl-pill" style="display:none">الشمس تغرب في طين</span></button>
-      <button class="pill-chip" data-val="flat-earth" onclick="carouselPick('isl','flat-earth',this)"><span class="t-en">Earth Spread Flat</span><span class="t-ar rtl-pill" style="display:none">الأرض مسطحة</span></button>
-      <button class="pill-chip" data-val="embryo" onclick="carouselPick('isl','embryo',this)"><span class="t-en">Greek Embryology</span><span class="t-ar rtl-pill" style="display:none">علم الأجنة اليوناني</span></button>
-      <button class="pill-chip" data-val="mountains" onclick="carouselPick('isl','mountains',this)"><span class="t-en">Mountains Stop Quakes</span><span class="t-ar rtl-pill" style="display:none">الجبال تمنع الزلازل</span></button>
-      <button class="pill-chip" data-val="sky-dome" onclick="carouselPick('isl','sky-dome',this)"><span class="t-en">Solid Sky Dome</span><span class="t-ar rtl-pill" style="display:none">قبة السماء الصلبة</span></button>
-      <button class="pill-chip" data-val="geocentric" onclick="carouselPick('isl','geocentric',this)"><span class="t-en">Geocentric Universe</span><span class="t-ar rtl-pill" style="display:none">مركزية الأرض</span></button>
-      <button class="pill-chip" data-val="moon-split" onclick="carouselPick('isl','moon-split',this)"><span class="t-en">Moon Split in Half</span><span class="t-ar rtl-pill" style="display:none">انشقاق القمر</span></button>
-      <button class="pill-chip" data-val="earth-first" onclick="carouselPick('isl','earth-first',this)"><span class="t-en">Earth Before Universe</span><span class="t-ar rtl-pill" style="display:none">الأرض قبل الكون</span></button>
-      <button class="pill-chip" data-val="jinn-stars" onclick="carouselPick('isl','jinn-stars',this)"><span class="t-en">Stars Thrown at Jinn</span><span class="t-ar rtl-pill" style="display:none">رمي الشياطين بالنجوم</span></button>
-      <button class="pill-chip" data-val="talking-ants" onclick="carouselPick('isl','talking-ants',this)"><span class="t-en">Talking Ants</span><span class="t-ar rtl-pill" style="display:none">تحدث النمل</span></button>
-      <button class="pill-chip" data-val="birds-magic" onclick="carouselPick('isl','birds-magic',this)"><span class="t-en">Birds Fly by Magic</span><span class="t-ar rtl-pill" style="display:none">تحليق الطيور بالسحر</span></button>
-      <button class="pill-chip" data-val="milk-blood" onclick="carouselPick('isl','milk-blood',this)"><span class="t-en">Milk from Blood</span><span class="t-ar rtl-pill" style="display:none">تكون الحليب</span></button>
-      <button class="pill-chip" data-val="heart-thinks" onclick="carouselPick('isl','heart-thinks',this)"><span class="t-en">Heart Thinks Not Brain</span><span class="t-ar rtl-pill" style="display:none">التفكير بالقلب</span></button>
-      <button class="pill-chip" data-val="night-day" onclick="carouselPick('isl','night-day',this)"><span class="t-en">Night/Day Wrap Earth</span><span class="t-ar rtl-pill" style="display:none">تكور الليل والنهار</span></button>
-      <button class="pill-chip" data-val="fasting-poles" onclick="carouselPick('isl','fasting-poles',this)"><span class="t-en">Fasting at Poles</span><span class="t-ar rtl-pill" style="display:none">الصيام عند الأقطاب</span></button>
-      <button class="pill-chip" data-val="pairs" onclick="carouselPick('isl','pairs',this)"><span class="t-en">Everything in Pairs?</span><span class="t-ar rtl-pill" style="display:none">كل شيء في أزواج</span></button>
-      <button class="pill-chip" data-val="anthro-cosmo" onclick="carouselPick('isl','anthro-cosmo',this)"><span class="t-en">Anthropocentric Cosmos</span><span class="t-ar rtl-pill" style="display:none">الكون لأجل الإنسان</span></button>
-      <button class="pill-chip" data-val="animal-nations" onclick="carouselPick('isl','animal-nations',this)"><span class="t-en">Animal Nations</span><span class="t-ar rtl-pill" style="display:none">أمم الحيوانات</span></button>
-      <button class="pill-chip" data-val="sky-barrier" onclick="carouselPick('isl','sky-barrier',this)"><span class="t-en">Invisible Sky Barrier</span><span class="t-ar rtl-pill" style="display:none">الحاجز السماوي الخفي</span></button>
-      <button class="pill-chip" data-val="water-mix" onclick="carouselPick('isl','water-mix',this)"><span class="t-en">Freshwater Barrier</span><span class="t-ar rtl-pill" style="display:none">حاجز المياه العذبة</span></button>
-      <button class="pill-chip" data-val="sky-hail" onclick="carouselPick('isl','sky-hail',this)"><span class="t-en">Hail from Sky Mountains</span><span class="t-ar rtl-pill" style="display:none">البَرَد من جبال السماء</span></button>
-    </div>
-
-    <div class="pill-category-label t-en">Internal Contradictions</div>
-    <div class="pill-category-label t-ar" style="display:none;direction:rtl;">التناقضات الداخلية</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="evil-god" onclick="carouselPick('isl','evil-god',this)"><span class="t-en">Evil from God or Man?</span><span class="t-ar rtl-pill" style="display:none">الشر من الله أم الإنسان؟</span></button>
-      <button class="pill-chip" data-val="iblis" onclick="carouselPick('isl','iblis',this)"><span class="t-en">Iblis: Angel or Jinn?</span><span class="t-ar rtl-pill" style="display:none">إبليس: ملك أم جن؟</span></button>
-      <button class="pill-chip" data-val="jesus-die" onclick="carouselPick('isl','jesus-die',this)"><span class="t-en">Did Jesus Die?</span><span class="t-ar rtl-pill" style="display:none">هل مات عيسى؟</span></button>
-      <button class="pill-chip" data-val="quran-clear" onclick="carouselPick('isl','quran-clear',this)"><span class="t-en">Is the Quran Clear?</span><span class="t-ar rtl-pill" style="display:none">هل القرآن واضح؟</span></button>
-      <button class="pill-chip" data-val="aad-storm" onclick="carouselPick('isl','aad-storm',this)"><span class="t-en">Storm on Aad</span><span class="t-ar rtl-pill" style="display:none">عاصفة عاد</span></button>
-      <button class="pill-chip" data-val="muhammad-miracles" onclick="carouselPick('isl','muhammad-miracles',this)"><span class="t-en">Muhammad's Miracles</span><span class="t-ar rtl-pill" style="display:none">معجزات محمد</span></button>
-      <button class="pill-chip" data-val="alcohol" onclick="carouselPick('isl','alcohol',this)"><span class="t-en">Alcohol Good or Evil?</span><span class="t-ar rtl-pill" style="display:none">الخمر خير أم شر؟</span></button>
-      <button class="pill-chip" data-val="believers-hell" onclick="carouselPick('isl','believers-hell',this)"><span class="t-en">Believers Enter Hell?</span><span class="t-ar rtl-pill" style="display:none">المؤمنون يدخلون النار؟</span></button>
-      <button class="pill-chip" data-val="god-son" onclick="carouselPick('isl','god-son',this)"><span class="t-en">Can God Have a Son?</span><span class="t-ar rtl-pill" style="display:none">هل يمكن أن يكون لله ولد؟</span></button>
-      <button class="pill-chip" data-val="adultery-punish" onclick="carouselPick('isl','adultery-punish',this)"><span class="t-en">Adultery Punishment</span><span class="t-ar rtl-pill" style="display:none">عقوبة الزنا</span></button>
-      <button class="pill-chip" data-val="six-eight-days" onclick="carouselPick('isl','six-eight-days',this)"><span class="t-en">6 Days vs 8 Days</span><span class="t-ar rtl-pill" style="display:none">٦ أيام أم ٨ أيام؟</span></button>
-      <button class="pill-chip" data-val="no-compulsion" onclick="carouselPick('isl','no-compulsion',this)"><span class="t-en">No Compulsion vs Sword</span><span class="t-ar rtl-pill" style="display:none">لا إكراه بالدين مقابل السيف</span></button>
-      <button class="pill-chip" data-val="inheritance-math" onclick="carouselPick('isl','inheritance-math',this)"><span class="t-en">Inheritance Math Fails</span><span class="t-ar rtl-pill" style="display:none">خطأ في حساب الميراث</span></button>
-      <button class="pill-chip" data-val="first-muslim" onclick="carouselPick('isl','first-muslim',this)"><span class="t-en">Who Is First Muslim?</span><span class="t-ar rtl-pill" style="display:none">من هو أول مسلم؟</span></button>
-      <button class="pill-chip" data-val="allahs-day" onclick="carouselPick('isl','allahs-day',this)"><span class="t-en">Length of Allah's Day</span><span class="t-ar rtl-pill" style="display:none">طول يوم الله</span></button>
-      <button class="pill-chip" data-val="words-change" onclick="carouselPick('isl','words-change',this)"><span class="t-en">Allah's Words Change?</span><span class="t-ar rtl-pill" style="display:none">هل تتغير كلمات الله؟</span></button>
-      <button class="pill-chip" data-val="who-guides" onclick="carouselPick('isl','who-guides',this)"><span class="t-en">Who Guides to Truth?</span><span class="t-ar rtl-pill" style="display:none">من يهدي إلى الحق؟</span></button>
-      <button class="pill-chip" data-val="shirk-forgiven" onclick="carouselPick('isl','shirk-forgiven',this)"><span class="t-en">Is Shirk Forgiven?</span><span class="t-ar rtl-pill" style="display:none">هل يُغفر الشرك؟</span></button>
-      <button class="pill-chip" data-val="badr-angels" onclick="carouselPick('isl','badr-angels',this)"><span class="t-en">Angels at Badr</span><span class="t-ar rtl-pill" style="display:none">الملائكة في بدر</span></button>
-      <button class="pill-chip" data-val="noah-family" onclick="carouselPick('isl','noah-family',this)"><span class="t-en">Noah's Family</span><span class="t-ar rtl-pill" style="display:none">عائلة نوح</span></button>
-      <button class="pill-chip" data-val="intercession" onclick="carouselPick('isl','intercession',this)"><span class="t-en">Judgment Day Intercession</span><span class="t-ar rtl-pill" style="display:none">الشفاعة يوم القيامة</span></button>
-      <button class="pill-chip" data-val="messengers-equal" onclick="carouselPick('isl','messengers-equal',this)"><span class="t-en">Messengers Equal?</span><span class="t-ar rtl-pill" style="display:none">الرسل سواء؟</span></button>
-      <button class="pill-chip" data-val="hell-food" onclick="carouselPick('isl','hell-food',this)"><span class="t-en">Food in Hell</span><span class="t-ar rtl-pill" style="display:none">طعام النار</span></button>
-      <button class="pill-chip" data-val="who-revealed" onclick="carouselPick('isl','who-revealed',this)"><span class="t-en">Who Revealed Quran?</span><span class="t-ar rtl-pill" style="display:none">من نزّل القرآن؟</span></button>
-      <button class="pill-chip" data-val="creation-order" onclick="carouselPick('isl','creation-order',this)"><span class="t-en">Creation Order</span><span class="t-ar rtl-pill" style="display:none">ترتيب الخلق</span></button>
-      <button class="pill-chip" data-val="gestation-math" onclick="carouselPick('isl','gestation-math',this)"><span class="t-en">Gestation Math Error</span><span class="t-ar rtl-pill" style="display:none">خطأ حساب الحمل</span></button>
-      <button class="pill-chip" data-val="salvation-others" onclick="carouselPick('isl','salvation-others',this)"><span class="t-en">Salvation for Non-Muslims?</span><span class="t-ar rtl-pill" style="display:none">نجاة غير المسلمين؟</span></button>
-      <button class="pill-chip" data-val="burden-sin" onclick="carouselPick('isl','burden-sin',this)"><span class="t-en">Bearing Another's Sin</span><span class="t-ar rtl-pill" style="display:none">حمل ذنب الآخرين</span></button>
-      <button class="pill-chip" data-val="soul-taking" onclick="carouselPick('isl','soul-taking',this)"><span class="t-en">Who Takes Souls?</span><span class="t-ar rtl-pill" style="display:none">من يقبض الأرواح؟</span></button>
-      <button class="pill-chip" data-val="man-created" onclick="carouselPick('isl','man-created',this)"><span class="t-en">What Was Man Made From?</span><span class="t-ar rtl-pill" style="display:none">مم خُلق الإنسان؟</span></button>
-      <button class="pill-chip" data-val="questioned" onclick="carouselPick('isl','questioned',this)"><span class="t-en">Questioned on Judgment Day?</span><span class="t-ar rtl-pill" style="display:none">هل يُسأل يوم القيامة؟</span></button>
-    </div>
-
-    <div class="pill-category-label t-en">Historical Blunders</div>
-    <div class="pill-category-label t-ar" style="display:none;direction:rtl;">المغالطات التاريخية</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="mary-aaron" onclick="carouselPick('isl','mary-aaron',this)"><span class="t-en">Mary Sister of Aaron</span><span class="t-ar rtl-pill" style="display:none">مريم أخت هارون</span></button>
-      <button class="pill-chip" data-val="samaritans" onclick="carouselPick('isl','samaritans',this)"><span class="t-en">Samaritans in Moses' Time</span><span class="t-ar rtl-pill" style="display:none">السامريون في زمن موسى</span></button>
-      <button class="pill-chip" data-val="haman" onclick="carouselPick('isl','haman',this)"><span class="t-en">Haman as Pharaoh's Minister</span><span class="t-ar rtl-pill" style="display:none">هامان وزيراً لفرعون</span></button>
-      <button class="pill-chip" data-val="al-aqsa" onclick="carouselPick('isl','al-aqsa',this)"><span class="t-en">Al-Aqsa Before It Existed</span><span class="t-ar rtl-pill" style="display:none">المسجد الأقصى قبل بنائه</span></button>
-      <button class="pill-chip" data-val="joseph-coins" onclick="carouselPick('isl','joseph-coins',this)"><span class="t-en">Dirhams in Joseph's Time</span><span class="t-ar rtl-pill" style="display:none">الدراهم في زمن يوسف</span></button>
-      <button class="pill-chip" data-val="egypt-crucify" onclick="carouselPick('isl','egypt-crucify',this)"><span class="t-en">Crucifixion in Egypt</span><span class="t-ar rtl-pill" style="display:none">الصلب في مصر الفرعونية</span></button>
-      <button class="pill-chip" data-val="trinity-mary" onclick="carouselPick('isl','trinity-mary',this)"><span class="t-en">Mary in the Trinity</span><span class="t-ar rtl-pill" style="display:none">مريم ضمن الثالوث</span></button>
-      <button class="pill-chip" data-val="ezra-son" onclick="carouselPick('isl','ezra-son',this)"><span class="t-en">Ezra Son of God</span><span class="t-ar rtl-pill" style="display:none">عزيراً ابناً لله</span></button>
-      <button class="pill-chip" data-val="alexander-sun" onclick="carouselPick('isl','alexander-sun',this)"><span class="t-en">Alexander at Sunrise</span><span class="t-ar rtl-pill" style="display:none">ذو القرنين عند مطلع الشمس</span></button>
-      <button class="pill-chip" data-val="david-chainmail" onclick="carouselPick('isl','david-chainmail',this)"><span class="t-en">David Invents Chainmail</span><span class="t-ar rtl-pill" style="display:none">داود يخترع الدروع</span></button>
-      <button class="pill-chip" data-val="gog-wall" onclick="carouselPick('isl','gog-wall',this)"><span class="t-en">Iron Wall of Gog</span><span class="t-ar rtl-pill" style="display:none">سد يأجوج الحديدي</span></button>
-      <button class="pill-chip" data-val="mary-temple" onclick="carouselPick('isl','mary-temple',this)"><span class="t-en">Mary in Temple</span><span class="t-ar rtl-pill" style="display:none">مريم في المحراب</span></button>
-      <button class="pill-chip" data-val="seven-sleepers" onclick="carouselPick('isl','seven-sleepers',this)"><span class="t-en">Seven Sleepers</span><span class="t-ar rtl-pill" style="display:none">أصحاب الكهف</span></button>
-      <button class="pill-chip" data-val="solomon-jinn" onclick="carouselPick('isl','solomon-jinn',this)"><span class="t-en">Solomon's Jinn Army</span><span class="t-ar rtl-pill" style="display:none">جيش سليمان من الجن</span></button>
-      <button class="pill-chip" data-val="jews-kings" onclick="carouselPick('isl','jews-kings',this)"><span class="t-en">Jews as Kings</span><span class="t-ar rtl-pill" style="display:none">بنو إسرائيل ملوكاً</span></button>
-      <button class="pill-chip" data-val="gideon-saul" onclick="carouselPick('isl','gideon-saul',this)"><span class="t-en">Gideon and Saul</span><span class="t-ar rtl-pill" style="display:none">طالوت وجدعون</span></button>
-      <button class="pill-chip" data-val="apocrypha" onclick="carouselPick('isl','apocrypha',this)"><span class="t-en">Plagiarizing Apocrypha</span><span class="t-ar rtl-pill" style="display:none">السرقة من المنحولة</span></button>
-      <button class="pill-chip" data-val="lowing-calf" onclick="carouselPick('isl','lowing-calf',this)"><span class="t-en">Magical Lowing Calf</span><span class="t-ar rtl-pill" style="display:none">العجل الذهبي يخور</span></button>
-      <button class="pill-chip" data-val="pharaoh-tower" onclick="carouselPick('isl','pharaoh-tower',this)"><span class="t-en">Pharaoh Builds Tower</span><span class="t-ar rtl-pill" style="display:none">فرعون يبني برج بابل</span></button>
-      <button class="pill-chip" data-val="abraham-fire" onclick="carouselPick('isl','abraham-fire',this)"><span class="t-en">Abraham Thrown in Fire</span><span class="t-ar rtl-pill" style="display:none">إبراهيم في النار</span></button>
-      <button class="pill-chip" data-val="injil-book" onclick="carouselPick('isl','injil-book',this)"><span class="t-en">Injil as Single Book</span><span class="t-ar rtl-pill" style="display:none">الإنجيل كتاب واحد</span></button>
-    </div>
-
-    <div class="pill-category-label t-en">Moral Failures</div>
-    <div class="pill-category-label t-ar" style="display:none;direction:rtl;">السقطات الأخلاقية</div>
-    <div class="pill-grid">
-      <button class="pill-chip" data-val="slavery-sex" onclick="carouselPick('isl','slavery-sex',this)"><span class="t-en">Slavery &amp; Sexual Ownership</span><span class="t-ar rtl-pill" style="display:none">العبودية والتملك الجنسي</span></button>
-      <button class="pill-chip" data-val="wife-beat" onclick="carouselPick('isl','wife-beat',this)"><span class="t-en">Wife Beating Permitted</span><span class="t-ar rtl-pill" style="display:none">إباحة ضرب الزوجات</span></button>
-      <button class="pill-chip" data-val="women-testimony" onclick="carouselPick('isl','women-testimony',this)"><span class="t-en">Women's Testimony Half</span><span class="t-ar rtl-pill" style="display:none">شهادة المرأة بنصف الرجل</span></button>
-      <button class="pill-chip" data-val="child-marriage" onclick="carouselPick('isl','child-marriage',this)"><span class="t-en">Pre-pubescent Marriage</span><span class="t-ar rtl-pill" style="display:none">زواج القاصرات</span></button>
-      <button class="pill-chip" data-val="muhammad-wives" onclick="carouselPick('isl','muhammad-wives',this)"><span class="t-en">Muhammad's Privileges</span><span class="t-ar rtl-pill" style="display:none">امتيازات محمد الجنسية</span></button>
-      <button class="pill-chip" data-val="beheading" onclick="carouselPick('isl','beheading',this)"><span class="t-en">Beheading Captives</span><span class="t-ar rtl-pill" style="display:none">ضرب رقاب الأسرى</span></button>
-      <button class="pill-chip" data-val="rape-captives" onclick="carouselPick('isl','rape-captives',this)"><span class="t-en">Raping Captive Women</span><span class="t-ar rtl-pill" style="display:none">استباحة نساء السبي</span></button>
-      <button class="pill-chip" data-val="skin-roast" onclick="carouselPick('isl','skin-roast',this)"><span class="t-en">Eternal Skin-Roasting</span><span class="t-ar rtl-pill" style="display:none">تجديد الجلد للتعذيب</span></button>
-      <button class="pill-chip" data-val="jizya" onclick="carouselPick('isl','jizya',this)"><span class="t-en">Jizya Extortion</span><span class="t-ar rtl-pill" style="display:none">ابتزاز أهل الذمة</span></button>
-      <button class="pill-chip" data-val="innocent-boy" onclick="carouselPick('isl','innocent-boy',this)"><span class="t-en">Killing Innocent Boy</span><span class="t-ar rtl-pill" style="display:none">قتل طفل بريء</span></button>
-      <button class="pill-chip" data-val="men-degree" onclick="carouselPick('isl','men-degree',this)"><span class="t-en">Men a Degree Above</span><span class="t-ar rtl-pill" style="display:none">للرجال على النساء درجة</span></button>
-      <button class="pill-chip" data-val="abu-lahab" onclick="carouselPick('isl','abu-lahab',this)"><span class="t-en">God Curses Abu Lahab</span><span class="t-ar rtl-pill" style="display:none">سورة لشتم أبي لهب</span></button>
-      <button class="pill-chip" data-val="amputation" onclick="carouselPick('isl','amputation',this)"><span class="t-en">Amputation for Theft</span><span class="t-ar rtl-pill" style="display:none">قطع يد السارق</span></button>
-      <button class="pill-chip" data-val="flogging" onclick="carouselPick('isl','flogging',this)"><span class="t-en">Flogging for Adultery</span><span class="t-ar rtl-pill" style="display:none">الجلد العلني للزناة</span></button>
-      <button class="pill-chip" data-val="women-fields" onclick="carouselPick('isl','women-fields',this)"><span class="t-en">Women as Fields</span><span class="t-ar rtl-pill" style="display:none">تشبيه المرأة بالحرث</span></button>
-      <button class="pill-chip" data-val="allah-curses" onclick="carouselPick('isl','allah-curses',this)"><span class="t-en">Allah Curses Like Human</span><span class="t-ar rtl-pill" style="display:none">الله يلعن كالبشر</span></button>
-      <button class="pill-chip" data-val="four-witnesses" onclick="carouselPick('isl','four-witnesses',this)"><span class="t-en">4 Witnesses for Rape</span><span class="t-ar rtl-pill" style="display:none">أربعة شهود لإثبات الاغتصاب</span></button>
-      <button class="pill-chip" data-val="war-loot" onclick="carouselPick('isl','war-loot',this)"><span class="t-en">God Demands War Loot</span><span class="t-ar rtl-pill" style="display:none">الله يطلب خُمس الغنائم</span></button>
-      <button class="pill-chip" data-val="adopted-wife" onclick="carouselPick('isl','adopted-wife',this)"><span class="t-en">Marry Adopted Son's Wife</span><span class="t-ar rtl-pill" style="display:none">الزواج من زوجة الابن بالتبني</span></button>
-      <button class="pill-chip" data-val="wives-threat" onclick="carouselPick('isl','wives-threat',this)"><span class="t-en">Threatening Wives</span><span class="t-ar rtl-pill" style="display:none">تهديد الزوجات بالاستبدال</span></button>
-    </div>
-
-    <div class="pill-grid" style="margin-top:12px;">
-      <button class="pill-chip chip-portals" data-val="portals" onclick="carouselPick('isl','portals',this)"><span class="t-en">⬡ Full Portals</span><span class="t-ar" style="display:none">⬡ جميع البوابات</span></button>
+    <div class="carousel-outer">
+      <div class="carousel-track" id="isl-track">
+        <button class="carousel-chip chip-all active" data-val="all" onclick="carouselPick('isl','all',this)">All Issues</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="sun-mud" onclick="carouselPick('isl','sun-mud',this)">Sun in Muddy Spring</button>
+        <button class="carousel-chip" data-val="flat-earth" onclick="carouselPick('isl','flat-earth',this)">Earth Spread Flat</button>
+        <button class="carousel-chip" data-val="embryo" onclick="carouselPick('isl','embryo',this)">Greek Embryology</button>
+        <button class="carousel-chip" data-val="mountains" onclick="carouselPick('isl','mountains',this)">Mountains Stop Quakes</button>
+        <button class="carousel-chip" data-val="sky-dome" onclick="carouselPick('isl','sky-dome',this)">Solid Sky Dome</button>
+        <button class="carousel-chip" data-val="geocentric" onclick="carouselPick('isl','geocentric',this)">Geocentric Universe</button>
+        <button class="carousel-chip" data-val="moon-split" onclick="carouselPick('isl','moon-split',this)">Moon Split in Half</button>
+        <button class="carousel-chip" data-val="earth-first" onclick="carouselPick('isl','earth-first',this)">Earth Before Universe</button>
+        <button class="carousel-chip" data-val="jinn-stars" onclick="carouselPick('isl','jinn-stars',this)">Stars Thrown at Jinn</button>
+        <button class="carousel-chip" data-val="talking-ants" onclick="carouselPick('isl','talking-ants',this)">Talking Ants</button>
+        <button class="carousel-chip" data-val="birds-magic" onclick="carouselPick('isl','birds-magic',this)">Birds Fly by Magic</button>
+        <button class="carousel-chip" data-val="milk-blood" onclick="carouselPick('isl','milk-blood',this)">Milk from Blood</button>
+        <button class="carousel-chip" data-val="heart-thinks" onclick="carouselPick('isl','heart-thinks',this)">Heart Thinks Not Brain</button>
+        <button class="carousel-chip" data-val="night-day" onclick="carouselPick('isl','night-day',this)">Night/Day Wrap Earth</button>
+        <button class="carousel-chip" data-val="fasting-poles" onclick="carouselPick('isl','fasting-poles',this)">Fasting at Poles</button>
+        <button class="carousel-chip" data-val="pairs" onclick="carouselPick('isl','pairs',this)">Everything in Pairs?</button>
+        <button class="carousel-chip" data-val="anthro-cosmo" onclick="carouselPick('isl','anthro-cosmo',this)">Anthropocentric Cosmos</button>
+        <button class="carousel-chip" data-val="animal-nations" onclick="carouselPick('isl','animal-nations',this)">Animal Nations</button>
+        <button class="carousel-chip" data-val="sky-barrier" onclick="carouselPick('isl','sky-barrier',this)">Invisible Sky Barrier</button>
+        <button class="carousel-chip" data-val="water-mix" onclick="carouselPick('isl','water-mix',this)">Freshwater Barrier</button>
+        <button class="carousel-chip" data-val="sky-hail" onclick="carouselPick('isl','sky-hail',this)">Hail from Sky Mountains</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="evil-god" onclick="carouselPick('isl','evil-god',this)">Evil from God or Man?</button>
+        <button class="carousel-chip" data-val="iblis" onclick="carouselPick('isl','iblis',this)">Iblis: Angel or Jinn?</button>
+        <button class="carousel-chip" data-val="jesus-die" onclick="carouselPick('isl','jesus-die',this)">Did Jesus Die?</button>
+        <button class="carousel-chip" data-val="quran-clear" onclick="carouselPick('isl','quran-clear',this)">Is the Quran Clear?</button>
+        <button class="carousel-chip" data-val="aad-storm" onclick="carouselPick('isl','aad-storm',this)">Storm on Aad</button>
+        <button class="carousel-chip" data-val="muhammad-miracles" onclick="carouselPick('isl','muhammad-miracles',this)">Muhammad's Miracles</button>
+        <button class="carousel-chip" data-val="alcohol" onclick="carouselPick('isl','alcohol',this)">Alcohol Good or Evil?</button>
+        <button class="carousel-chip" data-val="believers-hell" onclick="carouselPick('isl','believers-hell',this)">Believers Enter Hell?</button>
+        <button class="carousel-chip" data-val="god-son" onclick="carouselPick('isl','god-son',this)">Can God Have a Son?</button>
+        <button class="carousel-chip" data-val="adultery-punish" onclick="carouselPick('isl','adultery-punish',this)">Adultery Punishment</button>
+        <button class="carousel-chip" data-val="six-eight-days" onclick="carouselPick('isl','six-eight-days',this)">6 Days vs 8 Days</button>
+        <button class="carousel-chip" data-val="no-compulsion" onclick="carouselPick('isl','no-compulsion',this)">No Compulsion vs Sword</button>
+        <button class="carousel-chip" data-val="inheritance-math" onclick="carouselPick('isl','inheritance-math',this)">Inheritance Math Fails</button>
+        <button class="carousel-chip" data-val="first-muslim" onclick="carouselPick('isl','first-muslim',this)">Who Is First Muslim?</button>
+        <button class="carousel-chip" data-val="allahs-day" onclick="carouselPick('isl','allahs-day',this)">Length of Allah's Day</button>
+        <button class="carousel-chip" data-val="words-change" onclick="carouselPick('isl','words-change',this)">Allah's Words Change?</button>
+        <button class="carousel-chip" data-val="who-guides" onclick="carouselPick('isl','who-guides',this)">Who Guides to Truth?</button>
+        <button class="carousel-chip" data-val="shirk-forgiven" onclick="carouselPick('isl','shirk-forgiven',this)">Is Shirk Forgiven?</button>
+        <button class="carousel-chip" data-val="badr-angels" onclick="carouselPick('isl','badr-angels',this)">Angels at Badr</button>
+        <button class="carousel-chip" data-val="noah-family" onclick="carouselPick('isl','noah-family',this)">Noah's Family</button>
+        <button class="carousel-chip" data-val="intercession" onclick="carouselPick('isl','intercession',this)">Judgment Day Intercession</button>
+        <button class="carousel-chip" data-val="messengers-equal" onclick="carouselPick('isl','messengers-equal',this)">Messengers Equal?</button>
+        <button class="carousel-chip" data-val="hell-food" onclick="carouselPick('isl','hell-food',this)">Food in Hell</button>
+        <button class="carousel-chip" data-val="who-revealed" onclick="carouselPick('isl','who-revealed',this)">Who Revealed Quran?</button>
+        <button class="carousel-chip" data-val="creation-order" onclick="carouselPick('isl','creation-order',this)">Creation Order</button>
+        <button class="carousel-chip" data-val="gestation-math" onclick="carouselPick('isl','gestation-math',this)">Gestation Math Error</button>
+        <button class="carousel-chip" data-val="salvation-others" onclick="carouselPick('isl','salvation-others',this)">Salvation for Non-Muslims?</button>
+        <button class="carousel-chip" data-val="burden-sin" onclick="carouselPick('isl','burden-sin',this)">Bearing Another's Sin</button>
+        <button class="carousel-chip" data-val="soul-taking" onclick="carouselPick('isl','soul-taking',this)">Who Takes Souls?</button>
+        <button class="carousel-chip" data-val="man-created" onclick="carouselPick('isl','man-created',this)">What Was Man Made From?</button>
+        <button class="carousel-chip" data-val="questioned" onclick="carouselPick('isl','questioned',this)">Questioned on Judgment Day?</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="mary-aaron" onclick="carouselPick('isl','mary-aaron',this)">Mary Sister of Aaron</button>
+        <button class="carousel-chip" data-val="samaritans" onclick="carouselPick('isl','samaritans',this)">Samaritans in Moses' Time</button>
+        <button class="carousel-chip" data-val="haman" onclick="carouselPick('isl','haman',this)">Haman as Pharaoh's Minister</button>
+        <button class="carousel-chip" data-val="al-aqsa" onclick="carouselPick('isl','al-aqsa',this)">Al-Aqsa Before It Existed</button>
+        <button class="carousel-chip" data-val="joseph-coins" onclick="carouselPick('isl','joseph-coins',this)">Dirhams in Joseph's Time</button>
+        <button class="carousel-chip" data-val="egypt-crucify" onclick="carouselPick('isl','egypt-crucify',this)">Crucifixion in Egypt</button>
+        <button class="carousel-chip" data-val="trinity-mary" onclick="carouselPick('isl','trinity-mary',this)">Mary in the Trinity</button>
+        <button class="carousel-chip" data-val="ezra-son" onclick="carouselPick('isl','ezra-son',this)">Ezra Son of God</button>
+        <button class="carousel-chip" data-val="alexander-sun" onclick="carouselPick('isl','alexander-sun',this)">Alexander at Sunrise</button>
+        <button class="carousel-chip" data-val="david-chainmail" onclick="carouselPick('isl','david-chainmail',this)">David Invents Chainmail</button>
+        <button class="carousel-chip" data-val="gog-wall" onclick="carouselPick('isl','gog-wall',this)">Iron Wall of Gog</button>
+        <button class="carousel-chip" data-val="mary-temple" onclick="carouselPick('isl','mary-temple',this)">Mary in Temple</button>
+        <button class="carousel-chip" data-val="seven-sleepers" onclick="carouselPick('isl','seven-sleepers',this)">Seven Sleepers</button>
+        <button class="carousel-chip" data-val="solomon-jinn" onclick="carouselPick('isl','solomon-jinn',this)">Solomon's Jinn Army</button>
+        <button class="carousel-chip" data-val="jews-kings" onclick="carouselPick('isl','jews-kings',this)">Jews as Kings</button>
+        <button class="carousel-chip" data-val="gideon-saul" onclick="carouselPick('isl','gideon-saul',this)">Gideon and Saul</button>
+        <button class="carousel-chip" data-val="apocrypha" onclick="carouselPick('isl','apocrypha',this)">Plagiarizing Apocrypha</button>
+        <button class="carousel-chip" data-val="lowing-calf" onclick="carouselPick('isl','lowing-calf',this)">Magical Lowing Calf</button>
+        <button class="carousel-chip" data-val="pharaoh-tower" onclick="carouselPick('isl','pharaoh-tower',this)">Pharaoh Builds Tower</button>
+        <button class="carousel-chip" data-val="abraham-fire" onclick="carouselPick('isl','abraham-fire',this)">Abraham Thrown in Fire</button>
+        <button class="carousel-chip" data-val="injil-book" onclick="carouselPick('isl','injil-book',this)">Injil as Single Book</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="slavery-sex" onclick="carouselPick('isl','slavery-sex',this)">Slavery &amp; Sexual Ownership</button>
+        <button class="carousel-chip" data-val="wife-beat" onclick="carouselPick('isl','wife-beat',this)">Wife Beating Permitted</button>
+        <button class="carousel-chip" data-val="women-testimony" onclick="carouselPick('isl','women-testimony',this)">Women's Testimony Half</button>
+        <button class="carousel-chip" data-val="child-marriage" onclick="carouselPick('isl','child-marriage',this)">Pre-pubescent Marriage</button>
+        <button class="carousel-chip" data-val="muhammad-wives" onclick="carouselPick('isl','muhammad-wives',this)">Muhammad's Privileges</button>
+        <button class="carousel-chip" data-val="beheading" onclick="carouselPick('isl','beheading',this)">Beheading Captives</button>
+        <button class="carousel-chip" data-val="rape-captives" onclick="carouselPick('isl','rape-captives',this)">Raping Captive Women</button>
+        <button class="carousel-chip" data-val="skin-roast" onclick="carouselPick('isl','skin-roast',this)">Eternal Skin-Roasting</button>
+        <button class="carousel-chip" data-val="jizya" onclick="carouselPick('isl','jizya',this)">Jizya Extortion</button>
+        <button class="carousel-chip" data-val="innocent-boy" onclick="carouselPick('isl','innocent-boy',this)">Killing Innocent Boy</button>
+        <button class="carousel-chip" data-val="men-degree" onclick="carouselPick('isl','men-degree',this)">Men a Degree Above</button>
+        <button class="carousel-chip" data-val="abu-lahab" onclick="carouselPick('isl','abu-lahab',this)">God Curses Abu Lahab</button>
+        <button class="carousel-chip" data-val="amputation" onclick="carouselPick('isl','amputation',this)">Amputation for Theft</button>
+        <button class="carousel-chip" data-val="flogging" onclick="carouselPick('isl','flogging',this)">Flogging for Adultery</button>
+        <button class="carousel-chip" data-val="women-fields" onclick="carouselPick('isl','women-fields',this)">Women as Fields</button>
+        <button class="carousel-chip" data-val="allah-curses" onclick="carouselPick('isl','allah-curses',this)">Allah Curses Like Human</button>
+        <button class="carousel-chip" data-val="four-witnesses" onclick="carouselPick('isl','four-witnesses',this)">4 Witnesses for Rape</button>
+        <button class="carousel-chip" data-val="war-loot" onclick="carouselPick('isl','war-loot',this)">God Demands War Loot</button>
+        <button class="carousel-chip" data-val="adopted-wife" onclick="carouselPick('isl','adopted-wife',this)">Marry Adopted Son's Wife</button>
+        <button class="carousel-chip" data-val="wives-threat" onclick="carouselPick('isl','wives-threat',this)">Threatening Wives</button>
+        <div class="carousel-divider"></div>
+        <button class="carousel-chip" data-val="portals" onclick="carouselPick('isl','portals',this)">Full Portals</button>
+      </div>
+      <div class="carousel-empty" id="isl-carousel-empty">No matches</div>
     </div>
   </div>
 </div>
@@ -5932,31 +5954,45 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   }
 
   function carouselPick(rel, val, chip) {
-    // Remove active from all pills in this religion's wrap
-    const wrap = document.getElementById(rel + '-pill-wrap');
-    if (wrap) {
-      wrap.querySelectorAll('.pill-chip').forEach(c => c.classList.remove('active'));
-    }
+    const track = document.getElementById(rel + '-track');
+    track.querySelectorAll('.carousel-chip').forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
-
-    // Smooth scroll the selected pill into the center of the viewport
-    requestAnimationFrame(() => {
-      const rect = chip.getBoundingClientRect();
-      const centerY = rect.top + rect.height / 2 + window.scrollY;
-      const target = centerY - window.innerHeight * 0.38;
-      window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
-    });
-
+    // If "All Issues", always scroll back to the very start first, then center
+    if (val === 'all') {
+      track.style.scrollBehavior = 'smooth';
+      track.scrollLeft = 0;
+    } else {
+      centerChipInTrack(track, chip);
+    }
+    // clear search
+    const search = document.querySelector('#' + rel + '-carousel .carousel-search');
+    if (search) { search.value = ''; carouselShowAll(rel); }
     // fire the filter
     carouselFilterFns[rel](val);
   }
 
   function carouselShowAll(rel) {
-    // no-op for pill layout, kept for compatibility
+    const track = document.getElementById(rel + '-track');
+    track.querySelectorAll('.carousel-chip, .carousel-divider').forEach(el => el.style.display = '');
+    document.getElementById(rel + '-carousel-empty').classList.remove('visible');
   }
 
   function carouselSearch(rel, query) {
-    // no-op for pill layout - search bar is removed
+    const q = query.trim().toLowerCase();
+    const track = document.getElementById(rel + '-track');
+    const chips = track.querySelectorAll('.carousel-chip');
+    const dividers = track.querySelectorAll('.carousel-divider');
+
+    if (!q) { carouselShowAll(rel); return; }
+
+    let anyVisible = false;
+    chips.forEach(chip => {
+      const match = chip.textContent.toLowerCase().includes(q);
+      chip.style.display = match ? '' : 'none';
+      if (match) anyVisible = true;
+    });
+    dividers.forEach(d => d.style.display = 'none');
+    document.getElementById(rel + '-carousel-empty').classList.toggle('visible', !anyVisible);
   }
 
   // ══ DESKTOP DRAG-TO-SCROLL WITH MOMENTUM PHYSICS ══════
