@@ -287,30 +287,7 @@ body::before {
 .xtn-page { background:var(--xtn-bg); --saffron:var(--xtn); --saffron-dim:var(--xtn-dim); --bg:var(--xtn-bg); --surface:var(--xtn-surface); --card:var(--xtn-card); --border:var(--xtn-border); --border-hover:#6a2020; --cream:#eeddd8; --cream-dim:#a08080; --white:#fff0ee; --muted:#6a5050; --gold-light:var(--xtn-2); }
 .isl-page { background:var(--isl-bg); --saffron:var(--isl); --saffron-dim:var(--isl-dim); --bg:var(--isl-bg); --surface:var(--isl-surface); --card:var(--isl-card); --border:var(--isl-border); --border-hover:#1e5a38; --cream:#d8eeea; --cream-dim:#80a090; --white:#eefff8; --muted:#507060; --gold-light:var(--isl-2); }
 
-/* Islam — section alternation (solid, no gradient) */
-.isl-page .section:nth-child(even) {
-  border-left: 1px solid rgba(30,50,80,0.35);
-  padding-left: 16px;
-  margin-left: -16px;
-  border-radius: 0 4px 4px 0;
-}
-.isl-page .section:nth-child(even) .card {
-  background: var(--isl-card2, #0c1018);
-  border-color: var(--isl-border2, #182240);
-}
-.isl-page .section:nth-child(even) .card:hover {
-  border-color: var(--isl-2);
-  box-shadow: 0 10px 32px rgba(232,201,106,0.08);
-}
-.isl-page .section:nth-child(even) .card::after {
-  background: var(--isl-2);
-}
-.isl-page .section:nth-child(even) .card-source {
-  color: var(--isl-2);
-}
-.isl-page .section:nth-child(even) .portal-card:hover {
-  border-color: var(--isl-2);
-}
+
 
 /* ══════════════════════════════════════════
    SHARED INNER COMPONENTS
@@ -2445,7 +2422,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <button class="carousel-chip" data-val="insects" onclick="carouselPick('xtn','insects',this)">Four-Legged Insects</button>
 
         <button class="carousel-chip" data-val="age" onclick="carouselPick('xtn','age',this)">Jesus's Age</button>
-        <button class="carousel-chip" data-val="flatearth" onclick="carouselPick('xtn','flatearth',this)">Flat Earth</button>
         <button class="carousel-chip" data-val="age2" onclick="carouselPick('xtn','age2',this)">900-Year Lifespans</button>
         <button class="carousel-chip" data-val="giants" onclick="carouselPick('xtn','giants',this)">Nephilim Giants</button>
         <button class="carousel-chip" data-val="twosuns" onclick="carouselPick('xtn','twosuns',this)">Two Suns</button>
@@ -4727,37 +4703,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   </div>
 </div>
 
-<!-- ════ FLAT EARTH COSMOLOGY ════ -->
-<div class="section" data-s="flatearth" data-cat="sci">
-  <div class="sec-head">
-    <h2><span class="t-en">The Bible's Flat Earth Cosmology</span><span class="t-hi" style="display:none">बाइबल का चपटी पृथ्वी का ब्रह्माण्डशास्त्र</span></h2>
-    <div class="sec-line"></div><span class="cat-badge cb-sci">🔬 Scientific Error</span>
-    <span class="sec-tag">Geocentric Flat-Earth Worldview</span>
-  </div>
-  <p class="sec-desc t-en">The Bible's cosmology is not metaphor — the authors described a literal solid dome (firmament) holding back a heavenly ocean above a flat, immovable earth set on pillars. This is not one verse; it is the consistent picture from Genesis to Revelation.</p>
-  <p class="sec-desc t-hi" style="display:none">बाइबल का ब्रह्माण्डशास्त्र रूपक नहीं है — लेखकों ने एक ठोस गुंबद का वर्णन किया जो ऊपरी जल को थामे हुए है, और पृथ्वी खंभों पर टिकी स्थिर और चपटी है।</p>
-  <div class="grid">
-    <a href="https://www.biblegateway.com/passage/?search=Genesis+1%3A6-8%3BJob+37%3A18%3BIsaiah+40%3A22&version=KJV" target="_blank" class="card a-blue" data-trad="ot">
-      <span class="card-icon">🌐</span>
-      <div class="card-title">Genesis 1:6-8 · Job 37:18 · Isaiah 40:22</div>
-      <div class="card-title-hi" style="display:none">उत्पत्ति १:६-८ · अय्यूब ३७:१८ · यशायाह ४०:२२</div>
-      <div class="card-source"><span class="t-en">King James Version</span><span class="t-hi" style="display:none;font-family:'Tiro Devanagari Sans',serif;">किंग जेम्स संस्करण</span></div>
-      <p class="card-desc"><strong>Genesis 1:6-8:</strong> God makes a "firmament" — a solid dome — to divide waters above from waters below. <strong>Job 37:18:</strong> "Hast thou with him spread out the sky, which is strong, and as a molten looking glass?" — explicitly solid. <strong>1 Samuel 2:8:</strong> "The pillars of the earth are the Lord's." <strong>Psalm 93:1:</strong> "The world also is stablished, that it cannot be moved." The earth is stationary on pillars under a solid dome — every claim contradicted by basic astronomy.</p>
-      <p class="card-desc-hi" style="display:none"><strong>उत्पत्ति १:६:</strong> परमेश्वर एक ठोस गुंबद बनाता है। <strong>अय्यूब ३७:१८:</strong> "क्या तू उसके साथ आकाश को फैला सकता है जो ढले हुए दर्पण की तरह मजबूत है?" <strong>भजन ९३:१:</strong> "पृथ्वी स्थिर है, वह हिल नहीं सकती।" — बुनियादी खगोल विज्ञान से सीधा विरोध।</p>
-      <div class="badges"><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-shaiva">Old Testament</span></div>
-    </a>
-    <a href="https://www.biblegateway.com/passage/?search=Revelation+7%3A1%3BMatthew+4%3A8&version=KJV" target="_blank" class="card a-blue" data-trad="nt ot">
-      <span class="card-icon">🔭</span>
-      <div class="card-title">Revelation 7:1 · Matthew 4:8</div>
-      <div class="card-title-hi" style="display:none">प्रकाशितवाक्य ७:१ · मत्ती ४:८</div>
-      <div class="card-source"><span class="t-en">King James Version</span><span class="t-hi" style="display:none;font-family:'Tiro Devanagari Sans',serif;">किंग जेम्स संस्करण</span></div>
-      <p class="card-desc"><strong>Revelation 7:1:</strong> John sees "four angels standing on the <strong>four corners of the earth</strong>." A sphere has no corners. <strong>Matthew 4:8:</strong> The devil takes Jesus to "an exceeding high mountain" and shows him "<strong>all the kingdoms of the world</strong>" — only possible on a flat earth; on a globe, the curvature makes this geometrically impossible at any altitude.</p>
-      <p class="card-desc-hi" style="display:none"><strong>प्रकाशितवाक्य ७:१:</strong> "पृथ्वी के चारों कोनों पर।" गोल पृथ्वी के कोने नहीं होते। <strong>मत्ती ४:८:</strong> एक ऊँचे पहाड़ से दुनिया के सभी राज्य दिखाना — गोलाकार पृथ्वी पर ज्यामितीय रूप से असंभव।</p>
-      <div class="badges"><span class="badge b-vs">Scientific Error</span><span class="badge b-trad-vaishnava">New Testament</span><span class="badge b-trad-shaiva">Old Testament</span></div>
-    </a>
-  </div>
-</div>
-
 <!-- ════ GOD'S GENOCIDE ════ -->
 <div class="section" data-s="genocide" data-cat="mor">
   <div class="sec-head">
@@ -5879,7 +5824,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <button class="carousel-chip chip-all active" data-val="all" onclick="carouselPick('isl','all',this)">All Issues</button>
         <div class="carousel-divider"></div>
         <button class="carousel-chip" data-val="sun-mud" onclick="carouselPick('isl','sun-mud',this)">Sun in Muddy Spring</button>
-        <button class="carousel-chip" data-val="flat-earth" onclick="carouselPick('isl','flat-earth',this)">Earth Spread Flat</button>
         <button class="carousel-chip" data-val="embryo" onclick="carouselPick('isl','embryo',this)">Greek Embryology</button>
         <button class="carousel-chip" data-val="mountains" onclick="carouselPick('isl','mountains',this)">Mountains Stop Quakes</button>
         <button class="carousel-chip" data-val="sky-dome" onclick="carouselPick('isl','sky-dome',this)">Solid Sky Dome</button>
@@ -5974,6 +5918,16 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <button class="carousel-chip" data-val="war-loot" onclick="carouselPick('isl','war-loot',this)">God Demands War Loot</button>
         <button class="carousel-chip" data-val="adopted-wife" onclick="carouselPick('isl','adopted-wife',this)">Marry Adopted Son's Wife</button>
         <button class="carousel-chip" data-val="wives-threat" onclick="carouselPick('isl','wives-threat',this)">Threatening Wives</button>
+        <button class="carousel-chip" data-val="apostasy-kill" onclick="carouselPick('isl','apostasy-kill',this)">Kill Apostates</button>
+        <button class="carousel-chip" data-val="sex-slave-limit" onclick="carouselPick('isl','sex-slave-limit',this)">No Limit on Sex Slaves</button>
+        <button class="carousel-chip" data-val="quran-torture-hell" onclick="carouselPick('isl','quran-torture-hell',this)">Boiling Water Poured on Heads</button>
+        <button class="carousel-chip" data-val="crucifixion-mutilation" onclick="carouselPick('isl','crucifixion-mutilation',this)">Crucifixion as Punishment</button>
+        <button class="carousel-chip" data-val="stoning-adultery" onclick="carouselPick('isl','stoning-adultery',this)">Stoning for Adultery</button>
+        <button class="carousel-chip" data-val="jihad-paradise" onclick="carouselPick('isl','jihad-paradise',this)">Killing for Paradise Reward</button>
+        <button class="carousel-chip" data-val="hate-disbelievers" onclick="carouselPick('isl','hate-disbelievers',this)">Eternal Enmity Commanded</button>
+        <button class="carousel-chip" data-val="marry-nine" onclick="carouselPick('isl','marry-nine',this)">Aisha Married at Nine</button>
+        <button class="carousel-chip" data-val="hell-children" onclick="carouselPick('isl','hell-children',this)">Unbelievers' Children in Hell</button>
+        <button class="carousel-chip" data-val="gay-death" onclick="carouselPick('isl','gay-death',this)">Death for Homosexuality</button>
         <div class="carousel-divider"></div>
         <button class="carousel-chip" data-val="portals" onclick="carouselPick('isl','portals',this)">Full Portals</button>
       </div>
@@ -6009,6 +5963,319 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <span class="t-ar" style="display:none">لا توجد مشكلات تطابق الفلاتر الحالية.</span>
 </div>
 
+<!-- ════ MORAL & ETHICAL FAILURES ════ -->
+<div class="section" data-s="moral" data-cat="mor">
+  <div class="sec-head"><h2><span class="t-en">Moral & Ethical Failures</span><span class="t-ar" style="display:none">السقطات الأخلاقية والتشريعية</span></h2><div class="sec-line"></div><span class="cat-badge cb-mor">⚔️ Moral Failure</span></div>
+  <p class="sec-desc t-en">The Quran explicitly codifies severe gender discrimination, sadistic physical mutilation, and the sexual ownership of captured humans as the *perfect, eternal* law of God. Modern apologists cannot erase the clear Arabic text without lying about its meaning.</p>
+  <p class="sec-desc t-ar" style="display:none">يُشرع القرآن التمييز الجنسي الصارخ، والتشويه الجسدي القاسي، والعبودية الجنسية لأسرى الحرب كقوانين إلهية صالحة لكل زمان ومكان. المدافعون المعاصرون يضطرون لتغيير المعاني الواضحة في اللغة العربية لتخفيف صدمة هذه التشريعات.</p>
+  <div class="grid">
+
+    <div class="card a-green" data-trad="medinan" data-s="slavery-sex">
+      <span class="card-icon">⛓️</span><div class="card-verse-ar">أَوْ مَا مَلَكَتْ أَيْمَانُهُمْ</div>
+      <div class="card-title">Slavery & sexual ownership</div><div class="card-title-ar">تشريع ملك اليمين والعبودية</div>
+      <div class="card-source">٢٣:٥-٦</div>
+      <div class="card-links"><a href="https://quran.com/23/5" target="_blank" class="card-link"><span class="t-en">Quran 23:5-6</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٣:٥-٦</span></a></div>
+      <p class="card-desc">"Except from their wives or those their right hands possess (slaves), for indeed, they will not be blamed." Explicit, eternal divine permission for the non-consensual sexual use of enslaved women. Slavery is regulated, never abolished.</p>
+      <p class="card-desc-ar">الآية تبيح صراحة للرجل ممارسة الجنس مع "ما ملكت يمينه" (الإماء والعبيد) بدون عقد زواج وبدون موافقتهن بالضرورة. القرآن نظم العبودية وقننها ولم يأتِ بأي نص يُحرم امتلاك البشر أو يلغيه بشكل نهائي.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="wife-beat">
+      <span class="card-icon">👊</span><div class="card-verse-ar">وَاضْرِبُوهُنَّ</div>
+      <div class="card-title">Wife beating permitted</div><div class="card-title-ar">إباحة ضرب الزوجات</div>
+      <div class="card-source">٤:٣٤ (النساء)</div>
+      <div class="card-links"><a href="https://quran.com/4/34" target="_blank" class="card-link"><span class="t-en">Quran 4:34</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤:٣٤</span></a></div>
+      <p class="card-desc">For wives who show arrogance/disobedience: advise them, abandon their beds, and "strike them" (idribuhunna). Apologists lie saying it means "tap with a toothbrush." The Arabic verb *daraba* implies causing physical pain, used elsewhere for striking rocks and necks.</p>
+      <p class="card-desc-ar">تشريع صريح بضرب الزوجات في حالة التمرد والنشوز. التبريرات الحديثة بأنه "ضرب خفيف بالسواك" تتعارض تماماً مع المعنى اللغوي الواضح للفعل "ضَرَبَ" الذي يُقصد به إيقاع الألم الجسدي وفرض السيطرة بالقوة.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="women-testimony">
+      <span class="card-icon">⚖️</span><div class="card-verse-ar">فَرَجُلٌ وَامْرَأَتَانِ</div>
+      <div class="card-title">Women’s testimony worth half</div><div class="card-title-ar">شهادة المرأة بنصف شهادة الرجل</div>
+      <div class="card-source">٢:٢٨٢ (البقرة)</div>
+      <div class="card-links"><a href="https://quran.com/2/282" target="_blank" class="card-link"><span class="t-en">Quran 2:282</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢:٢٨٢</span></a></div>
+      <p class="card-desc">"Bring two men as witnesses; if not, then a man and two women... so that if one of the women errs, the other can remind her." Explicitly states a woman's memory and mental capacity are inherently legally deficient compared to a man's.</p>
+      <p class="card-desc-ar">القرآن يثبت تفوقاً ذكورياً في القانون، حيث يجعل شهادة رجل واحد مساوية لشهادة امرأتين. الآية تبرر ذلك صراحة باحتمالية ضلال ونسيان المرأة ("أن تضل إحداهما"). هذا تشريع يحط من القدرة العقلية للمرأة.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="child-marriage">
+      <span class="card-icon">🧒</span><div class="card-verse-ar">وَاللَّائِي لَمْ يَحِضْنَ</div>
+      <div class="card-title">Pre-pubescent marriage</div><div class="card-title-ar">تشريع زواج القاصرات</div>
+      <div class="card-source">٦٥:٤ (الطلاق)</div>
+      <div class="card-links"><a href="https://quran.com/65/4" target="_blank" class="card-link"><span class="t-en">Quran 65:4</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٦٥:٤</span></a></div>
+      <p class="card-desc">Provides the divorce waiting period (Idda - 3 months) for "those who have not yet menstruated" (allai lam yahidna). Establishing a divorce protocol for pre-pubescent girls explicitly proves that the consummation of child marriage is divinely sanctioned.</p>
+      <p class="card-desc-ar">تحدد الآية فترة الانتظار (العدة) عند الطلاق بـ ٣ أشهر للفتيات "اللاتي لم يحضن". وضع تشريع صريح لطلاق أطفال لم يبلغن سن البلوغ هو دليل قاطع على أن القرآن يبيح زواج الصغيرات والدخول بهن شرعاً.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="muhammad-wives">
+      <span class="card-icon">👑</span><div class="card-verse-ar">خَالِصَةً لَكَ مِنْ دُونِ الْمُؤْمِنِينَ</div>
+      <div class="card-title">Muhammad’s special privileges</div><div class="card-title-ar">الامتيازات الجنسية لمحمد</div>
+      <div class="card-source">٣٣:٥٠ (الأحزاب)</div>
+      <div class="card-links"><a href="https://quran.com/33/50" target="_blank" class="card-link"><span class="t-en">Quran 33:50</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٣٣:٥٠</span></a></div>
+      <p class="card-desc">The creator of the universe writes an eternal verse specifically bypassing the 4-wife limit solely for Muhammad. He is permitted unlimited wives, slave girls, and any believing woman who offers herself to him. A blatantly self-serving revelation.</p>
+      <p class="card-desc-ar">إله الكون يخصص آية كاملة فقط ليعفي محمداً من الحد الأقصى للزوجات. وتبيح له الآية أن يتزوج بأي عدد من النساء، وبما ملكت يمينه، وبأي امرأة تهب نفسها له مجاناً. تشريع مفصل لخدمة شهوات شخص واحد فقط.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="beheading">
+      <span class="card-icon">🗡️</span><div class="card-verse-ar">فَضَرْبَ الرِّقَابِ</div>
+      <div class="card-title">Beheading captives</div><div class="card-title-ar">التشريع بقطع الرؤوس</div>
+      <div class="card-source">٤٧:٤ (محمد)</div>
+      <div class="card-links"><a href="https://quran.com/47/4" target="_blank" class="card-link"><span class="t-en">Quran 47:4</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤٧:٤</span></a></div>
+      <p class="card-desc">"When you meet the disbelievers in battle, strike their necks..." A permanent, un-abrogated divine command for extreme brutality, decapitation, and mass slaughter in holy war until the enemy is entirely subdued.</p>
+      <p class="card-desc-ar">الآية تأمر المسلمين بضرب رقاب (قطع رؤوس) الذين كفروا في المعارك بدموية بالغة، ثم الاستمرار في أسرهم وتقييدهم. هذا التوجيه يُستخدم كتشريع أبدي لشرعنة العنف الشديد وإرهاب المخالفين.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="rape-captives">
+      <span class="card-icon">💔</span><div class="card-verse-ar">وَالْمُحْصَنَاتُ مِنَ النِّسَاءِ إِلَّا مَا مَلَكَتْ أَيْمَانُكُمْ</div>
+      <div class="card-title">Raping captured married women</div><div class="card-title-ar">استباحة نكاح المتزوجات المأسورات</div>
+      <div class="card-source">٤:٢٤ (النساء)</div>
+      <div class="card-links"><a href="https://quran.com/4/24" target="_blank" class="card-link"><span class="t-en">Quran 4:24</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤:٢٤</span></a></div>
+      <p class="card-desc">Forbids sex with married women, *except* those captured as prisoners of war. Their previous marriages to non-Muslim men are automatically dissolved by the act of enslavement, making them legally available for sexual use by their captors.</p>
+      <p class="card-desc-ar">القرآن يحرم الزواج من النساء المتزوجات، لكنه يستثني سبايا الحرب المأسورات (ما ملكت أيمانكم). بمجرد أسرهن، يتم إلغاء زواجهن السابق فوراً، مما يشرع للمسلمين اغتصابهن واستعبادهن جنسياً حتى لو كان أزواجهن أحياء.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="skin-roast">
+      <span class="card-icon">🔥</span><div class="card-verse-ar">بَدَّلْنَاهُمْ جُلُودًا غَيْرَهَا لِيَذُوقُوا الْعَذَابَ</div>
+      <div class="card-title">Eternal Skin-Roasting</div><div class="card-title-ar">التعذيب السادي في الجحيم</div>
+      <div class="card-source">٤:٥٦ (النساء)</div>
+      <div class="card-links"><a href="https://quran.com/4/56" target="_blank" class="card-link"><span class="t-en">Quran 4:56</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤:٥٦</span></a></div>
+      <p class="card-desc">Allah promises to roast disbelievers in Hell, and whenever their skins are completely burned off, He will miraculously regenerate new skin continuously so they can feel the maximum agony forever. Pure, infinite sadism.</p>
+      <p class="card-desc-ar">يصف النص طريقة تعذيب سادية لغير المؤمنين في الجحيم؛ فكلما احترقت جلودهم وذابت، يقوم الله بإنشاء جلود جديدة لهم فوراً لكي تستمر أعصابهم في نقل أقسى درجات الألم الجسدي إلى الأبد. تعذيب انتقامي يتنافى مع أي رحمة.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="jizya">
+      <span class="card-icon">💰</span><div class="card-verse-ar">وَهُمْ صَاغِرُونَ</div>
+      <div class="card-title">Extortion of minorities (Jizya)</div><div class="card-title-ar">الابتزاز المالي للمخالفين (الجزية)</div>
+      <div class="card-source">٩:٢٩ (التوبة)</div>
+      <div class="card-links"><a href="https://quran.com/9/29" target="_blank" class="card-link"><span class="t-en">Quran 9:29</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٩:٢٩</span></a></div>
+      <p class="card-desc">Commands Muslims to aggressively fight Jews and Christians until they pay the Jizya (protection tax) "with willing submission, and feel themselves subdued/humiliated (saghiroon)." Mafia-style extortion codified into religion.</p>
+      <p class="card-desc-ar">يأمر النص المسلمين بشن حرب هجومية ضد اليهود والنصارى حتى يدفعوا ضريبة "الجزية" المالية وهم في حالة خضوع وذلة ومهانة (صاغرون). هذا أشبه بنظام الابتزاز المالي للميليشيات المافياوية مفروض باسم الدين.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="meccan" data-s="innocent-boy">
+      <span class="card-icon">🔪</span><div class="card-verse-ar">فَقَتَلَهُ ۖ قَالَ أَقَتَلْتَ نَفْسًا زَكِيَّةً</div>
+      <div class="card-title">Killing an innocent boy</div><div class="card-title-ar">قتل طفل بريء بناءً على النوايا</div>
+      <div class="card-source">١٨:٧٤، ٨٠ (الكهف)</div>
+      <div class="card-links">
+        <a href="https://quran.com/18/74" target="_blank" class="card-link"><span class="t-en">Quran 18:74</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ١٨:٧٤</span></a>
+        <a href="https://quran.com/18/80" target="_blank" class="card-link"><span class="t-en">Quran 18:80</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ١٨:٨٠</span></a>
+      </div>
+      <p class="card-desc">Khidr violently murders a completely innocent, unsinning boy. The divine justification? The boy *might* grow up to be a rebellious disbeliever and grieve his parents. Pre-crime murder sanctioned by God, destroying the illusion of free will.</p>
+      <p class="card-desc-ar">قصة قيام "الخضر" بقتل طفل بريء لم يرتكب أي ذنب. التبرير الإلهي لهذه الجريمة هو أن الطفل "قد" يكبر ويصبح عاصياً ويرهق والديه بكفره. هذا يشرع القتل الاستباقي ويهدم مفاهيم العدل، والاختيار الحر، والمساءلة على الأفعال فقط.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="men-degree">
+      <span class="card-icon">📉</span><div class="card-verse-ar">وَلِلرِّجَالِ عَلَيْهِنَّ دَرَجَةٌ</div>
+      <div class="card-title">Men are a "degree above"</div><div class="card-title-ar">تثبيت التفوق الذكوري (الدرجة)</div>
+      <div class="card-source">٢:٢٢٨ (البقرة)</div>
+      <div class="card-links"><a href="https://quran.com/2/228" target="_blank" class="card-link"><span class="t-en">Quran 2:228</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢:٢٢٨</span></a></div>
+      <p class="card-desc">"But the men have a degree over them [in responsibility and authority]." The Quran establishes permanent, systemic gender inequality. Men are legally, financially, and morally elevated above women forever by divine decree.</p>
+      <p class="card-desc-ar">القرآن يؤسس لتفاوت منهجي ودائم بين الجنسين، مصرحاً بأن "للرجال عليهن درجة". هذه الدرجة تعني تفضيل الرجال في السلطة والمسؤولية والقوامة، مما يجعل مبدأ المساواة الكاملة بين الجنسين مرفوضاً شرعاً.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="meccan" data-s="abu-lahab">
+      <span class="card-icon">🤬</span><div class="card-verse-ar">تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ</div>
+      <div class="card-title">God cursing Abu Lahab</div><div class="card-title-ar">إله يشتم خصوم النبي</div>
+      <div class="card-source">١١١:١-٥ (المسد)</div>
+      <div class="card-links"><a href="https://quran.com/111/1" target="_blank" class="card-link"><span class="t-en">Quran 111:1-5</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ١١١:١-٥</span></a></div>
+      <p class="card-desc">The supreme Creator of 2 trillion galaxies dedicates an entire eternal chapter of his final message to humanity just to throw petty insults at Muhammad's uncle and his wife. A severely human, unimpressive, and petty response.</p>
+      <p class="card-desc-ar">يترك خالق الكون العظيم كل قضايا الإنسانية ليُنزل سورة كاملة تُتلى إلى الأبد لمجرد شتم عم النبي "أبو لهب" وزوجته وتوعدهما بالنار. هذا الأسلوب الانفعالي والشخصي يشير بوضوح إلى تأليف بشري محلي.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="amputation">
+      <span class="card-icon">🪓</span><div class="card-verse-ar">وَالسَّارِقُ وَالسَّارِقَةُ فَاقْطَعُوا أَيْدِيَهُمَا</div>
+      <div class="card-title">Amputation for theft</div><div class="card-title-ar">بتر الأطراف بتهمة السرقة</div>
+      <div class="card-source">٥:٣٨ (المائدة)</div>
+      <div class="card-links"><a href="https://quran.com/5/38" target="_blank" class="card-link"><span class="t-en">Quran 5:38</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٥:٣٨</span></a></div>
+      <p class="card-desc">Commands the irreversible, physical amputation of hands for thieves. A brutal, permanent bodily mutilation for a property crime. This draconian law is rejected by every civilized modern justice and human rights system.</p>
+      <p class="card-desc-ar">حكم بقطع وبتر أيدي السارقين كعقاب على جريمة مالية. هذا التشويه الجسدي الدائم والقاسي يتنافى مع كافة مفاهيم حقوق الإنسان الحديثة، ومبادئ التأهيل وإعادة الدمج في المجتمع.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="flogging">
+      <span class="card-icon">📿</span><div class="card-verse-ar">فَاجْلِدُوا كُلَّ وَاحِدٍ مِنْهُمَا مِائَةَ جَلْدَةٍ</div>
+      <div class="card-title">Flogging for adultery</div><div class="card-title-ar">الجلد العلني للزناة</div>
+      <div class="card-source">٢٤:٢ (النور)</div>
+      <div class="card-links"><a href="https://quran.com/24/2" target="_blank" class="card-link"><span class="t-en">Quran 24:2</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٤:٢</span></a></div>
+      <p class="card-desc">"The woman and the man guilty of fornication - flog each of them with a hundred stripes... let not pity withhold you." Sadistic public torture prescribed for consenting adults, demanding that a crowd watches the brutalization.</p>
+      <p class="card-desc-ar">تأمر الآية بجلد الزاني والزانية ١٠٠ جلدة علناً أمام الناس، وتحذر المسلمين من الرأفة بهما في تنفيذ الحكم. معاقبة البالغين المتراضين جسدياً بهذا الشكل السادي والعلني يعزز ثقافة العنف المجتمعي.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="women-fields">
+      <span class="card-icon">👩‍🌾</span><div class="card-verse-ar">نِسَاؤُكُمْ حَرْثٌ لَكُمْ فَأْتُوا حَرْثَكُمْ أَنَّىٰ شِئْتُمْ</div>
+      <div class="card-title">Women as "fields"</div><div class="card-title-ar">تشبيه المرأة بالحقل والمزرعة</div>
+      <div class="card-source">٢:٢٢٣ (البقرة)</div>
+      <div class="card-links"><a href="https://quran.com/2/223" target="_blank" class="card-link"><span class="t-en">Quran 2:223</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢:٢٢٣</span></a></div>
+      <p class="card-desc">"Your wives are a place of sowing of seed for you, so come to your place of cultivation however you wish..." This completely dehumanizes women, reducing them to agricultural property meant for male sexual penetration and breeding.</p>
+      <p class="card-desc-ar">الآية تشبه النساء بالأرض الزراعية (الحرث) التي يحق للرجل أن يستغلها ويأتيها متى وكيفما شاء لغرض المتعة والإنجاب. هذا الوصف يختزل دور المرأة ويشيئها بشكل يمس بكرامتها الإنسانية.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="allah-curses">
+      <span class="card-icon">🗣️</span><div class="card-verse-ar">قَاتَلَهُمُ اللَّهُ ۚ أَنَّىٰ يُؤْفَكُونَ</div>
+      <div class="card-title">Allah curses people like a human</div><div class="card-title-ar">الإله يلعن ويشتم كالبشر</div>
+      <div class="card-source">٩:٣٠ (التوبة)</div>
+      <div class="card-links"><a href="https://quran.com/9/30" target="_blank" class="card-link"><span class="t-en">Quran 9:30</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٩:٣٠</span></a></div>
+      <p class="card-desc">"May Allah destroy them; how are they deluded?" (qatalahumullah). The supposedly omnipotent creator of the cosmos uses a localized tribal curse, essentially praying to Himself to destroy humans. An embarrassingly human projection.</p>
+      <p class="card-desc-ar">الآية تستخدم عبارة "قاتلهم الله" ضد اليهود والنصارى. كيف للإله الخالق القادر على كل شيء أن يدعو بالقتل والهلاك على مخلوقاته وكأنه شخص بشري عاجز يلعن خصومه؟ استخدام لغوي بشري لا يليق بمقام الألوهية.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="four-witnesses">
+      <span class="card-icon">👁️</span><div class="card-verse-ar">ثُمَّ لَمْ يَأْتُوا بِأَرْبَعَةِ شُهَدَاءَ</div>
+      <div class="card-title">4 Male witnesses for Zina</div><div class="card-title-ar">شرط الأربعة شهود التعجيزي</div>
+      <div class="card-source">٢٤:٤ (النور)</div>
+      <div class="card-links"><a href="https://quran.com/24/4" target="_blank" class="card-link"><span class="t-en">Quran 24:4</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٤:٤</span></a></div>
+      <p class="card-desc">Demands four male eyewitnesses to the physical act of penetration to prove illicit sex. This draconian standard makes proving rape virtually impossible, historically leading to female victims being flogged for "confessing" to sex while failing to produce witnesses.</p>
+      <p class="card-desc-ar">لإثبات الزنا، يشترط القرآن وجود ٤ شهود رجال رأوا عملية الإيلاج الجنسي بشكل مباشر. هذا الشرط التعجيزي يجعل إثبات جرائم الاغتصاب شبه مستحيل قانونياً، وقد يؤدي لجلد الضحية بتهمة "القذف" إذا لم تحضر الشهود.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="war-loot">
+      <span class="card-icon">💎</span><div class="card-verse-ar">فَأَنَّ لِلَّهِ خُمُسَهُ وَلِلرَّسُولِ</div>
+      <div class="card-title">God demands a cut of war loot</div><div class="card-title-ar">الإله يطلب حصة من الغنائم</div>
+      <div class="card-source">٨:٤١ (الأنفال)</div>
+      <div class="card-links"><a href="https://quran.com/8/41" target="_blank" class="card-link"><span class="t-en">Quran 8:41</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٨:٤١</span></a></div>
+      <p class="card-desc">"Know that anything you obtain of war booty - then unto Allah is one fifth of it, and to the Messenger..." The eternal supreme deity demands a 20% cut of stolen gold, livestock, and enslaved humans from tribal raids. A highly convenient law for the Prophet.</p>
+      <p class="card-desc-ar">الآية تشرع أن للإله ورسوله نسبة ٢٠% (الخُمس) من الغنائم التي تُنهب في الحروب. من الغريب جداً أن إلهاً غنياً عن العالمين يطالب بنسبة من الذهب والمواشي والبشر المأسورين. هذا التشريع يخدم مصلحة شخصية ومادية واضحة للقيادة.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="adopted-wife">
+      <span class="card-icon">💍</span><div class="card-verse-ar">فَلَمَّا قَضَىٰ زَيْدٌ مِّنْهَا وَطَرًا زَوَّجْنَاكَهَا</div>
+      <div class="card-title">Marrying the adopted son's wife</div><div class="card-title-ar">الزواج من زوجة الابن بالتبني</div>
+      <div class="card-source">٣٣:٣٧ (الأحزاب)</div>
+      <div class="card-links"><a href="https://quran.com/33/37" target="_blank" class="card-link"><span class="t-en">Quran 33:37</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٣٣:٣٧</span></a></div>
+      <p class="card-desc">God supposedly sends down a universe-altering revelation simply to cancel the noble institution of adoption, purely so Muhammad could marry his adopted son Zayd's attractive ex-wife, Zaynab. A glaringly self-serving, convenient revelation.</p>
+      <p class="card-desc-ar">يدعي النص أن الله أنزل آية من سابع سماء لإلغاء مؤسسة التبني الإنسانية بأكملها، والهدف الوحيد هو تبرير وتشريع زواج محمد من زينب، الزوجة السابقة لابنه بالتبني زيد. تشريع مفصل بشكل مكشوف لخدمة رغبة شخصية للمؤلف.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="wives-threat">
+      <span class="card-icon">🎭</span><div class="card-verse-ar">عَسَىٰ رَبُّهُ إِن طَلَّقَكُنَّ أَن يُبْدِلَهُ أَزْوَاجًا خَيْرًا مِّنكُنَّ</div>
+      <div class="card-title">Threatening wives with replacement</div><div class="card-title-ar">تهديد الزوجات بالاستبدال</div>
+      <div class="card-source">٦٦:٥ (التحريم)</div>
+      <div class="card-links"><a href="https://quran.com/66/5" target="_blank" class="card-link"><span class="t-en">Quran 66:5</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٦٦:٥</span></a></div>
+      <p class="card-desc">"If he divorces you, his Lord may give him instead wives better than you... virgins." A divine threat leveled against Muhammad's own wives to submit to him, or else God will replace them with better, virgin women. Patriarchal coercion dressed as theology.</p>
+      <p class="card-desc-ar">نص قرآني يهدد زوجات محمد صراحة بأنه إن لم يطعنه، فإن الله سيستبدلهن بنساء أفضل وعذارى (أبكار). استخدام الوحي كأداة قمع وترهيب ذكوري لإخضاع الزوجات في نزاع منزلي، وهو أسلوب بشري استغلالي.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="apostasy-kill">
+      <span class="card-icon">☠️</span><div class="card-verse-ar">مَن بَدَّلَ دِينَهُ فَاقْتُلُوهُ</div>
+      <div class="card-title">Kill apostates</div><div class="card-title-ar">عقوبة الإعدام على تغيير الدين</div>
+      <div class="card-source">صحيح البخاري ٦٩٢٢ / حديث متواتر مستند إلى القرآن ٢:٢١٧</div>
+      <div class="card-links"><a href="https://quran.com/2/217" target="_blank" class="card-link"><span class="t-en">Quran 2:217</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢:٢١٧</span></a></div>
+      <p class="card-desc">The Prophet explicitly commanded "Whoever changes his religion, kill him" (Bukhari 6922). Quran 2:217 declares apostasy worse than murder itself. The four major Sunni law schools (Hanafi, Maliki, Shafi'i, Hanbali) all mandate death for the male apostate. Leaving Islam is a capital crime codified as the eternal will of God.</p>
+      <p class="card-desc-ar">أمر النبي صراحةً: «مَن بَدَّلَ دينَه فاقتلوه» (البخاري ٦٩٢٢). والقرآن (٢:٢١٧) يصف الردة بأنها أشد جرماً من القتل. المذاهب الفقهية الأربعة الكبرى (الحنفية والمالكية والشافعية والحنابلة) تتفق على وجوب إعدام المرتد الذكر. ترك الإسلام جريمة عقوبتها الإعدام مُقننة بوصفها مشيئة الله الأبدية.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="sex-slave-limit">
+      <span class="card-icon">⛓️</span><div class="card-verse-ar">إِلَّا عَلَىٰ أَزْوَاجِهِمْ أَوْ مَا مَلَكَتْ أَيْمَانُهُمْ</div>
+      <div class="card-title">No upper limit on sex slaves</div><div class="card-title-ar">لا سقف لعدد الجواري وعبيد الجنس</div>
+      <div class="card-source">٢٣:٥-٦ (المؤمنون) · ٧٠:٢٩-٣٠</div>
+      <div class="card-links"><a href="https://quran.com/23/5" target="_blank" class="card-link"><span class="t-en">Quran 23:5-6</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٣:٥-٦</span></a></div>
+      <p class="card-desc">While free wives are capped at four (4:3), "what your right hands possess" — female war captives owned as sex slaves — has no cap at all. A man could legally own and have sexual access to unlimited enslaved women. This appears in two separate Meccan suras, making it a bedrock Quranic doctrine, not a Medinan exception.</p>
+      <p class="card-desc-ar">بينما حدّد القرآن أربع زوجات كحد أقصى (٤:٣)، فإن «ما ملكت الأيمان» — أي النساء المأسورات في الحروب كإماء للجنس — لا حد لعددهن على الإطلاق. يمكن للرجل أن يمتلك عشرات أو مئات من النساء المستعبدات جنسياً. وورد هذا الحكم في سورتين مكيتين منفصلتين، مما يجعله ركيزة قرآنية راسخة.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="quran-torture-hell">
+      <span class="card-icon">🔥</span><div class="card-verse-ar">يُصَبُّ مِن فَوْقِ رُءُوسِهِمُ الْحَمِيمُ — يُصْهَرُ بِهِ مَا فِي بُطُونِهِمْ وَالْجُلُودُ</div>
+      <div class="card-title">Boiling water poured on heads, melting organs</div><div class="card-title-ar">سكب الماء المغلي على الرؤوس لإذابة الأحشاء</div>
+      <div class="card-source">٢٢:١٩-٢١ (الحج)</div>
+      <div class="card-links"><a href="https://quran.com/22/19" target="_blank" class="card-link"><span class="t-en">Quran 22:19-21</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٢:١٩-٢١</span></a></div>
+      <p class="card-desc">Disbelievers will have boiling water poured over their heads, melting everything inside their abdomens and their skin. When they attempt to escape, they are beaten back with iron rods. This is described with clinical, sadistic precision as God's eternal justice for the crime of non-belief — an infinite torture chamber designed by the "Most Merciful."</p>
+      <p class="card-desc-ar">يصف النص بدقة وحشية سكب الماء الحارق المغلي على رؤوس الكافرين حتى تنصهر أمعاؤهم وجلودهم، ثم يُضرب الهاربون منهم بمقامع من حديد. كل هذا يقدمه القرآن بوصفه عدالة الله الأبدية بحق من لم يؤمن به، وصادر عن «أرحم الراحمين».</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="crucifixion-mutilation">
+      <span class="card-icon">✝️</span><div class="card-verse-ar">أَن يُقَتَّلُوا أَوْ يُصَلَّبُوا أَوْ تُقَطَّعَ أَيْدِيهِمْ وَأَرْجُلُهُم مِّنْ خِلَافٍ</div>
+      <div class="card-title">Crucifixion and cross-limb amputation</div><div class="card-title-ar">الصلب وقطع الأيدي والأرجل من خلاف</div>
+      <div class="card-source">٥:٣٣ (المائدة)</div>
+      <div class="card-links"><a href="https://quran.com/5/33" target="_blank" class="card-link"><span class="t-en">Quran 5:33</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٥:٣٣</span></a></div>
+      <p class="card-desc">The divine penalty for "making war on God" includes: execution, crucifixion, amputation of opposite hands and feet simultaneously, or exile. Classical jurists applied "making war on God" broadly to banditry, apostasy, and political opposition. God explicitly endorses crucifixion — a form of torture He supposedly condemned in the Bible — as his own judicial instrument.</p>
+      <p class="card-desc-ar">عقوبة «محاربة الله» في القرآن تشمل: القتل، أو الصلب، أو قطع اليد والرجل من خلاف في آنٍ واحد، أو النفي. وطبّق الفقهاء الكلاسيكيون هذه العقوبة على الحرابة والردة والمعارضة السياسية. ويُلاحظ تناقض جوهري: الإله ذاته يُقنن الصلب الذي يُدان في الكتاب المقدس.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="stoning-adultery">
+      <span class="card-icon">💀</span><div class="card-verse-ar">وَاللَّذَانِ يَأْتِيَانِهَا مِنكُمْ فَآذُوهُمَا</div>
+      <div class="card-title">Stoning to death for adultery</div><div class="card-title-ar">الرجم حتى الموت عقوبة على الزنا</div>
+      <div class="card-source">صحيح البخاري ٦٨٢٩ / ٦٨٣٠ · مستند إلى القرآن ٤:١٥</div>
+      <div class="card-links"><a href="https://quran.com/4/15" target="_blank" class="card-link"><span class="t-en">Quran 4:15 + Bukhari 6829</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤:١٥ · البخاري ٦٨٢٩</span></a></div>
+      <p class="card-desc">Muhammad personally supervised and ordered the stoning to death of people convicted of adultery (Bukhari 6829-6830). While the Quran (4:15) prescribes house arrest, the Hadith supersede it with the "verse of stoning" (ayat al-rajm), which Umar ibn al-Khattab stated was removed from the final Quran by accident. All four Sunni schools mandate death-by-stoning for the married adulterer.</p>
+      <p class="card-desc-ar">أشرف النبي شخصياً على تنفيذ أحكام الرجم (البخاري ٦٨٢٩-٦٨٣٠). وبينما يقرر القرآن (٤:١٥) الإقامة الجبرية، تستبدل الأحاديث ذلك بـ«آية الرجم» التي أقرّ عمر بن الخطاب أنها سقطت من المصحف النهائي سهواً. المذاهب الأربعة تُلزم بالرجم للزاني المحصن.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="jihad-paradise">
+      <span class="card-icon">⚔️</span><div class="card-verse-ar">فَلْيُقَاتِلْ فِي سَبِيلِ اللَّهِ الَّذِينَ يَشْرُونَ الْحَيَاةَ الدُّنْيَا بِالْآخِرَةِ</div>
+      <div class="card-title">Killing disbelievers guarantees Paradise</div><div class="card-title-ar">قتل الكافرين ضمان مباشر لدخول الجنة</div>
+      <div class="card-source">٤:٧٤ (النساء) · ٩:١١١</div>
+      <div class="card-links"><a href="https://quran.com/4/74" target="_blank" class="card-link"><span class="t-en">Quran 4:74 · 9:111</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤:٧٤ · ٩:١١١</span></a></div>
+      <p class="card-desc">God commands those who sell their earthly lives for the afterlife to "fight in the cause of Allah." Quran 9:111 explicitly seals this as a divine transaction: Allah buys the believers' lives in exchange for Paradise — and the currency is killing and being killed for His cause. This is a cosmic commercial contract for religiously-motivated murder.</p>
+      <p class="card-desc-ar">يأمر القرآن (٤:٧٤) من باعوا حياتهم الدنيوية بالآخرة بالقتال في سبيل الله. وتصف الآية ٩:١١١ ذلك بوصفه صفقة إلهية مباشرة: الله يشتري أرواح المؤمنين مقابل الجنة، وثمن الصفقة هو القتل والموت في سبيله. عقد تجاري كوني مع الله على الإرهاب والقتل.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="hate-disbelievers">
+      <span class="card-icon">🚫</span><div class="card-verse-ar">قَدْ كَانَتْ لَكُمْ أُسْوَةٌ حَسَنَةٌ فِي إِبْرَاهِيمَ … إِذْ قَالُوا لِقَوْمِهِمْ إِنَّا بُرَآءُ مِنكُمْ</div>
+      <div class="card-title">Eternal enmity toward non-Muslims commanded</div><div class="card-title-ar">الأمر بالعداء الأبدي لغير المسلمين</div>
+      <div class="card-source">٦٠:٤ (الممتحنة) · ٣:٢٨ · ٥:٥١</div>
+      <div class="card-links"><a href="https://quran.com/60/4" target="_blank" class="card-link"><span class="t-en">Quran 60:4 · 3:28 · 5:51</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٦٠:٤ · ٣:٢٨ · ٥:٥١</span></a></div>
+      <p class="card-desc">Muslims are commanded to follow Abraham's "beautiful example" of publicly declaring eternal hatred (al-'adawatu) and enmity (al-baghda') toward disbelievers. Quran 3:28 forbids taking disbelievers as close allies. Quran 5:51 forbids taking Jews and Christians as protectors. This is not cultural context — it is a divine model for permanent civilizational hatred, presented as the highest moral template.</p>
+      <p class="card-desc-ar">يأمر القرآن (٦٠:٤) المسلمين بالاقتداء بإبراهيم في إعلان «العداوة والبغضاء» الأبدية للكافرين صراحةً. ويحظر (٣:٢٨) مصادقة غير المسلمين. ويحظر (٥:٥١) اتخاذ اليهود والمسيحيين أولياء. ليس هذا سياقاً ثقافياً؛ بل هو نموذج إلهي للكراهية الحضارية الدائمة، مُقدَّم كأعلى نموذج أخلاقي.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="marry-nine">
+      <span class="card-icon">👧</span><div class="card-verse-ar">وَاللَّائِي لَمْ يَحِضْنَ</div>
+      <div class="card-title">Aisha married at age nine — Quran regulates it</div><div class="card-title-ar">زواج عائشة بنت تسع سنوات — القرآن يُنظِّمه</div>
+      <div class="card-source">٦٥:٤ (الطلاق) · البخاري ٣٨٩٤ / مسلم ١٤٢٢</div>
+      <div class="card-links"><a href="https://quran.com/65/4" target="_blank" class="card-link"><span class="t-en">Quran 65:4 + Bukhari 3894</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٦٥:٤ · البخاري ٣٨٩٤</span></a></div>
+      <p class="card-desc">Quran 65:4 sets waiting-period (iddah) rules for wives "who have not yet menstruated" — explicitly legislating divorce procedures for pre-pubescent child wives. Bukhari 3894 and Muslim 1422 confirm Muhammad consummated his marriage to Aisha when she was 9 years old. The Quran does not prohibit child marriage; it actively regulates its dissolution. This is the "perfect, eternal moral law."</p>
+      <p class="card-desc-ar">تُحدد الآية (٦٥:٤) عدة الطلاق للزوجات «اللائي لم يحضن» — أي القاصرات قبل البلوغ — مما يُشرّع صريحاً زواج الأطفال ويُنظّم طلاقهن. ويؤكد البخاري (٣٨٩٤) ومسلم (١٤٢٢) أن النبي دخل بعائشة وهي ابنة تسع سنوات. القرآن لا يحظر زواج الأطفال، بل يُنظّم إجراءاته التشريعية.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="gay-death">
+      <span class="card-icon">🏳️</span><div class="card-verse-ar">أَتَأْتُونَ الذُّكْرَانَ مِنَ الْعَالَمِينَ — وَتَذَرُونَ مَا خَلَقَ لَكُمْ رَبُّكُمْ مِّنْ أَزْوَاجِكُم</div>
+      <div class="card-title">Death for homosexuality — divine sanction</div><div class="card-title-ar">الإعدام على المثلية الجنسية — تشريع إلهي</div>
+      <div class="card-source">٢٦:١٦٥-١٦٦ (الشعراء) · أبو داود ٤٤٦٢ · الترمذي ١٤٥٦</div>
+      <div class="card-links"><a href="https://quran.com/26/165" target="_blank" class="card-link"><span class="t-en">Quran 26:165-166</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٦:١٦٥-١٦٦</span></a></div>
+      <p class="card-desc">The Quran condemns same-sex relations through the story of Lot, calling it the vilest act of any "people in the world." The Prophet commanded: "Kill the one who does it, and the one to whom it is done" (Abu Dawud 4462, Tirmidhi 1456). All four Sunni schools mandate capital punishment. This makes state execution of gay people a direct, un-abrogated divine mandate — not a medieval aberration.</p>
+      <p class="card-desc-ar">يُدين القرآن العلاقات المثلية عبر قصة لوط، واصفاً إياها بأنها أبشع فاحشة في «العالمين». وأمر النبي صراحةً: «من وجدتموه يعمل عمل قوم لوط فاقتلوا الفاعل والمفعول به» (أبو داود ٤٤٦٢). المذاهب الأربعة تُوجب الإعدام. إعدام المثليين إذن فريضة دينية أبدية غير منسوخة.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+    <div class="card a-green" data-trad="medinan" data-s="hell-children">
+      <span class="card-icon">👶</span><div class="card-verse-ar">إِنَّ الَّذِينَ كَفَرُوا مِنْ أَهْلِ الْكِتَابِ وَالْمُشْرِكِينَ فِي نَارِ جَهَنَّمَ خَالِدِينَ فِيهَا</div>
+      <div class="card-title">Non-Muslim children condemned by divine decree</div><div class="card-title-ar">أبناء الكفار في جهنم — قدر إلهي محتوم</div>
+      <div class="card-source">٩٨:٦ (البينة) · البخاري ١٣٨٤ · مسلم ٢٦٥٩</div>
+      <div class="card-links"><a href="https://quran.com/98/6" target="_blank" class="card-link"><span class="t-en">Quran 98:6 + Muslim 2659</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٩٨:٦ · مسلم ٢٦٥٩</span></a></div>
+      <p class="card-desc">Quran 98:6 declares all disbelievers — "People of the Book and polytheists alike" — will dwell in Hellfire forever. When asked about the fate of children of polytheists, Muhammad replied: "Allah knows best what they would have done" (Bukhari 1384), implying God foreknows their damnation and creates them destined for Hell regardless. The "Most Merciful" predestines infants to eternal fire based on the religion of their parents.</p>
+      <p class="card-desc-ar">يُقرر القرآن (٩٨:٦) أن جميع الكافرين من أهل الكتاب والمشركين في نار جهنم خالدين فيها. وحين سُئل النبي عن أطفال المشركين، أجاب: «الله أعلم بما كانوا عاملين» (البخاري ١٣٨٤)، مما يعني أن الله يعلم مسبقاً مصيرهم في الجحيم ويخلقهم مقدّرين له. «أرحم الراحمين» يقدّر الأطفال للنار الأبدية بسبب دين آبائهم.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
+    </div>
+
+  </div>
+</div>
+
 <!-- ════ SCIENTIFIC ERRORS ════ -->
 <div class="section" data-s="science" data-cat="sci">
   <div class="sec-head"><h2><span class="t-en">Scientific Errors</span><span class="t-ar" style="display:none">الأخطاء العلمية</span></h2><div class="sec-line"></div><span class="cat-badge cb-sci">🔭 Scientific Error</span></div>
@@ -6023,16 +6290,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="card-links"><a href="https://quran.com/18/86" target="_blank" class="card-link"><span class="t-en">Quran 18:86</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ١٨:٨٦</span></a></div>
       <p class="card-desc">Apologists claim Dhul-Qarnayn "only saw it as if" it set there. Yet the Arabic says "wajadaha" (he found it) setting in a literal, physical spring ('ayn hami'ah). Tafsir al-Tabari and early scholars confirmed the sun physically drops into muddy water.</p>
       <p class="card-desc-ar">يحاول المدافعون الزعم بأن ذو القرنين "رآها فقط وكأنها تغرب". لكن النص يقول صراحة "وَجَدَهَا" تغرب في عين طينية (حمئة). وقد أكد الطبري والمفسرون الأوائل أن الشمس تغطس فعلياً في الطين. هذا تصور بدائي ومباشر للأرض المسطحة.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </div>
-
-    <div class="card a-red" data-trad="meccan" data-s="flat-earth">
-      <span class="card-icon">📏</span><div class="card-verse-ar">وَإِلَى الْأَرْضِ كَيْفَ سُطِحَتْ</div>
-      <div class="card-title">Earth spread flat</div><div class="card-title-ar">الأرض مسطحة</div>
-      <div class="card-source">٨٨:٢٠ (الغاشية)</div>
-      <div class="card-links"><a href="https://quran.com/88/20" target="_blank" class="card-link"><span class="t-en">Quran 88:20</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٨٨:٢٠</span></a></div>
-      <p class="card-desc">The Arabic 'sutihat' explicitly means spread flat like a carpet. Tafsir al-Jalalayn unequivocally states: "This indicates the earth is flat... which refutes the astronomers who say it is a sphere." The text directly contradicts a spherical globe.</p>
-      <p class="card-desc-ar">كلمة "سُطِحَتْ" تعني مُهدت وانبسطت. وقد صرح تفسير الجلالين بوضوح: "هذا يدل على أن الأرض مسطحة... وهو يرد على علماء الفلك الذين يقولون إنها كرة". النص يتعارض تماماً مع كروية الأرض.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
     </div>
 
@@ -6886,219 +7143,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   </div>
 </div>
 
-<!-- ════ MORAL & ETHICAL FAILURES ════ -->
-<div class="section" data-s="moral" data-cat="mor">
-  <div class="sec-head"><h2><span class="t-en">Moral & Ethical Failures</span><span class="t-ar" style="display:none">السقطات الأخلاقية والتشريعية</span></h2><div class="sec-line"></div><span class="cat-badge cb-mor">⚔️ Moral Failure</span></div>
-  <p class="sec-desc t-en">The Quran explicitly codifies severe gender discrimination, sadistic physical mutilation, and the sexual ownership of captured humans as the *perfect, eternal* law of God. Modern apologists cannot erase the clear Arabic text without lying about its meaning.</p>
-  <p class="sec-desc t-ar" style="display:none">يُشرع القرآن التمييز الجنسي الصارخ، والتشويه الجسدي القاسي، والعبودية الجنسية لأسرى الحرب كقوانين إلهية صالحة لكل زمان ومكان. المدافعون المعاصرون يضطرون لتغيير المعاني الواضحة في اللغة العربية لتخفيف صدمة هذه التشريعات.</p>
-  <div class="grid">
-
-    <div class="card a-green" data-trad="medinan" data-s="slavery-sex">
-      <span class="card-icon">⛓️</span><div class="card-verse-ar">أَوْ مَا مَلَكَتْ أَيْمَانُهُمْ</div>
-      <div class="card-title">Slavery & sexual ownership</div><div class="card-title-ar">تشريع ملك اليمين والعبودية</div>
-      <div class="card-source">٢٣:٥-٦</div>
-      <div class="card-links"><a href="https://quran.com/23/5" target="_blank" class="card-link"><span class="t-en">Quran 23:5-6</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٣:٥-٦</span></a></div>
-      <p class="card-desc">"Except from their wives or those their right hands possess (slaves), for indeed, they will not be blamed." Explicit, eternal divine permission for the non-consensual sexual use of enslaved women. Slavery is regulated, never abolished.</p>
-      <p class="card-desc-ar">الآية تبيح صراحة للرجل ممارسة الجنس مع "ما ملكت يمينه" (الإماء والعبيد) بدون عقد زواج وبدون موافقتهن بالضرورة. القرآن نظم العبودية وقننها ولم يأتِ بأي نص يُحرم امتلاك البشر أو يلغيه بشكل نهائي.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="wife-beat">
-      <span class="card-icon">👊</span><div class="card-verse-ar">وَاضْرِبُوهُنَّ</div>
-      <div class="card-title">Wife beating permitted</div><div class="card-title-ar">إباحة ضرب الزوجات</div>
-      <div class="card-source">٤:٣٤ (النساء)</div>
-      <div class="card-links"><a href="https://quran.com/4/34" target="_blank" class="card-link"><span class="t-en">Quran 4:34</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤:٣٤</span></a></div>
-      <p class="card-desc">For wives who show arrogance/disobedience: advise them, abandon their beds, and "strike them" (idribuhunna). Apologists lie saying it means "tap with a toothbrush." The Arabic verb *daraba* implies causing physical pain, used elsewhere for striking rocks and necks.</p>
-      <p class="card-desc-ar">تشريع صريح بضرب الزوجات في حالة التمرد والنشوز. التبريرات الحديثة بأنه "ضرب خفيف بالسواك" تتعارض تماماً مع المعنى اللغوي الواضح للفعل "ضَرَبَ" الذي يُقصد به إيقاع الألم الجسدي وفرض السيطرة بالقوة.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="women-testimony">
-      <span class="card-icon">⚖️</span><div class="card-verse-ar">فَرَجُلٌ وَامْرَأَتَانِ</div>
-      <div class="card-title">Women’s testimony worth half</div><div class="card-title-ar">شهادة المرأة بنصف شهادة الرجل</div>
-      <div class="card-source">٢:٢٨٢ (البقرة)</div>
-      <div class="card-links"><a href="https://quran.com/2/282" target="_blank" class="card-link"><span class="t-en">Quran 2:282</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢:٢٨٢</span></a></div>
-      <p class="card-desc">"Bring two men as witnesses; if not, then a man and two women... so that if one of the women errs, the other can remind her." Explicitly states a woman's memory and mental capacity are inherently legally deficient compared to a man's.</p>
-      <p class="card-desc-ar">القرآن يثبت تفوقاً ذكورياً في القانون، حيث يجعل شهادة رجل واحد مساوية لشهادة امرأتين. الآية تبرر ذلك صراحة باحتمالية ضلال ونسيان المرأة ("أن تضل إحداهما"). هذا تشريع يحط من القدرة العقلية للمرأة.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="child-marriage">
-      <span class="card-icon">🧒</span><div class="card-verse-ar">وَاللَّائِي لَمْ يَحِضْنَ</div>
-      <div class="card-title">Pre-pubescent marriage</div><div class="card-title-ar">تشريع زواج القاصرات</div>
-      <div class="card-source">٦٥:٤ (الطلاق)</div>
-      <div class="card-links"><a href="https://quran.com/65/4" target="_blank" class="card-link"><span class="t-en">Quran 65:4</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٦٥:٤</span></a></div>
-      <p class="card-desc">Provides the divorce waiting period (Idda - 3 months) for "those who have not yet menstruated" (allai lam yahidna). Establishing a divorce protocol for pre-pubescent girls explicitly proves that the consummation of child marriage is divinely sanctioned.</p>
-      <p class="card-desc-ar">تحدد الآية فترة الانتظار (العدة) عند الطلاق بـ ٣ أشهر للفتيات "اللاتي لم يحضن". وضع تشريع صريح لطلاق أطفال لم يبلغن سن البلوغ هو دليل قاطع على أن القرآن يبيح زواج الصغيرات والدخول بهن شرعاً.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="muhammad-wives">
-      <span class="card-icon">👑</span><div class="card-verse-ar">خَالِصَةً لَكَ مِنْ دُونِ الْمُؤْمِنِينَ</div>
-      <div class="card-title">Muhammad’s special privileges</div><div class="card-title-ar">الامتيازات الجنسية لمحمد</div>
-      <div class="card-source">٣٣:٥٠ (الأحزاب)</div>
-      <div class="card-links"><a href="https://quran.com/33/50" target="_blank" class="card-link"><span class="t-en">Quran 33:50</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٣٣:٥٠</span></a></div>
-      <p class="card-desc">The creator of the universe writes an eternal verse specifically bypassing the 4-wife limit solely for Muhammad. He is permitted unlimited wives, slave girls, and any believing woman who offers herself to him. A blatantly self-serving revelation.</p>
-      <p class="card-desc-ar">إله الكون يخصص آية كاملة فقط ليعفي محمداً من الحد الأقصى للزوجات. وتبيح له الآية أن يتزوج بأي عدد من النساء، وبما ملكت يمينه، وبأي امرأة تهب نفسها له مجاناً. تشريع مفصل لخدمة شهوات شخص واحد فقط.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="beheading">
-      <span class="card-icon">🗡️</span><div class="card-verse-ar">فَضَرْبَ الرِّقَابِ</div>
-      <div class="card-title">Beheading captives</div><div class="card-title-ar">التشريع بقطع الرؤوس</div>
-      <div class="card-source">٤٧:٤ (محمد)</div>
-      <div class="card-links"><a href="https://quran.com/47/4" target="_blank" class="card-link"><span class="t-en">Quran 47:4</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤٧:٤</span></a></div>
-      <p class="card-desc">"When you meet the disbelievers in battle, strike their necks..." A permanent, un-abrogated divine command for extreme brutality, decapitation, and mass slaughter in holy war until the enemy is entirely subdued.</p>
-      <p class="card-desc-ar">الآية تأمر المسلمين بضرب رقاب (قطع رؤوس) الذين كفروا في المعارك بدموية بالغة، ثم الاستمرار في أسرهم وتقييدهم. هذا التوجيه يُستخدم كتشريع أبدي لشرعنة العنف الشديد وإرهاب المخالفين.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="rape-captives">
-      <span class="card-icon">💔</span><div class="card-verse-ar">وَالْمُحْصَنَاتُ مِنَ النِّسَاءِ إِلَّا مَا مَلَكَتْ أَيْمَانُكُمْ</div>
-      <div class="card-title">Raping captured married women</div><div class="card-title-ar">استباحة نكاح المتزوجات المأسورات</div>
-      <div class="card-source">٤:٢٤ (النساء)</div>
-      <div class="card-links"><a href="https://quran.com/4/24" target="_blank" class="card-link"><span class="t-en">Quran 4:24</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤:٢٤</span></a></div>
-      <p class="card-desc">Forbids sex with married women, *except* those captured as prisoners of war. Their previous marriages to non-Muslim men are automatically dissolved by the act of enslavement, making them legally available for sexual use by their captors.</p>
-      <p class="card-desc-ar">القرآن يحرم الزواج من النساء المتزوجات، لكنه يستثني سبايا الحرب المأسورات (ما ملكت أيمانكم). بمجرد أسرهن، يتم إلغاء زواجهن السابق فوراً، مما يشرع للمسلمين اغتصابهن واستعبادهن جنسياً حتى لو كان أزواجهن أحياء.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="skin-roast">
-      <span class="card-icon">🔥</span><div class="card-verse-ar">بَدَّلْنَاهُمْ جُلُودًا غَيْرَهَا لِيَذُوقُوا الْعَذَابَ</div>
-      <div class="card-title">Eternal Skin-Roasting</div><div class="card-title-ar">التعذيب السادي في الجحيم</div>
-      <div class="card-source">٤:٥٦ (النساء)</div>
-      <div class="card-links"><a href="https://quran.com/4/56" target="_blank" class="card-link"><span class="t-en">Quran 4:56</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٤:٥٦</span></a></div>
-      <p class="card-desc">Allah promises to roast disbelievers in Hell, and whenever their skins are completely burned off, He will miraculously regenerate new skin continuously so they can feel the maximum agony forever. Pure, infinite sadism.</p>
-      <p class="card-desc-ar">يصف النص طريقة تعذيب سادية لغير المؤمنين في الجحيم؛ فكلما احترقت جلودهم وذابت، يقوم الله بإنشاء جلود جديدة لهم فوراً لكي تستمر أعصابهم في نقل أقسى درجات الألم الجسدي إلى الأبد. تعذيب انتقامي يتنافى مع أي رحمة.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="jizya">
-      <span class="card-icon">💰</span><div class="card-verse-ar">وَهُمْ صَاغِرُونَ</div>
-      <div class="card-title">Extortion of minorities (Jizya)</div><div class="card-title-ar">الابتزاز المالي للمخالفين (الجزية)</div>
-      <div class="card-source">٩:٢٩ (التوبة)</div>
-      <div class="card-links"><a href="https://quran.com/9/29" target="_blank" class="card-link"><span class="t-en">Quran 9:29</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٩:٢٩</span></a></div>
-      <p class="card-desc">Commands Muslims to aggressively fight Jews and Christians until they pay the Jizya (protection tax) "with willing submission, and feel themselves subdued/humiliated (saghiroon)." Mafia-style extortion codified into religion.</p>
-      <p class="card-desc-ar">يأمر النص المسلمين بشن حرب هجومية ضد اليهود والنصارى حتى يدفعوا ضريبة "الجزية" المالية وهم في حالة خضوع وذلة ومهانة (صاغرون). هذا أشبه بنظام الابتزاز المالي للميليشيات المافياوية مفروض باسم الدين.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="meccan" data-s="innocent-boy">
-      <span class="card-icon">🔪</span><div class="card-verse-ar">فَقَتَلَهُ ۖ قَالَ أَقَتَلْتَ نَفْسًا زَكِيَّةً</div>
-      <div class="card-title">Killing an innocent boy</div><div class="card-title-ar">قتل طفل بريء بناءً على النوايا</div>
-      <div class="card-source">١٨:٧٤، ٨٠ (الكهف)</div>
-      <div class="card-links">
-        <a href="https://quran.com/18/74" target="_blank" class="card-link"><span class="t-en">Quran 18:74</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ١٨:٧٤</span></a>
-        <a href="https://quran.com/18/80" target="_blank" class="card-link"><span class="t-en">Quran 18:80</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ١٨:٨٠</span></a>
-      </div>
-      <p class="card-desc">Khidr violently murders a completely innocent, unsinning boy. The divine justification? The boy *might* grow up to be a rebellious disbeliever and grieve his parents. Pre-crime murder sanctioned by God, destroying the illusion of free will.</p>
-      <p class="card-desc-ar">قصة قيام "الخضر" بقتل طفل بريء لم يرتكب أي ذنب. التبرير الإلهي لهذه الجريمة هو أن الطفل "قد" يكبر ويصبح عاصياً ويرهق والديه بكفره. هذا يشرع القتل الاستباقي ويهدم مفاهيم العدل، والاختيار الحر، والمساءلة على الأفعال فقط.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="men-degree">
-      <span class="card-icon">📉</span><div class="card-verse-ar">وَلِلرِّجَالِ عَلَيْهِنَّ دَرَجَةٌ</div>
-      <div class="card-title">Men are a "degree above"</div><div class="card-title-ar">تثبيت التفوق الذكوري (الدرجة)</div>
-      <div class="card-source">٢:٢٢٨ (البقرة)</div>
-      <div class="card-links"><a href="https://quran.com/2/228" target="_blank" class="card-link"><span class="t-en">Quran 2:228</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢:٢٢٨</span></a></div>
-      <p class="card-desc">"But the men have a degree over them [in responsibility and authority]." The Quran establishes permanent, systemic gender inequality. Men are legally, financially, and morally elevated above women forever by divine decree.</p>
-      <p class="card-desc-ar">القرآن يؤسس لتفاوت منهجي ودائم بين الجنسين، مصرحاً بأن "للرجال عليهن درجة". هذه الدرجة تعني تفضيل الرجال في السلطة والمسؤولية والقوامة، مما يجعل مبدأ المساواة الكاملة بين الجنسين مرفوضاً شرعاً.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="meccan" data-s="abu-lahab">
-      <span class="card-icon">🤬</span><div class="card-verse-ar">تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ</div>
-      <div class="card-title">God cursing Abu Lahab</div><div class="card-title-ar">إله يشتم خصوم النبي</div>
-      <div class="card-source">١١١:١-٥ (المسد)</div>
-      <div class="card-links"><a href="https://quran.com/111/1" target="_blank" class="card-link"><span class="t-en">Quran 111:1-5</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ١١١:١-٥</span></a></div>
-      <p class="card-desc">The supreme Creator of 2 trillion galaxies dedicates an entire eternal chapter of his final message to humanity just to throw petty insults at Muhammad's uncle and his wife. A severely human, unimpressive, and petty response.</p>
-      <p class="card-desc-ar">يترك خالق الكون العظيم كل قضايا الإنسانية ليُنزل سورة كاملة تُتلى إلى الأبد لمجرد شتم عم النبي "أبو لهب" وزوجته وتوعدهما بالنار. هذا الأسلوب الانفعالي والشخصي يشير بوضوح إلى تأليف بشري محلي.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="amputation">
-      <span class="card-icon">🪓</span><div class="card-verse-ar">وَالسَّارِقُ وَالسَّارِقَةُ فَاقْطَعُوا أَيْدِيَهُمَا</div>
-      <div class="card-title">Amputation for theft</div><div class="card-title-ar">بتر الأطراف بتهمة السرقة</div>
-      <div class="card-source">٥:٣٨ (المائدة)</div>
-      <div class="card-links"><a href="https://quran.com/5/38" target="_blank" class="card-link"><span class="t-en">Quran 5:38</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٥:٣٨</span></a></div>
-      <p class="card-desc">Commands the irreversible, physical amputation of hands for thieves. A brutal, permanent bodily mutilation for a property crime. This draconian law is rejected by every civilized modern justice and human rights system.</p>
-      <p class="card-desc-ar">حكم بقطع وبتر أيدي السارقين كعقاب على جريمة مالية. هذا التشويه الجسدي الدائم والقاسي يتنافى مع كافة مفاهيم حقوق الإنسان الحديثة، ومبادئ التأهيل وإعادة الدمج في المجتمع.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="flogging">
-      <span class="card-icon">📿</span><div class="card-verse-ar">فَاجْلِدُوا كُلَّ وَاحِدٍ مِنْهُمَا مِائَةَ جَلْدَةٍ</div>
-      <div class="card-title">Flogging for adultery</div><div class="card-title-ar">الجلد العلني للزناة</div>
-      <div class="card-source">٢٤:٢ (النور)</div>
-      <div class="card-links"><a href="https://quran.com/24/2" target="_blank" class="card-link"><span class="t-en">Quran 24:2</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٤:٢</span></a></div>
-      <p class="card-desc">"The woman and the man guilty of fornication - flog each of them with a hundred stripes... let not pity withhold you." Sadistic public torture prescribed for consenting adults, demanding that a crowd watches the brutalization.</p>
-      <p class="card-desc-ar">تأمر الآية بجلد الزاني والزانية ١٠٠ جلدة علناً أمام الناس، وتحذر المسلمين من الرأفة بهما في تنفيذ الحكم. معاقبة البالغين المتراضين جسدياً بهذا الشكل السادي والعلني يعزز ثقافة العنف المجتمعي.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="women-fields">
-      <span class="card-icon">👩‍🌾</span><div class="card-verse-ar">نِسَاؤُكُمْ حَرْثٌ لَكُمْ فَأْتُوا حَرْثَكُمْ أَنَّىٰ شِئْتُمْ</div>
-      <div class="card-title">Women as "fields"</div><div class="card-title-ar">تشبيه المرأة بالحقل والمزرعة</div>
-      <div class="card-source">٢:٢٢٣ (البقرة)</div>
-      <div class="card-links"><a href="https://quran.com/2/223" target="_blank" class="card-link"><span class="t-en">Quran 2:223</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢:٢٢٣</span></a></div>
-      <p class="card-desc">"Your wives are a place of sowing of seed for you, so come to your place of cultivation however you wish..." This completely dehumanizes women, reducing them to agricultural property meant for male sexual penetration and breeding.</p>
-      <p class="card-desc-ar">الآية تشبه النساء بالأرض الزراعية (الحرث) التي يحق للرجل أن يستغلها ويأتيها متى وكيفما شاء لغرض المتعة والإنجاب. هذا الوصف يختزل دور المرأة ويشيئها بشكل يمس بكرامتها الإنسانية.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="allah-curses">
-      <span class="card-icon">🗣️</span><div class="card-verse-ar">قَاتَلَهُمُ اللَّهُ ۚ أَنَّىٰ يُؤْفَكُونَ</div>
-      <div class="card-title">Allah curses people like a human</div><div class="card-title-ar">الإله يلعن ويشتم كالبشر</div>
-      <div class="card-source">٩:٣٠ (التوبة)</div>
-      <div class="card-links"><a href="https://quran.com/9/30" target="_blank" class="card-link"><span class="t-en">Quran 9:30</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٩:٣٠</span></a></div>
-      <p class="card-desc">"May Allah destroy them; how are they deluded?" (qatalahumullah). The supposedly omnipotent creator of the cosmos uses a localized tribal curse, essentially praying to Himself to destroy humans. An embarrassingly human projection.</p>
-      <p class="card-desc-ar">الآية تستخدم عبارة "قاتلهم الله" ضد اليهود والنصارى. كيف للإله الخالق القادر على كل شيء أن يدعو بالقتل والهلاك على مخلوقاته وكأنه شخص بشري عاجز يلعن خصومه؟ استخدام لغوي بشري لا يليق بمقام الألوهية.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="four-witnesses">
-      <span class="card-icon">👁️</span><div class="card-verse-ar">ثُمَّ لَمْ يَأْتُوا بِأَرْبَعَةِ شُهَدَاءَ</div>
-      <div class="card-title">4 Male witnesses for Zina</div><div class="card-title-ar">شرط الأربعة شهود التعجيزي</div>
-      <div class="card-source">٢٤:٤ (النور)</div>
-      <div class="card-links"><a href="https://quran.com/24/4" target="_blank" class="card-link"><span class="t-en">Quran 24:4</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٢٤:٤</span></a></div>
-      <p class="card-desc">Demands four male eyewitnesses to the physical act of penetration to prove illicit sex. This draconian standard makes proving rape virtually impossible, historically leading to female victims being flogged for "confessing" to sex while failing to produce witnesses.</p>
-      <p class="card-desc-ar">لإثبات الزنا، يشترط القرآن وجود ٤ شهود رجال رأوا عملية الإيلاج الجنسي بشكل مباشر. هذا الشرط التعجيزي يجعل إثبات جرائم الاغتصاب شبه مستحيل قانونياً، وقد يؤدي لجلد الضحية بتهمة "القذف" إذا لم تحضر الشهود.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="war-loot">
-      <span class="card-icon">💎</span><div class="card-verse-ar">فَأَنَّ لِلَّهِ خُمُسَهُ وَلِلرَّسُولِ</div>
-      <div class="card-title">God demands a cut of war loot</div><div class="card-title-ar">الإله يطلب حصة من الغنائم</div>
-      <div class="card-source">٨:٤١ (الأنفال)</div>
-      <div class="card-links"><a href="https://quran.com/8/41" target="_blank" class="card-link"><span class="t-en">Quran 8:41</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٨:٤١</span></a></div>
-      <p class="card-desc">"Know that anything you obtain of war booty - then unto Allah is one fifth of it, and to the Messenger..." The eternal supreme deity demands a 20% cut of stolen gold, livestock, and enslaved humans from tribal raids. A highly convenient law for the Prophet.</p>
-      <p class="card-desc-ar">الآية تشرع أن للإله ورسوله نسبة ٢٠% (الخُمس) من الغنائم التي تُنهب في الحروب. من الغريب جداً أن إلهاً غنياً عن العالمين يطالب بنسبة من الذهب والمواشي والبشر المأسورين. هذا التشريع يخدم مصلحة شخصية ومادية واضحة للقيادة.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="adopted-wife">
-      <span class="card-icon">💍</span><div class="card-verse-ar">فَلَمَّا قَضَىٰ زَيْدٌ مِّنْهَا وَطَرًا زَوَّجْنَاكَهَا</div>
-      <div class="card-title">Marrying the adopted son's wife</div><div class="card-title-ar">الزواج من زوجة الابن بالتبني</div>
-      <div class="card-source">٣٣:٣٧ (الأحزاب)</div>
-      <div class="card-links"><a href="https://quran.com/33/37" target="_blank" class="card-link"><span class="t-en">Quran 33:37</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٣٣:٣٧</span></a></div>
-      <p class="card-desc">God supposedly sends down a universe-altering revelation simply to cancel the noble institution of adoption, purely so Muhammad could marry his adopted son Zayd's attractive ex-wife, Zaynab. A glaringly self-serving, convenient revelation.</p>
-      <p class="card-desc-ar">يدعي النص أن الله أنزل آية من سابع سماء لإلغاء مؤسسة التبني الإنسانية بأكملها، والهدف الوحيد هو تبرير وتشريع زواج محمد من زينب، الزوجة السابقة لابنه بالتبني زيد. تشريع مفصل بشكل مكشوف لخدمة رغبة شخصية للمؤلف.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-    <div class="card a-green" data-trad="medinan" data-s="wives-threat">
-      <span class="card-icon">🎭</span><div class="card-verse-ar">عَسَىٰ رَبُّهُ إِن طَلَّقَكُنَّ أَن يُبْدِلَهُ أَزْوَاجًا خَيْرًا مِّنكُنَّ</div>
-      <div class="card-title">Threatening wives with replacement</div><div class="card-title-ar">تهديد الزوجات بالاستبدال</div>
-      <div class="card-source">٦٦:٥ (التحريم)</div>
-      <div class="card-links"><a href="https://quran.com/66/5" target="_blank" class="card-link"><span class="t-en">Quran 66:5</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">القرآن ٦٦:٥</span></a></div>
-      <p class="card-desc">"If he divorces you, his Lord may give him instead wives better than you... virgins." A divine threat leveled against Muhammad's own wives to submit to him, or else God will replace them with better, virgin women. Patriarchal coercion dressed as theology.</p>
-      <p class="card-desc-ar">نص قرآني يهدد زوجات محمد صراحة بأنه إن لم يطعنه، فإن الله سيستبدلهن بنساء أفضل وعذارى (أبكار). استخدام الوحي كأداة قمع وترهيب ذكوري لإخضاع الزوجات في نزاع منزلي، وهو أسلوب بشري استغلالي.</p>
-      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </div>
-
-  </div>
-</div>
-
 <!-- ════ PORTALS ════ -->
 <div class="section" data-s="portals">
   <div class="sec-head"><h2><span class="t-en">Full Portals</span><span class="t-ar" style="display:none">المنصات الكاملة</span></h2><div class="sec-line"></div></div>
@@ -7704,7 +7748,6 @@ function switchReligion(rel) {
     'x-tab-divorce':     ['Divorce Contradiction','तलाक विरोधाभास'],
     'x-tab-sabbath':     ['Sabbath Day',          'विश्राम का दिन'],
     'x-tab-age':         ["Jesus's Age",          'यीशु की उम्र'],
-    'x-tab-flatearth':   ['Flat Earth',           'चपटी पृथ्वी'],
     'x-tab-genocide':    ["God's Genocide",       'परमेश्वर का नरसंहार'],
     'x-tab-rape':        ['Rape Laws',            'बलात्कार कानून'],
     'x-tab-twosuns':     ['Two Suns',             'सूर्य से पहले प्रकाश'],
@@ -8029,7 +8072,7 @@ function switchReligion(rel) {
     'i-tab-portals':           ['Full Portals',                        'البوابات الكاملة'],
     // Scientific Errors
     'i-tab-sun-mud':           ['Sun in Muddy Spring',                 'الشمس تغرب في طين'],
-    'i-tab-flat-earth':        ['Earth Spread Flat',                   'الأرض مبسوطة كالبساط'],
+
     'i-tab-embryo':            ['Greek Embryology',                    'علم الأجنة اليوناني'],
     'i-tab-mountains':         ['Mountains Stop Earthquakes',          'الجبال تمنع الزلازل'],
     'i-tab-sky-dome':          ['Solid Sky Dome',                      'السماء سقف صلب'],
@@ -8124,6 +8167,16 @@ function switchReligion(rel) {
     'i-tab-war-loot':          ['God Demands War Loot Cut',            'الله يطلب خُمس الغنائم'],
     'i-tab-adopted-wife':      ["Marrying Adopted Son's Wife",         'الزواج من زوجة الابن بالتبني'],
     'i-tab-wives-threat':      ['Threatening Wives with Replacement',  'تهديد الزوجات بالاستبدال'],
+    'i-tab-apostasy-kill':     ['Kill Apostates',                      'إعدام المرتدين'],
+    'i-tab-sex-slave-limit':   ['No Limit on Sex Slaves',              'لا حد لعدد الجواري'],
+    'i-tab-quran-torture-hell':['Boiling Water Poured on Heads',       'سكب الماء المغلي على الرؤوس'],
+    'i-tab-crucifixion-mutilation':['Crucifixion as Punishment',       'الصلب وقطع الأطراف'],
+    'i-tab-stoning-adultery':  ['Stoning to Death for Adultery',       'الرجم حتى الموت'],
+    'i-tab-jihad-paradise':    ['Killing for Paradise Reward',         'القتل مقابل الجنة'],
+    'i-tab-hate-disbelievers': ['Eternal Enmity Commanded',            'الأمر بالعداء الأبدي للكفار'],
+    'i-tab-marry-nine':        ['Aisha Married at Nine',               'زواج عائشة بنت تسع سنوات'],
+    'i-tab-gay-death':         ['Death for Homosexuality',             'الإعدام على المثلية الجنسية'],
+    'i-tab-hell-children':     ['Non-Muslim Children in Hell',         'أبناء الكفار في جهنم'],
   };
   const IslTTabLabels = {
     'i-trad-all':     ['All Verses',  'جميع الآيات'],
