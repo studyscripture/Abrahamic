@@ -7360,12 +7360,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <!-- ════════════ PAGE 4: ORIGINS MAP ════════════ -->
 <div class="religion-page" id="page-map">
 <style>
-/* ═══════════════════════════════════════════
-   ORIGINS MAP — COMPLETE REDESIGN
-   Aesthetic: Ancient manuscript meets cosmic observatory
-   Dark warm parchment · Gold-saffron-crimson · Vedic depth
-═══════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Uncial+Antiqua&display=swap');
+/* ═══════════════════════════════════
+   ORIGINS MAP — FULL REDESIGN v2
+   Fixes: mobile titles, box chars, glow, clickable timeline
+   Expansions: more cards, deep Zoroastrian→Jewish connections,
+   Advaita comparison, heaven/hell chain, Hindu↔Zoro pairs
+═══════════════════════════════════ */
 
 #page-map {
   background: #050408;
@@ -7374,1220 +7374,1325 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   overflow-x: hidden;
 }
 
-/* Subtle grain overlay */
+/* Fixed background — does NOT scroll */
 #page-map::before {
   content: '';
-  position: fixed;
+  position: fixed;          /* ← fixed, not absolute */
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.022;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Ambient glow background */
+/* Removed the scrolling glow — top amber light is fixed & subtle */
 #page-map::after {
   content: '';
-  position: fixed;
-  top: -20%;
-  left: 50%;
+  position: fixed;          /* ← fixed so it stays at top */
+  top: 0; left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 600px;
-  background: radial-gradient(ellipse, rgba(200,140,40,0.055) 0%, rgba(180,80,20,0.03) 40%, transparent 70%);
+  width: 800px; height: 300px;
+  background: radial-gradient(ellipse at top, rgba(200,130,35,0.04) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
-.map-wrap {
+.mp-wrap {
   position: relative;
   z-index: 1;
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 56px 28px 100px;
+  padding: 52px 24px 100px;
+}
+
+/* ── TYPOGRAPHY BASE ── */
+.mp-wrap * {
+  word-break: normal;       /* ← prevent letter-by-letter wrapping */
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* ── HERO ── */
-.mh {
-  text-align: center;
-  margin-bottom: 72px;
-  position: relative;
-}
-.mh-om {
+.mp-hero { text-align: center; margin-bottom: 64px; }
+.mp-om {
   font-family: 'Tiro Devanagari Sans', serif;
-  font-size: 52px;
-  color: rgba(220,160,50,0.22);
-  line-height: 1;
-  margin-bottom: 20px;
-  display: block;
-  text-shadow: 0 0 60px rgba(220,160,50,0.3);
-  animation: omPulse 6s ease-in-out infinite;
+  font-size: 48px; color: rgba(220,150,45,0.2); line-height: 1;
+  margin-bottom: 18px; display: block;
+  animation: mpOm 7s ease-in-out infinite;
 }
-@keyframes omPulse {
-  0%, 100% { opacity: 0.22; text-shadow: 0 0 60px rgba(220,160,50,0.3); }
-  50% { opacity: 0.45; text-shadow: 0 0 100px rgba(220,160,50,0.5); }
+@keyframes mpOm {
+  0%,100%{opacity:.2;text-shadow:0 0 40px rgba(220,150,45,.2)}
+  50%{opacity:.4;text-shadow:0 0 80px rgba(220,150,45,.45)}
 }
-.mh-eyebrow {
-  font-family: 'Cinzel', serif;
-  font-size: 9.5px;
-  letter-spacing: 0.5em;
-  color: #5a4820;
-  text-transform: uppercase;
-  margin-bottom: 18px;
+.mp-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: .45em; color: #4a3c18; text-transform: uppercase;
+  margin-bottom: 16px;
 }
-.mh-title {
+.mp-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(20px, 3.8vw, 40px);
-  font-weight: 700;
-  color: #e8b84a;
-  line-height: 1.2;
-  letter-spacing: 0.03em;
-  margin-bottom: 6px;
-  text-shadow: 0 0 80px rgba(232,184,74,0.2);
+  font-size: clamp(19px, 3.5vw, 38px);
+  font-weight: 700; color: #e8b040; line-height: 1.2;
+  margin-bottom: 6px; text-shadow: 0 0 60px rgba(232,176,64,.18);
+  white-space: normal;      /* allow wrap but not letter-by-letter */
 }
-.mh-title span {
-  color: #c07838;
-  font-size: 0.68em;
-  display: block;
-  margin-top: 4px;
-  letter-spacing: 0.05em;
+.mp-title span { color: #c07030; font-size: .65em; display: block; margin-top: 6px; }
+.mp-sub {
+  font-family: 'EB Garamond', serif; font-size: clamp(14px,1.8vw,17px);
+  color: #7a6838; font-style: italic; margin-top: 12px;
 }
-.mh-sub {
-  font-family: 'Crimson Pro', serif;
-  font-size: clamp(14px, 2vw, 18px);
-  color: #7a6840;
-  font-style: italic;
-  margin-top: 14px;
-  letter-spacing: 0.04em;
+.mp-rule {
+  display: flex; align-items: center; gap: 16px;
+  margin: 24px auto 0; max-width: 400px;
 }
-.mh-rule {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: 28px auto 0;
-  max-width: 440px;
+.mp-rule::before,.mp-rule::after {
+  content:''; flex:1; height:1px;
+  background: linear-gradient(90deg,transparent,rgba(220,150,45,.28),transparent);
 }
-.mh-rule::before, .mh-rule::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(220,160,50,0.3), transparent);
-}
-.mh-rule-g {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  color: #5a4820;
-  letter-spacing: 0.3em;
-}
+.mp-rule-g { font-family:'Cinzel',serif; font-size:11px; color:#4a3c18; letter-spacing:.28em; }
 
-/* ── TIMELINE ── */
-.m-timeline {
-  position: relative;
-  margin-bottom: 80px;
-  padding: 0 0 40px;
+/* ══ TIMELINE ══ */
+.mp-tl-wrap { margin-bottom: 72px; }
+.mp-tl-scroll { overflow-x: auto; padding-bottom: 8px; }
+.mp-tl-track {
+  display: flex; align-items: flex-start;
+  min-width: 700px; position: relative; padding: 0 20px;
 }
-.m-timeline-track {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-}
-/* Horizontal spine */
-.m-timeline-track::before {
-  content: '';
-  position: absolute;
-  top: 38px;
-  left: 5%;
-  right: 5%;
-  height: 2px;
+/* spine */
+.mp-tl-track::before {
+  content:''; position:absolute;
+  top: 21px; left: 5%; right: 5%; height:2px;
   background: linear-gradient(90deg,
-    rgba(200,140,40,0.8) 0%,
-    rgba(200,140,40,0.6) 25%,
-    rgba(80,160,80,0.6) 50%,
-    rgba(80,120,200,0.6) 75%,
-    rgba(160,80,200,0.6) 100%
+    rgba(200,130,40,.75) 0%,
+    rgba(200,130,40,.55) 22%,
+    rgba(80,180,80,.55) 44%,
+    rgba(70,120,210,.55) 66%,
+    rgba(160,80,210,.55) 88%,
+    rgba(200,60,60,.45) 100%
   );
 }
-.m-tl-node {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  cursor: default;
+.mp-tl-node {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; position:relative; cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
 }
-.m-tl-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid;
-  background: #050408;
-  position: relative;
-  z-index: 2;
-  margin-bottom: 14px;
-  transition: transform 0.3s, box-shadow 0.3s;
+.mp-tl-dot {
+  width:14px; height:14px; border-radius:50%; border:2px solid;
+  background:#050408; position:relative; z-index:2; margin-bottom:12px;
+  transition:transform .25s, box-shadow .25s;
 }
-.m-tl-node:hover .m-tl-dot { transform: scale(1.5); }
-.m-tl-node.n-vedic .m-tl-dot { border-color: #c88c3c; box-shadow: 0 0 12px rgba(200,140,60,0.4); }
-.m-tl-node.n-vedic:hover .m-tl-dot { box-shadow: 0 0 24px rgba(200,140,60,0.7); }
-.m-tl-node.n-zoro .m-tl-dot { border-color: #60c040; box-shadow: 0 0 12px rgba(96,192,64,0.4); }
-.m-tl-node.n-zoro:hover .m-tl-dot { box-shadow: 0 0 24px rgba(96,192,64,0.7); }
-.m-tl-node.n-contact .m-tl-dot { border-color: #5090e0; box-shadow: 0 0 12px rgba(80,144,224,0.4); }
-.m-tl-node.n-contact:hover .m-tl-dot { box-shadow: 0 0 24px rgba(80,144,224,0.7); }
-.m-tl-node.n-second .m-tl-dot { border-color: #a060e0; box-shadow: 0 0 12px rgba(160,96,224,0.4); }
-.m-tl-node.n-second:hover .m-tl-dot { box-shadow: 0 0 24px rgba(160,96,224,0.7); }
-.m-tl-node.n-xtn .m-tl-dot { border-color: #c04040; box-shadow: 0 0 12px rgba(192,64,64,0.4); }
-.m-tl-node.n-isl .m-tl-dot { border-color: #40b880; box-shadow: 0 0 12px rgba(64,184,128,0.4); }
-.m-tl-date {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-align: center;
-  margin-bottom: 5px;
+.mp-tl-node:hover .mp-tl-dot { transform:scale(1.6); }
+/* Color classes */
+.tn-v  .mp-tl-dot{border-color:#c88c3c;box-shadow:0 0 10px rgba(200,140,60,.4)}
+.tn-v:hover  .mp-tl-dot{box-shadow:0 0 22px rgba(200,140,60,.7)}
+.tn-z  .mp-tl-dot{border-color:#50c035;box-shadow:0 0 10px rgba(80,192,53,.4)}
+.tn-z:hover  .mp-tl-dot{box-shadow:0 0 22px rgba(80,192,53,.7)}
+.tn-c  .mp-tl-dot{border-color:#4080d8;box-shadow:0 0 10px rgba(64,128,216,.4)}
+.tn-c:hover  .mp-tl-dot{box-shadow:0 0 22px rgba(64,128,216,.7)}
+.tn-s  .mp-tl-dot{border-color:#9050d8;box-shadow:0 0 10px rgba(144,80,216,.4)}
+.tn-s:hover  .mp-tl-dot{box-shadow:0 0 22px rgba(144,80,216,.7)}
+.tn-x  .mp-tl-dot{border-color:#c03838;box-shadow:0 0 10px rgba(192,56,56,.4)}
+.tn-x:hover  .mp-tl-dot{box-shadow:0 0 22px rgba(192,56,56,.7)}
+.tn-i  .mp-tl-dot{border-color:#30b870;box-shadow:0 0 10px rgba(48,184,112,.4)}
+.tn-i:hover  .mp-tl-dot{box-shadow:0 0 22px rgba(48,184,112,.7)}
+.mp-tl-date {
+  font-family:'Cinzel',serif; font-size:8.5px; letter-spacing:.15em;
+  text-align:center; margin-bottom:4px; white-space:nowrap;
 }
-.m-tl-node.n-vedic .m-tl-date { color: #c88c3c; }
-.m-tl-node.n-zoro .m-tl-date { color: #60c040; }
-.m-tl-node.n-contact .m-tl-date { color: #5090e0; }
-.m-tl-node.n-second .m-tl-date { color: #a060e0; }
-.m-tl-node.n-xtn .m-tl-date { color: #c04040; }
-.m-tl-node.n-isl .m-tl-date { color: #40b880; }
-.m-tl-label {
-  font-family: 'Crimson Pro', serif;
-  font-size: 11.5px;
-  color: #5a5068;
-  text-align: center;
-  line-height: 1.4;
-  max-width: 90px;
+.tn-v .mp-tl-date{color:#c88c3c} .tn-z .mp-tl-date{color:#50c035}
+.tn-c .mp-tl-date{color:#4080d8} .tn-s .mp-tl-date{color:#9050d8}
+.tn-x .mp-tl-date{color:#c03838} .tn-i .mp-tl-date{color:#30b870}
+.mp-tl-label {
+  font-family:'EB Garamond',serif; font-size:11px; color:#524860;
+  text-align:center; line-height:1.35; max-width:84px; white-space:normal;
 }
+
+/* ── TIMELINE MODAL ── */
+.mp-tl-modal-bg {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.78); backdrop-filter:blur(6px);
+  z-index:9000; align-items:center; justify-content:center;
+  padding:20px;
+}
+.mp-tl-modal-bg.open { display:flex; }
+.mp-tl-modal {
+  background:#0b0910; border:1px solid rgba(255,255,255,.1);
+  border-radius:10px; max-width:680px; width:100%;
+  max-height:88vh; overflow-y:auto; position:relative;
+  box-shadow:0 24px 80px rgba(0,0,0,.7);
+}
+.mp-tl-modal-top {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px 24px 16px; border-bottom:1px solid rgba(255,255,255,.07);
+  position:sticky; top:0; background:#0b0910; z-index:1;
+}
+.mp-tl-modal-title {
+  font-family:'Cinzel',serif; font-size:13px; font-weight:600;
+  letter-spacing:.12em;
+}
+.mp-tl-modal-close {
+  background:none; border:none; color:rgba(255,255,255,.35);
+  font-size:20px; cursor:pointer; padding:4px 8px;
+  transition:color .2s; line-height:1;
+}
+.mp-tl-modal-close:hover{color:rgba(255,255,255,.7)}
+.mp-tl-modal-body { padding:20px 24px 28px; }
+.mp-tl-modal-date {
+  font-family:'Cinzel',serif; font-size:9px; letter-spacing:.3em;
+  text-transform:uppercase; margin-bottom:14px;
+}
+.mp-tl-modal-desc {
+  font-family:'EB Garamond',serif; font-size:15.5px; color:#7a7090;
+  line-height:1.72; margin-bottom:16px;
+}
+.mp-tl-modal-desc strong{color:#a09080}
+.mp-tl-modal-bullets { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.mp-tl-modal-bullets li {
+  font-family:'EB Garamond',serif; font-size:14.5px; color:#686078;
+  padding-left:16px; position:relative; line-height:1.6;
+}
+.mp-tl-modal-bullets li::before{
+  content:'◆'; position:absolute; left:0; top:0;
+  font-size:7px; color:rgba(200,140,50,.5); margin-top:5px;
+}
+.mp-tl-modal-bullets li strong{color:#9888a8}
 
 /* ── SECTION HEADERS ── */
-.m-sec {
-  margin-bottom: 64px;
+.mp-sec { margin-bottom: 60px; }
+.mp-sec-head {
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:28px; padding-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  flex-wrap:wrap;
 }
-.m-sec-head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+.mp-sec-num {
+  font-family:'Cinzel',serif; font-size:8.5px; letter-spacing:.35em;
+  color:#3e3448; text-transform:uppercase; flex-shrink:0; white-space:nowrap;
 }
-.m-sec-num {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.35em;
-  color: #4a4050;
-  text-transform: uppercase;
-  white-space: nowrap;
-  flex-shrink: 0;
+.mp-sec-title {
+  font-family:'Cinzel',serif;
+  font-size:clamp(12px,1.9vw,17px); font-weight:600;
+  letter-spacing:.05em; flex-shrink:1;
+  white-space:normal; word-break:normal;
 }
-.m-sec-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(13px, 2vw, 18px);
-  font-weight: 600;
-  letter-spacing: 0.05em;
+.mp-sec-title.tg{color:#e0a035} .mp-sec-title.tf{color:#d85828}
+.mp-sec-title.tb{color:#5888d0} .mp-sec-title.tp{color:#8850c8}
+.mp-sec-line{flex:1;height:1px;min-width:20px}
+.mp-sec-line.g{background:linear-gradient(90deg,rgba(224,160,53,.35),transparent)}
+.mp-sec-line.f{background:linear-gradient(90deg,rgba(216,88,40,.35),transparent)}
+.mp-sec-line.b{background:linear-gradient(90deg,rgba(88,136,208,.35),transparent)}
+.mp-sec-line.p{background:linear-gradient(90deg,rgba(136,80,200,.35),transparent)}
+.mp-sec-badge {
+  font-family:'Cinzel',serif; font-size:7.5px; letter-spacing:.18em;
+  text-transform:uppercase; padding:4px 12px; border-radius:2px;
+  white-space:normal; flex-shrink:0; text-align:center;
 }
-.m-sec-title.t-gold { color: #e8a840; }
-.m-sec-title.t-flame { color: #e06030; }
-.m-sec-title.t-blue { color: #6090d8; }
-.m-sec-title.t-purple { color: #9060d0; }
-.m-sec-line { flex: 1; height: 1px; }
-.m-sec-line.g { background: linear-gradient(90deg, rgba(232,168,64,0.35), transparent); }
-.m-sec-line.f { background: linear-gradient(90deg, rgba(224,96,48,0.35), transparent); }
-.m-sec-line.b { background: linear-gradient(90deg, rgba(96,144,216,0.35), transparent); }
-.m-sec-line.p { background: linear-gradient(90deg, rgba(144,96,208,0.35), transparent); }
-.m-sec-badge {
-  font-family: 'Cinzel', serif;
-  font-size: 8px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 4px 14px;
-  border-radius: 2px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.m-sec-badge.g { background: rgba(232,168,64,0.1); border: 1px solid rgba(232,168,64,0.28); color: #e8a840; }
-.m-sec-badge.f { background: rgba(224,96,48,0.1); border: 1px solid rgba(224,96,48,0.28); color: #e06030; }
-.m-sec-badge.b { background: rgba(96,144,216,0.1); border: 1px solid rgba(96,144,216,0.28); color: #6090d8; }
-.m-sec-badge.p { background: rgba(144,96,208,0.1); border: 1px solid rgba(144,96,208,0.28); color: #9060d0; }
+.mp-sec-badge.g{background:rgba(224,160,53,.1);border:1px solid rgba(224,160,53,.28);color:#e0a035}
+.mp-sec-badge.f{background:rgba(216,88,40,.1);border:1px solid rgba(216,88,40,.28);color:#d85828}
+.mp-sec-badge.b{background:rgba(88,136,208,.1);border:1px solid rgba(88,136,208,.28);color:#5888d0}
+.mp-sec-badge.p{background:rgba(136,80,200,.1);border:1px solid rgba(136,80,200,.28);color:#8850c8}
 
-/* ── CONTEXT BOX ── */
-.m-ctx {
-  border-radius: 6px;
-  padding: 22px 26px;
-  margin-bottom: 28px;
-  position: relative;
-  overflow: hidden;
+/* ── CONTEXT BOXES ── */
+.mp-ctx {
+  border-radius:6px; padding:20px 24px; margin-bottom:24px;
 }
-.m-ctx.g { background: rgba(200,140,40,0.06); border: 1px solid rgba(200,140,40,0.18); }
-.m-ctx.f { background: rgba(200,80,30,0.06); border: 1px solid rgba(200,80,30,0.18); }
-.m-ctx.b { background: rgba(60,100,200,0.06); border: 1px solid rgba(60,100,200,0.18); }
-.m-ctx-label {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
+.mp-ctx.g{background:rgba(200,130,35,.06);border:1px solid rgba(200,130,35,.18)}
+.mp-ctx.f{background:rgba(200,75,28,.06);border:1px solid rgba(200,75,28,.18)}
+.mp-ctx.b{background:rgba(55,95,200,.06);border:1px solid rgba(55,95,200,.18)}
+.mp-ctx-lbl {
+  font-family:'Cinzel',serif; font-size:8.5px; letter-spacing:.3em;
+  text-transform:uppercase; margin-bottom:9px;
 }
-.m-ctx.g .m-ctx-label { color: #c88a30; }
-.m-ctx.f .m-ctx-label { color: #d06030; }
-.m-ctx.b .m-ctx-label { color: #5080c8; }
-.m-ctx-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: 16px;
-  color: #7a7090;
-  line-height: 1.7;
+.mp-ctx.g .mp-ctx-lbl{color:#b87a28}
+.mp-ctx.f .mp-ctx-lbl{color:#c06028}
+.mp-ctx.b .mp-ctx-lbl{color:#4878b8}
+.mp-ctx-txt {
+  font-family:'EB Garamond',serif; font-size:15.5px;
+  color:#787088; line-height:1.7;
 }
-.m-ctx-text strong { color: #a09080; font-weight: 600; }
+.mp-ctx-txt strong{color:#9a8870}
 
 /* ── CORRESPONDENCE PAIRS ── */
-.m-pairs {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+.mp-pairs { display:grid; grid-template-columns:1fr; gap:10px; }
+.mp-pair {
+  display:grid; grid-template-columns:1fr 50px 1fr;
+  align-items:stretch; border-radius:6px; overflow:hidden;
+  transition:transform .2s;
 }
-.m-pair {
-  display: grid;
-  grid-template-columns: 1fr 56px 1fr;
-  align-items: stretch;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: transform 0.2s;
+.mp-pair:hover{transform:translateY(-1px)}
+.mp-pl,.mp-pr {
+  padding:14px 18px;
+  display:flex; flex-direction:column; justify-content:center; gap:4px;
 }
-.m-pair:hover { transform: translateY(-1px); }
-.m-pl, .m-pr {
-  padding: 16px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
+.mp-pl{background:rgba(175,115,35,.09);border:1px solid rgba(175,115,35,.2);border-right:none;border-radius:6px 0 0 6px}
+.mp-pr{border:1px solid rgba(75,145,75,.2);border-left:none;border-radius:0 6px 6px 0}
+.mp-pr.zo{background:rgba(55,130,55,.07)}
+.mp-pr.ab{background:rgba(55,95,185,.07);border-color:rgba(75,115,210,.2)}
+.mp-pmid{
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(255,255,255,.022);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  font-size:18px; color:rgba(255,255,255,.17); font-weight:300;
 }
-.m-pl { background: rgba(180,120,40,0.09); border: 1px solid rgba(180,120,40,0.2); border-right: none; border-radius: 6px 0 0 6px; }
-.m-pr { border: 1px solid rgba(80,150,80,0.2); border-left: none; border-radius: 0 6px 6px 0; }
-.m-pr.zo { background: rgba(60,140,60,0.07); }
-.m-pr.ab { background: rgba(60,100,190,0.07); border-color: rgba(80,120,210,0.2); }
-.m-pmid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.025);
-  border-top: 1px solid rgba(255,255,255,0.07);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  font-size: 20px;
-  color: rgba(255,255,255,0.18);
-  font-weight: 300;
+.mp-src {
+  font-family:'Cinzel',serif; font-size:7.5px; letter-spacing:.22em;
+  text-transform:uppercase; margin-bottom:3px;
 }
-.m-p-src {
-  font-family: 'Cinzel', serif;
-  font-size: 8px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: 3px;
+.mp-pl .mp-src{color:#b87a28}
+.mp-pr.zo .mp-src{color:#50b038}
+.mp-pr.ab .mp-src{color:#4878b8}
+.mp-term {
+  font-family:'Cinzel',serif; font-size:15px; font-weight:600;
+  line-height:1.2; margin-bottom:4px;
 }
-.m-pl .m-p-src { color: #c88c38; }
-.m-pr.zo .m-p-src { color: #60b840; }
-.m-pr.ab .m-p-src { color: #5080c8; }
-.m-p-term {
-  font-family: 'Cinzel', serif;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 4px;
-  line-height: 1.2;
+.mp-pl .mp-term{color:#e0a038}
+.mp-pr.zo .mp-term{color:#70c038}
+.mp-pr.ab .mp-term{color:#6898d8}
+.mp-detail {
+  font-family:'EB Garamond',serif; font-size:13px; color:#5c5470; line-height:1.55;
 }
-.m-pl .m-p-term { color: #e8a848; }
-.m-pr.zo .m-p-term { color: #80cc48; }
-.m-pr.ab .m-p-term { color: #70a0e0; }
-.m-p-detail {
-  font-family: 'Crimson Pro', serif;
-  font-size: 13.5px;
-  color: #606078;
-  line-height: 1.55;
+.mp-tag {
+  display:inline-block; font-family:'Cinzel',serif; font-size:7px;
+  letter-spacing:.14em; text-transform:uppercase; padding:2px 7px;
+  border-radius:2px; margin-top:5px; align-self:flex-start; white-space:nowrap;
 }
-.m-p-tag {
-  display: inline-block;
-  font-family: 'Cinzel', serif;
-  font-size: 7.5px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 2px;
-  margin-top: 5px;
-  align-self: flex-start;
-}
-.m-p-tag.inv { background: rgba(200,50,50,0.14); border: 1px solid rgba(200,50,50,0.28); color: #d06060; }
-.m-p-tag.shr { background: rgba(80,160,80,0.12); border: 1px solid rgba(80,160,80,0.25); color: #60c060; }
-.m-p-tag.cog { background: rgba(220,180,50,0.12); border: 1px solid rgba(220,180,50,0.25); color: #d8b840; }
-.m-p-tag.ada { background: rgba(80,120,220,0.12); border: 1px solid rgba(80,120,220,0.25); color: #80a8e8; }
-.m-p-tag.dim { background: rgba(180,80,220,0.12); border: 1px solid rgba(180,80,220,0.25); color: #c090e0; }
+.mp-tag.inv{background:rgba(190,48,48,.14);border:1px solid rgba(190,48,48,.28);color:#c85858}
+.mp-tag.shr{background:rgba(75,155,75,.12);border:1px solid rgba(75,155,75,.25);color:#55b050}
+.mp-tag.cog{background:rgba(210,170,48,.12);border:1px solid rgba(210,170,48,.25);color:#c8a835}
+.mp-tag.ada{background:rgba(75,115,215,.12);border:1px solid rgba(75,115,215,.25);color:#7898e0}
+.mp-tag.dim{background:rgba(170,78,215,.12);border:1px solid rgba(170,78,215,.25);color:#b888e0}
+.mp-tag.ety{background:rgba(60,175,175,.12);border:1px solid rgba(60,175,175,.25);color:#40c8c8}
 
-/* ── ADVAITA FEATURE BLOCK ── */
-.m-adv-block {
-  background: linear-gradient(135deg, rgba(180,120,30,0.07) 0%, rgba(100,60,160,0.07) 100%);
-  border: 1px solid rgba(200,150,50,0.2);
-  border-radius: 8px;
-  padding: 32px;
-  margin: 40px 0;
-  position: relative;
-  overflow: hidden;
+/* ── ADVAITA COMPARISON BLOCK ── */
+.mp-adv {
+  border:1px solid rgba(200,145,45,.2); border-radius:8px;
+  padding:28px 30px; margin:32px 0; position:relative; overflow:hidden;
 }
-.m-adv-block::before {
-  content: 'ॐ';
-  font-family: 'Tiro Devanagari Sans', serif;
-  font-size: 200px;
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(200,150,50,0.04);
-  line-height: 1;
-  pointer-events: none;
+.mp-adv::before {
+  content:'ॐ'; font-family:'Tiro Devanagari Sans',serif; font-size:180px;
+  position:absolute; right:-10px; top:50%; transform:translateY(-50%);
+  color:rgba(200,145,45,.035); line-height:1; pointer-events:none;
 }
-.m-adv-grid {
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  gap: 0 28px;
-  align-items: start;
+.mp-adv-lbl {
+  font-family:'Cinzel',serif; font-size:8.5px; letter-spacing:.32em;
+  text-transform:uppercase; color:#b07825; margin-bottom:10px;
 }
-.m-adv-div { background: rgba(200,150,50,0.15); align-self: stretch; }
-.m-adv-label {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: #c88c30;
-  margin-bottom: 12px;
+.mp-adv-title {
+  font-family:'Cinzel',serif; font-size:17px; font-weight:600;
+  color:#e0a038; margin-bottom:6px;
 }
-.m-adv-concept {
-  font-family: 'Cinzel', serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #e8a840;
-  margin-bottom: 6px;
+.mp-adv-sk {
+  font-family:'Tiro Devanagari Sans',serif; font-size:15px;
+  color:rgba(200,145,45,.45); margin-bottom:14px;
 }
-.m-adv-sanskrit {
-  font-family: 'Tiro Devanagari Sans', serif;
-  font-size: 16px;
-  color: rgba(200,150,50,0.55);
-  margin-bottom: 10px;
+.mp-adv-body {
+  font-family:'EB Garamond',serif; font-size:15.5px;
+  color:#787090; line-height:1.72;
 }
-.m-adv-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  color: #7a7090;
-  line-height: 1.7;
-}
-.m-adv-text strong { color: #9a8a70; }
-.m-adv-mahavakya {
-  font-family: 'Crimson Pro', serif;
-  font-size: 14px;
-  font-style: italic;
-  color: #a08060;
-  background: rgba(200,150,50,0.07);
-  border-left: 2px solid rgba(200,150,50,0.35);
-  padding: 10px 16px;
-  margin-top: 12px;
-  border-radius: 0 4px 4px 0;
+.mp-adv-body strong{color:#988870}
+.mp-adv-mv {
+  font-family:'EB Garamond',serif; font-size:14px; font-style:italic;
+  color:#907850; background:rgba(200,145,45,.07);
+  border-left:2px solid rgba(200,145,45,.35);
+  padding:10px 14px; margin-top:14px; border-radius:0 4px 4px 0;
 }
 
-/* ── IMPACT CARDS GRID ── */
-.m-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 14px;
+/* Three-column comparison tables */
+.mp-comp-table {
+  border:1px solid rgba(255,255,255,.07); border-radius:7px;
+  overflow:hidden; margin:28px 0;
 }
-.m-card {
-  background: rgba(255,255,255,0.022);
-  border-radius: 7px;
-  padding: 20px 22px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+.mp-comp-header {
+  display:grid; grid-template-columns:140px 1fr 1fr 1fr;
+  background:rgba(255,255,255,.03);
+  border-bottom:1px solid rgba(255,255,255,.07);
 }
-.m-card:hover { transform: translateY(-2px); background: rgba(255,255,255,0.035); }
-.m-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--card-accent, rgba(255,255,255,0.1));
-  transition: opacity 0.3s;
+.mp-comp-h {
+  padding:12px 16px; font-family:'Cinzel',serif;
+  font-size:9px; letter-spacing:.22em; text-transform:uppercase;
+  text-align:center; white-space:normal; word-break:normal;
 }
-.m-card:hover::before { opacity: 1.5; }
-.m-card.c-gold { --card-accent: linear-gradient(90deg, transparent, rgba(232,168,64,0.6), transparent); }
-.m-card.c-gold:hover { border-color: rgba(232,168,64,0.28); }
-.m-card.c-flame { --card-accent: linear-gradient(90deg, transparent, rgba(220,100,40,0.6), transparent); }
-.m-card.c-flame:hover { border-color: rgba(220,100,40,0.28); }
-.m-card.c-blue { --card-accent: linear-gradient(90deg, transparent, rgba(80,140,220,0.6), transparent); }
-.m-card.c-blue:hover { border-color: rgba(80,140,220,0.28); }
-.m-card.c-purple { --card-accent: linear-gradient(90deg, transparent, rgba(150,80,220,0.6), transparent); }
-.m-card.c-purple:hover { border-color: rgba(150,80,220,0.28); }
-.m-card.c-green { --card-accent: linear-gradient(90deg, transparent, rgba(60,180,100,0.6), transparent); }
-.m-card.c-green:hover { border-color: rgba(60,180,100,0.28); }
-.m-c-icon { font-size: 22px; margin-bottom: 10px; line-height: 1; }
-.m-c-title {
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  margin-bottom: 7px;
+.mp-comp-h.hv{color:#c88c30} .mp-comp-h.hz{color:#40b030}
+.mp-comp-h.ha{color:#4878b8} .mp-comp-h.hd{color:#606070; text-align:left}
+.mp-comp-row {
+  display:grid; grid-template-columns:140px 1fr 1fr 1fr;
+  border-bottom:1px solid rgba(255,255,255,.04);
 }
-.m-card.c-gold .m-c-title { color: #e0a838; }
-.m-card.c-flame .m-c-title { color: #d86038; }
-.m-card.c-blue .m-c-title { color: #6090d0; }
-.m-card.c-purple .m-c-title { color: #9060c8; }
-.m-card.c-green .m-c-title { color: #40b870; }
-.m-c-origin {
-  font-family: 'Cinzel', serif;
-  font-size: 8.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #4a4055;
-  margin-bottom: 8px;
+.mp-comp-row:last-child{border-bottom:none}
+.mp-comp-row:hover{background:rgba(255,255,255,.015)}
+.mp-comp-cell {
+  padding:11px 16px; font-family:'EB Garamond',serif;
+  font-size:13.5px; line-height:1.55; vertical-align:top;
+  border-right:1px solid rgba(255,255,255,.04);
 }
-.m-c-arrow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 9px 0;
-  opacity: 0.5;
+.mp-comp-cell:last-child{border-right:none}
+.mp-comp-cell.dim-lbl{
+  font-family:'Cinzel',serif; font-size:10px; letter-spacing:.12em;
+  color:#4e4458; text-transform:uppercase; background:rgba(255,255,255,.02);
 }
-.m-c-arrow-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
-.m-c-arrow-head { font-size: 9px; color: rgba(255,255,255,0.3); }
-.m-c-body {
-  font-family: 'Crimson Pro', serif;
-  font-size: 14px;
-  color: #706880;
-  line-height: 1.6;
+.mp-comp-cell.cv{color:#a08838} .mp-comp-cell.cz{color:#609838}
+.mp-comp-cell.ca{color:#6888c8}
+
+/* ── IMPACT CARDS ── */
+.mp-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:13px; }
+.mp-card {
+  background:rgba(255,255,255,.021); border-radius:7px;
+  padding:19px 21px; position:relative; overflow:hidden;
+  border:1px solid rgba(255,255,255,.06);
+  transition:background .25s, border-color .25s, transform .2s;
 }
-.m-c-note {
-  font-family: 'Crimson Pro', serif;
-  font-size: 12px;
-  font-style: italic;
-  color: #4a4458;
-  margin-top: 9px;
-  border-left: 1px solid rgba(255,255,255,0.07);
-  padding-left: 10px;
+.mp-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.033)}
+.mp-card::before {
+  content:''; position:absolute; top:0;left:0;right:0; height:2px;
+  opacity:.7; transition:opacity .3s;
+}
+.mp-card:hover::before{opacity:1}
+.mp-card.cg::before{background:linear-gradient(90deg,transparent,rgba(224,160,53,.6),transparent)}
+.mp-card.cf::before{background:linear-gradient(90deg,transparent,rgba(210,90,35,.6),transparent)}
+.mp-card.cb::before{background:linear-gradient(90deg,transparent,rgba(75,130,215,.6),transparent)}
+.mp-card.cp::before{background:linear-gradient(90deg,transparent,rgba(145,75,215,.6),transparent)}
+.mp-card.cn::before{background:linear-gradient(90deg,transparent,rgba(55,175,95,.6),transparent)}
+.mp-card.co::before{background:linear-gradient(90deg,transparent,rgba(210,140,35,.6),transparent)}
+.mp-card.cg:hover{border-color:rgba(224,160,53,.27)}
+.mp-card.cf:hover{border-color:rgba(210,90,35,.27)}
+.mp-card.cb:hover{border-color:rgba(75,130,215,.27)}
+.mp-card.cp:hover{border-color:rgba(145,75,215,.27)}
+.mp-card.cn:hover{border-color:rgba(55,175,95,.27)}
+.mp-card.co:hover{border-color:rgba(210,140,35,.27)}
+.mp-c-icon{font-size:21px;margin-bottom:9px;line-height:1}
+.mp-c-title {
+  font-family:'Cinzel',serif; font-size:11.5px; font-weight:600;
+  letter-spacing:.07em; margin-bottom:6px;
+  white-space:normal; word-break:normal;   /* ← fix vertical letters */
+}
+.mp-card.cg .mp-c-title{color:#d89830}
+.mp-card.cf .mp-c-title{color:#c85828}
+.mp-card.cb .mp-c-title{color:#5880c8}
+.mp-card.cp .mp-c-title{color:#8850c0}
+.mp-card.cn .mp-c-title{color:#35a858}
+.mp-card.co .mp-c-title{color:#c89028}
+.mp-c-origin {
+  font-family:'Cinzel',serif; font-size:8px; letter-spacing:.18em;
+  text-transform:uppercase; color:#3e3448; margin-bottom:7px;
+  white-space:normal; word-break:normal;
+}
+.mp-c-arrow{display:flex;align-items:center;gap:7px;margin:8px 0;opacity:.45}
+.mp-c-aline{flex:1;height:1px;background:rgba(255,255,255,.09)}
+.mp-c-ahead{font-size:9px;color:rgba(255,255,255,.28)}
+.mp-c-body {
+  font-family:'EB Garamond',serif; font-size:13.5px;
+  color:#686078; line-height:1.62;
+}
+.mp-c-note {
+  font-family:'EB Garamond',serif; font-size:11.5px; font-style:italic;
+  color:#443a54; margin-top:8px; border-left:1px solid rgba(255,255,255,.06);
+  padding-left:9px;
 }
 
-/* ── KARMA VS SIN SPECIAL BLOCK ── */
-.m-karma-block {
-  border: 1px solid rgba(200,150,50,0.22);
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 32px 0;
+/* ── KARMA TABLE ── */
+.mp-karma {
+  border:1px solid rgba(200,145,45,.22); border-radius:8px; overflow:hidden; margin:28px 0;
 }
-.m-karma-head {
-  background: rgba(200,150,50,0.09);
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  border-bottom: 1px solid rgba(200,150,50,0.15);
+.mp-karma-head {
+  background:rgba(200,145,45,.08); padding:14px 22px;
+  display:flex; align-items:center; gap:12px;
+  border-bottom:1px solid rgba(200,145,45,.14);
 }
-.m-karma-title {
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: #e8a840;
-  letter-spacing: 0.1em;
+.mp-karma-title{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:#e0a038;letter-spacing:.08em}
+.mp-karma-sub{font-family:'EB Garamond',serif;font-size:13px;color:#7a6838;font-style:italic}
+.mp-karma-cols{display:grid;grid-template-columns:1fr 1fr}
+.mp-karma-col{padding:18px 22px}
+.mp-karma-col:first-child{border-right:1px solid rgba(255,255,255,.05);background:rgba(200,145,45,.04)}
+.mp-karma-col:last-child{background:rgba(160,55,55,.04)}
+.mp-karma-col-h{
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:.26em;
+  text-transform:uppercase;margin-bottom:9px;
 }
-.m-karma-sub {
-  font-family: 'Crimson Pro', serif;
-  font-size: 13px;
-  color: #7a6840;
-  font-style: italic;
+.mp-karma-col:first-child .mp-karma-col-h{color:#c08830}
+.mp-karma-col:last-child .mp-karma-col-h{color:#b05555}
+.mp-karma-col-txt{font-family:'EB Garamond',serif;font-size:14.5px;color:#706880;line-height:1.65}
+.mp-karma-col-txt strong{color:#9a8070;font-weight:600}
+.mp-karma-rows{border-top:1px solid rgba(255,255,255,.05)}
+.mp-karma-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.04)}
+.mp-karma-row:last-child{border-bottom:none}
+.mp-karma-cell{padding:10px 22px;font-family:'EB Garamond',serif;font-size:14px;color:#686078;line-height:1.5}
+.mp-karma-cell:first-child{border-right:1px solid rgba(255,255,255,.04);color:#a09068}
+.mp-karma-cell strong{color:#c09848;font-weight:600}
+
+/* ── HEAVEN/HELL CHAIN ── */
+.mp-chain {
+  display:flex; gap:0; align-items:stretch; margin:28px 0;
+  border-radius:7px; overflow:hidden; border:1px solid rgba(255,255,255,.07);
 }
-.m-karma-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.mp-chain-node {
+  flex:1; padding:18px 16px; display:flex; flex-direction:column;
+  gap:8px; border-right:1px solid rgba(255,255,255,.05); min-width:0;
 }
-.m-karma-col {
-  padding: 22px 24px;
+.mp-chain-node:last-child{border-right:none}
+.mp-chain-node.cn-v{background:linear-gradient(135deg,rgba(180,110,25,.09),rgba(180,110,25,.04))}
+.mp-chain-node.cn-z{background:linear-gradient(135deg,rgba(45,140,45,.08),rgba(45,140,45,.03))}
+.mp-chain-node.cn-a{background:linear-gradient(135deg,rgba(45,85,190,.08),rgba(45,85,190,.03))}
+.mp-chain-h {
+  font-family:'Cinzel',serif; font-size:9px; letter-spacing:.22em;
+  text-transform:uppercase; margin-bottom:4px;
 }
-.m-karma-col:first-child {
-  border-right: 1px solid rgba(255,255,255,0.05);
-  background: rgba(200,150,50,0.04);
+.cn-v .mp-chain-h{color:#b87828} .cn-z .mp-chain-h{color:#38a828} .cn-a .mp-chain-h{color:#4068b8}
+.mp-chain-concept{
+  font-family:'Cinzel',serif;font-size:13px;font-weight:600;line-height:1.2;
 }
-.m-karma-col:last-child {
-  background: rgba(160,60,60,0.04);
+.cn-v .mp-chain-concept{color:#e0a038}
+.cn-z .mp-chain-concept{color:#60c038}
+.cn-a .mp-chain-concept{color:#6090d8}
+.mp-chain-detail{font-family:'EB Garamond',serif;font-size:13px;color:#5c5470;line-height:1.55}
+.mp-chain-arrow {
+  flex-shrink:0; width:24px; display:flex; align-items:center;
+  justify-content:center; font-size:18px; color:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.02);
 }
-.m-karma-col-title {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.m-karma-col:first-child .m-karma-col-title { color: #c88c38; }
-.m-karma-col:last-child .m-karma-col-title { color: #c06060; }
-.m-karma-col-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: 14.5px;
-  color: #706880;
-  line-height: 1.65;
-}
-.m-karma-col-text strong { color: #907870; font-weight: 600; }
-.m-karma-rows {
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-.m-karma-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-}
-.m-karma-row:last-child { border-bottom: none; }
-.m-karma-cell {
-  padding: 12px 24px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 14px;
-  color: #706880;
-  line-height: 1.5;
-}
-.m-karma-cell:first-child {
-  border-right: 1px solid rgba(255,255,255,0.04);
-  color: #a09070;
-}
-.m-karma-cell strong { color: #c8a860; font-weight: 600; }
 
 /* ── BIG QUOTE ── */
-.m-quote {
-  text-align: center;
-  padding: 48px 28px;
-  margin: 48px 0;
-  border-top: 1px solid rgba(255,255,255,0.04);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  position: relative;
+.mp-quote {
+  text-align:center; padding:44px 24px; margin:44px 0;
+  border-top:1px solid rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.04);
+  position:relative;
 }
-.m-quote::before {
-  content: '"';
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 160px;
-  color: rgba(230,170,60,0.04);
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  line-height: 1;
-  pointer-events: none;
+.mp-quote::before {
+  content:'"'; font-family:'Cinzel Decorative',serif; font-size:140px;
+  color:rgba(220,160,50,.04); position:absolute; top:-10px; left:12px;
+  line-height:1; pointer-events:none;
 }
-.m-quote-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: clamp(16px, 2.4vw, 21px);
-  color: #908090;
-  font-style: italic;
-  line-height: 1.75;
-  max-width: 800px;
-  margin: 0 auto 18px;
-  position: relative;
-  z-index: 1;
+.mp-quote-txt {
+  font-family:'EB Garamond',serif; font-size:clamp(15px,2.2vw,20px);
+  color:#888098; font-style:italic; line-height:1.75;
+  max-width:760px; margin:0 auto 16px; position:relative; z-index:1;
 }
-.m-quote-attr {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #5a4828;
-}
+.mp-quote-attr{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:#50402a}
 
-/* ── SCHOLAR CONSENSUS BOX ── */
-.m-scholars {
-  background: rgba(60,100,200,0.05);
-  border: 1px solid rgba(60,100,200,0.15);
-  border-radius: 7px;
-  padding: 24px 28px;
-  margin: 32px 0;
+/* ── SCHOLAR BOX ── */
+.mp-scholars {
+  background:rgba(55,90,195,.05); border:1px solid rgba(55,90,195,.14);
+  border-radius:7px; padding:22px 26px; margin:28px 0;
 }
-.m-scholars-title {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #5080c0;
-  margin-bottom: 12px;
-}
-.m-scholars-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  color: #706888;
-  line-height: 1.7;
-}
-.m-scholars-text strong { color: #8878a0; }
+.mp-scholars-h{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:#4878b0;margin-bottom:11px}
+.mp-scholars-txt{font-family:'EB Garamond',serif;font-size:15px;color:#706888;line-height:1.7}
+.mp-scholars-txt strong{color:#8878a0}
 
 /* ── NOTE BANNER ── */
-.m-note {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 6px;
-  padding: 16px 20px;
-  margin: 24px 0;
+.mp-note {
+  display:flex;gap:12px;align-items:flex-start;
+  background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);
+  border-radius:6px;padding:14px 18px;margin:22px 0;
 }
-.m-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
-.m-note-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: 14px;
-  color: #706880;
-  line-height: 1.6;
-}
-.m-note-text strong { color: #c8a860; }
+.mp-note-i{font-size:17px;flex-shrink:0;margin-top:2px}
+.mp-note-txt{font-family:'EB Garamond',serif;font-size:14px;color:#686078;line-height:1.6}
+.mp-note-txt strong{color:#c09840}
 
-/* ── PHILOSOPHICAL DEPTH SPECTRUM ── */
-.m-spectrum {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 24px 0;
+/* ── RESPONSIVE ── */
+@media(max-width:680px){
+  .mp-pair{grid-template-columns:1fr}
+  .mp-pmid{height:26px;border:none;
+    border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)}
+  .mp-pl{border-radius:6px 6px 0 0;border-right:1px solid rgba(175,115,35,.2);border-bottom:none}
+  .mp-pr{border-radius:0 0 6px 6px;border-left:1px solid rgba(75,145,75,.2);border-top:none}
+  .mp-chain{flex-direction:column}
+  .mp-chain-node{border-right:none;border-bottom:1px solid rgba(255,255,255,.05)}
+  .mp-chain-arrow{width:100%;height:22px;transform:rotate(90deg)}
+  .mp-karma-cols{grid-template-columns:1fr}
+  .mp-karma-col:first-child{border-right:none;border-bottom:1px solid rgba(255,255,255,.05)}
+  .mp-karma-row{grid-template-columns:1fr}
+  .mp-karma-cell:first-child{border-right:none;border-bottom:1px solid rgba(255,255,255,.04)}
+  .mp-comp-header,.mp-comp-row{grid-template-columns:100px 1fr 1fr 1fr}
+  .mp-comp-cell{font-size:12px;padding:9px 10px}
+  .mp-comp-cell.dim-lbl{font-size:9px;padding:9px 10px}
 }
-.m-spec-col {
-  border-radius: 6px;
-  padding: 20px;
-  border: 1px solid;
-}
-.m-spec-col.hindu { background: rgba(200,140,40,0.07); border-color: rgba(200,140,40,0.2); }
-.m-spec-col.zoro { background: rgba(60,150,60,0.06); border-color: rgba(60,150,60,0.18); }
-.m-spec-col.abr { background: rgba(60,80,180,0.06); border-color: rgba(60,80,180,0.18); }
-.m-spec-col-title {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.m-spec-col.hindu .m-spec-col-title { color: #c88c38; }
-.m-spec-col.zoro .m-spec-col-title { color: #50c040; }
-.m-spec-col.abr .m-spec-col-title { color: #5080c0; }
-.m-spec-item {
-  font-family: 'Crimson Pro', serif;
-  font-size: 13px;
-  color: #606070;
-  padding: 5px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  line-height: 1.4;
-}
-.m-spec-item:last-child { border-bottom: none; }
-.m-spec-item strong { color: #8080a0; font-weight: 600; }
-
-@media (max-width: 700px) {
-  .m-pair { grid-template-columns: 1fr; }
-  .m-pmid { height: 28px; }
-  .m-pl { border-radius: 6px 6px 0 0; border-right: 1px solid rgba(180,120,40,0.2); border-bottom: none; }
-  .m-pr { border-radius: 0 0 6px 6px; border-left: 1px solid rgba(80,150,80,0.2); border-top: none; }
-  .m-adv-grid { grid-template-columns: 1fr; }
-  .m-adv-div { display: none; }
-  .m-karma-cols { grid-template-columns: 1fr; }
-  .m-karma-col:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .m-karma-row { grid-template-columns: 1fr; }
-  .m-karma-cell:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); }
-  .m-spectrum { grid-template-columns: 1fr; }
-  .m-timeline-track::before { display: none; }
-  .m-tl-node { min-width: 60px; }
-  .m-tl-label { font-size: 10px; }
+@media(max-width:480px){
+  .mp-comp-header,.mp-comp-row{grid-template-columns:1fr}
+  .mp-comp-cell.dim-lbl{background:rgba(255,255,255,.04);font-size:8px;letter-spacing:.1em}
 }
 </style>
 
-<div class="map-wrap">
-
-  <!-- ═══ HERO ═══ -->
-  <div class="mh">
-    <span class="mh-om">ॐ</span>
-    <div class="mh-eyebrow">Comparative Religion · Scholarly Transmission Studies · 2000 BCE – 700 CE</div>
-    <h1 class="mh-title">
-      Philosophical Origins Map
-      <span>Hinduism → Zoroastrianism → Abrahamic Faiths</span>
-    </h1>
-    <p class="mh-sub">Tracing the deep river of shared doctrine across four millennia — from the Vedic seers to the Abrahamic world</p>
-    <div class="mh-rule"><span class="mh-rule-g">✦ ✦ ✦</span></div>
-  </div>
-
-  <!-- ═══ TIMELINE ═══ -->
-  <div class="m-timeline">
-    <div class="m-timeline-track">
-      <div class="m-tl-node n-vedic">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">c. 2000 BCE</div>
-        <div class="m-tl-label">Proto-Indo-Iranian Religion<br><em>Eurasian Steppes</em></div>
-      </div>
-      <div class="m-tl-node n-vedic">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">c. 1500 BCE</div>
-        <div class="m-tl-label">Rigveda composed<br>Karma, Ṛta, Dharma</div>
-      </div>
-      <div class="m-tl-node n-zoro">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">c. 1200 BCE</div>
-        <div class="m-tl-label">Zarathustra<br>reforms Iranian religion</div>
-      </div>
-      <div class="m-tl-node n-vedic">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">c. 800 BCE</div>
-        <div class="m-tl-label">Principal Upanishads<br>Ātman · Brahman · Moksha</div>
-      </div>
-      <div class="m-tl-node n-contact">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">586 BCE</div>
-        <div class="m-tl-label">Babylonian Exile<br>Jews enter Persian world</div>
-      </div>
-      <div class="m-tl-node n-contact">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">539 BCE</div>
-        <div class="m-tl-label">Cyrus the Great<br>frees the Jews</div>
-      </div>
-      <div class="m-tl-node n-second">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">200 BCE – 100 CE</div>
-        <div class="m-tl-label">Second Temple Judaism<br>Angels · Satan · Resurrection</div>
-      </div>
-      <div class="m-tl-node n-xtn">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">1st century CE</div>
-        <div class="m-tl-label">Christianity emerges<br>from Second Temple</div>
-      </div>
-      <div class="m-tl-node n-isl">
-        <div class="m-tl-dot"></div>
-        <div class="m-tl-date">7th century CE</div>
-        <div class="m-tl-label">Islam — inherits<br>entire Abrahamic framework</div>
-      </div>
+<!-- ═══ TIMELINE MODAL (rendered once, content swapped by JS) ═══ -->
+<div class="mp-tl-modal-bg" id="mpTlModal" onclick="if(event.target===this)closeMpModal()">
+  <div class="mp-tl-modal">
+    <div class="mp-tl-modal-top">
+      <div class="mp-tl-modal-title" id="mpTlTitle" style="color:#e0a038"></div>
+      <button class="mp-tl-modal-close" onclick="closeMpModal()">✕</button>
+    </div>
+    <div class="mp-tl-modal-body">
+      <div class="mp-tl-modal-date" id="mpTlDate" style="color:#b07828"></div>
+      <div class="mp-tl-modal-desc" id="mpTlDesc"></div>
+      <ul class="mp-tl-modal-bullets" id="mpTlBullets"></ul>
     </div>
   </div>
+</div>
 
-  <!-- ═══ SECTION 0: ADVAITA VEDANTA — THE PHILOSOPHICAL APEX ═══ -->
-  <div class="m-sec">
-    <div class="m-sec-head">
-      <span class="m-sec-num">Foundation</span>
-      <h2 class="m-sec-title t-gold">Advaita Vedānta — The Philosophical Source</h2>
-      <div class="m-sec-line g"></div>
-      <span class="m-sec-badge g">Brihadāraṇyaka Upaniṣad c. 800 BCE</span>
-    </div>
+<div class="mp-wrap">
 
-    <div class="m-ctx g">
-      <div class="m-ctx-label">Historical Primacy</div>
-      <div class="m-ctx-text">The Upanishadic tradition — culminating in Advaita Vedānta as systematized by Gauḍapāda (7th c. CE) and Ādi Śaṅkarācārya (788–820 CE) — represents humanity's earliest documented rigorous inquiry into the nature of consciousness itself. The Brihadāraṇyaka and Chāndogya Upaniṣads (c. 800–600 BCE) predate by centuries the earliest Greek philosophy, the Babylonian exile, and the writing of most Hebrew scripture. The question they posed — <strong>"What is the nature of the Self, and what is its relationship to ultimate reality?"</strong> — was not approached again with comparable philosophical rigor until Kant, Hegel, and 20th-century consciousness studies. Modern scholars (B.K. Matilal, Jonardon Ganeri, Eliot Deutsch) have demonstrated that the Advaita analysis of consciousness anticipates by two millennia debates in contemporary philosophy of mind.</div>
-    </div>
+<!-- HERO -->
+<div class="mp-hero">
+  <span class="mp-om">ॐ</span>
+  <div class="mp-eyebrow">Comparative Religion · Scholarly Transmission Studies · 2000 BCE – 700 CE</div>
+  <h1 class="mp-title">Philosophical Origins Map<span>Vedic India → Zoroastrianism → Abrahamic Faiths</span></h1>
+  <p class="mp-sub">Tracing the deep river of shared doctrine across four millennia — from the Vedic seers to the Abrahamic world</p>
+  <div class="mp-rule"><span class="mp-rule-g">✦ ✦ ✦</span></div>
+</div>
 
-    <div class="m-adv-block">
-      <div class="m-adv-grid">
-        <div>
-          <div class="m-adv-label">The Core Teaching</div>
-          <div class="m-adv-concept">Brahman · Ātman · Māyā</div>
-          <div class="m-adv-sanskrit">ब्रह्म सत्यं जगन्मिथ्या जीवो ब्रह्मैव नापरः</div>
-          <div class="m-adv-text">
-            <strong>Brahman</strong> is the sole, undivided, self-luminous consciousness that underlies all existence — Sat (pure being), Cit (pure awareness), Ānanda (pure bliss). It is neither created nor destroyed, has no beginning or end, and is not an object of knowledge but the very knower itself.<br><br>
-            <strong>Ātman</strong> — the individual self — is not a fragment of Brahman but <em>identical</em> with it. The appearance of separateness is <strong>Māyā</strong>: not mere illusion but a superimposition (adhyāsa) of the finite upon the infinite — as when a rope is mistaken for a snake in dim light. Śaṅkara's formulation: <em>"Brahma satyam jagan mithyā, jīvo brahmaiva nāparaḥ"</em> — Brahman alone is real; the world-appearance is neither real nor nonexistent; the individual self is none other than Brahman.
-          </div>
-          <div class="m-adv-mahavakya">
-            <strong>Tat Tvam Asi</strong> — "That thou art" — Chāndogya Upaniṣad 6.8.7<br>
-            <strong>Aham Brahmāsmi</strong> — "I am Brahman" — Brihadāraṇyaka Upaniṣad 1.4.10<br>
-            <strong>Prajñānam Brahma</strong> — "Consciousness is Brahman" — Aitareya Upaniṣad 3.3<br>
-            <strong>Ayam Ātmā Brahma</strong> — "This Self is Brahman" — Māṇḍūkya Upaniṣad 1.2
-          </div>
-        </div>
-        <div class="m-adv-div"></div>
-        <div>
-          <div class="m-adv-label">What This Means</div>
-          <div class="m-adv-concept">Non-dual Consciousness</div>
-          <div class="m-adv-text">
-            Every sentient being is not a fragment of the divine — every sentient being <em>is</em> the divine, temporarily experiencing itself through a particular form. Liberation (Moksha) is not a reward granted by an external God — it is the direct recognition of what was always already true: that the individual awareness reading these words is the same awareness that illuminates all of existence.<br><br>
-            This framework — <strong>inclusive, non-hierarchical, requiring no intermediary priest or prophet</strong> — stands in philosophical contrast to theologies that posit a permanently separate creator-God who rewards or punishes human beings according to revealed commandments. The Advaitic tradition holds that such theological frameworks, while containing elements of truth, operate at a lower epistemological register (vyavahārika), mistaking the relative for the absolute.
-          </div>
-          <div class="m-adv-mahavakya">
-            Stanford Encyclopedia of Philosophy (Ganeri 2017): "Advaita Vedānta constitutes one of the most sophisticated and philosophically rigorous accounts of consciousness produced in any tradition."
-          </div>
-        </div>
+<!-- TIMELINE -->
+<div class="mp-tl-wrap">
+  <div class="mp-tl-scroll">
+    <div class="mp-tl-track">
+      <div class="mp-tl-node tn-v" onclick="openMpModal('proto')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">c. 2000 BCE</div>
+        <div class="mp-tl-label">Proto-Indo-Iranian Religion</div>
       </div>
-    </div>
-
-    <!-- Philosophical Depth Spectrum -->
-    <div class="m-spectrum">
-      <div class="m-spec-col hindu">
-        <div class="m-spec-col-title">Vedānta / Advaita</div>
-        <div class="m-spec-item"><strong>Ultimate reality:</strong> Non-dual consciousness (Brahman)</div>
-        <div class="m-spec-item"><strong>Self:</strong> Identical with the Absolute — Ātman = Brahman</div>
-        <div class="m-spec-item"><strong>God:</strong> Not a separate being but the ground of all being</div>
-        <div class="m-spec-item"><strong>Liberation:</strong> Recognition of what already is — Moksha</div>
-        <div class="m-spec-item"><strong>Ethics:</strong> Dharma — universal cosmic order; not commandments</div>
-        <div class="m-spec-item"><strong>Causality:</strong> Karma — impersonal, precise, autonomous law</div>
-        <div class="m-spec-item"><strong>Scope:</strong> Universal — all beings carry the divine; no exclusion</div>
-        <div class="m-spec-item"><strong>Death:</strong> Reincarnation until Moksha; no eternal punishment</div>
+      <div class="mp-tl-node tn-v" onclick="openMpModal('rigveda')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">c. 1500 BCE</div>
+        <div class="mp-tl-label">Rigveda Composed</div>
       </div>
-      <div class="m-spec-col zoro">
-        <div class="m-spec-col-title">Zoroastrianism</div>
-        <div class="m-spec-item"><strong>Ultimate reality:</strong> Ahura Mazda — supreme wisdom-being</div>
-        <div class="m-spec-item"><strong>Self:</strong> Distinct soul with a divine guardian (Fravashi)</div>
-        <div class="m-spec-item"><strong>God:</strong> Personal, omniscient creator distinct from creation</div>
-        <div class="m-spec-item"><strong>Liberation:</strong> Cosmic renovation — Frashegird at end of time</div>
-        <div class="m-spec-item"><strong>Ethics:</strong> Asha vs Druj — truth vs lie; individual moral choice</div>
-        <div class="m-spec-item"><strong>Causality:</strong> Divine reward/punishment with moral logic</div>
-        <div class="m-spec-item"><strong>Scope:</strong> Universal — all humans participate in cosmic battle</div>
-        <div class="m-spec-item"><strong>Death:</strong> Soul judgment at Chinvat Bridge; heaven or hell</div>
+      <div class="mp-tl-node tn-z" onclick="openMpModal('zarathustra')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">c. 1200–1000 BCE</div>
+        <div class="mp-tl-label">Zarathustra reforms religion</div>
       </div>
-      <div class="m-spec-col abr">
-        <div class="m-spec-col-title">Abrahamic Faiths</div>
-        <div class="m-spec-item"><strong>Ultimate reality:</strong> Singular personal God — transcendent creator</div>
-        <div class="m-spec-item"><strong>Self:</strong> Soul — created by God, distinct, judged individually</div>
-        <div class="m-spec-item"><strong>God:</strong> Ontologically separate from creation; commands obedience</div>
-        <div class="m-spec-item"><strong>Liberation:</strong> Salvation by faith/works/submission — externally granted</div>
-        <div class="m-spec-item"><strong>Ethics:</strong> Revealed commandments — law from a divine lawgiver</div>
-        <div class="m-spec-item"><strong>Causality:</strong> Sin — violation of divine command; requires forgiveness</div>
-        <div class="m-spec-item"><strong>Scope:</strong> Conditional — salvation contingent on correct belief/practice</div>
-        <div class="m-spec-item"><strong>Death:</strong> Final judgment — eternal heaven or eternal hell</div>
+      <div class="mp-tl-node tn-v" onclick="openMpModal('upanishads')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">c. 800–300 BCE</div>
+        <div class="mp-tl-label">Principal Upanishads</div>
+      </div>
+      <div class="mp-tl-node tn-c" onclick="openMpModal('exile')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">586 BCE</div>
+        <div class="mp-tl-label">Babylonian Exile begins</div>
+      </div>
+      <div class="mp-tl-node tn-c" onclick="openMpModal('cyrus')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">539 BCE</div>
+        <div class="mp-tl-label">Cyrus frees the Jews</div>
+      </div>
+      <div class="mp-tl-node tn-s" onclick="openMpModal('secondtemple')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">500 BCE – 70 CE</div>
+        <div class="mp-tl-label">Second Temple Judaism</div>
+      </div>
+      <div class="mp-tl-node tn-x" onclick="openMpModal('christianity')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">1st century CE</div>
+        <div class="mp-tl-label">Christianity emerges</div>
+      </div>
+      <div class="mp-tl-node tn-i" onclick="openMpModal('islam')">
+        <div class="mp-tl-dot"></div>
+        <div class="mp-tl-date">7th century CE</div>
+        <div class="mp-tl-label">Islam — inherits framework</div>
       </div>
     </div>
   </div>
+  <p style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#3e3448;text-align:center;margin-top:10px">◆ &nbsp; Click any node for in-depth detail &nbsp; ◆</p>
+</div>
 
-  <!-- ═══ SECTION 1: KARMA vs. SIN ═══ -->
-  <div class="m-sec">
-    <div class="m-sec-head">
-      <span class="m-sec-num">Feature I</span>
-      <h2 class="m-sec-title t-gold">Karma — The Original Moral Causality</h2>
-      <div class="m-sec-line g"></div>
-      <span class="m-sec-badge g">Rigveda c. 1500 BCE</span>
+<!-- ═══ SECTION 0: ADVAITA VEDANTA ═══ -->
+<div class="mp-sec">
+  <div class="mp-sec-head">
+    <span class="mp-sec-num">Foundation</span>
+    <h2 class="mp-sec-title tg">Advaita Vedanta — How It Shaped Zoroastrianism</h2>
+    <div class="mp-sec-line g"></div>
+    <span class="mp-sec-badge g">Upanishads c. 800 BCE → Zoroaster c. 1200 BCE</span>
+  </div>
+
+  <div class="mp-ctx g">
+    <div class="mp-ctx-lbl">The Philosophical Source</div>
+    <div class="mp-ctx-txt">The Vedic tradition — culminating in Advaita Vedanta as codified by Adi Shankaracharya (788–820 CE) but rooted in the Brihadaranyaka and Chandogya Upanishads (c. 800 BCE) — represents humanity's most ancient systematic inquiry into consciousness. <strong>Zarathustra himself emerged from a religious tradition that was a direct sibling of the Vedic one</strong>, and modern Indology confirms that the Vedic cosmological and ethical framework directly influenced the conceptual architecture of Zoroastrianism. The proto-Indo-Iranian shared religion was the common ancestor — and the Vedic branch had the more elaborate philosophical and ritual system, suggesting the direction of conceptual flow.</div>
+  </div>
+
+  <div class="mp-adv">
+    <div class="mp-adv-lbl">Core Vedantic Teaching & Its Zoroastrian Echo</div>
+    <div class="mp-adv-title">Brahman · Atman · Maya</div>
+    <div class="mp-adv-sk">ब्रह्म सत्यं जगन्मिथ्या जीवो ब्रह्मैव नापरः</div>
+    <div class="mp-adv-body">
+      Advaita Vedanta's central claim: <strong>Brahman</strong> — pure self-luminous consciousness, Sat-Cit-Ananda (existence-awareness-bliss) — is the sole reality. The individual self (Atman) is not a fragment of Brahman but <em>identical</em> with it. The appearance of a separate world and separate selves is <strong>Maya</strong>, a superimposition analogous to mistaking a rope for a snake in dim light. Liberation (Moksha) is simply the direct recognition of what was always already true.
+      <br><br>
+      Zoroastrianism absorbed and transformed these frameworks: where Advaita posits a single non-dual consciousness underlying everything, Zoroaster <strong>split the metaphysical into two principles</strong> — Spenta Mainyu (Holy Spirit, creative consciousness) vs Angra Mainyu (destructive spirit). Where Vedanta sees Maya as the mechanism of apparent evil, Zoroastrianism personified it as a cosmic villain. Where the Upanishads prescribe self-inquiry (neti neti, "not this, not this") to dissolve false identification, the Gathas prescribe moral choice between Asha (truth) and Druj (falsehood). The Zoroastrian system is Vedantic philosophy translated into the register of ethical theism.
     </div>
-
-    <div class="m-karma-block">
-      <div class="m-karma-head">
-        <span style="font-size:22px;">⚖️</span>
-        <div>
-          <div class="m-karma-title">Karma vs. Sin — Two Theories of Moral Consequence</div>
-          <div class="m-karma-sub">The oldest moral causality framework on record versus its theological derivative</div>
-        </div>
-      </div>
-      <div class="m-karma-cols">
-        <div class="m-karma-col">
-          <div class="m-karma-col-title">Karma (कर्म) — Rigveda to Upaniṣads</div>
-          <div class="m-karma-col-text">
-            The word <em>karma</em> derives from Sanskrit <em>kṛ</em> — "to act." First attested in the Rigveda (c. 1500 BCE) as ritual action, its ethical meaning was systematized in the Upanishads (c. 800–300 BCE). The Brihadāraṇyaka Upaniṣad records the theologian Yājñavalkya: <strong>"A man becomes good by good action and bad by bad action"</strong> — an autonomous impersonal causal law with no need of divine judgment.<br><br>
-            Karma operates as a <strong>self-governing universal law</strong> — like gravity. No external agent rewards or punishes. Actions carry consequences that shape future experience across lifetimes. It vindicates divine goodness from the problem of evil: suffering is not arbitrary but the precise result of prior causes.
-          </div>
-        </div>
-        <div class="m-karma-col">
-          <div class="m-karma-col-title">Sin — Abrahamic Theological Derivative</div>
-          <div class="m-karma-col-text">
-            <strong>"Sin"</strong> — from Old English <em>synn</em>, ultimately from Proto-Germanic <em>*sundjō</em> — is structurally different from karma in a philosophically significant way: sin is not a causal law but a <strong>relational violation</strong>. It presupposes a divine lawgiver whose commands have been transgressed. Consequences are not automatic — they require divine judgment, divine forgiveness, or mediation (sacrifice, prayer, sacrament, repentance).<br><br>
-            The moral accounting of karma requires no priest, no intermediary, no prayer for clemency. Sin requires all three. Scholars of comparative religion (Wendy Doniger, Arvind Sharma) note that the karma framework offers a more philosophically coherent account of justice precisely because it requires no external agent.
-          </div>
-        </div>
-      </div>
-      <div class="m-karma-rows">
-        <div class="m-karma-row">
-          <div class="m-karma-cell"><strong>Origin:</strong> Rigveda, before 1500 BCE — the oldest moral causality framework in recorded literature</div>
-          <div class="m-karma-cell"><strong>Origin:</strong> Adopted conceptually from Zoroastrian moral dualism (Asha/Druj) into post-exilic Judaism</div>
-        </div>
-        <div class="m-karma-row">
-          <div class="m-karma-cell"><strong>Mechanism:</strong> Impersonal causal law — as precise and automatic as physics</div>
-          <div class="m-karma-cell"><strong>Mechanism:</strong> Relational — requires divine sentencing; can be forgiven by appeal</div>
-        </div>
-        <div class="m-karma-row">
-          <div class="m-karma-cell"><strong>Scope:</strong> All sentient beings across all lifetimes — no exceptions, no favorites</div>
-          <div class="m-karma-cell"><strong>Scope:</strong> Human beings in a single lifetime — with theological conditions on who is judged</div>
-        </div>
-        <div class="m-karma-row">
-          <div class="m-karma-cell"><strong>Justice:</strong> Inherent in the structure of reality — does not require a judge</div>
-          <div class="m-karma-cell"><strong>Justice:</strong> Administered by a divine judge at death — eternal consequences for finite actions</div>
-        </div>
-        <div class="m-karma-row">
-          <div class="m-karma-cell"><strong>Escape:</strong> Moksha — liberation from the causal cycle through self-knowledge (Jñāna)</div>
-          <div class="m-karma-cell"><strong>Escape:</strong> Salvation — granted by external divine act through correct belief or ritual</div>
-        </div>
-      </div>
+    <div class="mp-adv-mv">
+      <strong>Tat Tvam Asi</strong> — "That thou art" · Chandogya Upanishad 6.8.7 (Sama Veda)<br>
+      <strong>Aham Brahmasmi</strong> — "I am Brahman" · Brihadaranyaka Upanishad 1.4.10<br>
+      <strong>Prajnanam Brahma</strong> — "Consciousness is Brahman" · Aitareya Upanishad 3.3<br>
+      <strong>Ayam Atma Brahma</strong> — "This Self is Brahman" · Mandukya Upanishad 1.2
     </div>
   </div>
 
-  <!-- ═══ SECTION 2: HINDUISM ↔ ZOROASTRIANISM ═══ -->
-  <div class="m-sec">
-    <div class="m-sec-head">
-      <span class="m-sec-num">Section I</span>
-      <h2 class="m-sec-title t-flame">Hinduism ↔ Zoroastrianism</h2>
-      <div class="m-sec-line f"></div>
-      <span class="m-sec-badge f">Proto-Indo-Iranian Shared Heritage · 2000 BCE</span>
+  <!-- Advaita→Zoroastrian→Abrahamic comparative table -->
+  <div class="mp-comp-table">
+    <div class="mp-comp-header">
+      <div class="mp-comp-h hd">Concept</div>
+      <div class="mp-comp-h hv">Vedanta / Upanishads</div>
+      <div class="mp-comp-h hz">Zoroastrianism</div>
+      <div class="mp-comp-h ha">Abrahamic Faiths</div>
     </div>
-
-    <div class="m-ctx f">
-      <div class="m-ctx-label">The Great Schism</div>
-      <div class="m-ctx-text">Vedic Hinduism and Avestan Zoroastrianism are not merely related religions — they are two branches of a <strong>single original religion</strong> practiced by the Proto-Indo-Iranians on the Eurasian Steppes c. 2000 BCE. When these peoples split — one group migrating into the Indus-Gangetic plain, one into the Iranian plateau — they carried identical gods, rituals, sacred drinks, fire cults, and cosmological structures. Zarathustra's reform (c. 1200–1000 BCE) then performed history's most dramatic <strong>theological inversion</strong>: the divine Vedic Devas became Zoroastrian demons (Daevas); the ambiguous Vedic Asuras became the holy Ahuras. This paradox — same source, inverted categories — is confirmed by the linguistic evidence: Vedic Sanskrit and Avestan are so close that the Avesta and Rigveda can be translated into each other with near-phonetic regularity. Not metaphor. Demonstrated fact of historical linguistics.</div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Ultimate Reality</div>
+      <div class="mp-comp-cell cv">Non-dual Brahman — pure consciousness, one without a second</div>
+      <div class="mp-comp-cell cz">Ahura Mazda — supreme wisdom-being, creator distinct from creation</div>
+      <div class="mp-comp-cell ca">Yahweh / God / Allah — singular personal creator, ontologically separate</div>
     </div>
-
-    <div class="m-pairs">
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism · Rigveda</div>
-          <div class="m-p-term">Soma (सोम)</div>
-          <div class="m-p-detail">Sacred plant pressed into a divine drink — hymned in 120 Rigvedic hymns. Soma-deva is simultaneously the ritual drink, the moon deity, and the elixir of immortality (amṛta). Central to all Vedic yajnas; Agni and Indra drink it. The Rigveda's Soma Maṇḍala (Book IX, 114 hymns) is entirely devoted to it. Its composition: scholars identify it with Ephedra sinica or Peganum harmala — a psychoactive plant whose effects mirrored divine sight.</div>
-          <span class="m-p-tag cog">Cognate · Proto-IE *sauma-</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Avesta</div>
-          <div class="m-p-term">Haoma (هوم)</div>
-          <div class="m-p-detail">Linguistically identical to Soma (Proto-IE *sauma-). Pressed in the Yasna liturgy; Haoma is simultaneously the plant, the drink, and a divine Yazata. The Hōm Yašt hymns are the Avestan parallel to Rigvedic Soma hymns. Even the preparation ritual — pounding the plant, straining through wool, mixing with milk — is identical to the Vedic description. This identity is not coincidence but shared religious ancestry preserved in parallel texts 3,000 years apart.</div>
-        </div>
-      </div>
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism · Rigveda</div>
-          <div class="m-p-term">Agni (अग्नि)</div>
-          <div class="m-p-detail">Fire deity and divine intermediary — the second most-hymned god in the Rigveda (over 200 hymns). Agni carries sacrificial offerings to the gods; the fire altar (vedi) is the meeting point of heaven and earth. Agnihotra (daily fire offering) and the elaborate Agnicayana (fire-altar construction to cosmic specifications) are among humanity's oldest documented religious technologies. Atharvan priests (Atharvans) are the hereditary fire priests — Agni himself is born from the friction of fire-sticks.</div>
-          <span class="m-p-tag cog">Cognate · PIE *h₁égnis</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Avesta</div>
-          <div class="m-p-term">Atar (𐬁𐬙𐬀𐬭)</div>
-          <div class="m-p-detail">Sacred fire, son of Ahura Mazda — the most holy symbol of divine truth (Asha). Zoroastrian Athravan priests (linguistically identical to Vedic Atharvan) maintain eternal flames in fire temples (ateshgahs). Fire is not worshipped as a deity per se but revered as the visible manifestation of the divine. Three grades of sacred fire exist: Atash Bahram (highest), Atash Adaran, Atash Dadgah — mirroring the Vedic three-fire system (Gārhapatya, Āhavanīya, Dakṣiṇāgni).</div>
-        </div>
-      </div>
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism · Rigveda</div>
-          <div class="m-p-term">Ṛta (ऋत) — Cosmic Order</div>
-          <div class="m-p-detail">The fundamental cosmic principle — truth, order, and the law governing both nature and ethics. Varuna and Mitra are its divine guardians; to violate Ṛta is the original conception of moral wrong in Vedic religion. Ṛta governs the movements of the planets, the seasons, the proper conduct of sacrifice, and the moral behaviour of humans. It evolves into Dharma in later Hinduism — the universal moral law underlying all of reality. The Rigveda (1.105) calls Ṛta "the foundation of the universe."</div>
-          <span class="m-p-tag cog">Cognate Root · PIE *Hr̥tás — "fitted together, true"</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Gathas</div>
-          <div class="m-p-term">Asha (اشه) — Truth/Order</div>
-          <div class="m-p-detail">The supreme principle of Ahura Mazda — truth, righteousness, and cosmic order. Phonological and semantic cognate of Vedic Ṛta (both from PIE *Hr̥tás). Asha Vahishta (Best Truth / Perfect Righteousness) is the second of the six Amesha Spentas (archangels). Its opposite is Druj (the Lie) — the force of cosmic disorder that Angra Mainyu embodies. The Zoroastrian ethical dualism of Asha vs Druj is the template that the Abrahamic tradition absorbed as God vs Satan, Good vs Evil — the most consequential philosophical export in history.</div>
-        </div>
-      </div>
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism · Rigveda</div>
-          <div class="m-p-term">Varuna & Mitra (वरुण · मित्र)</div>
-          <div class="m-p-detail">The most ancient divine dyad of the Vedic tradition. Varuna: omniscient lord of cosmic waters, guardian of Ṛta, divine judge who watches human conduct through his thousand eyes. Mitra: covenant, friendship, the light of day. Their names appear together in the Mitanni treaty inscription (1380 BCE) — the oldest documented mention of Vedic deities — proving this religious tradition's antiquity is firmly established by archaeological evidence independent of the texts themselves.</div>
-          <span class="m-p-tag cog">Mitanni Treaty 1380 BCE — Hard Archaeological Evidence</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Avesta</div>
-          <div class="m-p-term">Ahura Mazda & Mithra</div>
-          <div class="m-p-detail">Ahura Mazda (lit. "Wise Lord") = Asura + Mazda — cognate with Vedic Varuna as the supreme cosmic overseer (both share the title Asura/Ahura meaning "mighty lord"). Mithra (cognate with Vedic Mitra) became a major Yazata — later spreading westward to become the Roman mystery god Mithras, worshipped across the Roman Empire concurrent with early Christianity. Zarathustra elevated Ahura Mazda to sole supreme deity — the monotheistic step that influenced all subsequent Abrahamic conceptions of a singular God above all others.</div>
-        </div>
-      </div>
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism · Rigveda</div>
-          <div class="m-p-term">Yama (यम) — Lord of Death</div>
-          <div class="m-p-detail">The first mortal to die, who thereby becomes lord of the ancestral realm and judge of the dead. Twin of Yamī. Yama's messengers (yamadūtas) escort souls; the virtuous go to his bright realm (Pitr̥loka), the evil to darkness. His two dogs, the four-eyed Śyāma and Śabala, guard the path to his realm. The Kathā Upaniṣad's dialogue between the boy Naciketa and Yama is one of the oldest recorded philosophical discussions of death — predating Plato's Phaedo by at least two centuries.</div>
-          <span class="m-p-tag cog">Cognate — PIE *Yemo- "twin"</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Avesta</div>
-          <div class="m-p-term">Yima / Jamshid (𐬫𐬌𐬨𐬀)</div>
-          <div class="m-p-detail">Etymologically identical to Vedic Yama (*Yemo- = "twin"). In the Avesta, Yima is the first mortal who creates a subterranean paradise (vara) to shelter the righteous from a coming cosmic winter — a preserved refuge of the pure. He later becomes the legendary king Jamshid of Persian tradition. Both Yama and Yima are the same Proto-Indo-Iranian deity of death bifurcated by the Hindu-Zoroastrian schism and preserved in mirror-image form in two separate textual traditions 3,000 years apart.</div>
-        </div>
-      </div>
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism</div>
-          <div class="m-p-term">Devas & Asuras (देव · असुर)</div>
-          <div class="m-p-detail">In the Rigveda, Devas are the luminous gods (Indra, Agni, Varuna, Mitra, Surya) and Asuras carry an ambiguous prestige — both words originally denoting divine power. Over time, Asuras became increasingly demonized. The Deva-Asura war (Devāsura Saṃgrāma) became the central cosmic myth of the Purāṇas. The great inversion: what the Iranians called the good beings (Ahuras) the later Vedic tradition demonized — a mirror-image of what Zoroaster did to the Vedic Devas.</div>
-          <span class="m-p-tag inv">The Great Inversion — Documented by Indologists since Max Müller</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Gathas</div>
-          <div class="m-p-term">Ahuras & Daevas (𐬀𐬵𐬎𐬭𐬀 · 𐬛𐬀𐬉𐬎𐬎𐬀)</div>
-          <div class="m-p-detail">Zarathustra's theological revolution: Vedic Devas (divine gods) became Daevas (demons) in Avestan. The Vedic Asuras became the holy Ahuras. The Vendidad (Zoroastrian law code) explicitly names Indra, Sarva (= Rudra/Śiva), and Naonhaitya (= Nāsatya) as demons — these are three of the most revered Vedic deities. This documented inversion is the single strongest piece of evidence that both religions descended from the same source and then systematically inverted each other's divine hierarchy, producing history's first formal cosmic dualism: Good vs Evil as supreme cosmic categories.</div>
-        </div>
-      </div>
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism · Rigveda</div>
-          <div class="m-p-term">Mantra & Yajna (मन्त्र · यज्ञ)</div>
-          <div class="m-p-detail">Mantra (from PIE *mn̥tro- "mental instrument") — sacred verbal formulae with intrinsic cosmic power. Hotar priests recite precise Rigvedic verses to invoke divine presence. Yajna (fire sacrifice) is the central act of Vedic religion — a precisely structured ritual with fire, Soma, priestly recitation, and offerings. Correct recitation is not devotional preference but technical necessity — the wrong syllable in the wrong meter could negate the ritual. The Rigveda preserves the liturgical science of these invocations in 1,028 hymns across 10,552 verses.</div>
-          <span class="m-p-tag cog">Cognate · Hotar = Zaotar · Atharvan = Athravan</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Avesta</div>
-          <div class="m-p-term">Manthra & Yasna (𐬨𐬀𐬧𐬚𐬭𐬀 · 𐬫𐬀𐬯𐬥𐬀)</div>
-          <div class="m-p-detail">Manthra (linguistically identical to Sanskrit Mantra; PIE *mn̥tro-) — sacred words with cosmic power to drive away evil. Zaotar priests (cognate with Vedic Hotar) chant the 72-chapter Yasna (cognate with Sanskrit Yajna; PIE *yaǵ- "to sacrifice/worship") with equal liturgical precision. Even the two priestly titles are cognate: Vedic Hotar (invoker) = Avestan Zaotar; Vedic Atharvan (fire priest) = Avestan Athravan. The structural identity of the two liturgical systems is so complete that scholars (Insler, Narten, Kellens) can translate between the two traditions verse by verse.</div>
-        </div>
-      </div>
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism · Upaniṣads</div>
-          <div class="m-p-term">Fravashi / Ātman — Individual Soul</div>
-          <div class="m-p-detail">The Ātman — the individual self — is in Advaita Vedānta the same as the universal Brahman obscured by Māyā. In earlier Vedic religion, the Pitṛs (ancestral spirits) are the surviving aspect of the individual after death. Each person has a divine dimension. The Upanishadic tradition's radical claim: this divine dimension is not a fragment of God but literally identical with the ground of all being. The question "Who am I?" is the central inquiry; its answer dissolves the boundary between self and cosmos.</div>
-          <span class="m-p-tag shr">Guardian Spirit Concept</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Avesta</div>
-          <div class="m-p-term">Fravashi (𐬟𐬭𐬀𐬬𐬀𐬴𐬌)</div>
-          <div class="m-p-detail">The pre-existent divine guardian spirit of every person — a heavenly prototype that existed before birth and survives death. Fravashis of the righteous dead are celebrated at Nowruz (Fravardigan). This concept — a personal guardian spirit accompanying each individual — was transmitted directly into Judaism and then Christianity as the <strong>guardian angel</strong>, one of the most universally recognized religious concepts in the Abrahamic world. Mary Boyce (Oxford, 1975): "The guardian angel of later Jewish and Christian tradition is the Zoroastrian Fravashi."</div>
-        </div>
-      </div>
-
-      <div class="m-pair">
-        <div class="m-pl">
-          <div class="m-p-src">Vedic Hinduism · Rigveda</div>
-          <div class="m-p-term">Three-Tier Cosmos + Seven Heavens</div>
-          <div class="m-p-detail">The Vedic universe is divided into three realms: Svarga (heavens), Antarikṣa (mid-atmosphere), and Pṛthivī (earth). The heavens have further layers — Saptalokas (seven worlds) — with the highest being Brahmaloka (Satya-loka), beyond rebirth. The intermediate atmospheric realm is inhabited by divine beings, weather gods, and ancestral spirits. This precisely layered cosmology, documented in the Rigveda and elaborated in the Upanishads and Purāṇas, establishes the template of a tiered afterlife cosmology that all subsequent traditions in the transmission chain adopted.</div>
-          <span class="m-p-tag shr">Parallel Cosmology — Seven Planes</span>
-        </div>
-        <div class="m-pmid">⟷</div>
-        <div class="m-pr zo">
-          <div class="m-p-src">Zoroastrianism · Avesta</div>
-          <div class="m-p-term">Layered Heaven + House of Song</div>
-          <div class="m-p-detail">Zoroastrian eschatology describes the soul ascending through stellar, lunar, and solar planes after death before reaching Garo Demana (House of Song — highest paradise). Later Zoroastrian literature elaborated six to seven layers of heaven, directly parallel to the Vedic Saptalokas. The Bundahishn describes multiple celestial planes corresponding to different grades of righteousness. This layered afterlife — transmitted through Judaism's post-exilic literature (Enoch describes seven heavens, adopted in 2 Corinthians 12) — traces its philosophical genealogy directly to the Vedic and Avestan cosmological frameworks.</div>
-        </div>
-      </div>
-
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Nature of Self</div>
+      <div class="mp-comp-cell cv">Atman = Brahman — individual self is identical with the Absolute</div>
+      <div class="mp-comp-cell cz">Individual soul with Fravashi (divine guardian) — distinct from Ahura Mazda</div>
+      <div class="mp-comp-cell ca">Soul created by God, distinct, judged individually — not divine in itself</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Moral Framework</div>
+      <div class="mp-comp-cell cv">Dharma (cosmic order) + Karma (impersonal causal law) — no external judge</div>
+      <div class="mp-comp-cell cz">Asha vs Druj — free choice between truth and falsehood, with divine judgment</div>
+      <div class="mp-comp-cell ca">Revealed commandments — violation is sin, judged by a divine lawgiver</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Evil Explained</div>
+      <div class="mp-comp-cell cv">Maya — ignorance (Avidya), no ultimate reality; no cosmic villain</div>
+      <div class="mp-comp-cell cz">Angra Mainyu — personified evil principle in cosmic war with Ahura Mazda</div>
+      <div class="mp-comp-cell ca">Satan / Devil — cosmic adversary of God; fallen angel or independent evil</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">After Death</div>
+      <div class="mp-comp-cell cv">Rebirth (Samsara) shaped by karma; Moksha dissolves the cycle</div>
+      <div class="mp-comp-cell cz">Individual judgment at Chinvat Bridge; paradise or hell until Frashegird</div>
+      <div class="mp-comp-cell ca">Final judgment — eternal heaven or eternal hell; no rebirth</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Liberation</div>
+      <div class="mp-comp-cell cv">Moksha — recognition of Atman = Brahman; not granted by external being</div>
+      <div class="mp-comp-cell cz">Frashegird — collective cosmic renovation at end of time; not individual escape</div>
+      <div class="mp-comp-cell ca">Salvation — externally granted by God; conditional on belief / submission</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Scope / Inclusion</div>
+      <div class="mp-comp-cell cv">Universal — all sentient beings carry the divine; no exclusion possible</div>
+      <div class="mp-comp-cell cz">Universal — all humans participate in the cosmic battle; no chosen people</div>
+      <div class="mp-comp-cell ca">Conditional — salvation contingent on correct belief/community membership</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Divine Relationship</div>
+      <div class="mp-comp-cell cv">You ARE the divine — Aham Brahmasmi; union is the recognition of identity</div>
+      <div class="mp-comp-cell cz">You serve the divine — moral soldier in Ahura Mazda's cosmic army</div>
+      <div class="mp-comp-cell ca">You obey the divine — created servant of an absolute sovereign</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Cosmic Order</div>
+      <div class="mp-comp-cell cv">Rta (cosmic truth / order) — the impersonal law governing nature and ethics</div>
+      <div class="mp-comp-cell cz">Asha — cognate with Rta, elevated to supreme divine principle (PIE *Hr̥tas)</div>
+      <div class="mp-comp-cell ca">Divine law — revealed commands of a personal God; no impersonal cosmic order</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Sacred Fire / Ritual</div>
+      <div class="mp-comp-cell cv">Agni — divine intermediary; Yajna fire ritual sustains cosmic order</div>
+      <div class="mp-comp-cell cz">Atar — visible symbol of Asha; Yasna fire ritual identical in structure</div>
+      <div class="mp-comp-cell ca">Fire used symbolically (burning bush, Pentecost); no central fire ritual</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Scripture Status</div>
+      <div class="mp-comp-cell cv">Shruti ("heard") — eternally self-existent; not authored by any person or God</div>
+      <div class="mp-comp-cell cz">Avesta — revealed to Zarathustra; divine but not uncreated</div>
+      <div class="mp-comp-cell ca">Torah / Bible / Quran — directly authored/revealed by a personal God</div>
     </div>
   </div>
+</div>
 
-  <!-- ═══ MAIN QUOTE ═══ -->
-  <div class="m-quote">
-    <div class="m-quote-text">"Zoroaster was thus the first to teach the doctrines of an individual judgment, Heaven and Hell, the future resurrection of the body, the general Last Judgment, and life everlasting for the reunited soul and body. These doctrines were to become familiar articles of faith to much of mankind, through borrowing by Judaism, Christianity and Islam; yet it is in Zoroastrianism itself that they have their fullest logical coherence."</div>
-    <div class="m-quote-attr">— Mary Boyce, Professor of Iranian Studies, University of London · Zoroastrians: Their Religious Beliefs and Practices (1979)</div>
+<!-- ═══ SECTION I: KARMA vs SIN ═══ -->
+<div class="mp-sec">
+  <div class="mp-sec-head">
+    <span class="mp-sec-num">Feature I</span>
+    <h2 class="mp-sec-title tg">Karma — The Original Moral Causality</h2>
+    <div class="mp-sec-line g"></div>
+    <span class="mp-sec-badge g">Rigveda c. 1500 BCE · Predates "Sin" by a millennium</span>
   </div>
-
-  <!-- ═══ SECTION 3: ZOROASTRIANISM → ABRAHAMIC ═══ -->
-  <div class="m-sec">
-    <div class="m-sec-head">
-      <span class="m-sec-num">Section II</span>
-      <h2 class="m-sec-title t-blue">Zoroastrianism → Abrahamic Faiths</h2>
-      <div class="m-sec-line b"></div>
-      <span class="m-sec-badge b">Babylonian Exile 586 BCE · Persian Rule 539–330 BCE</span>
+  <div class="mp-karma">
+    <div class="mp-karma-head">
+      <span style="font-size:21px">⚖️</span>
+      <div>
+        <div class="mp-karma-title">Karma vs. Sin — Two Theories of Moral Consequence</div>
+        <div class="mp-karma-sub">The world's oldest moral causality framework versus its Abrahamic theological derivative</div>
+      </div>
     </div>
-
-    <div class="m-ctx b">
-      <div class="m-ctx-label">The Critical Contact Point — Documented History</div>
-      <div class="m-ctx-text">The Babylonian Exile (586–538 BCE) placed the Jewish priestly class in direct cultural contact with the most sophisticated eschatological religion then in existence: Zoroastrianism, state religion of the Persian Achaemenid Empire. Cyrus the Great — a Zoroastrian — is called <strong>"the Lord's anointed" (mashiach)</strong> in Isaiah 45:1, the only non-Israelite in Hebrew scripture to receive this title. He rebuilt the Jerusalem Temple. For 200 years (539–330 BCE), Jewish priests, scribes, and scholars lived within the Persian imperial administrative system, studied alongside Zoroastrian magi, and absorbed Zoroastrian theology. The transformation of Judaism from a religion with <strong>no detailed afterlife, no named Satan, no archangels with specific roles, and no bodily resurrection</strong> into Second Temple Judaism — which has all of these — tracks precisely with this period. Daniel 12:2 (the first clear Hebrew reference to bodily resurrection) was written c. 167 BCE, 370 years into Jewish-Persian contact.</div>
+    <div class="mp-karma-cols">
+      <div class="mp-karma-col">
+        <div class="mp-karma-col-h">Karma (कर्म) — Rigveda to Upanishads</div>
+        <div class="mp-karma-col-txt">Sanskrit kr ("to act") — first attested in the Rigveda (c. 1500 BCE) as ritual action, its ethical dimension developed in the Upanishads. The Brihadaranyaka Upanishad's Yajnavalkya: <strong>"A man becomes good by good action and bad by bad action."</strong> Karma is an <strong>autonomous impersonal law</strong> — like gravity. No external agent rewards or punishes. Actions carry precise consequences across lifetimes. The concept predates any Abrahamic equivalent by a minimum of 700 years and requires no priest, prophet, or divine intermediary.</div>
+      </div>
+      <div class="mp-karma-col">
+        <div class="mp-karma-col-h">Sin — Abrahamic Theological Derivative</div>
+        <div class="mp-karma-col-txt">Sin (Old English synn, from Proto-Germanic *sundjo) is structurally different: not a causal law but a <strong>relational violation</strong>. It presupposes a divine lawgiver whose commands have been transgressed. Consequences require divine judgment, divine forgiveness, and mediation — sacrifice, prayer, sacrament, repentance. The moral accounting of karma needs no priest. Sin requires the entire ecclesiastical apparatus. Scholars Wendy Doniger and Arvind Sharma note karma offers a more philosophically self-sufficient account of justice: it needs no external agent to function.</div>
+      </div>
     </div>
-
-    <div class="m-cards">
-
-      <div class="m-card c-blue">
-        <div class="m-c-icon">⚔️</div>
-        <div class="m-c-title">Cosmic Dualism — Good vs Evil</div>
-        <div class="m-c-origin">Zoroastrian: Ahura Mazda vs Angra Mainyu (Ahriman) · Gathas c. 1000 BCE</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Pre-exilic Hebrew texts have no cosmic adversary of God. "Ha-satan" in Job (c. 600 BCE) is God's loyal prosecuting angel — subordinate, not opposed. Post-exile: 1 Chronicles 21:1 (c. 400 BCE) rewrites 2 Samuel 24:1 — in the older text God incites David to the census; in the rewrite, Satan does. By Revelation (c. 90 CE), Satan is Ahura Mazda's perfect Zoroastrian adversary: supreme cosmic evil in eternal war with the supreme divine. The trajectory from loyal subordinate to cosmic equal-and-opposite is Zoroastrian theology absorbed in real time.</div>
-        <div class="m-c-note">Ehrman, 2017: "The figure of Satan as cosmic opponent is clearly a post-Persian-contact development in Judaism."</div>
+    <div class="mp-karma-rows">
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Origin:</strong> Rigveda c. 1500 BCE — oldest moral causality framework in recorded literature</div>
+        <div class="mp-karma-cell"><strong>Origin:</strong> Post-exilic Judaism, shaped by Zoroastrian Asha/Druj moral dualism</div>
       </div>
-
-      <div class="m-card c-gold">
-        <div class="m-c-icon">👼</div>
-        <div class="m-c-title">Named Archangels with Cosmic Functions</div>
-        <div class="m-c-origin">Zoroastrian: Six Amesha Spentas — named archangels with specific cosmic duties · pre-600 BCE</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Pre-exilic Hebrew angels are nameless messengers (mal'akhim) with no differentiated roles. Post-exile: Michael, Gabriel, Raphael, Uriel appear in Daniel (c. 165 BCE), Tobit, and Enoch with distinct cosmic functions. Zoroastrianism already had six named Amesha Spentas (Immortal Holy Ones) with specific functions: Vohu Manah (Good Mind), Asha Vahishta (Best Truth), Khshathra Vairya (Holy Kingdom), Spenta Ārmaiti (Devotion), Haurvatāt (Wholeness), Ameretāt (Immortality) — a fully developed angelic hierarchy that pre-dates named Hebrew angels by centuries.</div>
-        <div class="m-c-note">Jewish Encyclopedia (1906): "Most scholars consider Jewish named angelology to derive from Zoroastrian models."</div>
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Mechanism:</strong> Impersonal universal causal law — as precise and automatic as physics</div>
+        <div class="mp-karma-cell"><strong>Mechanism:</strong> Relational violation — requires divine sentencing, can be forgiven by appeal</div>
       </div>
-
-      <div class="m-card c-purple">
-        <div class="m-c-icon">☠️</div>
-        <div class="m-c-title">Named Demons — Demonology</div>
-        <div class="m-c-origin">Zoroastrian: Aeshma Daeva, Aka Manah, Nasu, Druj Nasu · Avesta</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Pre-exilic Hebrew texts have no named demonic entities. Post-exile: Asmodeus appears in Tobit 3:8 — derived directly from Avestan Aēšma Daēva ("demon of wrath"), one of the most prominent Zoroastrian demons. Azazel (Leviticus 16) appears only in post-exilic cultic texts. The Book of Enoch's Watchers and their hierarchy of fallen angels is structurally identical to the Zoroastrian hierarchy of Daevas under Angra Mainyu. Named demonic beings with specific domains of corruption are a Zoroastrian invention transmitted wholesale into Second Temple Judaism.</div>
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Scope:</strong> All sentient beings across all lifetimes — no exceptions or chosen favorites</div>
+        <div class="mp-karma-cell"><strong>Scope:</strong> Human beings in one lifetime, often with theological conditions on who is judged</div>
       </div>
-
-      <div class="m-card c-blue">
-        <div class="m-c-icon">⛰️</div>
-        <div class="m-c-title">Heaven & Hell as Distinct Moral Destinations</div>
-        <div class="m-c-origin">Zoroastrian: Garo Demana (paradise) vs Druj Demana / Drūjaskanā (hell) · Avesta</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Pre-exilic Judaism: Sheol — a grey, undifferentiated underworld where all the dead go regardless of virtue or vice. No heaven for the righteous; no punishment for the wicked. This is the entire Hebrew afterlife until Persian contact. Post-exile Second Temple Judaism develops the two-destination afterlife — Gan Eden (paradise) for the righteous, Gehenna for the wicked — an exact structural replica of the Zoroastrian House of Song vs House of Lies. Christianity's Heaven and Hell, and Islam's Jannah and Jahannam, are second-generation derivatives of this Zoroastrian template.</div>
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Justice:</strong> Inherent in the structure of reality itself — no judge required</div>
+        <div class="mp-karma-cell"><strong>Justice:</strong> Administered by divine judge at death — eternal consequences for finite acts</div>
       </div>
-
-      <div class="m-card c-purple">
-        <div class="m-c-icon">🌉</div>
-        <div class="m-c-title">The Bridge of Judgment</div>
-        <div class="m-c-origin">Zoroastrian: Chinvat Bridge — widens for the righteous, narrows for sinners · Avesta</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Every soul in Zoroastrianism must cross the Chinvat Bridge (Bridge of the Requiter) after death. For the righteous it is broad as a highway; for the wicked it narrows to a razor's edge and they fall into hell. In Islam this becomes the Ṣirāṭ — a bridge finer than a hair, sharper than a sword, over the fires of Jahannam, that only the righteous cross successfully (Ṣaḥīḥ Muslim 1:352). The structural identity is exact: same bridge, same narrowing principle, same outcome. The Ṣirāṭ is the Chinvat Bridge under a new name, adopted through centuries of Iranian-Islamic cultural synthesis.</div>
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Liberation:</strong> Moksha — dissolving the causal cycle through self-knowledge (Jnana)</div>
+        <div class="mp-karma-cell"><strong>Liberation:</strong> Salvation — externally granted through correct belief or ritual compliance</div>
       </div>
-
-      <div class="m-card c-blue">
-        <div class="m-c-icon">💀</div>
-        <div class="m-c-title">Bodily Resurrection of All the Dead</div>
-        <div class="m-c-origin">Zoroastrian: Frashegird — physical resurrection of all dead for final judgment · pre-400 BCE</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Bodily resurrection is entirely absent from pre-exilic Hebrew scripture. The first unambiguous Hebrew reference: Daniel 12:2 (c. 167 BCE) — "Many who sleep in the dust of the earth shall awake, some to everlasting life, some to shame and everlasting contempt." This is written 370 years into Jewish-Persian contact and is structurally identical to Zoroastrian Frashegird (the "making wonderful" — physical renovation of the world and resurrection of all the dead for final judgment). The physical specificity — bodies coming out of the earth — is precisely Zoroastrian, not a natural development of Sheol theology.</div>
-        <div class="m-c-note">Boyce, Collins, Grabbe: "The doctrine of bodily resurrection enters Judaism during the Second Temple period under Persian influence."</div>
-      </div>
-
-      <div class="m-card c-gold">
-        <div class="m-c-icon">⭐</div>
-        <div class="m-c-title">The Messianic Savior Figure</div>
-        <div class="m-c-origin">Zoroastrian: Saoshyant — miraculous birth, defeats evil, presides over final resurrection</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">The Saoshyant is Zoroastrianism's future world-savior: born from the preserved seed of Zarathustra miraculously (virgin birth motif), defeats Angra Mainyu in the final battle, presides over the resurrection of the dead and the last judgment, and ushers in a perfected world. Jewish messianism intensifies dramatically post-Persian contact. Christian theology maps this framework onto Jesus with near-perfect Saoshyant correspondence (miraculous birth, defeat of Satan, resurrection, final judgment). Islam's Mahdi and the returning Isa fill the same eschatological role. The Saoshyant is the original template; the rest are iterations.</div>
-      </div>
-
-      <div class="m-card c-flame">
-        <div class="m-c-icon">🔥</div>
-        <div class="m-c-title">Final Cosmic Battle & Renovation</div>
-        <div class="m-c-origin">Zoroastrian: Frashegird — earth purified by molten metal, evil annihilated forever</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Zoroastrianism: the final battle (Frashegird) ends when Angra Mainyu is permanently destroyed; the earth is purified by a river of molten metal through which all souls pass — the righteous experiencing it as warm milk, the wicked as liquid fire. Then the perfectly renovated world begins. Revelation 19–21: the Battle of Armageddon, the defeat and binding of Satan, the New Heaven and New Earth. Structural identity across: cosmic villain defeated, purification by fire, perfected world renewed. The Avesta's Frashegird is the oldest documented template of what all three Abrahamic faiths call the Apocalypse.</div>
-      </div>
-
-      <div class="m-card c-purple">
-        <div class="m-c-icon">🧠</div>
-        <div class="m-c-title">Free Will as Moral Cornerstone</div>
-        <div class="m-c-origin">Zoroastrian: Humans must choose Asha or Druj — judgment follows choice · Gathas</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">The Gathas (Zarathustra's own hymns) state explicitly that humans are given freedom to choose between Truth (Asha) and the Lie (Druj), and will be judged individually on that choice. This is one of the earliest documented theological formulations of free will as a moral requirement — predating Augustine's De Libero Arbitrio by over a millennium. The individualized moral accounting framework — each person responsible for their choices, each judged separately — is Zoroastrian philosophy absorbed into Judaism, then Christianity, then Islam as the foundation of their entire systems of sin, salvation, and divine judgment.</div>
-      </div>
-
-      <div class="m-card c-green">
-        <div class="m-c-icon">🙏</div>
-        <div class="m-c-title">Fixed Daily Prayer Obligations</div>
-        <div class="m-c-origin">Zoroastrian: Five Gahs — obligatory fixed daily prayer times facing sacred fire · Vendidad</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Zoroastrianism prescribes five mandatory daily prayers (Gahs) at cosmologically fixed times: Hāvan (dawn), Rapithwin (noon), Uzerin (afternoon), Aiwisruthrem (dusk), Ushahin (night). Judaism developed three fixed daily prayer times (Shacharit, Mincha, Maariv) during and after the Babylonian exile — periods when Zoroastrian practice was the surrounding religious norm. Islam prescribes five (Ṣalāt at Fajr, Zuhr, Asr, Maghrib, Isha) — matching the Zoroastrian number exactly. The structural institution of obligatory fixed-time daily prayer, unknown in pre-exilic Hebrew practice, is a liturgical innovation with a clear Zoroastrian genealogy.</div>
-      </div>
-
-      <div class="m-card c-blue">
-        <div class="m-c-icon">📜</div>
-        <div class="m-c-title">The Dead Sea Scrolls — Zoroastrian Dualism in Hebrew Text</div>
-        <div class="m-c-origin">Qumran War Scroll (1QM) c. 100 BCE — Sons of Light vs Sons of Darkness</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">The Qumran community's War Scroll divides humanity into "Sons of Light" (led by the Prince of Light / Angel of Truth) and "Sons of Darkness" (led by the Angel of Darkness / Belial) engaged in a cosmic battle mirroring the Zoroastrian Spenta Mainyu vs Angra Mainyu framework with near-perfect structural correspondence. The Community Rule (1QS) states God "created the spirits of light and darkness" — the Zoroastrian two-principle cosmology translated directly into Hebrew. Scholars including John Collins (Yale), George Vermes, and Frank Moore Cross have identified this Essene dualism as the most demonstrably Zoroastrian stratum in all Second Temple Jewish literature.</div>
-        <div class="m-c-note">Cross (1961): "The Qumran scrolls show the extent to which Iranian dualism had penetrated Jewish thought."</div>
-      </div>
-
-      <div class="m-card c-gold">
-        <div class="m-c-icon">🌊</div>
-        <div class="m-c-title">Ritual Purity Systems</div>
-        <div class="m-c-origin">Zoroastrian: Nasu (corpse demon) — elaborate multi-day purification requirements · Vendidad</div>
-        <div class="m-c-arrow"><div class="m-c-arrow-line"></div><span class="m-c-arrow-head">▸</span></div>
-        <div class="m-c-body">Zoroastrianism has the ancient world's most elaborate ritual purity codes: contact with a corpse attracts the Nasu demon, requiring the nine-night Bareshnum purification ceremony; menstrual blood, bodily flux, and death are all cosmically polluting. The Levitical purity codes (Numbers 19 — the red heifer for corpse defilement, Leviticus 15 — menstrual and bodily regulations) are structurally parallel and appear in their most elaborate post-exilic forms. Scholars (Milgrom, Schwartz) note that the Levitical system shares conceptual architecture with the Zoroastrian framework, both locating purity and impurity in a cosmic moral structure rather than mere hygiene.</div>
-      </div>
-
     </div>
   </div>
+</div>
 
-  <!-- ═══ SCHOLAR CONSENSUS ═══ -->
-  <div class="m-scholars">
-    <div class="m-scholars-title">◈ &nbsp; Scholarly Consensus &nbsp; ◈</div>
-    <div class="m-scholars-text">
-      The following scholars have documented Zoroastrian influence on Abrahamic faiths through peer-reviewed research: <strong>Mary Boyce</strong> (SOAS, University of London), <strong>Martin Schwartz</strong> (UC Berkeley), <strong>Lester Grabbe</strong> (University of Hull), <strong>John J. Collins</strong> (Yale Divinity School), <strong>Shaul Shaked</strong> (Hebrew University of Jerusalem), <strong>Alan Segal</strong> (Columbia), <strong>Gershom Scholem</strong> (Hebrew University), <strong>Bart Ehrman</strong> (UNC Chapel Hill), <strong>Richard Foltz</strong> (Concordia), and the editors of the <strong>Jewish Encyclopedia</strong> (1906). The consensus position: two centuries of Persian imperial contact produced a transformed Jewish theological worldview that was then transmitted — through Christianity and Islam — into the entire Abrahamic tradition. The individual doctrines of named angels, named demons, cosmic Satan, bodily resurrection, a two-destination afterlife, a messianic savior, and a final cosmic judgment all enter the Hebrew textual record <em>after</em> the Babylonian exile and <em>during</em> the period of maximum Persian-Jewish contact. The chronological correlation is not coincidental.
+<!-- ═══ SECTION II: HINDUISM ↔ ZOROASTRIANISM ═══ -->
+<div class="mp-sec">
+  <div class="mp-sec-head">
+    <span class="mp-sec-num">Section I</span>
+    <h2 class="mp-sec-title tf">Vedic Hinduism ↔ Zoroastrianism</h2>
+    <div class="mp-sec-line f"></div>
+    <span class="mp-sec-badge f">Proto-Indo-Iranian Shared Heritage · 2000 BCE</span>
+  </div>
+
+  <div class="mp-ctx f">
+    <div class="mp-ctx-lbl">Historical Foundation</div>
+    <div class="mp-ctx-txt">Vedic Hinduism and Avestan Zoroastrianism are two branches of a <strong>single original religion</strong> practiced c. 2000 BCE on the Eurasian Steppes. When the Indo-Iranians split — one branch entering the Indian subcontinent, one settling the Iranian plateau — they carried virtually identical gods, rituals, sacred drinks, and fire cults. Zarathustra's reform (c. 1200–1000 BCE) performed the most dramatic theological inversion in ancient history: Vedic Devas (divine gods) became Avestan Daevas (demons); Vedic Asuras became Avestan Ahuras (holy beings). Vedic Sanskrit and Avestan are so structurally close that the Rigveda and Avesta can be translated into each other with near-phonetic regularity — this is not metaphor but documented historical linguistics (Comparative Indo-European Philology, as established by Franz Bopp, Max Müller, and confirmed by modern scholars including Martin West and Calvert Watkins).</div>
+  </div>
+
+  <div class="mp-pairs">
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Rigveda</div>
+        <div class="mp-term">Soma</div>
+        <div class="mp-detail">Sacred plant pressed into the divine drink of immortality — hymned in 120 Rigvedic hymns including the entirety of Mandala IX (114 hymns exclusively devoted to Soma). Deified as Soma-deva, the moon-god and immortalizing nectar. Central to all Vedic yajnas; Agni and Indra drink it. Scholars identify it with Ephedra sinica or Peganum harmala — a psychoactive plant whose effects evoke the visionary divine sight celebrated in the Rigveda.</div>
+        <span class="mp-tag cog">PIE *sauma- · Identical Cognate</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Avesta</div>
+        <div class="mp-term">Haoma</div>
+        <div class="mp-detail">Linguistically identical (PIE *sauma-). Pressed in the Yasna liturgy; Haoma is simultaneously the plant, the ritual drink, and the divine Yazata Hom. The Hom Yasht (Yasna 9–11) hymns Haoma in the same mode as Rigvedic Soma hymns. Even the preparation ritual — plant pounded on a mortar stone, strained through wool, mixed with milk — is described identically in both traditions. The Vendidad later condemned the drunken use of the plant but retained the ritual. This identity is not coincidence; it is shared religious ancestry preserved in parallel for 3,000 years.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Rigveda</div>
+        <div class="mp-term">Agni — Sacred Fire</div>
+        <div class="mp-detail">The second most-hymned deity of the Rigveda (over 200 hymns; Mandala I, II, X). Divine intermediary between humans and gods — the fire altar carries offerings to the heavens. Agnihotra (daily fire offering) and the Agnicayana (fire-altar construction to precise astronomical specifications) are humanity's oldest documented mathematical-ritual technologies. Atharvan priests are the hereditary fire specialists — the word Atharvan itself means "fire priest."</div>
+        <span class="mp-tag cog">PIE *h1egnis · Cognate Root</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Avesta</div>
+        <div class="mp-term">Atar — Sacred Fire</div>
+        <div class="mp-detail">Son of Ahura Mazda; the most sacred symbol of divine truth (Asha). Zoroastrian Athravan priests (cognate with Vedic Atharvan) maintain eternal flames in fire temples (ateshgahs). Three grades of sacred fire exist: Atash Bahram (highest, requires 16 different fire sources), Atash Adaran, and Atash Dadgah — directly mirroring the Vedic three-fire system (Garhapatya, Ahavaniya, Dakshinagni). Even the prohibition against contaminating the fire with polluting substances is structurally identical in both traditions.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Rigveda</div>
+        <div class="mp-term">Rta — Cosmic Order</div>
+        <div class="mp-detail">The fundamental principle of cosmic truth, moral order, and natural law. Varuna and Mitra are its divine guardians; to violate Rta is the original Vedic conception of moral wrong. Rta governs the movements of celestial bodies, the proper conduct of sacrifice, and human ethics simultaneously — it is simultaneously physics and morality. Evolves into Dharma in later Hinduism. The Rigveda (1.105) calls Rta "the foundation of the universe."</div>
+        <span class="mp-tag cog">PIE *Hr̥tas "fitted together, true"</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Gathas</div>
+        <div class="mp-term">Asha — Truth / Cosmic Order</div>
+        <div class="mp-detail">The supreme principle of Ahura Mazda — truth, righteousness, and cosmic order. Phonological and semantic cognate of Vedic Rta (both from PIE *Hr̥tas). Asha Vahishta (Best Truth) is the second Amesha Spenta. Its opposite, Druj (the Lie), is the force of cosmic disorder. This Zoroastrian binary of Asha vs Druj — cosmic truth vs cosmic falsehood — is the direct conceptual ancestor of the Abrahamic Good vs Evil framework, which all three Abrahamic faiths inherited wholesale. The most consequential philosophical export in human religious history traces back to this Vedic Rta concept.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Rigveda</div>
+        <div class="mp-term">Varuna &amp; Mitra</div>
+        <div class="mp-detail">The most ancient Vedic divine dyad. Varuna: omniscient lord of cosmic waters, guardian of Rta, divine judge who watches human conduct through his thousand eyes. He releases those who confess error — a precursor to the confession/forgiveness concept. Mitra: covenant, friendship, and light. Their paired names appear in the Mitanni treaty inscription (Kikkuli text, c. 1380 BCE) — the oldest documented mention of Vedic deities, proving their antiquity by archaeological evidence independent of scripture.</div>
+        <span class="mp-tag cog">Mitanni Treaty 1380 BCE — Hard Archaeological Proof</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Avesta</div>
+        <div class="mp-term">Ahura Mazda &amp; Mithra</div>
+        <div class="mp-detail">Ahura Mazda ("Wise Lord") = Asura + Mazda — cognate with Vedic Varuna (both titled "Asura/Ahura" = "mighty lord"). Mithra (cognate with Vedic Mitra) became a major Yazata and later spread west as the Roman mystery cult Mithras, worshipped from Britain to Bactria concurrent with early Christianity. Zarathustra's elevation of Ahura Mazda to sole supreme deity — drawn from the Vedic henotheistic framework — is the monotheistic step that influenced all subsequent Abrahamic conceptions of a single God above all other powers.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Rigveda</div>
+        <div class="mp-term">Yama — Lord of Death</div>
+        <div class="mp-detail">First mortal to die — becomes lord of the ancestral realm and judge of the dead. Twin of Yami. His two dogs (Shyama and Shabala) guard the path to his realm. The Katha Upanishad's dialogue between the boy Nachiketa and Yama is one of humanity's oldest philosophical discussions of death — predating Plato's Phaedo by at least two centuries. Yama's realm is morally organized: the virtuous go to his bright realm (Pitrloka), the evil to darkness.</div>
+        <span class="mp-tag cog">PIE *Yemo- "twin" · Identical Etymology</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Avesta</div>
+        <div class="mp-term">Yima / Jamshid</div>
+        <div class="mp-detail">Etymologically identical to Vedic Yama (PIE *Yemo-). In the Avesta's Vidaidad (Vendidad), Yima is the first mortal who creates a subterranean paradise (vara) sheltering the righteous from a coming cosmic winter — a preserved garden of the pure. He becomes the legendary king Jamshid of Persian tradition. Both Yama and Yima are the same Proto-Indo-Iranian deity of death and judgment, bifurcated by the Hindu-Zoroastrian schism and preserved for 3,000 years in mirror-image form, proving a common source that predates both traditions.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism</div>
+        <div class="mp-term">Devas &amp; Asuras</div>
+        <div class="mp-detail">In the Rigveda, Devas are the luminous gods (Indra, Agni, Varuna, Mitra, Surya) and Asuras hold divine power ambiguously — both words initially denoting the highest divine authority. Over time the Vedic tradition increasingly demonized Asuras. The Deva-Asura war (Devāsura Samgrama) became the central cosmic myth of the Puranas. Vedic Indra, Rudra (Shiva), and the Nasatyas are among the most revered gods — these are specifically the deities Zoroastrianism named as demons.</div>
+        <span class="mp-tag inv">The Great Inversion — Documented since Max Müller (1823–1900)</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Vendidad</div>
+        <div class="mp-term">Ahuras &amp; Daevas</div>
+        <div class="mp-detail">Zarathustra's theological revolution: Vedic Devas (divine gods) → Avestan Daevas (demons). Vedic Asuras → Avestan Ahuras (holy beings). The Vendidad law code names Indra, Sarva (=Rudra/Shiva), and Naonhaitya (=Nasatya) as demons — three of the most revered Vedic deities, explicitly condemned by name. This documented inversion is history's strongest evidence that both religions share a common source and then systematically inverted each other's divine hierarchy. The resulting Zoroastrian cosmic dualism — Good vs Evil as supreme cosmic categories — became the most influential philosophical export in Western religious history.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Rigveda</div>
+        <div class="mp-term">Mantra &amp; Yajna</div>
+        <div class="mp-detail">Mantra (PIE *mn̥tro- "mental instrument") — sacred verbal formulae with intrinsic cosmic power. Hotar priests recite precise Rigvedic verses to invoke divine presence. Yajna (fire sacrifice; PIE *yaǵ-) is the central act of Vedic religion — a precisely structured ritual with fire, Soma, priestly recitation, and offerings. The wrong syllable in the wrong meter could negate the ritual — liturgical precision is technical necessity, not devotional preference. 1,028 hymns across 10,552 verses preserve this liturgical science.</div>
+        <span class="mp-tag cog">Hotar = Zaotar · Atharvan = Athravan · PIE Cognates</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Avesta</div>
+        <div class="mp-term">Manthra &amp; Yasna</div>
+        <div class="mp-detail">Manthra (linguistically identical to Sanskrit Mantra; PIE *mn̥tro-) — sacred words with cosmic power to repel evil. Zaotar priests (cognate with Vedic Hotar) chant the 72-chapter Yasna (cognate with Sanskrit Yajna; PIE *yaǵ-) with equal liturgical precision. The priestly titles are cognate: Vedic Hotar (invoker) = Avestan Zaotar; Vedic Atharvan (fire priest) = Avestan Athravan. Even the liturgical command postures and the requirement for the priest to cover his mouth (to avoid contaminating the sacred fire with breath) have direct Vedic parallels. Scholars Insler, Narten, and Kellens can translate between the two liturgical systems verse by verse.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Upanishads</div>
+        <div class="mp-term">Three-Tier Cosmos &amp; Seven Heavens</div>
+        <div class="mp-detail">The Vedic universe: Svarga (heavens), Antariksha (atmosphere), Prithivi (earth). Heavens have seven layers (Saptalokas): Bhuloka, Bhuvarloka, Svarloka, Maharloka, Janarloka, Taparloka, Satyaloka — with Satyaloka (Brahmaloka) being beyond rebirth. The Aitareya Aranyaka describes the soul's post-death ascent through these planes. This precisely layered cosmology establishes the template for all subsequent traditions in the chain.</div>
+        <span class="mp-tag shr">Seven-plane cosmology — Template for all later traditions</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Bundahishn</div>
+        <div class="mp-term">Layered Heaven — House of Song</div>
+        <div class="mp-detail">Zoroastrian eschatology: soul ascends through stellar, lunar, and solar planes after death before reaching Garo Demana (House of Song — highest paradise). Later Zoroastrian literature (Bundahishn) elaborated six to seven celestial planes corresponding to grades of righteousness — directly parallel to the Vedic Saptalokas. This layered afterlife entered Judaism via post-exilic literature: the Book of Enoch describes seven heavens in explicit detail; Paul references a "third heaven" (2 Corinthians 12); Islam preserves the seven-heaven structure in Quranic cosmology. The Vedic seven-plane template is the original architectural source.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Rigveda</div>
+        <div class="mp-term">Pitrs &amp; Ancestral Spirits</div>
+        <div class="mp-detail">The Pitrs (ancestral spirits) are revered and propitiated through Shraddha rituals. Each person has a divine component that survives death. The concept of a personal divine counterpart — the spirit accompanying the individual — is foundational to Vedic after-death cosmology. The Atharva Veda elaborates a guardian-spirit framework for each living person connected to their ancestral lineage.</div>
+        <span class="mp-tag shr">Guardian spirit concept — foundational to all subsequent traditions</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Avesta</div>
+        <div class="mp-term">Fravashi — Guardian Soul</div>
+        <div class="mp-detail">The pre-existent divine guardian spirit of every person — a heavenly prototype that existed before birth, accompanies the living, and survives death. Fravashis of the righteous dead are celebrated at Nowruz (Fravardigan, the feast of the Fravashis). This concept was transmitted directly into post-exilic Judaism and then Christianity as the <strong>guardian angel</strong> — one of the most universally recognized religious concepts in the Abrahamic world. Mary Boyce (Oxford, 1975): "The guardian angel of later Jewish and Christian tradition is the Zoroastrian Fravashi." The transmission chain is: Vedic Pitrs → Zoroastrian Fravashi → Jewish/Christian guardian angel.</div>
+      </div>
+    </div>
+
+    <div class="mp-pair">
+      <div class="mp-pl">
+        <div class="mp-src">Vedic Hinduism · Rigveda 1.164</div>
+        <div class="mp-term">Six Periods of Creation</div>
+        <div class="mp-detail">The Vedic cosmogony describes creation proceeding through distinct periods — the Shatapatha Brahmana elaborates six cosmological periods corresponding to six acts of creation. The Rig Vedic Nasadiya Sukta (Hymn of Creation, 10.129) philosophically frames a primordial time before the cosmic order was established. The framework of creation in discrete ordered periods is a distinctly Vedic-Iranian cosmological contribution.</div>
+        <span class="mp-tag shr">Cosmogonical framework — six-period creation template</span>
+      </div>
+      <div class="mp-pmid">⟷</div>
+      <div class="mp-pr zo">
+        <div class="mp-src">Zoroastrianism · Bundahishn</div>
+        <div class="mp-term">Six Periods of Creation</div>
+        <div class="mp-detail">Zoroastrian cosmogony describes Ahura Mazda creating the world in six distinct gahanbars (sacred seasonal periods): sky, water, earth, plants, cattle, and humans — each corresponding to a cosmic division of time. The Jewish Encyclopedia (1906) identifies this as a direct parallel to Genesis 1's six days of creation. The structural identity — six ordered creative acts resulting in the inhabited world — reflects the shared Proto-Indo-Iranian cosmogonical framework absorbed by both Zoroastrianism and (via Persian contact) Second Temple Jewish creation theology.</div>
+      </div>
+    </div>
+
+  </div><!-- /pairs -->
+</div><!-- /section II -->
+
+<!-- HEAVEN / HELL CHAIN -->
+<div class="mp-sec">
+  <div class="mp-sec-head">
+    <span class="mp-sec-num">Feature II</span>
+    <h2 class="mp-sec-title tb">Heaven &amp; Hell — The Full Transmission Chain</h2>
+    <div class="mp-sec-line b"></div>
+    <span class="mp-sec-badge b">Vedic Lokas → Zoroastrian Planes → Abrahamic Heaven &amp; Hell</span>
+  </div>
+  <div class="mp-ctx b">
+    <div class="mp-ctx-lbl">The Chain of Transmission</div>
+    <div class="mp-ctx-txt">The concept of morally differentiated afterlife destinations — paradise for the righteous, punishment for the wicked — did not arise independently in Judaism. It entered through a demonstrable chain: Vedic tiered cosmology → Zoroastrian moral afterlife → Second Temple Judaism (post-539 BCE) → Christianity → Islam. Pre-exilic Hebrew scripture knows only Sheol — an undifferentiated, grey underworld with <strong>no moral distinction</strong> between the righteous and the wicked. The moralized afterlife is a post-Persian-contact innovation.</div>
+  </div>
+  <div class="mp-chain">
+    <div class="mp-chain-node cn-v">
+      <div class="mp-chain-h">Vedic Hinduism · 1500 BCE</div>
+      <div class="mp-chain-concept">Svarga &amp; Naraka</div>
+      <div class="mp-chain-detail">Seven celestial lokas (Svarloka, Janarloka, etc.) for the meritorious dead; dark underworld realms for the wicked. Yama, first mortal, judges the dead. The soul's destination depends on its karma — the impersonal moral accounting system. The Saptalokas (seven heavens) are the oldest documented tiered afterlife cosmology in human religious literature.</div>
+    </div>
+    <div class="mp-chain-arrow">→</div>
+    <div class="mp-chain-node cn-z">
+      <div class="mp-chain-h">Zoroastrianism · 1200 BCE onward</div>
+      <div class="mp-chain-concept">Garo Demana vs Druj Demana</div>
+      <div class="mp-chain-detail">House of Song (paradise) for the Asha-following righteous; House of Lies (hell) for the Druj-following wicked. After death the soul spends three days at the Chinvat Bridge — its lifetime moral accounts are weighed, and it ascends to paradise or descends to hell. This is a moralized, two-destination afterlife structure transmitted from the Vedic tiered cosmos — now with a clear ethical binary.</div>
+    </div>
+    <div class="mp-chain-arrow">→</div>
+    <div class="mp-chain-node cn-a">
+      <div class="mp-chain-h">Abrahamic Faiths · 539 BCE onward</div>
+      <div class="mp-chain-concept">Gan Eden / Heaven vs Gehinnom / Hell / Jahannam</div>
+      <div class="mp-chain-detail">Pre-exilic Judaism: Sheol — all the dead, righteous and wicked alike, go to the same grey underworld. Post-exile: Judaism develops Gan Eden (paradise) and Gehinnom (hell). Christianity: Heaven and Hell as eternal destinations. Islam: Jannah (paradise) and Jahannam (hell). The word "Paradise" itself is a direct Persian loan-word — from Avestan pairi-daeza ("enclosed garden"), one of the few confirmed Iranian loan-words in the Hebrew Bible.</div>
     </div>
   </div>
+  <div class="mp-note">
+    <span class="mp-note-i">📌</span>
+    <div class="mp-note-txt"><strong>"Paradise"</strong> (pairi-daeza, "enclosed garden") is one of the very few confirmed Persian loan-words in the Hebrew Bible. Its entry into biblical vocabulary is a direct linguistic fingerprint of Zoroastrian influence on post-exilic Jewish theology — acknowledged by the Jewish Encyclopedia (1906), ResearchGate (2018), and HowStuffWorks (2024).</div>
+  </div>
+</div>
 
-  <!-- ═══ NOTE ON TRANSMISSION ═══ -->
-  <div class="m-note">
-    <span class="m-note-icon">◆</span>
-    <div class="m-note-text"><strong>On Cultural Transmission:</strong> These connections do not assert mechanical plagiarism. Cultural transmission is the organic absorption of conceptual frameworks through prolonged contact — the same process by which Greek philosophy shaped Roman thought, or how Arabic scholarship preserved and transformed classical learning. The Achaemenid Persian Empire (550–330 BCE) created the ancient world's first multicultural superpower. Jewish priests and scribes who lived within it for two centuries absorbed Zoroastrian frameworks the way all cultures absorb surrounding ideas — without formal attribution, but with transformative effect. What emerged was Second Temple Judaism — the matrix from which both Christianity and Islam were born. The entire Abrahamic eschatological imagination traces back through this chain: from the Vedic Ṛta → Zoroastrian Asha vs Druj → Second Temple Judaism → Christianity → Islam.</div>
+<!-- MAIN QUOTE -->
+<div class="mp-quote">
+  <div class="mp-quote-txt">"Zoroaster was thus the first to teach the doctrines of an individual judgment, Heaven and Hell, the future resurrection of the body, the general Last Judgment, and life everlasting for the reunited soul and body. These doctrines were to become familiar articles of faith to much of mankind, through borrowing by Judaism, Christianity and Islam; yet it is in Zoroastrianism itself that they have their fullest logical coherence."</div>
+  <div class="mp-quote-attr">— Mary Boyce, Professor of Iranian Studies, University of London · Zoroastrians: Their Religious Beliefs and Practices (1979)</div>
+</div>
+
+<!-- ═══ SECTION III: ZOROASTRIANISM → ABRAHAMIC ═══ -->
+<div class="mp-sec">
+  <div class="mp-sec-head">
+    <span class="mp-sec-num">Section II</span>
+    <h2 class="mp-sec-title tb">Zoroastrianism → Abrahamic Faiths</h2>
+    <div class="mp-sec-line b"></div>
+    <span class="mp-sec-badge b">Babylonian Exile 586 BCE · Persian Rule 539–330 BCE · Encyclopaedia Iranica</span>
   </div>
 
-</div><!-- /map-wrap -->
+  <div class="mp-ctx b">
+    <div class="mp-ctx-lbl">The Critical Contact Point</div>
+    <div class="mp-ctx-txt">The Babylonian Exile (586–538 BCE) placed the Jewish priestly class in direct cultural contact with the most sophisticated eschatological religion then existing. Cyrus the Great — a Zoroastrian — is called <strong>"the Lord's anointed" (mashiach)</strong> in Isaiah 45:1, the only non-Israelite in Hebrew scripture to receive this title. He financed the rebuilding of the Jerusalem Temple. For 200+ years (539–330 BCE), Jewish priests and scribes lived within the Persian imperial administrative system. The Encyclopaedia Iranica (Shaked, 1987): "Since this was a period that followed a long Persian dominion in Palestine and an even longer period during which a substantial Jewish Diaspora lived continuously in Mesopotamia and Persia, the emergence of a fully developed eschatology in Jewish circles, displaying such great resemblance to the complex of Persian ideas, cannot be a coincidence."</div>
+  </div>
+
+  <div class="mp-cards">
+
+    <div class="mp-card cb">
+      <div class="mp-c-icon">⚔️</div>
+      <div class="mp-c-title">Cosmic Dualism — Good vs Evil</div>
+      <div class="mp-c-origin">Zoroastrian: Ahura Mazda vs Angra Mainyu · Gathas c. 1000 BCE</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Pre-exilic: "ha-satan" in Job is God's loyal prosecuting angel — subordinate, not opposed. Post-exile: 1 Chronicles 21:1 rewrites 2 Samuel 24:1 — in the older text God incites David; in the rewrite, Satan does. By Revelation, Satan is Ahura Mazda's perfect mirror: supreme cosmic evil in eternal war with the divine. The trajectory from loyal subordinate to cosmic equal-and-opposite is Zoroastrian theology absorbed in real time across 500 years of Jewish literary development.</div>
+      <div class="mp-c-note">Ehrman (2017): "The figure of Satan as cosmic opponent is clearly a post-Persian-contact development."</div>
+    </div>
+
+    <div class="mp-card cg">
+      <div class="mp-c-icon">👼</div>
+      <div class="mp-c-title">Named Archangels with Cosmic Functions</div>
+      <div class="mp-c-origin">Zoroastrian: Six Amesha Spentas — named archangels with specific duties · pre-600 BCE</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Pre-exilic Hebrew angels are nameless messengers with no differentiated roles. Post-exile: Michael, Gabriel, Raphael, Uriel appear in Daniel (c. 165 BCE), Tobit, and Enoch with distinct cosmic functions. Zoroastrianism already had six named Amesha Spentas with specific cosmic duties — Vohu Manah (Good Mind), Asha Vahishta (Best Truth), Khshathra Vairya (Holy Kingdom), Spenta Armaiti (Devotion), Haurvatat (Wholeness), Ameretat (Immortality) — a fully developed named angelic hierarchy predating Hebrew named angels by centuries. The seven chief archangels of Jewish inter-testamental literature are the seven Amesha Spentas (six plus Ahura Mazda himself) under new names.</div>
+      <div class="mp-c-note">Jewish Encyclopedia (1906): "Most scholars consider Jewish named angelology to derive from Zoroastrian models."</div>
+    </div>
+
+    <div class="mp-card cp">
+      <div class="mp-c-icon">☠️</div>
+      <div class="mp-c-title">Named Demons — Demonology System</div>
+      <div class="mp-c-origin">Zoroastrian: Aeshma Daeva, Aka Manah, Nasu, Druj Nasu · Avesta</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Pre-exilic Hebrew texts have no named demonic entities. Post-exile: Asmodeus appears in Tobit 3:8 — derived directly from Avestan Aeshma Daeva ("demon of wrath"), one of the most prominent Zoroastrian demons. The Book of Enoch's hierarchy of fallen Watchers under Semyaza and Azazel is structurally identical to the Zoroastrian hierarchy of Daevas under Angra Mainyu. Demonology as a systematic theology — named evil beings with specific domains of corruption — is a Zoroastrian innovation transmitted wholesale into Second Temple Judaism and then into Christianity and Islam (Shaytan, Iblis, Jinn hierarchy).</div>
+    </div>
+
+    <div class="mp-card cb">
+      <div class="mp-c-icon">💀</div>
+      <div class="mp-c-title">Bodily Resurrection of the Dead</div>
+      <div class="mp-c-origin">Zoroastrian: Frashegird — physical resurrection for final judgment · pre-400 BCE</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Bodily resurrection is entirely absent from pre-exilic Hebrew scripture. First unambiguous Hebrew reference: Daniel 12:2 (c. 167 BCE) — "Many who sleep in the dust of the earth shall awake..." This is written 370+ years into Jewish-Persian contact and is structurally identical to Zoroastrian Frashegird (physical renovation of the world and resurrection of all the dead for final judgment). Daniel Block, Bulletin for Biblical Research: "Zoroastrian influence on Ezekiel's resurrection imagery seems more likely than alternatives." The physical specificity — bodies coming out of the ground — is precisely Zoroastrian, not a natural development of Sheol theology.</div>
+      <div class="mp-c-note">Boyce, Collins, Grabbe: "Bodily resurrection enters Judaism during the Second Temple period under Iranian influence."</div>
+    </div>
+
+    <div class="mp-card cp">
+      <div class="mp-c-icon">🌉</div>
+      <div class="mp-c-title">The Bridge of Judgment — Chinvat to Sirat</div>
+      <div class="mp-c-origin">Zoroastrian: Chinvat Bridge — widens for the righteous, narrows for sinners</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Every soul crosses the Chinvat Bridge after death. For the righteous it is broad as a highway; for the wicked it narrows to a razor's edge and they fall into hell. In Islam this becomes the Sirat — a bridge finer than a hair, sharper than a sword, over the fires of Jahannam, that only the righteous cross (Sahih Muslim 1:352). The structural identity is exact. Jewish apocalyptic texts also contain bridge-of-judgment imagery. The Sirat is the Chinvat Bridge under an Arabic name, adopted through centuries of Iranian-Islamic contact during the Sasanian period (224–651 CE), when Zoroastrianism was the Persian state religion bordering the Arabian Peninsula.</div>
+    </div>
+
+    <div class="mp-card cg">
+      <div class="mp-c-icon">⭐</div>
+      <div class="mp-c-title">The Messianic Savior — Saoshyant to Christ to Mahdi</div>
+      <div class="mp-c-origin">Zoroastrian: Saoshyant — miraculous birth, defeats evil, presides over final resurrection</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">The Saoshyant: born from the preserved seed of Zarathustra miraculously (virgin birth motif), defeats Angra Mainyu, presides over the resurrection and last judgment, ushers in a perfected world. Cyrus the Great was identified as the Saoshyant figure in Isaiah 45:1 — the first Messianic identification in Hebrew literature, made for a Zoroastrian. Jewish messianism intensifies dramatically post-Persian contact. Christianity maps Jesus onto the Saoshyant framework (miraculous birth, defeat of Satan, resurrection, final judgment). Islam's Mahdi and the returning Isa fill the same eschatological role. The three Magi who followed the star at Jesus's birth (Matthew 2) are explicitly Zoroastrian priests (magi = Persian priestly title).</div>
+    </div>
+
+    <div class="mp-card cf">
+      <div class="mp-c-icon">🔥</div>
+      <div class="mp-c-title">Final Cosmic Battle &amp; Renovation (Apocalypse)</div>
+      <div class="mp-c-origin">Zoroastrian: Frashegird — earth purified by molten metal, Angra Mainyu annihilated</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Zoroastrianism: Frashegird — cosmic villain permanently defeated; earth purified by a river of molten metal through which all souls pass (righteous experience it as warm milk, wicked as liquid fire); perfected world begins. Revelation 19–21: the Battle of Armageddon, defeat of Satan, lake of fire, New Heaven and New Earth. The structural elements are identical across both traditions: cosmic villain defeated, purification by fire, all humanity passes through judgment, perfected world inaugurated. The Avesta's Frashegird is the oldest documented template of what all Abrahamic faiths call the Apocalypse.</div>
+    </div>
+
+    <div class="mp-card cn">
+      <div class="mp-c-icon">✨</div>
+      <div class="mp-c-title">The Holy Spirit — Spenta Mainyu</div>
+      <div class="mp-c-origin">Zoroastrian: Spenta Mainyu — the Holy/Bountiful Spirit, emanation of Ahura Mazda</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Ahura Mazda operates through Spenta Mainyu (the Holy/Bountiful Spirit) — the divine creative emanation that is the source of life, goodness, and the spiritual realm. This is not merely an abstract force but a named divine person distinct from yet emanating from the supreme deity. The Jewish Encyclopedia explicitly identifies the Zoroastrian Spenta Mainyu as the conceptual prototype for the Christian Holy Spirit. The Theosophical Society (1906): "The Zoroastrian Spenta Mainyu is the Christian 'Holy Spirit.'" The three-part structure of Ahura Mazda / Spenta Mainyu / Asha (supreme deity / holy spirit / divine truth) prefigures the Christian Trinity (Father / Holy Spirit / Logos) with remarkable structural precision.</div>
+      <div class="mp-c-note">Jewish Encyclopedia (1906): "Spenta Mainyu is the Christian 'Holy Spirit'" — a rare case of explicit contemporaneous scholarly identification.</div>
+    </div>
+
+    <div class="mp-card cb">
+      <div class="mp-c-icon">🧠</div>
+      <div class="mp-c-title">Free Will as Theological Cornerstone</div>
+      <div class="mp-c-origin">Zoroastrian: Gathas — humans must choose Asha or Druj; judgment follows choice</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">The Gathas state explicitly that humans are given freedom to choose between Truth (Asha) and the Lie (Druj), and will be judged individually on that choice. This is one of the earliest documented theological formulations of free will as a moral requirement — predating Augustine's De Libero Arbitrio by over a millennium. The individualized moral accounting framework — each person responsible for their choices, each judged separately — is Zoroastrian philosophy that entered Judaism during the Persian period and became the foundation of Abrahamic systems of sin, salvation, and divine judgment. Britannica (2024): Zoroastrianism "bequeathed such concepts as the primacy of ethical choice in human life" to Judaism, Christianity, and Islam.</div>
+    </div>
+
+    <div class="mp-card co">
+      <div class="mp-c-icon">🙏</div>
+      <div class="mp-c-title">Fixed Daily Prayer at Set Times</div>
+      <div class="mp-c-origin">Zoroastrian: Five Gahs — obligatory fixed daily prayer times facing sacred fire</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Zoroastrianism prescribes five mandatory daily prayers (Gahs) at cosmologically fixed times: Havan (dawn), Rapithwin (noon), Uzerin (afternoon), Aiwisruthrem (dusk), Ushahin (night). Judaism developed three fixed daily prayer times (Shacharit, Mincha, Maariv) during and after the Babylonian exile. Islam prescribes five (Salat at Fajr, Zuhr, Asr, Maghrib, Isha) — matching the Zoroastrian number exactly. The structural institution of obligatory fixed-time daily prayer, unknown in pre-exilic Hebrew practice, has a clear Zoroastrian genealogy. The Islamic practice of facing a specific direction (qibla/Mecca) mirrors the Zoroastrian practice of facing the sacred fire or the sun.</div>
+    </div>
+
+    <div class="mp-card cp">
+      <div class="mp-c-icon">📜</div>
+      <div class="mp-c-title">Dead Sea Scrolls — Zoroastrian Dualism in Hebrew Text</div>
+      <div class="mp-c-origin">Qumran War Scroll (1QM) c. 100 BCE — Sons of Light vs Sons of Darkness</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">The Qumran War Scroll divides humanity into Sons of Light (led by the Prince of Light / Angel of Truth) and Sons of Darkness (led by the Angel of Darkness / Belial) in a cosmic battle mirroring the Zoroastrian Spenta Mainyu vs Angra Mainyu framework with near-perfect structural correspondence. The Community Rule (1QS) states God "created the spirits of light and darkness" — the Zoroastrian two-principle cosmology in Hebrew. John Collins (Yale), George Vermes, and Frank Moore Cross identify this Essene dualism as the most demonstrably Zoroastrian stratum in all Second Temple Jewish literature. Cross (1961): "The Qumran scrolls show the extent to which Iranian dualism had penetrated Jewish thought."</div>
+    </div>
+
+    <div class="mp-card cg">
+      <div class="mp-c-icon">🌊</div>
+      <div class="mp-c-title">Ritual Purity — Nasu Demon to Levitical Law</div>
+      <div class="mp-c-origin">Zoroastrian: Nasu corpse demon — nine-night purification (Bareshnum) required</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Zoroastrianism: contact with a corpse attracts the Nasu demon (death's pollution-spirit), requiring an elaborate nine-night Bareshnum purification. The red heifer ritual in Numbers 19 — the most elaborate Levitical purification, used specifically for corpse contamination — is structurally parallel and appears in its most elaborate post-exilic form. The Levitical system shares conceptual architecture (cosmic pollution, specific multi-day purification, categories of primary and secondary impurity) with the Zoroastrian framework. Milgrom (1991), the definitive scholar of Levitical purity law, notes that the Zoroastrian system provides the closest available parallels to Levitical categories of contagion.</div>
+    </div>
+
+    <div class="mp-card cb">
+      <div class="mp-c-icon">📖</div>
+      <div class="mp-c-title">Heavenly Books — The Cosmic Record of Deeds</div>
+      <div class="mp-c-origin">Zoroastrian: Heavenly book in which all human actions are inscribed · Avesta</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">The Zoroastrian tradition holds that every human action — thought, word, and deed — is recorded in a heavenly book maintained by divine scribes. At the Chinvat Bridge, this cosmic ledger is consulted for the individual judgment. This concept enters Judaism: Daniel 7:10 — "The court was seated and the books were opened"; Revelation 20:12 — "The dead were judged according to what was written in the books." Islam preserves it as the Kitab (book of deeds). The Jewish Encyclopedia identifies "the heavenly book in which human actions are inscribed" as one of the major Zoroastrian contributions to Jewish eschatology. The concept of a divine record of all human acts is not found in pre-exilic Hebrew scripture.</div>
+      <div class="mp-c-note">Jewish Encyclopedia (1906): "The heavenly book of deeds" listed among major Zoroastrian-derived eschatological concepts in Judaism.</div>
+    </div>
+
+    <div class="mp-card cf">
+      <div class="mp-c-icon">⏳</div>
+      <div class="mp-c-title">Historical Periodization — Cosmic Ages</div>
+      <div class="mp-c-origin">Zoroastrian: World history divided into 12,000-year cosmic cycles · Bundahishn</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">Zoroastrian cosmology divides world history into four 3,000-year periods: spiritual creation (menog), material creation, the current era of conflict, and the final renovation (Frashegird). This periodization of cosmic history into discrete ages influenced Jewish apocalyptic literature: 2 Baruch and 4 Ezra both divide history into cosmic periods mirroring the Zoroastrian scheme. The Book of Daniel's four kingdoms (Babylonian, Median, Persian, Greek) followed by a divine kingdom reflects the Zoroastrian four-age cosmic periodization. Encyclopaedia Iranica (Shaked 1987): "Historical periodization in Jewish apocalyptic literature (2 Baruch, 4 Ezra) shows Zoroastrian influence."</div>
+    </div>
+
+    <div class="mp-card cp">
+      <div class="mp-c-icon">✝️</div>
+      <div class="mp-c-title">The Trinity Concept — Ahura Mazda's Three-Fold Nature</div>
+      <div class="mp-c-origin">Zoroastrian: Ahura Mazda — "threefold before other creations" · Avesta</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">The Avesta describes Ahura Mazda in triadic terms: "Praise to thee, Ahura Mazda, threefold before other creations." From Ahura Mazda emanate two divine principles: Spenta Mainyu (Holy Spirit) and Angra Mainyu (Destructive Spirit) as twin forces. The Zoroastrian "good trinity" — Ahura Mazda / Spenta Mainyu / Asha — provides the oldest documented triadic divine structure in monotheistic religion. The Theosophical Society and Jewish Encyclopedia both identify this as the conceptual antecedent to the Christian Trinity (Father / Holy Spirit / Logos-Christ), which was formally developed in 4th-century CE councils drawing on Hellenistic philosophy but operating within a theological framework that Zoroastrianism had pioneered centuries earlier.</div>
+    </div>
+
+    <div class="mp-card cn">
+      <div class="mp-c-icon">🌱</div>
+      <div class="mp-c-title">Good Thoughts, Good Words, Good Deeds</div>
+      <div class="mp-c-origin">Zoroastrian: Humata, Hukhta, Hvarshta — the Zoroastrian ethical creed</div>
+      <div class="mp-c-arrow"><div class="mp-c-aline"></div><span class="mp-c-ahead">▸</span></div>
+      <div class="mp-c-body">The central ethical formula of Zoroastrianism: Good Thoughts (Humata), Good Words (Hukhta), Good Deeds (Hvarshta) — a triadic ethical framework covering the entire domain of human moral life: mental, verbal, and physical action. This is not a list of commandments but a principle: the orientation of the whole self toward truth. Compare the Shema's "heart, soul, and strength" (Deuteronomy 6:5); Jesus's "love God with all your heart, soul, and mind" (Matthew 22:37); Islam's intention-word-action triad in Hadith ethics. The Zoroastrian triadic ethical formula is the oldest documented instance of this moral architecture — which then appears in all three Abrahamic ethical frameworks. Zoroastrianism emphasizes action over mere belief: "It is the actions you take in life, both good and bad, that determine your fate in the afterlife" — a position philosophically closer to karma than to salvation by faith alone.</div>
+    </div>
+
+  </div><!-- /cards -->
+</div><!-- /section III -->
+
+<!-- SCHOLARS -->
+<div class="mp-scholars">
+  <div class="mp-scholars-h">◈ &nbsp; Scholarly Consensus &nbsp; ◈</div>
+  <div class="mp-scholars-txt">
+    Documented by: <strong>Mary Boyce</strong> (SOAS, London), <strong>Martin Schwartz</strong> (UC Berkeley), <strong>Lester Grabbe</strong> (University of Hull), <strong>John J. Collins</strong> (Yale Divinity School), <strong>Shaul Shaked</strong> (Hebrew University of Jerusalem), <strong>Alan Segal</strong> (Columbia), <strong>Bart Ehrman</strong> (UNC Chapel Hill), <strong>Frank Moore Cross</strong> (Harvard), <strong>Daniel Block</strong> (Wheaton), and the editors of the <strong>Encyclopaedia Iranica</strong> and <strong>Jewish Encyclopedia</strong> (1906). Consensus: two centuries of Persian contact produced a transformed Jewish theological worldview — transmitted through Christianity and Islam into the entire Abrahamic tradition. The doctrines of named angels, named demons, cosmic Satan, bodily resurrection, a moralized two-destination afterlife, a messianic savior, heavenly books of deeds, and a final cosmic judgment all enter the Hebrew record <em>after</em> the Babylonian exile and <em>during</em> maximum Persian-Jewish contact. The chronological correlation is not coincidental. Encyclopaedia Iranica (Shaked): "cannot be a coincidence and must be explained as a result of contact between the two cultures."
+  </div>
+</div>
+
+<div class="mp-note">
+  <span class="mp-note-i">◆</span>
+  <div class="mp-note-txt"><strong>On Cultural Transmission:</strong> These connections do not assert mechanical plagiarism. Cultural transmission is the organic absorption of conceptual frameworks through prolonged contact — the same process by which Greek philosophy shaped Roman thought or Arabic scholarship preserved and transformed classical learning. The Achaemenid Persian Empire (550–330 BCE) created the ancient world's first multicultural superpower, and Jewish priests who lived within it for two centuries absorbed Zoroastrian frameworks organically, without formal attribution, but with transformative effect. The full transmission chain: Vedic Rta → Zoroastrian Asha vs Druj → Second Temple Judaism → Christianity → Islam.</div>
+</div>
+
+</div><!-- /mp-wrap -->
+
+<!-- TIMELINE MODAL JS -->
+<script>
+var mpTlData = {
+  proto: {
+    color:'#c88c3c',
+    title:'Proto-Indo-Iranian Religion',
+    date:'c. 2000 BCE · Eurasian Steppes (modern-day Central Asia / Southern Urals)',
+    desc:'The common ancestor of both Vedic Hinduism and Zoroastrianism — a single religion practiced by the Indo-Iranian peoples before they split into two branches migrating into the Indian subcontinent and the Iranian plateau respectively.',
+    bullets:[
+      '<strong>Common gods:</strong> Mitra/Mithra, Varuna/Ahura (Lord), Aryaman/Airyaman, Apam Napat (water deity), Yama/Yima, Vayu/Vay (wind god)',
+      '<strong>Common sacred drink:</strong> Soma/Haoma — pressed plant drink used in fire-sacrifice ritual',
+      '<strong>Common fire cult:</strong> Sacred fire as divine intermediary, maintained by hereditary priest class (Atharvan/Athravan)',
+      '<strong>Common cosmic order principle:</strong> Rta/Asha — the law governing both nature and ethics simultaneously',
+      '<strong>Common priestly titles:</strong> Hotar/Zaotar (invoker); Atharvan/Athravan (fire priest); linguistic cognates proving shared origin',
+      '<strong>Common sacrificial ritual:</strong> Yajna/Yasna — fire sacrifice with precise liturgical requirements',
+      '<strong>Hard archaeological evidence:</strong> The Mitanni treaty (c. 1380 BCE, northern Syria) invokes Mitra, Varuna, Indra, and the Nasatyas — Vedic gods cited in a non-Indian context, proving the religion existed as a coherent system by 1380 BCE at minimum',
+      '<strong>Linguistic evidence:</strong> Vedic Sanskrit and Avestan are so structurally close (both from Proto-Indo-Iranian c. 2000 BCE) that scholars can translate between the two traditions verse by verse with phonological regularity'
+    ]
+  },
+  rigveda: {
+    color:'#c88c3c',
+    title:'The Rigveda — Oldest Scripture in the World',
+    date:'c. 1500–1200 BCE · Composed orally; preserved with extraordinary fidelity',
+    desc:'The Rigveda (from ric "praise" + veda "knowledge") is humanity\'s oldest surviving scripture — a collection of 1,028 hymns in 10 books (Mandalas) totaling 10,552 verses. Composed in Vedic Sanskrit, it is the foundational text of the Indo-European religious tradition and the source of the philosophical frameworks that influenced all subsequent religions in the transmission chain.',
+    bullets:[
+      '<strong>Content:</strong> 1,028 hymns to Vedic deities: Indra (250+ hymns), Agni (200+ hymns), Soma (entire Mandala IX, 114 hymns), Varuna, Mitra, Surya, Ushas, the Asvins',
+      '<strong>Rta:</strong> Cosmic order and truth — the foundational principle governing nature and ethics; prototype for Zoroastrian Asha and ultimately for the Abrahamic concept of divine law',
+      '<strong>Karma first appears:</strong> As "ritual action" — the later Upanishads will develop it into the moral causality framework that is humanity\'s oldest systematic account of justice',
+      '<strong>Creation hymn (Nasadiya Sukta, 10.129):</strong> "There was neither non-existence nor existence then... Who really knows? Who will here proclaim it?" — The earliest philosophical agnosticism in world literature',
+      '<strong>Three-tier cosmos:</strong> Svarga (heavens), Antariksha (atmosphere), Prithivi (earth) — with further subdivisions into seven celestial planes (Saptalokas)',
+      '<strong>Preservation:</strong> Transmitted orally with extraordinary accuracy using multiple redundant mnemonic systems (pada-patha, krama-patha, etc.) — demonstrably accurate by internal consistency and the preserved Vedic accent system'
+    ]
+  },
+  zarathustra: {
+    color:'#50c035',
+    title:'Zarathustra and the Zoroastrian Reform',
+    date:'c. 1200–1000 BCE (most scholars) · Gathas composed in Old Avestan',
+    desc:'Zarathustra (Greek: Zoroaster) was a prophet who reformed the proto-Indo-Iranian religion, elevating Ahura Mazda to sole supreme deity and performing the most consequential theological inversion in ancient religious history — directly shaping what would become the Abrahamic world\'s core concepts.',
+    bullets:[
+      '<strong>The Great Inversion:</strong> Vedic Devas (divine gods) → Avestan Daevas (demons). Vedic Asuras → Avestan Ahuras (holy beings). Vedic Indra, Sarva (Rudra), and Naonhaitya (Nasatya) specifically named as demons in the Vendidad law code',
+      '<strong>Monotheistic reform:</strong> Elevated Ahura Mazda to sole supreme deity — the step that made monotheism philosophically available to the Abrahamic world (which was still largely polytheistic at this time)',
+      '<strong>Cosmic dualism:</strong> Formalized Asha (Truth/Order) vs Druj (Lie/Disorder) — the binary moral framework that became God vs Satan in Abrahamic theology',
+      '<strong>Free will:</strong> Explicitly stated that humans must choose between Asha and Druj — one of history\'s earliest theological formulations of free will as moral requirement',
+      '<strong>Gathas:</strong> Zarathustra\'s own hymns, preserved in Old Avestan — among the most ancient surviving prophetic texts in the world',
+      '<strong>Context:</strong> History.com (2025): "This religion was likely similar to early forms of Hinduism" — confirming the Vedic-Zoroastrian relationship'
+    ]
+  },
+  upanishads: {
+    color:'#c88c3c',
+    title:'The Principal Upanishads — Philosophy of Consciousness',
+    date:'c. 800–300 BCE · Brihadaranyaka and Chandogya are oldest (c. 800 BCE)',
+    desc:'The Upanishads (from upa "near" + ni "down" + shad "to sit" — sitting near a teacher) are the philosophical culmination of the Vedic tradition — 108 texts of varying antiquity that constitute the theoretical summit of Indian philosophy. They answer the question posed by the Rigveda\'s cosmological hymns: "What is the ultimate nature of reality and of the self?"',
+    bullets:[
+      '<strong>Brihadaranyaka Upanishad (c. 800 BCE):</strong> First unambiguous statement of Atman = Brahman (1.4.10: "Aham Brahmasmi" — I am Brahman); Yajnavalkya\'s ethical karma formulation ("A man becomes good by good action and bad by bad action")',
+      '<strong>Chandogya Upanishad (c. 800 BCE):</strong> "Tat Tvam Asi" — That thou art (6.8.7); the dialogue between Uddalaka Aruni and his son Shvetaketu on the unity of self and Brahman',
+      '<strong>Mandukya Upanishad:</strong> Analysis of four states of consciousness (waking, dream, deep sleep, turiya); "Ayam Atma Brahma" — This Self is Brahman',
+      '<strong>Katha Upanishad:</strong> Nachiketa\'s dialogue with Yama (Death) — humanity\'s oldest recorded philosophical discussion of the nature of death and the immortal self, predating Plato\'s Phaedo by at least 200 years',
+      '<strong>Philosophical achievement:</strong> Stanford Encyclopedia of Philosophy (Ganeri 2017): "Advaita Vedanta constitutes one of the most sophisticated and philosophically rigorous accounts of consciousness produced in any tradition"',
+      '<strong>Karma fully developed:</strong> The Upanishads complete karma\'s evolution from "ritual action" (Rigveda) to "universal impersonal moral causality" — the world\'s first comprehensive theory of justice not requiring divine judgment'
+    ]
+  },
+  exile: {
+    color:'#4080d8',
+    title:'The Babylonian Exile — The Contact Begins',
+    date:'586–538 BCE · Jerusalem conquered; Temple destroyed; priestly class exiled to Babylon',
+    desc:'Nebuchadnezzar II of Babylon conquered Jerusalem in 586 BCE, destroyed the Temple of Solomon, and deported the educated upper class — priests, scribes, and royal family — to Babylon. This began the most consequential cultural contact in Western religious history.',
+    bullets:[
+      '<strong>Who was exiled:</strong> Not the entire population but specifically the educated elite — priests, scribes, prophets, royal administrators. These were precisely the people who wrote and preserved the Hebrew Bible',
+      '<strong>Duration:</strong> 48 years (586–538 BCE) — nearly two generations immersed in Babylonian and then Persian religious culture',
+      '<strong>Theological crisis:</strong> How could Yahweh be supreme if he allowed his Temple to be destroyed and his people enslaved? This crisis forced the re-examination of Jewish theology that made it receptive to new conceptual frameworks',
+      '<strong>Pre-exilic theology:</strong> No detailed afterlife (only Sheol), no named Satan, no named archangels, no bodily resurrection, no concept of cosmic Good vs Evil, no apocalyptic eschatology',
+      '<strong>Babylonian cosmology absorbed:</strong> Elements of Babylonian flood narrative (Atrahasis), creation story (Enuma Elish), and wisdom literature entered Hebrew scripture during this period',
+      '<strong>Critical literary observation:</strong> Many scholars (Davies, Russell, Isbell) argue that books of the Hebrew Bible written after this contact contain traces of Persian influence — and the chronological correlation is impossible to dismiss as coincidence'
+    ]
+  },
+  cyrus: {
+    color:'#4080d8',
+    title:'Cyrus the Great — The Zoroastrian Liberator',
+    date:'539 BCE · Persian conquest of Babylon · Jewish return authorized',
+    desc:'When Cyrus the Great (founder of the Achaemenid Persian Empire) conquered Babylon in 539 BCE, he issued the Cyrus Cylinder — one of history\'s first declarations of religious freedom — and specifically authorized the Jewish exiles to return home and rebuild their Temple at Persian imperial expense.',
+    bullets:[
+      '<strong>Isaiah 45:1:</strong> "Thus says the LORD to his anointed [mashiach / messiah], to Cyrus, whose right hand I have grasped..." — Cyrus is the only non-Israelite in Hebrew scripture given the title "anointed one" (messiah/mashiach). This is the first messianic usage in Hebrew literature — applied to a Zoroastrian king',
+      '<strong>Temple rebuilding:</strong> Cyrus not only authorized the return but provided Persian imperial funding for the rebuilding of the Jerusalem Temple. The second Temple was built with Zoroastrian imperial money under Zoroastrian imperial protection',
+      '<strong>200 years of contact:</strong> After Cyrus, Jewish communities lived under Persian rule (539–330 BCE) — two centuries of maximum cultural contact during which the Jewish priestly class worked within the Persian administrative apparatus alongside Zoroastrian priests (Magi)',
+      '<strong>Ezra and Nehemiah:</strong> The books that record the post-exilic reconstruction — Ezra and Nehemiah — were written entirely within the Persian period and show clear evidence of Persian administrative and theological influence',
+      '<strong>The Magi at Jesus\'s birth:</strong> Matthew 2 — the three Magi (Persian priestly title) who follow a star to visit the infant Jesus are explicitly Zoroastrian priests. This detail, in the founding narrative of Christianity, encapsulates the entire transmission relationship',
+      '<strong>Scholarly consensus:</strong> Encyclopaedia Iranica (Shaked): the post-exilic development of Jewish eschatology displaying "such great resemblance to the complex of Persian ideas cannot be a coincidence"'
+    ]
+  },
+  secondtemple: {
+    color:'#9050d8',
+    title:'Second Temple Judaism — The Transformation',
+    date:'c. 500 BCE – 70 CE · The period of maximum Zoroastrian conceptual absorption',
+    desc:'Second Temple Judaism (named for the Temple rebuilt under Persian sponsorship, standing until its destruction by Rome in 70 CE) is the period in which virtually all the Zoroastrian-derived concepts enter the Hebrew textual tradition. The contrast with pre-exilic Judaism is stark and scholarly documented.',
+    bullets:[
+      '<strong>Angelology:</strong> Named archangels — Michael (Daniel 10:13), Gabriel (Daniel 8:16), Raphael (Tobit 12:15), Uriel (1 Enoch 9:1) — appear for the first time in Daniel (c. 165 BCE) and Tobit (c. 200 BCE), both post-exilic texts written under Persian or post-Persian cultural influence',
+      '<strong>Demonology:</strong> Asmodeus (Tobit 3:8) = Zoroastrian Aeshma Daeva (linguistically confirmed). Book of Enoch\'s Watcher-demon hierarchy. Azazel (Leviticus 16) in post-exilic cultic texts. Named demonic beings are entirely absent from pre-exilic texts',
+      '<strong>Resurrection:</strong> Daniel 12:2 (c. 167 BCE) — "Many who sleep in the dust shall awake, some to everlasting life, some to shame." First unambiguous Hebrew reference to bodily resurrection — written 370+ years into Persian contact',
+      '<strong>Satan as cosmic adversary:</strong> 1 Chronicles 21:1 (c. 400 BCE) rewrites 2 Samuel 24:1 — the same census-inciting event attributed to God in the older text is attributed to Satan in the rewrite. The evolution from divine subordinate to cosmic adversary tracks perfectly with Persian contact',
+      '<strong>Apocalyptic literature:</strong> Daniel, 1 Enoch, 4 Ezra, 2 Baruch — all show Zoroastrian eschatological frameworks including historical periodization, cosmic battles, and final renovation',
+      '<strong>Paradise:</strong> The word "paradise" (Gan Eden in Hebrew, Paradeisos in Greek LXX) derives from Avestan pairi-daeza ("enclosed garden") — one of the few confirmed Iranian loan-words in the Hebrew Bible, a direct linguistic fingerprint of the transmission'
+    ]
+  },
+  christianity: {
+    color:'#c03838',
+    title:'Christianity — Inheriting the Zoroastrian Framework',
+    date:'1st century CE · Emerged from Second Temple Judaism, carrying the Zoroastrian inheritance',
+    desc:'Christianity emerged directly from Second Temple Judaism — which had already absorbed Zoroastrian eschatological concepts during the Persian period. Christianity then intensified and systematized these concepts, particularly the cosmic Satan, the final judgment, the resurrection, and the messianic savior.',
+    bullets:[
+      '<strong>Satan:</strong> Fully developed as cosmic adversary of God — identical to Zoroastrian Angra Mainyu in function, scope, and cosmic narrative role. The Christian Satan is not found in pre-exilic Judaism',
+      '<strong>Holy Spirit:</strong> Jewish Encyclopedia and Theosophical Society identify the Christian Holy Spirit with the Zoroastrian Spenta Mainyu — the divine creative spirit emanating from the supreme deity',
+      '<strong>Trinity:</strong> The triadic divine structure (Father / Son / Holy Spirit) finds its conceptual ancestor in the Zoroastrian threefold nature of Ahura Mazda described in the Avesta',
+      '<strong>The Magi:</strong> Matthew 2:1-12 — the Magi (Zoroastrian priests) travel from Persia to honor the infant Jesus, guided by a star. This is Christianity\'s founding narrative explicitly including Zoroastrian priests as the first Gentile worshippers',
+      '<strong>Resurrection:</strong> Bodily resurrection of Christ and of all the dead at the end of time — structurally identical to Zoroastrian Frashegird',
+      '<strong>Final judgment and heaven/hell:</strong> Revelation 20-21 — the Battle of Armageddon, the defeat of Satan, the Great White Throne judgment, and the New Heaven and New Earth maps exactly onto Zoroastrian Frashegird with fire-purification and cosmic renovation'
+    ]
+  },
+  islam: {
+    color:'#30b870',
+    title:'Islam — The Final Iteration of the Chain',
+    date:'7th century CE · Muhammad born c. 570 CE · Quran revealed c. 610–632 CE',
+    desc:'Islam emerged in the 7th century CE in the Arabian Peninsula — geographically adjacent to and historically embedded in the Sasanian Persian Empire (224–651 CE), which was Zoroastrian. The Quran and Hadith preserve numerous Zoroastrian-derived concepts, some via the Jewish-Christian inheritance, some via direct Iranian cultural transmission.',
+    bullets:[
+      '<strong>Sirat Bridge:</strong> The bridge over Jahannam (Sahih Muslim 1:352) — finer than a hair, sharper than a sword — is the Chinvat Bridge under an Arabic name, transmitted through Iranian-Islamic cultural synthesis during the Sasanian period',
+      '<strong>Five daily prayers:</strong> Salat at Fajr, Zuhr, Asr, Maghrib, Isha — matching the number of Zoroastrian Gahs (five daily prayer times) exactly; facing a specific direction (qibla) mirrors facing the sacred fire',
+      '<strong>Jinn hierarchy:</strong> Islamic demonology of Jinn (including the Shaytan/Iblis as cosmic adversary) develops in an environment of direct Zoroastrian cultural contact and is structurally identical to Zoroastrian Daeva hierarchy',
+      '<strong>Isra and Miraj:</strong> The Prophet\'s night journey through the seven heavens (Quran 17:1; elaborated in Hadith) — a journey through seven cosmic planes — mirrors the Zoroastrian soul\'s ascent through seven celestial planes in the Arda Viraz Namag (a Zoroastrian text describing a journey through heaven and hell)',
+      '<strong>Mahdi and returning Isa:</strong> Islam\'s eschatological savior figures (Mahdi + returning Jesus) fill the same structural role as the Zoroastrian Saoshyant — born to defeat cosmic evil and preside over the final renovation',
+      '<strong>Sasanian inheritance:</strong> When Arab armies conquered the Persian Sasanian Empire (633–651 CE), they absorbed enormous amounts of Iranian culture, including Zoroastrian theological concepts that were then integrated into Islamic thought through the great Persian Islamic scholars (al-Ghazali, Ibn Sina, al-Biruni)'
+    ]
+  }
+};
+
+function openMpModal(key) {
+  var d = mpTlData[key];
+  if (!d) return;
+  var modal = document.getElementById('mpTlModal');
+  document.getElementById('mpTlTitle').textContent = d.title;
+  document.getElementById('mpTlTitle').style.color = d.color;
+  document.getElementById('mpTlDate').textContent = d.date;
+  document.getElementById('mpTlDate').style.color = d.color;
+  document.getElementById('mpTlDesc').innerHTML = d.desc;
+  var ul = document.getElementById('mpTlBullets');
+  ul.innerHTML = '';
+  d.bullets.forEach(function(b) {
+    var li = document.createElement('li');
+    li.innerHTML = b;
+    ul.appendChild(li);
+  });
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMpModal() {
+  document.getElementById('mpTlModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMpModal();
+});
+</script>
+
 </div><!-- /page-map -->
 
 
