@@ -53,6 +53,11 @@
   --isl-card2: #0c1018;
   --isl-border: #153324;
   --isl-border2: #182240;
+  /* Map tab accent */
+  --map: #f0c060;
+  --map-2: #c87941;
+  --map-dim: rgba(240,192,96,0.12);
+  --map-glow: rgba(240,192,96,0.35);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -221,6 +226,12 @@ body::before {
 .rel-tab.active-isl .rel-tab-name { color:var(--isl); }
 .rel-tab.active-isl .rel-tab-script { color:var(--isl-2); opacity:0.9; }
 .rel-tab.active-isl::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--isl),var(--isl-2)); }
+
+.rel-tab.active-map { background:var(--map-dim); }
+.rel-tab.active-map .rel-tab-icon { filter:none; }
+.rel-tab.active-map .rel-tab-name { color:var(--map); }
+.rel-tab.active-map .rel-tab-script { color:var(--map-2); opacity:0.9; }
+.rel-tab.active-map::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--map),var(--map-2)); }
 
 /* ══════════════════════════════════════════
    PAGE SYSTEM
@@ -862,6 +873,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <span class="rel-tab-icon">☪️</span>
       <span class="rel-tab-name">Islam</span>
       <span class="rel-tab-script" style="font-family:'Amiri',serif">القرآن الكريم</span>
+    </div>
+  </button>
+  <button class="rel-tab" id="tab-map" onclick="switchReligion('map')" style="flex:0 0 auto;min-width:90px;">
+    <div class="rel-tab-inner">
+      <span class="rel-tab-icon">🗺️</span>
+      <span class="rel-tab-name" style="font-size:10px;letter-spacing:0.14em;">Origins Map</span>
+      <span class="rel-tab-script" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;">Transmission</span>
     </div>
   </button>
 </nav>
@@ -7336,6 +7354,560 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 </div><!-- /religion-pages -->
 
+<!-- ═══════════════════════════════════════════════════════ -->
+</div><!-- /religion-pages -->
+
+<!-- ════════════ PAGE 4: ORIGINS MAP ════════════ -->
+<div class="religion-page" id="page-map" style="background:#07060d;min-height:100vh;">
+<style>
+/* ── MAP PAGE STYLES ── */
+.map-page-wrap { max-width:1200px; margin:0 auto; padding:48px 24px 80px; }
+.map-hero { text-align:center; margin-bottom:56px; }
+.map-hero-eyebrow { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.42em; color:#6a5a30; text-transform:uppercase; margin-bottom:14px; }
+.map-hero-title { font-family:'Cinzel Decorative',serif; font-size:clamp(22px,4vw,42px); font-weight:700; color:#f0c060; line-height:1.15; letter-spacing:0.04em; text-shadow:0 0 60px rgba(240,192,96,0.28); margin-bottom:10px; }
+.map-hero-sub { font-family:'EB Garamond',serif; font-size:clamp(13px,2vw,17px); color:#8a7a50; font-style:italic; letter-spacing:0.06em; }
+.map-hero-rule { display:flex; align-items:center; gap:18px; margin:24px auto 0; max-width:520px; }
+.map-hero-rule::before,.map-hero-rule::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(240,192,96,0.22),transparent); }
+.map-hero-rule-glyph { font-family:'Cinzel',serif; font-size:11px; color:#6a5a30; letter-spacing:0.2em; }
+
+/* ─ SECTION HEADERS ─ */
+.map-section { margin-bottom:64px; }
+.map-section-head { display:flex; align-items:center; gap:16px; margin-bottom:28px; }
+.map-section-num { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.3em; color:#6a5a30; text-transform:uppercase; white-space:nowrap; }
+.map-section-title { font-family:'Cinzel',serif; font-size:clamp(15px,2.5vw,22px); font-weight:600; }
+.map-section-title.gold { color:#f0c060; }
+.map-section-title.flame { color:#e87040; }
+.map-section-title.abr { color:#70c0e0; }
+.map-section-line { flex:1; height:1px; }
+.map-section-line.gold { background:linear-gradient(90deg,rgba(240,192,96,0.4),transparent); }
+.map-section-line.flame { background:linear-gradient(90deg,rgba(232,112,64,0.4),transparent); }
+.map-section-line.abr { background:linear-gradient(90deg,rgba(112,192,224,0.4),transparent); }
+.map-section-badge { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; padding:4px 12px; border-radius:2px; white-space:nowrap; }
+.map-section-badge.gold { background:rgba(240,192,96,0.12); border:1px solid rgba(240,192,96,0.3); color:#f0c060; }
+.map-section-badge.flame { background:rgba(232,112,64,0.12); border:1px solid rgba(232,112,64,0.3); color:#e87040; }
+.map-section-badge.abr { background:rgba(112,192,224,0.12); border:1px solid rgba(112,192,224,0.3); color:#70c0e0; }
+
+/* ─ TIMELINE BAR ─ */
+.map-timeline { display:flex; align-items:stretch; margin-bottom:56px; gap:0; border-radius:6px; overflow:hidden; box-shadow:0 4px 40px rgba(0,0,0,0.5); }
+.map-tl-era { flex:1; padding:18px 20px 16px; text-align:center; position:relative; }
+.map-tl-era:not(:last-child)::after { content:'›'; position:absolute; right:-1px; top:50%; transform:translateY(-50%); font-size:20px; color:rgba(255,255,255,0.2); z-index:2; }
+.map-tl-era.vedic { background:linear-gradient(135deg,#1a0e06,#2a1808); border:1px solid rgba(200,140,60,0.2); }
+.map-tl-era.zoroast { background:linear-gradient(135deg,#0a1206,#161e0a); border:1px solid rgba(180,220,80,0.2); border-left:none; }
+.map-tl-era.persian-empire { background:linear-gradient(135deg,#060e1a,#0a1628); border:1px solid rgba(80,140,220,0.2); border-left:none; }
+.map-tl-era.abrahamic { background:linear-gradient(135deg,#0e060e,#180a18); border:1px solid rgba(200,100,200,0.2); border-left:none; }
+.map-tl-date { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.18em; margin-bottom:6px; }
+.map-tl-era.vedic .map-tl-date { color:#c88c3c; }
+.map-tl-era.zoroast .map-tl-date { color:#90d040; }
+.map-tl-era.persian-empire .map-tl-date { color:#508cdc; }
+.map-tl-era.abrahamic .map-tl-date { color:#c864c8; }
+.map-tl-label { font-family:'EB Garamond',serif; font-size:13px; color:#9090a0; }
+
+/* ─ CORRESPONDENCE GRID ─ */
+.map-corr-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+.map-corr-row { display:grid; grid-template-columns:1fr auto 1fr; gap:0; align-items:stretch; border-radius:6px; overflow:hidden; position:relative; }
+.map-corr-left,.map-corr-right { padding:16px 20px; display:flex; flex-direction:column; justify-content:center; }
+.map-corr-left { background:rgba(180,120,40,0.1); border:1px solid rgba(180,120,40,0.22); border-right:none; border-radius:6px 0 0 6px; }
+.map-corr-right { border:1px solid rgba(80,160,80,0.22); border-left:none; border-radius:0 6px 6px 0; }
+.map-corr-right.hin-zo { background:rgba(60,140,60,0.08); }
+.map-corr-right.zo-abr { background:rgba(60,100,180,0.08); border-color:rgba(80,120,220,0.22); }
+.map-corr-mid { display:flex; align-items:center; justify-content:center; width:48px; background:rgba(255,255,255,0.03); border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); position:relative; z-index:2; }
+.map-corr-mid-arrow { font-size:18px; color:rgba(255,255,255,0.25); }
+.map-corr-label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:5px; }
+.map-corr-left .map-corr-label { color:#c88c3c; }
+.map-corr-right.hin-zo .map-corr-label { color:#70c050; }
+.map-corr-right.zo-abr .map-corr-label { color:#6090e0; }
+.map-corr-term { font-family:'Cinzel',serif; font-size:15px; font-weight:600; margin-bottom:4px; }
+.map-corr-left .map-corr-term { color:#e8a850; }
+.map-corr-right.hin-zo .map-corr-term { color:#90d050; }
+.map-corr-right.zo-abr .map-corr-term { color:#80b0f0; }
+.map-corr-desc { font-family:'EB Garamond',serif; font-size:13px; color:#6a6880; line-height:1.5; }
+.map-corr-tag { display:inline-block; font-family:'Cinzel',serif; font-size:8px; letter-spacing:0.15em; text-transform:uppercase; padding:2px 8px; border-radius:2px; margin-top:4px; }
+.map-corr-tag.inversion { background:rgba(200,60,60,0.15); border:1px solid rgba(200,60,60,0.3); color:#e07060; }
+.map-corr-tag.shared { background:rgba(80,160,80,0.12); border:1px solid rgba(80,160,80,0.25); color:#70d060; }
+.map-corr-tag.adopted { background:rgba(80,120,220,0.12); border:1px solid rgba(80,120,220,0.25); color:#80b0f0; }
+.map-corr-tag.transformation { background:rgba(180,120,220,0.12); border:1px solid rgba(180,120,220,0.25); color:#c0a0f0; }
+.map-corr-tag.enhanced { background:rgba(220,180,60,0.12); border:1px solid rgba(220,180,60,0.25); color:#e8c050; }
+
+/* ─ VISUAL FLOW DIAGRAM ─ */
+.map-flow { margin:48px 0; }
+.map-flow-title { font-family:'Cinzel',serif; font-size:13px; letter-spacing:0.28em; text-transform:uppercase; text-align:center; color:#5a5060; margin-bottom:32px; }
+.map-flow-diagram { display:flex; gap:0; align-items:flex-start; justify-content:center; flex-wrap:nowrap; }
+.map-flow-node { flex:1; max-width:220px; display:flex; flex-direction:column; align-items:center; position:relative; }
+.map-flow-node + .map-flow-node::before { content:''; position:absolute; left:0; top:60px; width:2px; height:2px; }
+.map-flow-connector { display:flex; align-items:center; justify-content:center; width:48px; flex-shrink:0; margin-top:40px; }
+.map-flow-connector-line { height:2px; width:100%; }
+.map-flow-connector-line.gold-flame { background:linear-gradient(90deg,#c88c3c,#e87040); }
+.map-flow-connector-line.flame-abr { background:linear-gradient(90deg,#e87040,#508cdc); }
+.map-flow-connector svg { width:24px; height:24px; }
+.map-flow-orb { width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; margin-bottom:14px; position:relative; flex-shrink:0; }
+.map-flow-orb.hindu { background:radial-gradient(circle,rgba(200,140,60,0.25),rgba(200,140,60,0.05)); border:2px solid rgba(200,140,60,0.4); box-shadow:0 0 30px rgba(200,140,60,0.15); }
+.map-flow-orb.zoroast { background:radial-gradient(circle,rgba(232,112,64,0.25),rgba(232,112,64,0.05)); border:2px solid rgba(232,112,64,0.4); box-shadow:0 0 30px rgba(232,112,64,0.15); }
+.map-flow-orb.abr { background:radial-gradient(circle,rgba(80,140,220,0.2),rgba(80,140,220,0.04)); border:2px solid rgba(80,140,220,0.35); box-shadow:0 0 30px rgba(80,140,220,0.12); }
+.map-flow-name { font-family:'Cinzel',serif; font-size:13px; font-weight:600; margin-bottom:6px; text-align:center; }
+.map-flow-name.gold { color:#e8a850; }
+.map-flow-name.flame { color:#e87040; }
+.map-flow-name.blue { color:#80b0f0; }
+.map-flow-date { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.18em; color:#5a5060; text-align:center; margin-bottom:12px; }
+.map-flow-pills { display:flex; flex-direction:column; gap:4px; align-items:center; width:100%; }
+.map-flow-pill { font-family:'Jost',sans-serif; font-size:10px; font-weight:400; color:#6a6080; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:3px 10px; border-radius:20px; text-align:center; }
+
+/* ─ HIGHLIGHT BOXES ─ */
+.map-highlight { border-radius:6px; padding:22px 26px; margin-bottom:20px; position:relative; overflow:hidden; }
+.map-highlight::before { content:''; position:absolute; inset:0; opacity:0.04; background:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%); background-size:8px 8px; }
+.map-highlight.gold { background:rgba(200,140,40,0.07); border:1px solid rgba(200,140,40,0.22); }
+.map-highlight.flame { background:rgba(200,80,40,0.07); border:1px solid rgba(200,80,40,0.22); }
+.map-highlight.blue { background:rgba(60,100,200,0.07); border:1px solid rgba(60,100,200,0.22); }
+.map-highlight-title { font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.22em; text-transform:uppercase; margin-bottom:10px; }
+.map-highlight.gold .map-highlight-title { color:#e8a850; }
+.map-highlight.flame .map-highlight-title { color:#e87040; }
+.map-highlight.blue .map-highlight-title { color:#80b0f0; }
+.map-highlight-text { font-family:'EB Garamond',serif; font-size:15px; color:#7a7290; line-height:1.65; }
+.map-highlight-text strong { color:#a09080; font-weight:600; }
+
+/* ─ IMPACT CARDS ─ */
+.map-impact-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+.map-impact-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07); border-radius:8px; padding:20px 22px; position:relative; overflow:hidden; transition:border-color 0.25s, background 0.25s; }
+.map-impact-card:hover { background:rgba(255,255,255,0.04); }
+.map-impact-card.gold:hover { border-color:rgba(240,192,96,0.35); }
+.map-impact-card.flame:hover { border-color:rgba(232,112,64,0.35); }
+.map-impact-card.blue:hover { border-color:rgba(80,140,220,0.35); }
+.map-impact-card.purple:hover { border-color:rgba(160,100,220,0.35); }
+.map-impact-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
+.map-impact-card.gold::before { background:linear-gradient(90deg,transparent,rgba(240,192,96,0.5),transparent); }
+.map-impact-card.flame::before { background:linear-gradient(90deg,transparent,rgba(232,112,64,0.5),transparent); }
+.map-impact-card.blue::before { background:linear-gradient(90deg,transparent,rgba(80,140,220,0.5),transparent); }
+.map-impact-card.purple::before { background:linear-gradient(90deg,transparent,rgba(160,100,220,0.5),transparent); }
+.map-impact-icon { font-size:22px; margin-bottom:10px; }
+.map-impact-title { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.1em; margin-bottom:6px; }
+.map-impact-card.gold .map-impact-title { color:#e8a850; }
+.map-impact-card.flame .map-impact-title { color:#e87040; }
+.map-impact-card.blue .map-impact-title { color:#80b0f0; }
+.map-impact-card.purple .map-impact-title { color:#c090f0; }
+.map-impact-zo { font-family:'Cinzel',serif; font-size:10px; color:#5a5060; letter-spacing:0.15em; margin-bottom:6px; text-transform:uppercase; }
+.map-impact-abr { font-family:'EB Garamond',serif; font-size:13.5px; color:#7a7090; line-height:1.55; }
+.map-impact-arrow { display:flex; align-items:center; gap:8px; margin:10px 0; }
+.map-impact-arrow-line { flex:1; height:1px; background:rgba(255,255,255,0.1); position:relative; }
+.map-impact-arrow-line::after { content:'▸'; position:absolute; right:-2px; top:50%; transform:translateY(-50%); font-size:10px; color:rgba(255,255,255,0.2); }
+.map-scholar-note { font-family:'EB Garamond',serif; font-style:italic; font-size:13px; color:#5a5060; margin-top:8px; border-left:2px solid rgba(255,255,255,0.08); padding-left:12px; }
+
+/* ─ BIG QUOTE ─ */
+.map-big-quote { text-align:center; padding:40px 32px; margin:40px 0; border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); position:relative; }
+.map-big-quote::before { content:'"'; font-family:'Cinzel Decorative',serif; font-size:120px; color:rgba(240,192,96,0.06); position:absolute; top:-20px; left:20px; line-height:1; }
+.map-big-quote-text { font-family:'EB Garamond',serif; font-size:clamp(16px,2.5vw,22px); color:#9080a0; font-style:italic; line-height:1.7; max-width:800px; margin:0 auto 16px; position:relative; z-index:1; }
+.map-big-quote-attr { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.25em; color:#5a5060; text-transform:uppercase; }
+
+/* ─ TRANSMISSION ARROW BANNER ─ */
+.map-transmission { display:flex; align-items:center; gap:16px; padding:16px 24px; border-radius:6px; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06); margin:32px 0; }
+.map-trans-icon { font-size:20px; flex-shrink:0; }
+.map-trans-text { font-family:'EB Garamond',serif; font-size:14px; color:#7a7090; line-height:1.55; }
+.map-trans-text strong { color:#c8a860; }
+
+@media(max-width:700px){
+  .map-corr-row { grid-template-columns:1fr; }
+  .map-corr-mid { width:100%; height:32px; border:none; border-left:1px solid rgba(255,255,255,0.08); border-right:1px solid rgba(255,255,255,0.08); }
+  .map-corr-left { border-radius:6px 6px 0 0; border-right:1px solid rgba(180,120,40,0.22); border-bottom:none; }
+  .map-corr-right { border-radius:0 0 6px 6px; border-left:1px solid rgba(80,160,80,0.22); border-top:none; }
+  .map-flow-diagram { flex-direction:column; align-items:center; }
+  .map-flow-connector { width:2px; height:40px; margin:0; }
+  .map-flow-connector-line.gold-flame,.map-flow-connector-line.flame-abr { width:2px; height:100%; background:linear-gradient(180deg,#c88c3c,#e87040); }
+  .map-timeline { flex-direction:column; }
+  .map-tl-era:not(:last-child)::after { content:'↓'; right:auto; left:50%; top:auto; bottom:-1px; transform:translateX(-50%); }
+}
+</style>
+
+<div class="map-page-wrap">
+
+  <!-- HERO -->
+  <div class="map-hero">
+    <div class="map-hero-eyebrow">Comparative Religion · Scholarly Transmission Studies</div>
+    <h1 class="map-hero-title">Philosophical Transmission<br><span style="font-size:0.7em;color:#c87941;">Hinduism → Zoroastrianism → Abrahamic Faiths</span></h1>
+    <p class="map-hero-sub">Tracing the deep river of shared doctrine across four millennia of religious thought</p>
+    <div class="map-hero-rule"><span class="map-hero-rule-glyph">✦ ✦ ✦</span></div>
+  </div>
+
+  <!-- TIMELINE BAR -->
+  <div class="map-timeline">
+    <div class="map-tl-era vedic">
+      <div class="map-tl-date">2000 – 1500 BCE</div>
+      <div class="map-tl-label">Proto-Indo-Iranian<br>Shared Religion</div>
+    </div>
+    <div class="map-tl-era zoroast">
+      <div class="map-tl-date">1500 – 600 BCE</div>
+      <div class="map-tl-label">Zarathustra reforms<br>Avestan Zoroastrianism</div>
+    </div>
+    <div class="map-tl-era persian-empire">
+      <div class="map-tl-date">539 – 330 BCE</div>
+      <div class="map-tl-label">Achaemenid Persian Empire<br>rules Judea · Jews in exile</div>
+    </div>
+    <div class="map-tl-era abrahamic">
+      <div class="map-tl-date">500 BCE – 700 CE</div>
+      <div class="map-tl-label">Second Temple Judaism<br>→ Christianity → Islam</div>
+    </div>
+  </div>
+
+  <!-- FLOW DIAGRAM -->
+  <div class="map-flow">
+    <div class="map-flow-title">◈ &nbsp; Transmission Flow &nbsp; ◈</div>
+    <div class="map-flow-diagram">
+      <div class="map-flow-node">
+        <div class="map-flow-orb hindu">🕉️</div>
+        <div class="map-flow-name gold">Vedic Hinduism</div>
+        <div class="map-flow-date">2000 – 1200 BCE</div>
+        <div class="map-flow-pills">
+          <div class="map-flow-pill">Ṛta (cosmic order)</div>
+          <div class="map-flow-pill">Soma ritual drink</div>
+          <div class="map-flow-pill">Agni fire god</div>
+          <div class="map-flow-pill">Varuna / Mitra</div>
+          <div class="map-flow-pill">Yama (death lord)</div>
+          <div class="map-flow-pill">Devas / Asuras</div>
+          <div class="map-flow-pill">Mantra invocations</div>
+          <div class="map-flow-pill">Three-tier cosmos</div>
+        </div>
+      </div>
+      <div class="map-flow-connector"><div class="map-flow-connector-line gold-flame"></div></div>
+      <div class="map-flow-node">
+        <div class="map-flow-orb zoroast">🔥</div>
+        <div class="map-flow-name flame">Zoroastrianism</div>
+        <div class="map-flow-date">1200 – 600 BCE onward</div>
+        <div class="map-flow-pills">
+          <div class="map-flow-pill">Asha (truth/order)</div>
+          <div class="map-flow-pill">Haoma sacred drink</div>
+          <div class="map-flow-pill">Atar sacred fire</div>
+          <div class="map-flow-pill">Ahura Mazda / Mitra</div>
+          <div class="map-flow-pill">Yima (first mortal)</div>
+          <div class="map-flow-pill">Ahuras / Daevas</div>
+          <div class="map-flow-pill">Manthra prayers</div>
+          <div class="map-flow-pill">Heaven / Hell / Bridge</div>
+        </div>
+      </div>
+      <div class="map-flow-connector"><div class="map-flow-connector-line flame-abr"></div></div>
+      <div class="map-flow-node">
+        <div class="map-flow-orb abr">✡️</div>
+        <div class="map-flow-name blue">Abrahamic Faiths</div>
+        <div class="map-flow-date">500 BCE – 700 CE</div>
+        <div class="map-flow-pills">
+          <div class="map-flow-pill">Satan (cosmic evil)</div>
+          <div class="map-flow-pill">Archangels (Michael, Gabriel)</div>
+          <div class="map-flow-pill">Heaven & Hell</div>
+          <div class="map-flow-pill">Final Judgment</div>
+          <div class="map-flow-pill">Bodily resurrection</div>
+          <div class="map-flow-pill">Messiah / Saoshyant</div>
+          <div class="map-flow-pill">Free will ethics</div>
+          <div class="map-flow-pill">Individual soul judgment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 1: HINDUISM ↔ ZOROASTRIANISM ══ -->
+  <div class="map-section">
+    <div class="map-section-head">
+      <span class="map-section-num">Section I</span>
+      <h2 class="map-section-title gold">Hinduism ↔ Zoroastrianism</h2>
+      <div class="map-section-line gold"></div>
+      <span class="map-section-badge gold">Shared Proto-Indo-Iranian Heritage</span>
+    </div>
+
+    <div class="map-highlight gold">
+      <div class="map-highlight-title">Historical Context</div>
+      <div class="map-highlight-text">Both Vedic Hinduism and Avestan Zoroastrianism descended from a single <strong>Proto-Indo-Iranian religion</strong> practiced on the Eurasian steppes c. 2000 BCE. When the Indo-Iranian peoples split — one branch migrating into the Indian subcontinent, one into the Iranian plateau — they carried nearly identical gods, rituals, and cosmological structures. Zarathustra (c. 1200–1000 BCE) then performed a radical <strong>theological inversion</strong>: gods the Vedics worshipped as divine (Devas) became demons (Daevas) in Zoroastrianism, while revered Vedic Asuras became the holy Ahuras. This inversion — the greatest schism in ancient religion — paradoxically preserved the shared heritage by inverting it.</div>
+    </div>
+
+    <div class="map-corr-grid">
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Soma</div>
+          <div class="map-corr-desc">Sacred plant pressed into a ritual drink offered to the gods in elaborate Vedic yajnas. Hymned in 120 Rigvedic hymns as divine nectar granting immortality and divine sight. Soma is itself deified as Soma-deva, the moon-god.</div>
+          <span class="map-corr-tag shared">Identical Ritual</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Haoma</div>
+          <div class="map-corr-desc">Linguistically identical to Soma (Proto-IE *sauma-). Pressed in the Yasna liturgy as a sacred offering. Haoma is also personified as a divine yazata. The Avesta's Hom Yasht is directly parallel to Vedic Soma hymns.</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Agni</div>
+          <div class="map-corr-desc">Fire deity. Second most-hymned god in the Rigveda. Sacred fire (yajnagni) is the divine intermediary between humans and gods — carrier of offerings, purifier, and witness. Fire altars (agnikunda) are precisely constructed to cosmic specifications.</div>
+          <span class="map-corr-tag shared">Shared Sacred Status</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Atar</div>
+          <div class="map-corr-desc">Sacred fire, son of Ahura Mazda. Fire temples (ateshgah) burn eternal flames. Fire is the visible symbol of divine truth (Asha). Zoroastrian priestly fire rituals (Yasna) are structurally homologous to Vedic Agnihotra. Athravan priests = Atharvan in Vedas.</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Ṛta (ऋत)</div>
+          <div class="map-corr-desc">Cosmic truth, moral order, and the law that governs both nature and ethics. Varuna and Mitra are its divine guardians. To violate Ṛta is the root of all evil. The concept underlies later Hindu dharma.</div>
+          <span class="map-corr-tag shared">Cognate Root *Hr̥tás</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Asha (اشه)</div>
+          <div class="map-corr-desc">Truth, cosmic order, and righteousness — the supreme principle of Ahura Mazda. Its opposite is Druj (the Lie). Asha Vahishta (Best Truth) is one of the six Amesha Spentas (archangels). The Zoroastrian ethical dualism of Asha vs Druj is the progenitor of Good vs Evil in Abrahamic faiths.</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Varuna & Mitra</div>
+          <div class="map-corr-desc">Divine dyad. Varuna: lord of cosmic waters, guardian of Ṛta, omniscient judge of moral conduct. Mitra: covenant, friendship, light. Among the most ancient of Vedic deities — their names appear in the Mitanni treaty (1380 BCE) proving extreme antiquity.</div>
+          <span class="map-corr-tag shared">Attested in Mitanni Treaty 1380 BCE</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Ahura Mazda & Mithra</div>
+          <div class="map-corr-desc">Ahura Mazda (lit. "Wise Lord" = Asura + Mazda) is directly cognate with Vedic Varuna as the supreme cosmic guardian. Mithra (cognate with Mitra) became a major Yazata. Zoroaster elevated Ahura Mazda to sole supreme deity — a radical step toward monotheism derived from Vedic henotheism.</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Yama</div>
+          <div class="map-corr-desc">First mortal to die; becomes lord of the dead and king of the ancestral realm (Pitṛloka). Judge of the dead. His twin is Yami. Yama's messengers (yamadūtas) escort souls. Yama's realm has paths for the virtuous and evil.</div>
+          <span class="map-corr-tag shared">Identical Role & Etymology</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Yima / Jamshid</div>
+          <div class="map-corr-desc">First mortal man; creates a paradise (vara) to protect the righteous from the coming apocalypse. Later becomes the great king Jamshid. Etymologically identical to Yama (*Yamo). Both figures preside over death and judgment — the Vedic Yama and Avestan Yima are the same Proto-Indo-Iranian deity bifurcated by the schism.</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Devas & Asuras</div>
+          <div class="map-corr-desc">Devas: the divine gods (Indra, Agni, Varuna, Mitra, Surya). Asuras: ambiguous beings, sometimes great and powerful, increasingly demonized in later Vedic literature. The Deva-Asura war is cosmic myth throughout the Puranas.</div>
+          <span class="map-corr-tag inversion">Great Inversion</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Daevas & Ahuras</div>
+          <div class="map-corr-desc">Zarathustra performed the Great Inversion: Vedic Devas (gods) became Daevas (demons) in Avestan. Vedic Asuras became the holy Ahuras. Vedic Indra, Sarva (Rudra), and Naonhaithya (Nasatya) became explicitly named Zoroastrian demons. This inversion created the cosmic dualism that Zoroastrianism bequeathed to the Abrahamic world.</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Mantra (मन्त्र)</div>
+          <div class="map-corr-desc">Sacred verbal formulae with intrinsic cosmic power. Priests (Hotars, Adhvaryus) recite precise liturgical verses (Rigveda, Samaveda) to invoke divine presence in sacrifice. Correct recitation is essential to ritual efficacy.</div>
+          <span class="map-corr-tag shared">Cognate Ritual Term</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Manthra (𐬨𐬀𐬧𐬚𐬭𐬀)</div>
+          <div class="map-corr-desc">Linguistically identical (Proto-IE *mn̥tro-). Zaotar priests chant the Gathas and Yasna with equally precise liturgical requirements. The Avestan Manthra has cosmic power to drive away evil. The hotar/zaotar priestly title is also cognate.</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Three-Tier Cosmos</div>
+          <div class="map-corr-desc">The universe is divided into three realms: Svarga (heavens), Antariksha (mid-atmosphere), and Prithvi (earth). The heavens have further layers (saptalokas). Rituals connect earth to heaven. The Vedic cosmos is inhabited by divine beings at each level.</div>
+          <span class="map-corr-tag shared">Parallel Cosmology</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Three-Tier Cosmos</div>
+          <div class="map-corr-desc">Identical three-tier structure: Garo Demana (House of Song = highest heaven), intermediate atmospheric realm, and earth. The soul after death ascends through stellar, lunar, and solar planes before reaching the House of Song — a layered heaven remarkably parallel to Vedic svarga structures.</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Yajna (यज्ञ)</div>
+          <div class="map-corr-desc">Elaborate fire sacrifice — the central act of Vedic religion. Precisely structured ritual involving fire, sacred plant (Soma), priestly recitation, and animal sacrifice. The Ashvamedha, Rajasuya, and Agnishtoma are elaborate multi-day forms. Cosmic order is maintained through yajna.</div>
+          <span class="map-corr-tag shared">Identical Ritual Structure</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Yasna (𐬫𐬀𐬯𐬥𐬀)</div>
+          <div class="map-corr-desc">Linguistically cognate (PIE *yaǵ-). The Yasna is the central Zoroastrian liturgy involving fire, Haoma, priestly recitation of the Gathas, and offerings. The 72-chapter Yasna is structurally homologous to Vedic yajna. The priestly office of Athravan (Avestan) = Atharvan (Vedic).</div>
+        </div>
+      </div>
+
+      <div class="map-corr-row">
+        <div class="map-corr-left">
+          <div class="map-corr-label">Vedic Hinduism</div>
+          <div class="map-corr-term">Fravashi / Pitṛs</div>
+          <div class="map-corr-desc">Ancestral spirits (Pitṛs) are revered and propitiated. Each person has a divine component that survives death. The Atman is the individual soul; the Pitṛloka houses the ancestors. Shraddha rituals maintain connection with the ancestral realm.</div>
+          <span class="map-corr-tag shared">Guardian Spirit Concept</span>
+        </div>
+        <div class="map-corr-mid"><span class="map-corr-mid-arrow">⟷</span></div>
+        <div class="map-corr-right hin-zo">
+          <div class="map-corr-label">Zoroastrianism</div>
+          <div class="map-corr-term">Fravashi</div>
+          <div class="map-corr-desc">The pre-existent divine guardian spirit of every person — a heavenly prototype of the soul. Fravashis protect the living and are celebrated at Nowruz (Fravardigan). The Jewish/Christian concept of the guardian angel is widely traced to the Fravashi via Persian-Jewish contact during the Babylonian exile.</div>
+        </div>
+      </div>
+
+    </div><!-- /corr-grid -->
+  </div><!-- /section 1 -->
+
+  <div class="map-big-quote">
+    <div class="map-big-quote-text">"Zoroaster was thus the first to teach the doctrines of an individual judgment, Heaven and Hell, the future resurrection of the body, the general last judgment, and life everlasting for the reunited soul and body. These doctrines were to become familiar articles of faith to much of mankind, through borrowing by Judaism, Christianity and Islam."</div>
+    <div class="map-big-quote-attr">— Mary Boyce, Zoroastrians: Their Religious Beliefs and Practices (1979)</div>
+  </div>
+
+  <!-- ══ SECTION 2: ZOROASTRIANISM → ABRAHAMIC ══ -->
+  <div class="map-section">
+    <div class="map-section-head">
+      <span class="map-section-num">Section II</span>
+      <h2 class="map-section-title abr">Zoroastrianism → Abrahamic Faiths</h2>
+      <div class="map-section-line abr"></div>
+      <span class="map-section-badge abr">Persian Exile Contact 539 BCE</span>
+    </div>
+
+    <div class="map-highlight flame">
+      <div class="map-highlight-title">The Critical Contact Point</div>
+      <div class="map-highlight-text">The decisive transmission occurred during the <strong>Babylonian Exile (586–538 BCE)</strong> and the subsequent <strong>Persian Achaemenid rule over Judea (539–330 BCE)</strong>. Cyrus the Great — a Zoroastrian — freed the Jews from Babylon in 539 BCE, is called "the Lord's anointed" (mashiach) in Isaiah 45:1, and rebuilt the Jerusalem Temple. For two centuries, Jewish priests, scribes, and scholars lived under Persian imperial administration, studied alongside Zoroastrian magi, and absorbed the most sophisticated eschatological and cosmological religion then existing. The transformation of Judaism from a religion with no afterlife, no Satan, no archangels, and no resurrection into Second Temple Judaism with all of these features tracks precisely with this period of Persian contact.</div>
+    </div>
+
+    <div class="map-impact-grid">
+
+      <div class="map-impact-card blue">
+        <div class="map-impact-icon">⚖️</div>
+        <div class="map-impact-title">Cosmic Dualism: Good vs Evil</div>
+        <div class="map-impact-zo">Zoroastrian: Ahura Mazda vs Angra Mainyu</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Pre-exilic Judaism had no Satan as cosmic opponent — only a subordinate "prosecutor" (ha-satan) working for God. Post-exile: Satan becomes God's cosmic adversary (1 Chronicles 21:1 vs 2 Samuel 24:1). By the time of Revelation, the entire Ahura Mazda / Angra Mainyu duality maps perfectly onto God vs Satan.</div>
+        <div class="map-scholar-note">Ehrman, Boyce, Collins: "The figure of Satan as cosmic evil clearly post-dates Persian contact."</div>
+      </div>
+
+      <div class="map-impact-card blue">
+        <div class="map-impact-icon">👼</div>
+        <div class="map-impact-title">Archangels with Named Ranks</div>
+        <div class="map-impact-zo">Zoroastrian: 6 Amesha Spentas + Yazatas</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Pre-exilic angels in the Torah are nameless, roleless messengers (mal'akhim). Post-exile: Michael, Gabriel, Raphael, Uriel appear with distinct functions in Daniel, Enoch, and Tobit. Zoroastrianism already had named archangels with specific cosmic duties — Vohu Manah (Good Mind), Asha Vahishta (Truth), Khshathra Vairya (Holy Kingdom) — centuries earlier.</div>
+        <div class="map-scholar-note">Jewish Encyclopedia: "Most scholars consider Jewish angelology dependent on Zoroastrian models."</div>
+      </div>
+
+      <div class="map-impact-card purple">
+        <div class="map-impact-icon">☠️</div>
+        <div class="map-impact-title">Named Demons & Demonology</div>
+        <div class="map-impact-zo">Zoroastrian: Aeshma, Aka Manah, Nasu, Druj</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Pre-exilic Hebrew texts have no named demonic figures. Post-exile: Asmodeus appears in Tobit (directly from Zoroastrian Aeshma Daeva, "demon of wrath"). Azazel in Leviticus 16. Lilith in Isaiah 34:14. The very concept of a demonic hierarchy with named lords is Zoroastrian in structure, transmitted through the Jewish apocalyptic tradition.</div>
+        <div class="map-scholar-note">Kohut (1866): First systematic scholarly proof of Zoroastrian demonology in Talmudic Judaism.</div>
+      </div>
+
+      <div class="map-impact-card blue">
+        <div class="map-impact-icon">⛰️</div>
+        <div class="map-impact-title">Heaven & Hell as Distinct Realms</div>
+        <div class="map-impact-zo">Zoroastrian: Garo Demana (paradise) vs Druj Demana (hell)</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Pre-exilic Judaism: all the dead go to Sheol — a grey, undifferentiated underworld with no reward or punishment. Post-exile Second Temple Judaism and then Christianity develop a two-destination afterlife: paradise for the righteous, Gehenna for the wicked. This exact structure — a glorious House of Song (paradise) vs a House of Lies (hell) — is Zoroastrian eschatology precisely.</div>
+      </div>
+
+      <div class="map-impact-card purple">
+        <div class="map-impact-icon">🌉</div>
+        <div class="map-impact-title">Bridge of Judgment (Chinvat → Sirat)</div>
+        <div class="map-impact-zo">Zoroastrian: Chinvat Bridge — widens for the good, narrows for the wicked</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Every soul must cross the Chinvat Bridge after death. For the righteous it is broad; for the wicked it narrows to a razor's edge and they fall into hell. In Islam this becomes the Sirat Bridge over Jahannam — a razor-thin bridge over hellfire that only the righteous cross successfully. The structural identity is exact. Jewish texts also contain bridge-of-judgment imagery in apocalyptic literature.</div>
+      </div>
+
+      <div class="map-impact-card blue">
+        <div class="map-impact-icon">💀</div>
+        <div class="map-impact-title">Bodily Resurrection of the Dead</div>
+        <div class="map-impact-zo">Zoroastrian: Frashegird — all bodies restored for final judgment</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Bodily resurrection is absent from pre-exilic Hebrew scripture. The first clear reference is Daniel 12:2 — a late (post-exile, c. 167 BCE) text: "Many of those who sleep in the dust of the earth shall awake, some to everlasting life, and some to shame and everlasting contempt." This is Zoroastrian Frashegird (renovation) — the physical resurrection of all the dead for final judgment — precisely as Zoroastrianism had taught for centuries before Daniel was written.</div>
+        <div class="map-scholar-note">Boyce, Collins, Grabbe: "Bodily resurrection enters Judaism during the Persian period."</div>
+      </div>
+
+      <div class="map-impact-card purple">
+        <div class="map-impact-icon">⭐</div>
+        <div class="map-impact-title">Messianic Savior Figure</div>
+        <div class="map-impact-zo">Zoroastrian: Saoshyant — born of a virgin, defeats evil, resurrects the dead</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">The Saoshyant is Zoroastrianism's future savior: born miraculously, defeats Angra Mainyu, presides over the final resurrection, and ushers in a perfect world. Jewish messianism intensifies dramatically during and after Persian contact. Christian theology overlays Jesus with Saoshyant attributes (virgin birth, defeat of Satan, resurrection of the dead, final judgment). The Shi'a Mahdi shares the same eschatological function.</div>
+      </div>
+
+      <div class="map-impact-card blue">
+        <div class="map-impact-icon">🔥</div>
+        <div class="map-impact-title">Final Cosmic Battle & Renovation</div>
+        <div class="map-impact-zo">Zoroastrian: Frashegird — earth purified by molten metal, evil destroyed forever</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Zoroastrianism predicts a final cosmic battle where Ahura Mazda's forces defeat Angra Mainyu permanently, after which the earth is purified and restored to perfection (renovation). This maps precisely onto the Apocalypse of John (Revelation): the final battle of Armageddon, the defeat of Satan, the New Heaven and New Earth. The Zoroastrian term Frashegird ("making wonderful") is the structural template for Christian eschatolology.</div>
+      </div>
+
+      <div class="map-impact-card purple">
+        <div class="map-impact-icon">🧠</div>
+        <div class="map-impact-title">Free Will as Moral Requirement</div>
+        <div class="map-impact-zo">Zoroastrian: Humans must choose Asha (Truth) or Druj (Lie) — judgment follows</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Zoroastrianism was among the first religions to make free will a theological cornerstone. The Gathas explicitly state humans are given the choice between Truth and Lie, and will be judged individually on that choice. Pre-exilic Judaism does not have this individualized moral accounting framework in the same form. Post-exile, individual moral responsibility and divine accounting become central — the Zoroastrian ethical contribution to Abrahamic thought.</div>
+      </div>
+
+      <div class="map-impact-card blue">
+        <div class="map-impact-icon">🙏</div>
+        <div class="map-impact-title">Five Daily Prayer Obligations</div>
+        <div class="map-impact-zo">Zoroastrian: Five Gahs — fixed daily prayer times facing sacred fire</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Zoroastrianism prescribes five mandatory daily prayers (the Gahs) at fixed times throughout the day, facing the sacred fire as the symbol of divine truth. Judaism has three daily prayer times (Shacharit, Mincha, Maariv) which developed during and after the Babylonian exile. Islam has five (Salah). The structural parallel of obligatory fixed-time daily prayer is a Zoroastrian liturgical inheritance.</div>
+      </div>
+
+      <div class="map-impact-card purple">
+        <div class="map-impact-icon">🌊</div>
+        <div class="map-impact-title">Ritual Purity & Cosmic Pollution</div>
+        <div class="map-impact-zo">Zoroastrian: Nasu (corpse demon) contaminates — elaborate purification rites</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">Zoroastrianism has extraordinarily elaborate ritual purity codes — contact with corpses, blood, and bodily substances attracts the Nasu demon and requires multi-day purification (Bareshnum ceremony). The Jewish purity laws of Leviticus and Numbers — corpse impurity (tumah), menstrual separation (niddah), bodily flux regulations — are structurally parallel. The Zoroastrian system predates and is more architecturally developed than its Levitical counterpart.</div>
+      </div>
+
+      <div class="map-impact-card blue">
+        <div class="map-impact-icon">📜</div>
+        <div class="map-impact-title">Cosmic Dualism in the Dead Sea Scrolls</div>
+        <div class="map-impact-zo">Zoroastrian: Sons of Light (Spenta Mainyu) vs Sons of Darkness (Angra Mainyu)</div>
+        <div class="map-impact-arrow"><div class="map-impact-arrow-line"></div></div>
+        <div class="map-impact-abr">The Qumran War Scroll (c. 100 BCE) divides humanity into "Sons of Light" and "Sons of Darkness" engaged in cosmic battle — the most Zoroastrian text in all of Jewish scripture. The Community Rule describes the Prince of Light and Angel of Darkness. Scholars including Ehrman, Vermes, and Cross have identified this Essene dualism as directly derived from Zoroastrian cosmic dualism absorbed during the Persian period.</div>
+        <div class="map-scholar-note">Dead Sea Scrolls, 1QM: The War Scroll — "the most Zoroastrian document in the Hebrew tradition."</div>
+      </div>
+
+    </div><!-- /impact-grid -->
+  </div><!-- /section 2 -->
+
+  <!-- TRANSMISSION NOTE -->
+  <div class="map-transmission">
+    <span class="map-trans-icon">📌</span>
+    <div class="map-trans-text"><strong>Scholarly Note:</strong> These connections do not imply plagiarism or "direct borrowing" in a mechanical sense. Cultural transmission is diffusion through prolonged contact, shared intellectual environments, and the gradual absorption of conceptual frameworks. The Achaemenid Persian Empire created the first multicultural superpower in history, and the Jews who lived within it for two centuries absorbed Zoroastrian frameworks the same way modern cultures absorb each other's ideas — organically, without attribution, and transformatively. The result was Second Temple Judaism — and through it, Christianity and Islam.</div>
+  </div>
+
+  <!-- SCHOLAR CONSENSUS HIGHLIGHT -->
+  <div class="map-highlight blue" style="margin-top:40px;">
+    <div class="map-highlight-title">Scholarly Consensus</div>
+    <div class="map-highlight-text">The following scholars have documented Zoroastrian influence on Abrahamic faiths: <strong>Mary Boyce</strong> (Oxford), <strong>Martin Schwartz</strong> (Berkeley), <strong>Lester Grabbe</strong> (Hull), <strong>John Collins</strong> (Yale), <strong>Shaul Shaked</strong> (Hebrew University), <strong>Alan Segal</strong> (Columbia), <strong>Bart Ehrman</strong> (UNC), and the <strong>Jewish Encyclopedia</strong> (1906): "Most scholars, Jewish as well as non-Jewish, are of the opinion that Judaism was strongly influenced by Zoroastrianism in views relating to angelology and demonology, and probably also in the doctrine of the resurrection, as well as in eschatological ideas in general." The consensus is not that Judaism copied Zoroastrianism — it is that centuries of Persian imperial contact produced a transformed theological worldview.</div>
+  </div>
+
+</div><!-- /map-page-wrap -->
+</div><!-- /page-map -->
+
 
 <script>
 // ═══ RELIGION SWITCHER ═══
@@ -7493,7 +8065,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 function switchReligion(rel) {
   document.querySelectorAll('.rel-tab').forEach(t => {
-    t.classList.remove('active-jud','active-xtn','active-isl');
+    t.classList.remove('active-jud','active-xtn','active-isl','active-map');
   });
   document.getElementById('tab-' + rel).classList.add('active-' + rel);
   document.querySelectorAll('.religion-page').forEach(p => p.classList.remove('active'));
