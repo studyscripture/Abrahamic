@@ -7371,7 +7371,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   background: #050408;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 /* Fixed background — does NOT scroll */
@@ -7452,16 +7452,16 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .mp-rule-g { font-family:'Cinzel',serif; font-size:11px; color:#4a3c18; letter-spacing:.28em; }
 
 /* ══ TIMELINE ══ */
-.mp-tl-wrap { margin-bottom: 72px; }
-.mp-tl-scroll { overflow-x: auto; padding-bottom: 8px; }
+.mp-tl-wrap { margin-bottom: 72px; overflow: visible; }
+.mp-tl-scroll { overflow-x: auto; overflow-y: visible; padding-top: 20px; padding-bottom: 8px; }
 .mp-tl-track {
   display: flex; align-items: flex-start;
-  min-width: 700px; position: relative; padding: 0 20px;
+  min-width: 700px; position: relative; padding: 16px 20px 0;
 }
 /* spine */
 .mp-tl-track::before {
   content:''; position:absolute;
-  top: 21px; left: 5%; right: 5%; height:2px;
+  top: 37px; left: 5%; right: 5%; height:2px;
   background: linear-gradient(90deg,
     rgba(200,130,40,.75) 0%,
     rgba(200,130,40,.55) 22%,
