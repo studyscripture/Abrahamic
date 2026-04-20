@@ -53,6 +53,17 @@
   --isl-card2: #0c1018;
   --isl-border: #153324;
   --isl-border2: #182240;
+
+  /* Search page */
+  --srch: #a78bfa;
+  --srch-2: #f0c060;
+  --srch-dim: rgba(167,139,250,0.12);
+  --srch-glow: rgba(167,139,250,0.38);
+  --srch-bg: #07060f;
+  --srch-surface: #0f0d1a;
+  --srch-card: #130f20;
+  --srch-border: #251d42;
+
   /* Map tab accent */
   --map: #f0c060;
   --map-2: #c87941;
@@ -232,6 +243,11 @@ body::before {
 .rel-tab.active-map .rel-tab-name { color:var(--map); }
 .rel-tab.active-map .rel-tab-script { color:var(--map-2); opacity:0.9; }
 .rel-tab.active-map::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--map),var(--map-2)); }
+.rel-tab.active-srch { background:var(--srch-dim); }
+.rel-tab.active-srch .rel-tab-icon { filter:none; }
+.rel-tab.active-srch .rel-tab-name { color:var(--srch); }
+.rel-tab.active-srch .rel-tab-script { color:var(--srch-2); opacity:0.9; }
+.rel-tab.active-srch::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--srch),var(--srch-2)); }
 
 /* ══════════════════════════════════════════
    PAGE SYSTEM
@@ -838,6 +854,438 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .carousel-outer::after { width: 28px; }
   .carousel-track { padding: 6px 28px 12px; }
 }
+
+/* ══════════════════════════════════════════
+   SEARCH PAGE
+══════════════════════════════════════════ */
+.srch-page {
+  background: var(--srch-bg);
+  --saffron: var(--srch);
+  --saffron-dim: var(--srch-dim);
+  --bg: var(--srch-bg);
+  --surface: var(--srch-surface);
+  --card: var(--srch-card);
+  --border: var(--srch-border);
+  --cream: #e8e4ff;
+  --cream-dim: #9088c0;
+  --white: #f4f0ff;
+  --muted: #5a5270;
+  min-height: 100vh;
+}
+
+/* Hero */
+.srch-hero {
+  text-align: center;
+  padding: 44px 20px 36px;
+  position: relative;
+}
+.srch-hero-symbol {
+  font-size: 52px;
+  display: block;
+  line-height: 1;
+  margin-bottom: 14px;
+  animation: srch-float 5s ease-in-out infinite;
+}
+@keyframes srch-float {
+  0%,100% { transform: translateY(0); filter: drop-shadow(0 0 18px rgba(167,139,250,0.3)); }
+  50%      { transform: translateY(-7px); filter: drop-shadow(0 0 38px rgba(167,139,250,0.6)); }
+}
+.srch-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.45em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.srch-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(22px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--srch);
+  text-shadow: 0 0 60px var(--srch-glow);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+}
+.srch-subtitle {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(13px, 1.6vw, 16px);
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 10px;
+}
+.srch-rule {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 20px auto 0;
+  max-width: 400px;
+}
+.srch-rule::before, .srch-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167,139,250,0.3), transparent);
+}
+.srch-rule-glyph {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.25em;
+}
+
+/* Book Selector */
+.srch-book-select-wrap {
+  max-width: 900px;
+  margin: 0 auto 32px;
+  padding: 0 20px;
+}
+.srch-book-select-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+  text-align: center;
+}
+.srch-book-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.srch-book-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+  background: var(--srch-surface);
+  border: 1px solid var(--srch-border);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--cream-dim);
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.srch-book-btn:hover {
+  border-color: rgba(167,139,250,0.35);
+  color: var(--cream);
+  background: rgba(167,139,250,0.07);
+}
+.srch-book-btn.active {
+  border-color: var(--btn-color, var(--srch));
+  background: var(--btn-bg, rgba(167,139,250,0.12));
+  color: var(--btn-color, var(--srch));
+  box-shadow: 0 0 16px var(--btn-glow, var(--srch-glow));
+}
+.srch-book-btn .srch-book-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+.srch-book-btn .srch-book-check {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  font-size: 9px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.srch-book-btn.active .srch-book-check {
+  opacity: 1;
+}
+
+/* Search Bar */
+.srch-bar-wrap {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+  position: relative;
+}
+.srch-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+.srch-input {
+  flex: 1;
+  background: var(--srch-surface);
+  border: 1px solid var(--srch-border);
+  border-radius: 6px;
+  padding: 14px 20px;
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  outline: none;
+  transition: all 0.2s;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.srch-input::placeholder {
+  color: var(--muted);
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+.srch-input:focus {
+  border-color: var(--srch);
+  box-shadow: 0 0 0 2px rgba(167,139,250,0.18), 0 0 24px rgba(167,139,250,0.1);
+}
+.srch-btn {
+  background: linear-gradient(135deg, var(--srch), #7c6ee0);
+  border: none;
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.srch-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(167,139,250,0.35);
+}
+.srch-btn:active { transform: translateY(0); }
+.srch-hint {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.srch-hint span {
+  display: inline-block;
+  background: var(--srch-surface);
+  border: 1px solid var(--srch-border);
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin: 2px 3px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  color: var(--cream-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.srch-hint span:hover {
+  border-color: var(--srch);
+  color: var(--srch);
+}
+
+/* Status / loader */
+.srch-status {
+  text-align: center;
+  padding: 20px;
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--muted);
+}
+.srch-loader {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(167,139,250,0.2);
+  border-top-color: var(--srch);
+  border-radius: 50%;
+  animation: srch-spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes srch-spin { to { transform: rotate(360deg); } }
+
+/* Results area */
+.srch-results-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* Result count banner */
+.srch-count-banner {
+  text-align: center;
+  margin-bottom: 36px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+.srch-count-banner strong {
+  color: var(--srch);
+  font-size: 15px;
+}
+
+/* Book section header */
+.srch-book-section {
+  margin-bottom: 52px;
+}
+.srch-book-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.srch-book-header-icon {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.srch-book-header-info {
+  flex: 1;
+  min-width: 0;
+}
+.srch-book-header-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(14px, 2.2vw, 20px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.srch-book-header-meta {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+.srch-book-header-count {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  padding: 5px 14px;
+  border-radius: 3px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+/* Verse cards grid */
+.srch-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+.srch-card {
+  background: var(--srch-card);
+  border: 1px solid var(--card-border-color, var(--srch-border));
+  border-radius: 7px;
+  padding: 18px 20px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.srch-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--card-accent, var(--srch));
+  border-radius: 7px 0 0 7px;
+}
+.srch-card:hover {
+  border-color: var(--card-accent-dim, rgba(167,139,250,0.4));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+.srch-card-ref {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.srch-card-chapter {
+  font-family: 'EB Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 9px;
+  letter-spacing: 0.04em;
+}
+.srch-card-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 15.5px;
+  color: var(--cream);
+  line-height: 1.68;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.srch-card-text mark {
+  background: rgba(240, 192, 96, 0.22);
+  color: #f0c060;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+.srch-no-results {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* Divider between book sections */
+.srch-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 10px 0 42px;
+}
+.srch-section-divider::before, .srch-section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167,139,250,0.1), transparent);
+}
+.srch-section-divider-glyph {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  color: rgba(90,82,112,0.4);
+  letter-spacing: 0.2em;
+}
+
+/* Empty state */
+.srch-empty-state {
+  text-align: center;
+  padding: 80px 20px 60px;
+}
+.srch-empty-icon {
+  font-size: 56px;
+  display: block;
+  margin-bottom: 18px;
+  opacity: 0.3;
+}
+.srch-empty-text {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.srch-empty-sub {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(90,82,112,0.6);
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .srch-book-grid { gap: 8px; }
+  .srch-book-btn { padding: 9px 13px; font-size: 10px; }
+  .srch-cards-grid { grid-template-columns: 1fr; }
+  .srch-book-btn .srch-book-name-sub { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -853,7 +1301,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 </div>
 
 <!-- ══ NAV ══ -->
-<nav class="hub-nav" role="tablist" style="margin:0 auto 0;max-width:680px;display:flex;">
+<nav class="hub-nav" role="tablist" style="margin:0 auto 0;max-width:780px;display:flex;">
+  <button class="rel-tab" id="tab-srch" onclick="switchReligion('srch')" style="flex:0 0 auto;min-width:90px;">
+    <div class="rel-tab-inner">
+      <span class="rel-tab-icon">🔍</span>
+      <span class="rel-tab-name" style="font-size:10px;letter-spacing:0.14em;">Search</span>
+      <span class="rel-tab-script" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;">Scripture</span>
+    </div>
+  </button>
   <button class="rel-tab" id="tab-jud" onclick="switchReligion('jud')">
     <div class="rel-tab-inner">
       <span class="rel-tab-icon">✡️</span>
@@ -886,6 +1341,98 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <!-- ══════════════════ PAGES ══════════════════ -->
 <div class="religion-pages">
+
+
+<!-- ════════════ PAGE: SCRIPTURE SEARCH ════════════ -->
+<div class="religion-page srch-page" id="page-srch">
+<div class="inner-wrap" style="max-width:1100px;">
+
+<!-- Hero -->
+<div class="srch-hero">
+  <span class="srch-hero-symbol">🔍</span>
+  <div class="srch-eyebrow">Comparative Scripture</div>
+  <h1 class="srch-title">Scripture Search</h1>
+  <p class="srch-subtitle">Search across the Bible, Quran &amp; Bhagavad Gita — side by side</p>
+  <div class="srch-rule"><span class="srch-rule-glyph">✦</span></div>
+</div>
+
+<!-- Book Selector -->
+<div class="srch-book-select-wrap">
+  <div class="srch-book-select-label">Select Scriptures to Search</div>
+  <div class="srch-book-grid">
+    <button class="srch-book-btn active" id="sbtn-bible"
+      style="--btn-color:#c0392b;--btn-bg:rgba(192,57,43,0.12);--btn-glow:rgba(192,57,43,0.35);"
+      onclick="toggleBook('bible',this)">
+      <span class="srch-book-icon">✝️</span>
+      <span>Holy Bible<br><small style="font-size:9px;opacity:0.6;font-family:'EB Garamond',serif;letter-spacing:0.04em;">Berean Standard Bible</small></span>
+      <span class="srch-book-check">✦</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-quran-y"
+      style="--btn-color:#2ecc8a;--btn-bg:rgba(46,204,138,0.12);--btn-glow:rgba(46,204,138,0.35);"
+      onclick="toggleBook('quran_y',this)">
+      <span class="srch-book-icon">☪️</span>
+      <span>Quran — Yusuf Ali<br><small style="font-size:9px;opacity:0.6;font-family:'EB Garamond',serif;letter-spacing:0.04em;">Abdullah Yusuf Ali, 1934</small></span>
+      <span class="srch-book-check">✦</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-quran-p"
+      style="--btn-color:#3ab5e6;--btn-bg:rgba(58,181,230,0.12);--btn-glow:rgba(58,181,230,0.35);"
+      onclick="toggleBook('quran_p',this)">
+      <span class="srch-book-icon">☪️</span>
+      <span>Quran — Pickthall<br><small style="font-size:9px;opacity:0.6;font-family:'EB Garamond',serif;letter-spacing:0.04em;">Marmaduke Pickthall, 1930</small></span>
+      <span class="srch-book-check">✦</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-quran-s"
+      style="--btn-color:#e8c96a;--btn-bg:rgba(232,201,106,0.12);--btn-glow:rgba(232,201,106,0.35);"
+      onclick="toggleBook('quran_s',this)">
+      <span class="srch-book-icon">☪️</span>
+      <span>Quran — Shakir<br><small style="font-size:9px;opacity:0.6;font-family:'EB Garamond',serif;letter-spacing:0.04em;">M. H. Shakir, 1907</small></span>
+      <span class="srch-book-check">✦</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-gita"
+      style="--btn-color:#f59e42;--btn-bg:rgba(245,158,66,0.12);--btn-glow:rgba(245,158,66,0.35);"
+      onclick="toggleBook('gita',this)">
+      <span class="srch-book-icon">🪷</span>
+      <span>Bhagavad Gita<br><small style="font-size:9px;opacity:0.6;font-family:'EB Garamond',serif;letter-spacing:0.04em;">Sir Edwin Arnold, 1885</small></span>
+      <span class="srch-book-check">✦</span>
+    </button>
+  </div>
+</div>
+
+<!-- Search Bar -->
+<div class="srch-bar-wrap">
+  <div class="srch-input-row">
+    <input type="text" class="srch-input" id="srch-input" placeholder="Search any word or phrase…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')doSearch()">
+    <button class="srch-btn" onclick="doSearch()">Search</button>
+  </div>
+  <div class="srch-hint">
+    Try:
+    <span onclick="quickSearch('hell')">hell</span>
+    <span onclick="quickSearch('love')">love</span>
+    <span onclick="quickSearch('war')">war</span>
+    <span onclick="quickSearch('paradise')">paradise</span>
+    <span onclick="quickSearch('soul')">soul</span>
+    <span onclick="quickSearch('light')">light</span>
+    <span onclick="quickSearch('fire')">fire</span>
+    <span onclick="quickSearch('death')">death</span>
+    <span onclick="quickSearch('woman')">woman</span>
+    <span onclick="quickSearch('peace')">peace</span>
+  </div>
+</div>
+
+<!-- Status -->
+<div id="srch-status" class="srch-status" style="display:none;"></div>
+
+<!-- Results -->
+<div class="srch-results-wrap" id="srch-results">
+  <div class="srch-empty-state" id="srch-empty">
+    <span class="srch-empty-icon">📜</span>
+    <div class="srch-empty-text">Select scriptures, enter a term, and search</div>
+    <div class="srch-empty-sub">Results from each scripture appear in their own section below</div>
+  </div>
+</div>
+
+</div><!-- /inner-wrap -->
+</div><!-- /page-srch -->
 
 <!-- ════════════ PAGE 1: JUDAISM ════════════ -->
 <div class="religion-page jud-page" id="page-jud">
@@ -8852,7 +9399,7 @@ document.addEventListener('keydown', function(e) {
 
 function switchReligion(rel) {
   document.querySelectorAll('.rel-tab').forEach(t => {
-    t.classList.remove('active-jud','active-xtn','active-isl','active-map');
+    t.classList.remove('active-jud','active-xtn','active-isl','active-map','active-srch');
   });
   document.getElementById('tab-' + rel).classList.add('active-' + rel);
   document.querySelectorAll('.religion-page').forEach(p => p.classList.remove('active'));
@@ -9899,6 +10446,289 @@ document.addEventListener('keydown', function(e) {
   if (ctrl && e.shiftKey && ['I','J','C','i','j','c'].includes(e.key)) { e.preventDefault(); return false; }
 });
 document.addEventListener('contextmenu', e => e.preventDefault());
+
+
+// ═══════════════════════════════════════════
+//  SCRIPTURE SEARCH ENGINE
+// ═══════════════════════════════════════════
+
+(function() {
+  let SCRIPTURES = null;
+  let loading = false;
+
+  // Which books are selected
+  const selectedBooks = {
+    bible:   true,
+    quran_y: true,
+    quran_p: true,
+    quran_s: true,
+    gita:    true
+  };
+
+  // Book display config
+  const BOOK_CONFIG = {
+    bible: {
+      label: 'Holy Bible',
+      sub: 'Berean Standard Bible · Old &amp; New Testaments',
+      icon: '✝️',
+      accent: '#c0392b',
+      accentDim: 'rgba(192,57,43,0.35)',
+      countLabel: 'verse',
+    },
+    quran_y: {
+      label: 'Quran — Yusuf Ali Translation',
+      sub: 'Abdullah Yusuf Ali · 1934 · The Meaning of the Holy Quran',
+      icon: '☪️',
+      accent: '#2ecc8a',
+      accentDim: 'rgba(46,204,138,0.35)',
+      countLabel: 'ayah',
+    },
+    quran_p: {
+      label: 'Quran — Pickthall Translation',
+      sub: 'Marmaduke William Pickthall · 1930 · The Meaning of the Glorious Koran',
+      icon: '☪️',
+      accent: '#3ab5e6',
+      accentDim: 'rgba(58,181,230,0.35)',
+      countLabel: 'ayah',
+    },
+    quran_s: {
+      label: 'Quran — Shakir Translation',
+      sub: 'M. H. Shakir · 1907 · The Quran',
+      icon: '☪️',
+      accent: '#e8c96a',
+      accentDim: 'rgba(232,201,106,0.35)',
+      countLabel: 'ayah',
+    },
+    gita: {
+      label: 'Bhagavad Gita',
+      sub: 'Sir Edwin Arnold · 1885 · The Song Celestial',
+      icon: '🪷',
+      accent: '#f59e42',
+      accentDim: 'rgba(245,158,66,0.35)',
+      countLabel: 'stanza',
+    }
+  };
+
+  window.toggleBook = function(key, btn) {
+    selectedBooks[key] = !selectedBooks[key];
+    btn.classList.toggle('active', selectedBooks[key]);
+  };
+
+  window.quickSearch = function(term) {
+    const inp = document.getElementById('srch-input');
+    if (inp) { inp.value = term; doSearch(); }
+  };
+
+  window.doSearch = function() {
+    const inp = document.getElementById('srch-input');
+    const query = inp ? inp.value.trim() : '';
+    if (!query) return;
+
+    // Check at least one book is selected
+    const booksToSearch = Object.keys(selectedBooks).filter(k => selectedBooks[k]);
+    if (booksToSearch.length === 0) {
+      showStatus('Please select at least one scripture.', false);
+      return;
+    }
+
+    if (!SCRIPTURES) {
+      loadScriptures(() => runSearch(query, booksToSearch));
+    } else {
+      runSearch(query, booksToSearch);
+    }
+  };
+
+  function loadScriptures(cb) {
+    if (loading) return;
+    loading = true;
+    showStatus('<span class="srch-loader"></span> Loading scripture data…', false);
+
+    fetch('scriptures.json')
+      .then(r => {
+        if (!r.ok) throw new Error('fetch failed');
+        return r.json();
+      })
+      .then(data => {
+        SCRIPTURES = data;
+        loading = false;
+        hideStatus();
+        cb();
+      })
+      .catch(err => {
+        loading = false;
+        showStatus('Could not load scripture data. Make sure <strong>scriptures.json</strong> is in the same folder as this file.', false);
+        console.error('Scripture load error:', err);
+      });
+  }
+
+  function runSearch(query, booksToSearch) {
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!terms.length) return;
+
+    const resultsWrap = document.getElementById('srch-results');
+    const empty = document.getElementById('srch-empty');
+    if (empty) empty.style.display = 'none';
+    resultsWrap.innerHTML = '';
+
+    let totalFound = 0;
+    const sections = [];
+
+    for (const book of booksToSearch) {
+      if (!SCRIPTURES[book]) continue;
+      const cfg = BOOK_CONFIG[book];
+      const matches = SCRIPTURES[book].filter(v =>
+        terms.every(term => v.t.toLowerCase().includes(term))
+      );
+      if (matches.length === 0) continue;
+      totalFound += matches.length;
+      sections.push({ book, cfg, matches });
+    }
+
+    if (totalFound === 0) {
+      resultsWrap.innerHTML = `
+        <div class="srch-no-results">
+          No results found for "<em>${escHtml(query)}</em>".<br>
+          <span style="font-size:13px;color:rgba(90,82,112,0.5);margin-top:8px;display:block;">Try a different word, or select more scriptures.</span>
+        </div>`;
+      hideStatus();
+      return;
+    }
+
+    // Count banner
+    const countBanner = document.createElement('div');
+    countBanner.className = 'srch-count-banner';
+    countBanner.innerHTML = `Found <strong>${totalFound.toLocaleString()}</strong> result${totalFound===1?'':'s'} for &ldquo;<em>${escHtml(query)}</em>&rdquo; across ${sections.length} scripture${sections.length===1?'':'s'}`;
+    resultsWrap.appendChild(countBanner);
+
+    // Build each section
+    sections.forEach((sec, idx) => {
+      const { book, cfg, matches } = sec;
+      const secEl = document.createElement('div');
+      secEl.className = 'srch-book-section';
+
+      // Header
+      const countWord = cfg.countLabel + (matches.length === 1 ? '' : 's');
+      secEl.innerHTML = `
+        <div class="srch-book-header">
+          <span class="srch-book-header-icon">${cfg.icon}</span>
+          <div class="srch-book-header-info">
+            <div class="srch-book-header-name" style="color:${cfg.accent}">${cfg.label}</div>
+            <div class="srch-book-header-meta">${cfg.sub}</div>
+          </div>
+          <div class="srch-book-header-count" style="color:${cfg.accent};border-color:${cfg.accentDim};background:${cfg.accentDim.replace('0.35','0.08')};">
+            ${matches.length.toLocaleString()} ${countWord}
+          </div>
+        </div>
+        <div class="srch-cards-grid" id="srch-grid-${book}"></div>
+      `;
+      resultsWrap.appendChild(secEl);
+
+      // Cards
+      const grid = secEl.querySelector(`#srch-grid-${book}`);
+      const MAX_DISPLAY = 200;
+      matches.slice(0, MAX_DISPLAY).forEach(v => {
+        const card = document.createElement('div');
+        card.className = 'srch-card';
+        card.style.setProperty('--card-accent', cfg.accent);
+        card.style.setProperty('--card-accent-dim', cfg.accentDim);
+        card.style.setProperty('--card-border-color', 'rgba(37,29,66,1)');
+
+        // Reference line
+        const refEl = document.createElement('div');
+        refEl.className = 'srch-card-ref';
+        refEl.style.color = cfg.accent;
+        refEl.textContent = formatRef(book, v);
+        card.appendChild(refEl);
+
+        // Chapter/surah label
+        const chapLabel = getChapterLabel(book, v);
+        if (chapLabel) {
+          const chapEl = document.createElement('div');
+          chapEl.className = 'srch-card-chapter';
+          chapEl.textContent = chapLabel;
+          card.appendChild(chapEl);
+        }
+
+        // Text with highlight
+        const textEl = document.createElement('div');
+        textEl.className = 'srch-card-text';
+        textEl.innerHTML = highlightTerms(escHtml(v.t), terms);
+        card.appendChild(textEl);
+
+        grid.appendChild(card);
+      });
+
+      if (matches.length > MAX_DISPLAY) {
+        const more = document.createElement('div');
+        more.style.cssText = 'text-align:center;padding:14px;font-family:Cinzel,serif;font-size:10px;letter-spacing:0.18em;color:rgba(90,82,112,0.6);';
+        more.textContent = `+ ${(matches.length - MAX_DISPLAY).toLocaleString()} more results — refine your search`;
+        grid.parentElement.appendChild(more);
+      }
+
+      // Divider between sections
+      if (idx < sections.length - 1) {
+        const div = document.createElement('div');
+        div.className = 'srch-section-divider';
+        div.innerHTML = '<span class="srch-section-divider-glyph">✦</span>';
+        resultsWrap.appendChild(div);
+      }
+
+      resultsWrap.appendChild(secEl);
+    });
+
+    hideStatus();
+  }
+
+  function formatRef(book, v) {
+    if (book === 'bible') return v.r;
+    if (book.startsWith('quran')) {
+      const surahName = v.sn ? v.sn : `Surah ${v.c}`;
+      return `${surahName} · ${v.r}`;
+    }
+    if (book === 'gita') return `Chapter ${v.c} · ${v.ct || 'Bhagavad Gita'}`;
+    return v.r;
+  }
+
+  function getChapterLabel(book, v) {
+    if (book === 'bible') {
+      // extract book name from ref e.g. "Genesis 1:1"
+      const parts = v.r.match(/^(.+?)\s+\d+:\d+$/);
+      return parts ? parts[1] : null;
+    }
+    if (book.startsWith('quran')) {
+      return v.sn ? `Surah ${v.c} — ${v.sn}` : null;
+    }
+    if (book === 'gita') {
+      return v.ct ? `${v.ct}` : null;
+    }
+    return null;
+  }
+
+  function highlightTerms(text, terms) {
+    let result = text;
+    terms.forEach(term => {
+      const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp('(' + escaped + ')', 'gi');
+      result = result.replace(re, '<mark>$1</mark>');
+    });
+    return result;
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function showStatus(msg, isError) {
+    const el = document.getElementById('srch-status');
+    if (el) { el.innerHTML = msg; el.style.display = 'block'; }
+  }
+
+  function hideStatus() {
+    const el = document.getElementById('srch-status');
+    if (el) el.style.display = 'none';
+  }
+
+})();
 
 // ═══ INIT ═══
 switchReligion('jud');
