@@ -867,14 +867,20 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   --white:#f4f0ff; --muted:#5a5270;
   min-height:100vh;
 }
-/* Emoji font stack for all platforms */
-.emoji { font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji','Twemoji Mozilla',sans-serif !important; font-style:normal; }
+/* Universal emoji class — forces color emoji on every platform */
+.em {
+  font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji','Twemoji Mozilla',
+              'EmojiOne Color','Android Emoji',sans-serif !important;
+  font-style:normal !important;
+  font-variant:normal !important;
+  line-height:1 !important;
+  display:inline-block;
+}
 
 /* Hero */
 .srch-hero { text-align:center; padding:44px 20px 32px; }
 .srch-hero-symbol {
-  font-size:52px; display:block; line-height:1.2; margin-bottom:14px;
-  font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;
+  font-size:52px; display:block; line-height:1.3; margin-bottom:14px;
   animation:srch-float 5s ease-in-out infinite;
 }
 @keyframes srch-float {
@@ -905,7 +911,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 }
 .lib-book-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--bk-accent,var(--srch)); }
 .lib-book-card:hover { border-color:var(--bk-accent,var(--srch)); transform:translateY(-3px); box-shadow:0 10px 32px rgba(0,0,0,.5),0 0 0 1px var(--bk-accent,var(--srch)); }
-.lib-book-icon { font-size:30px; line-height:1.2; margin-bottom:2px; font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif; }
+.lib-book-icon { font-size:30px; line-height:1.3; margin-bottom:2px; }
 .lib-book-name { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:.07em; color:var(--bk-accent,var(--srch)); line-height:1.3; }
 .lib-book-edition { font-family:'EB Garamond',serif; font-size:12px; font-style:italic; color:var(--muted); line-height:1.3; }
 .lib-book-count { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.12em; color:rgba(90,82,112,.6); margin-top:2px; }
@@ -920,13 +926,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .lib-reader-bookname { font-family:'Cinzel',serif; font-size:clamp(14px,2.5vw,22px); font-weight:600; letter-spacing:.05em; line-height:1.2; }
 .lib-reader-edition { font-family:'EB Garamond',serif; font-size:13px; font-style:italic; color:var(--muted); margin-top:3px; }
 
-/* Bible two-tier nav */
+/* Bible two-tier nav — NO scrollbar, pills wrap */
 .lib-bible-nav { margin-bottom:18px; }
 .lib-bible-testament-row { display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; }
 .lib-testament-btn { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.15em; text-transform:uppercase; padding:7px 18px; border-radius:4px; border:1px solid var(--srch-border); background:var(--srch-surface); color:var(--muted); cursor:pointer; transition:all .18s; }
 .lib-testament-btn.active { border-color:var(--bk-color,var(--srch)); background:var(--bk-dim,var(--srch-dim)); color:var(--bk-color,var(--srch)); }
-.lib-bible-book-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; margin-bottom:12px; }
-.lib-bible-book-row { display:flex; flex-wrap:wrap; gap:5px; min-width:max-content; }
+/* Book pills — wrap freely, NO overflow scroll */
+.lib-bible-book-row { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
 .lib-bible-book-btn { font-family:'EB Garamond',serif; font-size:13px; padding:4px 10px; border-radius:3px; border:1px solid var(--srch-border); background:transparent; color:var(--muted); cursor:pointer; transition:all .15s; white-space:nowrap; }
 .lib-bible-book-btn:hover { color:var(--cream-dim); border-color:rgba(167,139,250,.25); }
 .lib-bible-book-btn.active { border-color:var(--bk-color,var(--srch)); background:rgba(167,139,250,.1); color:var(--bk-color,var(--srch)); }
@@ -965,7 +971,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 }
 .srch-book-btn:hover { border-color:rgba(167,139,250,.35); color:var(--cream); background:rgba(167,139,250,.07); }
 .srch-book-btn.active { border-color:var(--btn-color,var(--srch)); background:var(--btn-bg,rgba(167,139,250,.12)); color:var(--btn-color,var(--srch)); box-shadow:0 0 12px var(--btn-glow,var(--srch-glow)); }
-.srch-book-btn .sb-icon { font-size:17px; line-height:1.2; font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif; }
+.srch-book-btn .sb-icon { font-size:17px; line-height:1.2; }
 .srch-book-btn .sb-check { font-size:8px; opacity:0; transition:opacity .2s; margin-left:2px; }
 .srch-book-btn.active .sb-check { opacity:1; }
 
@@ -980,58 +986,47 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .srch-hint { text-align:center; margin-top:11px; font-size:11px; color:var(--muted); letter-spacing:.06em; line-height:2; }
 .srch-hint span { display:inline-block; background:var(--srch-surface); border:1px solid var(--srch-border); border-radius:3px; padding:2px 8px; margin:2px 3px; font-family:'Cinzel',serif; font-size:10px; color:var(--cream-dim); cursor:pointer; transition:all .15s; }
 .srch-hint span:hover { border-color:var(--srch); color:var(--srch); }
-
-/* Status */
 .srch-status { text-align:center; padding:20px; font-family:'EB Garamond',serif; font-size:15px; font-style:italic; color:var(--muted); }
 .srch-loader { display:inline-block; width:18px; height:18px; border:2px solid rgba(167,139,250,.2); border-top-color:var(--srch); border-radius:50%; animation:srch-spin .7s linear infinite; vertical-align:middle; margin-right:8px; }
 @keyframes srch-spin { to{transform:rotate(360deg);} }
 
-/* Results — INTERLEAVED mode */
+/* Results */
 .srch-count-banner { text-align:center; margin-bottom:32px; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.18em; color:var(--muted); }
 .srch-count-banner strong { color:var(--srch); font-size:15px; }
-
-/* Interleaved grid - all cards in one grid */
 .srch-interleaved-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:13px; }
-
-/* Single-book grouped section (shown when only 1 book selected) */
 .srch-book-section { margin-bottom:50px; }
 .srch-book-header { display:flex; align-items:center; gap:14px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,.05); flex-wrap:wrap; }
-.srch-book-header-icon { font-size:24px; line-height:1.2; flex-shrink:0; font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif; }
+.srch-book-header-icon { font-size:24px; line-height:1.2; flex-shrink:0; }
 .srch-book-header-info { flex:1; min-width:0; }
 .srch-book-header-name { font-family:'Cinzel',serif; font-size:clamp(14px,2.2vw,19px); font-weight:600; letter-spacing:.06em; }
 .srch-book-header-meta { font-size:11px; color:var(--muted); letter-spacing:.07em; margin-top:3px; }
 .srch-book-header-count { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.12em; padding:5px 13px; border-radius:3px; border:1px solid; flex-shrink:0; }
-
-/* Cards (shared) */
 .srch-card { background:var(--srch-card); border:1px solid var(--srch-border); border-radius:7px; padding:16px 18px; transition:all .2s; position:relative; overflow:hidden; }
 .srch-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--card-accent,var(--srch)); border-radius:7px 0 0 7px; }
 .srch-card:hover { border-color:var(--card-accent-border,rgba(167,139,250,.4)); transform:translateY(-2px); box-shadow:0 8px 26px rgba(0,0,0,.4); }
-
-/* Source tag on interleaved cards */
 .srch-card-source { display:flex; align-items:center; gap:5px; margin-bottom:7px; }
-.srch-card-source-icon { font-size:13px; font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif; line-height:1; }
 .srch-card-source-label { font-family:'Cinzel',serif; font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; }
-
 .srch-card-ref { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.2em; margin-bottom:6px; text-transform:uppercase; }
 .srch-card-chapter { font-family:'EB Garamond',serif; font-size:11px; font-style:italic; color:var(--muted); margin-bottom:8px; letter-spacing:.04em; }
 .srch-card-text { font-family:'EB Garamond',serif; font-size:15px; color:var(--cream); line-height:1.67; -webkit-user-select:text; user-select:text; }
 .srch-card-text mark { background:rgba(240,192,96,.22); color:#f0c060; border-radius:2px; padding:0 2px; }
-
 .srch-no-results { text-align:center; padding:60px 20px; font-family:'EB Garamond',serif; font-size:18px; font-style:italic; color:var(--muted); }
+.srch-empty-state { text-align:center; padding:80px 20px 60px; }
+.srch-empty-icon { font-size:56px; display:block; margin-bottom:18px; opacity:.3; }
+.srch-empty-text { font-family:'Cinzel',serif; font-size:13px; letter-spacing:.15em; color:var(--muted); margin-bottom:8px; }
+.srch-empty-sub { font-family:'EB Garamond',serif; font-size:15px; font-style:italic; color:rgba(90,82,112,.6); }
 .srch-section-divider { display:flex; align-items:center; gap:18px; margin:6px 0 38px; }
 .srch-section-divider::before,.srch-section-divider::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(167,139,250,.1),transparent); }
 .srch-section-divider-g { font-family:'Cinzel',serif; font-size:10px; color:rgba(90,82,112,.4); letter-spacing:.2em; }
-.srch-empty-state { text-align:center; padding:80px 20px 60px; }
-.srch-empty-icon { font-size:56px; display:block; margin-bottom:18px; opacity:.3; font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif; }
-.srch-empty-text { font-family:'Cinzel',serif; font-size:13px; letter-spacing:.15em; color:var(--muted); margin-bottom:8px; }
-.srch-empty-sub { font-family:'EB Garamond',serif; font-size:15px; font-style:italic; color:rgba(90,82,112,.6); }
 
 @media (max-width:620px) {
   .srch-book-row { gap:6px; }
   .srch-book-btn { padding:8px 10px; font-size:9px; }
-  .srch-interleaved-grid,.srch-cards-grid { grid-template-columns:1fr; }
+  .srch-interleaved-grid { grid-template-columns:1fr; }
   .lib-shelf { grid-template-columns:repeat(2,1fr); }
   .lib-chapter-select { min-width:150px; }
+  .lib-bible-book-row { gap:4px; }
+  .lib-bible-book-btn { font-size:12px; padding:3px 8px; }
 }
 
 </style>
@@ -1052,7 +1047,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <nav class="hub-nav" role="tablist" style="margin:0 auto 0;max-width:840px;display:flex;">
   <button class="rel-tab" id="tab-srch" onclick="switchReligion('srch')" style="flex:0 0 auto;min-width:90px;">
     <div class="rel-tab-inner">
-      <span class="rel-tab-icon emoji">📖</span>
+      <span class="rel-tab-icon">&#128218;&#xFE0F;</span>
       <span class="rel-tab-name" style="font-size:10px;letter-spacing:0.14em;">Search</span>
       <span class="rel-tab-script" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;">Library</span>
     </div>
@@ -1097,17 +1092,17 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <!-- Hero -->
 <div class="srch-hero">
-  <span class="srch-hero-symbol">📖</span>
-  <div class="srch-eyebrow">Sacred Texts · Comparative Scripture</div>
+  <span class="srch-hero-symbol">&#x1F4D6;&#xFE0F;</span>
+  <div class="srch-eyebrow">Sacred Texts &middot; Comparative Scripture</div>
   <h1 class="srch-title">Scripture Library &amp; Search</h1>
   <p class="srch-subtitle">Read and search the Bible, Quran, Bhagavad Gita &amp; Mahabharata</p>
-  <div class="srch-rule"><span class="srch-rule-glyph">✦</span></div>
+  <div class="srch-rule"><span class="srch-rule-glyph">&#10022;</span></div>
 </div>
 
 <!-- Panel tabs -->
 <div class="srch-section-tabs">
-  <button class="srch-section-tab active" id="stab-lib"    onclick="showSrchPanel('lib')">📚 Library</button>
-  <button class="srch-section-tab"        id="stab-search" onclick="showSrchPanel('search')">🔍 Search</button>
+  <button class="srch-section-tab active" id="stab-lib"    onclick="showSrchPanel('lib')">&#x1F4DA;&#xFE0F; Library</button>
+  <button class="srch-section-tab"        id="stab-search" onclick="showSrchPanel('search')">&#x1F50D;&#xFE0F; Search</button>
 </div>
 
 <!-- ══ LIBRARY PANEL ══ -->
@@ -1117,52 +1112,45 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <div class="lib-shelf">
 
       <div class="lib-book-card" style="--bk-accent:#d4a017;" onclick="openLibBook('kjv')">
-        <div class="lib-book-icon">✝️</div>
+        <div class="lib-book-icon">&#x271D;&#xFE0F;</div>
         <div class="lib-book-name">Holy Bible</div>
-        <div class="lib-book-edition">King James Version · 1611</div>
-        <div class="lib-book-count">66 Books · ~31,000 Verses</div>
+        <div class="lib-book-edition">King James Version &middot; 1611</div>
+        <div class="lib-book-count">66 Books &middot; ~31,000 Verses</div>
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#c0392b;" onclick="openLibBook('bible')">
-        <div class="lib-book-icon">✝️</div>
+        <div class="lib-book-icon">&#x271D;&#xFE0F;</div>
         <div class="lib-book-name">Holy Bible</div>
-        <div class="lib-book-edition">Berean Standard Bible · 2022</div>
-        <div class="lib-book-count">66 Books · 31,102 Verses</div>
+        <div class="lib-book-edition">Berean Standard Bible &middot; 2022</div>
+        <div class="lib-book-count">66 Books &middot; 31,102 Verses</div>
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#2ecc8a;" onclick="openLibBook('quran_y')">
-        <div class="lib-book-icon">☪️</div>
+        <div class="lib-book-icon">&#x262A;&#xFE0F;</div>
         <div class="lib-book-name">The Quran</div>
-        <div class="lib-book-edition">Yusuf Ali · 1934</div>
-        <div class="lib-book-count">114 Surahs · 6,236 Ayahs</div>
+        <div class="lib-book-edition">Yusuf Ali &middot; 1934</div>
+        <div class="lib-book-count">114 Surahs &middot; 6,236 Ayahs</div>
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#3ab5e6;" onclick="openLibBook('quran_p')">
-        <div class="lib-book-icon">☪️</div>
+        <div class="lib-book-icon">&#x262A;&#xFE0F;</div>
         <div class="lib-book-name">The Quran</div>
-        <div class="lib-book-edition">Pickthall · 1930</div>
-        <div class="lib-book-count">114 Surahs · 6,236 Ayahs</div>
-      </div>
-
-      <div class="lib-book-card" style="--bk-accent:#e8c96a;" onclick="openLibBook('quran_s')">
-        <div class="lib-book-icon">☪️</div>
-        <div class="lib-book-name">The Quran</div>
-        <div class="lib-book-edition">Shakir · 1907</div>
-        <div class="lib-book-count">114 Surahs · 6,236 Ayahs</div>
+        <div class="lib-book-edition">Pickthall &middot; 1930</div>
+        <div class="lib-book-count">114 Surahs &middot; 6,236 Ayahs</div>
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#f59e42;" onclick="openLibBook('gita')">
-        <div class="lib-book-icon emoji">🪷</div>
+        <div class="lib-book-icon">&#x1FAB7;&#xFE0F;</div>
         <div class="lib-book-name">Bhagavad Gita</div>
-        <div class="lib-book-edition">Sir Edwin Arnold · 1885</div>
-        <div class="lib-book-count">18 Chapters · The Song Celestial</div>
+        <div class="lib-book-edition">Sir Edwin Arnold &middot; 1885</div>
+        <div class="lib-book-count">18 Chapters &middot; The Song Celestial</div>
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#c084fc;" onclick="openLibBook('maha')">
-        <div class="lib-book-icon emoji">🏹</div>
+        <div class="lib-book-icon">&#x1F3F9;&#xFE0F;</div>
         <div class="lib-book-name">Mahabharata</div>
-        <div class="lib-book-edition">K. M. Ganguli · 1883–1896</div>
-        <div class="lib-book-count">18 Parvas · 2,083 Sections</div>
+        <div class="lib-book-edition">K. M. Ganguli &middot; 1883&ndash;1896</div>
+        <div class="lib-book-count">18 Parvas &middot; 2,083 Sections</div>
       </div>
 
     </div>
@@ -1172,25 +1160,23 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="lib-reader" id="lib-reader">
     <div class="lib-wrap" style="padding-top:0;">
       <div class="lib-reader-header">
-        <button class="lib-reader-back" onclick="closeLibReader()">← Library</button>
+        <button class="lib-reader-back" onclick="closeLibReader()">&larr; Library</button>
         <div class="lib-reader-title-block">
-          <div class="lib-reader-bookname" id="lib-reader-bookname">—</div>
-          <div class="lib-reader-edition"  id="lib-reader-edition">—</div>
+          <div class="lib-reader-bookname" id="lib-reader-bookname">&mdash;</div>
+          <div class="lib-reader-edition"  id="lib-reader-edition">&mdash;</div>
         </div>
       </div>
 
-      <!-- Bible two-tier nav -->
+      <!-- Bible two-tier nav: OT/NT buttons + wrapped pills, no scrollbar -->
       <div class="lib-bible-nav" id="lib-bible-nav" style="display:none;">
         <div class="lib-bible-testament-row" id="lib-testament-row"></div>
-        <div class="lib-bible-book-scroll">
-          <div class="lib-bible-book-row" id="lib-bible-book-row"></div>
-        </div>
+        <div class="lib-bible-book-row" id="lib-bible-book-row"></div>
         <div class="lib-chapter-nav">
           <span class="lib-chapter-label">Chapter</span>
           <select class="lib-chapter-select" id="lib-bible-ch-sel" onchange="libBibleGoChapter(this.value)"></select>
           <div class="lib-chapter-arrows">
-            <button class="lib-chapter-arrow" onclick="libBibleChapterStep(-1)">&#8592;</button>
-            <button class="lib-chapter-arrow" onclick="libBibleChapterStep(1)">&#8594;</button>
+            <button class="lib-chapter-arrow" onclick="libBibleChapterStep(-1)">&larr;</button>
+            <button class="lib-chapter-arrow" onclick="libBibleChapterStep(1)">&rarr;</button>
           </div>
           <span class="lib-chapter-pos" id="lib-bible-ch-pos"></span>
         </div>
@@ -1201,8 +1187,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <span class="lib-chapter-label" id="lib-nav-label">Chapter</span>
         <select class="lib-chapter-select" id="lib-other-sel" onchange="libGoChapter(this.value)"></select>
         <div class="lib-chapter-arrows">
-          <button class="lib-chapter-arrow" onclick="libChapterStep(-1)">&#8592;</button>
-          <button class="lib-chapter-arrow" onclick="libChapterStep(1)">&#8594;</button>
+          <button class="lib-chapter-arrow" onclick="libChapterStep(-1)">&larr;</button>
+          <button class="lib-chapter-arrow" onclick="libChapterStep(1)">&rarr;</button>
         </div>
         <span class="lib-chapter-pos" id="lib-other-pos"></span>
       </div>
@@ -1210,7 +1196,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div id="lib-verse-content"></div>
     </div>
   </div>
-</div><!-- /lib panel -->
+</div>
 
 <!-- ══ SEARCH PANEL ══ -->
 <div id="srch-search-panel" style="display:none;">
@@ -1221,51 +1207,44 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-kjv"
       style="--btn-color:#d4a017;--btn-bg:rgba(212,160,23,.12);--btn-glow:rgba(212,160,23,.35);"
       onclick="toggleBook('kjv',this)">
-      <span class="sb-icon">✝️</span>
-      <span>KJV Bible<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">King James · 1611</small></span>
-      <span class="sb-check">✦</span>
+      <span class="sb-icon">&#x271D;&#xFE0F;</span>
+      <span>KJV Bible<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">King James &middot; 1611</small></span>
+      <span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-bible"
       style="--btn-color:#c0392b;--btn-bg:rgba(192,57,43,.12);--btn-glow:rgba(192,57,43,.35);"
       onclick="toggleBook('bible',this)">
-      <span class="sb-icon">✝️</span>
-      <span>BSB Bible<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Berean Standard · 2022</small></span>
-      <span class="sb-check">✦</span>
+      <span class="sb-icon">&#x271D;&#xFE0F;</span>
+      <span>BSB Bible<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Berean Standard &middot; 2022</small></span>
+      <span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-quran-y"
       style="--btn-color:#2ecc8a;--btn-bg:rgba(46,204,138,.12);--btn-glow:rgba(46,204,138,.35);"
       onclick="toggleBook('quran_y',this)">
-      <span class="sb-icon">☪️</span>
-      <span>Quran — Yusuf Ali<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Abdullah Yusuf Ali · 1934</small></span>
-      <span class="sb-check">✦</span>
+      <span class="sb-icon">&#x262A;&#xFE0F;</span>
+      <span>Quran &mdash; Yusuf Ali<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Abdullah Yusuf Ali &middot; 1934</small></span>
+      <span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-quran-p"
       style="--btn-color:#3ab5e6;--btn-bg:rgba(58,181,230,.12);--btn-glow:rgba(58,181,230,.35);"
       onclick="toggleBook('quran_p',this)">
-      <span class="sb-icon">☪️</span>
-      <span>Quran — Pickthall<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Marmaduke Pickthall · 1930</small></span>
-      <span class="sb-check">✦</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-quran-s"
-      style="--btn-color:#e8c96a;--btn-bg:rgba(232,201,106,.12);--btn-glow:rgba(232,201,106,.35);"
-      onclick="toggleBook('quran_s',this)">
-      <span class="sb-icon">☪️</span>
-      <span>Quran — Shakir<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">M. H. Shakir · 1907</small></span>
-      <span class="sb-check">✦</span>
+      <span class="sb-icon">&#x262A;&#xFE0F;</span>
+      <span>Quran &mdash; Pickthall<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Marmaduke Pickthall &middot; 1930</small></span>
+      <span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-gita"
       style="--btn-color:#f59e42;--btn-bg:rgba(245,158,66,.12);--btn-glow:rgba(245,158,66,.35);"
       onclick="toggleBook('gita',this)">
-      <span class="sb-icon emoji">🪷</span>
-      <span>Bhagavad Gita<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Edwin Arnold · 1885</small></span>
-      <span class="sb-check">✦</span>
+      <span class="sb-icon">&#x1FAB7;&#xFE0F;</span>
+      <span>Bhagavad Gita<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Edwin Arnold &middot; 1885</small></span>
+      <span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-maha"
       style="--btn-color:#c084fc;--btn-bg:rgba(192,132,252,.12);--btn-glow:rgba(192,132,252,.35);"
       onclick="toggleBook('maha',this)">
-      <span class="sb-icon emoji">🏹</span>
-      <span>Mahabharata<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">K. M. Ganguli · 1896</small></span>
-      <span class="sb-check">✦</span>
+      <span class="sb-icon">&#x1F3F9;&#xFE0F;</span>
+      <span>Mahabharata<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">K. M. Ganguli &middot; 1896</small></span>
+      <span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -1273,7 +1252,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="srch-bar-wrap">
     <div class="srch-input-row">
       <input type="text" class="srch-input" id="srch-input"
-             placeholder="Search across all scriptures…"
+             placeholder="Search across all scriptures&hellip;"
              autocomplete="off" autocorrect="off" spellcheck="false"
              onkeydown="if(event.key==='Enter')doSearch()">
       <button class="srch-btn" onclick="doSearch()">Search</button>
@@ -1298,14 +1277,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div id="srch-results">
     <div class="srch-empty-state" id="srch-empty">
-      <span class="srch-empty-icon emoji">📜</span>
+      <span class="srch-empty-icon">&#x1F4DC;&#xFE0F;</span>
       <div class="srch-empty-text">Select scriptures above, then search</div>
       <div class="srch-empty-sub">Cards alternate across all selected scriptures for easy comparison</div>
     </div>
   </div>
 
 </div>
-</div><!-- /search panel -->
+</div>
 
 </div><!-- /inner-wrap -->
 </div><!-- /page-srch -->
@@ -10325,11 +10304,10 @@ document.addEventListener('contextmenu', e => e.preventDefault());
 
 
 // ══════════════════════════════════════════════════════════
-//  SCRIPTURE LIBRARY & SEARCH ENGINE  v4
+//  SCRIPTURE LIBRARY & SEARCH ENGINE  v5
 // ══════════════════════════════════════════════════════════
 (function(){
 
-// ── Panel switcher ──────────────────────────────────────
 window.showSrchPanel = function(which){
   document.getElementById('srch-lib-panel').style.display    = which==='lib'    ? 'block' : 'none';
   document.getElementById('srch-search-panel').style.display = which==='search' ? 'block' : 'none';
@@ -10337,21 +10315,18 @@ window.showSrchPanel = function(which){
   document.getElementById('stab-search').classList.toggle('active', which==='search');
 };
 
-// ── Book configs ────────────────────────────────────────
 const BOOK_CFG = {
-  kjv:     { label:'Holy Bible — King James Version',    sub:'Authorized Version · 1611 · Old &amp; New Testaments',       icon:'✝️', accent:'#d4a017', accentDim:'rgba(212,160,23,0.35)',   countLabel:'verse',   bookTitle:'Holy Bible',    bookEdition:'King James Version (KJV) · 1611',         type:'bible'  },
-  bible:   { label:'Holy Bible — Berean Standard Bible', sub:'BSB · 2022 · Old &amp; New Testaments',                      icon:'✝️', accent:'#c0392b', accentDim:'rgba(192,57,43,0.35)',   countLabel:'verse',   bookTitle:'Holy Bible',    bookEdition:'Berean Standard Bible (BSB) · 2022',      type:'bible'  },
-  quran_y: { label:'Quran — Yusuf Ali Translation',      sub:'Abdullah Yusuf Ali · 1934 · The Meaning of the Holy Quran', icon:'☪️', accent:'#2ecc8a', accentDim:'rgba(46,204,138,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Yusuf Ali Translation · 1934',            type:'quran'  },
-  quran_p: { label:'Quran — Pickthall Translation',      sub:'Marmaduke William Pickthall · 1930 · The Glorious Koran',   icon:'☪️', accent:'#3ab5e6', accentDim:'rgba(58,181,230,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Pickthall Translation · 1930',            type:'quran'  },
-  quran_s: { label:'Quran — Shakir Translation',         sub:'M. H. Shakir · 1907',                                       icon:'☪️', accent:'#e8c96a', accentDim:'rgba(232,201,106,0.35)', countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Shakir Translation · 1907',               type:'quran'  },
-  gita:    { label:'Bhagavad Gita',                      sub:'Sir Edwin Arnold · 1885 · The Song Celestial',              icon:'🪷', accent:'#f59e42', accentDim:'rgba(245,158,66,0.35)',  countLabel:'stanza',  bookTitle:'Bhagavad Gita', bookEdition:'Sir Edwin Arnold Translation · 1885',     type:'gita'   },
-  maha:    { label:'Mahabharata',                        sub:'Kisari Mohan Ganguli · 1883–1896 · 18 Parvas',              icon:'🏹', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'section', bookTitle:'Mahabharata',   bookEdition:'K. M. Ganguli Translation · 1883–1896',   type:'maha'   },
+  kjv:     { label:'Holy Bible \u2014 King James Version',    sub:'Authorized Version \u00B7 1611 \u00B7 Old &amp; New Testaments',       icon:'\u271D\uFE0F', accent:'#d4a017', accentDim:'rgba(212,160,23,0.35)',   countLabel:'verse',   bookTitle:'Holy Bible',    bookEdition:'King James Version (KJV) \u00B7 1611',         type:'bible'  },
+  bible:   { label:'Holy Bible \u2014 Berean Standard Bible', sub:'BSB \u00B7 2022 \u00B7 Old &amp; New Testaments',                      icon:'\u271D\uFE0F', accent:'#c0392b', accentDim:'rgba(192,57,43,0.35)',   countLabel:'verse',   bookTitle:'Holy Bible',    bookEdition:'Berean Standard Bible (BSB) \u00B7 2022',      type:'bible'  },
+  quran_y: { label:'Quran \u2014 Yusuf Ali Translation',      sub:'Abdullah Yusuf Ali \u00B7 1934 \u00B7 The Meaning of the Holy Quran', icon:'\u262A\uFE0F', accent:'#2ecc8a', accentDim:'rgba(46,204,138,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Yusuf Ali Translation \u00B7 1934',            type:'quran'  },
+  quran_p: { label:'Quran \u2014 Pickthall Translation',      sub:'Marmaduke William Pickthall \u00B7 1930 \u00B7 The Glorious Koran',   icon:'\u262A\uFE0F', accent:'#3ab5e6', accentDim:'rgba(58,181,230,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Pickthall Translation \u00B7 1930',            type:'quran'  },
+  gita:    { label:'Bhagavad Gita',                           sub:'Sir Edwin Arnold \u00B7 1885 \u00B7 The Song Celestial',              icon:'\u1FAB7\uFE0F', accent:'#f59e42', accentDim:'rgba(245,158,66,0.35)',  countLabel:'stanza',  bookTitle:'Bhagavad Gita', bookEdition:'Sir Edwin Arnold Translation \u00B7 1885',     type:'gita'   },
+  maha:    { label:'Mahabharata',                             sub:'Kisari Mohan Ganguli \u00B7 1883\u20131896 \u00B7 18 Parvas',         icon:'\u1F3F9\uFE0F', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'section', bookTitle:'Mahabharata',   bookEdition:'K. M. Ganguli Translation \u00B7 1883\u20131896', type:'maha' },
 };
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
 const NT_BOOKS = ['Matthew','Mark','Luke','John','Acts','Romans','1 Corinthians','2 Corinthians','Galatians','Ephesians','Philippians','Colossians','1 Thessalonians','2 Thessalonians','1 Timothy','2 Timothy','Titus','Philemon','Hebrews','James','1 Peter','2 Peter','1 John','2 John','3 John','Jude','Revelation'];
 
-// ── Scripture data ─────────────────────────────────────
 let SCRIPTURES = null, dataLoading = false;
 const dataCBs = [];
 
@@ -10360,16 +10335,14 @@ function loadScriptures(cb){
   dataCBs.push(cb);
   if(dataLoading) return;
   dataLoading = true;
-  showStatus('<span class="srch-loader"></span> Loading scripture data…');
+  showStatus('<span class="srch-loader"></span> Loading scripture data\u2026');
   fetch('scriptures.json')
     .then(r=>{ if(!r.ok) throw new Error('fetch failed'); return r.json(); })
     .then(d=>{ SCRIPTURES=d; dataLoading=false; hideStatus(); dataCBs.splice(0).forEach(f=>f()); })
-    .catch(e=>{ dataLoading=false; showStatus('⚠️ Could not load <strong>scriptures.json</strong> — place it in the same folder as this file.'); console.error(e); });
+    .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load <strong>scriptures.json</strong> \u2014 place it in the same folder as this file.'); console.error(e); });
 }
 
-// ══════════════════════════════════════════════════════
-//  LIBRARY
-// ══════════════════════════════════════════════════════
+// ══ LIBRARY ═══════════════════════════════════════════
 let libBook=null, libBibleBook=null, libBibleTestament='OT', libBibleChapList=[];
 let libChapterIdx=0, libChapterList=[];
 
@@ -10385,17 +10358,12 @@ function _openLibBook(key){
   document.getElementById('lib-reader').classList.add('open');
   document.getElementById('lib-bible-nav').style.display  = cfg.type==='bible' ? 'block' : 'none';
   document.getElementById('lib-other-nav').style.display  = cfg.type!=='bible' ? 'flex'  : 'none';
-
-  if(cfg.type==='bible'){
-    _buildTestamentRow(key, cfg);
-    libSetTestament('OT', key, false);
-  } else {
-    _buildOtherNav(key, cfg);
-  }
+  if(cfg.type==='bible'){ _buildTestamentRow(key,cfg); libSetTestament('OT',key,false); }
+  else _buildOtherNav(key,cfg);
 }
 
-function _buildTestamentRow(key, cfg){
-  const row = document.getElementById('lib-testament-row');
+function _buildTestamentRow(key,cfg){
+  const row=document.getElementById('lib-testament-row');
   row.innerHTML='';
   ['OT','NT'].forEach(t=>{
     const btn=document.createElement('button');
@@ -10403,18 +10371,17 @@ function _buildTestamentRow(key, cfg){
     btn.id='tbtn-'+t;
     btn.style.cssText=`--bk-color:${cfg.accent};--bk-dim:${cfg.accentDim.replace('0.35','0.12')};`;
     btn.textContent = t==='OT' ? 'Old Testament' : 'New Testament';
-    btn.onclick=()=>libSetTestament(t, key, false);
+    btn.onclick=()=>libSetTestament(t,key,false);
     row.appendChild(btn);
   });
 }
 
-window.libSetTestament = function(t, key, skipRender){
+window.libSetTestament = function(t,key,skipRender){
   libBibleTestament=t;
   const cfg=BOOK_CFG[key||libBook];
   const books = t==='OT' ? OT_BOOKS : NT_BOOKS;
-  // Update testament buttons
-  document.querySelectorAll('.lib-testament-btn').forEach(b=>b.classList.toggle('active', b.id==='tbtn-'+t));
-  // Build book buttons
+  document.querySelectorAll('.lib-testament-btn').forEach(b=>b.classList.toggle('active',b.id==='tbtn-'+t));
+  // Build book pills — flex-wrap, no scroll
   const bookRow=document.getElementById('lib-bible-book-row');
   bookRow.innerHTML='';
   books.forEach((bk,i)=>{
@@ -10425,31 +10392,29 @@ window.libSetTestament = function(t, key, skipRender){
     btn.onclick=()=>{
       document.querySelectorAll('.lib-bible-book-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
-      libSelectBibleBook(bk, key||libBook);
+      libSelectBibleBook(bk,key||libBook);
     };
     bookRow.appendChild(btn);
   });
-  if(!skipRender) libSelectBibleBook(books[0], key||libBook);
+  if(!skipRender) libSelectBibleBook(books[0],key||libBook);
 };
 
-function libSelectBibleBook(bookName, key){
+function libSelectBibleBook(bookName,key){
   libBibleBook=bookName;
   const data=SCRIPTURES[key||libBook];
   const chapSet=new Set();
   data.forEach(v=>{ const m=v.r.match(/^(.+?)\s+(\d+):\d+$/); if(m&&m[1]===bookName) chapSet.add(parseInt(m[2])); });
   libBibleChapList=[...chapSet].sort((a,b)=>a-b);
   libChapterIdx=0;
-
   const sel=document.getElementById('lib-bible-ch-sel');
   sel.innerHTML='';
-  libBibleChapList.forEach((ch,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${bookName} — Chapter ${ch}`; sel.appendChild(o); });
+  libBibleChapList.forEach((ch,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${bookName} \u2014 Chapter ${ch}`; sel.appendChild(o); });
   document.getElementById('lib-bible-ch-pos').textContent=`1 / ${libBibleChapList.length}`;
   libBibleGoChapter(0);
 }
 
 window.libBibleGoChapter=function(idxStr){
-  const idx=parseInt(idxStr);
-  libChapterIdx=idx;
+  const idx=parseInt(idxStr); libChapterIdx=idx;
   document.getElementById('lib-bible-ch-sel').value=idx;
   document.getElementById('lib-bible-ch-pos').textContent=`${idx+1} / ${libBibleChapList.length}`;
   const ch=libBibleChapList[idx], data=SCRIPTURES[libBook], cfg=BOOK_CFG[libBook];
@@ -10457,7 +10422,7 @@ window.libBibleGoChapter=function(idxStr){
   const container=document.getElementById('lib-verse-content');
   container.innerHTML='';
   const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-  h.textContent=`${libBibleBook} — Chapter ${ch}`; container.appendChild(h);
+  h.textContent=`${libBibleBook} \u2014 Chapter ${ch}`; container.appendChild(h);
   const list=document.createElement('div'); list.className='lib-verse-list';
   verses.forEach(v=>{ const n=v.r.match(/:(\d+)$/); const row=document.createElement('div'); row.className='lib-verse'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${n?n[1]:''}</div><div class="lib-verse-text">${esc(v.t)}</div>`; list.appendChild(row); });
   container.appendChild(list);
@@ -10468,13 +10433,12 @@ window.libBibleChapterStep=function(d){
   libBibleGoChapter(next); scrollToContent();
 };
 
-function _buildOtherNav(key, cfg){
+function _buildOtherNav(key,cfg){
   const data=SCRIPTURES[key];
-  const labels={quran_y:'Surah',quran_p:'Surah',quran_s:'Surah',gita:'Chapter',maha:'Parva · Section'};
+  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section'};
   document.getElementById('lib-nav-label').textContent=labels[key]||'Chapter';
   const sel=document.getElementById('lib-other-sel');
   sel.innerHTML='';
-
   if(key.startsWith('quran')){
     const chs=[...new Set(data.map(v=>v.c))].sort((a,b)=>a-b);
     libChapterList=chs;
@@ -10485,27 +10449,23 @@ function _buildOtherNav(key, cfg){
     chs.forEach((ch,i)=>{ const s=data.find(v=>v.c===ch); const t=s?s.ct:`Chapter ${ch}`; const o=document.createElement('option'); o.value=i; o.textContent=`Chapter ${ch}: ${t}`; sel.appendChild(o); });
   } else if(key==='maha'){
     libChapterList=data.map((_,i)=>i);
-    data.forEach((sec,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${sec.b}: ${sec.p} — Sec. ${sec.s}`; sel.appendChild(o); });
+    data.forEach((sec,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${sec.b}: ${sec.p} \u2014 Sec. ${sec.s}`; sel.appendChild(o); });
   }
-
   const total=key==='maha'?data.length:libChapterList.length;
   document.getElementById('lib-other-pos').textContent=`1 / ${total}`;
   libGoChapter(0);
 }
 
 window.libGoChapter=function(idxStr){
-  const idx=parseInt(idxStr);
-  libChapterIdx=idx;
+  const idx=parseInt(idxStr); libChapterIdx=idx;
   document.getElementById('lib-other-sel').value=idx;
   const data=SCRIPTURES[libBook], cfg=BOOK_CFG[libBook];
   const total=libBook==='maha'?data.length:libChapterList.length;
   document.getElementById('lib-other-pos').textContent=`${idx+1} / ${total}`;
   const container=document.getElementById('lib-verse-content');
   container.innerHTML='';
-
   if(libBook.startsWith('quran')){
-    const ch=libChapterList[idx];
-    const verses=data.filter(v=>v.c===ch);
+    const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch);
     const sn=verses[0]&&verses[0].sn?verses[0].sn:`Surah ${ch}`;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Surah ${ch}: ${sn}`; container.appendChild(h);
@@ -10513,20 +10473,18 @@ window.libGoChapter=function(idxStr){
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; list.appendChild(row); });
     container.appendChild(list);
   } else if(libBook==='gita'){
-    const ch=libChapterList[idx];
-    const verses=data.filter(v=>v.c===ch);
+    const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch);
     const title=verses[0]?verses[0].ct:`Chapter ${ch}`;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Chapter ${ch}: ${title}`; container.appendChild(h);
     verses.forEach(v=>{ const s=document.createElement('div'); s.className='lib-stanza'; s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div><div class="lib-stanza-text">${esc(v.t)}</div>`; container.appendChild(s); });
   } else if(libBook==='maha'){
-    const sec=data[idx];
-    if(!sec) return;
+    const sec=data[idx]; if(!sec) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=`Book ${sec.b}: ${sec.p} — Section ${sec.s}`; container.appendChild(h);
+    h.textContent=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sec.ps; container.appendChild(sub);
     const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;white-space:pre-wrap;';
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;';
     p.textContent=sec.t; container.appendChild(p);
   }
 };
@@ -10549,10 +10507,8 @@ function scrollToContent(){
   if(r) r.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-// ══════════════════════════════════════════════════════
-//  SEARCH — INTERLEAVED
-// ══════════════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,quran_s:true,gita:true,maha:true};
+// ══ SEARCH ════════════════════════════════════════════
+const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,maha:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.quickSearch=function(term){ showSrchPanel('search'); const inp=document.getElementById('srch-input'); if(inp){inp.value=term; doSearch();} };
@@ -10562,45 +10518,34 @@ window.doSearch=function(){
   if(!query) return;
   const books=Object.keys(selectedBooks).filter(k=>selectedBooks[k]);
   if(!books.length){ showStatus('Please select at least one scripture.'); return; }
-  loadScriptures(()=>runSearch(query, books));
+  loadScriptures(()=>runSearch(query,books));
 };
 
-function runSearch(query, books){
+function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
   if(!terms.length) return;
-
   const resultsWrap=document.getElementById('srch-results');
   const empty=document.getElementById('srch-empty');
   if(empty) empty.style.display='none';
   resultsWrap.innerHTML='';
-
-  // Gather matches per book
-  const bookMatches={};
+  const bookMatches={}, activeBooks=[];
   let totalFound=0;
-  const activeBooks=[];
-
   for(const book of books){
     if(!SCRIPTURES[book]) continue;
     const matches=SCRIPTURES[book].filter(v=>terms.every(t=>v.t.toLowerCase().includes(t)));
     if(!matches.length) continue;
-    bookMatches[book]=matches;
-    totalFound+=matches.length;
-    activeBooks.push(book);
+    bookMatches[book]=matches; totalFound+=matches.length; activeBooks.push(book);
   }
-
   if(!totalFound){
-    resultsWrap.innerHTML=`<div class="srch-no-results">No results for "<em>${esc(query)}</em>".<br><span style="font-size:13px;color:rgba(90,82,112,.5);margin-top:8px;display:block;">Try a different word or select more scriptures.</span></div>`;
+    resultsWrap.innerHTML=`<div class="srch-no-results">No results for \u201C<em>${esc(query)}</em>\u201D.<br><span style="font-size:13px;color:rgba(90,82,112,.5);margin-top:8px;display:block;">Try a different word or select more scriptures.</span></div>`;
     hideStatus(); return;
   }
-
-  // Banner
   const banner=document.createElement('div'); banner.className='srch-count-banner';
-  const modeNote = activeBooks.length>1 ? ' — interleaved across scriptures' : '';
-  banner.innerHTML=`Found <strong>${totalFound.toLocaleString()}</strong> result${totalFound===1?'':'s'} for &ldquo;<em>${esc(query)}</em>&rdquo;${modeNote}`;
+  const modeNote=activeBooks.length>1?' \u2014 interleaved across scriptures':'';
+  banner.innerHTML=`Found <strong>${totalFound.toLocaleString()}</strong> result${totalFound===1?'':'s'} for \u201C<em>${esc(query)}</em>\u201D${modeNote}`;
   resultsWrap.appendChild(banner);
 
   if(activeBooks.length===1){
-    // Single book: show grouped with header
     const book=activeBooks[0], cfg=BOOK_CFG[book], matches=bookMatches[book];
     const secEl=document.createElement('div'); secEl.className='srch-book-section';
     const countWord=cfg.countLabel+(matches.length===1?'':'s');
@@ -10617,44 +10562,33 @@ function runSearch(query, books){
       </div>
       <div class="srch-interleaved-grid" id="sg-single"></div>`;
     resultsWrap.appendChild(secEl);
-    const grid=document.getElementById('sg-single');
-    matches.forEach(v=>grid.appendChild(makeCard(book, v, cfg, terms)));
+    bookMatches[book].forEach(v=>document.getElementById('sg-single').appendChild(makeCard(book,v,BOOK_CFG[book],terms)));
   } else {
-    // Multiple books: INTERLEAVE round-robin
+    // Interleave round-robin
     const grid=document.createElement('div'); grid.className='srch-interleaved-grid';
-    // Round-robin pointers
-    const ptrs={};
-    activeBooks.forEach(b=>ptrs[b]=0);
-    let remaining=totalFound;
-    while(remaining>0){
+    const ptrs={}; activeBooks.forEach(b=>ptrs[b]=0);
+    let exhausted=false;
+    while(!exhausted){
+      exhausted=true;
       for(const book of activeBooks){
-        const matches=bookMatches[book];
         const ptr=ptrs[book];
-        if(ptr<matches.length){
-          grid.appendChild(makeCard(book, matches[ptr], BOOK_CFG[book], terms));
-          ptrs[book]++;
-          remaining--;
-        }
+        if(ptr<bookMatches[book].length){ grid.appendChild(makeCard(book,bookMatches[book][ptr],BOOK_CFG[book],terms)); ptrs[book]++; exhausted=false; }
       }
-      // If all books exhausted a round, remaining will hit 0
-      if(activeBooks.every(b=>ptrs[b]>=bookMatches[b].length)) break;
     }
     resultsWrap.appendChild(grid);
   }
-
   hideStatus();
   resultsWrap.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-function makeCard(book, v, cfg, terms){
-  const card=document.createElement('div');
-  card.className='srch-card';
-  card.style.setProperty('--card-accent', cfg.accent);
-  card.style.setProperty('--card-accent-border', cfg.accentDim);
+function makeCard(book,v,cfg,terms){
+  const card=document.createElement('div'); card.className='srch-card';
+  card.style.setProperty('--card-accent',cfg.accent);
+  card.style.setProperty('--card-accent-border',cfg.accentDim);
 
-  // Source tag (always shown)
+  // Source tag
   const src=document.createElement('div'); src.className='srch-card-source';
-  src.innerHTML=`<span class="srch-card-source-icon">${cfg.icon}</span><span class="srch-card-source-label" style="color:${cfg.accent};">${cfg.label}</span>`;
+  src.innerHTML=`<span style="font-size:13px;line-height:1;margin-right:4px;">${cfg.icon}</span><span class="srch-card-source-label" style="color:${cfg.accent};">${cfg.label}</span>`;
   card.appendChild(src);
 
   // Reference
@@ -10665,29 +10599,65 @@ function makeCard(book, v, cfg, terms){
   const cl=chapLabel(book,v,cfg);
   if(cl){ const ce=document.createElement('div'); ce.className='srch-card-chapter'; ce.textContent=cl; card.appendChild(ce); }
 
-  // Text with highlight
-  const te=document.createElement('div'); te.className='srch-card-text';
-  // For maha, show first 600 chars with ellipsis
-  let txt = v.t;
-  if(cfg.type==='maha' && txt.length>600){
-    const cut=txt.indexOf('. ', 500); txt=(cut>0?txt.slice(0,cut+1):txt.slice(0,600))+'…';
+  // Text — for maha, find the sentence containing the search term
+  let txt=v.t;
+  if(cfg.type==='maha'){
+    txt=extractMahaSnippet(v.t, terms);
+  } else if(txt.length>600){
+    const cut=txt.indexOf('. ',500); txt=(cut>0?txt.slice(0,cut+1):txt.slice(0,600))+'…';
   }
+  const te=document.createElement('div'); te.className='srch-card-text';
   te.innerHTML=highlight(esc(txt),terms); card.appendChild(te);
   return card;
 }
 
+// Extract a ~400-char window around the first term match in Maha text
+function extractMahaSnippet(text, terms){
+  const lower=text.toLowerCase();
+  // Find position of first matching term
+  let matchPos=-1;
+  for(const term of terms){
+    const pos=lower.indexOf(term);
+    if(pos>=0){ matchPos=matchPos<0?pos:Math.min(matchPos,pos); }
+  }
+  if(matchPos<0) return text.slice(0,500)+'…';
+
+  // Window: 150 chars before match, ~350 chars after
+  const BEFORE=150, WINDOW=500;
+  let start=Math.max(0,matchPos-BEFORE);
+  let end=Math.min(text.length,start+WINDOW);
+
+  // Snap to sentence/word boundaries
+  if(start>0){
+    const prevDot=text.lastIndexOf('. ',matchPos-1);
+    const prevSpace=text.lastIndexOf(' ',start);
+    if(prevDot>=0 && prevDot>matchPos-300) start=prevDot+2;
+    else if(prevSpace>start-30) start=prevSpace+1;
+  }
+  if(end<text.length){
+    const nextDot=text.indexOf('. ',end-30);
+    if(nextDot>0 && nextDot<end+150) end=nextDot+1;
+    else { const nextSpace=text.indexOf(' ',end); if(nextSpace>0&&nextSpace<end+30) end=nextSpace; }
+  }
+
+  const snippet=text.slice(start,end).trim();
+  const prefix=start>0?'\u2026':'';
+  const suffix=end<text.length?'\u2026':'';
+  return prefix+snippet+suffix;
+}
+
 function fmtRef(book,v,cfg){
   if(cfg.type==='bible')  return v.r;
-  if(cfg.type==='quran')  return (v.sn?v.sn+' · ':'')+v.r;
-  if(cfg.type==='gita')   return `Chapter ${v.c} · Stanza ${v.v}`;
-  if(cfg.type==='maha')   return `Book ${v.b} · Sec. ${v.s}`;
+  if(cfg.type==='quran')  return (v.sn?v.sn+' \u00B7 ':'')+v.r;
+  if(cfg.type==='gita')   return `Chapter ${v.c} \u00B7 Stanza ${v.v}`;
+  if(cfg.type==='maha')   return `Book ${v.b} \u00B7 Sec.\u00A0${v.s}`;
   return v.r;
 }
 function chapLabel(book,v,cfg){
   if(cfg.type==='bible'){ const m=v.r.match(/^(.+?)\s+\d+:\d+$/); return m?m[1]:null; }
-  if(cfg.type==='quran')  return v.sn?`${v.sn}`:null;
+  if(cfg.type==='quran')  return v.sn||null;
   if(cfg.type==='gita')   return v.ct||null;
-  if(cfg.type==='maha')   return `${v.p} — ${v.ps}`;
+  if(cfg.type==='maha')   return `${v.p} \u2014 ${v.ps}`;
   return null;
 }
 function highlight(text,terms){ let r=text; terms.forEach(t=>{ const e=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); r=r.replace(new RegExp('('+e+')','gi'),'<mark>$1</mark>'); }); return r; }
