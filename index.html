@@ -969,20 +969,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 }
 #clip-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-/* Clipboard toast */
-#clip-toast {
-  position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(16px);
-  background:rgba(18,16,30,0.97); border:1px solid rgba(167,139,250,0.35);
-  color:var(--cream); font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.18em;
-  text-transform:uppercase; padding:10px 22px; border-radius:4px;
-  box-shadow:0 4px 32px rgba(0,0,0,0.6), 0 0 24px rgba(167,139,250,0.12);
-  pointer-events:none; opacity:0;
-  transition:opacity 0.18s ease, transform 0.18s ease;
-  z-index:9999; white-space:nowrap;
-}
-#clip-toast.show {
-  opacity:1; transform:translateX(-50%) translateY(0);
-}
+/* Search card click cursor */
+.srch-card { cursor:pointer; }
 .lib-stanza { padding:14px 0; border-bottom:1px solid rgba(37,29,66,.45); }
 .lib-stanza-ref { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.22em; color:var(--muted); margin-bottom:7px; text-transform:uppercase; }
 .lib-stanza-text { font-family:'EB Garamond',serif; font-size:16px; line-height:1.78; color:var(--cream); -webkit-user-select:text; user-select:text; }
@@ -10448,7 +10436,7 @@ window.libBibleGoChapter=function(idxStr){
   const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
   h.textContent=`${libBibleBook} \u2014 Chapter ${ch}`; container.appendChild(h);
   const list=document.createElement('div'); list.className='lib-verse-list';
-  verses.forEach(v=>{ const n=v.r.match(/:(\d+)$/); const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${n?n[1]:''}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>copyVerseToClipboard(v.r, v.t)); list.appendChild(row); });
+  verses.forEach(v=>{ const n=v.r.match(/:(\d+)$/); const row=document.createElement('div'); row.className='lib-verse'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${n?n[1]:''}</div><div class="lib-verse-text">${esc(v.t)}</div>`; list.appendChild(row); });
   container.appendChild(list);
 };
 
@@ -10494,22 +10482,25 @@ window.libGoChapter=function(idxStr){
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Surah ${ch}: ${sn}`; container.appendChild(h);
     const list=document.createElement('div'); list.className='lib-verse-list';
-    verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>copyVerseToClipboard(v.r, v.t)); list.appendChild(row); });
+    verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>copyVerseToClipboard(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
   } else if(libBook==='gita'){
     const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch);
     const title=verses[0]?verses[0].ct:`Chapter ${ch}`;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Chapter ${ch}: ${title}`; container.appendChild(h);
-    verses.forEach(v=>{ const s=document.createElement('div'); s.className='lib-stanza'; s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div><div class="lib-stanza-text">${esc(v.t)}</div>`; container.appendChild(s); });
+    verses.forEach(v=>{ const ref=`Chapter ${v.c} \u00B7 Stanza ${v.v}`; const s=document.createElement('div'); s.className='lib-stanza'; s.title='Click to copy'; s.style.cursor='pointer'; s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div><div class="lib-stanza-text">${esc(v.t)}</div>`; s.addEventListener('click',()=>copyVerseToClipboard(ref,v.t)); container.appendChild(s); });
   } else if(libBook==='maha'){
     const sec=data[idx]; if(!sec) return;
+    const ref=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`; container.appendChild(h);
+    h.textContent=ref; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sec.ps; container.appendChild(sub);
     const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;';
-    p.textContent=sec.t; container.appendChild(p);
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=sec.t;
+    p.addEventListener('click',()=>copyVerseToClipboard(ref,sec.t));
+    container.appendChild(p);
   }
 };
 
@@ -10609,6 +10600,7 @@ function makeCard(book,v,cfg,terms){
   const card=document.createElement('div'); card.className='srch-card';
   card.style.setProperty('--card-accent',cfg.accent);
   card.style.setProperty('--card-accent-border',cfg.accentDim);
+  card.style.cursor='pointer'; card.title='Click to copy';
 
   // Source tag
   const src=document.createElement('div'); src.className='srch-card-source';
@@ -10616,8 +10608,9 @@ function makeCard(book,v,cfg,terms){
   card.appendChild(src);
 
   // Reference
+  const refText=fmtRef(book,v,cfg);
   const ref=document.createElement('div'); ref.className='srch-card-ref'; ref.style.color=cfg.accent;
-  ref.textContent=fmtRef(book,v,cfg); card.appendChild(ref);
+  ref.textContent=refText; card.appendChild(ref);
 
   // Chapter label
   const cl=chapLabel(book,v,cfg);
@@ -10634,6 +10627,9 @@ function makeCard(book,v,cfg,terms){
   }
   const te=document.createElement('div'); te.className='srch-card-text';
   te.innerHTML=highlight(esc(txt),terms); card.appendChild(te);
+
+  // Click copies full text (not snippet)
+  card.addEventListener('click',()=>copyVerseToClipboard(refText, v.t));
   return card;
 }
 
@@ -10696,38 +10692,32 @@ function hideStatus(){ const el=document.getElementById('srch-status'); if(el) e
 // ═══ INIT ═══
 switchReligion('jud');
 </script>
-</body>
-</html>
+
 <div id="clip-toast">✦ Copied to Clipboard</div>
 <script>
 (function(){
-  let _toastTimer = null;
-
-  window.showClipToast = function(){
-    const t = document.getElementById('clip-toast');
+  let _toastTimer=null;
+  window.showClipToast=function(){
+    const t=document.getElementById('clip-toast');
     if(!t) return;
     t.classList.add('show');
     clearTimeout(_toastTimer);
-    _toastTimer = setTimeout(()=>t.classList.remove('show'), 1800);
+    _toastTimer=setTimeout(()=>t.classList.remove('show'),1800);
   };
-
-  window.copyVerseToClipboard = function(ref, text){
-    const full = ref + ' \u2014 ' + text;
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(full).then(showClipToast).catch(()=>_fallbackCopy(full));
-    } else {
-      _fallbackCopy(full);
-    }
+  window.copyVerseToClipboard=function(ref,text){
+    const full=ref+' \u2014 '+text;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(full).then(showClipToast).catch(()=>_fallback(full));
+    } else { _fallback(full); }
   };
-
-  function _fallbackCopy(text){
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
-    document.body.appendChild(ta);
-    ta.focus(); ta.select();
-    try { document.execCommand('copy'); showClipToast(); } catch(e){}
+  function _fallback(text){
+    const ta=document.createElement('textarea');
+    ta.value=text; ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try{ document.execCommand('copy'); showClipToast(); }catch(e){}
     document.body.removeChild(ta);
   }
 })();
 </script>
+</body>
+</html>
