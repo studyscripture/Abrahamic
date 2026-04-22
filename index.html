@@ -10314,11 +10314,21 @@ function loadScriptures(cb){
         if(!d[key]) return;
         const ps = d[key].filter(v=>v.r&&v.r.startsWith('Psalms'));
         let actualCh = 0;
-        ps.forEach(entry=>{
-          if(entry.v===1) actualCh++;
-          const oldR = entry.r;
+        ps.forEach((entry,i)=>{
+          if(entry.v===1 || (i>0 && ps[i-1].v > entry.v)) actualCh++;
+          if(actualCh===0) actualCh = 1;
           entry.r = 'Psalms '+actualCh+':'+entry.v;
           entry.c = actualCh;
+        });
+      });
+      Object.keys(d).forEach(key=>{
+        if(!Array.isArray(d[key])) return;
+        d[key].forEach(entry=>{
+          const m = entry.r && entry.r.match(/^(.*?)\s+(\d+):(\d+)$/);
+          if(!m) return;
+          entry.book = m[1];
+          entry.c = parseInt(m[2],10);
+          entry.v = parseInt(m[3],10);
         });
       });
       SCRIPTURES=d; dataLoading=false; hideStatus(); dataCBs.splice(0).forEach(f=>f());
