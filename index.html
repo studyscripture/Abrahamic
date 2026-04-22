@@ -1140,14 +1140,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#f59e42;" onclick="openLibBook('gita')">
-        <div class="lib-book-icon">&#x1FAB7;&#xFE0F;</div>
+        <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
         <div class="lib-book-name">Bhagavad Gita</div>
         <div class="lib-book-edition">Sir Edwin Arnold &middot; 1885</div>
         <div class="lib-book-count">18 Chapters &middot; The Song Celestial</div>
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#c084fc;" onclick="openLibBook('maha')">
-        <div class="lib-book-icon">&#x1F3F9;&#xFE0F;</div>
+        <div class="lib-book-icon">&#x1F3F9;</div>
         <div class="lib-book-name">Mahabharata</div>
         <div class="lib-book-edition">K. M. Ganguli &middot; 1883&ndash;1896</div>
         <div class="lib-book-count">18 Parvas &middot; 2,083 Sections</div>
@@ -1182,7 +1182,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         </div>
       </div>
 
-      <!-- Other nav (Quran / Gita) -->
+      <!-- Other nav (Quran / Gita / Maha) -->
       <div class="lib-chapter-nav" id="lib-other-nav" style="display:none;">
         <span class="lib-chapter-label" id="lib-nav-label">Chapter</span>
         <select class="lib-chapter-select" id="lib-other-sel" onchange="libGoChapter(this.value)"></select>
@@ -1191,20 +1191,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
           <button class="lib-chapter-arrow" onclick="libChapterStep(1)">&rarr;</button>
         </div>
         <span class="lib-chapter-pos" id="lib-other-pos"></span>
-      </div>
-
-      <!-- Mahabharata nav: Parva pills + Section dropdown -->
-      <div class="lib-bible-nav" id="lib-maha-nav" style="display:none;">
-        <div class="lib-bible-book-row" id="lib-maha-parva-row"></div>
-        <div class="lib-chapter-nav">
-          <span class="lib-chapter-label">Section</span>
-          <select class="lib-chapter-select" id="lib-maha-sec-sel" onchange="libMahaGoSection(this.value)"></select>
-          <div class="lib-chapter-arrows">
-            <button class="lib-chapter-arrow" onclick="libMahaStep(-1)">&larr;</button>
-            <button class="lib-chapter-arrow" onclick="libMahaStep(1)">&rarr;</button>
-          </div>
-          <span class="lib-chapter-pos" id="lib-maha-pos"></span>
-        </div>
       </div>
 
       <div id="lib-verse-content"></div>
@@ -1249,14 +1235,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-gita"
       style="--btn-color:#f59e42;--btn-bg:rgba(245,158,66,.12);--btn-glow:rgba(245,158,66,.35);"
       onclick="toggleBook('gita',this)">
-      <span class="sb-icon">&#x1FAB7;&#xFE0F;</span>
+      <span class="sb-icon">&#x1F549;&#xFE0F;</span>
       <span>Bhagavad Gita<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Edwin Arnold &middot; 1885</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-maha"
       style="--btn-color:#c084fc;--btn-bg:rgba(192,132,252,.12);--btn-glow:rgba(192,132,252,.35);"
       onclick="toggleBook('maha',this)">
-      <span class="sb-icon">&#x1F3F9;&#xFE0F;</span>
+      <span class="sb-icon">&#x1F3F9;</span>
       <span>Mahabharata<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">K. M. Ganguli &middot; 1896</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
@@ -7872,7 +7858,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .mp-tl-scroll { overflow-x: auto; overflow-y: visible; padding-top: 20px; padding-bottom: 8px; }
 .mp-tl-track {
   display: flex; align-items: flex-start;
-  min-width: 700px; position: relative; padding: 16px 20px 0;
+  min-width: 860px; position: relative; padding: 16px 20px 0;
 }
 /* spine */
 .mp-tl-track::before {
@@ -8408,38 +8394,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#3e3448;text-align:center;margin-top:10px">◆ &nbsp; Click any node for in-depth detail &nbsp; ◆</p>
 </div>
 
-<!-- ═══ SECTION 0: ADVAITA VEDANTA ═══ -->
-<div class="mp-sec">
-  <div class="mp-sec-head">
-    <span class="mp-sec-num">Foundation</span>
-    <h2 class="mp-sec-title tg">Advaita Vedanta — How It Shaped Zoroastrianism</h2>
-    <div class="mp-sec-line g"></div>
-    <span class="mp-sec-badge g">Upanishads c. 800 BCE → Zoroaster c. 1200 BCE</span>
-  </div>
-
-  <div class="mp-ctx g">
-    <div class="mp-ctx-lbl">The Philosophical Source</div>
-    <div class="mp-ctx-txt">The Vedic tradition — culminating in Advaita Vedanta as codified by Adi Shankaracharya (788–820 CE) but rooted in the Brihadaranyaka and Chandogya Upanishads (c. 800 BCE) — represents humanity's most ancient systematic inquiry into consciousness. <strong>Zarathustra himself emerged from a religious tradition that was a direct sibling of the Vedic one</strong>, and modern Indology confirms that the Vedic cosmological and ethical framework directly influenced the conceptual architecture of Zoroastrianism. The proto-Indo-Iranian shared religion was the common ancestor — and the Vedic branch had the more elaborate philosophical and ritual system, suggesting the direction of conceptual flow.</div>
-  </div>
-
-  <div class="mp-adv">
-    <div class="mp-adv-lbl">Core Vedantic Teaching & Its Zoroastrian Echo</div>
-    <div class="mp-adv-title">Brahman · Atman · Maya</div>
-    <div class="mp-adv-sk">ब्रह्म सत्यं जगन्मिथ्या जीवो ब्रह्मैव नापरः</div>
-    <div class="mp-adv-body">
-      Advaita Vedanta's central claim: <strong>Brahman</strong> — pure self-luminous consciousness, Sat-Cit-Ananda (existence-awareness-bliss) — is the sole reality. The individual self (Atman) is not a fragment of Brahman but <em>identical</em> with it. The appearance of a separate world and separate selves is <strong>Maya</strong>, a superimposition analogous to mistaking a rope for a snake in dim light. Liberation (Moksha) is simply the direct recognition of what was always already true.
-      <br><br>
-      Zoroastrianism absorbed and transformed these frameworks: where Advaita posits a single non-dual consciousness underlying everything, Zoroaster <strong>split the metaphysical into two principles</strong> — Spenta Mainyu (Holy Spirit, creative consciousness) vs Angra Mainyu (destructive spirit). Where Vedanta sees Maya as the mechanism of apparent evil, Zoroastrianism personified it as a cosmic villain. Where the Upanishads prescribe self-inquiry (neti neti, "not this, not this") to dissolve false identification, the Gathas prescribe moral choice between Asha (truth) and Druj (falsehood). The Zoroastrian system is Vedantic philosophy translated into the register of ethical theism.
-    </div>
-    <div class="mp-adv-mv">
-      <strong>Tat Tvam Asi</strong> — "That thou art" · Chandogya Upanishad 6.8.7 (Sama Veda)<br>
-      <strong>Aham Brahmasmi</strong> — "I am Brahman" · Brihadaranyaka Upanishad 1.4.10<br>
-      <strong>Prajnanam Brahma</strong> — "Consciousness is Brahman" · Aitareya Upanishad 3.3<br>
-      <strong>Ayam Atma Brahma</strong> — "This Self is Brahman" · Mandukya Upanishad 1.2
-    </div>
-  </div>
-
-  <!-- Advaita→Zoroastrian→Abrahamic comparative table -->
+<!-- ═══ CONCEPT CHART ═══ -->
   <div class="mp-comp-table">
     <div class="mp-comp-header">
       <div class="mp-comp-h hd">Concept</div>
@@ -8514,7 +8469,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="mp-comp-cell ca">Torah / Bible / Quran — directly authored/revealed by a personal God</div>
     </div>
   </div>
-</div>
 
 <!-- ═══ SECTION I: KARMA vs SIN ═══ -->
 <div class="mp-sec">
@@ -10334,8 +10288,8 @@ const BOOK_CFG = {
   bible:   { label:'Holy Bible \u2014 Berean Standard Bible', sub:'BSB \u00B7 2022 \u00B7 Old &amp; New Testaments',                      icon:'\u271D\uFE0F', accent:'#c0392b', accentDim:'rgba(192,57,43,0.35)',   countLabel:'verse',   bookTitle:'Holy Bible',    bookEdition:'Berean Standard Bible (BSB) \u00B7 2022',      type:'bible'  },
   quran_y: { label:'Quran \u2014 Yusuf Ali Translation',      sub:'Abdullah Yusuf Ali \u00B7 1934 \u00B7 The Meaning of the Holy Quran', icon:'\u262A\uFE0F', accent:'#2ecc8a', accentDim:'rgba(46,204,138,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Yusuf Ali Translation \u00B7 1934',            type:'quran'  },
   quran_p: { label:'Quran \u2014 Pickthall Translation',      sub:'Marmaduke William Pickthall \u00B7 1930 \u00B7 The Glorious Koran',   icon:'\u262A\uFE0F', accent:'#3ab5e6', accentDim:'rgba(58,181,230,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Pickthall Translation \u00B7 1930',            type:'quran'  },
-  gita:    { label:'Bhagavad Gita',                           sub:'Sir Edwin Arnold \u00B7 1885 \u00B7 The Song Celestial',              icon:'\u1FAB7\uFE0F', accent:'#f59e42', accentDim:'rgba(245,158,66,0.35)',  countLabel:'stanza',  bookTitle:'Bhagavad Gita', bookEdition:'Sir Edwin Arnold Translation \u00B7 1885',     type:'gita'   },
-  maha:    { label:'Mahabharata',                             sub:'Kisari Mohan Ganguli \u00B7 1883\u20131896 \u00B7 18 Parvas',         icon:'\u1F3F9\uFE0F', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'section', bookTitle:'Mahabharata',   bookEdition:'K. M. Ganguli Translation \u00B7 1883\u20131896', type:'maha' },
+  gita:    { label:'Bhagavad Gita',                           sub:'Sir Edwin Arnold \u00B7 1885 \u00B7 The Song Celestial',              icon:'\uD83D\uDD49\uFE0F', accent:'#f59e42', accentDim:'rgba(245,158,66,0.35)',  countLabel:'stanza',  bookTitle:'Bhagavad Gita', bookEdition:'Sir Edwin Arnold Translation \u00B7 1885',     type:'gita'   },
+  maha:    { label:'Mahabharata',                             sub:'Kisari Mohan Ganguli \u00B7 1883\u20131896 \u00B7 18 Parvas',         icon:'\uD83C\uDFF9', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'section', bookTitle:'Mahabharata',   bookEdition:'K. M. Ganguli Translation \u00B7 1883\u20131896', type:'maha' },
 };
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
@@ -10353,17 +10307,18 @@ function loadScriptures(cb){
   fetch('scriptures.json')
     .then(r=>{ if(!r.ok) throw new Error('fetch failed'); return r.json(); })
     .then(d=>{
-      // Fix Psalms chapter encoding: source data stores chapter as last digit only
-      // (Psalm 10 → "Psalms 0:x", Psalm 11 → "Psalms 1:x" … Psalm 150 → "Psalms 0:x")
-      // Reconstruct true chapter numbers 1–150 by counting verse=1 boundaries in order.
+      // Fix Psalms chapter numbering: the source data stores chapters as single-digit
+      // (mod 10), e.g. Psalms 10 → "Psalms 0:x", Psalms 11 → "Psalms 1:x".
+      // Reconstruct actual chapter numbers (1–150) by counting verse-1 boundaries.
       ['kjv','bible'].forEach(key=>{
         if(!d[key]) return;
-        const ps=d[key].filter(v=>v.r&&v.r.startsWith('Psalms'));
-        let ch=0;
+        const ps = d[key].filter(v=>v.r&&v.r.startsWith('Psalms'));
+        let actualCh = 0;
         ps.forEach(entry=>{
-          if(entry.v===1) ch++;
-          entry.r='Psalms '+ch+':'+entry.v;
-          entry.c=ch;
+          if(entry.v===1) actualCh++;
+          const oldR = entry.r;
+          entry.r = 'Psalms '+actualCh+':'+entry.v;
+          entry.c = actualCh;
         });
       });
       SCRIPTURES=d; dataLoading=false; hideStatus(); dataCBs.splice(0).forEach(f=>f());
@@ -10386,10 +10341,8 @@ function _openLibBook(key){
   document.getElementById('lib-shelf-wrap').style.display    = 'none';
   document.getElementById('lib-reader').classList.add('open');
   document.getElementById('lib-bible-nav').style.display  = cfg.type==='bible' ? 'block' : 'none';
-  document.getElementById('lib-maha-nav').style.display   = cfg.type==='maha'  ? 'block' : 'none';
-  document.getElementById('lib-other-nav').style.display  = (cfg.type!=='bible'&&cfg.type!=='maha') ? 'flex' : 'none';
+  document.getElementById('lib-other-nav').style.display  = cfg.type!=='bible' ? 'flex'  : 'none';
   if(cfg.type==='bible'){ _buildTestamentRow(key,cfg); libSetTestament('OT',key,false); }
-  else if(cfg.type==='maha'){ _buildMahaNav(key,cfg); }
   else _buildOtherNav(key,cfg);
 }
 
@@ -10466,7 +10419,7 @@ window.libBibleChapterStep=function(d){
 
 function _buildOtherNav(key,cfg){
   const data=SCRIPTURES[key];
-  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter'};
+  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section'};
   document.getElementById('lib-nav-label').textContent=labels[key]||'Chapter';
   const sel=document.getElementById('lib-other-sel');
   sel.innerHTML='';
@@ -10478,121 +10431,20 @@ function _buildOtherNav(key,cfg){
     const chs=[...new Set(data.map(v=>v.c))].sort((a,b)=>a-b);
     libChapterList=chs;
     chs.forEach((ch,i)=>{ const s=data.find(v=>v.c===ch); const t=s?s.ct:`Chapter ${ch}`; const o=document.createElement('option'); o.value=i; o.textContent=`Chapter ${ch}: ${t}`; sel.appendChild(o); });
+  } else if(key==='maha'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((sec,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${sec.b}: ${sec.p} \u2014 Sec. ${sec.s}`; sel.appendChild(o); });
   }
-  const total=libChapterList.length;
+  const total=key==='maha'?data.length:libChapterList.length;
   document.getElementById('lib-other-pos').textContent=`1 / ${total}`;
   libGoChapter(0);
 }
-
-// ── Mahabharata 3-tier nav ──────────────────────────────────────
-const MAHA_PARVAS = [
-  [1,'Adi Parva'],
-  [2,'Sabha Parva'],
-  [3,'Vana Parva'],
-  [4,'Virata Parva'],
-  [5,'Udyoga Parva'],
-  [6,'Bhishma Parva'],
-  [7,'Drona Parva'],
-  [8,'Karna Parva'],
-  [9,'Shalya Parva'],
-  [10,'Sauptika Parva'],
-  [11,'Stri Parva'],
-  [12,'Shanti Parva'],
-  [13,'Anushasana Parva'],
-  [14,'Ashvamedhika Parva'],
-  [15,'Ashramavasika Parva'],
-  [16,'Mausala Parva'],
-  [17,'Mahaprasthanika Parva'],
-  [18,'Svargarohana Parva'],
-];
-let mahaCurrentBook=1, mahaSecIdx=0, mahaSecList=[];
-
-function _buildMahaNav(key,cfg){
-  const data=SCRIPTURES[key];
-  const row=document.getElementById('lib-maha-parva-row');
-  row.innerHTML='';
-  MAHA_PARVAS.forEach(([bNum,bName],i)=>{
-    const btn=document.createElement('button');
-    btn.className='lib-bible-book-btn'+(i===0?' active':'');
-    btn.style.cssText=`--bk-color:${cfg.accent};`;
-    btn.textContent=`${bNum}. ${bName}`;
-    btn.dataset.book=bNum;
-    btn.onclick=()=>{
-      document.querySelectorAll('#lib-maha-parva-row .lib-bible-book-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      libMahaSelectBook(bNum);
-    };
-    row.appendChild(btn);
-  });
-  libMahaSelectBook(1);
-}
-
-function libMahaSelectBook(bookNum){
-  mahaCurrentBook=bookNum;
-  const data=SCRIPTURES['maha'];
-  const cfg=BOOK_CFG['maha'];
-  const secs=data.filter(v=>v.b===bookNum);
-  mahaSecList=secs;
-  mahaSecIdx=0;
-  const sel=document.getElementById('lib-maha-sec-sel');
-  sel.innerHTML='';
-  secs.forEach((sec,i)=>{
-    const o=document.createElement('option');
-    o.value=i;
-    o.textContent=`Section ${sec.s}`;
-    sel.appendChild(o);
-  });
-  document.getElementById('lib-maha-pos').textContent=`1 / ${secs.length}`;
-  libMahaGoSection(0);
-}
-
-window.libMahaGoSection=function(idxStr){
-  const idx=parseInt(idxStr);
-  mahaSecIdx=idx;
-  document.getElementById('lib-maha-sec-sel').value=idx;
-  document.getElementById('lib-maha-pos').textContent=`${idx+1} / ${mahaSecList.length}`;
-  const sec=mahaSecList[idx]; if(!sec) return;
-  const cfg=BOOK_CFG['maha'];
-  const container=document.getElementById('lib-verse-content');
-  container.innerHTML='';
-  const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-  h.textContent=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`; container.appendChild(h);
-  const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sec.ps; container.appendChild(sub);
-  const p=document.createElement('div');
-  p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;';
-  p.textContent=sec.t; container.appendChild(p);
-};
-
-window.libMahaStep=function(d){
-  const data=SCRIPTURES['maha'];
-  // Step across ALL sections, switching parva pills automatically
-  const allSecs=data;
-  const curSec=mahaSecList[mahaSecIdx];
-  const globalIdx=allSecs.indexOf(curSec);
-  const nextGlobal=Math.max(0,Math.min(allSecs.length-1,globalIdx+d));
-  const nextSec=allSecs[nextGlobal];
-  if(nextSec.b!==mahaCurrentBook){
-    // Activate the right pill
-    document.querySelectorAll('#lib-maha-parva-row .lib-bible-book-btn').forEach(btn=>{
-      const active=parseInt(btn.dataset.book)===nextSec.b;
-      btn.classList.toggle('active',active);
-    });
-    libMahaSelectBook(nextSec.b);
-    // Find index within new book
-    const newIdx=SCRIPTURES['maha'].filter(v=>v.b===nextSec.b).indexOf(nextSec);
-    libMahaGoSection(Math.max(0,newIdx));
-  } else {
-    const newIdx=mahaSecList.indexOf(nextSec);
-    libMahaGoSection(Math.max(0,newIdx));
-  }
-  scrollToContent();
-};
 
 window.libGoChapter=function(idxStr){
   const idx=parseInt(idxStr); libChapterIdx=idx;
   document.getElementById('lib-other-sel').value=idx;
   const data=SCRIPTURES[libBook], cfg=BOOK_CFG[libBook];
-  const total=libChapterList.length;
+  const total=libBook==='maha'?data.length:libChapterList.length;
   document.getElementById('lib-other-pos').textContent=`${idx+1} / ${total}`;
   const container=document.getElementById('lib-verse-content');
   container.innerHTML='';
@@ -10610,11 +10462,20 @@ window.libGoChapter=function(idxStr){
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Chapter ${ch}: ${title}`; container.appendChild(h);
     verses.forEach(v=>{ const s=document.createElement('div'); s.className='lib-stanza'; s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div><div class="lib-stanza-text">${esc(v.t)}</div>`; container.appendChild(s); });
+  } else if(libBook==='maha'){
+    const sec=data[idx]; if(!sec) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sec.ps; container.appendChild(sub);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;';
+    p.textContent=sec.t; container.appendChild(p);
   }
 };
 
 window.libChapterStep=function(d){
-  const total=libChapterList.length;
+  const data=SCRIPTURES[libBook];
+  const total=libBook==='maha'?data.length:libChapterList.length;
   const next=Math.max(0,Math.min(total-1,libChapterIdx+d));
   libGoChapter(next); scrollToContent();
 };
@@ -10722,9 +10583,11 @@ function makeCard(book,v,cfg,terms){
   const cl=chapLabel(book,v,cfg);
   if(cl){ const ce=document.createElement('div'); ce.className='srch-card-chapter'; ce.textContent=cl; card.appendChild(ce); }
 
-  // Text — for maha, find the sentence containing the search term
+  // Text — for maha/gita, find the sentence containing the search term
   let txt=v.t;
   if(cfg.type==='maha'){
+    txt=extractMahaSnippet(v.t, terms);
+  } else if(cfg.type==='gita'){
     txt=extractMahaSnippet(v.t, terms);
   } else if(txt.length>600){
     const cut=txt.indexOf('. ',500); txt=(cut>0?txt.slice(0,cut+1):txt.slice(0,600))+'…';
