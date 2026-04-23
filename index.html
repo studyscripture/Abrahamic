@@ -964,8 +964,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   letter-spacing:0.2em; text-transform:uppercase;
   padding:11px 26px; border-radius:4px;
   box-shadow:0 6px 40px rgba(0,0,0,0.7), 0 0 28px rgba(167,139,250,0.14);
-  pointer-events:none; opacity:0;
-  transition:opacity 0.2s ease, transform 0.2s ease;
+  pointer-events:none; opacity:0; transition:opacity 0.2s ease, transform 0.2s ease;
   z-index:9999; white-space:nowrap;
 }
 #clip-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
@@ -1169,6 +1168,34 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-count">18 Parvas &middot; 2,083 Sections</div>
       </div>
 
+      <div class="lib-book-card" style="--bk-accent:#ff6b35;" onclick="openLibBook('rig')">
+        <div class="lib-book-icon">&#x1F525;</div>
+        <div class="lib-book-name">Rig Veda</div>
+        <div class="lib-book-edition">R.T.H. Griffith &middot; 1896</div>
+        <div class="lib-book-count">10 Mandalas &middot; 9,667 Verses</div>
+      </div>
+
+      <div class="lib-book-card" style="--bk-accent:#fbbf24;" onclick="openLibBook('yajur')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Yajur Veda</div>
+        <div class="lib-book-edition">A.B. Keith &middot; 1914</div>
+        <div class="lib-book-count">8 Kandas &middot; 142 Sections</div>
+      </div>
+
+      <div class="lib-book-card" style="--bk-accent:#34d399;" onclick="openLibBook('sama')">
+        <div class="lib-book-icon">&#x1F3B5;</div>
+        <div class="lib-book-name">Sama Veda</div>
+        <div class="lib-book-edition">R.T.H. Griffith &middot; 1895</div>
+        <div class="lib-book-count">2 Parts &middot; 6 Books &middot; 561 Verses</div>
+      </div>
+
+      <div class="lib-book-card" style="--bk-accent:#a78bfa;" onclick="openLibBook('atharva')">
+        <div class="lib-book-icon">&#x2728;</div>
+        <div class="lib-book-name">Atharva Veda</div>
+        <div class="lib-book-edition">M. Bloomfield &middot; 1897</div>
+        <div class="lib-book-count">20 Books &middot; 1,766 Verses</div>
+      </div>
+
     </div>
   </div>
 
@@ -1262,6 +1289,38 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <span>Mahabharata<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">K. M. Ganguli &middot; 1896</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
+
+      <button class="srch-book-btn active" id="sbtn-rig"
+        style="--btn-color:#ff6b35;--btn-bg:rgba(255,107,53,.12);--btn-glow:rgba(255,107,53,.35);"
+        onclick="toggleBook('rig',this)">
+        <span class="sb-icon">&#x1F525;</span>
+        <span>Rig Veda<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">R.T.H. Griffith &middot; 1896</small></span>
+        <span class="srch-count-pill" id="spill-rig"></span>
+      </button>
+
+      <button class="srch-book-btn active" id="sbtn-yajur"
+        style="--btn-color:#fbbf24;--btn-bg:rgba(251,191,36,.12);--btn-glow:rgba(251,191,36,.35);"
+        onclick="toggleBook('yajur',this)">
+        <span class="sb-icon">&#x1F4DC;</span>
+        <span>Yajur Veda<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">A.B. Keith &middot; 1914</small></span>
+        <span class="srch-count-pill" id="spill-yajur"></span>
+      </button>
+
+      <button class="srch-book-btn active" id="sbtn-sama"
+        style="--btn-color:#34d399;--btn-bg:rgba(52,211,153,.12);--btn-glow:rgba(52,211,153,.35);"
+        onclick="toggleBook('sama',this)">
+        <span class="sb-icon">&#x1F3B5;</span>
+        <span>Sama Veda<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">R.T.H. Griffith &middot; 1895</small></span>
+        <span class="srch-count-pill" id="spill-sama"></span>
+      </button>
+
+      <button class="srch-book-btn active" id="sbtn-atharva"
+        style="--btn-color:#a78bfa;--btn-bg:rgba(167,139,250,.12);--btn-glow:rgba(167,139,250,.35);"
+        onclick="toggleBook('atharva',this)">
+        <span class="sb-icon">&#x2728;</span>
+        <span>Atharva Veda<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">M. Bloomfield &middot; 1897</small></span>
+        <span class="srch-count-pill" id="spill-atharva"></span>
+      </button>
   </div>
 
   <!-- Search bar -->
@@ -10306,6 +10365,10 @@ const BOOK_CFG = {
   quran_p: { label:'Quran \u2014 Pickthall Translation',      sub:'Marmaduke William Pickthall \u00B7 1930 \u00B7 The Glorious Koran',   icon:'\u262A\uFE0F', accent:'#3ab5e6', accentDim:'rgba(58,181,230,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Pickthall Translation \u00B7 1930',            type:'quran'  },
   gita:    { label:'Bhagavad Gita',                           sub:'Sir Edwin Arnold \u00B7 1885 \u00B7 The Song Celestial',              icon:'\uD83D\uDD49\uFE0F', accent:'#f59e42', accentDim:'rgba(245,158,66,0.35)',  countLabel:'stanza',  bookTitle:'Bhagavad Gita', bookEdition:'Sir Edwin Arnold Translation \u00B7 1885',     type:'gita'   },
   maha:    { label:'Mahabharata',                             sub:'Kisari Mohan Ganguli \u00B7 1883\u20131896 \u00B7 18 Parvas',         icon:'\uD83C\uDFF9', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'section', bookTitle:'Mahabharata',   bookEdition:'K. M. Ganguli Translation \u00B7 1883\u20131896', type:'maha' },
+  rig:     { label:'Rig Veda',        sub:'R.T.H. Griffith \u00B7 1896 \u00B7 10 Mandalas', icon:'\uD83D\uDD25', accent:'#ff6b35', accentDim:'rgba(255,107,53,0.35)',  countLabel:'verse',   bookTitle:'Rig Veda',      bookEdition:'R.T.H. Griffith Translation \u00B7 1896',         type:'rig'    },
+  yajur:   { label:'Yajur Veda',      sub:'A.B. Keith \u00B7 1914 \u00B7 8 Kandas',         icon:'\uD83D\uDCDC', accent:'#fbbf24', accentDim:'rgba(251,191,36,0.35)',  countLabel:'section', bookTitle:'Yajur Veda',    bookEdition:'A.B. Keith Translation \u00B7 1914',              type:'yajur'  },
+  sama:    { label:'Sama Veda',       sub:'R.T.H. Griffith \u00B7 1895 \u00B7 2 Parts',     icon:'\uD83C\uDFB5', accent:'#34d399', accentDim:'rgba(52,211,153,0.35)',  countLabel:'verse',   bookTitle:'Sama Veda',     bookEdition:'R.T.H. Griffith Translation \u00B7 1895',         type:'sama'   },
+  atharva: { label:'Atharva Veda',    sub:'M. Bloomfield \u00B7 1897 \u00B7 20 Books',       icon:'\u2728',        accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse',   bookTitle:'Atharva Veda',  bookEdition:'M. Bloomfield Translation \u00B7 1897',           type:'atharva'},
 };
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
@@ -10445,7 +10508,9 @@ window.libBibleChapterStep=function(d){
 
 function _buildOtherNav(key,cfg){
   const data=SCRIPTURES[key];
-  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section'};
+  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section',
+                rig:'Mandala \u00B7 Hymn',yajur:'Kanda \u00B7 Section',
+                sama:'Part \u00B7 Book \u00B7 Decade',atharva:'Book \u00B7 Hymn'};
   document.getElementById('lib-nav-label').textContent=labels[key]||'Chapter';
   const sel=document.getElementById('lib-other-sel');
   sel.innerHTML='';
@@ -10460,8 +10525,35 @@ function _buildOtherNav(key,cfg){
   } else if(key==='maha'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((sec,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${sec.b}: ${sec.p} \u2014 Sec. ${sec.s}`; sel.appendChild(o); });
+  } else if(key==='rig'){
+    // Group by Mandala, then Hymn
+    const hymns=[...new Map(data.map(v=>[`${v.b}_${v.h}`,v])).values()]
+      .sort((a,b)=>a.b-b.b||a.h-b.h);
+    libChapterList=hymns.map(v=>({b:v.b,h:v.h,ht:v.ht}));
+    hymns.forEach((v,i)=>{ const o=document.createElement('option'); o.value=i;
+      o.textContent=`Mandala ${v.b}, Hymn ${v.h} \u2014 ${v.ht}`; sel.appendChild(o); });
+  } else if(key==='yajur'){
+    const secs=[...new Map(data.map(v=>[`${v.k}_${v.s}`,v])).values()]
+      .sort((a,b)=>a.k-b.k||a.s-b.s);
+    libChapterList=secs.map(v=>({k:v.k,s:v.s}));
+    secs.forEach((v,i)=>{ const o=document.createElement('option'); o.value=i;
+      o.textContent=`Kanda ${v.k}, Section ${v.s}`; sel.appendChild(o); });
+  } else if(key==='sama'){
+    // Each record IS a single verse — group by Decade for navigation
+    const decades=[...new Map(data.map(v=>[`${v.pt}_${v.b}_${v.ch}_${v.d}`,v])).values()]
+      .sort((a,b)=>a.pt-b.pt||a.b-b.b||a.ch-b.ch||a.d-b.d);
+    libChapterList=decades.map(v=>({pt:v.pt,b:v.b,ch:v.ch,d:v.d,dt:v.dt}));
+    decades.forEach((v,i)=>{ const o=document.createElement('option'); o.value=i;
+      const ptName=v.pt===1?'Purvarcika':'Uttararcika';
+      o.textContent=`${ptName} \u00B7 Book ${v.b}, Ch ${v.ch}, Decade ${v.d} \u2014 ${v.dt}`; sel.appendChild(o); });
+  } else if(key==='atharva'){
+    const hymns=[...new Map(data.map(v=>[`${v.b}_${v.h}`,v])).values()]
+      .sort((a,b)=>a.b-b.b||a.h-b.h);
+    libChapterList=hymns.map(v=>({b:v.b,h:v.h,ht:v.ht}));
+    hymns.forEach((v,i)=>{ const o=document.createElement('option'); o.value=i;
+      o.textContent=`Book ${v.b}, Hymn ${v.h} \u2014 ${v.ht}`; sel.appendChild(o); });
   }
-  const total=key==='maha'?data.length:libChapterList.length;
+  const total=(['maha','rig','yajur','sama','atharva'].includes(key))?libChapterList.length:libChapterList.length;
   document.getElementById('lib-other-pos').textContent=`1 / ${total}`;
   libGoChapter(0);
 }
@@ -10487,24 +10579,64 @@ window.libGoChapter=function(idxStr){
     const title=verses[0]?verses[0].ct:`Chapter ${ch}`;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Chapter ${ch}: ${title}`; container.appendChild(h);
-    verses.forEach(v=>{ const ref=`Chapter ${v.c} · Stanza ${v.v}`; const s=document.createElement('div'); s.className='lib-stanza'; s.title='Click to copy'; s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div><div class="lib-stanza-text">${esc(v.t)}</div>`; s.addEventListener('click',()=>_copyVerse(ref,v.t)); container.appendChild(s); });
+    verses.forEach(v=>{ const ref=`Chapter ${v.c} \u00B7 Stanza ${v.v}`; const s=document.createElement('div'); s.className='lib-stanza'; s.title='Click to copy'; s.style.cursor='pointer'; s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div><div class="lib-stanza-text">${esc(v.t)}</div>`; s.addEventListener('click',()=>_copyVerse(ref,v.t)); container.appendChild(s); });
   } else if(libBook==='maha'){
     const sec=data[idx]; if(!sec) return;
+    const _mahaRef=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`; container.appendChild(h);
+    h.textContent=_mahaRef; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sec.ps; container.appendChild(sub);
-    const _mahaRef=`Book ${sec.b}: ${sec.p} — Section ${sec.s}`;
     const p=document.createElement('div');
     p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=sec.t;
-    p.addEventListener('click',()=>_copyVerse(_mahaRef,sec.t));
-    container.appendChild(p);
+    p.title='Click to copy'; p.textContent=sec.t; p.addEventListener('click',()=>_copyVerse(_mahaRef,sec.t)); container.appendChild(p);
+  } else if(libBook==='rig'){
+    const hymn=libChapterList[idx];
+    const verses=data.filter(v=>v.b===hymn.b&&v.h===hymn.h).sort((a,b)=>a.v-b.v);
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Mandala ${hymn.b}, Hymn ${hymn.h} \u2014 ${hymn.ht}`; container.appendChild(h);
+    const list=document.createElement('div'); list.className='lib-verse-list';
+    verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy';
+      row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.v}</div><div class="lib-verse-text">${esc(v.t)}</div>`;
+      row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
+    container.appendChild(list);
+  } else if(libBook==='yajur'){
+    const sec=libChapterList[idx];
+    const entry=data.find(v=>v.k===sec.k&&v.s===sec.s);
+    if(!entry) return;
+    const ref=`YV Kanda ${sec.k}, Section ${sec.s}`;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Kanda ${sec.k}, Section ${sec.s}`; container.appendChild(h);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=entry.t; p.addEventListener('click',()=>_copyVerse(ref,entry.t)); container.appendChild(p);
+  } else if(libBook==='sama'){
+    const dec=libChapterList[idx];
+    const verses=data.filter(v=>v.pt===dec.pt&&v.b===dec.b&&v.ch===dec.ch&&v.d===dec.d).sort((a,b)=>a.v-b.v);
+    const ptName=dec.pt===1?'Purvarcika':'Uttararcika';
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`${ptName} \u00B7 Book ${dec.b}, Ch ${dec.ch}, Decade ${dec.d} \u2014 ${dec.dt}`; container.appendChild(h);
+    const list=document.createElement('div'); list.className='lib-verse-list';
+    verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy';
+      row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.v}</div><div class="lib-verse-text">${esc(v.t)}</div>`;
+      row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
+    container.appendChild(list);
+  } else if(libBook==='atharva'){
+    const hymn=libChapterList[idx];
+    const verses=data.filter(v=>v.b===hymn.b&&v.h===hymn.h).sort((a,b)=>a.v-b.v);
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Book ${hymn.b}, Hymn ${hymn.h} \u2014 ${hymn.ht}`; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent='Atharva Veda \u00B7 M. Bloomfield'; container.appendChild(sub);
+    const list=document.createElement('div'); list.className='lib-verse-list';
+    verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy';
+      row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.v}</div><div class="lib-verse-text">${esc(v.t)}</div>`;
+      row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
+    container.appendChild(list);
   }
 };
 
 window.libChapterStep=function(d){
   const data=SCRIPTURES[libBook];
-  const total=libBook==='maha'?data.length:libChapterList.length;
+  const total=libChapterList.length;
   const next=Math.max(0,Math.min(total-1,libChapterIdx+d));
   libGoChapter(next); scrollToContent();
 };
@@ -10521,7 +10653,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,maha:true};
+const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,maha:true,rig:true,yajur:true,sama:true,atharva:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.quickSearch=function(term){ showSrchPanel('search'); const inp=document.getElementById('srch-input'); if(inp){inp.value=term; doSearch();} };
@@ -10614,9 +10746,9 @@ function makeCard(book,v,cfg,terms){
 
   // Text — for maha/gita, find the sentence containing the search term
   let txt=v.t;
-  if(cfg.type==='maha'){
+  if(cfg.type==='maha'||cfg.type==='yajur'){
     txt=extractMahaSnippet(v.t, terms);
-  } else if(cfg.type==='gita'){
+  } else if(cfg.type==='gita'||cfg.type==='rig'||cfg.type==='sama'||cfg.type==='atharva'){
     txt=extractMahaSnippet(v.t, terms);
   } else if(txt.length>600){
     const cut=txt.indexOf('. ',500); txt=(cut>0?txt.slice(0,cut+1):txt.slice(0,600))+'…';
@@ -10664,17 +10796,25 @@ function extractMahaSnippet(text, terms){
 }
 
 function fmtRef(book,v,cfg){
-  if(cfg.type==='bible')  return v.r;
-  if(cfg.type==='quran')  return (v.sn?v.sn+' \u00B7 ':'')+v.r;
-  if(cfg.type==='gita')   return `Chapter ${v.c} \u00B7 Stanza ${v.v}`;
-  if(cfg.type==='maha')   return `Book ${v.b} \u00B7 Sec.\u00A0${v.s}`;
+  if(cfg.type==='bible')   return v.r;
+  if(cfg.type==='quran')   return (v.sn?v.sn+' \u00B7 ':'')+v.r;
+  if(cfg.type==='gita')    return `Chapter ${v.c} \u00B7 Stanza ${v.v}`;
+  if(cfg.type==='maha')    return `Book ${v.b} \u00B7 Sec.\u00A0${v.s}`;
+  if(cfg.type==='rig')     return v.r;
+  if(cfg.type==='yajur')   return v.r;
+  if(cfg.type==='sama')    return v.r;
+  if(cfg.type==='atharva') return v.r;
   return v.r;
 }
 function chapLabel(book,v,cfg){
-  if(cfg.type==='bible'){ const m=v.r.match(/^(.+?)\s+\d+:\d+$/); return m?m[1]:null; }
-  if(cfg.type==='quran')  return v.sn||null;
-  if(cfg.type==='gita')   return v.ct||null;
-  if(cfg.type==='maha')   return `${v.p} \u2014 ${v.ps}`;
+  if(cfg.type==='bible')   { const m=v.r.match(/^(.+?)\s+\d+:\d+$/); return m?m[1]:null; }
+  if(cfg.type==='quran')   return v.sn||null;
+  if(cfg.type==='gita')    return v.ct||null;
+  if(cfg.type==='maha')    return `${v.p} \u2014 ${v.ps}`;
+  if(cfg.type==='rig')     return `Mandala ${v.b}, Hymn ${v.h} \u2014 ${v.ht||''}`;
+  if(cfg.type==='yajur')   return `Kanda ${v.k}, Section ${v.s}`;
+  if(cfg.type==='sama')    return `Part ${v.pt}, Book ${v.b}, Ch ${v.ch}, Decade ${v.d} \u2014 ${v.dt||''}`;
+  if(cfg.type==='atharva') return `Book ${v.b}, Hymn ${v.h} \u2014 ${v.ht||''}`;
   return null;
 }
 function highlight(text,terms){ let r=text; terms.forEach(t=>{ const e=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); r=r.replace(new RegExp('('+e+')','gi'),'<mark>$1</mark>'); }); return r; }
@@ -10693,7 +10833,7 @@ switchReligion('jud');
 (function(){
   var _tt=null;
   window._copyVerse=function(ref,text){
-    var full=ref+' — '+text;
+    var full=ref+' \u2014 '+text;
     if(navigator.clipboard&&navigator.clipboard.writeText){
       navigator.clipboard.writeText(full).then(_showToast).catch(function(){_fallback(full);});
     } else { _fallback(full); }
