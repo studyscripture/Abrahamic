@@ -10415,7 +10415,7 @@ function loadScriptures(cb){
       });
       SCRIPTURES=d; dataLoading=false; hideStatus(); dataCBs.splice(0).forEach(f=>f());
     })
-    .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load <strong>scriptures.json</strong> \u2014 place it in the same folder as this file.');); console.error(e); });
+    .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load scriptures \u2014 place scriptures.json and vedas.json in the same folder as this file.'); console.error(e); });
 }
 
 // ══ LIBRARY ═══════════════════════════════════════════
