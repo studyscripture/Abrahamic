@@ -10383,9 +10383,12 @@ function loadScriptures(cb){
   if(dataLoading) return;
   dataLoading = true;
   showStatus('<span class="srch-loader"></span> Loading scripture data\u2026');
-  fetch('scriptures.json')
-    .then(r=>{ if(!r.ok) throw new Error('fetch failed'); return r.json(); })
-    .then(d=>{
+  Promise.all([
+    fetch('scriptures.json').then(r=>{ if(!r.ok) throw new Error('fetch failed'); return r.json(); }),
+    fetch('vedas.json').then(r=>{ if(!r.ok) throw new Error('fetch failed'); return r.json(); })
+  ])
+    .then(([d, vedas])=>{
+      Object.assign(d, vedas);
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 → "Psalms 0:x", Psalms 11 → "Psalms 1:x".
       // Reconstruct actual chapter numbers (1–150) by counting verse-1 boundaries.
@@ -10412,7 +10415,7 @@ function loadScriptures(cb){
       });
       SCRIPTURES=d; dataLoading=false; hideStatus(); dataCBs.splice(0).forEach(f=>f());
     })
-    .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load <strong>scriptures.json</strong> \u2014 place it in the same folder as this file.'); console.error(e); });
+    .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load <strong>scriptures.json</strong> \u2014 place it in the same folder as this file.');); console.error(e); });
 }
 
 // ══ LIBRARY ═══════════════════════════════════════════
