@@ -1162,6 +1162,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-count">18 Chapters &middot; The Song Celestial</div>
       </div>
 
+      <div class="lib-book-card" style="--bk-accent:#ffd54f;" onclick="openLibBook('sbg')">
+        <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
+        <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
+        <div class="lib-book-edition">Swami Swarupananda &middot; 1909 &middot; Advaita Ashrama</div>
+        <div class="lib-book-count">671 Verses &middot; 18 Chapters &middot; Prose &amp; Commentary</div>
+      </div>
+
       <div class="lib-book-card" style="--bk-accent:#c084fc;" onclick="openLibBook('maha')">
         <div class="lib-book-icon">&#x1F3F9;</div>
         <div class="lib-book-name">Mahabharata</div>
@@ -1198,7 +1205,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#ff7043;" onclick="openLibBook('rig')">
-        <div class="lib-book-icon">&#x1F525;</div>
+        <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
         <div class="lib-book-name">&#x1E5A;gveda</div>
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1896 &middot; 10 Ma&#x1E47;&#x1E0D;alas</div>
         <div class="lib-book-count">9,667 Verses &middot; &#x15A;ruti</div>
@@ -1212,14 +1219,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#66bb6a;" onclick="openLibBook('sama')">
-        <div class="lib-book-icon">&#x1F525;</div>
+        <div class="lib-book-icon">&#x1F3B5;</div>
         <div class="lib-book-name">S&#x0101;maveda</div>
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1895</div>
         <div class="lib-book-count">561 Verses &middot; &#x15A;ruti</div>
       </div>
 
       <div class="lib-book-card" style="--bk-accent:#ab47bc;" onclick="openLibBook('atharva')">
-        <div class="lib-book-icon">&#x1F525;</div>
+        <div class="lib-book-icon">&#x1F33F;</div>
         <div class="lib-book-name">Atharvaveda</div>
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1895</div>
         <div class="lib-book-count">1,766 Verses &middot; &#x15A;ruti</div>
@@ -1346,6 +1353,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <span>Bhagavad Gita<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Edwin Arnold &middot; 1885</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-sbg"
+      style="--btn-color:#ffd54f;--btn-bg:rgba(255,213,79,.12);--btn-glow:rgba(255,213,79,.35);"
+      onclick="toggleBook('sbg',this)">
+      <span class="sb-icon">&#x1F549;&#xFE0F;</span>
+      <span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Swarupananda &middot; 1909</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-maha"
       style="--btn-color:#c084fc;--btn-bg:rgba(192,132,252,.12);--btn-glow:rgba(192,132,252,.35);"
       onclick="toggleBook('maha',this)">
@@ -1384,7 +1398,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-rig"
       style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);"
       onclick="toggleBook('rig',this)">
-      <span class="sb-icon">&#x1F525;</span>
+      <span class="sb-icon">&#x1F549;&#xFE0F;</span>
       <span>&#x1E5A;gveda<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">R. T. H. Griffith &middot; 1896</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
@@ -1398,14 +1412,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-sama"
       style="--btn-color:#66bb6a;--btn-bg:rgba(102,187,106,.12);--btn-glow:rgba(102,187,106,.35);"
       onclick="toggleBook('sama',this)">
-      <span class="sb-icon">&#x1F525;</span>
+      <span class="sb-icon">&#x1F3B5;</span>
       <span>S&#x0101;maveda<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">R. T. H. Griffith &middot; 1895</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-atharva"
       style="--btn-color:#ab47bc;--btn-bg:rgba(171,71,188,.12);--btn-glow:rgba(171,71,188,.35);"
       onclick="toggleBook('atharva',this)">
-      <span class="sb-icon">&#x1F525;</span>
+      <span class="sb-icon">&#x1F33F;</span>
       <span>Atharvaveda<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">R. T. H. Griffith &middot; 1895</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
@@ -10487,15 +10501,16 @@ const BOOK_CFG = {
   quran_y: { label:'Quran \u2014 Yusuf Ali Translation',      sub:'Abdullah Yusuf Ali \u00B7 1934 \u00B7 The Meaning of the Holy Quran', icon:'\u262A\uFE0F', accent:'#2ecc8a', accentDim:'rgba(46,204,138,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Yusuf Ali Translation \u00B7 1934',            type:'quran'  },
   quran_p: { label:'Quran \u2014 Pickthall Translation',      sub:'Marmaduke William Pickthall \u00B7 1930 \u00B7 The Glorious Koran',   icon:'\u262A\uFE0F', accent:'#3ab5e6', accentDim:'rgba(58,181,230,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Pickthall Translation \u00B7 1930',            type:'quran'  },
   gita:    { label:'Bhagavad Gita',                           sub:'Sir Edwin Arnold \u00B7 1885 \u00B7 The Song Celestial',              icon:'\uD83D\uDD49\uFE0F', accent:'#f59e42', accentDim:'rgba(245,158,66,0.35)',  countLabel:'stanza',  bookTitle:'Bhagavad Gita', bookEdition:'Sir Edwin Arnold Translation \u00B7 1885',     type:'gita'   },
+  sbg:     { label:'Bhagavad-Gītā',         sub:'Swami Swarupananda · 1909 · Advaita Ashrama',  icon:'🕉️', accent:'#ffd54f', accentDim:'rgba(255,213,79,0.35)', countLabel:'verse', bookTitle:'Bhagavad-Gītā', bookEdition:'Swami Swarupananda Translation · 1909', type:'gita' },
   maha:    { label:'Mahabharata',                             sub:'Kisari Mohan Ganguli \u00B7 1883\u20131896 \u00B7 18 Parvas',         icon:'\uD83C\uDFF9', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'section', bookTitle:'Mahabharata',   bookEdition:'K. M. Ganguli Translation \u00B7 1883\u20131896', type:'maha' },
   dn:      { label:'D\u012Bgha Nik\u0101ya',                  sub:'Bhikkhu Sujato \u00B7 2018 \u00B7 Long Discourses \u00B7 P\u0101li Canon',      icon:'\u2638\uFE0F', accent:'#f0c040', accentDim:'rgba(240,192,64,0.35)',  countLabel:'sutta',   bookTitle:'D\u012Bgha Nik\u0101ya',   bookEdition:'Bhikkhu Sujato Translation \u00B7 2018 \u00B7 CC0', type:'nikaya' },
   mn:      { label:'Majjhima Nik\u0101ya',                    sub:'Bhikkhu Sujato \u00B7 2018 \u00B7 Middle Discourses \u00B7 P\u0101li Canon',    icon:'\u2638\uFE0F', accent:'#e07b39', accentDim:'rgba(224,123,57,0.35)',  countLabel:'sutta',   bookTitle:'Majjhima Nik\u0101ya', bookEdition:'Bhikkhu Sujato Translation \u00B7 2018 \u00B7 CC0', type:'nikaya' },
   sn:      { label:'Sa\u1E43yutta Nik\u0101ya',               sub:'Bhikkhu Sujato \u00B7 2018 \u00B7 Linked Discourses \u00B7 P\u0101li Canon',    icon:'\u2638\uFE0F', accent:'#38bdf8', accentDim:'rgba(56,189,248,0.35)',  countLabel:'sutta',   bookTitle:'Sa\u1E43yutta Nik\u0101ya', bookEdition:'Bhikkhu Sujato Translation \u00B7 2018 \u00B7 CC0', type:'nikaya' },
   an:      { label:'A\u1E45guttara Nik\u0101ya',              sub:'Bhikkhu Sujato \u00B7 2018 \u00B7 Numbered Discourses \u00B7 P\u0101li Canon',  icon:'\u2638\uFE0F', accent:'#34d399', accentDim:'rgba(52,211,153,0.35)',  countLabel:'sutta',   bookTitle:'A\u1E45guttara Nik\u0101ya', bookEdition:'Bhikkhu Sujato Translation \u00B7 2018 \u00B7 CC0', type:'nikaya' },
-  rig:     { label:'\u1E5A\u0301gveda',                       sub:'R. T. H. Griffith \u00B7 1896 \u00B7 10 Ma\u1E47\u1E0Dalas',                   icon:'\uD83D\uDD25', accent:'#ff7043', accentDim:'rgba(255,112,67,0.35)',  countLabel:'verse',   bookTitle:'\u1E5A\u0301gveda',         bookEdition:'R. T. H. Griffith Translation \u00B7 1896',       type:'veda'   },
+  rig:     { label:'\u1E5A\u0301gveda',                       sub:'R. T. H. Griffith \u00B7 1896 \u00B7 10 Ma\u1E47\u1E0Dalas',                   icon:'\uD83D\uDD49\uFE0F', accent:'#ff7043', accentDim:'rgba(255,112,67,0.35)',  countLabel:'verse',   bookTitle:'\u1E5A\u0301gveda',         bookEdition:'R. T. H. Griffith Translation \u00B7 1896',       type:'veda'   },
   yajur:   { label:'Yajurveda',                               sub:'A. B. Keith \u00B7 1914 \u00B7 Black Yajurveda',                               icon:'\uD83D\uDD25', accent:'#ffb300', accentDim:'rgba(255,179,0,0.35)',   countLabel:'verse',   bookTitle:'Yajurveda',         bookEdition:'A. B. Keith Translation \u00B7 1914',             type:'veda'   },
-  sama:    { label:'S\u0101maveda',                           sub:'R. T. H. Griffith \u00B7 1895',                                               icon:'\uD83D\uDD25', accent:'#66bb6a', accentDim:'rgba(102,187,106,0.35)', countLabel:'verse',   bookTitle:'S\u0101maveda',           bookEdition:'R. T. H. Griffith Translation \u00B7 1895',       type:'veda'   },
-  atharva: { label:'Atharvaveda',                             sub:'R. T. H. Griffith \u00B7 1895',                                               icon:'\uD83D\uDD25', accent:'#ab47bc', accentDim:'rgba(171,71,188,0.35)',  countLabel:'verse',   bookTitle:'Atharvaveda',       bookEdition:'R. T. H. Griffith Translation \u00B7 1895',       type:'veda'   },
+  sama:    { label:'S\u0101maveda',                           sub:'R. T. H. Griffith \u00B7 1895',                                               icon:'\uD83C\uDFB5', accent:'#66bb6a', accentDim:'rgba(102,187,106,0.35)', countLabel:'verse',   bookTitle:'S\u0101maveda',           bookEdition:'R. T. H. Griffith Translation \u00B7 1895',       type:'veda'   },
+  atharva: { label:'Atharvaveda',                             sub:'R. T. H. Griffith \u00B7 1895',                                               icon:'\uD83C\uDF3F', accent:'#ab47bc', accentDim:'rgba(171,71,188,0.35)',  countLabel:'verse',   bookTitle:'Atharvaveda',       bookEdition:'R. T. H. Griffith Translation \u00B7 1895',       type:'veda'   },
   avesta:     { label:'Zend Avesta',                  sub:'James Darmesteter \u00B7 1880 \u00B7 Zoroastrian Scripture',                  icon:'\uD83D\uDCAB', accent:'#26c6da', accentDim:'rgba(38,198,218,0.35)',  countLabel:'verse',   bookTitle:'Zend Avesta',         bookEdition:'James Darmesteter Translation \u00B7 1880',         type:'avesta'     },
   upanishads: { label:'Upani\u1E63ads',              sub:'F. Max M\u00FCller \u00B7 1879\u20131884 \u00B7 12 Upani\u1E63ads',          icon:'\uD83E\uDDD8', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'section', bookTitle:'Upani\u1E63ads',     bookEdition:'F. Max M\u00FCller Translation \u00B7 1879\u20131884', type:'nikaya' },
   ramayana:   { label:'R\u0101m\u0101ya\u1E47a',  sub:'R. T. H. Griffith \u00B7 1870\u20131874 \u00B7 V\u0101lm\u012Bki',          icon:'\uD83C\uDFF9', accent:'#ef9a9a', accentDim:'rgba(239,154,154,0.35)', countLabel:'canto',   bookTitle:'R\u0101m\u0101ya\u1E47a', bookEdition:'R. T. H. Griffith Translation \u00B7 1870\u20131874', type:'nikaya' },
@@ -10833,7 +10848,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true};
+const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.quickSearch=function(term){ showSrchPanel('search'); const inp=document.getElementById('srch-input'); if(inp){inp.value=term; doSearch();} };
