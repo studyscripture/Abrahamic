@@ -1232,6 +1232,34 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-count">1,003 Verses &middot; Vendidad &middot; Vispered &middot; Yasna</div>
       </div>
 
+      <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('upanishads')">
+        <div class="lib-book-icon">&#x1F9D8;</div>
+        <div class="lib-book-name">Upani&#x1E63;ads</div>
+        <div class="lib-book-edition">F. Max M&#xFC;ller &middot; 1879&ndash;1884 &middot; 12 Upani&#x1E63;ads</div>
+        <div class="lib-book-count">53 Sections &middot; Sacred Books of the East</div>
+      </div>
+
+      <div class="lib-book-card" style="--bk-accent:#ef9a9a;" onclick="openLibBook('ramayana')">
+        <div class="lib-book-icon">&#x1F3F9;</div>
+        <div class="lib-book-name">R&#x0101;m&#x0101;ya&#x1E47;a</div>
+        <div class="lib-book-edition">R. T. H. Griffith &middot; 1870&ndash;1874 &middot; V&#x0101;lm&#x012B;ki</div>
+        <div class="lib-book-count">228 Cantos &middot; 6 K&#x0101;&#x1E47;&#x1E0Das</div>
+      </div>
+
+      <div class="lib-book-card" style="--bk-accent:#ffe082;" onclick="openLibBook('tao')">
+        <div class="lib-book-icon">&#x262F;&#xFE0F;</div>
+        <div class="lib-book-name">Tao Te Ching</div>
+        <div class="lib-book-edition">James Legge &middot; 1891 &middot; Lao-Tze</div>
+        <div class="lib-book-count">81 Chapters &middot; Taoist Canon</div>
+      </div>
+
+      <div class="lib-book-card" style="--bk-accent:#bcaaa4;" onclick="openLibBook('analects')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Analects of Confucius</div>
+        <div class="lib-book-edition">James Legge &middot; 1861 &middot; Confucius</div>
+        <div class="lib-book-count">496 Chapters &middot; 20 Books</div>
+      </div>
+
     </div>
   </div>
 
@@ -1386,6 +1414,34 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       onclick="toggleBook('avesta',this)">
       <span class="sb-icon">&#x1F4AB;</span>
       <span>Zend Avesta<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Darmesteter &middot; 1880</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-upanishads"
+      style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);"
+      onclick="toggleBook('upanishads',this)">
+      <span class="sb-icon">&#x1F9D8;</span>
+      <span>Upani&#x1E63;ads<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Max M&#xFC;ller &middot; 1879</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-ramayana"
+      style="--btn-color:#ef9a9a;--btn-bg:rgba(239,154,154,.12);--btn-glow:rgba(239,154,154,.35);"
+      onclick="toggleBook('ramayana',this)">
+      <span class="sb-icon">&#x1F3F9;</span>
+      <span>R&#x0101;m&#x0101;ya&#x1E47;a<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Griffith &middot; 1870</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-tao"
+      style="--btn-color:#ffe082;--btn-bg:rgba(255,224,130,.12);--btn-glow:rgba(255,224,130,.35);"
+      onclick="toggleBook('tao',this)">
+      <span class="sb-icon">&#x262F;&#xFE0F;</span>
+      <span>Tao Te Ching<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Legge &middot; 1891</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-analects"
+      style="--btn-color:#bcaaa4;--btn-bg:rgba(188,170,164,.12);--btn-glow:rgba(188,170,164,.35);"
+      onclick="toggleBook('analects',this)">
+      <span class="sb-icon">&#x1F4DC;</span>
+      <span>Analects<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Legge &middot; 1861</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
   </div>
@@ -10440,7 +10496,11 @@ const BOOK_CFG = {
   yajur:   { label:'Yajurveda',                               sub:'A. B. Keith \u00B7 1914 \u00B7 Black Yajurveda',                               icon:'\uD83D\uDD25', accent:'#ffb300', accentDim:'rgba(255,179,0,0.35)',   countLabel:'verse',   bookTitle:'Yajurveda',         bookEdition:'A. B. Keith Translation \u00B7 1914',             type:'veda'   },
   sama:    { label:'S\u0101maveda',                           sub:'R. T. H. Griffith \u00B7 1895',                                               icon:'\uD83D\uDD25', accent:'#66bb6a', accentDim:'rgba(102,187,106,0.35)', countLabel:'verse',   bookTitle:'S\u0101maveda',           bookEdition:'R. T. H. Griffith Translation \u00B7 1895',       type:'veda'   },
   atharva: { label:'Atharvaveda',                             sub:'R. T. H. Griffith \u00B7 1895',                                               icon:'\uD83D\uDD25', accent:'#ab47bc', accentDim:'rgba(171,71,188,0.35)',  countLabel:'verse',   bookTitle:'Atharvaveda',       bookEdition:'R. T. H. Griffith Translation \u00B7 1895',       type:'veda'   },
-  avesta:  { label:'Zend Avesta',                             sub:'James Darmesteter \u00B7 1880 \u00B7 Zoroastrian Scripture',                  icon:'\uD83D\uDCAB', accent:'#26c6da', accentDim:'rgba(38,198,218,0.35)',  countLabel:'verse',   bookTitle:'Zend Avesta',       bookEdition:'James Darmesteter Translation \u00B7 1880',       type:'avesta' },
+  avesta:     { label:'Zend Avesta',                  sub:'James Darmesteter \u00B7 1880 \u00B7 Zoroastrian Scripture',                  icon:'\uD83D\uDCAB', accent:'#26c6da', accentDim:'rgba(38,198,218,0.35)',  countLabel:'verse',   bookTitle:'Zend Avesta',         bookEdition:'James Darmesteter Translation \u00B7 1880',         type:'avesta'     },
+  upanishads: { label:'Upani\u1E63ads',              sub:'F. Max M\u00FCller \u00B7 1879\u20131884 \u00B7 12 Upani\u1E63ads',          icon:'\uD83E\uDDD8', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'section', bookTitle:'Upani\u1E63ads',     bookEdition:'F. Max M\u00FCller Translation \u00B7 1879\u20131884', type:'nikaya' },
+  ramayana:   { label:'R\u0101m\u0101ya\u1E47a',  sub:'R. T. H. Griffith \u00B7 1870\u20131874 \u00B7 V\u0101lm\u012Bki',          icon:'\uD83C\uDFF9', accent:'#ef9a9a', accentDim:'rgba(239,154,154,0.35)', countLabel:'canto',   bookTitle:'R\u0101m\u0101ya\u1E47a', bookEdition:'R. T. H. Griffith Translation \u00B7 1870\u20131874', type:'nikaya' },
+  tao:        { label:'Tao Te Ching',                 sub:'James Legge \u00B7 1891 \u00B7 Lao-Tze',                                     icon:'\u262F\uFE0F', accent:'#ffe082', accentDim:'rgba(255,224,130,0.35)', countLabel:'chapter', bookTitle:'Tao Te Ching',        bookEdition:'James Legge Translation \u00B7 1891',               type:'nikaya' },
+  analects:   { label:'Analects of Confucius',        sub:'James Legge \u00B7 1861 \u00B7 Confucius',                                   icon:'\uD83D\uDCDC', accent:'#bcaaa4', accentDim:'rgba(188,170,164,0.35)', countLabel:'chapter', bookTitle:'Analects of Confucius', bookEdition:'James Legge Translation \u00B7 1861',               type:'nikaya' },
 };
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
@@ -10620,11 +10680,22 @@ function _buildOtherNav(key,cfg){
     libChapterList=kands;
     kands.forEach((k,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Ka\u1E47\u1E0Dik\u0101 ${k}`; sel.appendChild(o); });
   } else if(key==='avesta'){
-    // Group by section+fargard
     const groups=[]; const seen=new Set();
     data.forEach(v=>{ const fg=v.fg||v.ch||v.yn||v.gn||1; const k=`${v.sec}.${fg}`; if(!seen.has(k)){ seen.add(k); groups.push({sec:v.sec,fg,idx:groups.length}); } });
     libChapterList=groups;
-    groups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${g.sec} ${g.fg}`; sel.appendChild(o); });
+    groups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${g.sec} \u2014 ${g.fg}`; sel.appendChild(o); });
+  } else if(key==='upanishads'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.upan}${s.section?' \u2014 '+s.section:''}`; sel.appendChild(o); });
+  } else if(key==='ramayana'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; sel.appendChild(o); });
+  } else if(key==='tao'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='analects'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
   }
   const isNikaya=BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya';
   const isVeda=BOOK_CFG[key]&&(BOOK_CFG[key].type==='veda'||BOOK_CFG[key].type==='avesta');
@@ -10709,6 +10780,38 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
+  } else if(libBook==='upanishads'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.upan+(s.section?' \u2014 '+s.section:''); container.appendChild(h);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+  } else if(libBook==='ramayana'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; container.appendChild(h);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+  } else if(libBook==='tao'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+  } else if(libBook==='analects'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.title; container.appendChild(h);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
   }
 };
 
@@ -10730,7 +10833,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true};
+const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.quickSearch=function(term){ showSrchPanel('search'); const inp=document.getElementById('srch-input'); if(inp){inp.value=term; doSearch();} };
@@ -10897,6 +11000,11 @@ function chapLabel(book,v,cfg){
     return null;
   }
   if(cfg.type==='avesta') return v.sec||null;
+  // prose types using nikaya renderer
+  if(book==='upanishads') return v.upan+(v.section?' \u2014 '+v.section:'');
+  if(book==='ramayana')   return v.book_name||null;
+  if(book==='tao')        return null;
+  if(book==='analects')   return v.book_title||null;
   return null;
 }
 function highlight(text,terms){ let r=text; terms.forEach(t=>{ const e=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); r=r.replace(new RegExp('('+e+')','gi'),'<mark>$1</mark>'); }); return r; }
