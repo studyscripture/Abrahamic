@@ -11240,9 +11240,10 @@ function hideStatus(){ const el=document.getElementById('srch-status'); if(el) e
 switchReligion('srch');
 
 // Expose helpers needed by the verse modal
-window._fmtRef        = fmtRef;
-window._chapLabel     = chapLabel;
+window._fmtRef         = fmtRef;
+window._chapLabel      = chapLabel;
 window._loadScriptures = loadScriptures;
+window.switchReligion  = switchReligion;
 </script>
 
 <div id="clip-toast">✦ Copied to Clipboard</div>
@@ -11378,6 +11379,7 @@ window._loadScriptures = loadScriptures;
       // Bible: open the reader — it navigates by book/chapter via its own nav
       if(window._loadScriptures){
         window._loadScriptures(function(){
+          if(window.switchReligion) window.switchReligion('srch');
           showSrchPanel('lib');
           window._openLibBook(book, null);
           setTimeout(function(){ _vmScrollToVerse(v, terms); }, 600);
@@ -11392,19 +11394,31 @@ window._loadScriptures = loadScriptures;
 
     if(window._loadScriptures){
       window._loadScriptures(function(){
+        if(window.switchReligion) window.switchReligion('srch');
         showSrchPanel('lib');
         window._openLibBook(book, targetIdx);
-        // Wait for render then scroll to exact verse
         setTimeout(function(){ _vmScrollToVerse(v, terms); }, 500);
       });
     }
   }
 
-  // Close on backdrop click
-  document.getElementById('verse-modal-overlay').addEventListener('click', function(e){
-    if(e.target === this) window._closeVerseModal();
-  });
-  // Close on Escape
+  // Attach overlay listeners after DOM is ready
+  function _attachModalListeners(){
+    var ov = document.getElementById('verse-modal-overlay');
+    if(ov){
+      ov.addEventListener('click', function(e){
+        if(e.target === ov) window._closeVerseModal();
+      });
+      ov.addEventListener('touchend', function(e){
+        if(e.target === ov){ e.preventDefault(); window._closeVerseModal(); }
+      }, {passive:false});
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', _attachModalListeners);
+  } else {
+    _attachModalListeners();
+  }
   document.addEventListener('keydown', function(e){
     if(e.key==='Escape') window._closeVerseModal();
   });
