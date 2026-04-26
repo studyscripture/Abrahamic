@@ -1111,7 +1111,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <span class="srch-hero-symbol">&#x1F4D6;&#xFE0F;</span>
   <div class="srch-eyebrow">Sacred Texts &middot; Comparative Scripture</div>
   <h1 class="srch-title">Scripture Library &amp; Search</h1>
-  <p class="srch-subtitle">Read and search the Bible, Quran, Bhagavad Gita &amp; Mahabharata</p>
+  <p class="srch-subtitle">Read and Search Scripture</p>
   <div class="srch-rule"><span class="srch-rule-glyph">&#10022;</span></div>
 </div>
 
@@ -8579,6 +8579,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   width: calc(100vw - 40px);
   max-height: calc(100vh - 80px);
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(160,140,200,0.25) transparent;
   background: linear-gradient(145deg, #1e1730 0%, #150f2a 100%);
   border: 1px solid rgba(var(--vm-rgb, 160,140,200), 0.28);
   border-radius: 16px;
@@ -8592,6 +8594,11 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   from { opacity: 0; transform: translateY(28px) scale(.97); }
   to   { opacity: 1; transform: translateY(0)    scale(1);   }
 }
+
+#verse-modal::-webkit-scrollbar { width: 4px; }
+#verse-modal::-webkit-scrollbar-track { background: transparent; }
+#verse-modal::-webkit-scrollbar-thumb { background: rgba(160,140,200,0.25); border-radius: 4px; }
+#verse-modal::-webkit-scrollbar-thumb:hover { background: rgba(160,140,200,0.45); }
 #verse-modal-close {
   position: absolute;
   top: 14px; right: 16px;
@@ -11149,7 +11156,7 @@ function makeCard(book,v,cfg,terms){
   const te=document.createElement('div'); te.className='srch-card-text';
   te.innerHTML=highlight(esc(txt),terms); card.appendChild(te);
   card.title='Click to open';
-  card.addEventListener('click',(e)=>window._openVerseModal(book,v,cfg));
+  card.addEventListener('click',(e)=>window._openVerseModal(book,v,cfg,terms));
   return card;
 }
 
@@ -11230,7 +11237,7 @@ function hideStatus(){ const el=document.getElementById('srch-status'); if(el) e
 })();
 
 // ═══ INIT ═══
-switchReligion('jud');
+switchReligion('srch');
 
 // Expose helpers needed by the verse modal
 window._fmtRef        = fmtRef;
@@ -11271,8 +11278,9 @@ window._loadScriptures = loadScriptures;
     document.body.style.overflow = '';
   };
 
-  window._openVerseModal = function(book, v, cfg){
-    _vmBook=book; _vmV=v; _vmCfg=cfg;
+  var _vmTerms = [];
+  window._openVerseModal = function(book, v, cfg, terms){
+    _vmBook=book; _vmV=v; _vmCfg=cfg; _vmTerms=terms||[];
 
     // Accent colour from book config
     var accent = cfg.accent || '#a08cc8';
@@ -11312,7 +11320,7 @@ window._loadScriptures = loadScriptures;
     };
     document.getElementById('vm-btn-goto').onclick = function(){
       window._closeVerseModal();
-      _vmGoToLibrary(book, v, cfg);
+      _vmGoToLibrary(_vmBook, _vmV, _vmCfg, _vmTerms);
     };
 
     // Open
@@ -11320,29 +11328,74 @@ window._loadScriptures = loadScriptures;
     document.body.style.overflow = 'hidden';
   };
 
-  function _vmGoToLibrary(book, v, cfg){
-    var targetIdx = null;
-    if(cfg.type==='gita' || book==='sbg'){ targetIdx = v.c - 1; }
-    else if(v.idx !== undefined){ targetIdx = v.idx; }
-    else if(cfg.type==='bible'){
-      // Bible: navigate by book name (chapter-level)
-      // Open the KJV/bible reader — fall back to copy if no idx
-      if(book==='kjv' || book==='bible'){
-        if(window._loadScriptures){
-          window._loadScriptures(function(){
-            window._openLibBook(book, null);
-          });
-        }
-        return;
+  // After library navigates, scroll to and highlight the verse
+  function _vmScrollToVerse(v, terms){
+    var container = document.getElementById('lib-verse-content');
+    if(!container) return;
+    // Find the verse by its reference text, or by content match
+    var ref = v.r || '';
+    var refEls = container.querySelectorAll('.lib-verse-num, .lib-stanza-ref, .lib-chapter-heading');
+    var targetEl = null;
+
+    // Try matching by reference string first
+    for(var i=0; i<refEls.length; i++){
+      if(refEls[i].textContent.trim() === ref.trim()){
+        targetEl = refEls[i].closest('.lib-verse, .lib-stanza') || refEls[i].parentElement;
+        break;
       }
+    }
+
+    // Fallback: scan all text nodes for a term match
+    if(!targetEl && terms && terms.length){
+      var allText = container.querySelectorAll('.lib-verse-text, .lib-stanza-text, p, div');
+      var lowerTerms = terms.map(function(t){ return t.toLowerCase(); });
+      for(var j=0; j<allText.length; j++){
+        var lower = allText[j].textContent.toLowerCase();
+        if(lowerTerms.every(function(t){ return lower.includes(t); })){
+          targetEl = allText[j];
+          break;
+        }
+      }
+    }
+
+    if(targetEl){
+      // Highlight the element briefly
+      var orig = targetEl.style.cssText;
+      targetEl.style.cssText += ';outline:2px solid var(--vm-accent,#a08cc8);outline-offset:3px;border-radius:4px;transition:outline .3s;';
+      targetEl.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ targetEl.style.cssText = orig; }, 2200);
+    } else {
+      // Just scroll to top of content
+      container.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+
+  function _vmGoToLibrary(book, v, cfg, terms){
+    var targetIdx = null;
+    if(cfg.type==='gita' || book==='sbg'){
+      targetIdx = v.c - 1;
+    } else if(cfg.type==='bible'){
+      // Bible: open the reader — it navigates by book/chapter via its own nav
+      if(window._loadScriptures){
+        window._loadScriptures(function(){
+          showSrchPanel('lib');
+          window._openLibBook(book, null);
+          setTimeout(function(){ _vmScrollToVerse(v, terms); }, 600);
+        });
+      }
+      return;
     } else if(cfg.type==='quran'){
-      // Quran: navigate by surah (chapter)
-      targetIdx = v.idx !== undefined ? v.idx : (v.c ? v.c-1 : null);
+      targetIdx = v.idx !== undefined ? v.idx : (v.c ? v.c - 1 : null);
+    } else if(v.idx !== undefined){
+      targetIdx = v.idx;
     }
 
     if(window._loadScriptures){
       window._loadScriptures(function(){
+        showSrchPanel('lib');
         window._openLibBook(book, targetIdx);
+        // Wait for render then scroll to exact verse
+        setTimeout(function(){ _vmScrollToVerse(v, terms); }, 500);
       });
     }
   }
@@ -11372,7 +11425,7 @@ window._loadScriptures = loadScriptures;
         <span>&#x2398;</span><span>Copy passage</span>
       </button>
       <button class="vm-btn" id="vm-btn-goto">
-        <span>&#x2197;</span><span>Go to library</span>
+        <span>&#x2197;</span><span>Go to Section</span>
       </button>
     </div>
   </div>
