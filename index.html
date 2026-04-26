@@ -8550,6 +8550,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .mp-comp-header,.mp-comp-row{grid-template-columns:1fr}
   .mp-comp-cell.dim-lbl{background:rgba(255,255,255,.04);font-size:8px;letter-spacing:.1em}
 }
+
+/* Search card action popup */
+.srch-popup-btn{display:block;width:100%;text-align:left;background:none;border:none;padding:11px 16px;color:var(--cream,#f5f0e8);font-size:14px;font-family:'EB Garamond',serif;cursor:pointer;transition:background .15s;}
 </style>
 
 <!-- ═══ TIMELINE MODAL (rendered once, content swapped by JS) ═══ -->
@@ -10600,7 +10603,7 @@ let libChapterIdx=0, libChapterList=[];
 
 window.openLibBook = function(key){ loadScriptures(()=>_openLibBook(key)); };
 
-function _openLibBook(key){
+function _openLibBook(key, targetIdx){
   libBook=key;
   const cfg=BOOK_CFG[key];
   document.getElementById('lib-reader-bookname').textContent = cfg.bookTitle;
@@ -10611,7 +10614,9 @@ function _openLibBook(key){
   document.getElementById('lib-bible-nav').style.display  = cfg.type==='bible' ? 'block' : 'none';
   document.getElementById('lib-other-nav').style.display  = cfg.type!=='bible' ? 'flex'  : 'none';
   if(cfg.type==='bible'){ _buildTestamentRow(key,cfg); libSetTestament('OT',key,false); }
-  else _buildOtherNav(key,cfg);
+  else{ _buildOtherNav(key,cfg,targetIdx); }
+  const reader=document.getElementById('lib-reader');
+  if(reader) setTimeout(()=>reader.scrollIntoView({behavior:'smooth',block:'start'}),120);
 }
 
 function _buildTestamentRow(key,cfg){
@@ -10685,7 +10690,7 @@ window.libBibleChapterStep=function(d){
   libBibleGoChapter(next); scrollToContent();
 };
 
-function _buildOtherNav(key,cfg){
+function _buildOtherNav(key,cfg,targetIdx){
   const data=SCRIPTURES[key];
   const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section'};
   document.getElementById('lib-nav-label').textContent=labels[key]||'Chapter';
@@ -10754,7 +10759,11 @@ function _buildOtherNav(key,cfg){
   const isVeda=BOOK_CFG[key]&&(BOOK_CFG[key].type==='veda'||BOOK_CFG[key].type==='avesta');
   const total=(key==='maha'||isNikaya||isVeda)?libChapterList.length:libChapterList.length;
   document.getElementById('lib-other-pos').textContent=`1 / ${libChapterList.length}`;
-  libGoChapter(0);
+  // If targetIdx provided (from 'Go to passage'), jump directly to it
+  const startIdx = (targetIdx !== undefined && targetIdx !== null) ? targetIdx : 0;
+  const sel2 = document.getElementById('lib-other-sel');
+  if(sel2 && startIdx > 0) sel2.value = startIdx;
+  libGoChapter(startIdx);
 }
 
 window.libGoChapter=function(idxStr){
@@ -11003,21 +11012,19 @@ function makeCard(book,v,cfg,terms){
   const cl=chapLabel(book,v,cfg);
   if(cl){ const ce=document.createElement('div'); ce.className='srch-card-chapter'; ce.textContent=cl; card.appendChild(ce); }
 
-  // Text — for maha/gita/nikaya, find the sentence containing the search term
+  // Text — find the snippet around search term for all prose/long-text types
   let txt=v.t;
-  if(cfg.type==='maha'){
-    txt=extractMahaSnippet(v.t, terms);
-  } else if(cfg.type==='gita'){
-    txt=extractMahaSnippet(v.t, terms);
-  } else if(cfg.type==='nikaya'){
+  if(cfg.type==='maha'||cfg.type==='gita'||cfg.type==='nikaya'||
+     cfg.type==='harivamsha'||cfg.type==='vishnu_purana'||
+     cfg.type==='veda'||cfg.type==='avesta'){
     txt=extractMahaSnippet(v.t, terms);
   } else if(txt.length>600){
     const cut=txt.indexOf('. ',500); txt=(cut>0?txt.slice(0,cut+1):txt.slice(0,600))+'…';
   }
   const te=document.createElement('div'); te.className='srch-card-text';
   te.innerHTML=highlight(esc(txt),terms); card.appendChild(te);
-  card.title='Click to copy';
-  card.addEventListener('click',()=>_copyVerse(fmtRef(book,v,cfg),v.t));
+  card.title='Click for options';
+  card.addEventListener('click',(e)=>_showCardMenu(e,book,v,cfg));
   return card;
 }
 
@@ -11063,7 +11070,9 @@ function fmtRef(book,v,cfg){
   if(cfg.type==='maha')   return `Book ${v.b} \u00B7 Sec.\u00A0${v.s}`;
   if(cfg.type==='nikaya') return v.r;
   if(cfg.type==='veda')   return v.r;
-  if(cfg.type==='avesta') return v.r;
+  if(cfg.type==='avesta')        return v.r;
+  if(cfg.type==='harivamsha')     return v.r;
+  if(cfg.type==='vishnu_purana')  return v.r;
   return v.r;
 }
 function chapLabel(book,v,cfg){
@@ -11083,7 +11092,9 @@ function chapLabel(book,v,cfg){
   if(book==='upanishads') return v.upan+(v.section?' \u2014 '+v.section:'');
   if(book==='ramayana')   return v.book_name||null;
   if(book==='tao')        return null;
-  if(book==='analects')   return v.book_title||null;
+  if(book==='analects')      return v.book_title||null;
+  if(book==='harivamsha')    return v.parva||null;
+  if(book==='vishnu_purana') return (v.title?v.title.split('.')[0].slice(0,80):null);
   return null;
 }
 function highlight(text,terms){ let r=text; terms.forEach(t=>{ const e=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); r=r.replace(new RegExp('('+e+')','gi'),'<mark>$1</mark>'); }); return r; }
@@ -11098,6 +11109,12 @@ switchReligion('jud');
 </script>
 
 <div id="clip-toast">✦ Copied to Clipboard</div>
+
+<div id="srch-action-popup" style="display:none;position:fixed;z-index:9999;background:var(--surface,#1a1628);border:1px solid rgba(160,140,200,0.25);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.55);min-width:220px;overflow:hidden;">
+  <div id="srch-action-ref" style="padding:10px 14px 8px;font-size:12px;opacity:.55;font-family:'EB Garamond',serif;border-bottom:1px solid rgba(160,140,200,0.12);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px;"></div>
+  <button id="srch-action-copy" class="srch-popup-btn" onmouseover="this.style.background='rgba(160,140,200,0.12)'" onmouseout="this.style.background='none'">📋️ Copy passage</button>
+  <button id="srch-action-goto" class="srch-popup-btn" onmouseover="this.style.background='rgba(160,140,200,0.12)'" onmouseout="this.style.background='none'">↗️ Go to passage</button>
+</div>
 <script>
 (function(){
   var _tt=null;
@@ -11121,6 +11138,43 @@ switchReligion('jud');
     try{document.execCommand('copy');_showToast();}catch(e){}
     document.body.removeChild(ta);
   }
+
+  // Card action popup
+  var _mRef='',_mText='',_mBook='',_mV=null,_mCfg=null;
+  function _closeMenu(){
+    var p=document.getElementById('srch-action-popup');
+    if(p) p.style.display='none';
+  }
+  window._showCardMenu=function(e,book,v,cfg){
+    e.stopPropagation();
+    _mRef=fmtRef(book,v,cfg); _mText=v.t; _mBook=book; _mV=v; _mCfg=cfg;
+    var p=document.getElementById('srch-action-popup');
+    var refEl=document.getElementById('srch-action-ref');
+    if(!p) return;
+    refEl.textContent=_mRef;
+    var x=e.clientX, y=e.clientY, pw=240, ph=116;
+    if(x+pw>window.innerWidth-10) x=window.innerWidth-pw-10;
+    if(y+ph>window.innerHeight-10) y=y-ph-6; else y=y+6;
+    p.style.left=x+'px'; p.style.top=y+'px'; p.style.display='block';
+    document.getElementById('srch-action-copy').onclick=function(){
+      _copyVerse(_mRef,_mText); _closeMenu();
+    };
+    document.getElementById('srch-action-goto').onclick=function(){
+      _goToPassage(_mBook,_mV,_mCfg); _closeMenu();
+    };
+  };
+  document.addEventListener('click',_closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')_closeMenu();});
+
+  // Go to passage: open library reader at the right entry
+  window._goToPassage=function(book,v,cfg){
+    if(cfg.type==='bible'||cfg.type==='quran'){_copyVerse(fmtRef(book,v,cfg),v.t);return;}
+    var targetIdx=null;
+    if(cfg.type==='gita'||book==='sbg'){ targetIdx=v.c-1; }
+    else if(v.idx!==undefined){ targetIdx=v.idx; }
+    if(targetIdx===null){_copyVerse(fmtRef(book,v,cfg),v.t);return;}
+    loadScriptures(function(){ _openLibBook(book,targetIdx); });
+  };
 })();
 </script>
 </body>
