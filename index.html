@@ -1267,10 +1267,16 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-count">496 Chapters &middot; 20 Books</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ff8a65;" onclick="openLibBook('harivamsha')">
-        <div class="lib-book-icon">🪷</div>
+        <div class="lib-book-icon">🔱</div>
         <div class="lib-book-name">Harivaṃśa</div>
         <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1897 &middot; Keshub Academy</div>
         <div class="lib-book-count">233 Chapters &middot; 3 Parvas</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ffa726;" onclick="openLibBook('vishnu_purana')">
+        <div class="lib-book-icon">🪔</div>
+        <div class="lib-book-name">Viṣṇu Purāṇa</div>
+        <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1896 &middot; Keshub Academy</div>
+        <div class="lib-book-count">126 Sections &middot; 6 Parts</div>
       </div>
 
     </div>
@@ -1467,8 +1473,15 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-harivamsha"
       style="--btn-color:#ff8a65;--btn-bg:rgba(255,138,101,.12);--btn-glow:rgba(255,138,101,.35);"
       onclick="toggleBook('harivamsha',this)">
-      <span class="sb-icon">🪷</span>
+      <span class="sb-icon">🔱</span>
       <span>Harivaṃśa<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Dutt &middot; 1897</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-vishnu_purana"
+      style="--btn-color:#ffa726;--btn-bg:rgba(255,167,38,.12);--btn-glow:rgba(255,167,38,.35);"
+      onclick="toggleBook('vishnu_purana',this)">
+      <span class="sb-icon">🪔</span>
+      <span>Viṣṇu Purāṇa<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Dutt &middot; 1896</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
   </div>
@@ -10529,7 +10542,8 @@ const BOOK_CFG = {
   ramayana:   { label:'R\u0101m\u0101ya\u1E47a',  sub:'R. T. H. Griffith \u00B7 1870\u20131874 \u00B7 V\u0101lm\u012Bki',          icon:'\uD83C\uDFF9', accent:'#ef9a9a', accentDim:'rgba(239,154,154,0.35)', countLabel:'canto',   bookTitle:'R\u0101m\u0101ya\u1E47a', bookEdition:'R. T. H. Griffith Translation \u00B7 1870\u20131874', type:'nikaya' },
   tao:        { label:'Tao Te Ching',                 sub:'James Legge \u00B7 1891 \u00B7 Lao-Tze',                                     icon:'\u262F\uFE0F', accent:'#ffe082', accentDim:'rgba(255,224,130,0.35)', countLabel:'chapter', bookTitle:'Tao Te Ching',        bookEdition:'James Legge Translation \u00B7 1891',               type:'nikaya' },
   analects:   { label:'Analects of Confucius',        sub:'James Legge \u00B7 1861 \u00B7 Confucius',                                   icon:'\uD83D\uDCDC', accent:'#bcaaa4', accentDim:'rgba(188,170,164,0.35)', countLabel:'chapter', bookTitle:'Analects of Confucius', bookEdition:'James Legge Translation \u00B7 1861',               type:'nikaya' },
-  harivamsha: { label:'Harиваṃśa',          sub:'Manmatha Nath Dutt \u00B7 1897 \u00B7 Keshub Academy',                      icon:'\uD83E\uDEB7', accent:'#ff8a65', accentDim:'rgba(255,138,101,0.35)', countLabel:'chapter', bookTitle:'Hariваṃśa',      bookEdition:'Manmatha Nath Dutt Translation \u00B7 1897',        type:'harivamsha' },
+  harivamsha: { label:'Harivaṃśa',           sub:'Manmatha Nath Dutt · 1897 · Keshub Academy',                      icon:'🔱', accent:'#ff8a65', accentDim:'rgba(255,138,101,0.35)', countLabel:'chapter', bookTitle:'Harivaṃśa',        bookEdition:'Manmatha Nath Dutt Translation · 1897',          type:'harivamsha' },
+  vishnu_purana: { label:'Viṣṇu Purāṇa',        sub:'Manmatha Nath Dutt · 1896 · Keshub Academy',                      icon:'🪔', accent:'#ffa726', accentDim:'rgba(255,167,38,0.35)',  countLabel:'section', bookTitle:'Viṣṇu Purāṇa',      bookEdition:'Manmatha Nath Dutt Translation · 1896',          type:'vishnu_purana' },
 };
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
@@ -10732,6 +10746,9 @@ function _buildOtherNav(key,cfg){
   } else if(key==='harivamsha'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='vishnu_purana'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   }
   const isNikaya=BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya';
   const isVeda=BOOK_CFG[key]&&(BOOK_CFG[key].type==='veda'||BOOK_CFG[key].type==='avesta');
@@ -10865,6 +10882,15 @@ window.libGoChapter=function(idxStr){
     p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
     p.title='Click to copy'; p.textContent=s.t;
     p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+  } else if(libBook==='vishnu_purana'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=`Part ${s.part} · ${s.title}`; container.appendChild(sub);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
   }
 };
 
@@ -10886,7 +10912,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true};
+const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.quickSearch=function(term){ showSrchPanel('search'); const inp=document.getElementById('srch-input'); if(inp){inp.value=term; doSearch();} };
