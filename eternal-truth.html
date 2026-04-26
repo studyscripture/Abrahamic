@@ -30,6 +30,7 @@
     min-height: 100vh;
     overflow-x: hidden;
     line-height: 1.6;
+    /* === ANTI-COPY PROTECTION: user-select none on body (skeleton) === */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -74,10 +75,14 @@
     display: inline-block;
     margin-bottom: 14px; 
     line-height: 1;
+    /* === BREATHING GLOW ONLY (no movement/scale) === */
     animation: breathe-glow 6s ease-in-out infinite alternate;
   }
+  
+  /* Pure light + shading + timing breath — no scale/transform */
   @keyframes breathe-glow {
     0% { 
+      /* exhale: soft, dim glow + muted saffron shading */
       text-shadow: 
         0 0 12px rgba(245,166,35,0.12),
         0 0 28px rgba(245,166,35,0.06),
@@ -85,6 +90,7 @@
       color: rgba(245,166,35,0.68);
     }
     100% { 
+      /* inhale: luminous, rich glow + bright gold shading */
       text-shadow: 
         0 0 22px rgba(245,166,35,0.75),
         0 0 52px rgba(245,166,35,0.55),
@@ -98,63 +104,35 @@
   h1 em { color: var(--saffron); font-style: italic; }
   .rule { width: 100px; height: 1px; background: linear-gradient(90deg,transparent,var(--saffron),transparent); margin: 24px auto 0; }
 
-  /* === CLEAN ELON MUSK / xAI-STYLE HINDU SCRIPTURE HUB CARD === */
+  /* HINDU HUB PORTAL */
   .portal-block {
     margin: 40px 0 48px;
     text-align: center;
-    position: relative;
   }
-
   .portal-label {
-    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 18px;
+    font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 14px;
   }
-
   .hub-link {
-    display: inline-flex; align-items: center; gap: 18px;
-    background: linear-gradient(145deg, #1c1409, #17100a);
-    border: 2px solid #f5a623;
-    border-radius: 12px; 
-    padding: 22px 32px;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--surface);
+    border: 1px solid rgba(245,166,35,0.4);
+    border-radius: 4px; padding: 16px 28px;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative; 
-    overflow: hidden;
-    box-shadow: 0 10px 30px -10px rgba(245,166,35,0.3);
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    position: relative; overflow: hidden;
   }
-
-  .hub-link:hover {
-    transform: translateY(-3px) scale(1.03);
-    border-color: #f7d060;
-    box-shadow: 0 20px 40px -15px rgba(245,166,35,0.5);
+  .hub-link::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--saffron);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
   }
-
-  .hub-icon { 
-    font-size: 42px; 
-    transition: transform 0.3s ease;
-  }
-
-  .hub-link:hover .hub-icon {
-    transform: scale(1.1);
-  }
-
-  .hub-text { text-align: left; position: relative; }
-
-  .hub-name { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 22px; 
-    font-weight: 600; 
-    background: linear-gradient(90deg, #f7d060, #f5a623);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .hub-desc { 
-    font-size: 12px; 
-    color: var(--muted); 
-    letter-spacing: 0.06em; 
-    margin-top: 2px; 
-  }
+  .hub-link:hover { border-color: var(--saffron); background: var(--card); transform: translateY(-2px); }
+  .hub-link:hover::after { transform: scaleX(1); }
+  .hub-icon { font-size: 26px; }
+  .hub-text { text-align: left; }
+  .hub-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); }
+  .hub-desc { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; margin-top: 2px; }
 
   /* DIVIDER */
   .sec-divider {
@@ -212,7 +190,7 @@
     color: var(--cream); line-height: 1.7;
   }
 
-  /* SELECTIVELY RE-ENABLE COPYING */
+  /* SELECTIVELY RE-ENABLE COPYING FOR SCRIPTURE / ESSAY TEXT (as requested) */
   .essay p,
   .essay .mahavakya,
   .essay .pull-quote,
@@ -254,10 +232,9 @@
   @media (max-width: 600px) {
     h1 { font-size: 28px; }
     .essay h2 { font-size: 20px; }
-    .hub-link { padding: 20px 26px; gap: 14px; }
-    .hub-icon { font-size: 36px; }
   }
 
+  /* === PRINT PROTECTION: blank page on print / print-to-PDF === */
   @media print {
     body { display: none !important; }
   }
@@ -277,7 +254,7 @@
 
 <div class="wrap">
 
-  <!-- Hindu Hub Portal — now clean, minimalist, premium-tech like an Elon Musk / xAI website -->
+  <!-- Hindu Hub Portal Link -->
   <div class="portal-block">
     <div class="portal-label">Explore the Living Tradition</div>
     <a href="https://studyscripture.github.io/hinduhub/" target="_blank" class="hub-link">
@@ -295,7 +272,7 @@
     <div class="line"></div>
   </div>
 
-  <!-- Essay (unchanged) -->
+  <!-- Essay -->
   <div class="essay">
 
     <h2>The Single Most Important Reason — Before Anything Else</h2>
@@ -490,14 +467,34 @@
   </div>
 </footer>
 
-<!-- === JS KEYBOARD BLOCK === -->
+<!-- === JS KEYBOARD BLOCK (Ctrl/Cmd+U, S, A, F12, Ctrl+Shift+I/J/C) === -->
 <script>
 document.addEventListener('keydown', function(e) {
-  if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) { e.preventDefault(); return false; }
-  if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); return false; }
-  if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A')) { e.preventDefault(); return false; }
-  if (e.key === 'F12') { e.preventDefault(); return false; }
-  if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault(); return false; }
+  // Ctrl or Cmd + S (save page)
+  if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl or Cmd + U (view source)
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl or Cmd + A (select all)
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A')) {
+    e.preventDefault();
+    return false;
+  }
+  // F12 (DevTools)
+  if (e.key === 'F12') {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl + Shift + I, J, or C (DevTools shortcuts)
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+    e.preventDefault();
+    return false;
+  }
 });
 </script>
 
