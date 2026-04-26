@@ -8551,8 +8551,133 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .mp-comp-cell.dim-lbl{background:rgba(255,255,255,.04);font-size:8px;letter-spacing:.1em}
 }
 
-/* Search card action popup */
-.srch-popup-btn{display:block;width:100%;text-align:left;background:none;border:none;padding:11px 16px;color:var(--cream,#f5f0e8);font-size:14px;font-family:'EB Garamond',serif;cursor:pointer;transition:background .15s;}
+/* ══════════════════════════════════════════
+   VERSE MODAL OVERLAY
+══════════════════════════════════════════ */
+#verse-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+  background: rgba(8, 6, 18, 0.72);
+  backdrop-filter: blur(14px) saturate(0.7);
+  -webkit-backdrop-filter: blur(14px) saturate(0.7);
+  animation: vmFadeIn .22s ease;
+  align-items: center;
+  justify-content: center;
+}
+#verse-modal-overlay.open {
+  display: flex;
+}
+@keyframes vmFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+#verse-modal {
+  position: relative;
+  max-width: 680px;
+  width: calc(100vw - 40px);
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  background: linear-gradient(145deg, #1e1730 0%, #150f2a 100%);
+  border: 1px solid rgba(var(--vm-rgb, 160,140,200), 0.28);
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(var(--vm-rgb,160,140,200),0.08),
+              0 24px 80px rgba(0,0,0,0.7),
+              inset 0 1px 0 rgba(255,255,255,0.05);
+  padding: 36px 40px 32px;
+  animation: vmSlideUp .26s cubic-bezier(.22,.68,0,1.2);
+}
+@keyframes vmSlideUp {
+  from { opacity: 0; transform: translateY(28px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+#verse-modal-close {
+  position: absolute;
+  top: 14px; right: 16px;
+  background: none; border: none;
+  color: rgba(245,240,232,.35);
+  font-size: 22px; line-height: 1;
+  cursor: pointer; padding: 4px 8px;
+  border-radius: 6px;
+  transition: color .15s, background .15s;
+}
+#verse-modal-close:hover { color: rgba(245,240,232,.8); background: rgba(255,255,255,.07); }
+#verse-modal-book {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .55;
+  margin-bottom: 6px;
+  font-family: 'EB Garamond', serif;
+}
+#verse-modal-ref {
+  font-family: 'Cormorant Garamond', 'EB Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 4px;
+  color: var(--vm-accent, #a08cc8);
+}
+#verse-modal-chapter {
+  font-size: 13px;
+  opacity: .5;
+  margin-bottom: 22px;
+  font-family: 'EB Garamond', serif;
+}
+#verse-modal-text {
+  font-family: 'EB Garamond', 'Cormorant Garamond', serif;
+  font-size: 20px;
+  line-height: 1.78;
+  color: rgba(245, 240, 232, 0.92);
+  border-left: 3px solid var(--vm-accent, #a08cc8);
+  padding-left: 20px;
+  margin-bottom: 30px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+#verse-modal-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.vm-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 13px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--vm-rgb,160,140,200), 0.28);
+  background: rgba(var(--vm-rgb,160,140,200), 0.08);
+  color: rgba(245,240,232,.9);
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background .18s, border-color .18s, transform .12s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.vm-btn:hover {
+  background: rgba(var(--vm-rgb,160,140,200), 0.18);
+  border-color: rgba(var(--vm-rgb,160,140,200), 0.5);
+  transform: translateY(-1px);
+}
+.vm-btn:active { transform: translateY(0); }
+.vm-btn-primary {
+  background: rgba(var(--vm-rgb,160,140,200), 0.22);
+  border-color: rgba(var(--vm-rgb,160,140,200), 0.5);
+}
+.vm-btn-primary:hover {
+  background: rgba(var(--vm-rgb,160,140,200), 0.35);
+}
+@media (max-width: 520px) {
+  #verse-modal { padding: 28px 20px 24px; }
+  #verse-modal-text { font-size: 17px; }
+  #verse-modal-ref { font-size: 18px; }
+  .vm-btn { min-width: 120px; font-size: 14px; }
+}
+
 </style>
 
 <!-- ═══ TIMELINE MODAL (rendered once, content swapped by JS) ═══ -->
@@ -11023,8 +11148,8 @@ function makeCard(book,v,cfg,terms){
   }
   const te=document.createElement('div'); te.className='srch-card-text';
   te.innerHTML=highlight(esc(txt),terms); card.appendChild(te);
-  card.title='Click for options';
-  card.addEventListener('click',(e)=>_showCardMenu(e,book,v,cfg));
+  card.title='Click to open';
+  card.addEventListener('click',(e)=>window._openVerseModal(book,v,cfg));
   return card;
 }
 
@@ -11106,15 +11231,14 @@ function hideStatus(){ const el=document.getElementById('srch-status'); if(el) e
 
 // ═══ INIT ═══
 switchReligion('jud');
+
+// Expose helpers needed by the verse modal
+window._fmtRef        = fmtRef;
+window._chapLabel     = chapLabel;
+window._loadScriptures = loadScriptures;
 </script>
 
 <div id="clip-toast">✦ Copied to Clipboard</div>
-
-<div id="srch-action-popup" style="display:none;position:fixed;z-index:9999;background:var(--surface,#1a1628);border:1px solid rgba(160,140,200,0.25);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.55);min-width:220px;overflow:hidden;">
-  <div id="srch-action-ref" style="padding:10px 14px 8px;font-size:12px;opacity:.55;font-family:'EB Garamond',serif;border-bottom:1px solid rgba(160,140,200,0.12);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px;"></div>
-  <button id="srch-action-copy" class="srch-popup-btn" onmouseover="this.style.background='rgba(160,140,200,0.12)'" onmouseout="this.style.background='none'">📋️ Copy passage</button>
-  <button id="srch-action-goto" class="srch-popup-btn" onmouseover="this.style.background='rgba(160,140,200,0.12)'" onmouseout="this.style.background='none'">↗️ Go to passage</button>
-</div>
 <script>
 (function(){
   var _tt=null;
@@ -11139,43 +11263,119 @@ switchReligion('jud');
     document.body.removeChild(ta);
   }
 
-  // Card action popup
-  var _mRef='',_mText='',_mBook='',_mV=null,_mCfg=null;
-  function _closeMenu(){
-    var p=document.getElementById('srch-action-popup');
-    if(p) p.style.display='none';
-  }
-  window._showCardMenu=function(e,book,v,cfg){
-    e.stopPropagation();
-    _mRef=fmtRef(book,v,cfg); _mText=v.t; _mBook=book; _mV=v; _mCfg=cfg;
-    var p=document.getElementById('srch-action-popup');
-    var refEl=document.getElementById('srch-action-ref');
-    if(!p) return;
-    refEl.textContent=_mRef;
-    var x=e.clientX, y=e.clientY, pw=240, ph=116;
-    if(x+pw>window.innerWidth-10) x=window.innerWidth-pw-10;
-    if(y+ph>window.innerHeight-10) y=y-ph-6; else y=y+6;
-    p.style.left=x+'px'; p.style.top=y+'px'; p.style.display='block';
-    document.getElementById('srch-action-copy').onclick=function(){
-      _copyVerse(_mRef,_mText); _closeMenu();
-    };
-    document.getElementById('srch-action-goto').onclick=function(){
-      _goToPassage(_mBook,_mV,_mCfg); _closeMenu();
-    };
-  };
-  document.addEventListener('click',_closeMenu);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')_closeMenu();});
+  // ══ VERSE MODAL ══════════════════════════════
+  var _vmBook='', _vmV=null, _vmCfg=null;
 
-  // Go to passage: open library reader at the right entry
-  window._goToPassage=function(book,v,cfg){
-    if(cfg.type==='bible'||cfg.type==='quran'){_copyVerse(fmtRef(book,v,cfg),v.t);return;}
-    var targetIdx=null;
-    if(cfg.type==='gita'||book==='sbg'){ targetIdx=v.c-1; }
-    else if(v.idx!==undefined){ targetIdx=v.idx; }
-    if(targetIdx===null){_copyVerse(fmtRef(book,v,cfg),v.t);return;}
-    loadScriptures(function(){ _openLibBook(book,targetIdx); });
+  window._closeVerseModal = function(){
+    document.getElementById('verse-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
   };
+
+  window._openVerseModal = function(book, v, cfg){
+    _vmBook=book; _vmV=v; _vmCfg=cfg;
+
+    // Accent colour from book config
+    var accent = cfg.accent || '#a08cc8';
+    // Convert hex to rgb triplet for CSS var
+    var hex = accent.replace('#','');
+    var r=parseInt(hex.substring(0,2),16),
+        g=parseInt(hex.substring(2,4),16),
+        b=parseInt(hex.substring(4,6),16);
+    var modal = document.getElementById('verse-modal');
+    modal.style.setProperty('--vm-accent', accent);
+    modal.style.setProperty('--vm-rgb', r+','+g+','+b);
+
+    // Book label
+    var bookEl = document.getElementById('verse-modal-book');
+    bookEl.innerHTML = '<span>'+cfg.icon+'</span><span style="color:'+accent+'">'+cfg.label+'</span>';
+
+    // Reference
+    var ref = window._fmtRef ? window._fmtRef(book,v,cfg) : (v.r||'');
+    document.getElementById('verse-modal-ref').textContent = ref;
+    document.getElementById('verse-modal-ref').style.color = accent;
+
+    // Chapter / section label
+    var chap = window._chapLabel ? window._chapLabel(book,v,cfg) : '';
+    var chapEl = document.getElementById('verse-modal-chapter');
+    chapEl.textContent = chap || '';
+    chapEl.style.display = chap ? '' : 'none';
+
+    // Full text
+    document.getElementById('verse-modal-text').textContent = v.t || '';
+
+    // Border accent
+    document.getElementById('verse-modal-text').style.borderLeftColor = accent;
+
+    // Buttons
+    document.getElementById('vm-btn-copy').onclick = function(){
+      _copyVerse(ref, v.t);
+    };
+    document.getElementById('vm-btn-goto').onclick = function(){
+      window._closeVerseModal();
+      _vmGoToLibrary(book, v, cfg);
+    };
+
+    // Open
+    document.getElementById('verse-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function _vmGoToLibrary(book, v, cfg){
+    var targetIdx = null;
+    if(cfg.type==='gita' || book==='sbg'){ targetIdx = v.c - 1; }
+    else if(v.idx !== undefined){ targetIdx = v.idx; }
+    else if(cfg.type==='bible'){
+      // Bible: navigate by book name (chapter-level)
+      // Open the KJV/bible reader — fall back to copy if no idx
+      if(book==='kjv' || book==='bible'){
+        if(window._loadScriptures){
+          window._loadScriptures(function(){
+            window._openLibBook(book, null);
+          });
+        }
+        return;
+      }
+    } else if(cfg.type==='quran'){
+      // Quran: navigate by surah (chapter)
+      targetIdx = v.idx !== undefined ? v.idx : (v.c ? v.c-1 : null);
+    }
+
+    if(window._loadScriptures){
+      window._loadScriptures(function(){
+        window._openLibBook(book, targetIdx);
+      });
+    }
+  }
+
+  // Close on backdrop click
+  document.getElementById('verse-modal-overlay').addEventListener('click', function(e){
+    if(e.target === this) window._closeVerseModal();
+  });
+  // Close on Escape
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') window._closeVerseModal();
+  });
+
 })();
 </script>
+
+<!-- ══ VERSE MODAL ══ -->
+<div id="verse-modal-overlay" role="dialog" aria-modal="true" aria-label="Verse detail">
+  <div id="verse-modal">
+    <button id="verse-modal-close" aria-label="Close" onclick="window._closeVerseModal()">&#x2715;</button>
+    <div id="verse-modal-book"></div>
+    <div id="verse-modal-ref"></div>
+    <div id="verse-modal-chapter"></div>
+    <div id="verse-modal-text"></div>
+    <div id="verse-modal-actions">
+      <button class="vm-btn vm-btn-primary" id="vm-btn-copy">
+        <span>&#x2398;</span><span>Copy passage</span>
+      </button>
+      <button class="vm-btn" id="vm-btn-goto">
+        <span>&#x2197;</span><span>Go to library</span>
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
