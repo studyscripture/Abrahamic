@@ -10683,6 +10683,115 @@ const BOOK_CFG = {
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
 const NT_BOOKS = ['Matthew','Mark','Luke','John','Acts','Romans','1 Corinthians','2 Corinthians','Galatians','Ephesians','Philippians','Colossians','1 Thessalonians','2 Thessalonians','1 Timothy','2 Timothy','Titus','Philemon','Hebrews','James','1 Peter','2 Peter','1 John','2 John','3 John','Jude','Revelation'];
+const BIBLE_BOOK_ORDER = new Map([...OT_BOOKS, ...NT_BOOKS].map((name, idx)=>[name, idx]));
+
+function toNum(value, fallback){
+  const n = parseInt(value, 10);
+  return Number.isFinite(n) ? n : (fallback===undefined ? Number.MAX_SAFE_INTEGER : fallback);
+}
+function cmpText(a,b){
+  return String(a||'').localeCompare(String(b||''), undefined, { sensitivity:'base' });
+}
+function extractRefNums(ref){
+  const m = String(ref||'').match(/\d+/g);
+  return m ? m.map(n=>parseInt(n,10)) : [];
+}
+function cmpNumSeq(aNums,bNums){
+  const len = Math.max(aNums.length, bNums.length);
+  for(let i=0;i<len;i++){
+    const a = i<aNums.length ? aNums[i] : -1;
+    const b = i<bNums.length ? bNums[i] : -1;
+    if(a!==b) return a-b;
+  }
+  return 0;
+}
+
+function stripUpanishadFootnotes(text){
+  if(typeof text!=='string') return text;
+  const heading = "(?:[A-Z][A-Z\\s\\-\\.,']{2,}\\b(?:KHANDA|PRAPATHAKA|ADHYAYA|CHAPTER)\\b)";
+  let cleaned = text.replace(/\[paragraph continues\]/gi,' ');
+  cleaned = cleaned.replace(new RegExp(`Footnotes\\s+[\\s\\S]*?(?=(?:${heading}|$))`,'gi'),' ');
+  cleaned = cleaned.replace(new RegExp(`\\^\\d+:\\d+[\\s\\S]*?(?=(?:\\^\\d+:\\d+|${heading}|$))`,'gi'),' ');
+  cleaned = cleaned.replace(/\^\d+:\d+/g,' ');
+  cleaned = cleaned.replace(/\s{2,}/g,' ').trim();
+  return cleaned;
+}
+
+function normalizeAndSortScriptures(d){
+  const bibleCmp = (a,b)=>{
+    const aBook = a.book || ((a.r||'').match(/^(.+?)\s+\d+:\d+$/)||[])[1] || '';
+    const bBook = b.book || ((b.r||'').match(/^(.+?)\s+\d+:\d+$/)||[])[1] || '';
+    const aRank = BIBLE_BOOK_ORDER.has(aBook) ? BIBLE_BOOK_ORDER.get(aBook) : Number.MAX_SAFE_INTEGER;
+    const bRank = BIBLE_BOOK_ORDER.has(bBook) ? BIBLE_BOOK_ORDER.get(bBook) : Number.MAX_SAFE_INTEGER;
+    return (aRank-bRank) ||
+      (toNum(a.c)-toNum(b.c)) ||
+      (toNum(a.v)-toNum(b.v)) ||
+      cmpText(a.r,b.r);
+  };
+  const cvCmp = (a,b)=>
+    (toNum(a.c)-toNum(b.c)) ||
+    (toNum(a.v)-toNum(b.v)) ||
+    cmpText(a.r,b.r);
+  const refNumCmp = (a,b)=>
+    cmpNumSeq(extractRefNums(a.r), extractRefNums(b.r)) ||
+    cmpNumSeq(extractRefNums(a.title), extractRefNums(b.title)) ||
+    cmpNumSeq(extractRefNums(a.chapter), extractRefNums(b.chapter)) ||
+    cmpText(a.r,b.r) ||
+    cmpText(a.title,b.title) ||
+    cmpText(a.chapter,b.chapter);
+
+  if(Array.isArray(d.kjv)) d.kjv.sort(bibleCmp);
+  if(Array.isArray(d.bible)) d.bible.sort(bibleCmp);
+  if(Array.isArray(d.quran_y)) d.quran_y.sort(cvCmp);
+  if(Array.isArray(d.quran_p)) d.quran_p.sort(cvCmp);
+  if(Array.isArray(d.gita)) d.gita.sort(cvCmp);
+  if(Array.isArray(d.sbg)) d.sbg.sort(cvCmp);
+  if(Array.isArray(d.maha)) d.maha.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.s)-toNum(b.s))||cmpText(a.r,b.r));
+  if(Array.isArray(d.rig)) d.rig.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
+  if(Array.isArray(d.yajur)) d.yajur.sort((a,b)=>(toNum(a.k)-toNum(b.k))||(toNum(a.s)-toNum(b.s))||cmpText(a.r,b.r));
+  if(Array.isArray(d.sama)) d.sama.sort((a,b)=>
+    (toNum(a.pt)-toNum(b.pt)) ||
+    (toNum(a.b)-toNum(b.b)) ||
+    (toNum(a.ch)-toNum(b.ch)) ||
+    (toNum(a.d)-toNum(b.d)) ||
+    (toNum(a.v)-toNum(b.v)) ||
+    cmpText(a.r,b.r)
+  );
+  if(Array.isArray(d.atharva)) d.atharva.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
+  if(Array.isArray(d.avesta)){
+    const secOrder = new Map([['Vendidad',0],['Vispered',1],['Yasna',2]]);
+    d.avesta.sort((a,b)=>
+      ((secOrder.has(a.sec)?secOrder.get(a.sec):99)-(secOrder.has(b.sec)?secOrder.get(b.sec):99)) ||
+      cmpText(a.sec,b.sec) ||
+      (toNum(a.fg ?? a.ch ?? a.yn ?? a.gn ?? 1)-toNum(b.fg ?? b.ch ?? b.yn ?? b.gn ?? 1)) ||
+      (toNum(a.v)-toNum(b.v)) ||
+      cmpText(a.r,b.r)
+    );
+  }
+  // DN source uses sectional references that repeat; preserve source sequence.
+  if(Array.isArray(d.mn)) d.mn.sort(refNumCmp);
+  if(Array.isArray(d.sn)) d.sn.sort(refNumCmp);
+  if(Array.isArray(d.an)) d.an.sort(refNumCmp);
+  if(Array.isArray(d.tao)) d.tao.sort((a,b)=>(toNum(a.n)-toNum(b.n))||refNumCmp(a,b));
+  if(Array.isArray(d.analects)) d.analects.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.chapter)-toNum(b.chapter))||refNumCmp(a,b));
+  if(Array.isArray(d.ramayana)) d.ramayana.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.canto)-toNum(b.canto))||refNumCmp(a,b));
+  if(Array.isArray(d.harivamsha)) d.harivamsha.sort((a,b)=>(toNum(a.idx)-toNum(b.idx))||(toNum(a.chapter)-toNum(b.chapter))||refNumCmp(a,b));
+  if(Array.isArray(d.vishnu_purana)) d.vishnu_purana.sort((a,b)=>(toNum(a.idx)-toNum(b.idx))||(toNum(a.part)-toNum(b.part))||(toNum(a.section)-toNum(b.section))||refNumCmp(a,b));
+  if(Array.isArray(d.upanishads)){
+    const upanOrder = new Map();
+    let upanIdx = 0;
+    d.upanishads.forEach(s=>{
+      if(!upanOrder.has(s.upan)) upanOrder.set(s.upan, upanIdx++);
+      s.t = stripUpanishadFootnotes(s.t);
+    });
+    d.upanishads.sort((a,b)=>
+      ((upanOrder.has(a.upan)?upanOrder.get(a.upan):99)-(upanOrder.has(b.upan)?upanOrder.get(b.upan):99)) ||
+      (toNum(a.section_num)-toNum(b.section_num)) ||
+      cmpText(a.section,b.section) ||
+      cmpText(a.r,b.r)
+    );
+  }
+}
 
 let SCRIPTURES = null, dataLoading = false;
 const dataCBs = [];
@@ -10724,6 +10833,7 @@ function loadScriptures(cb){
           entry.v = parseInt(m[3],10);
         });
       });
+      normalizeAndSortScriptures(d);
       SCRIPTURES=d; dataLoading=false; hideStatus(); dataCBs.splice(0).forEach(f=>f());
     })
     .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load scripture data \u2014 place <strong>scriptures.json</strong> and <strong>vedas.json</strong> in the same folder as this file.'); console.error(e); });
@@ -10822,6 +10932,75 @@ window.libBibleChapterStep=function(d){
   const next=Math.max(0,Math.min(libBibleChapList.length-1,libChapterIdx+d));
   libBibleGoChapter(next); scrollToContent();
 };
+
+function splitIntoDisplayUnits(rawText){
+  const text = String(rawText||'')
+    .replace(/\r\n?/g,'\n')
+    .replace(/[ \t]+/g,' ')
+    .replace(/\n{3,}/g,'\n\n')
+    .trim();
+  if(!text) return [];
+
+  // Prefer explicit numbered clauses: "1. ... 2. ..."
+  const markerRe = /(^|\s)(\d{1,3})\.\s+(?=[A-Z"'])/g;
+  const markers = [];
+  let m;
+  while((m = markerRe.exec(text)) !== null){
+    markers.push({ idx: m.index + (m[1] ? m[1].length : 0), num: m[2] });
+  }
+  if(markers.length >= 2){
+    const out = [];
+    for(let i=0;i<markers.length;i++){
+      const start = markers[i].idx;
+      const end = i+1<markers.length ? markers[i+1].idx : text.length;
+      let chunk = text.slice(start,end).trim();
+      const num = markers[i].num;
+      chunk = chunk.replace(new RegExp(`^${num}\\.\\s+`),'').trim();
+      if(chunk) out.push({ n:num, t:chunk });
+    }
+    if(out.length >= 2) return out;
+  }
+
+  // Next, keep natural paragraph boundaries if present.
+  const paras = text.split(/\n{2,}/).map(s=>s.trim()).filter(Boolean);
+  if(paras.length >= 2) return paras.map((t,i)=>({ n:String(i+1), t }));
+
+  // Fallback: chunk long prose by sentence groups.
+  const sentences = text.match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g) || [text];
+  const chunks = [];
+  let buffer = '';
+  const maxLen = 320;
+  sentences.forEach(s=>{
+    const piece = s.trim();
+    if(!piece) return;
+    const candidate = (buffer ? `${buffer} ${piece}` : piece).trim();
+    if(candidate.length > maxLen && buffer){
+      chunks.push(buffer.trim());
+      buffer = piece;
+    } else {
+      buffer = candidate;
+    }
+  });
+  if(buffer) chunks.push(buffer.trim());
+  return chunks.map((t,i)=>({ n:String(i+1), t }));
+}
+
+function renderSegmentedPassage(container,cfg,baseRef,text){
+  const units = splitIntoDisplayUnits(text);
+  const list = document.createElement('div');
+  list.className = 'lib-verse-list';
+  (units.length ? units : [{n:'1',t:String(text||'').trim()}]).forEach((u,i)=>{
+    const n = u.n || String(i+1);
+    const unitText = u.t || '';
+    const row = document.createElement('div');
+    row.className = 'lib-verse';
+    row.title = 'Click to copy';
+    row.innerHTML = `<div class="lib-verse-num" style="color:${cfg.accent};">${esc(n)}</div><div class="lib-verse-text">${esc(unitText)}</div>`;
+    row.addEventListener('click',()=>_copyVerse(`${baseRef} · ${n}`,unitText));
+    list.appendChild(row);
+  });
+  container.appendChild(list);
+}
 
 function _buildOtherNav(key,cfg,targetIdx){
   const data=SCRIPTURES[key];
@@ -10930,27 +11109,19 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${v.speaker?`<em style="opacity:.65;font-size:.88em;">${esc(v.speaker)}:</em> `:''  }${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
-  } else if(libBook==='maha'){
+    } else if(libBook==='maha'){
     const sec=data[idx]; if(!sec) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=`Book ${sec.b}: ${sec.p} \\u2014 Section ${sec.s}`; container.appendChild(h);
+    h.textContent=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sec.ps; container.appendChild(sub);
     const _mahaRef=`Book ${sec.b}: ${sec.p} — Section ${sec.s}`;
-    const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=sec.t;
-    p.addEventListener('click',()=>_copyVerse(_mahaRef,sec.t));
-    container.appendChild(p);
-  } else if(isNikaya){
+    renderSegmentedPassage(container,cfg,_mahaRef,sec.t);
+    } else if(isNikaya){
     const sutta=data[idx]; if(!sutta) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`${sutta.r}: ${sutta.title}`; container.appendChild(h);
     if(sutta.chapter){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.chapter; container.appendChild(sub); }
-    const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=sutta.t;
-    p.addEventListener('click',()=>_copyVerse(sutta.r,sutta.t));
-    container.appendChild(p);
+    renderSegmentedPassage(container,cfg,sutta.r,sutta.t);
   } else if(libBook==='rig'||libBook==='atharva'){
     const grp=libChapterList[idx]; if(!grp) return;
     const verses=data.filter(v=>v.b===grp.b&&v.h===grp.h);
@@ -10983,56 +11154,38 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
-  } else if(libBook==='upanishads'){
+    } else if(libBook==='upanishads'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.upan+(s.section?' \u2014 '+s.section:''); container.appendChild(h);
-    const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=s.t;
-    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
-  } else if(libBook==='ramayana'){
+    h.textContent=s.upan+(s.section?' — '+s.section:''); container.appendChild(h);
+    renderSegmentedPassage(container,cfg,s.r,s.t);
+    } else if(libBook==='ramayana'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; container.appendChild(h);
-    const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=s.t;
-    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
-  } else if(libBook==='tao'){
+    renderSegmentedPassage(container,cfg,s.r,s.t);
+    } else if(libBook==='tao'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
-    const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=s.t;
-    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
-  } else if(libBook==='analects'){
+    renderSegmentedPassage(container,cfg,s.r,s.t);
+    } else if(libBook==='analects'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.title; container.appendChild(h);
-    const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=s.t;
-    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
-  } else if(libBook==='harivamsha'){
+    renderSegmentedPassage(container,cfg,s.r,s.t);
+    } else if(libBook==='harivamsha'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.parva; container.appendChild(sub);
-    const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=s.t;
-    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+    renderSegmentedPassage(container,cfg,s.r,s.t);
   } else if(libBook==='vishnu_purana'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=`Part ${s.part} · ${s.title}`; container.appendChild(sub);
-    const p=document.createElement('div');
-    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
-    p.title='Click to copy'; p.textContent=s.t;
-    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+    renderSegmentedPassage(container,cfg,s.r,s.t);
   }
 };
 
