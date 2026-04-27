@@ -972,8 +972,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .lib-stanza { padding:14px 0; border-bottom:1px solid rgba(37,29,66,.45); }
 .lib-stanza-ref { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.22em; color:var(--muted); margin-bottom:7px; text-transform:uppercase; }
 .lib-stanza-text { font-family:'EB Garamond',serif; font-size:16px; line-height:1.78; color:var(--cream); -webkit-user-select:text; user-select:text; }
-.arnold-poetry { font-style:italic; line-height:2.0; }
-.arnold-speaker { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:8px; opacity:.8; }
 
 /* ══ SEARCH ══ */
 .srch-wrap { max-width:1100px; margin:0 auto; padding:0 20px 80px; }
@@ -1113,7 +1111,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <span class="srch-hero-symbol">&#x1F4D6;&#xFE0F;</span>
   <div class="srch-eyebrow">Sacred Texts &middot; Comparative Scripture</div>
   <h1 class="srch-title">Scripture Library &amp; Search</h1>
-  <p class="srch-subtitle">Read and Search Scripture</p>
+  <p class="srch-subtitle">Read and search the Bible, Quran, Bhagavad Gita &amp; Mahabharata</p>
   <div class="srch-rule"><span class="srch-rule-glyph">&#10022;</span></div>
 </div>
 
@@ -8553,140 +8551,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .mp-comp-cell.dim-lbl{background:rgba(255,255,255,.04);font-size:8px;letter-spacing:.1em}
 }
 
-/* ══════════════════════════════════════════
-   VERSE MODAL OVERLAY
-══════════════════════════════════════════ */
-#verse-modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 8000;
-  background: rgba(8, 6, 18, 0.72);
-  backdrop-filter: blur(14px) saturate(0.7);
-  -webkit-backdrop-filter: blur(14px) saturate(0.7);
-  animation: vmFadeIn .22s ease;
-  align-items: center;
-  justify-content: center;
-}
-#verse-modal-overlay.open {
-  display: flex;
-}
-@keyframes vmFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-#verse-modal {
-  position: relative;
-  max-width: 680px;
-  width: calc(100vw - 40px);
-  max-height: calc(100vh - 80px);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(160,140,200,0.25) transparent;
-  background: linear-gradient(145deg, #1e1730 0%, #150f2a 100%);
-  border: 1px solid rgba(var(--vm-rgb, 160,140,200), 0.28);
-  border-radius: 16px;
-  box-shadow: 0 0 0 1px rgba(var(--vm-rgb,160,140,200),0.08),
-              0 24px 80px rgba(0,0,0,0.7),
-              inset 0 1px 0 rgba(255,255,255,0.05);
-  padding: 36px 40px 32px;
-  animation: vmSlideUp .26s cubic-bezier(.22,.68,0,1.2);
-}
-@keyframes vmSlideUp {
-  from { opacity: 0; transform: translateY(28px) scale(.97); }
-  to   { opacity: 1; transform: translateY(0)    scale(1);   }
-}
-
-#verse-modal::-webkit-scrollbar { width: 4px; }
-#verse-modal::-webkit-scrollbar-track { background: transparent; }
-#verse-modal::-webkit-scrollbar-thumb { background: rgba(160,140,200,0.25); border-radius: 4px; }
-#verse-modal::-webkit-scrollbar-thumb:hover { background: rgba(160,140,200,0.45); }
-#verse-modal-close {
-  position: absolute;
-  top: 14px; right: 16px;
-  background: none; border: none;
-  color: rgba(245,240,232,.35);
-  font-size: 22px; line-height: 1;
-  cursor: pointer; padding: 4px 8px;
-  border-radius: 6px;
-  transition: color .15s, background .15s;
-}
-#verse-modal-close:hover { color: rgba(245,240,232,.8); background: rgba(255,255,255,.07); }
-#verse-modal-book {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  opacity: .55;
-  margin-bottom: 6px;
-  font-family: 'EB Garamond', serif;
-}
-#verse-modal-ref {
-  font-family: 'Cormorant Garamond', 'EB Garamond', serif;
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.25;
-  margin-bottom: 4px;
-  color: var(--vm-accent, #a08cc8);
-}
-#verse-modal-chapter {
-  font-size: 13px;
-  opacity: .5;
-  margin-bottom: 22px;
-  font-family: 'EB Garamond', serif;
-}
-#verse-modal-text {
-  font-family: 'EB Garamond', 'Cormorant Garamond', serif;
-  font-size: 20px;
-  line-height: 1.78;
-  color: rgba(245, 240, 232, 0.92);
-  border-left: 3px solid var(--vm-accent, #a08cc8);
-  padding-left: 20px;
-  margin-bottom: 30px;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-#verse-modal-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.vm-btn {
-  flex: 1;
-  min-width: 140px;
-  padding: 13px 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(var(--vm-rgb,160,140,200), 0.28);
-  background: rgba(var(--vm-rgb,160,140,200), 0.08);
-  color: rgba(245,240,232,.9);
-  font-family: 'EB Garamond', serif;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background .18s, border-color .18s, transform .12s;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.vm-btn:hover {
-  background: rgba(var(--vm-rgb,160,140,200), 0.18);
-  border-color: rgba(var(--vm-rgb,160,140,200), 0.5);
-  transform: translateY(-1px);
-}
-.vm-btn:active { transform: translateY(0); }
-.vm-btn-primary {
-  background: rgba(var(--vm-rgb,160,140,200), 0.22);
-  border-color: rgba(var(--vm-rgb,160,140,200), 0.5);
-}
-.vm-btn-primary:hover {
-  background: rgba(var(--vm-rgb,160,140,200), 0.35);
-}
-@media (max-width: 520px) {
-  #verse-modal { padding: 28px 20px 24px; }
-  #verse-modal-text { font-size: 17px; }
-  #verse-modal-ref { font-size: 18px; }
-  .vm-btn { min-width: 120px; font-size: 14px; }
-}
-
+/* Search card action popup */
+.srch-popup-btn{display:block;width:100%;text-align:left;background:none;border:none;padding:11px 16px;color:var(--cream,#f5f0e8);font-size:14px;font-family:'EB Garamond',serif;cursor:pointer;transition:background .15s;}
 </style>
 
 <!-- ═══ TIMELINE MODAL (rendered once, content swapped by JS) ═══ -->
@@ -10685,115 +10551,6 @@ const BOOK_CFG = {
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
 const NT_BOOKS = ['Matthew','Mark','Luke','John','Acts','Romans','1 Corinthians','2 Corinthians','Galatians','Ephesians','Philippians','Colossians','1 Thessalonians','2 Thessalonians','1 Timothy','2 Timothy','Titus','Philemon','Hebrews','James','1 Peter','2 Peter','1 John','2 John','3 John','Jude','Revelation'];
-const BIBLE_BOOK_ORDER = new Map([...OT_BOOKS, ...NT_BOOKS].map((name, idx)=>[name, idx]));
-
-function toNum(value, fallback){
-  const n = parseInt(value, 10);
-  return Number.isFinite(n) ? n : (fallback===undefined ? Number.MAX_SAFE_INTEGER : fallback);
-}
-function cmpText(a,b){
-  return String(a||'').localeCompare(String(b||''), undefined, { sensitivity:'base' });
-}
-function extractRefNums(ref){
-  const m = String(ref||'').match(/\d+/g);
-  return m ? m.map(n=>parseInt(n,10)) : [];
-}
-function cmpNumSeq(aNums,bNums){
-  const len = Math.max(aNums.length, bNums.length);
-  for(let i=0;i<len;i++){
-    const a = i<aNums.length ? aNums[i] : -1;
-    const b = i<bNums.length ? bNums[i] : -1;
-    if(a!==b) return a-b;
-  }
-  return 0;
-}
-
-function stripUpanishadFootnotes(text){
-  if(typeof text!=='string') return text;
-  const heading = "(?:[A-Z][A-Z\\s\\-\\.,']{2,}\\b(?:KHANDA|PRAPATHAKA|ADHYAYA|CHAPTER)\\b)";
-  let cleaned = text.replace(/\[paragraph continues\]/gi,' ');
-  cleaned = cleaned.replace(new RegExp(`Footnotes\\s+[\\s\\S]*?(?=(?:${heading}|$))`,'gi'),' ');
-  cleaned = cleaned.replace(new RegExp(`\\^\\d+:\\d+[\\s\\S]*?(?=(?:\\^\\d+:\\d+|${heading}|$))`,'gi'),' ');
-  cleaned = cleaned.replace(/\^\d+:\d+/g,' ');
-  cleaned = cleaned.replace(/\s{2,}/g,' ').trim();
-  return cleaned;
-}
-
-function normalizeAndSortScriptures(d){
-  const bibleCmp = (a,b)=>{
-    const aBook = a.book || ((a.r||'').match(/^(.+?)\s+\d+:\d+$/)||[])[1] || '';
-    const bBook = b.book || ((b.r||'').match(/^(.+?)\s+\d+:\d+$/)||[])[1] || '';
-    const aRank = BIBLE_BOOK_ORDER.has(aBook) ? BIBLE_BOOK_ORDER.get(aBook) : Number.MAX_SAFE_INTEGER;
-    const bRank = BIBLE_BOOK_ORDER.has(bBook) ? BIBLE_BOOK_ORDER.get(bBook) : Number.MAX_SAFE_INTEGER;
-    return (aRank-bRank) ||
-      (toNum(a.c)-toNum(b.c)) ||
-      (toNum(a.v)-toNum(b.v)) ||
-      cmpText(a.r,b.r);
-  };
-  const cvCmp = (a,b)=>
-    (toNum(a.c)-toNum(b.c)) ||
-    (toNum(a.v)-toNum(b.v)) ||
-    cmpText(a.r,b.r);
-  const refNumCmp = (a,b)=>
-    cmpNumSeq(extractRefNums(a.r), extractRefNums(b.r)) ||
-    cmpNumSeq(extractRefNums(a.title), extractRefNums(b.title)) ||
-    cmpNumSeq(extractRefNums(a.chapter), extractRefNums(b.chapter)) ||
-    cmpText(a.r,b.r) ||
-    cmpText(a.title,b.title) ||
-    cmpText(a.chapter,b.chapter);
-
-  if(Array.isArray(d.kjv)) d.kjv.sort(bibleCmp);
-  if(Array.isArray(d.bible)) d.bible.sort(bibleCmp);
-  if(Array.isArray(d.quran_y)) d.quran_y.sort(cvCmp);
-  if(Array.isArray(d.quran_p)) d.quran_p.sort(cvCmp);
-  if(Array.isArray(d.gita)) d.gita.sort(cvCmp);
-  if(Array.isArray(d.sbg)) d.sbg.sort(cvCmp);
-  if(Array.isArray(d.maha)) d.maha.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.s)-toNum(b.s))||cmpText(a.r,b.r));
-  if(Array.isArray(d.rig)) d.rig.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
-  if(Array.isArray(d.yajur)) d.yajur.sort((a,b)=>(toNum(a.k)-toNum(b.k))||(toNum(a.s)-toNum(b.s))||cmpText(a.r,b.r));
-  if(Array.isArray(d.sama)) d.sama.sort((a,b)=>
-    (toNum(a.pt)-toNum(b.pt)) ||
-    (toNum(a.b)-toNum(b.b)) ||
-    (toNum(a.ch)-toNum(b.ch)) ||
-    (toNum(a.d)-toNum(b.d)) ||
-    (toNum(a.v)-toNum(b.v)) ||
-    cmpText(a.r,b.r)
-  );
-  if(Array.isArray(d.atharva)) d.atharva.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
-  if(Array.isArray(d.avesta)){
-    const secOrder = new Map([['Vendidad',0],['Vispered',1],['Yasna',2]]);
-    d.avesta.sort((a,b)=>
-      ((secOrder.has(a.sec)?secOrder.get(a.sec):99)-(secOrder.has(b.sec)?secOrder.get(b.sec):99)) ||
-      cmpText(a.sec,b.sec) ||
-      (toNum(a.fg ?? a.ch ?? a.yn ?? a.gn ?? 1)-toNum(b.fg ?? b.ch ?? b.yn ?? b.gn ?? 1)) ||
-      (toNum(a.v)-toNum(b.v)) ||
-      cmpText(a.r,b.r)
-    );
-  }
-  // DN source uses sectional references that repeat; preserve source sequence.
-  if(Array.isArray(d.mn)) d.mn.sort(refNumCmp);
-  if(Array.isArray(d.sn)) d.sn.sort(refNumCmp);
-  if(Array.isArray(d.an)) d.an.sort(refNumCmp);
-  if(Array.isArray(d.tao)) d.tao.sort((a,b)=>(toNum(a.n)-toNum(b.n))||refNumCmp(a,b));
-  if(Array.isArray(d.analects)) d.analects.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.chapter)-toNum(b.chapter))||refNumCmp(a,b));
-  if(Array.isArray(d.ramayana)) d.ramayana.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.canto)-toNum(b.canto))||refNumCmp(a,b));
-  if(Array.isArray(d.harivamsha)) d.harivamsha.sort((a,b)=>(toNum(a.idx)-toNum(b.idx))||(toNum(a.chapter)-toNum(b.chapter))||refNumCmp(a,b));
-  if(Array.isArray(d.vishnu_purana)) d.vishnu_purana.sort((a,b)=>(toNum(a.idx)-toNum(b.idx))||(toNum(a.part)-toNum(b.part))||(toNum(a.section)-toNum(b.section))||refNumCmp(a,b));
-  if(Array.isArray(d.upanishads)){
-    const upanOrder = new Map();
-    let upanIdx = 0;
-    d.upanishads.forEach(s=>{
-      if(!upanOrder.has(s.upan)) upanOrder.set(s.upan, upanIdx++);
-      s.t = stripUpanishadFootnotes(s.t);
-    });
-    d.upanishads.sort((a,b)=>
-      ((upanOrder.has(a.upan)?upanOrder.get(a.upan):99)-(upanOrder.has(b.upan)?upanOrder.get(b.upan):99)) ||
-      (toNum(a.section_num)-toNum(b.section_num)) ||
-      cmpText(a.section,b.section) ||
-      cmpText(a.r,b.r)
-    );
-  }
-}
 
 let SCRIPTURES = null, dataLoading = false;
 const dataCBs = [];
@@ -10835,7 +10592,6 @@ function loadScriptures(cb){
           entry.v = parseInt(m[3],10);
         });
       });
-      normalizeAndSortScriptures(d);
       SCRIPTURES=d; dataLoading=false; hideStatus(); dataCBs.splice(0).forEach(f=>f());
     })
     .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load scripture data \u2014 place <strong>scriptures.json</strong> and <strong>vedas.json</strong> in the same folder as this file.'); console.error(e); });
@@ -10845,8 +10601,7 @@ function loadScriptures(cb){
 let libBook=null, libBibleBook=null, libBibleTestament='OT', libBibleChapList=[];
 let libChapterIdx=0, libChapterList=[];
 
-window.openLibBook  = function(key){ loadScriptures(()=>_openLibBook(key)); };
-window._openLibBook = function(key, targetIdx){ _openLibBook(key, targetIdx); };
+window.openLibBook = function(key){ loadScriptures(()=>_openLibBook(key)); };
 
 function _openLibBook(key, targetIdx){
   libBook=key;
@@ -10934,109 +10689,6 @@ window.libBibleChapterStep=function(d){
   const next=Math.max(0,Math.min(libBibleChapList.length-1,libChapterIdx+d));
   libBibleGoChapter(next); scrollToContent();
 };
-
-function splitIntoDisplayUnits(rawText){
-  const text = String(rawText||'')
-    .replace(/\r\n?/g,'\n')
-    .replace(/[ \t]+/g,' ')
-    .replace(/\n{3,}/g,'\n\n')
-    .trim();
-  if(!text) return [];
-
-  // Prefer explicit numbered clauses: "1. ... 2. ..."
-  const markerRe = /(^|\s)(\d{1,3})\.\s+(?=[A-Z"'])/g;
-  const markers = [];
-  let m;
-  while((m = markerRe.exec(text)) !== null){
-    markers.push({ idx: m.index + (m[1] ? m[1].length : 0), num: m[2] });
-  }
-  if(markers.length >= 2){
-    const out = [];
-    for(let i=0;i<markers.length;i++){
-      const start = markers[i].idx;
-      const end = i+1<markers.length ? markers[i+1].idx : text.length;
-      let chunk = text.slice(start,end).trim();
-      const num = markers[i].num;
-      chunk = chunk.replace(new RegExp(`^${num}\\.\\s+`),'').trim();
-      if(chunk) out.push({ n:num, t:chunk });
-    }
-    if(out.length >= 2) return out;
-  }
-
-  // Next, keep natural paragraph boundaries if present.
-  const paras = text.split(/\n{2,}/).map(s=>s.trim()).filter(Boolean);
-  if(paras.length >= 2) return paras.map((t,i)=>({ n:String(i+1), t }));
-
-  // Fallback: chunk long prose by sentence groups.
-  const sentences = text.match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g) || [text];
-  const chunks = [];
-  let buffer = '';
-  const maxLen = 320;
-  sentences.forEach(s=>{
-    const piece = s.trim();
-    if(!piece) return;
-    const candidate = (buffer ? `${buffer} ${piece}` : piece).trim();
-    if(candidate.length > maxLen && buffer){
-      chunks.push(buffer.trim());
-      buffer = piece;
-    } else {
-      buffer = candidate;
-    }
-  });
-  if(buffer) chunks.push(buffer.trim());
-  return chunks.map((t,i)=>({ n:String(i+1), t }));
-}
-
-function isGitaGarbage(v){
-  var t=(v.t||'').trim();
-  return (t.startsWith('. ')||t.startsWith('[FN')||t.startsWith('.,')|| t.startsWith('.    .')||
-          (t.indexOf('BHAGAVAD-GITA')>=0&&t.length<200)||t.startsWith('Entitled')||
-          t.indexOf('repetitionary')>=0||t.indexOf('PROJECT GUTENBERG')>=0||
-          t.indexOf('Updated editions')>=0||t.indexOf('Creating the works')>=0||t.length<4);
-}
-function arnoldPoetryLines(text){
-  if(!text) return '';
-  var segs=[], cur='';
-  for(var i=0;i<text.length;i++){
-    var c=text[i];
-    if(c===' '&&i>0&&i<text.length-1){
-      var prev=text[i-1],next=text[i+1];
-      if(/[A-Z"']/.test(next)&&/[a-z,;\-!?'"\)]/.test(prev)){segs.push(cur.trim());cur='';continue;}
-    }
-    cur+=c;
-  }
-  if(cur.trim()) segs.push(cur.trim());
-  if(segs.length<=1) return esc(text);
-  return segs.map(function(s){return esc(s);}).join('<br>');
-}
-function extractSnippet(text,terms){
-  if(!text) return '';
-  var lower=text.toLowerCase(), matchPos=-1;
-  for(var i=0;i<terms.length;i++){var p=lower.indexOf(terms[i]);if(p>=0){matchPos=matchPos<0?p:Math.min(matchPos,p);}}
-  if(matchPos<0) return text.slice(0,280)+'\u2026';
-  var start=Math.max(0,matchPos-80), end=Math.min(text.length,start+280);
-  if(start>0){var ps=text.lastIndexOf(' ',start);if(ps>start-20)start=ps+1;}
-  if(end<text.length){var ns=text.indexOf(' ',end);if(ns>0&&ns<end+20)end=ns;}
-  var snip=text.slice(start,end).trim();
-  return (start>0?'\u2026':'')+snip+(end<text.length?'\u2026':'');
-}
-
-function renderSegmentedPassage(container,cfg,baseRef,text){
-  const units = splitIntoDisplayUnits(text);
-  const list = document.createElement('div');
-  list.className = 'lib-verse-list';
-  (units.length ? units : [{n:'1',t:String(text||'').trim()}]).forEach((u,i)=>{
-    const n = u.n || String(i+1);
-    const unitText = u.t || '';
-    const row = document.createElement('div');
-    row.className = 'lib-verse';
-    row.title = 'Click to copy';
-    row.innerHTML = `<div class="lib-verse-num" style="color:${cfg.accent};">${esc(n)}</div><div class="lib-verse-text">${esc(unitText)}</div>`;
-    row.addEventListener('click',()=>_copyVerse(`${baseRef} · ${n}`,unitText));
-    list.appendChild(row);
-  });
-  container.appendChild(list);
-}
 
 function _buildOtherNav(key,cfg,targetIdx){
   const data=SCRIPTURES[key];
@@ -11132,19 +10784,11 @@ window.libGoChapter=function(idxStr){
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
   } else if(libBook==='gita'){
-    const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch&&!isGitaGarbage(v));
+    const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch);
     const title=verses[0]?verses[0].ct:`Chapter ${ch}`;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Chapter ${ch}: ${title}`; container.appendChild(h);
-    verses.forEach(v=>{
-      const ref=`Chapter ${v.c} \u00B7 Stanza ${v.v}`;
-      const s=document.createElement('div'); s.className='lib-stanza'; s.id='gstanza-'+v.c+'-'+v.v; s.title='Click to copy';
-      let raw=v.t||'', spkHtml='';
-      const spkM=raw.match(/^([A-Z][a-z\u0101\u012B\u016B]+(?:\s[A-Z][a-z]+)?)[.:]\s+/);
-      if(spkM){spkHtml=`<div class="arnold-speaker" style="color:${cfg.accent};">${esc(spkM[1])}</div>`;raw=raw.slice(spkM[0].length);}
-      s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div>${spkHtml}<div class="lib-stanza-text arnold-poetry">${arnoldPoetryLines(raw)}</div>`;
-      s.addEventListener('click',()=>_copyVerse(ref,v.t)); container.appendChild(s);
-    });
+    verses.forEach(v=>{ const ref=`Chapter ${v.c} · Stanza ${v.v}`; const s=document.createElement('div'); s.className='lib-stanza'; s.title='Click to copy'; s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div><div class="lib-stanza-text">${esc(v.t)}</div>`; s.addEventListener('click',()=>_copyVerse(ref,v.t)); container.appendChild(s); });
   } else if(libBook==='sbg'){
     const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch);
     const title=verses[0]?verses[0].chapter_name:`Chapter ${ch}`;
@@ -11153,19 +10797,27 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${v.speaker?`<em style="opacity:.65;font-size:.88em;">${esc(v.speaker)}:</em> `:''  }${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
-    } else if(libBook==='maha'){
+  } else if(libBook==='maha'){
     const sec=data[idx]; if(!sec) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=`Book ${sec.b}: ${sec.p} \u2014 Section ${sec.s}`; container.appendChild(h);
+    h.textContent=`Book ${sec.b}: ${sec.p} \\u2014 Section ${sec.s}`; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sec.ps; container.appendChild(sub);
     const _mahaRef=`Book ${sec.b}: ${sec.p} — Section ${sec.s}`;
-    renderSegmentedPassage(container,cfg,_mahaRef,sec.t);
-    } else if(isNikaya){
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=sec.t;
+    p.addEventListener('click',()=>_copyVerse(_mahaRef,sec.t));
+    container.appendChild(p);
+  } else if(isNikaya){
     const sutta=data[idx]; if(!sutta) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`${sutta.r}: ${sutta.title}`; container.appendChild(h);
     if(sutta.chapter){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.chapter; container.appendChild(sub); }
-    renderSegmentedPassage(container,cfg,sutta.r,sutta.t);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=sutta.t;
+    p.addEventListener('click',()=>_copyVerse(sutta.r,sutta.t));
+    container.appendChild(p);
   } else if(libBook==='rig'||libBook==='atharva'){
     const grp=libChapterList[idx]; if(!grp) return;
     const verses=data.filter(v=>v.b===grp.b&&v.h===grp.h);
@@ -11198,38 +10850,56 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
-    } else if(libBook==='upanishads'){
+  } else if(libBook==='upanishads'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.upan+(s.section?' — '+s.section:''); container.appendChild(h);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
-    } else if(libBook==='ramayana'){
+    h.textContent=s.upan+(s.section?' \u2014 '+s.section:''); container.appendChild(h);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+  } else if(libBook==='ramayana'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; container.appendChild(h);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
-    } else if(libBook==='tao'){
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+  } else if(libBook==='tao'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
-    } else if(libBook==='analects'){
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+  } else if(libBook==='analects'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.title; container.appendChild(h);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
-    } else if(libBook==='harivamsha'){
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
+  } else if(libBook==='harivamsha'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.parva; container.appendChild(sub);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
   } else if(libBook==='vishnu_purana'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=`Part ${s.part} · ${s.title}`; container.appendChild(sub);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
+    const p=document.createElement('div');
+    p.style.cssText='font-family:"EB Garamond",serif;font-size:16px;line-height:1.82;color:var(--cream);-webkit-user-select:text;user-select:text;cursor:pointer;';
+    p.title='Click to copy'; p.textContent=s.t;
+    p.addEventListener('click',()=>_copyVerse(s.r,s.t)); container.appendChild(p);
   }
 };
 
@@ -11275,10 +10945,7 @@ function runSearch(query,books){
   let totalFound=0;
   for(const book of books){
     if(!SCRIPTURES[book]) continue;
-    const matches=SCRIPTURES[book].filter(v=>{
-      if(book==='gita'&&isGitaGarbage(v)) return false;
-      return terms.every(t=>v.t.toLowerCase().includes(t));
-    });
+    const matches=SCRIPTURES[book].filter(v=>terms.every(t=>v.t.toLowerCase().includes(t)));
     if(!matches.length) continue;
     bookMatches[book]=matches; totalFound+=matches.length; activeBooks.push(book);
   }
@@ -11341,15 +11008,23 @@ function makeCard(book,v,cfg,terms){
   const ref=document.createElement('div'); ref.className='srch-card-ref'; ref.style.color=cfg.accent;
   ref.textContent=fmtRef(book,v,cfg); card.appendChild(ref);
 
-  // Chapter label — truncate long section titles
+  // Chapter label
   const cl=chapLabel(book,v,cfg);
-  if(cl){ const ce=document.createElement('div'); ce.className='srch-card-chapter'; ce.textContent=cl.length>80?cl.slice(0,78)+'\u2026':cl; card.appendChild(ce); }
+  if(cl){ const ce=document.createElement('div'); ce.className='srch-card-chapter'; ce.textContent=cl; card.appendChild(ce); }
 
-  // Tight snippet centred on the search term hit
+  // Text — find the snippet around search term for all prose/long-text types
+  let txt=v.t;
+  if(cfg.type==='maha'||cfg.type==='gita'||cfg.type==='nikaya'||
+     cfg.type==='harivamsha'||cfg.type==='vishnu_purana'||
+     cfg.type==='veda'||cfg.type==='avesta'){
+    txt=extractMahaSnippet(v.t, terms);
+  } else if(txt.length>600){
+    const cut=txt.indexOf('. ',500); txt=(cut>0?txt.slice(0,cut+1):txt.slice(0,600))+'…';
+  }
   const te=document.createElement('div'); te.className='srch-card-text';
-  te.innerHTML=highlight(esc(extractSnippet(v.t,terms)),terms); card.appendChild(te);
-  card.title='Click to open';
-  card.addEventListener('click',(e)=>window._openVerseModal(book,v,cfg,terms));
+  te.innerHTML=highlight(esc(txt),terms); card.appendChild(te);
+  card.title='Click for options';
+  card.addEventListener('click',(e)=>_showCardMenu(e,book,v,cfg));
   return card;
 }
 
@@ -11430,16 +11105,16 @@ function hideStatus(){ const el=document.getElementById('srch-status'); if(el) e
 })();
 
 // ═══ INIT ═══
-switchReligion('srch');
-
-// Expose helpers needed by the verse modal
-window._fmtRef         = fmtRef;
-window._chapLabel      = chapLabel;
-window._loadScriptures = loadScriptures;
-window.switchReligion  = switchReligion;
+switchReligion('jud');
 </script>
 
 <div id="clip-toast">✦ Copied to Clipboard</div>
+
+<div id="srch-action-popup" style="display:none;position:fixed;z-index:9999;background:var(--surface,#1a1628);border:1px solid rgba(160,140,200,0.25);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.55);min-width:220px;overflow:hidden;">
+  <div id="srch-action-ref" style="padding:10px 14px 8px;font-size:12px;opacity:.55;font-family:'EB Garamond',serif;border-bottom:1px solid rgba(160,140,200,0.12);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px;"></div>
+  <button id="srch-action-copy" class="srch-popup-btn" onmouseover="this.style.background='rgba(160,140,200,0.12)'" onmouseout="this.style.background='none'">📋️ Copy passage</button>
+  <button id="srch-action-goto" class="srch-popup-btn" onmouseover="this.style.background='rgba(160,140,200,0.12)'" onmouseout="this.style.background='none'">↗️ Go to passage</button>
+</div>
 <script>
 (function(){
   var _tt=null;
@@ -11464,199 +11139,43 @@ window.switchReligion  = switchReligion;
     document.body.removeChild(ta);
   }
 
-  // ══ VERSE MODAL ══════════════════════════════
-  var _vmBook='', _vmV=null, _vmCfg=null;
-
-  window._closeVerseModal = function(){
-    document.getElementById('verse-modal-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  };
-
-  var _vmTerms = [];
-  window._openVerseModal = function(book, v, cfg, terms){
-    _vmBook=book; _vmV=v; _vmCfg=cfg; _vmTerms=terms||[];
-
-    // Accent colour from book config
-    var accent = cfg.accent || '#a08cc8';
-    // Convert hex to rgb triplet for CSS var
-    var hex = accent.replace('#','');
-    var r=parseInt(hex.substring(0,2),16),
-        g=parseInt(hex.substring(2,4),16),
-        b=parseInt(hex.substring(4,6),16);
-    var modal = document.getElementById('verse-modal');
-    modal.style.setProperty('--vm-accent', accent);
-    modal.style.setProperty('--vm-rgb', r+','+g+','+b);
-
-    // Book label
-    var bookEl = document.getElementById('verse-modal-book');
-    bookEl.innerHTML = '<span>'+cfg.icon+'</span><span style="color:'+accent+'">'+cfg.label+'</span>';
-
-    // Reference
-    var ref = window._fmtRef ? window._fmtRef(book,v,cfg) : (v.r||'');
-    document.getElementById('verse-modal-ref').textContent = ref;
-    document.getElementById('verse-modal-ref').style.color = accent;
-
-    // Chapter / section label
-    var chap = window._chapLabel ? window._chapLabel(book,v,cfg) : '';
-    var chapEl = document.getElementById('verse-modal-chapter');
-    chapEl.textContent = chap || '';
-    chapEl.style.display = chap ? '' : 'none';
-
-    // Full text
-    document.getElementById('verse-modal-text').textContent = v.t || '';
-
-    // Border accent
-    document.getElementById('verse-modal-text').style.borderLeftColor = accent;
-
-    // Buttons
-    document.getElementById('vm-btn-copy').onclick = function(){
-      _copyVerse(ref, v.t);
+  // Card action popup
+  var _mRef='',_mText='',_mBook='',_mV=null,_mCfg=null;
+  function _closeMenu(){
+    var p=document.getElementById('srch-action-popup');
+    if(p) p.style.display='none';
+  }
+  window._showCardMenu=function(e,book,v,cfg){
+    e.stopPropagation();
+    _mRef=fmtRef(book,v,cfg); _mText=v.t; _mBook=book; _mV=v; _mCfg=cfg;
+    var p=document.getElementById('srch-action-popup');
+    var refEl=document.getElementById('srch-action-ref');
+    if(!p) return;
+    refEl.textContent=_mRef;
+    var x=e.clientX, y=e.clientY, pw=240, ph=116;
+    if(x+pw>window.innerWidth-10) x=window.innerWidth-pw-10;
+    if(y+ph>window.innerHeight-10) y=y-ph-6; else y=y+6;
+    p.style.left=x+'px'; p.style.top=y+'px'; p.style.display='block';
+    document.getElementById('srch-action-copy').onclick=function(){
+      _copyVerse(_mRef,_mText); _closeMenu();
     };
-    document.getElementById('vm-btn-goto').onclick = function(){
-      window._closeVerseModal();
-      _vmGoToLibrary(_vmBook, _vmV, _vmCfg, _vmTerms);
+    document.getElementById('srch-action-goto').onclick=function(){
+      _goToPassage(_mBook,_mV,_mCfg); _closeMenu();
     };
-
-    // Open
-    document.getElementById('verse-modal-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
   };
+  document.addEventListener('click',_closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')_closeMenu();});
 
-  // After library navigates, scroll to and highlight the verse
-  function _vmScrollToVerse(v, terms){
-    var container=document.getElementById('lib-verse-content');
-    if(!container) return;
-    var targetEl=null;
-    // Gita: find by stanza id
-    if(_vmBook==='gita'){
-      targetEl=document.getElementById('gstanza-'+v.c+'-'+v.v);
-    }
-    // All books: match by reference text in .lib-verse-num or .lib-stanza-ref
-    if(!targetEl){
-      var ref=(v.r||'').trim();
-      var refEls=container.querySelectorAll('.lib-verse-num,.lib-stanza-ref');
-      for(var i=0;i<refEls.length;i++){
-        if(refEls[i].textContent.trim()===ref){
-          targetEl=refEls[i].closest('.lib-verse,.lib-stanza')||refEls[i].parentElement;
-          break;
-        }
-      }
-    }
-    // Fallback: first text element containing all search terms
-    if(!targetEl&&terms&&terms.length){
-      var lc=terms.map(function(t){return t.toLowerCase();});
-      var els=container.querySelectorAll('.lib-verse-text,.lib-stanza-text');
-      for(var j=0;j<els.length;j++){
-        var low=els[j].textContent.toLowerCase();
-        if(lc.every(function(t){return low.includes(t);})){targetEl=els[j].parentElement||els[j];break;}
-      }
-    }
-    if(targetEl){
-      targetEl.scrollIntoView({behavior:'smooth',block:'center'});
-      var orig=targetEl.style.cssText;
-      targetEl.style.cssText+=';outline:2px solid var(--vm-accent,#a08cc8);outline-offset:3px;border-radius:4px;';
-      setTimeout(function(){targetEl.style.cssText=orig;},2400);
-    }
-  }
-
-  function _vmGoToLibrary(book, v, cfg, terms){
-    function findIdx(data){
-      var t=cfg.type;
-      if(t==='gita'||book==='sbg') return v.c-1;
-      if(t==='quran'){
-        var chs=[]; var seen={};
-        data.forEach(function(x){if(!seen[x.c]){seen[x.c]=true;chs.push(x.c);}});
-        chs.sort(function(a,b){return a-b;});
-        var i=chs.indexOf(v.c); return i>=0?i:0;
-      }
-      if(t==='maha'){
-        var i=data.findIndex(function(s){return s.b===v.b&&s.s===v.s;}); return i>=0?i:0;
-      }
-      if(t==='nikaya'||book==='upanishads'||book==='ramayana'||book==='tao'||
-         book==='analects'||book==='harivamsha'||book==='vishnu_purana'){
-        var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
-      }
-      if(book==='rig'||book==='atharva'){
-        var hymns=[]; var seen={};
-        data.forEach(function(x){var k=x.b+'.'+x.h;if(!seen[k]){seen[k]=true;hymns.push({b:x.b,h:x.h});}});
-        var i=hymns.findIndex(function(h){return h.b===v.b&&h.h===v.h;}); return i>=0?i:0;
-      }
-      if(book==='sama'){
-        var gs=[]; var seen={};
-        data.forEach(function(x){var k=x.pt+'.'+x.b+'.'+x.ch+'.'+x.d;if(!seen[k]){seen[k]=true;gs.push({pt:x.pt,b:x.b,ch:x.ch,d:x.d});}});
-        var i=gs.findIndex(function(g){return g.pt===v.pt&&g.b===v.b&&g.ch===v.ch&&g.d===v.d;}); return i>=0?i:0;
-      }
-      if(book==='yajur'){
-        var ks=[]; var seen={};
-        data.forEach(function(x){if(!seen[x.k]){seen[x.k]=true;ks.push(x.k);}});
-        ks.sort(function(a,b){return a-b;});
-        var i=ks.indexOf(v.k); return i>=0?i:0;
-      }
-      if(book==='avesta'){
-        var gs=[]; var seen={};
-        data.forEach(function(x){var fg=x.fg||x.ch||x.yn||x.gn||1;var k=x.sec+'.'+fg;if(!seen[k]){seen[k]=true;gs.push({sec:x.sec,fg:fg});}});
-        var vfg=v.fg||v.ch||v.yn||v.gn||1;
-        var i=gs.findIndex(function(g){return g.sec===v.sec&&g.fg===vfg;}); return i>=0?i:0;
-      }
-      return 0;
-    }
-    if(cfg.type==='bible'){
-      window._loadScriptures(function(){
-        window.switchReligion('srch'); showSrchPanel('lib');
-        window._openLibBook(book,null);
-        setTimeout(function(){_vmScrollToVerse(v,terms);},700);
-      });
-      return;
-    }
-    window._loadScriptures(function(){
-      var idx=findIdx(window.SCRIPTURES[book]||[]);
-      window.switchReligion('srch'); showSrchPanel('lib');
-      window._openLibBook(book,idx);
-      setTimeout(function(){_vmScrollToVerse(v,terms);},700);
-    });
-  }
-
-  // Attach overlay listeners after DOM is ready
-  function _attachModalListeners(){
-    var ov = document.getElementById('verse-modal-overlay');
-    if(ov){
-      ov.addEventListener('click', function(e){
-        if(e.target === ov) window._closeVerseModal();
-      });
-      ov.addEventListener('touchend', function(e){
-        if(e.target === ov){ e.preventDefault(); window._closeVerseModal(); }
-      }, {passive:false});
-    }
-  }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', _attachModalListeners);
-  } else {
-    _attachModalListeners();
-  }
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape') window._closeVerseModal();
-  });
-
+  // Go to passage: open library reader at the right entry
+  window._goToPassage=function(book,v,cfg){
+    if(cfg.type==='bible'||cfg.type==='quran'){_copyVerse(fmtRef(book,v,cfg),v.t);return;}
+    var targetIdx=null;
+    if(cfg.type==='gita'||book==='sbg'){ targetIdx=v.c-1; }
+    else if(v.idx!==undefined){ targetIdx=v.idx; }
+    if(targetIdx===null){_copyVerse(fmtRef(book,v,cfg),v.t);return;}
+    loadScriptures(function(){ _openLibBook(book,targetIdx); });
+  };
 })();
 </script>
-
-<!-- ══ VERSE MODAL ══ -->
-<div id="verse-modal-overlay" role="dialog" aria-modal="true" aria-label="Verse detail">
-  <div id="verse-modal">
-    <button id="verse-modal-close" aria-label="Close" onclick="window._closeVerseModal()">&#x2715;</button>
-    <div id="verse-modal-book"></div>
-    <div id="verse-modal-ref"></div>
-    <div id="verse-modal-chapter"></div>
-    <div id="verse-modal-text"></div>
-    <div id="verse-modal-actions">
-      <button class="vm-btn vm-btn-primary" id="vm-btn-copy">
-        <span>&#x2398;</span><span>Copy passage</span>
-      </button>
-      <button class="vm-btn" id="vm-btn-goto">
-        <span>&#x2197;</span><span>Go to Section</span>
-      </button>
-    </div>
-  </div>
-</div>
 </body>
 </html>
