@@ -10733,7 +10733,8 @@ function loadScriptures(cb){
 let libBook=null, libBibleBook=null, libBibleTestament='OT', libBibleChapList=[];
 let libChapterIdx=0, libChapterList=[];
 
-window.openLibBook = function(key){ loadScriptures(()=>_openLibBook(key)); };
+window.openLibBook  = function(key){ loadScriptures(()=>_openLibBook(key)); };
+window._openLibBook = function(key, targetIdx){ _openLibBook(key, targetIdx); };
 
 function _openLibBook(key, targetIdx){
   libBook=key;
