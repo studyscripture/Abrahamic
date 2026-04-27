@@ -972,8 +972,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .lib-stanza { padding:14px 0; border-bottom:1px solid rgba(37,29,66,.45); }
 .lib-stanza-ref { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.22em; color:var(--muted); margin-bottom:7px; text-transform:uppercase; }
 .lib-stanza-text { font-family:'EB Garamond',serif; font-size:16px; line-height:1.78; color:var(--cream); -webkit-user-select:text; user-select:text; }
-.arnold-poetry { font-style:italic; line-height:1.95; }
-.arnold-speaker { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:6px; opacity:.85; }
+.arnold-poetry { font-style:italic; line-height:2.0; }
+.arnold-speaker { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:8px; opacity:.8; }
 
 /* ══ SEARCH ══ */
 .srch-wrap { max-width:1100px; margin:0 auto; padding:0 20px 80px; }
@@ -10987,26 +10987,38 @@ function splitIntoDisplayUnits(rawText){
   return chunks.map((t,i)=>({ n:String(i+1), t }));
 }
 
-function formatArnoldPoetry(text){
-  // Arnold's Song Celestial uses poetic lines stored as flat prose.
-  // Each new poetic line begins with a capital letter following a space.
-  // We split on these word-initial capitals to restore the verse layout.
+function isGitaGarbage(v){
+  var t=(v.t||'').trim();
+  return (t.startsWith('. ')||t.startsWith('[FN')||t.startsWith('.,')|| t.startsWith('.    .')||
+          (t.indexOf('BHAGAVAD-GITA')>=0&&t.length<200)||t.startsWith('Entitled')||
+          t.indexOf('repetitionary')>=0||t.indexOf('PROJECT GUTENBERG')>=0||
+          t.indexOf('Updated editions')>=0||t.indexOf('Creating the works')>=0||t.length<4);
+}
+function arnoldPoetryLines(text){
   if(!text) return '';
-  const safe=esc(text);
-  // Split on transition points: space + capital letter that is NOT the very start,
-  // but only when preceded by a word-ending character (letter, comma, dash, semicolon).
-  // This preserves proper nouns mid-phrase while breaking at poetic line starts.
-  const lines=[];
-  // Strategy: split on word boundaries where a capital follows punctuation-then-space
-  // OR where a capital follows a word-space sequence suggesting a new line.
-  // Use the raw (un-escaped) text to tokenize, then escape each segment.
-  const raw=text;
-  // Match poetic line breaks: a space followed by a capital, where the preceding
-  // character is a word character (not another capital sequence start).
-  // This handles Arnold's style: "line one, Line two" → split before "Line"
-  const segs=raw.split(/(?<=[a-z,;!\?'")\-]) (?=[A-Z"'])/);
-  if(segs.length<=1) return safe; // no line breaks found, return as-is
-  return segs.map(s=>esc(s.trim())).filter(Boolean).join('<br>');
+  var segs=[], cur='';
+  for(var i=0;i<text.length;i++){
+    var c=text[i];
+    if(c===' '&&i>0&&i<text.length-1){
+      var prev=text[i-1],next=text[i+1];
+      if(/[A-Z"']/.test(next)&&/[a-z,;\-!?'"\)]/.test(prev)){segs.push(cur.trim());cur='';continue;}
+    }
+    cur+=c;
+  }
+  if(cur.trim()) segs.push(cur.trim());
+  if(segs.length<=1) return esc(text);
+  return segs.map(function(s){return esc(s);}).join('<br>');
+}
+function extractSnippet(text,terms){
+  if(!text) return '';
+  var lower=text.toLowerCase(), matchPos=-1;
+  for(var i=0;i<terms.length;i++){var p=lower.indexOf(terms[i]);if(p>=0){matchPos=matchPos<0?p:Math.min(matchPos,p);}}
+  if(matchPos<0) return text.slice(0,280)+'\u2026';
+  var start=Math.max(0,matchPos-80), end=Math.min(text.length,start+280);
+  if(start>0){var ps=text.lastIndexOf(' ',start);if(ps>start-20)start=ps+1;}
+  if(end<text.length){var ns=text.indexOf(' ',end);if(ns>0&&ns<end+20)end=ns;}
+  var snip=text.slice(start,end).trim();
+  return (start>0?'\u2026':'')+snip+(end<text.length?'\u2026':'');
 }
 
 function renderSegmentedPassage(container,cfg,baseRef,text){
@@ -11120,23 +11132,19 @@ window.libGoChapter=function(idxStr){
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
   } else if(libBook==='gita'){
-    const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch);
+    const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch&&!isGitaGarbage(v));
     const title=verses[0]?verses[0].ct:`Chapter ${ch}`;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Chapter ${ch}: ${title}`; container.appendChild(h);
     verses.forEach(v=>{
-      const ref=`Chapter ${v.c} · Stanza ${v.v}`;
-      const s=document.createElement('div'); s.className='lib-stanza'; s.id='stanza-'+v.r.replace(/\./g,'-').replace(':','-'); s.title='Click to copy';
-      // Parse speaker label if present (e.g. "Arjuna. " or "Krishna: ")
-      let rawText=v.t||'';
-      let speakerHtml='';
-      const speakerMatch=rawText.match(/^([A-Za-z\u0100-\u017Fāīūṛṃṅñṭḍṇśṣḥ ]{2,20})[.:][\s]+/);
-      if(speakerMatch){ speakerHtml=`<div class="arnold-speaker" style="color:${cfg.accent};">${esc(speakerMatch[1])}</div>`; rawText=rawText.slice(speakerMatch[0].length); }
-      // Split Arnold poetry lines: capital letter following a space that isn't start of sentence
-      // Arnold uses run-on lines where new poetic lines start with a capital after a comma/dash
-      const poetryHtml=formatArnoldPoetry(rawText);
-      s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div>${speakerHtml}<div class="lib-stanza-text arnold-poetry">${poetryHtml}</div>`;
-      s.addEventListener('click',()=>_copyVerse(ref,v.t)); container.appendChild(s); });
+      const ref=`Chapter ${v.c} \u00B7 Stanza ${v.v}`;
+      const s=document.createElement('div'); s.className='lib-stanza'; s.id='gstanza-'+v.c+'-'+v.v; s.title='Click to copy';
+      let raw=v.t||'', spkHtml='';
+      const spkM=raw.match(/^([A-Z][a-z\u0101\u012B\u016B]+(?:\s[A-Z][a-z]+)?)[.:]\s+/);
+      if(spkM){spkHtml=`<div class="arnold-speaker" style="color:${cfg.accent};">${esc(spkM[1])}</div>`;raw=raw.slice(spkM[0].length);}
+      s.innerHTML=`<div class="lib-stanza-ref" style="color:${cfg.accent};">${v.r}</div>${spkHtml}<div class="lib-stanza-text arnold-poetry">${arnoldPoetryLines(raw)}</div>`;
+      s.addEventListener('click',()=>_copyVerse(ref,v.t)); container.appendChild(s);
+    });
   } else if(libBook==='sbg'){
     const ch=libChapterList[idx], verses=data.filter(v=>v.c===ch);
     const title=verses[0]?verses[0].chapter_name:`Chapter ${ch}`;
@@ -11267,7 +11275,10 @@ function runSearch(query,books){
   let totalFound=0;
   for(const book of books){
     if(!SCRIPTURES[book]) continue;
-    const matches=SCRIPTURES[book].filter(v=>terms.every(t=>v.t.toLowerCase().includes(t)));
+    const matches=SCRIPTURES[book].filter(v=>{
+      if(book==='gita'&&isGitaGarbage(v)) return false;
+      return terms.every(t=>v.t.toLowerCase().includes(t));
+    });
     if(!matches.length) continue;
     bookMatches[book]=matches; totalFound+=matches.length; activeBooks.push(book);
   }
@@ -11330,30 +11341,13 @@ function makeCard(book,v,cfg,terms){
   const ref=document.createElement('div'); ref.className='srch-card-ref'; ref.style.color=cfg.accent;
   ref.textContent=fmtRef(book,v,cfg); card.appendChild(ref);
 
-  // Chapter label — always show as its own block for clarity
+  // Chapter label — truncate long section titles
   const cl=chapLabel(book,v,cfg);
-  if(cl){
-    const ce=document.createElement('div'); ce.className='srch-card-chapter';
-    // For prose types with long section titles, truncate gracefully
-    ce.textContent=cl.length>90?cl.slice(0,88)+'…':cl;
-    card.appendChild(ce);
-  }
+  if(cl){ const ce=document.createElement('div'); ce.className='srch-card-chapter'; ce.textContent=cl.length>80?cl.slice(0,78)+'\u2026':cl; card.appendChild(ce); }
 
-  // Text — use tight snippets centred around the match
-  let txt=v.t;
-  if(cfg.type==='gita'){
-    // For Arnold Gita, show a compact snippet — it's verse-length
-    txt=txt.length>320?(()=>{ const pos=txt.toLowerCase().indexOf(terms[0]); const s=Math.max(0,pos-80); return (s>0?'…':'')+txt.slice(s,s+300)+(s+300<txt.length?'…':''); })():txt;
-  } else if(cfg.type==='maha'||cfg.type==='nikaya'||
-     cfg.type==='harivamsha'||cfg.type==='vishnu_purana'||
-     cfg.type==='veda'||cfg.type==='avesta'||
-     book==='upanishads'||book==='ramayana'||book==='tao'||book==='analects'){
-    txt=extractMahaSnippet(v.t, terms);
-  } else if(txt.length>600){
-    const cut=txt.indexOf('. ',500); txt=(cut>0?txt.slice(0,cut+1):txt.slice(0,600))+'…';
-  }
+  // Tight snippet centred on the search term hit
   const te=document.createElement('div'); te.className='srch-card-text';
-  te.innerHTML=highlight(esc(txt),terms); card.appendChild(te);
+  te.innerHTML=highlight(esc(extractSnippet(v.t,terms)),terms); card.appendChild(te);
   card.title='Click to open';
   card.addEventListener('click',(e)=>window._openVerseModal(book,v,cfg,terms));
   return card;
@@ -11530,130 +11524,96 @@ window.switchReligion  = switchReligion;
 
   // After library navigates, scroll to and highlight the verse
   function _vmScrollToVerse(v, terms){
-    var container = document.getElementById('lib-verse-content');
+    var container=document.getElementById('lib-verse-content');
     if(!container) return;
-    var ref = v.r || '';
-    var targetEl = null;
-
-    // For gita, try the stanza id we set (e.g. stanza-Ch-1-1)
-    var stanzaId = 'stanza-'+ref.replace(/\./g,'-').replace(':','-');
-    var byId = document.getElementById(stanzaId);
-    if(byId){ targetEl = byId; }
-
-    // Try matching by reference text in lib-verse-num or lib-stanza-ref
+    var targetEl=null;
+    // Gita: find by stanza id
+    if(_vmBook==='gita'){
+      targetEl=document.getElementById('gstanza-'+v.c+'-'+v.v);
+    }
+    // All books: match by reference text in .lib-verse-num or .lib-stanza-ref
     if(!targetEl){
-      var refEls = container.querySelectorAll('.lib-verse-num, .lib-stanza-ref, .lib-chapter-heading');
-      for(var i=0; i<refEls.length; i++){
-        if(refEls[i].textContent.trim() === ref.trim()){
-          targetEl = refEls[i].closest('.lib-verse, .lib-stanza') || refEls[i].parentElement;
+      var ref=(v.r||'').trim();
+      var refEls=container.querySelectorAll('.lib-verse-num,.lib-stanza-ref');
+      for(var i=0;i<refEls.length;i++){
+        if(refEls[i].textContent.trim()===ref){
+          targetEl=refEls[i].closest('.lib-verse,.lib-stanza')||refEls[i].parentElement;
           break;
         }
       }
     }
-
-    // Fallback: scan all text nodes for a term match
-    if(!targetEl && terms && terms.length){
-      var allText = container.querySelectorAll('.lib-verse-text, .lib-stanza-text, p, div');
-      var lowerTerms = terms.map(function(t){ return t.toLowerCase(); });
-      for(var j=0; j<allText.length; j++){
-        var lower = allText[j].textContent.toLowerCase();
-        if(lowerTerms.every(function(t){ return lower.includes(t); })){
-          targetEl = allText[j];
-          break;
-        }
+    // Fallback: first text element containing all search terms
+    if(!targetEl&&terms&&terms.length){
+      var lc=terms.map(function(t){return t.toLowerCase();});
+      var els=container.querySelectorAll('.lib-verse-text,.lib-stanza-text');
+      for(var j=0;j<els.length;j++){
+        var low=els[j].textContent.toLowerCase();
+        if(lc.every(function(t){return low.includes(t);})){targetEl=els[j].parentElement||els[j];break;}
       }
     }
-
     if(targetEl){
-      var orig = targetEl.style.cssText;
-      targetEl.style.cssText += ';outline:2px solid var(--vm-accent,#a08cc8);outline-offset:3px;border-radius:4px;transition:outline .3s;';
-      targetEl.scrollIntoView({behavior:'smooth', block:'center'});
-      setTimeout(function(){ targetEl.style.cssText = orig; }, 2200);
-    } else {
-      container.scrollIntoView({behavior:'smooth', block:'start'});
+      targetEl.scrollIntoView({behavior:'smooth',block:'center'});
+      var orig=targetEl.style.cssText;
+      targetEl.style.cssText+=';outline:2px solid var(--vm-accent,#a08cc8);outline-offset:3px;border-radius:4px;';
+      setTimeout(function(){targetEl.style.cssText=orig;},2400);
     }
   }
 
   function _vmGoToLibrary(book, v, cfg, terms){
-    var targetIdx = null;
-    var data = window.SCRIPTURES && window.SCRIPTURES[book] ? window.SCRIPTURES[book] : null;
-
-    if(cfg.type==='gita' || book==='sbg'){
-      targetIdx = v.c - 1;
-    } else if(cfg.type==='bible'){
-      if(window._loadScriptures){
-        window._loadScriptures(function(){
-          if(window.switchReligion) window.switchReligion('srch');
-          showSrchPanel('lib');
-          window._openLibBook(book, null);
-          setTimeout(function(){ _vmScrollToVerse(v, terms); }, 600);
-        });
+    function findIdx(data){
+      var t=cfg.type;
+      if(t==='gita'||book==='sbg') return v.c-1;
+      if(t==='quran'){
+        var chs=[]; var seen={};
+        data.forEach(function(x){if(!seen[x.c]){seen[x.c]=true;chs.push(x.c);}});
+        chs.sort(function(a,b){return a-b;});
+        var i=chs.indexOf(v.c); return i>=0?i:0;
       }
-      return;
-    } else if(cfg.type==='quran'){
-      // Find the surah index in the unique chapter list
-      if(data){
-        var chs=[...new Set(data.map(function(x){return x.c;}))].sort(function(a,b){return a-b;});
-        targetIdx = chs.indexOf(v.c);
-        if(targetIdx < 0) targetIdx = v.c - 1;
+      if(t==='maha'){
+        var i=data.findIndex(function(s){return s.b===v.b&&s.s===v.s;}); return i>=0?i:0;
       }
-    } else if(cfg.type==='maha'){
-      // data is array of sections; find by book+section match
-      if(data){ targetIdx = data.findIndex(function(sec){ return sec.b===v.b && sec.s===v.s; }); }
-    } else if(cfg.type==='nikaya'){
-      // data is array of suttas; find by reference match
-      if(data){ targetIdx = data.findIndex(function(s){ return s.r===v.r; }); }
-    } else if(book==='upanishads'){
-      if(data){ targetIdx = data.findIndex(function(s){ return s.r===v.r; }); }
-    } else if(book==='ramayana'){
-      if(data){ targetIdx = data.findIndex(function(s){ return s.r===v.r; }); }
-    } else if(book==='tao'){
-      if(data){ targetIdx = data.findIndex(function(s){ return s.r===v.r; }); }
-    } else if(book==='analects'){
-      if(data){ targetIdx = data.findIndex(function(s){ return s.r===v.r; }); }
-    } else if(book==='harivamsha'){
-      if(data){ targetIdx = data.findIndex(function(s){ return s.r===v.r; }); }
-    } else if(book==='vishnu_purana'){
-      if(data){ targetIdx = data.findIndex(function(s){ return s.r===v.r; }); }
-    } else if(book==='rig'||book==='atharva'){
-      // Group by book+hymn; find the hymn index
-      if(data){
-        var hymns=[]; var seen=new Set();
-        data.forEach(function(x){ var k=x.b+'.'+x.h; if(!seen.has(k)){ seen.add(k); hymns.push({b:x.b,h:x.h}); } });
-        targetIdx = hymns.findIndex(function(hm){ return hm.b===v.b && hm.h===v.h; });
+      if(t==='nikaya'||book==='upanishads'||book==='ramayana'||book==='tao'||
+         book==='analects'||book==='harivamsha'||book==='vishnu_purana'){
+        var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
-    } else if(book==='sama'){
-      if(data){
-        var groups=[]; var seen2=new Set();
-        data.forEach(function(x){ var k=x.pt+'.'+x.b+'.'+x.ch+'.'+x.d; if(!seen2.has(k)){ seen2.add(k); groups.push({pt:x.pt,b:x.b,ch:x.ch,d:x.d}); } });
-        targetIdx = groups.findIndex(function(g){ return g.pt===v.pt&&g.b===v.b&&g.ch===v.ch&&g.d===v.d; });
+      if(book==='rig'||book==='atharva'){
+        var hymns=[]; var seen={};
+        data.forEach(function(x){var k=x.b+'.'+x.h;if(!seen[k]){seen[k]=true;hymns.push({b:x.b,h:x.h});}});
+        var i=hymns.findIndex(function(h){return h.b===v.b&&h.h===v.h;}); return i>=0?i:0;
       }
-    } else if(book==='yajur'){
-      if(data){
-        var kands=[...new Set(data.map(function(x){return x.k;}))].sort(function(a,b){return a-b;});
-        targetIdx = kands.indexOf(v.k);
+      if(book==='sama'){
+        var gs=[]; var seen={};
+        data.forEach(function(x){var k=x.pt+'.'+x.b+'.'+x.ch+'.'+x.d;if(!seen[k]){seen[k]=true;gs.push({pt:x.pt,b:x.b,ch:x.ch,d:x.d});}});
+        var i=gs.findIndex(function(g){return g.pt===v.pt&&g.b===v.b&&g.ch===v.ch&&g.d===v.d;}); return i>=0?i:0;
       }
-    } else if(book==='avesta'){
-      if(data){
-        var agroups=[]; var aseen=new Set();
-        data.forEach(function(x){ var fg=x.fg||x.ch||x.yn||x.gn||1; var k=x.sec+'.'+fg; if(!aseen.has(k)){ aseen.add(k); agroups.push({sec:x.sec,fg:fg}); } });
+      if(book==='yajur'){
+        var ks=[]; var seen={};
+        data.forEach(function(x){if(!seen[x.k]){seen[x.k]=true;ks.push(x.k);}});
+        ks.sort(function(a,b){return a-b;});
+        var i=ks.indexOf(v.k); return i>=0?i:0;
+      }
+      if(book==='avesta'){
+        var gs=[]; var seen={};
+        data.forEach(function(x){var fg=x.fg||x.ch||x.yn||x.gn||1;var k=x.sec+'.'+fg;if(!seen[k]){seen[k]=true;gs.push({sec:x.sec,fg:fg});}});
         var vfg=v.fg||v.ch||v.yn||v.gn||1;
-        targetIdx = agroups.findIndex(function(g){ return g.sec===v.sec && g.fg===vfg; });
+        var i=gs.findIndex(function(g){return g.sec===v.sec&&g.fg===vfg;}); return i>=0?i:0;
       }
-    } else if(v.idx !== undefined){
-      targetIdx = v.idx;
+      return 0;
     }
-
-    if(targetIdx < 0) targetIdx = 0;
-
-    if(window._loadScriptures){
+    if(cfg.type==='bible'){
       window._loadScriptures(function(){
-        if(window.switchReligion) window.switchReligion('srch');
-        showSrchPanel('lib');
-        window._openLibBook(book, targetIdx);
-        setTimeout(function(){ _vmScrollToVerse(v, terms); }, 600);
+        window.switchReligion('srch'); showSrchPanel('lib');
+        window._openLibBook(book,null);
+        setTimeout(function(){_vmScrollToVerse(v,terms);},700);
       });
+      return;
     }
+    window._loadScriptures(function(){
+      var idx=findIdx(window.SCRIPTURES[book]||[]);
+      window.switchReligion('srch'); showSrchPanel('lib');
+      window._openLibBook(book,idx);
+      setTimeout(function(){_vmScrollToVerse(v,terms);},700);
+    });
   }
 
   // Attach overlay listeners after DOM is ready
