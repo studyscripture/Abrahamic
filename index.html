@@ -1280,6 +1280,30 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1896 &middot; Keshub Academy</div>
         <div class="lib-book-count">126 Sections &middot; 6 Parts</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#c8a96e;" onclick="openLibBook('bod')">
+        <div class="lib-book-icon">𓂀</div>
+        <div class="lib-book-name">Egyptian Book of the Dead</div>
+        <div class="lib-book-edition">E. A. Wallis Budge &middot; 1898 &middot; Theban Recension</div>
+        <div class="lib-book-count">156 Chapters &middot; Coming Forth by Day</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#7ecfb3;" onclick="openLibBook('homeric_hymn_demeter')">
+        <div class="lib-book-icon">🌾</div>
+        <div class="lib-book-name">Homeric Hymns</div>
+        <div class="lib-book-edition">Hugh G. Evelyn-White &middot; c. 650 BCE &middot; Homeric Hymns</div>
+        <div class="lib-book-count">33 Hymns &middot; Ancient Greek Epic</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#4db6e5;" onclick="openLibBook('odyssey')">
+        <div class="lib-book-icon">&#x1F30A;</div>
+        <div class="lib-book-name">The Odyssey</div>
+        <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1900</div>
+        <div class="lib-book-count">24 Books &middot; Greek Epic</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#e57373;" onclick="openLibBook('iliad')">
+        <div class="lib-book-icon">&#x2694;&#xFE0F;</div>
+        <div class="lib-book-name">The Iliad</div>
+        <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1898</div>
+        <div class="lib-book-count">24 Books &middot; Greek Epic</div>
+      </div>
 
     </div>
   </div>
@@ -1486,6 +1510,21 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <span>Viṣṇu Purāṇa<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Dutt &middot; 1896</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-odyssey"
+      style="--btn-color:#4db6e5;--btn-bg:rgba(77,182,229,.12);--btn-glow:rgba(77,182,229,.35);"
+      onclick="toggleBook('odyssey',this)">
+      <span class="sb-icon">&#x1F30A;</span>
+      <span>Odyssey<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Butler &middot; 1900</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-iliad"
+      style="--btn-color:#e57373;--btn-bg:rgba(229,115,115,.12);--btn-glow:rgba(229,115,115,.35);"
+      onclick="toggleBook('iliad',this)">
+      <span class="sb-icon">&#x2694;&#xFE0F;</span>
+      <span>Iliad<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Butler &middot; 1898</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
+
   </div>
 
   <!-- Search bar -->
@@ -10681,6 +10720,10 @@ const BOOK_CFG = {
   analects:   { label:'Analects of Confucius',        sub:'James Legge \u00B7 1861 \u00B7 Confucius',                                   icon:'\uD83D\uDCDC', accent:'#bcaaa4', accentDim:'rgba(188,170,164,0.35)', countLabel:'chapter', bookTitle:'Analects of Confucius', bookEdition:'James Legge Translation \u00B7 1861',               type:'nikaya' },
   harivamsha: { label:'Harivaṃśa',           sub:'Manmatha Nath Dutt · 1897 · Keshub Academy',                      icon:'🔱', accent:'#ff8a65', accentDim:'rgba(255,138,101,0.35)', countLabel:'chapter', bookTitle:'Harivaṃśa',        bookEdition:'Manmatha Nath Dutt Translation · 1897',          type:'harivamsha' },
   vishnu_purana: { label:'Viṣṇu Purāṇa',        sub:'Manmatha Nath Dutt · 1896 · Keshub Academy',                      icon:'🪔', accent:'#ffa726', accentDim:'rgba(255,167,38,0.35)',  countLabel:'section', bookTitle:'Viṣṇu Purāṇa',      bookEdition:'Manmatha Nath Dutt Translation · 1896',          type:'vishnu_purana' },
+  bod:             { label:'Egyptian Book of the Dead', sub:'E. A. Wallis Budge · 1898 · Theban Recension · Coming Forth by Day', icon:'𓂀', accent:'#c8a96e', accentDim:'rgba(200,169,110,0.35)', countLabel:'chapter', bookTitle:'The Egyptian Book of the Dead', bookEdition:'E. A. Wallis Budge Translation · 1898 · Theban Recension', type:'bod' },
+  homeric_hymn_demeter: { label:'Homeric Hymns', sub:'Hugh G. Evelyn-White · c. 650 BCE · Homeric Hymns', icon:'🌾', accent:'#7ecfb3', accentDim:'rgba(126,207,179,0.35)', countLabel:'hymn', bookTitle:'Homeric Hymns', bookEdition:'Trans. Hugh G. Evelyn-White · Homeric Hymns', type:'homeric_hymn' },
+  odyssey: { label:'The Odyssey', sub:'Homer - Samuel Butler - 1900 - 24 Books', icon:'\uD83C\uDF0A', accent:'#4db6e5', accentDim:'rgba(77,182,229,0.35)', countLabel:'book', bookTitle:'The Odyssey', bookEdition:'Trans. Samuel Butler - 1900', type:'nikaya' },
+  iliad: { label:'The Iliad', sub:'Homer - Samuel Butler - 1898 - 24 Books', icon:'\u2694\uFE0F', accent:'#e57373', accentDim:'rgba(229,115,115,0.35)', countLabel:'book', bookTitle:'The Iliad', bookEdition:'Trans. Samuel Butler - 1898', type:'nikaya' },
 };
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
@@ -10779,6 +10822,10 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.ramayana)) d.ramayana.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.canto)-toNum(b.canto))||refNumCmp(a,b));
   if(Array.isArray(d.harivamsha)) d.harivamsha.sort((a,b)=>(toNum(a.idx)-toNum(b.idx))||(toNum(a.chapter)-toNum(b.chapter))||refNumCmp(a,b));
   if(Array.isArray(d.vishnu_purana)) d.vishnu_purana.sort((a,b)=>(toNum(a.idx)-toNum(b.idx))||(toNum(a.part)-toNum(b.part))||(toNum(a.section)-toNum(b.section))||refNumCmp(a,b));
+  if(Array.isArray(d.bod)) d.bod.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
+  if(Array.isArray(d.homeric_hymn_demeter)) d.homeric_hymn_demeter.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
+  if(Array.isArray(d.odyssey)) d.odyssey.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
+  if(Array.isArray(d.iliad)) d.iliad.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
   if(Array.isArray(d.upanishads)){
     const upanOrder = new Map();
     let upanIdx = 0;
@@ -11029,7 +11076,7 @@ function renderSegmentedPassage(container,cfg,baseRef,text){
 
 function _buildOtherNav(key,cfg,targetIdx){
   const data=SCRIPTURES[key];
-  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section'};
+  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section',bod:'Chapter',homeric_hymn_demeter:'Hymn',odyssey:'Book',iliad:'Book'};
   document.getElementById('lib-nav-label').textContent=labels[key]||'Chapter';
   const sel=document.getElementById('lib-other-sel');
   sel.innerHTML='';
@@ -11091,6 +11138,12 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='vishnu_purana'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='bod'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Ch. ${s.roman}: ${s.title}`; sel.appendChild(o); });
+  } else if(key==='homeric_hymn_demeter'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.roman}. ${s.title}`; sel.appendChild(o); });
   }
   const isNikaya=BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya';
   const isVeda=BOOK_CFG[key]&&(BOOK_CFG[key].type==='veda'||BOOK_CFG[key].type==='avesta');
@@ -11219,6 +11272,17 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=`Part ${s.part} · ${s.title}`; container.appendChild(sub);
     renderSegmentedPassage(container,cfg,s.r,s.t);
+  } else if(libBook==='bod'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Chapter ${s.roman}: ${s.title}`; container.appendChild(h);
+    renderSegmentedPassage(container,cfg,s.r,s.t);
+  } else if(libBook==='homeric_hymn_demeter'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Hymn ${s.roman}: ${s.title}`; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.section; container.appendChild(sub);
+    renderSegmentedPassage(container,cfg,s.r,s.t);
   }
 };
 
@@ -11240,7 +11304,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true};
+const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,bod:true,homeric_hymn_demeter:true,odyssey:true,iliad:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.quickSearch=function(term){ showSrchPanel('search'); const inp=document.getElementById('srch-input'); if(inp){inp.value=term; doSearch();} };
