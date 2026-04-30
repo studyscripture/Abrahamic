@@ -1524,7 +1524,27 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <span>Iliad<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Butler &middot; 1898</small></span>
       <span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-bod"
+      style="--btn-color:#c8a96e;--btn-bg:rgba(200,169,110,.12);--btn-glow:rgba(200,169,110,.35);"
+      onclick="toggleBook('bod',this)">
+      <span class="sb-icon">𓂀</span>
+      <span>Egyptian Book of the Dead<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Le Page Renouf &middot; 1904</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-homeric_hymn_demeter"
+      style="--btn-color:#7ecfb3;--btn-bg:rgba(126,207,179,.12);--btn-glow:rgba(126,207,179,.35);"
+      onclick="toggleBook('homeric_hymn_demeter',this)">
+      <span class="sb-icon">&#x1F33E;</span>
+      <span>Homeric Hymns<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Evelyn-White &middot; c.&nbsp;650&nbsp;BCE</small></span>
+      <span class="sb-check">&#10022;</span>
+    </button>
 
+  </div>
+
+  <!-- Toggle All / None -->
+  <div style="display:flex;gap:8px;margin:0 0 6px;flex-wrap:wrap;">
+    <button onclick="toggleAllBooks(true)" style="padding:5px 16px;font-size:11px;font-family:'EB Garamond',serif;letter-spacing:.06em;border:1px solid rgba(200,169,110,.45);background:rgba(200,169,110,.1);color:#c8a96e;border-radius:20px;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(200,169,110,.22)'" onmouseout="this.style.background='rgba(200,169,110,.1)'">&#10022;&nbsp; Select All</button>
+    <button onclick="toggleAllBooks(false)" style="padding:5px 16px;font-size:11px;font-family:'EB Garamond',serif;letter-spacing:.06em;border:1px solid rgba(140,130,160,.3);background:rgba(140,130,160,.07);color:rgba(200,190,220,.55);border-radius:20px;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(140,130,160,.18)'" onmouseout="this.style.background='rgba(140,130,160,.07)'">&#10007;&nbsp; Deselect All</button>
   </div>
 
   <!-- Search bar -->
@@ -10720,7 +10740,7 @@ const BOOK_CFG = {
   analects:   { label:'Analects of Confucius',        sub:'James Legge \u00B7 1861 \u00B7 Confucius',                                   icon:'\uD83D\uDCDC', accent:'#bcaaa4', accentDim:'rgba(188,170,164,0.35)', countLabel:'chapter', bookTitle:'Analects of Confucius', bookEdition:'James Legge Translation \u00B7 1861',               type:'nikaya' },
   harivamsha: { label:'Harivaṃśa',           sub:'Manmatha Nath Dutt · 1897 · Keshub Academy',                      icon:'🔱', accent:'#ff8a65', accentDim:'rgba(255,138,101,0.35)', countLabel:'chapter', bookTitle:'Harivaṃśa',        bookEdition:'Manmatha Nath Dutt Translation · 1897',          type:'harivamsha' },
   vishnu_purana: { label:'Viṣṇu Purāṇa',        sub:'Manmatha Nath Dutt · 1896 · Keshub Academy',                      icon:'🪔', accent:'#ffa726', accentDim:'rgba(255,167,38,0.35)',  countLabel:'section', bookTitle:'Viṣṇu Purāṇa',      bookEdition:'Manmatha Nath Dutt Translation · 1896',          type:'vishnu_purana' },
-  bod:             { label:'Egyptian Book of the Dead', sub:'E. A. Wallis Budge · 1898 · Theban Recension · Coming Forth by Day', icon:'𓂀', accent:'#c8a96e', accentDim:'rgba(200,169,110,0.35)', countLabel:'chapter', bookTitle:'The Egyptian Book of the Dead', bookEdition:'E. A. Wallis Budge Translation · 1898 · Theban Recension', type:'bod' },
+  bod:             { label:'Egyptian Book of the Dead', sub:'P. Le Page Renouf · 1904 · Coming Forth by Day · 181 Chapters', icon:'𓂀', accent:'#c8a96e', accentDim:'rgba(200,169,110,0.35)', countLabel:'chapter', bookTitle:'The Egyptian Book of the Dead', bookEdition:'P. Le Page Renouf Translation · 1904', type:'bod' },
   homeric_hymn_demeter: { label:'Homeric Hymns', sub:'Hugh G. Evelyn-White · c. 650 BCE · Homeric Hymns', icon:'🌾', accent:'#7ecfb3', accentDim:'rgba(126,207,179,0.35)', countLabel:'hymn', bookTitle:'Homeric Hymns', bookEdition:'Trans. Hugh G. Evelyn-White · Homeric Hymns', type:'homeric_hymn' },
   odyssey: { label:'The Odyssey', sub:'Homer - Samuel Butler - 1900 - 24 Books', icon:'\uD83C\uDF0A', accent:'#4db6e5', accentDim:'rgba(77,182,229,0.35)', countLabel:'book', bookTitle:'The Odyssey', bookEdition:'Trans. Samuel Butler - 1900', type:'nikaya' },
   iliad: { label:'The Iliad', sub:'Homer - Samuel Butler - 1898 - 24 Books', icon:'\u2694\uFE0F', accent:'#e57373', accentDim:'rgba(229,115,115,0.35)', countLabel:'book', bookTitle:'The Iliad', bookEdition:'Trans. Samuel Butler - 1898', type:'nikaya' },
@@ -11140,7 +11160,7 @@ function _buildOtherNav(key,cfg,targetIdx){
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='bod'){
     libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Ch. ${s.roman}: ${s.title}`; sel.appendChild(o); });
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.subtitle ? `${s.title} — ${s.subtitle}` : s.title; sel.appendChild(o); });
   } else if(key==='homeric_hymn_demeter'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.roman}. ${s.title}`; sel.appendChild(o); });
@@ -11275,7 +11295,8 @@ window.libGoChapter=function(idxStr){
   } else if(libBook==='bod'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=`Chapter ${s.roman}: ${s.title}`; container.appendChild(h);
+    h.textContent=s.title; container.appendChild(h);
+    if(s.subtitle){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub); }
     renderSegmentedPassage(container,cfg,s.r,s.t);
   } else if(libBook==='homeric_hymn_demeter'){
     const s=data[idx]; if(!s) return;
@@ -11307,6 +11328,7 @@ function scrollToContent(){
 const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,bod:true,homeric_hymn_demeter:true,odyssey:true,iliad:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
+window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(k=>{ selectedBooks[k]=on; const btn=document.getElementById('sbtn-'+k)||document.getElementById('sbtn-'+k.replace('_','-')); if(btn) btn.classList.toggle('active',on); }); };
 window.quickSearch=function(term){ showSrchPanel('search'); const inp=document.getElementById('srch-input'); if(inp){inp.value=term; doSearch();} };
 
 window.doSearch=function(){
