@@ -10998,6 +10998,21 @@ function arnoldPoetryLines(text){
   return segs.map(function(s){return esc(s);}).join('<br>');
 }
 
+function renderProseChapter(container,cfg,text){
+  const cleaned = String(text||'').replace(/\r\n?/g,'\n').replace(/[ \t]+/g,' ').trim();
+  const prose = document.createElement('div');
+  prose.className = 'lib-prose-chapter';
+  prose.style.cssText = 'padding:0 2px;line-height:1.85;font-size:1.05em;color:var(--cream);';
+  const paras = cleaned.split(/\n{2,}/).map(s=>s.replace(/\n/g,' ').trim()).filter(Boolean);
+  (paras.length ? paras : [cleaned]).forEach(p=>{
+    const el = document.createElement('p');
+    el.style.cssText = 'margin:0 0 1.1em 0;';
+    el.textContent = p;
+    prose.appendChild(el);
+  });
+  container.appendChild(prose);
+}
+
 function renderSegmentedPassage(container,cfg,baseRef,text){
   const units = splitIntoDisplayUnits(text);
   const list = document.createElement('div');
@@ -11038,7 +11053,7 @@ function _buildOtherNav(key,cfg,targetIdx){
     data.forEach((sec,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${sec.b}: ${sec.p} \u2014 Sec. ${sec.s}`; sel.appendChild(o); });
   } else if(BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya'){
     libChapterList=data.map((_,i)=>i);
-    data.forEach((sutta,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=sutta.title&&sutta.title!==sutta.r?`${sutta.r}: ${sutta.title}`:sutta.r; sel.appendChild(o); });
+    data.forEach((sutta,i)=>{ const o=document.createElement('option'); o.value=i; const lbl=(sutta.title&&sutta.title!==sutta.r)?`${sutta.r}: ${sutta.title}`:sutta.r; o.textContent=lbl; sel.appendChild(o); });
   } else if(key==='rig'||key==='atharva'){
     // Group by book+hymn
     const hymns=[]; const seen=new Set();
@@ -11072,15 +11087,13 @@ function _buildOtherNav(key,cfg,targetIdx){
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='analects'){
     libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${s.book}, Ch. ${s.chapter}${s.book_title?' — '+s.book_title:''}`; sel.appendChild(o); });
   } else if(key==='harivamsha'){
-    // Data is now pre-grouped: one entry per chapter
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='vishnu_purana'){
-    // Data is now pre-grouped: one entry per section
     libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Part ${s.part}, Sec. ${s.section}: ${s.title?s.title.slice(0,60):''}`.trimEnd().replace(/:\s*$/,''); sel.appendChild(o); });
+    data.forEach((s,i)=>{ const lbl=`Part ${s.part}, Sec. ${s.section}`+(s.title?': '+s.title.slice(0,55):''); const o=document.createElement('option'); o.value=i; o.textContent=lbl; sel.appendChild(o); });
   } else if(key==='bod'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Ch. ${s.roman}: ${s.title}`; sel.appendChild(o); });
@@ -11148,9 +11161,10 @@ window.libGoChapter=function(idxStr){
     } else if(isNikaya){
     const sutta=data[idx]; if(!sutta) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=sutta.title&&sutta.title!==sutta.r?`${sutta.r}: ${sutta.title}`:sutta.r; container.appendChild(h);
-    if(sutta.chapter){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.chapter; container.appendChild(sub); }
-    renderSegmentedPassage(container,cfg,sutta.r,sutta.t);
+    const lbl=(sutta.title&&sutta.title!==sutta.r)?`${sutta.r}: ${sutta.title}`:sutta.r;
+    h.textContent=lbl; container.appendChild(h);
+    if(sutta.chapter){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.chapter; container.appendChild(sub);}
+    renderProseChapter(container,cfg,sutta.t);
   } else if(libBook==='rig'||libBook==='atharva'){
     const grp=libChapterList[idx]; if(!grp) return;
     const verses=data.filter(v=>v.b===grp.b&&v.h===grp.h);
@@ -11197,24 +11211,24 @@ window.libGoChapter=function(idxStr){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
+    renderProseChapter(container,cfg,s.t);
     } else if(libBook==='analects'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.title; container.appendChild(h);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
+    h.textContent=`Book ${s.book}, Chapter ${s.chapter}${s.book_title?' — '+s.book_title:''}`; container.appendChild(h);
+    renderProseChapter(container,cfg,s.t);
     } else if(libBook==='harivamsha'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
-    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.parva; container.appendChild(sub);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
+    if(s.parva){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.parva; container.appendChild(sub);}
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='vishnu_purana'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Part ${s.part}, Section ${s.section}`; container.appendChild(h);
     if(s.title){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);}
-    renderSegmentedPassage(container,cfg,`Part ${s.part}, Section ${s.section}`,s.t);
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='bod'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
