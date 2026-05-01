@@ -10761,8 +10761,8 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.tao)) d.tao.sort((a,b)=>(toNum(a.n)-toNum(b.n))||refNumCmp(a,b));
   if(Array.isArray(d.analects)) d.analects.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.chapter)-toNum(b.chapter))||refNumCmp(a,b));
   if(Array.isArray(d.ramayana)) d.ramayana.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.canto)-toNum(b.canto))||refNumCmp(a,b));
-  if(Array.isArray(d.harivamsha)) d.harivamsha.sort((a,b)=>(toNum(a.idx)-toNum(b.idx))||(toNum(a.chapter)-toNum(b.chapter))||refNumCmp(a,b));
-  if(Array.isArray(d.vishnu_purana)) d.vishnu_purana.sort((a,b)=>(toNum(a.idx)-toNum(b.idx))||(toNum(a.part)-toNum(b.part))||(toNum(a.section)-toNum(b.section))||refNumCmp(a,b));
+  if(Array.isArray(d.harivamsha)){const po={'Harivamsha Parva':0,'Vishnu Parva':1,'Bhavishya Parva':2};d.harivamsha.sort((a,b)=>((po[a.parva]||0)-(po[b.parva]||0))||(toNum(a.chapter)-toNum(b.chapter)));}
+  if(Array.isArray(d.vishnu_purana)) d.vishnu_purana.sort((a,b)=>(toNum(a.part)-toNum(b.part))||(toNum(a.section)-toNum(b.section)));
   if(Array.isArray(d.bod)) d.bod.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
   if(Array.isArray(d.homeric_hymn_demeter)) d.homeric_hymn_demeter.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
   if(Array.isArray(d.odyssey)) d.odyssey.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
@@ -11038,7 +11038,7 @@ function _buildOtherNav(key,cfg,targetIdx){
     data.forEach((sec,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${sec.b}: ${sec.p} \u2014 Sec. ${sec.s}`; sel.appendChild(o); });
   } else if(BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya'){
     libChapterList=data.map((_,i)=>i);
-    data.forEach((sutta,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${sutta.r}: ${sutta.title}`; sel.appendChild(o); });
+    data.forEach((sutta,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=sutta.title&&sutta.title!==sutta.r?`${sutta.r}: ${sutta.title}`:sutta.r; sel.appendChild(o); });
   } else if(key==='rig'||key==='atharva'){
     // Group by book+hymn
     const hymns=[]; const seen=new Set();
@@ -11074,11 +11074,13 @@ function _buildOtherNav(key,cfg,targetIdx){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
   } else if(key==='harivamsha'){
+    // Data is now pre-grouped: one entry per chapter
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='vishnu_purana'){
+    // Data is now pre-grouped: one entry per section
     libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Part ${s.part}, Sec. ${s.section}: ${s.title?s.title.slice(0,60):''}`.trimEnd().replace(/:\s*$/,''); sel.appendChild(o); });
   } else if(key==='bod'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Ch. ${s.roman}: ${s.title}`; sel.appendChild(o); });
@@ -11146,7 +11148,7 @@ window.libGoChapter=function(idxStr){
     } else if(isNikaya){
     const sutta=data[idx]; if(!sutta) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=`${sutta.r}: ${sutta.title}`; container.appendChild(h);
+    h.textContent=sutta.title&&sutta.title!==sutta.r?`${sutta.r}: ${sutta.title}`:sutta.r; container.appendChild(h);
     if(sutta.chapter){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.chapter; container.appendChild(sub); }
     renderSegmentedPassage(container,cfg,sutta.r,sutta.t);
   } else if(libBook==='rig'||libBook==='atharva'){
@@ -11210,9 +11212,9 @@ window.libGoChapter=function(idxStr){
   } else if(libBook==='vishnu_purana'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.r; container.appendChild(h);
-    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=`Part ${s.part} · ${s.title}`; container.appendChild(sub);
-    renderSegmentedPassage(container,cfg,s.r,s.t);
+    h.textContent=`Part ${s.part}, Section ${s.section}`; container.appendChild(h);
+    if(s.title){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);}
+    renderSegmentedPassage(container,cfg,`Part ${s.part}, Section ${s.section}`,s.t);
   } else if(libBook==='bod'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
