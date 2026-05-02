@@ -30,11 +30,7 @@
     min-height: 100vh;
     overflow-x: hidden;
     line-height: 1.6;
-    /* === ANTI-COPY PROTECTION: user-select none on body (skeleton) === */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    /* Text is freely selectable */
   }
   body::before {
     content: '';
@@ -104,35 +100,201 @@
   h1 em { color: var(--saffron); font-style: italic; }
   .rule { width: 100px; height: 1px; background: linear-gradient(90deg,transparent,var(--saffron),transparent); margin: 24px auto 0; }
 
-  /* HINDU HUB PORTAL */
+  /* HINDU HUB PORTAL — graceful sacred redesign */
   .portal-block {
-    margin: 40px 0 48px;
+    margin: 40px 0 56px;
     text-align: center;
+    position: relative;
+  }
+  /* Faint dharma-wheel watermark behind the block */
+  .portal-block::before {
+    content: '꩜';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 320px;
+    color: rgba(245,166,35,0.018);
+    pointer-events: none;
+    line-height: 1;
+    z-index: 0;
   }
   .portal-label {
-    font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 14px;
+    font-size: 9.5px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+    font-family: 'Jost', sans-serif; font-weight: 400;
+    position: relative; z-index: 1;
+  }
+  /* Sanskrit eyebrow above label */
+  .portal-sanskrit {
+    font-family: 'Tiro Devanagari Sans', serif;
+    font-size: 18px;
+    color: rgba(245,166,35,0.45);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    display: block;
+    position: relative; z-index: 1;
   }
   .hub-link {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: var(--surface);
-    border: 1px solid rgba(245,166,35,0.4);
-    border-radius: 4px; padding: 16px 28px;
+    display: inline-flex; align-items: stretch; gap: 0;
+    background: linear-gradient(160deg, #1f1609 0%, #191007 60%, #1c1309 100%);
+    border: 1px solid rgba(245,166,35,0.22);
+    border-radius: 2px; padding: 0;
     text-decoration: none;
-    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    transition: border-color 0.4s, box-shadow 0.4s, transform 0.35s;
     position: relative; overflow: hidden;
+    box-shadow:
+      0 2px 0 rgba(245,166,35,0.06),
+      0 6px 40px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(245,166,35,0.06);
+    min-width: 360px;
+    max-width: 460px;
+    z-index: 1;
   }
+
+  /* Gold shimmer sweep */
+  .hub-link::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -120%; bottom: 0;
+    width: 55%;
+    background: linear-gradient(110deg, transparent 25%, rgba(245,166,35,0.055) 50%, transparent 75%);
+    transition: left 0.65s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none; z-index: 0;
+  }
+  .hub-link:hover::before { left: 160%; }
+
+  /* Top border glow line */
   .hub-link::after {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: var(--saffron);
-    transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(245,166,35,0.5) 25%,
+      rgba(247,208,96,1) 50%,
+      rgba(245,166,35,0.5) 75%,
+      transparent 100%);
+    opacity: 0.3;
+    transform: scaleX(0.2); transform-origin: center;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.4s;
   }
-  .hub-link:hover { border-color: var(--saffron); background: var(--card); transform: translateY(-2px); }
-  .hub-link:hover::after { transform: scaleX(1); }
-  .hub-icon { font-size: 26px; }
-  .hub-text { text-align: left; }
-  .hub-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); }
-  .hub-desc { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; margin-top: 2px; }
+  .hub-link:hover {
+    border-color: rgba(245,166,35,0.5);
+    box-shadow:
+      0 2px 0 rgba(245,166,35,0.1),
+      0 12px 56px rgba(0,0,0,0.6),
+      0 0 40px rgba(245,166,35,0.06),
+      inset 0 1px 0 rgba(245,166,35,0.1);
+    transform: translateY(-4px);
+  }
+  .hub-link:hover::after { transform: scaleX(1); opacity: 1; }
+
+  /* Left Om panel */
+  .hub-icon-panel {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    width: 76px; min-width: 76px;
+    background: linear-gradient(180deg, rgba(245,166,35,0.07) 0%, rgba(245,166,35,0.03) 100%);
+    border-right: 1px solid rgba(245,166,35,0.15);
+    position: relative; z-index: 1;
+    transition: background 0.4s;
+    gap: 4px;
+    padding: 16px 0;
+  }
+  .hub-link:hover .hub-icon-panel {
+    background: linear-gradient(180deg, rgba(245,166,35,0.12) 0%, rgba(245,166,35,0.05) 100%);
+  }
+  .hub-icon {
+    font-size: 30px; line-height: 1;
+    filter: drop-shadow(0 0 5px rgba(245,166,35,0.3));
+    transition: filter 0.4s, transform 0.4s;
+  }
+  .hub-link:hover .hub-icon {
+    filter: drop-shadow(0 0 14px rgba(245,166,35,0.75));
+    transform: scale(1.1);
+  }
+  /* Small Devanagari "हिन्दू" beneath the Om */
+  .hub-icon-sub {
+    font-family: 'Tiro Devanagari Sans', serif;
+    font-size: 10px;
+    color: rgba(245,166,35,0.35);
+    letter-spacing: 0.04em;
+    transition: color 0.4s;
+    line-height: 1;
+  }
+  .hub-link:hover .hub-icon-sub { color: rgba(245,166,35,0.65); }
+
+  /* Text body */
+  .hub-text {
+    text-align: left;
+    padding: 18px 22px 18px 22px;
+    flex: 1;
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  /* Sanskrit title above English name */
+  .hub-name-sanskrit {
+    font-family: 'Tiro Devanagari Sans', serif;
+    font-size: 13px;
+    color: rgba(245,166,35,0.5);
+    letter-spacing: 0.06em;
+    margin-bottom: 3px;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .hub-link:hover .hub-name-sanskrit { color: rgba(245,166,35,0.85); }
+  .hub-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px; font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em; line-height: 1.15;
+    transition: color 0.3s;
+  }
+  .hub-link:hover .hub-name { color: var(--gold-light); }
+  .hub-desc {
+    font-size: 10.5px; color: var(--muted);
+    letter-spacing: 0.1em; margin-top: 6px;
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+  .hub-translations {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 9px;
+    font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-family: 'Jost', sans-serif; font-weight: 400;
+    color: rgba(245,166,35,0.45);
+    border: 1px solid rgba(245,166,35,0.14);
+    border-radius: 1px;
+    padding: 3px 8px 3px 7px;
+    background: rgba(245,166,35,0.03);
+    transition: color 0.35s, border-color 0.35s, background 0.35s;
+    align-self: flex-start;
+  }
+  .hub-translations::before {
+    content: '◈';
+    font-size: 8px;
+    color: rgba(245,166,35,0.35);
+    transition: color 0.35s;
+  }
+  .hub-link:hover .hub-translations {
+    color: rgba(247,208,96,0.8);
+    border-color: rgba(245,166,35,0.35);
+    background: rgba(245,166,35,0.07);
+  }
+  .hub-link:hover .hub-translations::before { color: rgba(247,208,96,0.65); }
+
+  .hub-arrow {
+    font-size: 16px;
+    color: rgba(245,166,35,0.25);
+    padding: 0 20px 0 8px;
+    transition: color 0.35s, transform 0.35s;
+    font-family: 'Cormorant Garamond', serif;
+    display: flex; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hub-link:hover .hub-arrow {
+    color: var(--saffron);
+    transform: translateX(4px);
+  }
 
   /* DIVIDER */
   .sec-divider {
@@ -190,22 +352,6 @@
     color: var(--cream); line-height: 1.7;
   }
 
-  /* SELECTIVELY RE-ENABLE COPYING FOR SCRIPTURE / ESSAY TEXT (as requested) */
-  .essay p,
-  .essay .mahavakya,
-  .essay .pull-quote,
-  .essay h2,
-  .essay .sub-head,
-  .essay strong,
-  .hub-text,
-  .hub-name,
-  .hub-desc {
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-  }
-
   /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
@@ -240,7 +386,7 @@
   }
 </style>
 </head>
-<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<body oncontextmenu="return false;">
 
 <div class="nav-bar">
   <a href="index.html" class="back-link">← Abrahamic Hub</a>
@@ -256,13 +402,20 @@
 
   <!-- Hindu Hub Portal Link -->
   <div class="portal-block">
+    <span class="portal-sanskrit">सनातन ग्रन्थालय</span>
     <div class="portal-label">Explore the Living Tradition</div>
     <a href="https://studyscripture.github.io/hinduhub/" target="_blank" class="hub-link">
-      <span class="hub-icon">🕉️</span>
+      <div class="hub-icon-panel">
+        <span class="hub-icon">🕉️</span>
+        <span class="hub-icon-sub">हिन्दू</span>
+      </div>
       <div class="hub-text">
+        <div class="hub-name-sanskrit">हिन्दू शास्त्र</div>
         <div class="hub-name">Hindu Scripture Hub</div>
         <div class="hub-desc">Vedas · Upaniṣads · Purāṇas · Āgamas — The complete tradition</div>
+        <div class="hub-translations">Modern translations</div>
       </div>
+      <span class="hub-arrow">→</span>
     </a>
   </div>
 
@@ -476,15 +629,6 @@ document.addEventListener('keydown', function(e) {
     return false;
   }
   // Ctrl or Cmd + U (view source)
-  if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) {
-    e.preventDefault();
-    return false;
-  }
-  // Ctrl or Cmd + A (select all)
-  if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A')) {
-    e.preventDefault();
-    return false;
-  }
   // F12 (DevTools)
   if (e.key === 'F12') {
     e.preventDefault();
