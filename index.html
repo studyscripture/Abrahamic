@@ -145,30 +145,70 @@ body::before {
   color:var(--muted); letter-spacing:0.2em;
 }
 @keyframes eternal-breathe {
-  0%   { box-shadow: 0 0 8px rgba(180,150,255,0.10), 0 0 22px rgba(160,120,255,0.07), inset 0 0 6px rgba(180,150,255,0.04); border-color:rgba(200,180,255,0.13); color:rgba(200,180,255,0.45); }
-  40%  { box-shadow: 0 0 18px rgba(180,150,255,0.28), 0 0 48px rgba(160,120,255,0.16), 0 0 90px rgba(140,100,255,0.07), inset 0 0 12px rgba(180,150,255,0.09); border-color:rgba(200,180,255,0.38); color:rgba(215,198,255,0.82); }
-  100% { box-shadow: 0 0 8px rgba(180,150,255,0.10), 0 0 22px rgba(160,120,255,0.07), inset 0 0 6px rgba(180,150,255,0.04); border-color:rgba(200,180,255,0.13); color:rgba(200,180,255,0.45); }
+  0%   { opacity:0.72; }
+  50%  { opacity:1; }
+  100% { opacity:0.72; }
+}
+@keyframes eternal-shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+@keyframes eternal-line-grow {
+  from { width:0; opacity:0; }
+  to   { width:38px; opacity:1; }
 }
 .masthead-eternal-btn {
-  font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.18em;
+  font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:0.26em;
   text-transform:uppercase; text-decoration:none;
-  color:rgba(200,180,255,0.45);
-  border:1px solid rgba(200,180,255,0.13);
-  padding:7px 22px; border-radius:3px;
-  display:inline-flex; align-items:center; gap:8px;
-  animation: eternal-breathe 5s ease-in-out infinite;
-  transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  display:inline-flex; align-items:center; gap:13px;
+  padding:11px 28px; border-radius:2px;
+  position:relative;
+  color:rgba(222,205,255,0.72);
+  background: linear-gradient(135deg, rgba(160,120,255,0.06) 0%, rgba(200,170,255,0.03) 50%, rgba(160,120,255,0.06) 100%);
+  border:1px solid rgba(200,175,255,0.18);
+  box-shadow: 0 0 0 1px rgba(160,120,255,0.06), 0 2px 20px rgba(120,80,220,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+  animation: eternal-breathe 4s ease-in-out infinite;
 }
+.masthead-eternal-btn::before,
+.masthead-eternal-btn::after {
+  content:'';
+  position:absolute; bottom:-1px;
+  height:1px;
+  background: linear-gradient(90deg, transparent, rgba(200,170,255,0.55), transparent);
+  animation: eternal-line-grow 1.2s ease forwards;
+}
+.masthead-eternal-btn::before { left:50%; transform:translateX(-50%); animation-delay:0.2s; }
+.masthead-eternal-btn::after  { display:none; }
 .masthead-eternal-btn:hover {
   animation: none;
-  color:rgba(220,205,255,0.95);
-  border-color:rgba(200,180,255,0.55);
-  background:rgba(200,180,255,0.07);
-  box-shadow: 0 0 22px rgba(180,150,255,0.35), 0 0 60px rgba(160,120,255,0.18);
+  color:rgba(235,220,255,1);
+  border-color:rgba(210,185,255,0.45);
+  background: linear-gradient(135deg, rgba(160,120,255,0.11) 0%, rgba(200,170,255,0.07) 50%, rgba(160,120,255,0.11) 100%);
+  box-shadow: 0 0 28px rgba(160,120,255,0.22), 0 0 70px rgba(140,100,255,0.10), 0 2px 20px rgba(120,80,220,0.15), inset 0 1px 0 rgba(255,255,255,0.07);
+  text-shadow: 0 0 18px rgba(200,170,255,0.45);
 }
 .masthead-eternal-btn .om-symbol {
-  font-family:'Tiro Devanagari Sans',serif; font-size:18px; line-height:1;
+  font-family:'Tiro Devanagari Sans',serif; font-size:19px; line-height:1;
+  opacity:0.8; transition: opacity 0.4s, text-shadow 0.4s;
+  text-shadow: 0 0 12px rgba(180,150,255,0.3);
 }
+.masthead-eternal-btn:hover .om-symbol {
+  opacity:1;
+  text-shadow: 0 0 20px rgba(200,170,255,0.65), 0 0 40px rgba(160,120,255,0.3);
+}
+.masthead-eternal-btn .eternal-label {
+  display:flex; flex-direction:column; align-items:flex-start; gap:2px;
+}
+.masthead-eternal-btn .eternal-main {
+  display:block; letter-spacing:0.26em;
+}
+.masthead-eternal-btn .eternal-sub {
+  display:block; font-size:7.5px; letter-spacing:0.32em;
+  opacity:0.42; font-family:'Cinzel',serif;
+  transition: opacity 0.4s;
+}
+.masthead-eternal-btn:hover .eternal-sub { opacity:0.65; }
 
 /* ══════════════════════════════════════════
    RELIGION NAV
@@ -1053,7 +1093,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <h1 class="masthead-title">Abrahamic Hub</h1>
   <p class="masthead-subtitle">Critical Verse Analysis · Three Faiths · Direct Sources</p>
   <div class="masthead-divider">
-    <a href="eternal-truth.html" class="masthead-eternal-btn"><span class="om-symbol">ॐ</span> Eternal Truth</a>
+    <a href="eternal-truth.html" class="masthead-eternal-btn">
+      <span class="om-symbol">ॐ</span>
+      <span class="eternal-label">
+        <span class="eternal-main">Eternal Truth</span>
+        <span class="eternal-sub">Sanātana Dharma</span>
+      </span>
+    </a>
   </div>
 </div>
 
@@ -8048,13 +8094,79 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .mp-hero { text-align: center; margin-bottom: 64px; }
 .mp-om {
   font-family: 'Tiro Devanagari Sans', serif;
-  font-size: 48px; color: rgba(220,150,45,0.2); line-height: 1;
+  font-size: 48px; line-height: 1;
   margin-bottom: 18px; display: block;
-  animation: mpOm 7s ease-in-out infinite;
+  color: rgba(228,162,52,0.28);
+  animation: mpOmBreathe 7.5s cubic-bezier(0.45,0.05,0.55,0.95) infinite;
+  will-change: text-shadow, color, opacity;
 }
-@keyframes mpOm {
-  0%,100%{opacity:.2;text-shadow:0 0 40px rgba(220,150,45,.2)}
-  50%{opacity:.4;text-shadow:0 0 80px rgba(220,150,45,.45)}
+@keyframes mpOmBreathe {
+  /* resting — ember at rest, cool and dim */
+  0% {
+    color: rgba(210,140,35,0.22);
+    opacity: 0.85;
+    text-shadow:
+      0 0 12px rgba(210,140,35,0.10),
+      0 0 30px rgba(200,120,20,0.06),
+      0 0 60px rgba(180,100,10,0.03);
+  }
+  /* slow inhale begins — warmth builds from within */
+  18% {
+    color: rgba(222,152,42,0.30);
+    opacity: 0.90;
+    text-shadow:
+      0 0 10px rgba(230,155,38,0.18),
+      0 0 28px rgba(215,130,25,0.10),
+      0 0 55px rgba(200,110,15,0.05);
+  }
+  /* peak inhale — full radiance, warm amber-gold */
+  42% {
+    color: rgba(240,175,58,0.72);
+    opacity: 1;
+    text-shadow:
+      0 0 8px  rgba(255,195,80,0.55),
+      0 0 22px rgba(240,165,50,0.38),
+      0 0 50px rgba(225,140,35,0.22),
+      0 0 90px rgba(200,110,18,0.10),
+      0 0 140px rgba(180,90,10,0.05);
+  }
+  /* brief hold at top of breath */
+  52% {
+    color: rgba(238,170,54,0.65);
+    opacity: 0.97;
+    text-shadow:
+      0 0 10px rgba(248,188,72,0.48),
+      0 0 26px rgba(235,158,44,0.30),
+      0 0 56px rgba(218,135,30,0.16),
+      0 0 100px rgba(195,105,15,0.07);
+  }
+  /* exhale — glow recedes, colour cools slightly */
+  72% {
+    color: rgba(218,148,40,0.35);
+    opacity: 0.88;
+    text-shadow:
+      0 0 14px rgba(218,148,40,0.16),
+      0 0 36px rgba(205,125,22,0.08),
+      0 0 70px rgba(185,100,12,0.04);
+  }
+  /* settle back — ember dims, hint of purple-cool in the shadow */
+  88% {
+    color: rgba(208,138,33,0.24);
+    opacity: 0.84;
+    text-shadow:
+      0 0 16px rgba(205,135,30,0.10),
+      0 0 38px rgba(190,115,18,0.05),
+      0 0 70px rgba(160,90,20,0.03);
+  }
+  /* back to rest */
+  100% {
+    color: rgba(210,140,35,0.22);
+    opacity: 0.85;
+    text-shadow:
+      0 0 12px rgba(210,140,35,0.10),
+      0 0 30px rgba(200,120,20,0.06),
+      0 0 60px rgba(180,100,10,0.03);
+  }
 }
 .mp-eyebrow {
   font-family: 'Cinzel', serif; font-size: 9px;
@@ -8143,7 +8255,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .mp-tl-modal-bg {
   display:none; position:fixed; inset:0;
   background:rgba(0,0,0,.78); backdrop-filter:blur(6px);
-  z-index:9000; align-items:center; justify-content:center;
+  z-index:99999; align-items:center; justify-content:center;
   padding:20px;
 }
 .mp-tl-modal-bg.open { display:flex; }
@@ -8681,20 +8793,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 </style>
 
 <!-- ═══ TIMELINE MODAL (rendered once, content swapped by JS) ═══ -->
-<div class="mp-tl-modal-bg" id="mpTlModal" onclick="if(event.target===this)closeMpModal()">
-  <div class="mp-tl-modal">
-    <div class="mp-tl-modal-top">
-      <div class="mp-tl-modal-title" id="mpTlTitle" style="color:#e0a038"></div>
-      <button class="mp-tl-modal-close" onclick="closeMpModal()">✕</button>
-    </div>
-    <div class="mp-tl-modal-body">
-      <div class="mp-tl-modal-date" id="mpTlDate" style="color:#b07828"></div>
-      <div class="mp-tl-modal-desc" id="mpTlDesc"></div>
-      <ul class="mp-tl-modal-bullets" id="mpTlBullets"></ul>
-    </div>
-  </div>
-</div>
-
 <div class="mp-wrap">
 
 <!-- HERO -->
@@ -9431,6 +9529,19 @@ document.addEventListener('keydown', function(e) {
 
 </div><!-- /page-map -->
 
+<div class="mp-tl-modal-bg" id="mpTlModal" onclick="if(event.target===this)closeMpModal()">
+  <div class="mp-tl-modal">
+    <div class="mp-tl-modal-top">
+      <div class="mp-tl-modal-title" id="mpTlTitle" style="color:#e0a038"></div>
+      <button class="mp-tl-modal-close" onclick="closeMpModal()">✕</button>
+    </div>
+    <div class="mp-tl-modal-body">
+      <div class="mp-tl-modal-date" id="mpTlDate" style="color:#b07828"></div>
+      <div class="mp-tl-modal-desc" id="mpTlDesc"></div>
+      <ul class="mp-tl-modal-bullets" id="mpTlBullets"></ul>
+    </div>
+  </div>
+</div>
 
 <script>
 // ═══ RELIGION SWITCHER ═══
