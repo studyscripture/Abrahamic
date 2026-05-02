@@ -1442,6 +1442,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
+  <div class="srch-group-label">𓂀&ensp;Ancient Egyptian</div>
+  <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-bod" style="--btn-color:#c8a96e;--btn-bg:rgba(200,169,110,.12);--btn-glow:rgba(200,169,110,.35);" onclick="toggleBook('bod',this)">
+      <span class="sb-icon">𓂀</span><span>Book of the Dead<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Budge &middot; 1898</small></span><span class="sb-check">&#10022;</span>
+    </button>
+  </div>
+
   <div class="srch-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism</div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-tao" style="--btn-color:#ffe082;--btn-bg:rgba(255,224,130,.12);--btn-glow:rgba(255,224,130,.35);" onclick="toggleBook('tao',this)">
@@ -11280,7 +11287,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true};
+const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
