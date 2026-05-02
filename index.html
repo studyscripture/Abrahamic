@@ -95,12 +95,6 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
   line-height: 1.6;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.card-title, .card-desc, .card-meta, .badge,
-.card-verse-ar, .card-source, .card-desc-ar, .card-title-ar,
-.card-title-he, .card-desc-he {
   user-select: text;
   -webkit-user-select: text;
 }
@@ -9890,13 +9884,11 @@ function switchReligion(rel) {
     const ctrl = e.ctrlKey || e.metaKey;
     if (ctrl && e.key === 'u') { e.preventDefault(); return false; }
     if (ctrl && e.key === 's') { e.preventDefault(); return false; }
-    if (ctrl && e.key === 'a') { e.preventDefault(); return false; }
     if (e.key === 'F12') { e.preventDefault(); return false; }
     if (ctrl && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
     if (ctrl && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
     if (ctrl && e.shiftKey && e.key === 'C') { e.preventDefault(); return false; }
   });
-  document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 
 
 // ═══ CHRISTIANITY JS ═══
@@ -10306,8 +10298,6 @@ function switchReligion(rel) {
     if (ctrl && e.key === 'u') { e.preventDefault(); return false; }
     // Ctrl/Cmd+S  — Save Page
     if (ctrl && e.key === 's') { e.preventDefault(); return false; }
-    // Ctrl/Cmd+A  — Select All
-    if (ctrl && e.key === 'a') { e.preventDefault(); return false; }
     // F12         — DevTools
     if (e.key === 'F12') { e.preventDefault(); return false; }
     // Ctrl+Shift+I — DevTools (Elements)
@@ -10317,9 +10307,6 @@ function switchReligion(rel) {
     // Ctrl+Shift+C — DevTools (Inspector)
     if (ctrl && e.shiftKey && e.key === 'C') { e.preventDefault(); return false; }
   });
-
-  // Block right-click context menu (removes "View Page Source" / "Save As")
-  document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 
 
 // ═══ ISLAM JS ═══
@@ -10594,10 +10581,9 @@ function switchReligion(rel) {
     document.getElementById('isl-no-results').classList.toggle('visible', !anyVisible);
   }
 
-  document.addEventListener('contextmenu', e => e.preventDefault());
   document.addEventListener('keydown', e => {
     const ctrl = e.ctrlKey || e.metaKey;
-    if (ctrl && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'a' || e.key === 'A')) e.preventDefault();
+    if (ctrl && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) e.preventDefault();
     if (e.key === 'F12') e.preventDefault();
     if (ctrl && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) e.preventDefault();
   });
@@ -10619,11 +10605,10 @@ function switchReligion(rel) {
 // ═══ SOURCE PROTECTION ═══
 document.addEventListener('keydown', function(e) {
   const ctrl = e.ctrlKey || e.metaKey;
-  if (ctrl && ['u','s','a','U','S','A'].includes(e.key)) { e.preventDefault(); return false; }
+  if (ctrl && ['u','s','U','S'].includes(e.key)) { e.preventDefault(); return false; }
   if (e.key === 'F12') { e.preventDefault(); return false; }
   if (ctrl && e.shiftKey && ['I','J','C','i','j','c'].includes(e.key)) { e.preventDefault(); return false; }
 });
-document.addEventListener('contextmenu', e => e.preventDefault());
 
 
 // ══════════════════════════════════════════════════════════
