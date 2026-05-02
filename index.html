@@ -11052,8 +11052,19 @@ function _buildOtherNav(key,cfg,targetIdx){
     libChapterList=data.map((_,i)=>i);
     data.forEach((sec,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${sec.b}: ${sec.p} \u2014 Sec. ${sec.s}`; sel.appendChild(o); });
   } else if(BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya'){
-    libChapterList=data.map((_,i)=>i);
-    data.forEach((sutta,i)=>{ const o=document.createElement('option'); o.value=i; const lbl=(sutta.title&&sutta.title!==sutta.r)?`${sutta.r}: ${sutta.title}`:sutta.r; o.textContent=lbl; sel.appendChild(o); });
+    // Group by unique r value so sub-sections of the same sutta are one chapter
+    const seenR=new Map(); const groups=[];
+    data.forEach((sutta,i)=>{
+      if(!seenR.has(sutta.r)){ seenR.set(sutta.r,groups.length); groups.push({r:sutta.r,firstIdx:i}); }
+    });
+    libChapterList=groups;
+    groups.forEach((g,i)=>{
+      const o=document.createElement('option'); o.value=i;
+      // Use sutta r as label; if only one item with this r and it has a unique title, show it
+      const matches=data.filter(s=>s.r===g.r);
+      const lbl=matches.length===1&&matches[0].title&&matches[0].title!==matches[0].r?`${g.r}: ${matches[0].title}`:g.r;
+      o.textContent=lbl; sel.appendChild(o);
+    });
   } else if(key==='rig'||key==='atharva'){
     // Group by book+hymn
     const hymns=[]; const seen=new Set();
@@ -11117,7 +11128,7 @@ window.libGoChapter=function(idxStr){
   document.getElementById('lib-other-sel').value=idx;
   const data=SCRIPTURES[libBook], cfg=BOOK_CFG[libBook];
   const isNikaya=cfg&&cfg.type==='nikaya';
-  const total=(libBook==='maha'||isNikaya)?data.length:libChapterList.length;
+  const total=libChapterList.length;
   document.getElementById('lib-other-pos').textContent=`${idx+1} / ${total}`;
   const container=document.getElementById('lib-verse-content');
   container.innerHTML='';
@@ -11159,12 +11170,20 @@ window.libGoChapter=function(idxStr){
     const _mahaRef=`Book ${sec.b}: ${sec.p} — Section ${sec.s}`;
     renderSegmentedPassage(container,cfg,_mahaRef,sec.t);
     } else if(isNikaya){
-    const sutta=data[idx]; if(!sutta) return;
+    const grp=libChapterList[idx]; if(!grp) return;
+    const sections=data.filter(s=>s.r===grp.r);
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    const lbl=(sutta.title&&sutta.title!==sutta.r)?`${sutta.r}: ${sutta.title}`:sutta.r;
+    // Only embed the title in the heading when there is exactly one section and it has a distinct title
+    const lbl=sections.length===1&&sections[0].title&&sections[0].title!==grp.r?`${grp.r}: ${sections[0].title}`:grp.r;
     h.textContent=lbl; container.appendChild(h);
-    if(sutta.chapter){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.chapter; container.appendChild(sub);}
-    renderProseChapter(container,cfg,sutta.t);
+    sections.forEach(sutta=>{
+      // For multi-section suttas, show each section title as a subheading
+      if(sections.length>1&&sutta.title&&sutta.title!==grp.r){
+        const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.title; container.appendChild(sub);
+      }
+      if(sutta.chapter){const sub2=document.createElement('div'); sub2.className='lib-chapter-subhead'; sub2.textContent=sutta.chapter; container.appendChild(sub2);}
+      renderProseChapter(container,cfg,sutta.t);
+    });
   } else if(libBook==='rig'||libBook==='atharva'){
     const grp=libChapterList[idx]; if(!grp) return;
     const verses=data.filter(v=>v.b===grp.b&&v.h===grp.h);
@@ -11654,6 +11673,12 @@ window.switchReligion  = switchReligion;
         data.forEach(function(x){var fg=x.fg||x.ch||x.yn||x.gn||1;var k=x.sec+'.'+fg;if(!seen[k]){seen[k]=true;gs.push({sec:x.sec,fg:fg});}});
         var vfg=v.fg||v.ch||v.yn||v.gn||1;
         var i=gs.findIndex(function(g){return g.sec===v.sec&&g.fg===vfg;}); return i>=0?i:0;
+      }
+      // Nikaya: grouped by unique r value
+      if(cfg.type==='nikaya'){
+        var seenR=[]; var groups=[];
+        data.forEach(function(x){ if(seenR.indexOf(x.r)<0){ seenR.push(x.r); groups.push(x.r); } });
+        var i=groups.indexOf(v.r); return i>=0?i:0;
       }
       // All remaining books: libChapterList = data.map((_,i)=>i); idx = array position
       // (upanishads, ramayana, tao, analects, harivamsha, vishnu_purana)
