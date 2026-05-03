@@ -1064,6 +1064,11 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .srch-card-chapter { font-family:'EB Garamond',serif; font-size:11px; font-style:italic; color:var(--muted); margin-bottom:8px; letter-spacing:.04em; }
 .srch-card-text { font-family:'EB Garamond',serif; font-size:15px; color:var(--cream); line-height:1.67; -webkit-user-select:text; user-select:text; }
 .srch-card-text mark { background:rgba(240,192,96,.22); color:#f0c060; border-radius:2px; padding:0 2px; }
+.srch-card--compact { padding:11px 14px; }
+.srch-card--compact .srch-card-source { margin-bottom:4px; }
+.srch-card--compact .srch-card-ref { font-size:9px; margin-bottom:4px; }
+.srch-card--compact .srch-card-chapter { font-size:10px; margin-bottom:5px; }
+.srch-card--compact .srch-card-text { font-size:13px; line-height:1.55; }
 .srch-no-results { text-align:center; padding:60px 20px; font-family:'EB Garamond',serif; font-size:18px; font-style:italic; color:var(--muted); }
 .srch-empty-state { text-align:center; padding:80px 20px 60px; }
 .srch-empty-icon { font-size:56px; display:block; margin-bottom:18px; opacity:.3; }
@@ -1356,6 +1361,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1898</div>
         <div class="lib-book-count">24 Books &middot; Greek Epic</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#f4a261;" onclick="openLibBook('sggs')">
+        <div class="lib-book-icon">&#x1F52F;</div>
+        <div class="lib-book-name">S&#x012B;r&#x012B; Guru Granth S&#x0101;hib</div>
+        <div class="lib-book-edition">Sant Singh Khalsa &middot; Eternal Guru of the Sikhs</div>
+        <div class="lib-book-count">1430 Ang &middot; 62 R&#x0101;gs &middot; Sikhism</div>
+      </div>
     </div>
 
   </div>
@@ -1515,6 +1526,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-iliad" style="--btn-color:#e57373;--btn-bg:rgba(229,115,115,.12);--btn-glow:rgba(229,115,115,.35);" onclick="toggleBook('iliad',this)">
       <span class="sb-icon">&#x2694;&#xFE0F;</span><span>Iliad<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Butler &middot; 1898</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-sggs" style="--btn-color:#f4a261;--btn-bg:rgba(244,162,97,.12);--btn-glow:rgba(244,162,97,.35);" onclick="toggleBook('sggs',this)">
+      <span class="sb-icon">&#x1F52F;</span><span>SGGS<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Guru Granth S&#x0101;hib</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -10783,6 +10797,7 @@ const BOOK_CFG = {
   homeric_hymn_demeter: { label:'Homeric Hymns', sub:'Hugh G. Evelyn-White · c. 650 BCE · Homeric Hymns', icon:'🌾', accent:'#7ecfb3', accentDim:'rgba(126,207,179,0.35)', countLabel:'hymn', bookTitle:'Homeric Hymns', bookEdition:'Trans. Hugh G. Evelyn-White · Homeric Hymns', type:'homeric_hymn' },
   odyssey: { label:'The Odyssey', sub:'Homer - Samuel Butler - 1900 - 24 Books', icon:'\uD83C\uDF0A', accent:'#4db6e5', accentDim:'rgba(77,182,229,0.35)', countLabel:'book', bookTitle:'The Odyssey', bookEdition:'Trans. Samuel Butler - 1900', type:'nikaya' },
   iliad: { label:'The Iliad', sub:'Homer - Samuel Butler - 1898 - 24 Books', icon:'\u2694\uFE0F', accent:'#e57373', accentDim:'rgba(229,115,115,0.35)', countLabel:'book', bookTitle:'The Iliad', bookEdition:'Trans. Samuel Butler - 1898', type:'nikaya' },
+  sggs:    { label:'S\u012Br\u012B Guru Granth S\u0101hib', sub:'Sant Singh Khalsa \u00B7 1430 Ang \u00B7 Sikhism \u00B7 62 R\u0101gs', icon:'\uD83D\uDD2F', accent:'#f4a261', accentDim:'rgba(244,162,97,0.35)', countLabel:'shabad', bookTitle:'S\u012Br\u012B Guru Granth S\u0101hib', bookEdition:'Sant Singh Khalsa Translation \u00B7 Eternal Guru of the Sikhs', type:'sggs' },
 };
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
@@ -10885,6 +10900,7 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.homeric_hymn_demeter)) d.homeric_hymn_demeter.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
   if(Array.isArray(d.odyssey)) d.odyssey.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
   if(Array.isArray(d.iliad)) d.iliad.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
+  if(Array.isArray(d.sggs)) d.sggs.sort((a,b)=>(toNum(a.mehl)-toNum(b.mehl))||(toNum(a.sn)-toNum(b.sn))||cmpText(a.r,b.r));
   if(Array.isArray(d.upanishads)){
     const upanOrder = new Map();
     let upanIdx = 0;
@@ -11220,6 +11236,10 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='harivamsha'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='sggs'){
+    libChapterList=data.map((_,i)=>i);
+    const mehlStr=['','First','Second','Third','Fourth','Fifth','Sixth','Seventh','Eighth','Ninth','Tenth'];
+    data.forEach((s,i)=>{ const mehlLabel=s.mehl>0&&s.mehl<=10?' \u00B7 '+mehlStr[s.mehl]+' Mehl':''; const o=document.createElement('option'); o.value=i; o.textContent=`${s.raag}${mehlLabel} \u2014 Shabad ${s.sn}${s.sp?' \u00B7 '+s.sp:''}`; sel.appendChild(o); });
   } else if(key==='vishnu_purana'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const lbl=`Part ${s.part}, Sec. ${s.section}`+(s.title?': '+s.title.slice(0,55):''); const o=document.createElement('option'); o.value=i; o.textContent=lbl; sel.appendChild(o); });
@@ -11360,6 +11380,14 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     if(s.parva){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.parva; container.appendChild(sub);}
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='sggs'){
+    const s=data[idx]; if(!s) return;
+    const mehlStr=['','First','Second','Third','Fourth','Fifth','Sixth','Seventh','Eighth','Ninth','Tenth'];
+    const mehlLabel=s.mehl>0&&s.mehl<=10?mehlStr[s.mehl]+' Mehl':'';
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`${s.raag}${mehlLabel?' \u2014 '+mehlLabel:''} \u2014 Shabad ${s.sn}`; container.appendChild(h);
+    if(s.sp){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.sp; container.appendChild(sub);}
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='vishnu_purana'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -11398,7 +11426,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true};
+const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -11498,20 +11526,23 @@ function makeCard(book,v,cfg,terms){
   if(cfg.type==='maha'||cfg.type==='gita'||cfg.type==='nikaya'||
      cfg.type==='harivamsha'||cfg.type==='vishnu_purana'||
      cfg.type==='veda'||cfg.type==='avesta'||
-     cfg.type==='homeric_hymn'){
+     cfg.type==='homeric_hymn'||cfg.type==='sggs'){
     txt=extractMahaSnippet(v.t, terms);
+  } else if(cfg.type==='bod'){
+    txt=extractMahaSnippet(v.t, terms, 280);
   } else if(txt.length>600){
     const cut=txt.indexOf('. ',500); txt=(cut>0?txt.slice(0,cut+1):txt.slice(0,600))+'…';
   }
   const te=document.createElement('div'); te.className='srch-card-text';
   te.innerHTML=highlight(esc(txt),terms); card.appendChild(te);
+  if(cfg.type==='bod') card.classList.add('srch-card--compact');
   card.title='Click to open';
   card.addEventListener('click',(e)=>window._openVerseModal(book,v,cfg,terms));
   return card;
 }
 
-// Extract a ~400-char window around the first term match in Maha text
-function extractMahaSnippet(text, terms){
+// Extract a snippet window around the first term match
+function extractMahaSnippet(text, terms, window=500){
   const lower=text.toLowerCase();
   // Find position of first matching term
   let matchPos=-1;
@@ -11519,10 +11550,10 @@ function extractMahaSnippet(text, terms){
     const pos=lower.indexOf(term);
     if(pos>=0){ matchPos=matchPos<0?pos:Math.min(matchPos,pos); }
   }
-  if(matchPos<0) return text.slice(0,500)+'…';
+  if(matchPos<0) return text.slice(0,window)+'…';
 
-  // Window: 150 chars before match, ~350 chars after
-  const BEFORE=150, WINDOW=500;
+  // Window: up to 30% before match, rest after
+  const BEFORE=Math.round(window*0.3), WINDOW=window;
   let start=Math.max(0,matchPos-BEFORE);
   let end=Math.min(text.length,start+WINDOW);
 
@@ -11555,6 +11586,7 @@ function fmtRef(book,v,cfg){
   if(cfg.type==='avesta')        return v.r;
   if(cfg.type==='harivamsha')     return v.r;
   if(cfg.type==='vishnu_purana')  return v.r;
+  if(cfg.type==='sggs')   return v.r;
   return v.r;
 }
 function chapLabel(book,v,cfg){
@@ -11570,6 +11602,11 @@ function chapLabel(book,v,cfg){
     return null;
   }
   if(cfg.type==='avesta') return v.sec||null;
+  if(cfg.type==='sggs'){
+    const mehlStr=['','First','Second','Third','Fourth','Fifth','Sixth','Seventh','Eighth','Ninth','Tenth'];
+    const m=v.mehl>0&&v.mehl<=10?mehlStr[v.mehl]+' Mehl':'';
+    return (v.raag||'')+(m?' \u00B7 '+m:'')+(v.sp?' \u00B7 '+v.sp:'');
+  }
   // prose types using nikaya renderer
   if(book==='upanishads') return v.upan+(v.section?' \u2014 '+v.section:'');
   if(book==='ramayana')   return v.book_name||null;
