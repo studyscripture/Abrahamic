@@ -1305,6 +1305,16 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
+    <div class="lib-shelf-group-label">&#x262C;&ensp;Sikhism</div>
+    <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#f4a261;" onclick="openLibBook('sggs')">
+        <div class="lib-book-icon">&#x262C;</div>
+        <div class="lib-book-name">S&#x012B;r&#x012B; Guru Granth S&#x0101;hib</div>
+        <div class="lib-book-edition">Sant Singh Khalsa &middot; Eternal Guru of the Sikhs</div>
+        <div class="lib-book-count">1430 Ang &middot; 62 R&#x0101;gs &middot; 3,210 Shabads</div>
+      </div>
+    </div>
+
     <div class="lib-shelf-group-label">&#x1F4AB;&ensp;Zoroastrianism</div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#26c6da;" onclick="openLibBook('avesta')">
@@ -1360,12 +1370,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-name">The Iliad</div>
         <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1898</div>
         <div class="lib-book-count">24 Books &middot; Greek Epic</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#f4a261;" onclick="openLibBook('sggs')">
-        <div class="lib-book-icon">&#x1F52F;</div>
-        <div class="lib-book-name">S&#x012B;r&#x012B; Guru Granth S&#x0101;hib</div>
-        <div class="lib-book-edition">Sant Singh Khalsa &middot; Eternal Guru of the Sikhs</div>
-        <div class="lib-book-count">1430 Ang &middot; 62 R&#x0101;gs &middot; Sikhism</div>
       </div>
     </div>
 
@@ -1492,6 +1496,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
+  <div class="srch-group-label">&#x262C;&ensp;Sikhism</div>
+  <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-sggs" style="--btn-color:#f4a261;--btn-bg:rgba(244,162,97,.12);--btn-glow:rgba(244,162,97,.35);" onclick="toggleBook('sggs',this)">
+      <span class="sb-icon">&#x262C;</span><span>Guru Granth S&#x0101;hib<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Sant Singh Khalsa</small></span><span class="sb-check">&#10022;</span>
+    </button>
+  </div>
+
   <div class="srch-group-label">&#x1F4AB;&ensp;Zoroastrianism</div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-avesta" style="--btn-color:#26c6da;--btn-bg:rgba(38,198,218,.12);--btn-glow:rgba(38,198,218,.35);" onclick="toggleBook('avesta',this)">
@@ -1527,9 +1538,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-iliad" style="--btn-color:#e57373;--btn-bg:rgba(229,115,115,.12);--btn-glow:rgba(229,115,115,.35);" onclick="toggleBook('iliad',this)">
       <span class="sb-icon">&#x2694;&#xFE0F;</span><span>Iliad<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Butler &middot; 1898</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-sggs" style="--btn-color:#f4a261;--btn-bg:rgba(244,162,97,.12);--btn-glow:rgba(244,162,97,.35);" onclick="toggleBook('sggs',this)">
-      <span class="sb-icon">&#x1F52F;</span><span>SGGS<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Guru Granth S&#x0101;hib</small></span><span class="sb-check">&#10022;</span>
-    </button>
+  </div>
   </div>
 
   <!-- Select All / Deselect All -->
