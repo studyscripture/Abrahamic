@@ -1189,6 +1189,18 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Berean Standard Bible &middot; 2022</div>
         <div class="lib-book-count">66 Books &middot; 31,102 Verses</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#7c9edb;" onclick="openLibBook('book_of_enoch')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Book of Enoch</div>
+        <div class="lib-book-edition">R. H. Charles &middot; 1906 &middot; 1 Enoch</div>
+        <div class="lib-book-count">479 Passages &middot; 108 Chapters</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#b08fc0;" onclick="openLibBook('book_of_jubilees')">
+        <div class="lib-book-icon">&#x1F4D6;</div>
+        <div class="lib-book-name">Book of Jubilees</div>
+        <div class="lib-book-edition">R. H. Charles &middot; 1902 &middot; Little Genesis</div>
+        <div class="lib-book-count">1,955 Passages &middot; 50 Chapters</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x262A;&#xFE0F;&ensp;Islam</div>
@@ -1361,6 +1373,22 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
+    <div class="lib-shelf-group-label">&#x26F8;&#xFE0F;&ensp;Shinto</div>
+    <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#e8a87c;" onclick="openLibBook('kojiki')">
+        <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
+        <div class="lib-book-name">Kojiki</div>
+        <div class="lib-book-edition">B. H. Chamberlain &middot; 1882 &middot; Records of Ancient Matters</div>
+        <div class="lib-book-count">1,327 Passages &middot; 180 Sections</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c9a96e;" onclick="openLibBook('nihon_shoki')">
+        <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
+        <div class="lib-book-name">Nihon Shoki</div>
+        <div class="lib-book-edition">W. G. Aston &middot; 1896 &middot; Chronicles of Japan</div>
+        <div class="lib-book-count">1,867 Passages &middot; 30 Books</div>
+      </div>
+    </div>
+
     <div class="lib-shelf-group-label">&#x1F33D;&ensp;Mayan</div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#4ade80;" onclick="openLibBook('popol_vuh')">
@@ -1450,6 +1478,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-bible" style="--btn-color:#c0392b;--btn-bg:rgba(192,57,43,.12);--btn-glow:rgba(192,57,43,.35);" onclick="toggleBook('bible',this)">
       <span class="sb-icon">&#x271D;&#xFE0F;</span><span>BSB Bible<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Berean Standard &middot; 2022</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-book_of_enoch" style="--btn-color:#7c9edb;--btn-bg:rgba(124,158,219,.12);--btn-glow:rgba(124,158,219,.35);" onclick="toggleBook('book_of_enoch',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Book of Enoch<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">R.H. Charles &middot; 1906</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-book_of_jubilees" style="--btn-color:#b08fc0;--btn-bg:rgba(176,143,192,.12);--btn-glow:rgba(176,143,192,.35);" onclick="toggleBook('book_of_jubilees',this)">
+      <span class="sb-icon">&#x1F4D6;</span><span>Book of Jubilees<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">R.H. Charles &middot; 1902</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -1551,6 +1585,16 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-analects" style="--btn-color:#bcaaa4;--btn-bg:rgba(188,170,164,.12);--btn-glow:rgba(188,170,164,.35);" onclick="toggleBook('analects',this)">
       <span class="sb-icon">&#x1F4DC;</span><span>Analects<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Legge &middot; 1861</small></span><span class="sb-check">&#10022;</span>
+    </button>
+  </div>
+
+  <div class="srch-group-label">&#x26F8;&#xFE0F;&ensp;Shinto</div>
+  <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-kojiki" style="--btn-color:#e8a87c;--btn-bg:rgba(232,168,124,.12);--btn-glow:rgba(232,168,124,.35);" onclick="toggleBook('kojiki',this)">
+      <span class="sb-icon">&#x26F8;&#xFE0F;</span><span>Kojiki<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Chamberlain &middot; 1882</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-nihon_shoki" style="--btn-color:#c9a96e;--btn-bg:rgba(201,169,110,.12);--btn-glow:rgba(201,169,110,.35);" onclick="toggleBook('nihon_shoki',this)">
+      <span class="sb-icon">&#x26F8;&#xFE0F;</span><span>Nihon Shoki<br><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Aston &middot; 1896</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -10815,6 +10859,8 @@ window.showSrchPanel = function(which){
 const BOOK_CFG = {
   kjv:     { label:'Holy Bible \u2014 King James Version',    sub:'Authorized Version \u00B7 1611 \u00B7 Old &amp; New Testaments',       icon:'\u271D\uFE0F', accent:'#d4a017', accentDim:'rgba(212,160,23,0.35)',   countLabel:'verse',   bookTitle:'Holy Bible',    bookEdition:'King James Version (KJV) \u00B7 1611',         type:'bible'  },
   bible:   { label:'Holy Bible \u2014 Berean Standard Bible', sub:'BSB \u00B7 2022 \u00B7 Old &amp; New Testaments',                      icon:'\u271D\uFE0F', accent:'#c0392b', accentDim:'rgba(192,57,43,0.35)',   countLabel:'verse',   bookTitle:'Holy Bible',    bookEdition:'Berean Standard Bible (BSB) \u00B7 2022',      type:'bible'  },
+  book_of_enoch:   { label:'Book of Enoch',   sub:'R. H. Charles \u00B7 1906 \u00B7 1 Enoch \u00B7 108 Chapters', icon:'\uD83D\uDCDC', accent:'#7c9edb', accentDim:'rgba(124,158,219,0.35)', countLabel:'passage', bookTitle:'Book of Enoch',   bookEdition:'Trans. R. H. Charles \u00B7 1906', type:'nikaya' },
+  book_of_jubilees: { label:'Book of Jubilees', sub:'R. H. Charles \u00B7 1902 \u00B7 Little Genesis \u00B7 50 Chapters', icon:'\uD83D\uDCD6', accent:'#b08fc0', accentDim:'rgba(176,143,192,0.35)', countLabel:'passage', bookTitle:'Book of Jubilees', bookEdition:'Trans. R. H. Charles \u00B7 1902', type:'nikaya' },
   quran_y: { label:'Quran \u2014 Yusuf Ali Translation',      sub:'Abdullah Yusuf Ali \u00B7 1934 \u00B7 The Meaning of the Holy Quran', icon:'\u262A\uFE0F', accent:'#2ecc8a', accentDim:'rgba(46,204,138,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Yusuf Ali Translation \u00B7 1934',            type:'quran'  },
   quran_p: { label:'Quran \u2014 Pickthall Translation',      sub:'Marmaduke William Pickthall \u00B7 1930 \u00B7 The Glorious Koran',   icon:'\u262A\uFE0F', accent:'#3ab5e6', accentDim:'rgba(58,181,230,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Pickthall Translation \u00B7 1930',            type:'quran'  },
   gita:    { label:'Bhagavad Gita',                           sub:'Sir Edwin Arnold \u00B7 1885 \u00B7 The Song Celestial',              icon:'\uD83D\uDD90', accent:'#f59e42', accentDim:'rgba(245,158,66,0.35)',  countLabel:'stanza',  bookTitle:'Bhagavad Gita', bookEdition:'Sir Edwin Arnold Translation \u00B7 1885',     type:'gita'   },
@@ -10837,6 +10883,8 @@ const BOOK_CFG = {
   vishnu_purana: { label:'Viṣṇu Purāṇa',        sub:'Manmatha Nath Dutt · 1896 · Keshub Academy',                      icon:'🪔', accent:'#ffa726', accentDim:'rgba(255,167,38,0.35)',  countLabel:'section', bookTitle:'Viṣṇu Purāṇa',      bookEdition:'Manmatha Nath Dutt Translation · 1896',          type:'vishnu_purana' },
   bod:             { label:'Egyptian Book of the Dead', sub:'E. A. Wallis Budge · 1898 · Theban Recension · Coming Forth by Day', icon:'𓂀', accent:'#c8a96e', accentDim:'rgba(200,169,110,0.35)', countLabel:'chapter', bookTitle:'The Egyptian Book of the Dead', bookEdition:'E. A. Wallis Budge Translation · 1898 · Theban Recension', type:'bod' },
   popol_vuh: { label:'Popol Vuh', sub:'Goetz & Morley · 1954 · K\'iche\' Maya · 4 Parts', icon:'🌽', accent:'#4ade80', accentDim:'rgba(74,222,128,0.35)', countLabel:'passage', bookTitle:'Popol Vuh', bookEdition:'Trans. Delia Goetz & Sylvanus G. Morley · 1954', type:'nikaya' },
+  kojiki:      { label:'Kojiki', sub:'B. H. Chamberlain \u00B7 1882 \u00B7 Records of Ancient Matters \u00B7 180 Sections', icon:'\u26F8\uFE0F', accent:'#e8a87c', accentDim:'rgba(232,168,124,0.35)', countLabel:'passage', bookTitle:'Kojiki', bookEdition:'Trans. Basil Hall Chamberlain \u00B7 1882', type:'nikaya' },
+  nihon_shoki: { label:'Nihon Shoki', sub:'W. G. Aston \u00B7 1896 \u00B7 Chronicles of Japan \u00B7 30 Books', icon:'\u26F8\uFE0F', accent:'#c9a96e', accentDim:'rgba(201,169,110,0.35)', countLabel:'passage', bookTitle:'Nihon Shoki', bookEdition:'Trans. W. G. Aston \u00B7 1896', type:'nikaya' },
   homeric_hymn_demeter: { label:'Homeric Hymns', sub:'Hugh G. Evelyn-White · c. 650 BCE · Homeric Hymns', icon:'🌾', accent:'#7ecfb3', accentDim:'rgba(126,207,179,0.35)', countLabel:'hymn', bookTitle:'Homeric Hymns', bookEdition:'Trans. Hugh G. Evelyn-White · Homeric Hymns', type:'homeric_hymn' },
   odyssey: { label:'The Odyssey', sub:'Homer - Samuel Butler - 1900 - 24 Books', icon:'\uD83C\uDF0A', accent:'#4db6e5', accentDim:'rgba(77,182,229,0.35)', countLabel:'book', bookTitle:'The Odyssey', bookEdition:'Trans. Samuel Butler - 1900', type:'nikaya' },
   iliad: { label:'The Iliad', sub:'Homer - Samuel Butler - 1898 - 24 Books', icon:'\u2694\uFE0F', accent:'#e57373', accentDim:'rgba(229,115,115,0.35)', countLabel:'book', bookTitle:'The Iliad', bookEdition:'Trans. Samuel Butler - 1898', type:'nikaya' },
@@ -10941,6 +10989,10 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.harivamsha)){const po={'Harivamsha Parva':0,'Vishnu Parva':1,'Bhavishya Parva':2};d.harivamsha.sort((a,b)=>((po[a.parva]||0)-(po[b.parva]||0))||(toNum(a.chapter)-toNum(b.chapter)));}
   if(Array.isArray(d.vishnu_purana)) d.vishnu_purana.sort((a,b)=>(toNum(a.part)-toNum(b.part))||(toNum(a.section)-toNum(b.section)));
   if(Array.isArray(d.bod)) d.bod.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
+  if(Array.isArray(d.kojiki)) d.kojiki.sort((a,b)=>(toNum(a.section)-toNum(b.section))||(toNum(a.passage)-toNum(b.passage)));
+  if(Array.isArray(d.nihon_shoki)) d.nihon_shoki.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.passage)-toNum(b.passage)));
+  if(Array.isArray(d.book_of_enoch)) d.book_of_enoch.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter))||(toNum(a.verse)-toNum(b.verse)));
+  if(Array.isArray(d.book_of_jubilees)) d.book_of_jubilees.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter))||(toNum(a.verse)-toNum(b.verse)));
   if(Array.isArray(d.popol_vuh)) d.popol_vuh.sort((a,b)=>(toNum(a.part)-toNum(b.part))||(toNum(a.chapter)-toNum(b.chapter))||(toNum(a.passage)-toNum(b.passage)));
   if(Array.isArray(d.homeric_hymn_demeter)) d.homeric_hymn_demeter.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
   if(Array.isArray(d.odyssey)) d.odyssey.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
@@ -11213,7 +11265,7 @@ function renderSegmentedPassage(container,cfg,baseRef,text){
 
 function _buildOtherNav(key,cfg,targetIdx){
   const data=SCRIPTURES[key];
-  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section',bod:'Chapter',homeric_hymn_demeter:'Hymn',odyssey:'Book',iliad:'Book',popol_vuh:'Part \u00B7 Chapter'};
+  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section',bod:'Chapter',homeric_hymn_demeter:'Hymn',odyssey:'Book',iliad:'Book',popol_vuh:'Part \u00B7 Chapter',book_of_enoch:'Chapter',book_of_jubilees:'Chapter',kojiki:'Section',nihon_shoki:'Book'};
   document.getElementById('lib-nav-label').textContent=labels[key]||'Chapter';
   const sel=document.getElementById('lib-other-sel');
   sel.innerHTML='';
@@ -11299,6 +11351,18 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='homeric_hymn_demeter'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.roman}. ${s.title}`; sel.appendChild(o); });
+  } else if(key==='kojiki'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Sect. ${s.section}: ${(s.title||'').slice(0,50)}`; sel.appendChild(o); });
+  } else if(key==='nihon_shoki'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${s.book} — ${(s.title||'').slice(0,45)}`; sel.appendChild(o); });
+  } else if(key==='book_of_enoch'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Ch. ${s.chapter}:${s.verse} — ${(s.t||'').slice(0,50)}\u2026`; sel.appendChild(o); });
+  } else if(key==='book_of_jubilees'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Jub. ${s.chapter}:${s.verse||'intro'} — ${(s.title||'').slice(0,45)}`; sel.appendChild(o); });
   } else if(key==='popol_vuh'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Part ${s.part}, Ch. ${s.chapter}: Passage ${s.passage}`; sel.appendChild(o); });
@@ -11464,6 +11528,29 @@ window.libGoChapter=function(idxStr){
     h.textContent=`Hymn ${s.roman}: ${s.title}`; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.section; container.appendChild(sub);
     renderSegmentedPassage(container,cfg,s.r,s.t);
+  } else if(libBook==='kojiki'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Section ${s.section}`; container.appendChild(h);
+    if(s.title){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub); }
+    renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='nihon_shoki'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Book ${s.book}`; container.appendChild(h);
+    if(s.title){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub); }
+    renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='book_of_enoch'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`1 Enoch ${s.chapter}:${s.verse}`; container.appendChild(h);
+    renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='book_of_jubilees'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`Jubilees ${s.chapter}:${s.verse||'intro'}`; container.appendChild(h);
+    if(s.title){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub); }
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='popol_vuh'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -11491,7 +11578,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -11681,6 +11768,11 @@ function chapLabel(book,v,cfg){
   if(book==='analects')      return v.book_title||null;
   if(book==='harivamsha')    return v.parva||null;
   if(book==='vishnu_purana') return (v.title?v.title.split('.')[0].slice(0,80):null);
+  if(book==='popol_vuh')     return `Part ${v.part}, Chapter ${v.chapter}`;
+  if(book==='kojiki')        return v.title ? `Section ${v.section} \u2014 ${v.title}` : `Section ${v.section}`;
+  if(book==='nihon_shoki')   return v.title ? `Book ${v.book} \u2014 ${v.title}` : `Book ${v.book}`;
+  if(book==='book_of_enoch')    return `1 Enoch, Chapter ${v.chapter}`;
+  if(book==='book_of_jubilees') return v.title ? v.title.slice(0,80) : `Jubilees, Chapter ${v.chapter}`;
   return null;
 }
 function highlight(text,terms){ let r=text; terms.forEach(t=>{ const e=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); r=r.replace(new RegExp('('+e+')','gi'),'<mark>$1</mark>'); }); return r; }
