@@ -947,6 +947,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .lib-book-card:hover { border-color:var(--bk-accent,var(--srch)); transform:translateY(-3px); box-shadow:0 10px 32px rgba(0,0,0,.5),0 0 0 1px var(--bk-accent,var(--srch)); }
 .lib-book-icon { font-size:30px; line-height:1.3; margin-bottom:2px; }
 .lib-book-name { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:.07em; color:var(--bk-accent,var(--srch)); line-height:1.3; }
+.lib-book-origin { font-family:'EB Garamond',serif; font-size:11px; font-style:normal; color:var(--bk-accent,var(--srch)); opacity:.7; letter-spacing:.03em; margin-top:1px; }
 .lib-book-edition { font-family:'EB Garamond',serif; font-size:12px; font-style:italic; color:var(--muted); line-height:1.3; }
 .lib-book-count { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.12em; color:rgba(90,82,112,.6); margin-top:2px; }
 
@@ -1180,66 +1181,77 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#ff7043;" onclick="openLibBook('rig')">
         <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
         <div class="lib-book-name">&#x1E5A;gveda</div>
+        <div class="lib-book-origin">c. 1500&ndash;1200 BCE</div>
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1896 &middot; 10 Ma&#x1E47;&#x1E0Dalas</div>
         <div class="lib-book-count">9,667 Verses &middot; &#x15A;ruti</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ffb300;" onclick="openLibBook('yajur')">
         <div class="lib-book-icon">&#x1F525;</div>
         <div class="lib-book-name">Yajurveda</div>
+        <div class="lib-book-origin">c. 1200&ndash;900 BCE</div>
         <div class="lib-book-edition">A. B. Keith &middot; 1914 &middot; Black Yajurveda</div>
         <div class="lib-book-count">142 Verses &middot; &#x15A;ruti</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#66bb6a;" onclick="openLibBook('sama')">
         <div class="lib-book-icon">&#x1F3B5;</div>
         <div class="lib-book-name">S&#x0101;maveda</div>
+        <div class="lib-book-origin">c. 1200&ndash;1000 BCE</div>
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1895</div>
         <div class="lib-book-count">561 Verses &middot; &#x15A;ruti</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ab47bc;" onclick="openLibBook('atharva')">
         <div class="lib-book-icon">&#x1F33F;</div>
         <div class="lib-book-name">Atharvaveda</div>
+        <div class="lib-book-origin">c. 1000&ndash;900 BCE</div>
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1895</div>
         <div class="lib-book-count">1,766 Verses &middot; &#x15A;ruti</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('upanishads')">
         <div class="lib-book-icon">&#x1F9D8;</div>
         <div class="lib-book-name">Upani&#x1E63;ads</div>
+        <div class="lib-book-origin">c. 800&ndash;200 BCE</div>
         <div class="lib-book-edition">F. Max M&#xFC;ller &middot; 1879&ndash;1884 &middot; 12 Upani&#x1E63;ads</div>
         <div class="lib-book-count">53 Sections &middot; Sacred Books of the East</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#f59e42;" onclick="openLibBook('gita')">
         <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
         <div class="lib-book-name">Bhagavad Gita</div>
+        <div class="lib-book-origin">c. 200 BCE&ndash;200 CE</div>
         <div class="lib-book-edition">Sir Edwin Arnold &middot; 1885</div>
         <div class="lib-book-count">18 Chapters &middot; The Song Celestial</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ffd54f;" onclick="openLibBook('sbg')">
         <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
         <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
+        <div class="lib-book-origin">c. 200 BCE&ndash;200 CE</div>
         <div class="lib-book-edition">Swami Swarupananda &middot; 1909 &middot; Advaita Ashrama</div>
         <div class="lib-book-count">671 Verses &middot; 18 Chapters</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ef9a9a;" onclick="openLibBook('ramayana')">
         <div class="lib-book-icon">&#x1F3F9;</div>
         <div class="lib-book-name">R&#x0101;m&#x0101;ya&#x1E47;a</div>
+        <div class="lib-book-origin">c. 500&ndash;100 BCE</div>
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1870&ndash;1874 &middot; V&#x0101;lm&#x012B;ki</div>
         <div class="lib-book-count">228 Cantos &middot; 6 K&#x0101;&#x1E47;&#x1E0Das</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#c084fc;" onclick="openLibBook('maha')">
         <div class="lib-book-icon">&#x1F3F9;</div>
         <div class="lib-book-name">Mahabharata</div>
+        <div class="lib-book-origin">c. 400 BCE&ndash;400 CE</div>
         <div class="lib-book-edition">K. M. Ganguli &middot; 1883&ndash;1896</div>
         <div class="lib-book-count">18 Parvas &middot; 2,083 Sections</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ff8a65;" onclick="openLibBook('harivamsha')">
         <div class="lib-book-icon">&#x1F531;</div>
         <div class="lib-book-name">Harива&#x1E43;&#x15A;a</div>
+        <div class="lib-book-origin">c. 1st&ndash;4th century CE</div>
         <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1897</div>
         <div class="lib-book-count">233 Chapters &middot; 3 Parvas</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ffa726;" onclick="openLibBook('vishnu_purana')">
         <div class="lib-book-icon">&#x1FA94;</div>
         <div class="lib-book-name">Vi&#x1E63;&#x1E47;u Pur&#x0101;&#x1E47;a</div>
+        <div class="lib-book-origin">c. 1st&ndash;6th century CE</div>
         <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1896</div>
         <div class="lib-book-count">126 Sections &middot; 6 Parts</div>
       </div>
@@ -1250,6 +1262,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#c8a96e;" onclick="openLibBook('bod')">
         <div class="lib-book-icon">𓂀</div>
         <div class="lib-book-name">Book of the Dead</div>
+        <div class="lib-book-origin">c. 1550 BCE</div>
         <div class="lib-book-edition">E. A. Wallis Budge &middot; 1898 &middot; Theban Recension</div>
         <div class="lib-book-count">181 Chapters &middot; Coming Forth by Day</div>
       </div>
@@ -1260,6 +1273,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#26c6da;" onclick="openLibBook('avesta')">
         <div class="lib-book-icon">&#x1F4AB;</div>
         <div class="lib-book-name">Zend Avesta</div>
+        <div class="lib-book-origin">c. 1500&ndash;500 BCE</div>
         <div class="lib-book-edition">James Darmesteter &middot; 1880 &middot; Zoroastrian Scripture</div>
         <div class="lib-book-count">1,003 Verses &middot; Vendidad &middot; Vispered &middot; Yasna</div>
       </div>
@@ -1270,18 +1284,21 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#7ecfb3;" onclick="openLibBook('homeric_hymn_demeter')">
         <div class="lib-book-icon">&#x1F33E;</div>
         <div class="lib-book-name">Homeric Hymns</div>
-        <div class="lib-book-edition">Hugh G. Evelyn-White &middot; c. 650 BCE</div>
+        <div class="lib-book-origin">c. 700&ndash;400 BCE</div>
+        <div class="lib-book-edition">Hugh G. Evelyn-White &middot; 1914</div>
         <div class="lib-book-count">33 Hymns &middot; Ancient Greek Epic</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#4db6e5;" onclick="openLibBook('odyssey')">
         <div class="lib-book-icon">&#x1F30A;</div>
         <div class="lib-book-name">The Odyssey</div>
+        <div class="lib-book-origin">c. 800&ndash;700 BCE</div>
         <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1900</div>
         <div class="lib-book-count">24 Books &middot; Greek Epic</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#e57373;" onclick="openLibBook('iliad')">
         <div class="lib-book-icon">&#x2694;&#xFE0F;</div>
         <div class="lib-book-name">The Iliad</div>
+        <div class="lib-book-origin">c. 800&ndash;700 BCE</div>
         <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1898</div>
         <div class="lib-book-count">24 Books &middot; Greek Epic</div>
       </div>
@@ -1292,6 +1309,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#4ade80;" onclick="openLibBook('popol_vuh')">
         <div class="lib-book-icon">&#x1F33D;</div>
         <div class="lib-book-name">Popol Vuh</div>
+        <div class="lib-book-origin">c. 1000 BCE&ndash;1500 CE (transcribed c. 1550)</div>
         <div class="lib-book-edition">Goetz &amp; Morley &middot; 1954</div>
         <div class="lib-book-count">630 Passages &middot; 4 Parts &middot; K&#x2019;iche&#x2019; Maya</div>
       </div>
@@ -1302,6 +1320,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('tattva')">
         <div class="lib-book-icon">&#x1F590;</div>
         <div class="lib-book-name">Tattvārthashāstra</div>
+        <div class="lib-book-origin">c. 2nd&ndash;5th century CE</div>
         <div class="lib-book-edition">Ācārya Umāsvāmi &middot; Vijay K. Jain &middot; 2018</div>
         <div class="lib-book-count">10 Chapters &middot; 357 S&#x016B;tras &middot; Jain Philosophy</div>
       </div>
@@ -1312,24 +1331,28 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#f0c040;" onclick="openLibBook('dn')">
         <div class="lib-book-icon">&#x2638;&#xFE0F;</div>
         <div class="lib-book-name">D&#x012B;gha Nik&#x0101;ya</div>
+        <div class="lib-book-origin">c. 500&ndash;300 BCE</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2018 &middot; Long Discourses</div>
         <div class="lib-book-count">34 Suttas &middot; P&#x0101;li Canon</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#e07b39;" onclick="openLibBook('mn')">
         <div class="lib-book-icon">&#x2638;&#xFE0F;</div>
         <div class="lib-book-name">Majjhima Nik&#x0101;ya</div>
+        <div class="lib-book-origin">c. 500&ndash;300 BCE</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2018 &middot; Middle Discourses</div>
         <div class="lib-book-count">152 Suttas &middot; P&#x0101;li Canon</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#38bdf8;" onclick="openLibBook('sn')">
         <div class="lib-book-icon">&#x2638;&#xFE0F;</div>
         <div class="lib-book-name">Sa&#x1E43;yutta Nik&#x0101;ya</div>
+        <div class="lib-book-origin">c. 500&ndash;300 BCE</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2018 &middot; Linked Discourses</div>
         <div class="lib-book-count">1,685 Suttas &middot; P&#x0101;li Canon</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#34d399;" onclick="openLibBook('an')">
         <div class="lib-book-icon">&#x2638;&#xFE0F;</div>
         <div class="lib-book-name">A&#x1E45;guttara Nik&#x0101;ya</div>
+        <div class="lib-book-origin">c. 500&ndash;300 BCE</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2018 &middot; Numbered Discourses</div>
         <div class="lib-book-count">332 Sections &middot; P&#x0101;li Canon</div>
       </div>
@@ -1340,12 +1363,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#ffe082;" onclick="openLibBook('tao')">
         <div class="lib-book-icon">&#x262F;&#xFE0F;</div>
         <div class="lib-book-name">Tao Te Ching</div>
+        <div class="lib-book-origin">c. 400&ndash;300 BCE</div>
         <div class="lib-book-edition">James Legge &middot; 1891 &middot; Lao-Tze</div>
         <div class="lib-book-count">81 Chapters &middot; Taoist Canon</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#bcaaa4;" onclick="openLibBook('analects')">
         <div class="lib-book-icon">&#x1F4DC;</div>
         <div class="lib-book-name">Analects of Confucius</div>
+        <div class="lib-book-origin">c. 475&ndash;221 BCE</div>
         <div class="lib-book-edition">James Legge &middot; 1861 &middot; Confucius</div>
         <div class="lib-book-count">496 Chapters &middot; 20 Books</div>
       </div>
@@ -1356,6 +1381,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#c9a227;" onclick="openLibBook('jps')">
         <div class="lib-book-icon">&#x2721;&#xFE0F;</div>
         <div class="lib-book-name">Tanakh</div>
+        <div class="lib-book-origin">c. 1200&ndash;165 BCE</div>
         <div class="lib-book-edition">Jewish Publication Society &middot; 1917 &middot; Masoretic Text</div>
         <div class="lib-book-count">39 Books &middot; 23,028 Verses &middot; Torah &middot; Nevi&#x02BC;im &middot; Ketuvim</div>
       </div>
@@ -1366,24 +1392,28 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#d4a017;" onclick="openLibBook('kjv')">
         <div class="lib-book-icon">&#x271D;&#xFE0F;</div>
         <div class="lib-book-name">Holy Bible</div>
+        <div class="lib-book-origin">OT c. 1200&ndash;165 BCE &middot; NT c. 50&ndash;110 CE</div>
         <div class="lib-book-edition">King James Version &middot; 1611</div>
         <div class="lib-book-count">66 Books &middot; ~31,000 Verses</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#c0392b;" onclick="openLibBook('bible')">
         <div class="lib-book-icon">&#x271D;&#xFE0F;</div>
         <div class="lib-book-name">Holy Bible</div>
+        <div class="lib-book-origin">OT c. 1200&ndash;165 BCE &middot; NT c. 50&ndash;110 CE</div>
         <div class="lib-book-edition">Berean Standard Bible &middot; 2022</div>
         <div class="lib-book-count">66 Books &middot; 31,102 Verses</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#7c9edb;" onclick="openLibBook('book_of_enoch')">
         <div class="lib-book-icon">&#x1F4DC;</div>
         <div class="lib-book-name">Book of Enoch</div>
+        <div class="lib-book-origin">c. 300&ndash;100 BCE</div>
         <div class="lib-book-edition">R. H. Charles &middot; 1906 &middot; 1 Enoch</div>
         <div class="lib-book-count">479 Passages &middot; 108 Chapters</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#b08fc0;" onclick="openLibBook('book_of_jubilees')">
         <div class="lib-book-icon">&#x1F4D6;</div>
         <div class="lib-book-name">Book of Jubilees</div>
+        <div class="lib-book-origin">c. 160&ndash;150 BCE</div>
         <div class="lib-book-edition">R. H. Charles &middot; 1902 &middot; Little Genesis</div>
         <div class="lib-book-count">1,955 Passages &middot; 50 Chapters</div>
       </div>
@@ -1394,12 +1424,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#2ecc8a;" onclick="openLibBook('quran_y')">
         <div class="lib-book-icon">&#x262A;&#xFE0F;</div>
         <div class="lib-book-name">The Quran</div>
+        <div class="lib-book-origin">c. 610&ndash;632 CE</div>
         <div class="lib-book-edition">Yusuf Ali &middot; 1934</div>
         <div class="lib-book-count">114 Surahs &middot; 6,236 Ayahs</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#3ab5e6;" onclick="openLibBook('quran_p')">
         <div class="lib-book-icon">&#x262A;&#xFE0F;</div>
         <div class="lib-book-name">The Quran</div>
+        <div class="lib-book-origin">c. 610&ndash;632 CE</div>
         <div class="lib-book-edition">Pickthall &middot; 1930</div>
         <div class="lib-book-count">114 Surahs &middot; 6,236 Ayahs</div>
       </div>
@@ -1410,12 +1442,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#e8a87c;" onclick="openLibBook('kojiki')">
         <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
         <div class="lib-book-name">Kojiki</div>
+        <div class="lib-book-origin">712 CE</div>
         <div class="lib-book-edition">B. H. Chamberlain &middot; 1882 &middot; Records of Ancient Matters</div>
         <div class="lib-book-count">1,327 Passages &middot; 180 Sections</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#c9a96e;" onclick="openLibBook('nihon_shoki')">
         <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
         <div class="lib-book-name">Nihon Shoki</div>
+        <div class="lib-book-origin">720 CE</div>
         <div class="lib-book-edition">W. G. Aston &middot; 1896 &middot; Chronicles of Japan</div>
         <div class="lib-book-count">1,867 Passages &middot; 30 Books</div>
       </div>
@@ -1426,6 +1460,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#f4a261;" onclick="openLibBook('sggs')">
         <div class="lib-book-icon">&#x262C;</div>
         <div class="lib-book-name">S&#x012B;r&#x012B; Guru Granth S&#x0101;hib</div>
+        <div class="lib-book-origin">c. 1604 CE (final form 1708 CE)</div>
         <div class="lib-book-edition">Sant Singh Khalsa &middot; Eternal Guru of the Sikhs</div>
         <div class="lib-book-count">1430 Ang &middot; 62 R&#x0101;gs &middot; 3,210 Shabads</div>
       </div>
