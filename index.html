@@ -145,9 +145,9 @@ body::before {
   color:var(--muted); letter-spacing:0.2em;
 }
 @keyframes eternal-breathe {
-  0%   { opacity:0.72; }
-  50%  { opacity:1; }
-  100% { opacity:0.72; }
+  0%   { opacity:.72; box-shadow: 0 0 0 1px rgba(160,120,255,0.06), 0 2px 16px rgba(120,80,220,0.08), inset 0 1px 0 rgba(255,255,255,0.04); border-color:rgba(200,175,255,0.18); transform:scale(1); }
+  50%  { opacity:1;   box-shadow: 0 0 22px rgba(160,120,255,0.28), 0 0 55px rgba(140,100,255,0.13), 0 2px 24px rgba(120,80,220,0.18), inset 0 1px 0 rgba(255,255,255,0.07); border-color:rgba(210,185,255,0.42); transform:scale(1.012); }
+  100% { opacity:.72; box-shadow: 0 0 0 1px rgba(160,120,255,0.06), 0 2px 16px rgba(120,80,220,0.08), inset 0 1px 0 rgba(255,255,255,0.04); border-color:rgba(200,175,255,0.18); transform:scale(1); }
 }
 @keyframes eternal-shimmer {
   0%   { background-position: 200% center; }
@@ -156,6 +156,11 @@ body::before {
 @keyframes eternal-line-grow {
   from { width:0; opacity:0; }
   to   { width:38px; opacity:1; }
+}
+@keyframes eternal-om-breathe {
+  0%   { opacity:.8;  text-shadow: 0 0 10px rgba(180,150,255,0.25); }
+  50%  { opacity:1;   text-shadow: 0 0 22px rgba(200,170,255,0.65), 0 0 44px rgba(160,120,255,0.28); }
+  100% { opacity:.8;  text-shadow: 0 0 10px rgba(180,150,255,0.25); }
 }
 .masthead-eternal-btn {
   font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:0.26em;
@@ -168,7 +173,7 @@ body::before {
   border:1px solid rgba(200,175,255,0.18);
   box-shadow: 0 0 0 1px rgba(160,120,255,0.06), 0 2px 20px rgba(120,80,220,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
   transition: color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
-  animation: eternal-breathe 4s ease-in-out infinite;
+  animation: eternal-breathe 3.6s ease-in-out infinite;
 }
 .masthead-eternal-btn::before,
 .masthead-eternal-btn::after {
@@ -192,6 +197,7 @@ body::before {
   font-family:'Tiro Devanagari Sans',serif; font-size:19px; line-height:1;
   opacity:0.8; transition: opacity 0.4s, text-shadow 0.4s;
   text-shadow: 0 0 12px rgba(180,150,255,0.3);
+  animation: eternal-om-breathe 3.6s ease-in-out infinite;
 }
 .masthead-eternal-btn:hover .om-symbol {
   opacity:1;
@@ -1177,7 +1183,18 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="lib-wrap" id="lib-shelf-wrap">
     <div class="lib-shelf-label">Choose a Scripture to Read</div>
 
-    <div class="lib-shelf-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2300 BCE</span></div>
+    <div class="lib-shelf-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3100 BCE</span></div>
+    <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#c8a96e;" onclick="openLibBook('bod')">
+        <div class="lib-book-icon">𓂀</div>
+        <div class="lib-book-name">Book of the Dead</div>
+        <div class="lib-book-origin">c. 1550 BCE</div>
+        <div class="lib-book-edition">E. A. Wallis Budge &middot; 1898 &middot; Theban Recension</div>
+        <div class="lib-book-count">181 Chapters &middot; Coming Forth by Day</div>
+      </div>
+    </div>
+
+    <div class="lib-shelf-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3000+ BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#ff7043;" onclick="openLibBook('rig')">
         <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
@@ -1258,14 +1275,25 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3100 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
     <div class="lib-shelf">
-      <div class="lib-book-card" style="--bk-accent:#c8a96e;" onclick="openLibBook('bod')">
-        <div class="lib-book-icon">𓂀</div>
-        <div class="lib-book-name">Book of the Dead</div>
-        <div class="lib-book-origin">c. 1550 BCE</div>
-        <div class="lib-book-edition">E. A. Wallis Budge &middot; 1898 &middot; Theban Recension</div>
-        <div class="lib-book-count">181 Chapters &middot; Coming Forth by Day</div>
+      <div class="lib-book-card" style="--bk-accent:#4ade80;" onclick="openLibBook('popol_vuh')">
+        <div class="lib-book-icon">&#x1F33D;</div>
+        <div class="lib-book-name">Popol Vuh</div>
+        <div class="lib-book-origin">c. 1000 BCE&ndash;1500 CE (transcribed c. 1550)</div>
+        <div class="lib-book-edition">Goetz &amp; Morley &middot; 1954</div>
+        <div class="lib-book-count">630 Passages &middot; 4 Parts &middot; K&#x2019;iche&#x2019; Maya</div>
+      </div>
+    </div>
+
+    <div class="lib-shelf-group-label">&#x2721;&#xFE0F;&ensp;Judaism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
+    <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#c9a227;" onclick="openLibBook('jps')">
+        <div class="lib-book-icon">&#x2721;&#xFE0F;</div>
+        <div class="lib-book-name">Tanakh</div>
+        <div class="lib-book-origin">c. 1200&ndash;165 BCE</div>
+        <div class="lib-book-edition">Jewish Publication Society &middot; 1917 &middot; Masoretic Text</div>
+        <div class="lib-book-count">39 Books &middot; 23,028 Verses &middot; Torah &middot; Nevi&#x02BC;im &middot; Ketuvim</div>
       </div>
     </div>
 
@@ -1302,17 +1330,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 800&ndash;700 BCE</div>
         <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1898</div>
         <div class="lib-book-count">24 Books &middot; Greek Epic</div>
-      </div>
-    </div>
-
-    <div class="lib-shelf-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
-    <div class="lib-shelf">
-      <div class="lib-book-card" style="--bk-accent:#4ade80;" onclick="openLibBook('popol_vuh')">
-        <div class="lib-book-icon">&#x1F33D;</div>
-        <div class="lib-book-name">Popol Vuh</div>
-        <div class="lib-book-origin">c. 1000 BCE&ndash;1500 CE (transcribed c. 1550)</div>
-        <div class="lib-book-edition">Goetz &amp; Morley &middot; 1954</div>
-        <div class="lib-book-count">630 Passages &middot; 4 Parts &middot; K&#x2019;iche&#x2019; Maya</div>
       </div>
     </div>
 
@@ -1377,14 +1394,21 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x2721;&#xFE0F;&ensp;Judaism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x26F8;&#xFE0F;&ensp;Shinto <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 300 BCE</span></div>
     <div class="lib-shelf">
-      <div class="lib-book-card" style="--bk-accent:#c9a227;" onclick="openLibBook('jps')">
-        <div class="lib-book-icon">&#x2721;&#xFE0F;</div>
-        <div class="lib-book-name">Tanakh</div>
-        <div class="lib-book-origin">c. 1200&ndash;165 BCE</div>
-        <div class="lib-book-edition">Jewish Publication Society &middot; 1917 &middot; Masoretic Text</div>
-        <div class="lib-book-count">39 Books &middot; 23,028 Verses &middot; Torah &middot; Nevi&#x02BC;im &middot; Ketuvim</div>
+      <div class="lib-book-card" style="--bk-accent:#e8a87c;" onclick="openLibBook('kojiki')">
+        <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
+        <div class="lib-book-name">Kojiki</div>
+        <div class="lib-book-origin">712 CE</div>
+        <div class="lib-book-edition">B. H. Chamberlain &middot; 1882 &middot; Records of Ancient Matters</div>
+        <div class="lib-book-count">1,327 Passages &middot; 180 Sections</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c9a96e;" onclick="openLibBook('nihon_shoki')">
+        <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
+        <div class="lib-book-name">Nihon Shoki</div>
+        <div class="lib-book-origin">720 CE</div>
+        <div class="lib-book-edition">W. G. Aston &middot; 1896 &middot; Chronicles of Japan</div>
+        <div class="lib-book-count">1,867 Passages &middot; 30 Books</div>
       </div>
     </div>
 
@@ -1452,24 +1476,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x26F8;&#xFE0F;&ensp;Shinto <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 300 BCE</span></div>
-    <div class="lib-shelf">
-      <div class="lib-book-card" style="--bk-accent:#e8a87c;" onclick="openLibBook('kojiki')">
-        <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
-        <div class="lib-book-name">Kojiki</div>
-        <div class="lib-book-origin">712 CE</div>
-        <div class="lib-book-edition">B. H. Chamberlain &middot; 1882 &middot; Records of Ancient Matters</div>
-        <div class="lib-book-count">1,327 Passages &middot; 180 Sections</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#c9a96e;" onclick="openLibBook('nihon_shoki')">
-        <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
-        <div class="lib-book-name">Nihon Shoki</div>
-        <div class="lib-book-origin">720 CE</div>
-        <div class="lib-book-edition">W. G. Aston &middot; 1896 &middot; Chronicles of Japan</div>
-        <div class="lib-book-count">1,867 Passages &middot; 30 Books</div>
-      </div>
-    </div>
-
     <div class="lib-shelf-group-label">&#x262C;&ensp;Sikhism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 1500 CE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#f4a261;" onclick="openLibBook('sggs')">
@@ -1531,7 +1537,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div class="srch-book-select-label">Select Scriptures to Compare</div>
 
-  <div class="srch-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2300 BCE</span></div>
+  <div class="srch-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3100 BCE</span></div>
+  <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-bod" style="--btn-color:#c8a96e;--btn-bg:rgba(200,169,110,.12);--btn-glow:rgba(200,169,110,.35);" onclick="toggleBook('bod',this)">
+      <span class="sb-icon">𓂀</span><span>Book of the Dead<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1550 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Budge &middot; 1898</small></span><span class="sb-check">&#10022;</span>
+    </button>
+  </div>
+
+  <div class="srch-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3000+ BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-rig" style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);" onclick="toggleBook('rig',this)">
       <span class="sb-icon">&#x1F549;&#xFE0F;</span><span>&#x1E5A;gveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1500&ndash;1200 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Griffith &middot; 1896</small></span><span class="sb-check">&#10022;</span>
@@ -1568,10 +1581,17 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3100 BCE</span></div>
+  <div class="srch-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
   <div class="srch-book-row">
-    <button class="srch-book-btn active" id="sbtn-bod" style="--btn-color:#c8a96e;--btn-bg:rgba(200,169,110,.12);--btn-glow:rgba(200,169,110,.35);" onclick="toggleBook('bod',this)">
-      <span class="sb-icon">𓂀</span><span>Book of the Dead<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1550 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Budge &middot; 1898</small></span><span class="sb-check">&#10022;</span>
+    <button class="srch-book-btn active" id="sbtn-popol_vuh" style="--btn-color:#4ade80;--btn-bg:rgba(74,222,128,.12);--btn-glow:rgba(74,222,128,.35);" onclick="toggleBook('popol_vuh',this)">
+      <span class="sb-icon">&#x1F33D;</span><span>Popol Vuh<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1000 BCE&ndash;1500 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Goetz &amp; Morley &middot; 1954</small></span><span class="sb-check">&#10022;</span>
+    </button>
+  </div>
+
+  <div class="srch-group-label">&#x2721;&#xFE0F;&ensp;Judaism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
+  <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-jps" style="--btn-color:#c9a227;--btn-bg:rgba(201,162,39,.12);--btn-glow:rgba(201,162,39,.35);" onclick="toggleBook('jps',this)">
+      <span class="sb-icon">&#x2721;&#xFE0F;</span><span>Tanakh &mdash; JPS 1917<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1200&ndash;165 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Jewish Publication Society</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -1592,13 +1612,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-iliad" style="--btn-color:#e57373;--btn-bg:rgba(229,115,115,.12);--btn-glow:rgba(229,115,115,.35);" onclick="toggleBook('iliad',this)">
       <span class="sb-icon">&#x2694;&#xFE0F;</span><span>Iliad<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 800&ndash;700 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Butler &middot; 1898</small></span><span class="sb-check">&#10022;</span>
-    </button>
-  </div>
-
-  <div class="srch-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
-  <div class="srch-book-row">
-    <button class="srch-book-btn active" id="sbtn-popol_vuh" style="--btn-color:#4ade80;--btn-bg:rgba(74,222,128,.12);--btn-glow:rgba(74,222,128,.35);" onclick="toggleBook('popol_vuh',this)">
-      <span class="sb-icon">&#x1F33D;</span><span>Popol Vuh<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1000 BCE&ndash;1500 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Goetz &amp; Morley &middot; 1954</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -1635,10 +1648,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x2721;&#xFE0F;&ensp;Judaism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
+  <div class="srch-group-label">&#x26F8;&#xFE0F;&ensp;Shinto <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 300 BCE</span></div>
   <div class="srch-book-row">
-    <button class="srch-book-btn active" id="sbtn-jps" style="--btn-color:#c9a227;--btn-bg:rgba(201,162,39,.12);--btn-glow:rgba(201,162,39,.35);" onclick="toggleBook('jps',this)">
-      <span class="sb-icon">&#x2721;&#xFE0F;</span><span>Tanakh &mdash; JPS 1917<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1200&ndash;165 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Jewish Publication Society</small></span><span class="sb-check">&#10022;</span>
+    <button class="srch-book-btn active" id="sbtn-kojiki" style="--btn-color:#e8a87c;--btn-bg:rgba(232,168,124,.12);--btn-glow:rgba(232,168,124,.35);" onclick="toggleBook('kojiki',this)">
+      <span class="sb-icon">&#x26F8;&#xFE0F;</span><span>Kojiki<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">712 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Chamberlain &middot; 1882</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-nihon_shoki" style="--btn-color:#c9a96e;--btn-bg:rgba(201,169,110,.12);--btn-glow:rgba(201,169,110,.35);" onclick="toggleBook('nihon_shoki',this)">
+      <span class="sb-icon">&#x26F8;&#xFE0F;</span><span>Nihon Shoki<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">720 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Aston &middot; 1896</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -1671,16 +1687,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-muslim" style="--btn-color:#26a69a;--btn-bg:rgba(38,166,154,.12);--btn-glow:rgba(38,166,154,.35);" onclick="toggleBook('muslim',this)">
       <span class="sb-icon">&#x1F4DC;</span><span>&#x1E62;a&#x1E25;&#x012B;&#x1E25; Muslim<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 875 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Siddiqui &middot; 7,190 Hadiths</small></span><span class="sb-check">&#10022;</span>
-    </button>
-  </div>
-
-  <div class="srch-group-label">&#x26F8;&#xFE0F;&ensp;Shinto <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 300 BCE</span></div>
-  <div class="srch-book-row">
-    <button class="srch-book-btn active" id="sbtn-kojiki" style="--btn-color:#e8a87c;--btn-bg:rgba(232,168,124,.12);--btn-glow:rgba(232,168,124,.35);" onclick="toggleBook('kojiki',this)">
-      <span class="sb-icon">&#x26F8;&#xFE0F;</span><span>Kojiki<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">712 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Chamberlain &middot; 1882</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-nihon_shoki" style="--btn-color:#c9a96e;--btn-bg:rgba(201,169,110,.12);--btn-glow:rgba(201,169,110,.35);" onclick="toggleBook('nihon_shoki',this)">
-      <span class="sb-icon">&#x26F8;&#xFE0F;</span><span>Nihon Shoki<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">720 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Aston &middot; 1896</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11786,7 +11792,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','bod','avesta','homeric_hymn_demeter','odyssey','iliad','popol_vuh','tattva','dn','mn','sn','an','tao','analects','jps','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','kojiki','nihon_shoki','sggs'];
+const BOOK_DISPLAY_ORDER=['bod','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','tattva','dn','mn','sn','an','tao','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','sggs'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
