@@ -12112,47 +12112,64 @@ window.switchReligion  = switchReligion;
     document.body.style.overflow = 'hidden';
   };
 
-  // After library navigates, scroll to and highlight the verse
-  function _vmScrollToVerse(v, terms){
+  // After library navigates, retry-scroll to the exact verse until it appears in DOM
+  function _vmScrollToVerse(v, terms, attempts){
+    attempts = attempts || 0;
     var container = document.getElementById('lib-verse-content');
-    if(!container) return;
-    // Find the verse by its reference text, or by content match
-    var ref = v.r || '';
-    var refEls = container.querySelectorAll('.lib-verse-num, .lib-stanza-ref, .lib-chapter-heading');
+    if(!container){ if(attempts<20) setTimeout(function(){ _vmScrollToVerse(v,terms,attempts+1); },80); return; }
+
+    var ref = (v.r || '').trim();
     var targetEl = null;
 
-    // Try matching by reference string first
-    for(var i=0; i<refEls.length; i++){
-      if(refEls[i].textContent.trim() === ref.trim()){
-        targetEl = refEls[i].closest('.lib-verse, .lib-stanza') || refEls[i].parentElement;
+    // 1. Direct ref match against .lib-verse-num (covers all veda/bible/quran/etc)
+    var nums = container.querySelectorAll('.lib-verse-num');
+    for(var i=0; i<nums.length; i++){
+      if(nums[i].textContent.trim() === ref){
+        targetEl = nums[i].closest('.lib-verse') || nums[i].parentElement;
         break;
       }
     }
 
-    // Fallback: scan all text nodes for a term match
-    if(!targetEl && terms && terms.length){
-      var allText = container.querySelectorAll('.lib-verse-text, .lib-stanza-text, p, div');
-      var lowerTerms = terms.map(function(t){ return t.toLowerCase(); });
-      for(var j=0; j<allText.length; j++){
-        var lower = allText[j].textContent.toLowerCase();
-        if(lowerTerms.every(function(t){ return lower.includes(t); })){
-          targetEl = allText[j];
+    // 2. Stanza ref match
+    if(!targetEl){
+      var srefs = container.querySelectorAll('.lib-stanza-ref');
+      for(var i=0; i<srefs.length; i++){
+        if(srefs[i].textContent.trim() === ref){
+          targetEl = srefs[i].closest('.lib-stanza') || srefs[i].parentElement;
           break;
         }
       }
     }
 
+    // 3. Term text match fallback
+    if(!targetEl && terms && terms.length){
+      var allText = container.querySelectorAll('.lib-verse-text, .lib-stanza-text');
+      var lowerTerms = terms.map(function(t){ return t.toLowerCase(); });
+      for(var j=0; j<allText.length; j++){
+        var lower = allText[j].textContent.toLowerCase();
+        if(lowerTerms.every(function(t){ return lower.indexOf(t)>=0; })){
+          targetEl = allText[j].closest('.lib-verse,.lib-stanza') || allText[j];
+          break;
+        }
+      }
+    }
+
+    // If nothing rendered yet, retry up to 25 times (~2s)
+    if(!targetEl && attempts < 25){
+      setTimeout(function(){ _vmScrollToVerse(v,terms,attempts+1); }, 80);
+      return;
+    }
+
     if(targetEl){
-      // Highlight the element briefly
-      var orig = targetEl.style.cssText;
-      targetEl.style.cssText += ';outline:2px solid var(--vm-accent,#a08cc8);outline-offset:3px;border-radius:4px;transition:outline .3s;';
       targetEl.scrollIntoView({behavior:'smooth', block:'center'});
-      setTimeout(function(){ targetEl.style.cssText = orig; }, 2200);
-    } else {
-      // Just scroll to top of content
+      var orig = targetEl.style.cssText;
+      targetEl.style.cssText += ';outline:2px solid var(--vm-accent,#ffb347);outline-offset:4px;border-radius:4px;';
+      setTimeout(function(){ targetEl.style.cssText = orig; }, 2500);
+    } else if(container){
       container.scrollIntoView({behavior:'smooth', block:'start'});
     }
   }
+
 
   function _vmGoToLibrary(book, v, cfg, terms){
     // Compute the dropdown index the same way _buildOtherNav does for each book.
@@ -12223,7 +12240,7 @@ window.switchReligion  = switchReligion;
       loadScriptures(function(){
         switchReligion('srch'); showSrchPanel('lib');
         _openLibBook(book, null);
-        setTimeout(function(){_vmScrollToVerse(v,terms);},700);
+        _vmScrollToVerse(v,terms);
       });
       return;
     }
@@ -12234,7 +12251,7 @@ window.switchReligion  = switchReligion;
       switchReligion('srch');
       showSrchPanel('lib');
       _openLibBook(book, idx);
-      setTimeout(function(){_vmScrollToVerse(v,terms);},800);
+      _vmScrollToVerse(v,terms);
     });
   }
 
