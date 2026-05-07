@@ -11888,32 +11888,6 @@ function makeCard(book,v,cfg,terms){
   const ref=document.createElement('div'); ref.className='srch-card-ref'; ref.style.color=cfg.accent;
   ref.textContent=fmtRef(book,v,cfg); card.appendChild(ref);
 
-  // Chapter label
-  const cl=chapLabel(book,v,cfg);
-  if(cl){ const ce=document.createElement('div'); ce.className='srch-card-chapter'; ce.textContent=cl; card.appendChild(ce); }
-
-  // Origin date
-  const BOOK_ORIGINS={
-    rig:'c. 1500\u20131200 BCE', yajur:'c. 1200\u2013900 BCE', sama:'c. 1200\u20131000 BCE',
-    atharva:'c. 1000\u2013900 BCE', upanishads:'c. 800\u2013200 BCE',
-    gita:'c. 200 BCE\u2013200 CE', sbg:'c. 200 BCE\u2013200 CE',
-    ramayana:'c. 500\u2013100 BCE', maha:'c. 400 BCE\u2013400 CE',
-    harivamsha:'c. 1st\u20134th century CE', vishnu_purana:'c. 1st\u20136th century CE',
-    bod:'c. 1550 BCE', avesta:'c. 1500\u2013500 BCE',
-    homeric_hymn_demeter:'c. 700\u2013400 BCE', odyssey:'c. 800\u2013700 BCE', iliad:'c. 800\u2013700 BCE',
-    popol_vuh:'c. 1000 BCE\u20131500 CE', tattva:'c. 2nd\u20135th century CE',
-    dn:'c. 500\u2013300 BCE', mn:'c. 500\u2013300 BCE', sn:'c. 500\u2013300 BCE', an:'c. 500\u2013300 BCE',
-    tao:'c. 400\u2013300 BCE', analects:'c. 475\u2013221 BCE',
-    jps:'c. 1200\u2013165 BCE',
-    kjv:'c. 1200 BCE\u2013110 CE', bible:'c. 1200 BCE\u2013110 CE',
-    book_of_enoch:'c. 300\u2013100 BCE', book_of_jubilees:'c. 160\u2013150 BCE',
-    quran_y:'c. 610\u2013632 CE', quran_p:'c. 610\u2013632 CE',
-    bukhari:'c. 846 CE', muslim:'c. 875 CE',
-    kojiki:'712 CE', nihon_shoki:'720 CE',
-    sggs:'c. 1604 CE',
-  };
-  const od=BOOK_ORIGINS[book];
-  if(od){ const oe=document.createElement('div'); oe.className='srch-card-origin'; oe.textContent=od; card.appendChild(oe); }
 
   // Text — find the snippet around search term for all prose/long-text types
   let txt=v.t;
