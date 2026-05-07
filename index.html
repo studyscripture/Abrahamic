@@ -12012,7 +12012,7 @@ function chapLabel(book,v,cfg){
   if(book==='analects')      return v.book_title||null;
   if(book==='harivamsha')    return v.parva||null;
   if(book==='vishnu_purana') return (v.title?v.title.split('.')[0].slice(0,80):null);
-  if(book==='popol_vuh')     return `Part ${v.part}, Chapter ${v.chapter}`;
+  if(book==='popol_vuh')     return (v.part&&v.chapter)?`Part ${v.part}, Chapter ${v.chapter}`:(v.chapter?`Chapter ${v.chapter}`:null);
   if(book==='kojiki')        return v.title ? `Section ${v.section} \u2014 ${v.title}` : `Section ${v.section}`;
   if(book==='nihon_shoki')   return v.title ? `Book ${v.book} \u2014 ${v.title}` : `Book ${v.book}`;
   if(book==='book_of_enoch')    return `1 Enoch, Chapter ${v.chapter}`;
