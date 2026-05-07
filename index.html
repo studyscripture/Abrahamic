@@ -54,15 +54,17 @@
   --isl-border: #153324;
   --isl-border2: #182240;
 
-  /* Search / Library page */
-  --srch: #a78bfa;
-  --srch-2: #f0c060;
-  --srch-dim: rgba(167,139,250,0.12);
-  --srch-glow: rgba(167,139,250,0.38);
-  --srch-bg: #07060f;
-  --srch-surface: #0f0d1a;
-  --srch-card: #130f20;
-  --srch-border: #251d42;
+  /* Search / Library page — Rose-Gold Dawn */
+  --srch: #ffb347;
+  --srch-2: #ff7eb3;
+  --srch-3: #ffe066;
+  --srch-dim: rgba(255,179,71,0.13);
+  --srch-glow: rgba(255,179,71,0.55);
+  --srch-glow-2: rgba(255,126,179,0.4);
+  --srch-bg: #0d0905;
+  --srch-surface: #180f07;
+  --srch-card: #1e1209;
+  --srch-border: #3a2010;
 
   /* Map tab accent */
   --map: #f0c060;
@@ -283,11 +285,11 @@ body::before {
 .rel-tab.active-map .rel-tab-name { color:var(--map); }
 .rel-tab.active-map .rel-tab-script { color:var(--map-2); opacity:0.9; }
 .rel-tab.active-map::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--map),var(--map-2)); }
-.rel-tab.active-srch { background:var(--srch-dim); }
+.rel-tab.active-srch { background:var(--srch-dim); box-shadow:0 0 18px rgba(255,179,71,0.1); }
 .rel-tab.active-srch .rel-tab-icon { filter:none; }
-.rel-tab.active-srch .rel-tab-name { color:var(--srch); }
+.rel-tab.active-srch .rel-tab-name { color:var(--srch); text-shadow:0 0 12px rgba(255,179,71,0.6); }
 .rel-tab.active-srch .rel-tab-script { color:var(--srch-2); opacity:0.9; }
-.rel-tab.active-srch::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--srch),var(--srch-2)); }
+.rel-tab.active-srch::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--srch-2),var(--srch),#ffe066); box-shadow:0 0 8px rgba(255,179,71,0.7); }
 
 /* ══════════════════════════════════════════
    PAGE SYSTEM
@@ -903,9 +905,18 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   --saffron:var(--srch); --saffron-dim:var(--srch-dim);
   --bg:var(--srch-bg); --surface:var(--srch-surface);
   --card:var(--srch-card); --border:var(--srch-border);
-  --cream:#e8e4ff; --cream-dim:#9088c0;
-  --white:#f4f0ff; --muted:#5a5270;
+  --cream:#fff0da; --cream-dim:#c8904a;
+  --white:#fff8ee; --muted:#7a5a38;
   min-height:100vh;
+  position:relative;
+}
+/* Aurora dawn ambient glow layers */
+.srch-page::before {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 80% 38% at 20% 0%, rgba(255,179,71,0.11) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 30% at 80% 0%, rgba(255,126,179,0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 22% at 50% 0%, rgba(255,224,102,0.07) 0%, transparent 55%);
 }
 /* Universal emoji class — forces color emoji on every platform */
 .em {
@@ -924,14 +935,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   animation:srch-float 5s ease-in-out infinite;
 }
 @keyframes srch-float {
-  0%,100%{transform:translateY(0);filter:drop-shadow(0 0 18px rgba(167,139,250,.3));}
-  50%{transform:translateY(-7px);filter:drop-shadow(0 0 38px rgba(167,139,250,.6));}
+  0%,100%{transform:translateY(0);filter:drop-shadow(0 0 18px rgba(255,179,71,.45)) drop-shadow(0 0 40px rgba(255,126,179,.2));}
+  50%{transform:translateY(-7px);filter:drop-shadow(0 0 38px rgba(255,179,71,.8)) drop-shadow(0 0 70px rgba(255,126,179,.35));}
 }
 .srch-eyebrow { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.45em; color:var(--muted); text-transform:uppercase; margin-bottom:10px; }
-.srch-title { font-family:'Cinzel Decorative',serif; font-size:clamp(22px,4vw,44px); font-weight:700; color:var(--srch); text-shadow:0 0 60px var(--srch-glow); line-height:1.15; letter-spacing:.04em; }
+.srch-title { font-family:'Cinzel Decorative',serif; font-size:clamp(22px,4vw,44px); font-weight:700; color:var(--srch); text-shadow:0 0 40px var(--srch-glow), 0 0 90px rgba(255,126,179,0.2); line-height:1.15; letter-spacing:.04em; }
 .srch-subtitle { font-family:'EB Garamond',serif; font-size:clamp(13px,1.6vw,16px); color:var(--muted); font-style:italic; margin-top:10px; }
 .srch-rule { display:flex; align-items:center; gap:18px; margin:20px auto 0; max-width:400px; }
-.srch-rule::before,.srch-rule::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(167,139,250,.3),transparent); }
+.srch-rule::before,.srch-rule::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(255,179,71,0.4),transparent); }
 .srch-rule-glyph { font-family:'Cinzel',serif; font-size:11px; color:var(--muted); letter-spacing:.25em; }
 
 /* Panel tabs */
@@ -975,8 +986,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 /* Book pills — wrap freely, NO overflow scroll */
 .lib-bible-book-row { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
 .lib-bible-book-btn { font-family:'EB Garamond',serif; font-size:13px; padding:4px 10px; border-radius:3px; border:1px solid var(--srch-border); background:transparent; color:var(--muted); cursor:pointer; transition:all .15s; white-space:nowrap; }
-.lib-bible-book-btn:hover { color:var(--cream-dim); border-color:rgba(167,139,250,.25); }
-.lib-bible-book-btn.active { border-color:var(--bk-color,var(--srch)); background:rgba(167,139,250,.1); color:var(--bk-color,var(--srch)); }
+.lib-bible-book-btn:hover { color:var(--cream-dim); border-color:rgba(255,179,71,.25); }
+.lib-bible-book-btn.active { border-color:var(--bk-color,var(--srch)); background:rgba(255,179,71,.1); color:var(--bk-color,var(--srch)); }
 
 /* Chapter nav */
 .lib-chapter-nav { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
@@ -991,20 +1002,20 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .lib-chapter-subhead { font-family:'EB Garamond',serif; font-size:14px; font-style:italic; color:var(--muted); margin-bottom:20px; }
 .lib-verse-list { display:flex; flex-direction:column; }
 .lib-verse { display:flex; gap:14px; padding:10px 0; border-bottom:1px solid rgba(37,29,66,.45); cursor:pointer; }
-.lib-verse:hover { background:rgba(167,139,250,.06); padding:10px 10px; margin:0 -10px; border-radius:3px; }
-.lib-verse:active { background:rgba(167,139,250,.13); }
+.lib-verse:hover { background:rgba(255,179,71,.06); padding:10px 10px; margin:0 -10px; border-radius:3px; }
+.lib-verse:active { background:rgba(255,179,71,.13); }
 .lib-verse-num { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.1em; min-width:34px; padding-top:3px; flex-shrink:0; }
 .lib-verse-text { font-family:'EB Garamond',serif; font-size:16.5px; color:var(--cream); line-height:1.72; -webkit-user-select:text; user-select:text; }
 .lib-stanza { cursor:pointer; }
-.lib-stanza:hover { background:rgba(167,139,250,.04); padding:4px 10px; margin:0 -10px; border-radius:3px; }
+.lib-stanza:hover { background:rgba(255,179,71,.04); padding:4px 10px; margin:0 -10px; border-radius:3px; }
 .srch-card { cursor:pointer; }
 #clip-toast {
   position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(14px);
-  background:rgba(14,12,22,0.97); border:1px solid rgba(167,139,250,0.4);
+  background:rgba(14,12,22,0.97); border:1px solid rgba(255,179,71,0.4);
   color:rgba(220,210,255,0.92); font-family:'Cinzel',serif; font-size:11px;
   letter-spacing:0.2em; text-transform:uppercase;
   padding:11px 26px; border-radius:4px;
-  box-shadow:0 6px 40px rgba(0,0,0,0.7), 0 0 28px rgba(167,139,250,0.14);
+  box-shadow:0 6px 40px rgba(0,0,0,0.7), 0 0 28px rgba(255,179,71,0.14);
   pointer-events:none; opacity:0;
   transition:opacity 0.2s ease, transform 0.2s ease;
   z-index:9999; white-space:nowrap;
@@ -1030,8 +1041,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   color:var(--cream-dim); white-space:nowrap;
   user-select:none; -webkit-user-select:none;
 }
-.srch-book-btn:hover { border-color:rgba(167,139,250,.35); color:var(--cream); background:rgba(167,139,250,.07); }
-.srch-book-btn.active { border-color:var(--btn-color,var(--srch)); background:var(--btn-bg,rgba(167,139,250,.12)); color:var(--btn-color,var(--srch)); box-shadow:0 0 12px var(--btn-glow,var(--srch-glow)); }
+.srch-book-btn:hover { border-color:rgba(255,179,71,.35); color:var(--cream); background:rgba(255,179,71,.07); }
+.srch-book-btn.active { border-color:var(--btn-color,var(--srch)); background:var(--btn-bg,rgba(255,179,71,.12)); color:var(--btn-color,var(--srch)); box-shadow:0 0 12px var(--btn-glow,var(--srch-glow)); }
 .srch-book-btn .sb-icon { font-size:17px; line-height:1.2; }
 .srch-book-btn .sb-check { font-size:8px; opacity:0; transition:opacity .2s; margin-left:2px; }
 .srch-book-btn.active .sb-check { opacity:1; }
@@ -1041,14 +1052,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .srch-input-row { display:flex; gap:10px; align-items:stretch; }
 .srch-input { flex:1; background:var(--srch-surface); border:1px solid var(--srch-border); border-radius:6px; padding:14px 20px; font-family:'Cinzel',serif; font-size:14px; letter-spacing:.08em; color:var(--white); outline:none; transition:all .2s; -webkit-user-select:text; user-select:text; }
 .srch-input::placeholder { color:var(--muted); font-style:italic; letter-spacing:.05em; }
-.srch-input:focus { border-color:var(--srch); box-shadow:0 0 0 2px rgba(167,139,250,.18); }
-.srch-btn { background:linear-gradient(135deg,var(--srch),#7c6ee0); border:none; border-radius:6px; padding:14px 26px; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#fff; cursor:pointer; transition:all .2s; white-space:nowrap; }
-.srch-btn:hover { transform:translateY(-1px); box-shadow:0 6px 24px rgba(167,139,250,.35); }
+.srch-input:focus { border-color:var(--srch); box-shadow:0 0 0 2px rgba(255,179,71,.18); }
+.srch-btn { background:linear-gradient(135deg,var(--srch),#e87c3e); border:none; border-radius:6px; padding:14px 26px; font-family:'Cinzel',serif; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#fff; cursor:pointer; transition:all .2s; white-space:nowrap; }
+.srch-btn:hover { transform:translateY(-1px); box-shadow:0 6px 24px rgba(255,179,71,.4); }
 .srch-hint { text-align:center; margin-top:11px; font-size:11px; color:var(--muted); letter-spacing:.06em; line-height:2; }
 .srch-hint span { display:inline-block; background:var(--srch-surface); border:1px solid var(--srch-border); border-radius:3px; padding:2px 8px; margin:2px 3px; font-family:'Cinzel',serif; font-size:10px; color:var(--cream-dim); cursor:pointer; transition:all .15s; }
 .srch-hint span:hover { border-color:var(--srch); color:var(--srch); }
 .srch-status { text-align:center; padding:20px; font-family:'EB Garamond',serif; font-size:15px; font-style:italic; color:var(--muted); }
-.srch-loader { display:inline-block; width:18px; height:18px; border:2px solid rgba(167,139,250,.2); border-top-color:var(--srch); border-radius:50%; animation:srch-spin .7s linear infinite; vertical-align:middle; margin-right:8px; }
+.srch-loader { display:inline-block; width:18px; height:18px; border:2px solid rgba(255,179,71,.2); border-top-color:var(--srch); border-radius:50%; animation:srch-spin .7s linear infinite; vertical-align:middle; margin-right:8px; }
 @keyframes srch-spin { to{transform:rotate(360deg);} }
 
 /* Results */
@@ -1064,7 +1075,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .srch-book-header-count { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.12em; padding:5px 13px; border-radius:3px; border:1px solid; flex-shrink:0; }
 .srch-card { background:var(--srch-card); border:1px solid var(--srch-border); border-radius:7px; padding:16px 18px; transition:all .2s; position:relative; overflow:hidden; }
 .srch-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--card-accent,var(--srch)); border-radius:7px 0 0 7px; }
-.srch-card:hover { border-color:var(--card-accent-border,rgba(167,139,250,.4)); transform:translateY(-2px); box-shadow:0 8px 26px rgba(0,0,0,.4); }
+.srch-card:hover { border-color:var(--card-accent-border,rgba(255,179,71,.4)); transform:translateY(-2px); box-shadow:0 8px 26px rgba(0,0,0,.4); }
 .srch-card-source { display:flex; align-items:center; gap:5px; margin-bottom:7px; }
 .srch-card-source-label { font-family:'Cinzel',serif; font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; }
 .srch-card-ref { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.2em; margin-bottom:6px; text-transform:uppercase; }
@@ -1083,7 +1094,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .srch-empty-text { font-family:'Cinzel',serif; font-size:13px; letter-spacing:.15em; color:var(--muted); margin-bottom:8px; }
 .srch-empty-sub { font-family:'EB Garamond',serif; font-size:15px; font-style:italic; color:rgba(90,82,112,.6); }
 .srch-section-divider { display:flex; align-items:center; gap:18px; margin:6px 0 38px; }
-.srch-section-divider::before,.srch-section-divider::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(167,139,250,.1),transparent); }
+.srch-section-divider::before,.srch-section-divider::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(255,179,71,.15),transparent); }
 .srch-section-divider-g { font-family:'Cinzel',serif; font-size:10px; color:rgba(90,82,112,.4); letter-spacing:.2em; }
 
 @media (max-width:620px) {
@@ -1118,6 +1129,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <!-- ══ NAV ══ -->
 <nav class="hub-nav" role="tablist" style="margin:0 auto 0;max-width:840px;display:flex;">
+  <button class="rel-tab" id="tab-map" onclick="switchReligion('map')" style="flex:0 0 auto;min-width:90px;">
+    <div class="rel-tab-inner">
+      <span class="rel-tab-icon">🗺️</span>
+      <span class="rel-tab-name" style="font-size:10px;letter-spacing:0.14em;">Origins Map</span>
+      <span class="rel-tab-script" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;">Transmission</span>
+    </div>
+  </button>
   <button class="rel-tab" id="tab-srch" onclick="switchReligion('srch')" style="flex:0 0 auto;min-width:90px;">
     <div class="rel-tab-inner">
       <span class="rel-tab-icon">&#128218;&#xFE0F;</span>
@@ -1146,13 +1164,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <span class="rel-tab-script" style="font-family:'Amiri',serif">القرآن الكريم</span>
     </div>
   </button>
-  <button class="rel-tab" id="tab-map" onclick="switchReligion('map')" style="flex:0 0 auto;min-width:90px;">
-    <div class="rel-tab-inner">
-      <span class="rel-tab-icon">🗺️</span>
-      <span class="rel-tab-name" style="font-size:10px;letter-spacing:0.14em;">Origins Map</span>
-      <span class="rel-tab-script" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;">Transmission</span>
-    </div>
-  </button>
 </nav>
 
 <!-- ══════════════════ PAGES ══════════════════ -->
@@ -1165,11 +1176,11 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <!-- Hero -->
 <div class="srch-hero">
-  <span class="srch-hero-symbol">&#x1F4D6;&#xFE0F;</span>
-  <div class="srch-eyebrow">Sacred Texts &middot; Comparative Scripture</div>
+  <span class="srch-hero-symbol">☀️</span>
+  <div class="srch-eyebrow">Sacred Texts &middot; All Traditions &middot; One Search</div>
   <h1 class="srch-title">Scripture Library &amp; Search</h1>
-  <p class="srch-subtitle">Read and Search Scripture</p>
-  <div class="srch-rule"><span class="srch-rule-glyph">&#10022;</span></div>
+  <p class="srch-subtitle">Read, compare, and illuminate the sacred word across every tradition</p>
+  <div class="srch-rule"><span class="srch-rule-glyph">✦</span></div>
 </div>
 
 <!-- Panel tabs -->
@@ -1183,7 +1194,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="lib-wrap" id="lib-shelf-wrap">
     <div class="lib-shelf-label">Choose a Scripture to Read</div>
 
-    <div class="lib-shelf-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3100 BCE</span></div>
+    <div class="lib-shelf-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3100 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#c8a96e;" onclick="openLibBook('bod')">
         <div class="lib-book-icon">𓂀</div>
@@ -1194,7 +1205,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3000+ BCE</span></div>
+    <div class="lib-shelf-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3000+ BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#ff7043;" onclick="openLibBook('rig')">
         <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
@@ -1275,7 +1286,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2000 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#4ade80;" onclick="openLibBook('popol_vuh')">
         <div class="lib-book-icon">&#x1F33D;</div>
@@ -1286,7 +1297,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x2721;&#xFE0F;&ensp;Judaism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x2721;&#xFE0F;&ensp;Judaism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2000 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#c9a227;" onclick="openLibBook('jps')">
         <div class="lib-book-icon">&#x2721;&#xFE0F;</div>
@@ -1297,7 +1308,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x1F4AB;&ensp;Zoroastrianism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 1500 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x1F4AB;&ensp;Zoroastrianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1500 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#26c6da;" onclick="openLibBook('avesta')">
         <div class="lib-book-icon">&#x1F4AB;</div>
@@ -1308,7 +1319,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x1F3DB;&#xFE0F;&ensp;Ancient Greek <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 800 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x1F3DB;&#xFE0F;&ensp;Ancient Greek <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 800 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#7ecfb3;" onclick="openLibBook('homeric_hymn_demeter')">
         <div class="lib-book-icon">&#x1F33E;</div>
@@ -1333,7 +1344,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 600 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 600 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('tattva')">
         <div class="lib-book-icon">&#x1F590;</div>
@@ -1344,7 +1355,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x2638;&#xFE0F;&ensp;Buddhism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 500 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x2638;&#xFE0F;&ensp;Buddhism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#f0c040;" onclick="openLibBook('dn')">
         <div class="lib-book-icon">&#x2638;&#xFE0F;</div>
@@ -1376,7 +1387,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 500 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#ffe082;" onclick="openLibBook('tao')">
         <div class="lib-book-icon">&#x262F;&#xFE0F;</div>
@@ -1394,7 +1405,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x26F8;&#xFE0F;&ensp;Shinto <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 300 BCE</span></div>
+    <div class="lib-shelf-group-label">&#x26F8;&#xFE0F;&ensp;Shinto <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 300 BCE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#e8a87c;" onclick="openLibBook('kojiki')">
         <div class="lib-book-icon">&#x26F8;&#xFE0F;</div>
@@ -1412,7 +1423,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x271D;&#xFE0F;&ensp;Christianity <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 30 CE</span></div>
+    <div class="lib-shelf-group-label">&#x271D;&#xFE0F;&ensp;Christianity <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 30 CE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#d4a017;" onclick="openLibBook('kjv')">
         <div class="lib-book-icon">&#x271D;&#xFE0F;</div>
@@ -1444,7 +1455,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x262A;&#xFE0F;&ensp;Islam <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 610 CE</span></div>
+    <div class="lib-shelf-group-label">&#x262A;&#xFE0F;&ensp;Islam <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 610 CE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#2ecc8a;" onclick="openLibBook('quran_y')">
         <div class="lib-book-icon">&#x262A;&#xFE0F;</div>
@@ -1476,7 +1487,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x262C;&ensp;Sikhism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 1500 CE</span></div>
+    <div class="lib-shelf-group-label">&#x262C;&ensp;Sikhism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1500 CE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#f4a261;" onclick="openLibBook('sggs')">
         <div class="lib-book-icon">&#x262C;</div>
@@ -1537,14 +1548,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div class="srch-book-select-label">Select Scriptures to Compare</div>
 
-  <div class="srch-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3100 BCE</span></div>
+  <div class="srch-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3100 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-bod" style="--btn-color:#c8a96e;--btn-bg:rgba(200,169,110,.12);--btn-glow:rgba(200,169,110,.35);" onclick="toggleBook('bod',this)">
       <span class="sb-icon">𓂀</span><span>Book of the Dead<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1550 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Budge &middot; 1898</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
-  <div class="srch-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 3000+ BCE</span></div>
+  <div class="srch-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3000+ BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-rig" style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);" onclick="toggleBook('rig',this)">
       <span class="sb-icon">&#x1F549;&#xFE0F;</span><span>&#x1E5A;gveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1500&ndash;1200 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Griffith &middot; 1896</small></span><span class="sb-check">&#10022;</span>
@@ -1581,28 +1592,28 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
+  <div class="srch-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2000 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-popol_vuh" style="--btn-color:#4ade80;--btn-bg:rgba(74,222,128,.12);--btn-glow:rgba(74,222,128,.35);" onclick="toggleBook('popol_vuh',this)">
       <span class="sb-icon">&#x1F33D;</span><span>Popol Vuh<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1000 BCE&ndash;1500 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Goetz &amp; Morley &middot; 1954</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
-  <div class="srch-group-label">&#x2721;&#xFE0F;&ensp;Judaism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 2000 BCE</span></div>
+  <div class="srch-group-label">&#x2721;&#xFE0F;&ensp;Judaism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2000 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-jps" style="--btn-color:#c9a227;--btn-bg:rgba(201,162,39,.12);--btn-glow:rgba(201,162,39,.35);" onclick="toggleBook('jps',this)">
       <span class="sb-icon">&#x2721;&#xFE0F;</span><span>Tanakh &mdash; JPS 1917<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1200&ndash;165 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Jewish Publication Society</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
-  <div class="srch-group-label">&#x1F4AB;&ensp;Zoroastrianism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 1500 BCE</span></div>
+  <div class="srch-group-label">&#x1F4AB;&ensp;Zoroastrianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1500 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-avesta" style="--btn-color:#26c6da;--btn-bg:rgba(38,198,218,.12);--btn-glow:rgba(38,198,218,.35);" onclick="toggleBook('avesta',this)">
       <span class="sb-icon">&#x1F4AB;</span><span>Zend Avesta<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1500&ndash;500 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Darmesteter &middot; 1880</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
-  <div class="srch-group-label">&#x1F3DB;&#xFE0F;&ensp;Ancient Greek <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 800 BCE</span></div>
+  <div class="srch-group-label">&#x1F3DB;&#xFE0F;&ensp;Ancient Greek <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 800 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-homeric_hymn_demeter" style="--btn-color:#7ecfb3;--btn-bg:rgba(126,207,179,.12);--btn-glow:rgba(126,207,179,.35);" onclick="toggleBook('homeric_hymn_demeter',this)">
       <span class="sb-icon">&#x1F33E;</span><span>Homeric Hymns<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 700&ndash;400 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Evelyn-White</small></span><span class="sb-check">&#10022;</span>
@@ -1615,14 +1626,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 600 BCE</span></div>
+  <div class="srch-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 600 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-tattva" style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);" onclick="toggleBook('tattva',this)">
       <span class="sb-icon">&#x1F590;</span><span>Tattvārthashāstra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 2nd&ndash;5th cent. CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Umāsvāmi &middot; Vijay K. Jain</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
-  <div class="srch-group-label">&#x2638;&#xFE0F;&ensp;Buddhism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 500 BCE</span></div>
+  <div class="srch-group-label">&#x2638;&#xFE0F;&ensp;Buddhism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-dn" style="--btn-color:#f0c040;--btn-bg:rgba(240,192,64,.12);--btn-glow:rgba(240,192,64,.35);" onclick="toggleBook('dn',this)">
       <span class="sb-icon">&#x2638;&#xFE0F;</span><span>D&#x012B;gha Nik&#x0101;ya<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 500&ndash;300 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Sujato &middot; 2018</small></span><span class="sb-check">&#10022;</span>
@@ -1638,7 +1649,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 500 BCE</span></div>
+  <div class="srch-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-tao" style="--btn-color:#ffe082;--btn-bg:rgba(255,224,130,.12);--btn-glow:rgba(255,224,130,.35);" onclick="toggleBook('tao',this)">
       <span class="sb-icon">&#x262F;&#xFE0F;</span><span>Tao Te Ching<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 400&ndash;300 BCE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Legge &middot; 1891</small></span><span class="sb-check">&#10022;</span>
@@ -1648,7 +1659,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x26F8;&#xFE0F;&ensp;Shinto <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 300 BCE</span></div>
+  <div class="srch-group-label">&#x26F8;&#xFE0F;&ensp;Shinto <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 300 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-kojiki" style="--btn-color:#e8a87c;--btn-bg:rgba(232,168,124,.12);--btn-glow:rgba(232,168,124,.35);" onclick="toggleBook('kojiki',this)">
       <span class="sb-icon">&#x26F8;&#xFE0F;</span><span>Kojiki<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">712 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Chamberlain &middot; 1882</small></span><span class="sb-check">&#10022;</span>
@@ -1658,7 +1669,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x271D;&#xFE0F;&ensp;Christianity <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 30 CE</span></div>
+  <div class="srch-group-label">&#x271D;&#xFE0F;&ensp;Christianity <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 30 CE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-kjv" style="--btn-color:#d4a017;--btn-bg:rgba(212,160,23,.12);--btn-glow:rgba(212,160,23,.35);" onclick="toggleBook('kjv',this)">
       <span class="sb-icon">&#x271D;&#xFE0F;</span><span>KJV Bible<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1200 BCE&ndash;110 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">King James &middot; 1611</small></span><span class="sb-check">&#10022;</span>
@@ -1674,7 +1685,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x262A;&#xFE0F;&ensp;Islam <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 610 CE</span></div>
+  <div class="srch-group-label">&#x262A;&#xFE0F;&ensp;Islam <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 610 CE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-quran_y" style="--btn-color:#2ecc8a;--btn-bg:rgba(46,204,138,.12);--btn-glow:rgba(46,204,138,.35);" onclick="toggleBook('quran_y',this)">
       <span class="sb-icon">&#x262A;&#xFE0F;</span><span>Quran &mdash; Yusuf Ali<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 610&ndash;632 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Yusuf Ali &middot; 1934</small></span><span class="sb-check">&#10022;</span>
@@ -1690,7 +1701,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x262C;&ensp;Sikhism <span style="opacity:.45;font-size:.8em;letter-spacing:.08em;font-style:italic;text-transform:none;">c. 1500 CE</span></div>
+  <div class="srch-group-label">&#x262C;&ensp;Sikhism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1500 CE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-sggs" style="--btn-color:#f4a261;--btn-bg:rgba(244,162,97,.12);--btn-glow:rgba(244,162,97,.35);" onclick="toggleBook('sggs',this)">
       <span class="sb-icon">&#x262C;</span><span>Guru Granth S&#x0101;hib<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;">c. 1604 CE</small><small style="font-size:8px;opacity:.5;font-family:'EB Garamond',serif;">Sant Singh Khalsa</small></span><span class="sb-check">&#10022;</span>
@@ -9038,133 +9049,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <p style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#3e3448;text-align:center;margin-top:10px">◆ &nbsp; Click any node for in-depth detail &nbsp; ◆</p>
 </div>
 
-<!-- ═══ CONCEPT CHART ═══ -->
-  <div class="mp-comp-table">
-    <div class="mp-comp-header">
-      <div class="mp-comp-h hd">Concept</div>
-      <div class="mp-comp-h hv">Vedanta / Upanishads</div>
-      <div class="mp-comp-h hz">Zoroastrianism</div>
-      <div class="mp-comp-h ha">Abrahamic Faiths</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Ultimate Reality</div>
-      <div class="mp-comp-cell cv">Non-dual Brahman — pure consciousness, one without a second</div>
-      <div class="mp-comp-cell cz">Ahura Mazda — supreme wisdom-being, creator distinct from creation</div>
-      <div class="mp-comp-cell ca">Yahweh / God / Allah — singular personal creator, ontologically separate</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Nature of Self</div>
-      <div class="mp-comp-cell cv">Atman = Brahman — individual self is identical with the Absolute</div>
-      <div class="mp-comp-cell cz">Individual soul with Fravashi (divine guardian) — distinct from Ahura Mazda</div>
-      <div class="mp-comp-cell ca">Soul created by God, distinct, judged individually — not divine in itself</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Moral Framework</div>
-      <div class="mp-comp-cell cv">Dharma (cosmic order) + Karma (impersonal causal law) — no external judge</div>
-      <div class="mp-comp-cell cz">Asha vs Druj — free choice between truth and falsehood, with divine judgment</div>
-      <div class="mp-comp-cell ca">Revealed commandments — violation is sin, judged by a divine lawgiver</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Evil Explained</div>
-      <div class="mp-comp-cell cv">Maya — ignorance (Avidya), no ultimate reality; no cosmic villain</div>
-      <div class="mp-comp-cell cz">Angra Mainyu — personified evil principle in cosmic war with Ahura Mazda</div>
-      <div class="mp-comp-cell ca">Satan / Devil — cosmic adversary of God; fallen angel or independent evil</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">After Death</div>
-      <div class="mp-comp-cell cv">Rebirth (Samsara) shaped by karma; Moksha dissolves the cycle</div>
-      <div class="mp-comp-cell cz">Individual judgment at Chinvat Bridge; paradise or hell until Frashegird</div>
-      <div class="mp-comp-cell ca">Final judgment — eternal heaven or eternal hell; no rebirth</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Liberation</div>
-      <div class="mp-comp-cell cv">Moksha — recognition of Atman = Brahman; not granted by external being</div>
-      <div class="mp-comp-cell cz">Frashegird — collective cosmic renovation at end of time; not individual escape</div>
-      <div class="mp-comp-cell ca">Salvation — externally granted by God; conditional on belief / submission</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Scope / Inclusion</div>
-      <div class="mp-comp-cell cv">Universal — all sentient beings carry the divine; no exclusion possible</div>
-      <div class="mp-comp-cell cz">Universal — all humans participate in the cosmic battle; no chosen people</div>
-      <div class="mp-comp-cell ca">Conditional — salvation contingent on correct belief/community membership</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Divine Relationship</div>
-      <div class="mp-comp-cell cv">You ARE the divine — Aham Brahmasmi; union is the recognition of identity</div>
-      <div class="mp-comp-cell cz">You serve the divine — moral soldier in Ahura Mazda's cosmic army</div>
-      <div class="mp-comp-cell ca">You obey the divine — created servant of an absolute sovereign</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Cosmic Order</div>
-      <div class="mp-comp-cell cv">Rta (cosmic truth / order) — the impersonal law governing nature and ethics</div>
-      <div class="mp-comp-cell cz">Asha — cognate with Rta, elevated to supreme divine principle (PIE *Hr̥tas)</div>
-      <div class="mp-comp-cell ca">Divine law — revealed commands of a personal God; no impersonal cosmic order</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Sacred Fire / Ritual</div>
-      <div class="mp-comp-cell cv">Agni — divine intermediary; Yajna fire ritual sustains cosmic order</div>
-      <div class="mp-comp-cell cz">Atar — visible symbol of Asha; Yasna fire ritual identical in structure</div>
-      <div class="mp-comp-cell ca">Fire used symbolically (burning bush, Pentecost); no central fire ritual</div>
-    </div>
-    <div class="mp-comp-row">
-      <div class="mp-comp-cell dim-lbl">Scripture Status</div>
-      <div class="mp-comp-cell cv">Shruti ("heard") — eternally self-existent; not authored by any person or God</div>
-      <div class="mp-comp-cell cz">Avesta — revealed to Zarathustra; divine but not uncreated</div>
-      <div class="mp-comp-cell ca">Torah / Bible / Quran — directly authored/revealed by a personal God</div>
-    </div>
-  </div>
-
-<!-- ═══ SECTION I: KARMA vs SIN ═══ -->
-<div class="mp-sec">
-  <div class="mp-sec-head">
-    <span class="mp-sec-num">Feature I</span>
-    <h2 class="mp-sec-title tg">Karma — The Original Moral Causality</h2>
-    <div class="mp-sec-line g"></div>
-    <span class="mp-sec-badge g">Rigveda c. 1500 BCE · Predates "Sin" by a millennium</span>
-  </div>
-  <div class="mp-karma">
-    <div class="mp-karma-head">
-      <span style="font-size:21px">⚖️</span>
-      <div>
-        <div class="mp-karma-title">Karma vs. Sin — Two Theories of Moral Consequence</div>
-        <div class="mp-karma-sub">The world's oldest moral causality framework versus its Abrahamic theological derivative</div>
-      </div>
-    </div>
-    <div class="mp-karma-cols">
-      <div class="mp-karma-col">
-        <div class="mp-karma-col-h">Karma (कर्म) — Rigveda to Upanishads</div>
-        <div class="mp-karma-col-txt">Sanskrit kr ("to act") — first attested in the Rigveda (c. 1500 BCE) as ritual action, its ethical dimension developed in the Upanishads. The Brihadaranyaka Upanishad's Yajnavalkya: <strong>"A man becomes good by good action and bad by bad action."</strong> Karma is an <strong>autonomous impersonal law</strong> — like gravity. No external agent rewards or punishes. Actions carry precise consequences across lifetimes. The concept predates any Abrahamic equivalent by a minimum of 700 years and requires no priest, prophet, or divine intermediary.</div>
-      </div>
-      <div class="mp-karma-col">
-        <div class="mp-karma-col-h">Sin — Abrahamic Theological Derivative</div>
-        <div class="mp-karma-col-txt">Sin (Old English synn, from Proto-Germanic *sundjo) is structurally different: not a causal law but a <strong>relational violation</strong>. It presupposes a divine lawgiver whose commands have been transgressed. Consequences require divine judgment, divine forgiveness, and mediation — sacrifice, prayer, sacrament, repentance. The moral accounting of karma needs no priest. Sin requires the entire ecclesiastical apparatus. Scholars Wendy Doniger and Arvind Sharma note karma offers a more philosophically self-sufficient account of justice: it needs no external agent to function.</div>
-      </div>
-    </div>
-    <div class="mp-karma-rows">
-      <div class="mp-karma-row">
-        <div class="mp-karma-cell"><strong>Origin:</strong> Rigveda c. 1500 BCE — oldest moral causality framework in recorded literature</div>
-        <div class="mp-karma-cell"><strong>Origin:</strong> Post-exilic Judaism, shaped by Zoroastrian Asha/Druj moral dualism</div>
-      </div>
-      <div class="mp-karma-row">
-        <div class="mp-karma-cell"><strong>Mechanism:</strong> Impersonal universal causal law — as precise and automatic as physics</div>
-        <div class="mp-karma-cell"><strong>Mechanism:</strong> Relational violation — requires divine sentencing, can be forgiven by appeal</div>
-      </div>
-      <div class="mp-karma-row">
-        <div class="mp-karma-cell"><strong>Scope:</strong> All sentient beings across all lifetimes — no exceptions or chosen favorites</div>
-        <div class="mp-karma-cell"><strong>Scope:</strong> Human beings in one lifetime, often with theological conditions on who is judged</div>
-      </div>
-      <div class="mp-karma-row">
-        <div class="mp-karma-cell"><strong>Justice:</strong> Inherent in the structure of reality itself — no judge required</div>
-        <div class="mp-karma-cell"><strong>Justice:</strong> Administered by divine judge at death — eternal consequences for finite acts</div>
-      </div>
-      <div class="mp-karma-row">
-        <div class="mp-karma-cell"><strong>Liberation:</strong> Moksha — dissolving the causal cycle through self-knowledge (Jnana)</div>
-        <div class="mp-karma-cell"><strong>Liberation:</strong> Salvation — externally granted through correct belief or ritual compliance</div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ═══ SECTION II: HINDUISM ↔ ZOROASTRIANISM ═══ -->
 <div class="mp-sec">
   <div class="mp-sec-head">
@@ -9333,6 +9217,134 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   </div><!-- /pairs -->
 </div><!-- /section II -->
+
+<!-- ═══ CONCEPT CHART ═══ -->
+  <div class="mp-comp-table">
+    <div class="mp-comp-header">
+      <div class="mp-comp-h hd">Concept</div>
+      <div class="mp-comp-h hv">Vedanta / Upanishads</div>
+      <div class="mp-comp-h hz">Zoroastrianism</div>
+      <div class="mp-comp-h ha">Abrahamic Faiths</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Ultimate Reality</div>
+      <div class="mp-comp-cell cv">Non-dual Brahman — pure consciousness, one without a second</div>
+      <div class="mp-comp-cell cz">Ahura Mazda — supreme wisdom-being, creator distinct from creation</div>
+      <div class="mp-comp-cell ca">Yahweh / God / Allah — singular personal creator, ontologically separate</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Nature of Self</div>
+      <div class="mp-comp-cell cv">Atman = Brahman — individual self is identical with the Absolute</div>
+      <div class="mp-comp-cell cz">Individual soul with Fravashi (divine guardian) — distinct from Ahura Mazda</div>
+      <div class="mp-comp-cell ca">Soul created by God, distinct, judged individually — not divine in itself</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Moral Framework</div>
+      <div class="mp-comp-cell cv">Dharma (cosmic order) + Karma (impersonal causal law) — no external judge</div>
+      <div class="mp-comp-cell cz">Asha vs Druj — free choice between truth and falsehood, with divine judgment</div>
+      <div class="mp-comp-cell ca">Revealed commandments — violation is sin, judged by a divine lawgiver</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Evil Explained</div>
+      <div class="mp-comp-cell cv">Maya — ignorance (Avidya), no ultimate reality; no cosmic villain</div>
+      <div class="mp-comp-cell cz">Angra Mainyu — personified evil principle in cosmic war with Ahura Mazda</div>
+      <div class="mp-comp-cell ca">Satan / Devil — cosmic adversary of God; fallen angel or independent evil</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">After Death</div>
+      <div class="mp-comp-cell cv">Rebirth (Samsara) shaped by karma; Moksha dissolves the cycle</div>
+      <div class="mp-comp-cell cz">Individual judgment at Chinvat Bridge; paradise or hell until Frashegird</div>
+      <div class="mp-comp-cell ca">Final judgment — eternal heaven or eternal hell; no rebirth</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Liberation</div>
+      <div class="mp-comp-cell cv">Moksha — recognition of Atman = Brahman; not granted by external being</div>
+      <div class="mp-comp-cell cz">Frashegird — collective cosmic renovation at end of time; not individual escape</div>
+      <div class="mp-comp-cell ca">Salvation — externally granted by God; conditional on belief / submission</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Scope / Inclusion</div>
+      <div class="mp-comp-cell cv">Universal — all sentient beings carry the divine; no exclusion possible</div>
+      <div class="mp-comp-cell cz">Universal — all humans participate in the cosmic battle; no chosen people</div>
+      <div class="mp-comp-cell ca">Conditional — salvation contingent on correct belief/community membership</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Divine Relationship</div>
+      <div class="mp-comp-cell cv">You ARE the divine — Aham Brahmasmi; union is the recognition of identity</div>
+      <div class="mp-comp-cell cz">You serve the divine — moral soldier in Ahura Mazda's cosmic army</div>
+      <div class="mp-comp-cell ca">You obey the divine — created servant of an absolute sovereign</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Cosmic Order</div>
+      <div class="mp-comp-cell cv">Rta (cosmic truth / order) — the impersonal law governing nature and ethics</div>
+      <div class="mp-comp-cell cz">Asha — cognate with Rta, elevated to supreme divine principle (PIE *Hr̥tas)</div>
+      <div class="mp-comp-cell ca">Divine law — revealed commands of a personal God; no impersonal cosmic order</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Sacred Fire / Ritual</div>
+      <div class="mp-comp-cell cv">Agni — divine intermediary; Yajna fire ritual sustains cosmic order</div>
+      <div class="mp-comp-cell cz">Atar — visible symbol of Asha; Yasna fire ritual identical in structure</div>
+      <div class="mp-comp-cell ca">Fire used symbolically (burning bush, Pentecost); no central fire ritual</div>
+    </div>
+    <div class="mp-comp-row">
+      <div class="mp-comp-cell dim-lbl">Scripture Status</div>
+      <div class="mp-comp-cell cv">Shruti ("heard") — eternally self-existent; not authored by any person or God</div>
+      <div class="mp-comp-cell cz">Avesta — revealed to Zarathustra; divine but not uncreated</div>
+      <div class="mp-comp-cell ca">Torah / Bible / Quran — directly authored/revealed by a personal God</div>
+    </div>
+  </div>
+
+
+<!-- ═══ SECTION I: KARMA vs SIN ═══ -->
+<div class="mp-sec">
+  <div class="mp-sec-head">
+    <span class="mp-sec-num">Feature I</span>
+    <h2 class="mp-sec-title tg">Karma — The Original Moral Causality</h2>
+    <div class="mp-sec-line g"></div>
+    <span class="mp-sec-badge g">Rigveda c. 1500 BCE · Predates "Sin" by a millennium</span>
+  </div>
+  <div class="mp-karma">
+    <div class="mp-karma-head">
+      <span style="font-size:21px">⚖️</span>
+      <div>
+        <div class="mp-karma-title">Karma vs. Sin — Two Theories of Moral Consequence</div>
+        <div class="mp-karma-sub">The world's oldest moral causality framework versus its Abrahamic theological derivative</div>
+      </div>
+    </div>
+    <div class="mp-karma-cols">
+      <div class="mp-karma-col">
+        <div class="mp-karma-col-h">Karma (कर्म) — Rigveda to Upanishads</div>
+        <div class="mp-karma-col-txt">Sanskrit kr ("to act") — first attested in the Rigveda (c. 1500 BCE) as ritual action, its ethical dimension developed in the Upanishads. The Brihadaranyaka Upanishad's Yajnavalkya: <strong>"A man becomes good by good action and bad by bad action."</strong> Karma is an <strong>autonomous impersonal law</strong> — like gravity. No external agent rewards or punishes. Actions carry precise consequences across lifetimes. The concept predates any Abrahamic equivalent by a minimum of 700 years and requires no priest, prophet, or divine intermediary.</div>
+      </div>
+      <div class="mp-karma-col">
+        <div class="mp-karma-col-h">Sin — Abrahamic Theological Derivative</div>
+        <div class="mp-karma-col-txt">Sin (Old English synn, from Proto-Germanic *sundjo) is structurally different: not a causal law but a <strong>relational violation</strong>. It presupposes a divine lawgiver whose commands have been transgressed. Consequences require divine judgment, divine forgiveness, and mediation — sacrifice, prayer, sacrament, repentance. The moral accounting of karma needs no priest. Sin requires the entire ecclesiastical apparatus. Scholars Wendy Doniger and Arvind Sharma note karma offers a more philosophically self-sufficient account of justice: it needs no external agent to function.</div>
+      </div>
+    </div>
+    <div class="mp-karma-rows">
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Origin:</strong> Rigveda c. 1500 BCE — oldest moral causality framework in recorded literature</div>
+        <div class="mp-karma-cell"><strong>Origin:</strong> Post-exilic Judaism, shaped by Zoroastrian Asha/Druj moral dualism</div>
+      </div>
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Mechanism:</strong> Impersonal universal causal law — as precise and automatic as physics</div>
+        <div class="mp-karma-cell"><strong>Mechanism:</strong> Relational violation — requires divine sentencing, can be forgiven by appeal</div>
+      </div>
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Scope:</strong> All sentient beings across all lifetimes — no exceptions or chosen favorites</div>
+        <div class="mp-karma-cell"><strong>Scope:</strong> Human beings in one lifetime, often with theological conditions on who is judged</div>
+      </div>
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Justice:</strong> Inherent in the structure of reality itself — no judge required</div>
+        <div class="mp-karma-cell"><strong>Justice:</strong> Administered by divine judge at death — eternal consequences for finite acts</div>
+      </div>
+      <div class="mp-karma-row">
+        <div class="mp-karma-cell"><strong>Liberation:</strong> Moksha — dissolving the causal cycle through self-knowledge (Jnana)</div>
+        <div class="mp-karma-cell"><strong>Liberation:</strong> Salvation — externally granted through correct belief or ritual compliance</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HEAVEN / HELL CHAIN -->
 <div class="mp-sec">
@@ -12015,7 +12027,7 @@ function hideStatus(){ const el=document.getElementById('srch-status'); if(el) e
 })();
 
 // ═══ INIT ═══
-switchReligion('srch');
+switchReligion('map');
 
 // Expose helpers needed by the verse modal
 window._fmtRef         = fmtRef;
