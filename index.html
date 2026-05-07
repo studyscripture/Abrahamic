@@ -12001,6 +12001,8 @@ function hideStatus(){ const el=document.getElementById('srch-status'); if(el) e
 })();
 
 // ═══ INIT ═══
+if (history.scrollRestoration) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
 switchReligion('map');
 
 // Expose helpers needed by the verse modal
