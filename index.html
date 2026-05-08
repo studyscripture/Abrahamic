@@ -1396,6 +1396,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2018 &middot; Numbered Discourses</div>
         <div class="lib-book-count">332 Sections &middot; P&#x0101;li Canon</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#a78bfa;" onclick="openLibBook('dhammapada')">
+        <div class="lib-book-icon">&#x2638;&#xFE0F;</div>
+        <div class="lib-book-name">Dhammapada</div>
+        <div class="lib-book-origin">c. 300 BCE &middot; P&#x0101;li Canon</div>
+        <div class="lib-book-edition">F. Max M&#xFC;ller &middot; 1881 &middot; Sacred Books of the East</div>
+        <div class="lib-book-count">26 Chapters &middot; 423 Verses &middot; Path of Truth</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
@@ -1495,6 +1502,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 875 CE</div>
         <div class="lib-book-edition">Muslim ibn al-&#x1E24;ajj&#x0101;j &middot; Abdul Hamid Siddiqui</div>
         <div class="lib-book-count">7,190 Hadiths &middot; 43 Books</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c084fc;" onclick="openLibBook('masnavi')">
+        <div class="lib-book-icon">&#x1F319;</div>
+        <div class="lib-book-name">Masnav&#x012B; i Ma&#x02BF;nav&#x012B;</div>
+        <div class="lib-book-origin">c. 1258&ndash;1273 CE &middot; Jalal al-D&#x012B;n R&#x016B;m&#x012B;</div>
+        <div class="lib-book-edition">E.H. Whinfield &middot; 1898 &middot; Abridged Translation</div>
+        <div class="lib-book-count">6 Books &middot; 86 Stories &middot; Sufi Mystical Epic</div>
       </div>
     </div>
 
@@ -1676,6 +1690,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-an" style="--btn-color:#34d399;--btn-bg:rgba(52,211,153,.12);--btn-glow:rgba(52,211,153,.35);" onclick="toggleBook('an',this)">
       <span class="sb-icon">&#x2638;&#xFE0F;</span><span>A&#x1E45;guttara Nik&#x0101;ya<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2018</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 500&ndash;300 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-dhammapada" style="--btn-color:#a78bfa;--btn-bg:rgba(167,139,250,.12);--btn-glow:rgba(167,139,250,.35);" onclick="toggleBook('dhammapada',this)">
+      <span class="sb-icon">&#x2638;&#xFE0F;</span><span>Dhammapada<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Max M&#xFC;ller &middot; 1881</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
   </div>
 
   <div class="srch-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
@@ -1727,6 +1744,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-muslim" style="--btn-color:#26a69a;--btn-bg:rgba(38,166,154,.12);--btn-glow:rgba(38,166,154,.35);" onclick="toggleBook('muslim',this)">
       <span class="sb-icon">&#x1F4DC;</span><span>&#x1E62;a&#x1E25;&#x012B;&#x1E25; Muslim<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Siddiqui &middot; 7,190 Hadiths</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 875 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-masnavi" style="--btn-color:#c084fc;--btn-bg:rgba(192,132,252,.12);--btn-glow:rgba(192,132,252,.35);" onclick="toggleBook('masnavi',this)">
+      <span class="sb-icon">&#x1F319;</span><span>Masnav&#x012B;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">R&#x016B;m&#x012B; &middot; Whinfield 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1258&ndash;1273 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11021,6 +11041,8 @@ const BOOK_CFG = {
   sggs:    { label:'S\u012Br\u012B Guru Granth S\u0101hib', sub:'Sant Singh Khalsa \u00B7 1430 Ang \u00B7 Sikhism \u00B7 62 R\u0101gs', icon:'\uD83D\uDD2F', accent:'#f4a261', accentDim:'rgba(244,162,97,0.35)', countLabel:'shabad', bookTitle:'S\u012Br\u012B Guru Granth S\u0101hib', bookEdition:'Sant Singh Khalsa Translation \u00B7 Eternal Guru of the Sikhs', type:'sggs' },
   bom:     { label:'Book of Mormon', sub:'Joseph Smith \u00B7 1830 \u00B7 1981 Edition \u00B7 15 Books \u00B7 239 Chapters', icon:'\u26EA', accent:'#c0a060', accentDim:'rgba(192,160,96,0.35)', countLabel:'verse', bookTitle:'Book of Mormon', bookEdition:'Joseph Smith \u00B7 1981 Edition \u00B7 Wikisource \u00B7 Public Domain', type:'bom' },
   gilgamesh: { label:'Epic of Gilgamesh', sub:'George Smith \u00B7 1876 \u00B7 Cuneiform Tablets \u00B7 Nineveh \u00B7 11 Tablets', icon:'\uD83C\uDFFA', accent:'#d4944a', accentDim:'rgba(212,148,74,0.35)', countLabel:'tablet', bookTitle:'Epic of Gilgamesh', bookEdition:'Trans. George Smith \u00B7 The Chaldean Account of Genesis \u00B7 1876', type:'gilgamesh' },
+  dhammapada: { label:'Dhammapada', sub:'F. Max M\u00FCller \u00B7 1881 \u00B7 26 Chapters \u00B7 423 Verses \u00B7 Buddhism', icon:'\u2638\uFE0F', accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse', bookTitle:'Dhammapada', bookEdition:'Trans. F. Max M\u00FCller \u00B7 Sacred Books of the East Vol. X \u00B7 1881', type:'dhammapada' },
+  masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   tattva:  { label:'Tattvārthashāstra', sub:'Ācārya Umāsvāmi \u00B7 Vijay K. Jain \u00B7 2018 \u00B7 10 Chapters \u00B7 357 Sūtras', icon:'\uD83D\uDD90', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'passage', bookTitle:'Tattvārthashāstra', bookEdition:'With Sarvārthasiddhi Commentary \u00B7 Vijay K. Jain \u00B7 2018', type:'tattva' },
   jps:     { label:'Tanakh \u2014 Jewish Publication Society', sub:'JPS \u00B7 1917 \u00B7 Torah \u00B7 Nevi\u02BCim \u00B7 Ketuvim \u00B7 39 Books', icon:'\u2721\uFE0F', accent:'#c9a227', accentDim:'rgba(201,162,39,0.35)', countLabel:'verse', bookTitle:'Tanakh', bookEdition:'Jewish Publication Society \u00B7 1917 \u00B7 Masoretic Text', type:'tanakh' },
 };
@@ -11172,16 +11194,19 @@ function loadScriptures(cb){
     fetch('bukhari.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
     fetch('muslim.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
     fetch('bom.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('gilgamesh.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('gilgamesh.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('dhammapada.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('masnavi.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData])=>{
-      // Merge all files into one SCRIPTURES object
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, dhamData, masData])=>{
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
       if(Array.isArray(ms) && ms.length) d.muslim = ms;
       if(bomData && Array.isArray(bomData.bom) && bomData.bom.length) d.bom = bomData.bom;
       if(gilgData && Array.isArray(gilgData.gilgamesh) && gilgData.gilgamesh.length) d.gilgamesh = gilgData.gilgamesh;
+      if(dhamData && Array.isArray(dhamData.dhammapada) && dhamData.dhammapada.length) d.dhammapada = dhamData.dhammapada;
+      if(masData && Array.isArray(masData.masnavi) && masData.masnavi.length) d.masnavi = masData.masnavi;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -11617,6 +11642,12 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='gilgamesh'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
+  } else if(key==='dhammapada'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='masnavi'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   }
   const isNikaya=BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya';
   const isVeda=BOOK_CFG[key]&&(BOOK_CFG[key].type==='veda'||BOOK_CFG[key].type==='avesta');
@@ -11822,6 +11853,19 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='dhammapada'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const list=document.createElement('div'); list.className='lib-verse-list';
+    s.t.split('\n').forEach(line=>{ const m=line.match(/^(\d+)\.\s+(.+)$/); if(!m) return; const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">v. ${m[1]}</div><div class="lib-verse-text">${esc(m[2])}</div>`; row.addEventListener('click',()=>_copyVerse(s.r+':'+m[1], m[2])); list.appendChild(row); });
+    container.appendChild(list);
+  } else if(libBook==='masnavi'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='bukhari'){
     const grp=libChapterList[idx]; if(!grp) return;
     const hadiths=data.filter(v=>v.vol===grp.vol&&v.book===grp.book);
@@ -11859,7 +11903,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,dhammapada:true,masnavi:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -11874,7 +11918,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','gilgamesh','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','tattva','dn','mn','sn','an','tao','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','sggs','bom'];
+const BOOK_DISPLAY_ORDER=['bod','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','gilgamesh','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','tattva','dn','mn','sn','an','dhammapada','tao','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -11965,7 +12009,7 @@ function makeCard(book,v,cfg,terms){
      cfg.type==='harivamsha'||cfg.type==='vishnu_purana'||
      cfg.type==='veda'||cfg.type==='avesta'||
      cfg.type==='homeric_hymn'||cfg.type==='sggs'||cfg.type==='tattva'||cfg.type==='tanakh'||cfg.type==='hadith'||
-     cfg.type==='gilgamesh'){
+     cfg.type==='gilgamesh'||cfg.type==='dhammapada'||cfg.type==='masnavi'){
     txt=extractMahaSnippet(v.t, terms);
   } else if(cfg.type==='bod'){
     txt=extractMahaSnippet(v.t, terms, 280);
@@ -12061,6 +12105,8 @@ function chapLabel(book,v,cfg){
   if(book==='popol_vuh')     return (v.part&&v.chapter)?`Part ${v.part}, Chapter ${v.chapter}`:(v.chapter?`Chapter ${v.chapter}`:null);
   if(book==='bom')           return v.book ? `${v.book} \u2014 Chapter ${v.c}` : null;
   if(book==='gilgamesh')     return v.title || null;
+  if(book==='dhammapada')    return v.r || null;
+  if(book==='masnavi')       return v.r || null;
   if(book==='kojiki')        return v.title ? `Section ${v.section} \u2014 ${v.title}` : `Section ${v.section}`;
   if(book==='nihon_shoki')   return v.title ? `Book ${v.book} \u2014 ${v.title}` : `Book ${v.book}`;
   if(book==='book_of_enoch')    return `1 Enoch, Chapter ${v.chapter}`;
@@ -12296,6 +12342,9 @@ window.switchReligion  = switchReligion;
       }
       // Gilgamesh: each entry is its own tablet; idx = array position
       if(book==='gilgamesh'){
+        var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
+      }
+      if(book==='dhammapada'||book==='masnavi'){
         var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
       // All remaining books: libChapterList = data.map((_,i)=>i); idx = array position
