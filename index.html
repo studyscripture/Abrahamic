@@ -1203,6 +1203,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">E. A. Wallis Budge &middot; 1898 &middot; Theban Recension</div>
         <div class="lib-book-count">181 Chapters &middot; Coming Forth by Day</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#d4a843;" onclick="openLibBook('pyramid_texts')">
+        <div class="lib-book-icon">𓇳</div>
+        <div class="lib-book-name">Pyramid Texts of Unas</div>
+        <div class="lib-book-origin">c. 2375 BCE &middot; Fifth Dynasty &middot; Saqqara</div>
+        <div class="lib-book-edition">Trans. after Faulkner &middot; Oldest Religious Corpus in the World</div>
+        <div class="lib-book-count">21 Sections &middot; 228+ Utterances &middot; Cannibal Hymn &middot; Ascent to Re</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3000+ BCE</span></div>
@@ -1674,6 +1681,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-bod" style="--btn-color:#c8a96e;--btn-bg:rgba(200,169,110,.12);--btn-glow:rgba(200,169,110,.35);" onclick="toggleBook('bod',this)">
       <span class="sb-icon">𓂀</span><span>Book of the Dead<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Budge &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1550 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-pyramid_texts" style="--btn-color:#d4a843;--btn-bg:rgba(212,168,67,.12);--btn-glow:rgba(212,168,67,.35);" onclick="toggleBook('pyramid_texts',this)">
+      <span class="sb-icon">𓇳</span><span>Pyramid Texts<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Faulkner &middot; trans.</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2375 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11165,6 +11175,7 @@ const BOOK_CFG = {
   harivamsha: { label:'Harivaṃśa',           sub:'Manmatha Nath Dutt · 1897 · Keshub Academy',                      icon:'🔱', accent:'#ff8a65', accentDim:'rgba(255,138,101,0.35)', countLabel:'chapter', bookTitle:'Harivaṃśa',        bookEdition:'Manmatha Nath Dutt Translation · 1897',          type:'harivamsha' },
   vishnu_purana: { label:'Viṣṇu Purāṇa',        sub:'Manmatha Nath Dutt · 1896 · Keshub Academy',                      icon:'🪔', accent:'#ffa726', accentDim:'rgba(255,167,38,0.35)',  countLabel:'section', bookTitle:'Viṣṇu Purāṇa',      bookEdition:'Manmatha Nath Dutt Translation · 1896',          type:'vishnu_purana' },
   bod:             { label:'Egyptian Book of the Dead', sub:'E. A. Wallis Budge · 1898 · Theban Recension · Coming Forth by Day', icon:'𓂀', accent:'#c8a96e', accentDim:'rgba(200,169,110,0.35)', countLabel:'chapter', bookTitle:'The Egyptian Book of the Dead', bookEdition:'E. A. Wallis Budge Translation · 1898 · Theban Recension', type:'bod' },
+  pyramid_texts:   { label:'Pyramid Texts of Unas', sub:'c. 2375 BCE · Pyramid of Unas · Saqqara · Oldest Religious Corpus', icon:'𓇳', accent:'#d4a843', accentDim:'rgba(212,168,67,0.35)', countLabel:'utterance', bookTitle:'The Pyramid Texts — Pyramid of Unas', bookEdition:'Trans. after Faulkner · c. 2375 BCE · Fifth Dynasty · Saqqara', type:'gilgamesh' },
   popol_vuh: { label:'Popol Vuh', sub:'Goetz & Morley · 1954 · K\'iche\' Maya · 4 Parts', icon:'🌽', accent:'#4ade80', accentDim:'rgba(74,222,128,0.35)', countLabel:'passage', bookTitle:'Popol Vuh', bookEdition:'Trans. Delia Goetz & Sylvanus G. Morley · 1954', type:'nikaya' },
   kojiki:      { label:'Kojiki', sub:'B. H. Chamberlain \u00B7 1882 \u00B7 Records of Ancient Matters \u00B7 180 Sections', icon:'\u26F8\uFE0F', accent:'#e8a87c', accentDim:'rgba(232,168,124,0.35)', countLabel:'passage', bookTitle:'Kojiki', bookEdition:'Trans. Basil Hall Chamberlain \u00B7 1882', type:'nikaya' },
   nihon_shoki: { label:'Nihon Shoki', sub:'W. G. Aston \u00B7 1896 \u00B7 Chronicles of Japan \u00B7 30 Books', icon:'\u26F8\uFE0F', accent:'#c9a96e', accentDim:'rgba(201,169,110,0.35)', countLabel:'passage', bookTitle:'Nihon Shoki', bookEdition:'Trans. W. G. Aston \u00B7 1896', type:'nikaya' },
@@ -11294,6 +11305,7 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.homeric_hymn_demeter)) d.homeric_hymn_demeter.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
   if(Array.isArray(d.odyssey)) d.odyssey.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
   if(Array.isArray(d.iliad)) d.iliad.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
+  // pyramid_texts: preserve source order (canonical wall order)
   // Mesopotamian texts: preserve source order (no sort needed)
   // enuma_elish, ishtar_descent, seven_spirits, adapa are already in canonical tablet order
   if(Array.isArray(d.sggs)) d.sggs.sort((a,b)=>(toNum(a.mehl)-toNum(b.mehl))||(toNum(a.sn)-toNum(b.sn))||cmpText(a.r,b.r));
@@ -11347,9 +11359,11 @@ function loadScriptures(cb){
     fetch('zhuangzi.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('poetic_edda.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('iqan.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('mahabharata.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, mahaData, pyrData])=>{
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
@@ -11370,6 +11384,8 @@ function loadScriptures(cb){
       if(eddaData && Array.isArray(eddaData.poetic_edda) && eddaData.poetic_edda.length) d.poetic_edda = eddaData.poetic_edda;
       if(iqanData && Array.isArray(iqanData.iqan) && iqanData.iqan.length) d.iqan = iqanData.iqan;
       if(yogaData && Array.isArray(yogaData.yoga_sutras) && yogaData.yoga_sutras.length) d.yoga_sutras = yogaData.yoga_sutras;
+      if(mahaData && Array.isArray(mahaData.maha) && mahaData.maha.length) d.maha = mahaData.maha;
+      if(pyrData && Array.isArray(pyrData.pyramid_texts) && pyrData.pyramid_texts.length) d.pyramid_texts = pyrData.pyramid_texts;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -11805,7 +11821,7 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='gilgamesh'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
-  } else if(key==='enuma_elish'||key==='ishtar_descent'||key==='seven_spirits'||key==='adapa'){
+  } else if(key==='enuma_elish'||key==='ishtar_descent'||key==='seven_spirits'||key==='adapa'||key==='pyramid_texts'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
   } else if(key==='dhammapada'){
@@ -12037,7 +12053,7 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);
     renderProseChapter(container,cfg,s.t);
-  } else if(libBook==='enuma_elish'||libBook==='ishtar_descent'||libBook==='seven_spirits'||libBook==='adapa'){
+  } else if(libBook==='enuma_elish'||libBook==='ishtar_descent'||libBook==='seven_spirits'||libBook==='adapa'||libBook==='pyramid_texts'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
@@ -12129,7 +12145,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12144,7 +12160,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -12333,7 +12349,7 @@ function chapLabel(book,v,cfg){
   if(book==='popol_vuh')     return (v.part&&v.chapter)?`Part ${v.part}, Chapter ${v.chapter}`:(v.chapter?`Chapter ${v.chapter}`:null);
   if(book==='bom')           return v.book ? `${v.book} \u2014 Chapter ${v.c}` : null;
   if(book==='gilgamesh')     return v.title || null;
-  if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa') return v.title || null;
+  if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa'||book==='pyramid_texts') return v.title || null;
   if(book==='dhammapada')    return v.r || null;
   if(book==='masnavi')       return v.r || null;
   if(book==='corpus_hermeticum') return v.title ? `Tractate ${v.tractate}: ${v.title}` : null;
@@ -12579,7 +12595,7 @@ window.switchReligion  = switchReligion;
       if(book==='gilgamesh'){
         var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
-      if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa'){
+      if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa'||book==='pyramid_texts'){
         var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
       if(book==='dhammapada'||book==='masnavi'){
