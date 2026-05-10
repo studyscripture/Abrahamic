@@ -1302,6 +1302,34 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">George Smith &middot; 1876 &middot; Chaldean Account of Genesis</div>
         <div class="lib-book-count">11 Tablets &middot; Izdubar Legends &middot; Cuneiform Inscriptions</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#e8a060;" onclick="openLibBook('enuma_elish')">
+        <div class="lib-book-icon">&#x1F30C;</div>
+        <div class="lib-book-name">En&#x016B;ma Eli&#x0161;</div>
+        <div class="lib-book-origin">c. 1800&ndash;1200 BCE &middot; Babylonian Creation Epic</div>
+        <div class="lib-book-edition">L.W. King &middot; 1902 &middot; The Seven Tablets of Creation</div>
+        <div class="lib-book-count">7 Tablets &middot; Marduk &middot; Tiamat &middot; Origin of Mankind</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#d4944a;" onclick="openLibBook('ishtar_descent')">
+        <div class="lib-book-icon">&#x2B50;</div>
+        <div class="lib-book-name">Descent of Ishtar</div>
+        <div class="lib-book-origin">c. 1000 BCE &middot; Babylonian &middot; Underworld Myth</div>
+        <div class="lib-book-edition">Morris Jastrow &middot; 1898 &middot; Religion of Babylonia and Assyria</div>
+        <div class="lib-book-count">2 Sections &middot; Ishtar &middot; Ereshkigal &middot; The Seven Gates</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#a08060;" onclick="openLibBook('seven_spirits')">
+        <div class="lib-book-icon">&#x1F329;&#xFE0F;</div>
+        <div class="lib-book-name">The Seven Evil Spirits</div>
+        <div class="lib-book-origin">c. 700 BCE &middot; Assyrian &middot; Cuneiform Tablets</div>
+        <div class="lib-book-edition">R.C. Thompson &middot; 1903 &middot; Devils and Evil Spirits of Babylonia</div>
+        <div class="lib-book-count">2 Texts &middot; Evil Demon Series &middot; Eclipse Myth &middot; Incantations</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c07840;" onclick="openLibBook('adapa')">
+        <div class="lib-book-icon">&#x1F347;</div>
+        <div class="lib-book-name">Adapa and the Food of Life</div>
+        <div class="lib-book-origin">c. 1400 BCE &middot; El-Amarna &middot; Akkadian</div>
+        <div class="lib-book-edition">Morris Jastrow &middot; 1898 &middot; Religion of Babylonia and Assyria</div>
+        <div class="lib-book-count">3 Tablets &middot; Origin of Human Mortality &middot; Ea &amp; Anu</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2000 BCE</span></div>
@@ -1693,6 +1721,18 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-gilgamesh" style="--btn-color:#d4944a;--btn-bg:rgba(212,148,74,.12);--btn-glow:rgba(212,148,74,.35);" onclick="toggleBook('gilgamesh',this)">
       <span class="sb-icon">&#x1F3FA;</span><span>Epic of Gilgamesh<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">George Smith &middot; 1876</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2100 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-enuma_elish" style="--btn-color:#e8a060;--btn-bg:rgba(232,160,96,.12);--btn-glow:rgba(232,160,96,.35);" onclick="toggleBook('enuma_elish',this)">
+      <span class="sb-icon">&#x1F30C;</span><span>En&#x016B;ma Eli&#x0161;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">L.W. King &middot; 1902</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1800&ndash;1200 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-ishtar_descent" style="--btn-color:#d4944a;--btn-bg:rgba(212,148,74,.12);--btn-glow:rgba(212,148,74,.35);" onclick="toggleBook('ishtar_descent',this)">
+      <span class="sb-icon">&#x2B50;</span><span>Descent of Ishtar<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Morris Jastrow &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1000 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-seven_spirits" style="--btn-color:#a08060;--btn-bg:rgba(160,128,96,.12);--btn-glow:rgba(160,128,96,.35);" onclick="toggleBook('seven_spirits',this)">
+      <span class="sb-icon">&#x1F329;&#xFE0F;</span><span>Seven Evil Spirits<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">R.C. Thompson &middot; 1903</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 700 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-adapa" style="--btn-color:#c07840;--btn-bg:rgba(192,120,64,.12);--btn-glow:rgba(192,120,64,.35);" onclick="toggleBook('adapa',this)">
+      <span class="sb-icon">&#x1F347;</span><span>Adapa &amp; Food of Life<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Morris Jastrow &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1400 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11134,6 +11174,10 @@ const BOOK_CFG = {
   sggs:    { label:'S\u012Br\u012B Guru Granth S\u0101hib', sub:'Sant Singh Khalsa \u00B7 1430 Ang \u00B7 Sikhism \u00B7 62 R\u0101gs', icon:'\uD83D\uDD2F', accent:'#f4a261', accentDim:'rgba(244,162,97,0.35)', countLabel:'shabad', bookTitle:'S\u012Br\u012B Guru Granth S\u0101hib', bookEdition:'Sant Singh Khalsa Translation \u00B7 Eternal Guru of the Sikhs', type:'sggs' },
   bom:     { label:'Book of Mormon', sub:'Joseph Smith \u00B7 1830 \u00B7 1981 Edition \u00B7 15 Books \u00B7 239 Chapters', icon:'\u26EA', accent:'#c0a060', accentDim:'rgba(192,160,96,0.35)', countLabel:'verse', bookTitle:'Book of Mormon', bookEdition:'Joseph Smith \u00B7 1981 Edition \u00B7 Wikisource \u00B7 Public Domain', type:'bom' },
   gilgamesh: { label:'Epic of Gilgamesh', sub:'George Smith \u00B7 1876 \u00B7 Cuneiform Tablets \u00B7 Nineveh \u00B7 11 Tablets', icon:'\uD83C\uDFFA', accent:'#d4944a', accentDim:'rgba(212,148,74,0.35)', countLabel:'tablet', bookTitle:'Epic of Gilgamesh', bookEdition:'Trans. George Smith \u00B7 The Chaldean Account of Genesis \u00B7 1876', type:'gilgamesh' },
+  enuma_elish: { label:'En\u016Bma Eli\u0161', sub:'L.W. King \u00B7 1902 \u00B7 7 Tablets \u00B7 Babylonian Creation Epic', icon:'\uD83C\uDF0C', accent:'#e8a060', accentDim:'rgba(232,160,96,0.35)', countLabel:'tablet', bookTitle:'En\u016Bma Eli\u0161 \u2014 Babylonian Creation Epic', bookEdition:'Trans. L.W. King \u00B7 The Seven Tablets of Creation \u00B7 1902', type:'gilgamesh' },
+  ishtar_descent: { label:'Descent of Ishtar', sub:'Morris Jastrow \u00B7 1915 \u00B7 Babylonian \u00B7 Ishtar in the Underworld', icon:'\u2B50', accent:'#d4944a', accentDim:'rgba(212,148,74,0.35)', countLabel:'section', bookTitle:'Descent of the Goddess Ishtar into the Lower World', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
+  seven_spirits: { label:'The Seven Evil Spirits', sub:'R.C. Thompson \u00B7 1903 \u00B7 Assyrian \u00B7 Evil Demon Series', icon:'\uD83C\uDF29\uFE0F', accent:'#a08060', accentDim:'rgba(160,128,96,0.35)', countLabel:'text', bookTitle:'The Seven Evil Spirits \u2014 Assyrian Cuneiform Texts', bookEdition:'Trans. R.C. Thompson \u00B7 The Devils and Evil Spirits of Babylonia \u00B7 1903', type:'gilgamesh' },
+  adapa: { label:'Adapa and the Food of Life', sub:'Morris Jastrow \u00B7 1898 \u00B7 3 Tablets \u00B7 El-Amarna \u00B7 Akkadian', icon:'\uD83C\uDF47', accent:'#c07840', accentDim:'rgba(192,120,64,0.35)', countLabel:'tablet', bookTitle:'Adapa and the Food of Life', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
   dhammapada: { label:'Dhammapada', sub:'F. Max M\u00FCller \u00B7 1881 \u00B7 26 Chapters \u00B7 423 Verses \u00B7 Buddhism', icon:'\uD83D\uDCD6', accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse', bookTitle:'Dhammapada', bookEdition:'Trans. F. Max M\u00FCller \u00B7 Sacred Books of the East Vol. X \u00B7 1881', type:'dhammapada' },
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   corpus_hermeticum: { label:'Corpus Hermeticum', sub:'G.R.S. Mead \u00B7 1906 \u00B7 18 Tractates \u00B7 Hermetic Philosophy \u00B7 c. 100\u2013300 CE', icon:'\u2640\uFE0F', accent:'#f0c070', accentDim:'rgba(240,192,112,0.35)', countLabel:'tractate', bookTitle:'Corpus Hermeticum', bookEdition:'Trans. G.R.S. Mead \u00B7 Thrice-Greatest Hermes \u00B7 1906', type:'corpus_hermeticum' },
@@ -11250,6 +11294,8 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.homeric_hymn_demeter)) d.homeric_hymn_demeter.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
   if(Array.isArray(d.odyssey)) d.odyssey.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
   if(Array.isArray(d.iliad)) d.iliad.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
+  // Mesopotamian texts: preserve source order (no sort needed)
+  // enuma_elish, ishtar_descent, seven_spirits, adapa are already in canonical tablet order
   if(Array.isArray(d.sggs)) d.sggs.sort((a,b)=>(toNum(a.mehl)-toNum(b.mehl))||(toNum(a.sn)-toNum(b.sn))||cmpText(a.r,b.r));
   if(Array.isArray(d.tattva)) d.tattva.sort((a,b)=>(toNum(a.c)-toNum(b.c))||(toNum(a.s)-toNum(b.s)));
   if(Array.isArray(d.jps)){
@@ -11293,6 +11339,7 @@ function loadScriptures(cb){
     fetch('muslim.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
     fetch('bom.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('gilgamesh.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('mesopotamia.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('dhammapada.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('masnavi.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('corpus_hermeticum.json').then(r=>r.ok?r.json():null).catch(()=>null),
@@ -11300,16 +11347,21 @@ function loadScriptures(cb){
     fetch('zhuangzi.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('poetic_edda.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('iqan.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('mahabharata.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, mahaData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData])=>{
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
       if(Array.isArray(ms) && ms.length) d.muslim = ms;
       if(bomData && Array.isArray(bomData.bom) && bomData.bom.length) d.bom = bomData.bom;
       if(gilgData && Array.isArray(gilgData.gilgamesh) && gilgData.gilgamesh.length) d.gilgamesh = gilgData.gilgamesh;
+      if(mesopData){
+        if(Array.isArray(mesopData.enuma_elish)&&mesopData.enuma_elish.length) d.enuma_elish=mesopData.enuma_elish;
+        if(Array.isArray(mesopData.ishtar_descent)&&mesopData.ishtar_descent.length) d.ishtar_descent=mesopData.ishtar_descent;
+        if(Array.isArray(mesopData.seven_spirits)&&mesopData.seven_spirits.length) d.seven_spirits=mesopData.seven_spirits;
+        if(Array.isArray(mesopData.adapa)&&mesopData.adapa.length) d.adapa=mesopData.adapa;
+      }
       if(dhamData && Array.isArray(dhamData.dhammapada) && dhamData.dhammapada.length) d.dhammapada = dhamData.dhammapada;
       if(masData && Array.isArray(masData.masnavi) && masData.masnavi.length) d.masnavi = masData.masnavi;
       if(chData && Array.isArray(chData.corpus_hermeticum) && chData.corpus_hermeticum.length) d.corpus_hermeticum = chData.corpus_hermeticum;
@@ -11318,7 +11370,6 @@ function loadScriptures(cb){
       if(eddaData && Array.isArray(eddaData.poetic_edda) && eddaData.poetic_edda.length) d.poetic_edda = eddaData.poetic_edda;
       if(iqanData && Array.isArray(iqanData.iqan) && iqanData.iqan.length) d.iqan = iqanData.iqan;
       if(yogaData && Array.isArray(yogaData.yoga_sutras) && yogaData.yoga_sutras.length) d.yoga_sutras = yogaData.yoga_sutras;
-      if(mahaData && Array.isArray(mahaData.maha) && mahaData.maha.length) d.maha = mahaData.maha;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -11754,6 +11805,9 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='gilgamesh'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
+  } else if(key==='enuma_elish'||key==='ishtar_descent'||key==='seven_spirits'||key==='adapa'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
   } else if(key==='dhammapada'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
@@ -11983,6 +12037,12 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='enuma_elish'||libBook==='ishtar_descent'||libBook==='seven_spirits'||libBook==='adapa'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='dhammapada'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12069,7 +12129,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,dhammapada:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12084,7 +12144,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -12273,6 +12333,7 @@ function chapLabel(book,v,cfg){
   if(book==='popol_vuh')     return (v.part&&v.chapter)?`Part ${v.part}, Chapter ${v.chapter}`:(v.chapter?`Chapter ${v.chapter}`:null);
   if(book==='bom')           return v.book ? `${v.book} \u2014 Chapter ${v.c}` : null;
   if(book==='gilgamesh')     return v.title || null;
+  if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa') return v.title || null;
   if(book==='dhammapada')    return v.r || null;
   if(book==='masnavi')       return v.r || null;
   if(book==='corpus_hermeticum') return v.title ? `Tractate ${v.tractate}: ${v.title}` : null;
@@ -12516,6 +12577,9 @@ window.switchReligion  = switchReligion;
       }
       // Gilgamesh: each entry is its own tablet; idx = array position
       if(book==='gilgamesh'){
+        var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
+      }
+      if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa'){
         var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
       if(book==='dhammapada'||book==='masnavi'){
