@@ -1284,6 +1284,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1896</div>
         <div class="lib-book-count">126 Sections &middot; 6 Parts</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#a5d6a7;" onclick="openLibBook('yoga_sutras')">
+        <div class="lib-book-icon">&#x1F9D8;</div>
+        <div class="lib-book-name">Yoga S&#x016B;tras of Pata&#xF1;jali</div>
+        <div class="lib-book-origin">c. 400 BCE&ndash;400 CE</div>
+        <div class="lib-book-edition">Charles Johnston &middot; 1912 &middot; The Book of the Spiritual Man</div>
+        <div class="lib-book-count">4 P&#x0101;das &middot; 196 S&#x016B;tras &middot; R&#x0101;ja Yoga</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x1F3FA;&ensp;Ancient Mesopotamian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2100 BCE</span></div>
@@ -1352,17 +1359,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 800&ndash;700 BCE</div>
         <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1898</div>
         <div class="lib-book-count">24 Books &middot; Greek Epic</div>
-      </div>
-    </div>
-
-    <div class="lib-shelf-group-label">&#x1F9FF;&ensp;Norse <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
-    <div class="lib-shelf">
-      <div class="lib-book-card" style="--bk-accent:#7ecbe6;" onclick="openLibBook('poetic_edda')">
-        <div class="lib-book-icon">&#x26A1;</div>
-        <div class="lib-book-name">Poetic Edda</div>
-        <div class="lib-book-origin">c. 900&ndash;1300 CE &middot; Codex Regius</div>
-        <div class="lib-book-edition">Henry Adams Bellows &middot; 1936 &middot; American-Scandinavian Foundation</div>
-        <div class="lib-book-count">35 Poems &middot; Lays of the Gods &amp; Heroes</div>
       </div>
     </div>
 
@@ -1438,6 +1434,17 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 475&ndash;221 BCE</div>
         <div class="lib-book-edition">James Legge &middot; 1861 &middot; Confucius</div>
         <div class="lib-book-count">496 Chapters &middot; 20 Books</div>
+      </div>
+    </div>
+
+    <div class="lib-shelf-group-label">&#x1F9FF;&ensp;Norse <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
+    <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#7ecbe6;" onclick="openLibBook('poetic_edda')">
+        <div class="lib-book-icon">&#x26A1;</div>
+        <div class="lib-book-name">Poetic Edda</div>
+        <div class="lib-book-origin">c. 900&ndash;1300 CE &middot; Codex Regius</div>
+        <div class="lib-book-edition">Henry Adams Bellows &middot; 1936 &middot; American-Scandinavian Foundation</div>
+        <div class="lib-book-count">35 Poems &middot; Lays of the Gods &amp; Heroes</div>
       </div>
     </div>
 
@@ -1677,6 +1684,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-vishnu_purana" style="--btn-color:#ffa726;--btn-bg:rgba(255,167,38,.12);--btn-glow:rgba(255,167,38,.35);" onclick="toggleBook('vishnu_purana',this)">
       <span class="sb-icon">&#x1FA94;</span><span>Vi&#x1E63;&#x1E47;u Pur&#x0101;&#x1E47;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Dutt &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st&ndash;6th cent. CE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-yoga_sutras" style="--btn-color:#a5d6a7;--btn-bg:rgba(165,214,167,.12);--btn-glow:rgba(165,214,167,.35);" onclick="toggleBook('yoga_sutras',this)">
+      <span class="sb-icon">&#x1F9D8;</span><span>Yoga S&#x016B;tras<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Johnston &middot; 1912</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400 BCE&ndash;400 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
   </div>
 
   <div class="srch-group-label">&#x1F3FA;&ensp;Ancient Mesopotamian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2100 BCE</span></div>
@@ -1720,13 +1730,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x1F9FF;&ensp;Norse <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
-  <div class="srch-book-row">
-    <button class="srch-book-btn active" id="sbtn-poetic_edda" style="--btn-color:#7ecbe6;--btn-bg:rgba(126,203,230,.12);--btn-glow:rgba(126,203,230,.35);" onclick="toggleBook('poetic_edda',this)">
-      <span class="sb-icon">&#x26A1;</span><span>Poetic Edda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Bellows &middot; 1936</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 500 BCE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-  </div>
-
   <div class="srch-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 600 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-tattva" style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);" onclick="toggleBook('tattva',this)">
@@ -1763,6 +1766,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-analects" style="--btn-color:#bcaaa4;--btn-bg:rgba(188,170,164,.12);--btn-glow:rgba(188,170,164,.35);" onclick="toggleBook('analects',this)">
       <span class="sb-icon">&#x1F4DC;</span><span>Analects<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1861</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 475&ndash;221 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+  </div>
+
+  <div class="srch-group-label">&#x1F9FF;&ensp;Norse <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
+  <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-poetic_edda" style="--btn-color:#7ecbe6;--btn-bg:rgba(126,203,230,.12);--btn-glow:rgba(126,203,230,.35);" onclick="toggleBook('poetic_edda',this)">
+      <span class="sb-icon">&#x26A1;</span><span>Poetic Edda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Bellows &middot; 1936</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 500 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11128,6 +11138,7 @@ const BOOK_CFG = {
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   corpus_hermeticum: { label:'Corpus Hermeticum', sub:'G.R.S. Mead \u00B7 1906 \u00B7 18 Tractates \u00B7 Hermetic Philosophy \u00B7 c. 100\u2013300 CE', icon:'\u2640\uFE0F', accent:'#f0c070', accentDim:'rgba(240,192,112,0.35)', countLabel:'tractate', bookTitle:'Corpus Hermeticum', bookEdition:'Trans. G.R.S. Mead \u00B7 Thrice-Greatest Hermes \u00B7 1906', type:'corpus_hermeticum' },
   bos:       { label:'Gardnerian Book of Shadows', sub:'Gerald B. Gardner \u00B7 c. 1949\u20131961 \u00B7 39 Sections \u00B7 Wicca', icon:'\uD83C\uDF19', accent:'#b39ddb', accentDim:'rgba(179,157,219,0.35)', countLabel:'section', bookTitle:'Gardnerian Book of Shadows', bookEdition:'Gerald B. Gardner \u00B7 GlobalGrey Edition \u00B7 Public Domain', type:'bos' },
+  yoga_sutras: { label:'Yoga S\u016Btras of Pata\xF1jali', sub:'Charles Johnston \u00B7 1912 \u00B7 4 P\u0101das \u00B7 196 S\u016Btras \u00B7 R\u0101ja Yoga', icon:'\uD83E\uDDD8', accent:'#a5d6a7', accentDim:'rgba(165,214,167,0.35)', countLabel:'section', bookTitle:'Yoga S\u016Btras of Pata\xF1jali', bookEdition:'Trans. Charles Johnston \u00B7 1912 \u00B7 The Book of the Spiritual Man', type:'yoga_sutras' },
   iqan:      { label:'Kit\u00E1b-i-Iq\u00E1n', sub:'Bah\u00E1\u02BCu\u02BCll\u00E1h \u00B7 c. 1861 CE \u00B7 Ali Kuli Khan 1904 \u00B7 Book of Certitude', icon:'\u2605', accent:'#e8c97a', accentDim:'rgba(232,201,122,0.35)', countLabel:'part', bookTitle:'Kit\u00E1b-i-Iq\u00E1n', bookEdition:'Trans. Ali Kuli Khan \u00B7 1904 \u00B7 Bah\u00E1\u02BC\u00ED Publishing Society', type:'iqan' },
   poetic_edda: { label:'Poetic Edda', sub:'Henry Adams Bellows \u00B7 1936 \u00B7 35 Poems \u00B7 Norse Mythology \u00B7 Codex Regius', icon:'\u26A1', accent:'#7ecbe6', accentDim:'rgba(126,203,230,0.35)', countLabel:'poem', bookTitle:'Poetic Edda', bookEdition:'Trans. Henry Adams Bellows \u00B7 1936 \u00B7 American-Scandinavian Foundation', type:'poetic_edda' },
   tattva:  { label:'Tattvārthashāstra', sub:'Ācārya Umāsvāmi \u00B7 Vijay K. Jain \u00B7 2018 \u00B7 10 Chapters \u00B7 357 Sūtras', icon:'\uD83D\uDD90', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'passage', bookTitle:'Tattvārthashāstra', bookEdition:'With Sarvārthasiddhi Commentary \u00B7 Vijay K. Jain \u00B7 2018', type:'tattva' },
@@ -11288,9 +11299,10 @@ function loadScriptures(cb){
     fetch('bos.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('zhuangzi.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('poetic_edda.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('iqan.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('iqan.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData])=>{
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
@@ -11304,6 +11316,7 @@ function loadScriptures(cb){
       if(zhuData && Array.isArray(zhuData.zhuangzi) && zhuData.zhuangzi.length) d.zhuangzi = zhuData.zhuangzi;
       if(eddaData && Array.isArray(eddaData.poetic_edda) && eddaData.poetic_edda.length) d.poetic_edda = eddaData.poetic_edda;
       if(iqanData && Array.isArray(iqanData.iqan) && iqanData.iqan.length) d.iqan = iqanData.iqan;
+      if(yogaData && Array.isArray(yogaData.yoga_sutras) && yogaData.yoga_sutras.length) d.yoga_sutras = yogaData.yoga_sutras;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -11760,6 +11773,9 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='iqan'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
+  } else if(key==='yoga_sutras'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r} — ${s.subtitle}`; sel.appendChild(o); });
   }
   const isNikaya=BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya';
   const isVeda=BOOK_CFG[key]&&(BOOK_CFG[key].type==='veda'||BOOK_CFG[key].type==='avesta');
@@ -12008,6 +12024,12 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='yoga_sutras'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='bukhari'){
     const grp=libChapterList[idx]; if(!grp) return;
     const hadiths=data.filter(v=>v.vol===grp.vol&&v.book===grp.book);
@@ -12045,7 +12067,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,dhammapada:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,dhammapada:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12060,7 +12082,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','gilgamesh','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -12153,7 +12175,7 @@ function makeCard(book,v,cfg,terms){
      cfg.type==='homeric_hymn'||cfg.type==='sggs'||cfg.type==='tattva'||cfg.type==='tanakh'||cfg.type==='hadith'||
      cfg.type==='gilgamesh'||cfg.type==='dhammapada'||cfg.type==='masnavi'||
      cfg.type==='corpus_hermeticum'||cfg.type==='bos'||cfg.type==='zhuangzi'||
-     cfg.type==='poetic_edda'||cfg.type==='iqan'){
+     cfg.type==='poetic_edda'||cfg.type==='iqan'||cfg.type==='yoga_sutras'){
     txt=extractMahaSnippet(v.t, terms);
   } else if(cfg.type==='bod'){
     txt=extractMahaSnippet(v.t, terms, 280);
@@ -12256,6 +12278,7 @@ function chapLabel(book,v,cfg){
   if(book==='zhuangzi')      return v.r || null;
   if(book==='poetic_edda')   return v.name ? `${v.name} — ${v.subtitle}` : null;
   if(book==='iqan')          return v.r ? `${v.r}: ${v.title}` : null;
+  if(book==='yoga_sutras')   return v.r ? `${v.r} — ${v.subtitle}` : null;
   if(book==='kojiki')        return v.title ? `Section ${v.section} \u2014 ${v.title}` : `Section ${v.section}`;
   if(book==='nihon_shoki')   return v.title ? `Book ${v.book} \u2014 ${v.title}` : `Book ${v.book}`;
   if(book==='book_of_enoch')    return `1 Enoch, Chapter ${v.chapter}`;
@@ -12506,6 +12529,9 @@ window.switchReligion  = switchReligion;
         var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
       if(book==='iqan'){
+        var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
+      }
+      if(book==='yoga_sutras'){
         var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
       // All remaining books: libChapterList = data.map((_,i)=>i); idx = array position
