@@ -11300,9 +11300,10 @@ function loadScriptures(cb){
     fetch('zhuangzi.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('poetic_edda.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('iqan.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('mahabharata.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, mahaData])=>{
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
@@ -11317,6 +11318,7 @@ function loadScriptures(cb){
       if(eddaData && Array.isArray(eddaData.poetic_edda) && eddaData.poetic_edda.length) d.poetic_edda = eddaData.poetic_edda;
       if(iqanData && Array.isArray(iqanData.iqan) && iqanData.iqan.length) d.iqan = iqanData.iqan;
       if(yogaData && Array.isArray(yogaData.yoga_sutras) && yogaData.yoga_sutras.length) d.yoga_sutras = yogaData.yoga_sutras;
+      if(mahaData && Array.isArray(mahaData.maha) && mahaData.maha.length) d.maha = mahaData.maha;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
