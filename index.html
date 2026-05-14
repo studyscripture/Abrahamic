@@ -321,30 +321,140 @@ body::before {
 /* Judaism header */
 .jud-page .page-symbol { text-shadow:0 0 40px var(--jud-glow); animation:floatglow-jud 4s ease-in-out infinite; }
 .jud-page .page-title { color:var(--jud); text-shadow:0 0 50px var(--jud-glow); }
+.jud-page .page-title em {
+  font-style:normal;
+  font-weight:700;
+  letter-spacing:0.10em;
+  color:#f5d97a;
+  animation:falsehood-jud 5s ease-in-out infinite;
+  display:inline-block;
+  position:relative;
+}
 .jud-page .page-rule { background:linear-gradient(90deg,transparent,var(--jud),transparent); }
 @keyframes floatglow-jud {
   0%,100% { transform:translateY(0); text-shadow:0 0 30px var(--jud-glow); }
   50%      { transform:translateY(-6px); text-shadow:0 0 60px var(--jud-glow), 0 0 100px rgba(201,168,76,0.2); }
 }
+@keyframes falsehood-jud {
+  0%,100% {
+    color:#f5d97a;
+    text-shadow:
+      0 0 12px rgba(245,217,122,0.9),
+      0 0 28px rgba(245,217,122,0.55),
+      0 0 55px rgba(201,168,76,0.35),
+      0 0 90px rgba(201,168,76,0.15);
+    transform:translateY(0) scale(1);
+  }
+  40% {
+    color:#fff4c2;
+    text-shadow:
+      0 0 8px rgba(255,244,194,1),
+      0 0 22px rgba(245,217,122,0.8),
+      0 0 50px rgba(201,168,76,0.55),
+      0 0 100px rgba(201,168,76,0.28),
+      0 0 160px rgba(74,143,212,0.12);
+    transform:translateY(-2px) scale(1.015);
+  }
+  70% {
+    color:#e8c96a;
+    text-shadow:
+      0 0 14px rgba(232,201,106,0.85),
+      0 0 35px rgba(201,168,76,0.5),
+      0 0 70px rgba(201,168,76,0.25);
+    transform:translateY(-1px) scale(1.008);
+  }
+}
 
 /* Christianity header */
 .xtn-page .page-symbol { text-shadow:0 0 40px var(--xtn-glow); animation:floatglow-xtn 4s ease-in-out infinite; }
 .xtn-page .page-title { color:var(--xtn); text-shadow:0 0 50px var(--xtn-glow); }
-.xtn-page .page-title em { color:var(--xtn-2); font-style:italic; }
+.xtn-page .page-title em {
+  font-style:normal;
+  font-weight:700;
+  letter-spacing:0.10em;
+  color:#f0cc6a;
+  animation:falsehood-xtn 5.5s ease-in-out infinite;
+  display:inline-block;
+}
 .xtn-page .page-rule { background:linear-gradient(90deg,transparent,var(--xtn),var(--xtn-2),transparent); }
 @keyframes floatglow-xtn {
   0%,100% { transform:translateY(0); text-shadow:0 0 30px var(--xtn-glow); }
   50%      { transform:translateY(-6px); text-shadow:0 0 60px var(--xtn-glow), 0 0 100px rgba(192,57,43,0.2); }
 }
+@keyframes falsehood-xtn {
+  0%,100% {
+    color:#f0cc6a;
+    text-shadow:
+      0 0 10px rgba(240,204,106,0.95),
+      0 0 26px rgba(232,184,75,0.6),
+      0 0 55px rgba(232,184,75,0.3),
+      0 0 90px rgba(192,57,43,0.15);
+    transform:translateY(0) scale(1);
+  }
+  35% {
+    color:#ffeea0;
+    text-shadow:
+      0 0 8px rgba(255,238,160,1),
+      0 0 20px rgba(240,204,106,0.85),
+      0 0 45px rgba(232,184,75,0.55),
+      0 0 90px rgba(232,184,75,0.3),
+      0 0 140px rgba(192,57,43,0.18);
+    transform:translateY(-2px) scale(1.018);
+  }
+  65% {
+    color:#e8c060;
+    text-shadow:
+      0 0 12px rgba(232,192,96,0.88),
+      0 0 30px rgba(232,184,75,0.5),
+      0 0 65px rgba(192,57,43,0.22);
+    transform:translateY(-1px) scale(1.009);
+  }
+}
 
 /* Islam header */
 .isl-page .page-symbol { text-shadow:0 0 40px var(--isl-glow); animation:floatglow-isl 4s ease-in-out infinite; }
 .isl-page .page-title { color:var(--isl); text-shadow:0 0 50px var(--isl-glow); }
-.isl-page .page-title em { color:var(--isl-2); font-style:italic; }
+.isl-page .page-title em {
+  font-style:normal;
+  font-weight:700;
+  letter-spacing:0.10em;
+  color:#e8d070;
+  animation:falsehood-isl 6s ease-in-out infinite;
+  display:inline-block;
+}
 .isl-page .page-rule { background:linear-gradient(90deg,transparent,var(--isl),var(--isl-2),transparent); }
 @keyframes floatglow-isl {
   0%,100% { transform:translateY(0); text-shadow:0 0 30px var(--isl-glow); }
   50%      { transform:translateY(-6px); text-shadow:0 0 60px var(--isl-glow), 0 0 100px rgba(46,204,138,0.2); }
+}
+@keyframes falsehood-isl {
+  0%,100% {
+    color:#e8d070;
+    text-shadow:
+      0 0 12px rgba(232,208,112,0.9),
+      0 0 28px rgba(232,201,106,0.55),
+      0 0 58px rgba(46,204,138,0.2),
+      0 0 95px rgba(232,201,106,0.15);
+    transform:translateY(0) scale(1);
+  }
+  38% {
+    color:#fff5b0;
+    text-shadow:
+      0 0 8px rgba(255,245,176,1),
+      0 0 22px rgba(232,208,112,0.85),
+      0 0 48px rgba(232,201,106,0.5),
+      0 0 85px rgba(46,204,138,0.28),
+      0 0 150px rgba(232,201,106,0.18);
+    transform:translateY(-2px) scale(1.016);
+  }
+  72% {
+    color:#d4c060;
+    text-shadow:
+      0 0 14px rgba(212,192,96,0.85),
+      0 0 32px rgba(232,201,106,0.45),
+      0 0 68px rgba(46,204,138,0.2);
+    transform:translateY(-1px) scale(1.007);
+  }
 }
 
 /* Islam — solid background (no gradient wash) */
@@ -1129,18 +1239,18 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <!-- ══ NAV ══ -->
 <nav class="hub-nav" role="tablist" style="margin:0 auto 0;max-width:840px;display:flex;">
-  <button class="rel-tab" id="tab-map" onclick="switchReligion('map')" style="flex:0 0 auto;min-width:90px;">
-    <div class="rel-tab-inner">
-      <span class="rel-tab-icon">🗺️</span>
-      <span class="rel-tab-name" style="font-size:10px;letter-spacing:0.14em;">Origins Map</span>
-      <span class="rel-tab-script" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;">Transmission</span>
-    </div>
-  </button>
   <button class="rel-tab" id="tab-srch" onclick="switchReligion('srch')" style="flex:0 0 auto;min-width:90px;">
     <div class="rel-tab-inner">
       <span class="rel-tab-icon">&#128218;&#xFE0F;</span>
       <span class="rel-tab-name" style="font-size:10px;letter-spacing:0.14em;">Search</span>
       <span class="rel-tab-script" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;">Library</span>
+    </div>
+  </button>
+  <button class="rel-tab" id="tab-map" onclick="switchReligion('map')" style="flex:0 0 auto;min-width:90px;">
+    <div class="rel-tab-inner">
+      <span class="rel-tab-icon">🗺️</span>
+      <span class="rel-tab-name" style="font-size:10px;letter-spacing:0.14em;">Origins Map</span>
+      <span class="rel-tab-script" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.1em;">Transmission</span>
     </div>
   </button>
   <button class="rel-tab" id="tab-jud" onclick="switchReligion('jud')">
@@ -1196,19 +1306,19 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
     <div class="lib-shelf-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3100 BCE</span></div>
     <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#d4a843;" onclick="openLibBook('pyramid_texts')">
+        <div class="lib-book-icon">𓇳</div>
+        <div class="lib-book-name">Pyramid Texts of Unas</div>
+        <div class="lib-book-origin">c. 2375 BCE &middot; Fifth Dynasty &middot; Saqqara</div>
+        <div class="lib-book-edition">Trans. after Faulkner &middot; Oldest Religious Corpus in the World</div>
+        <div class="lib-book-count">15 Wall Sections &middot; 233 Utterances &middot; Cannibal Hymn &middot; Ascent to Re</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#c8a96e;" onclick="openLibBook('bod')">
         <div class="lib-book-icon">𓂀</div>
         <div class="lib-book-name">Book of the Dead</div>
         <div class="lib-book-origin">c. 1550 BCE</div>
         <div class="lib-book-edition">E. A. Wallis Budge &middot; 1898 &middot; Theban Recension</div>
         <div class="lib-book-count">181 Chapters &middot; Coming Forth by Day</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#d4a843;" onclick="openLibBook('pyramid_texts')">
-        <div class="lib-book-icon">𓇳</div>
-        <div class="lib-book-name">Pyramid Texts of Unas</div>
-        <div class="lib-book-origin">c. 2375 BCE &middot; Fifth Dynasty &middot; Saqqara</div>
-        <div class="lib-book-edition">Trans. after Faulkner &middot; Oldest Religious Corpus in the World</div>
-        <div class="lib-book-count">15 Wall Sections &middot; 232 Utterances &middot; Cannibal Hymn &middot; Ascent to Re</div>
       </div>
     </div>
 
@@ -1968,7 +2078,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <div class="page-header">
   <span class="page-symbol">✡️</span>
-  <h1 class="page-title"><span class="t-en">Tanakh Critical Hub</span><span class="t-he" style="display:none;font-family:'Assistant',sans-serif;">מרכז הביקורת של התנ״ך</span></h1>
+  <h1 class="page-title"><span class="t-en">Tanakh <em>Falsehood</em> Hub</span><span class="t-he" style="display:none;font-family:'Assistant',sans-serif;">מרכז הביקורת של התנ״ך</span></h1>
   <p class="page-subtitle t-en">Textual contradictions · Scientific errors · Moral failures · Direct verse analysis</p>
   <p class="page-subtitle sub-he">סתירות טקסטואליות · שגיאות מדעיות · כשלים מוסריים · ניתוח פסוקים ישיר</p>
   <div class="page-rule"></div>
@@ -3387,7 +3497,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <div class="page-header">
   <span class="page-symbol">✝️</span>
-  <h1 class="page-title"><span class="t-en">Bible Critical Hub</span><span class="t-hi" style="display:none;font-family:'Tiro Devanagari Sans',serif;">बाइबल आलोचना केंद्र</span></h1>
+  <h1 class="page-title"><span class="t-en">Bible <em>Falsehood</em> Hub</span><span class="t-hi" style="display:none;font-family:'Tiro Devanagari Sans',serif;">बाइबल आलोचना केंद्र</span></h1>
   <p class="page-subtitle t-en">Textual contradictions · Immoral teachings · Direct verse analysis</p>
   <p class="page-subtitle t-hi" style="display:none;font-family:'Tiro Devanagari Sans',serif">पाठ्य विरोधाभास · अनैतिक शिक्षाएँ · प्रत्यक्ष श्लोक विश्लेषण</p>
   <div class="page-rule"></div>
@@ -6883,7 +6993,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <div class="page-header">
   <span class="page-symbol">☪️</span>
-  <h1 class="page-title"><span class="t-en">Quran Critical Hub</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">مركز نقد القرآن</span></h1>
+  <h1 class="page-title"><span class="t-en">Quran <em>Falsehood</em> Hub</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">مركز نقد القرآن</span></h1>
   <p class="page-subtitle t-en">Scientific errors · Textual contradictions · Historical blunders · Moral failures</p>
   <p class="page-subtitle t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl">الأخطاء العلمية · التناقضات النصية · المغالطات التاريخية · السقطات الأخلاقية</p>
   <div class="page-rule"></div>
@@ -12374,7 +12484,7 @@ function hideStatus(){ const el=document.getElementById('srch-status'); if(el) e
 // ═══ INIT ═══
 if (history.scrollRestoration) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
-switchReligion('map');
+switchReligion('srch');
 
 // Expose helpers needed by the verse modal
 window._fmtRef         = fmtRef;
