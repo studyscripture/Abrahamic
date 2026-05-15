@@ -321,140 +321,28 @@ body::before {
 /* Judaism header */
 .jud-page .page-symbol { text-shadow:0 0 40px var(--jud-glow); animation:floatglow-jud 4s ease-in-out infinite; }
 .jud-page .page-title { color:var(--jud); text-shadow:0 0 50px var(--jud-glow); }
-.jud-page .page-title em {
-  font-style:normal;
-  font-weight:700;
-  letter-spacing:0.10em;
-  color:#f5d97a;
-  animation:falsehood-jud 5s ease-in-out infinite;
-  display:inline-block;
-  position:relative;
-}
 .jud-page .page-rule { background:linear-gradient(90deg,transparent,var(--jud),transparent); }
 @keyframes floatglow-jud {
   0%,100% { transform:translateY(0); text-shadow:0 0 30px var(--jud-glow); }
   50%      { transform:translateY(-6px); text-shadow:0 0 60px var(--jud-glow), 0 0 100px rgba(201,168,76,0.2); }
 }
-@keyframes falsehood-jud {
-  0%,100% {
-    color:#f5d97a;
-    text-shadow:
-      0 0 12px rgba(245,217,122,0.9),
-      0 0 28px rgba(245,217,122,0.55),
-      0 0 55px rgba(201,168,76,0.35),
-      0 0 90px rgba(201,168,76,0.15);
-    transform:translateY(0) scale(1);
-  }
-  40% {
-    color:#fff4c2;
-    text-shadow:
-      0 0 8px rgba(255,244,194,1),
-      0 0 22px rgba(245,217,122,0.8),
-      0 0 50px rgba(201,168,76,0.55),
-      0 0 100px rgba(201,168,76,0.28),
-      0 0 160px rgba(74,143,212,0.12);
-    transform:translateY(-2px) scale(1.015);
-  }
-  70% {
-    color:#e8c96a;
-    text-shadow:
-      0 0 14px rgba(232,201,106,0.85),
-      0 0 35px rgba(201,168,76,0.5),
-      0 0 70px rgba(201,168,76,0.25);
-    transform:translateY(-1px) scale(1.008);
-  }
-}
 
 /* Christianity header */
 .xtn-page .page-symbol { text-shadow:0 0 40px var(--xtn-glow); animation:floatglow-xtn 4s ease-in-out infinite; }
 .xtn-page .page-title { color:var(--xtn); text-shadow:0 0 50px var(--xtn-glow); }
-.xtn-page .page-title em {
-  font-style:normal;
-  font-weight:700;
-  letter-spacing:0.10em;
-  color:#f0cc6a;
-  animation:falsehood-xtn 5.5s ease-in-out infinite;
-  display:inline-block;
-}
 .xtn-page .page-rule { background:linear-gradient(90deg,transparent,var(--xtn),var(--xtn-2),transparent); }
 @keyframes floatglow-xtn {
   0%,100% { transform:translateY(0); text-shadow:0 0 30px var(--xtn-glow); }
   50%      { transform:translateY(-6px); text-shadow:0 0 60px var(--xtn-glow), 0 0 100px rgba(192,57,43,0.2); }
 }
-@keyframes falsehood-xtn {
-  0%,100% {
-    color:#f0cc6a;
-    text-shadow:
-      0 0 10px rgba(240,204,106,0.95),
-      0 0 26px rgba(232,184,75,0.6),
-      0 0 55px rgba(232,184,75,0.3),
-      0 0 90px rgba(192,57,43,0.15);
-    transform:translateY(0) scale(1);
-  }
-  35% {
-    color:#ffeea0;
-    text-shadow:
-      0 0 8px rgba(255,238,160,1),
-      0 0 20px rgba(240,204,106,0.85),
-      0 0 45px rgba(232,184,75,0.55),
-      0 0 90px rgba(232,184,75,0.3),
-      0 0 140px rgba(192,57,43,0.18);
-    transform:translateY(-2px) scale(1.018);
-  }
-  65% {
-    color:#e8c060;
-    text-shadow:
-      0 0 12px rgba(232,192,96,0.88),
-      0 0 30px rgba(232,184,75,0.5),
-      0 0 65px rgba(192,57,43,0.22);
-    transform:translateY(-1px) scale(1.009);
-  }
-}
 
 /* Islam header */
 .isl-page .page-symbol { text-shadow:0 0 40px var(--isl-glow); animation:floatglow-isl 4s ease-in-out infinite; }
 .isl-page .page-title { color:var(--isl); text-shadow:0 0 50px var(--isl-glow); }
-.isl-page .page-title em {
-  font-style:normal;
-  font-weight:700;
-  letter-spacing:0.10em;
-  color:#e8d070;
-  animation:falsehood-isl 6s ease-in-out infinite;
-  display:inline-block;
-}
 .isl-page .page-rule { background:linear-gradient(90deg,transparent,var(--isl),var(--isl-2),transparent); }
 @keyframes floatglow-isl {
   0%,100% { transform:translateY(0); text-shadow:0 0 30px var(--isl-glow); }
   50%      { transform:translateY(-6px); text-shadow:0 0 60px var(--isl-glow), 0 0 100px rgba(46,204,138,0.2); }
-}
-@keyframes falsehood-isl {
-  0%,100% {
-    color:#e8d070;
-    text-shadow:
-      0 0 12px rgba(232,208,112,0.9),
-      0 0 28px rgba(232,201,106,0.55),
-      0 0 58px rgba(46,204,138,0.2),
-      0 0 95px rgba(232,201,106,0.15);
-    transform:translateY(0) scale(1);
-  }
-  38% {
-    color:#fff5b0;
-    text-shadow:
-      0 0 8px rgba(255,245,176,1),
-      0 0 22px rgba(232,208,112,0.85),
-      0 0 48px rgba(232,201,106,0.5),
-      0 0 85px rgba(46,204,138,0.28),
-      0 0 150px rgba(232,201,106,0.18);
-    transform:translateY(-2px) scale(1.016);
-  }
-  72% {
-    color:#d4c060;
-    text-shadow:
-      0 0 14px rgba(212,192,96,0.85),
-      0 0 32px rgba(232,201,106,0.45),
-      0 0 68px rgba(46,204,138,0.2);
-    transform:translateY(-1px) scale(1.007);
-  }
 }
 
 /* Islam — solid background (no gradient wash) */
@@ -1641,6 +1529,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">R. H. Charles &middot; 1902 &middot; Little Genesis</div>
         <div class="lib-book-count">1,955 Passages &middot; 50 Chapters</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#c0955a;" onclick="openLibBook('apocrypha')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">The Apocrypha</div>
+        <div class="lib-book-origin">c. 400&ndash;100 BCE &middot; Deuterocanonical</div>
+        <div class="lib-book-edition">King James Version &middot; 1611</div>
+        <div class="lib-book-count">16 Books &middot; 5,725 Verses &middot; Tobit &middot; Maccabees &middot; Sirach</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x2640;&#xFE0F;&ensp;Hermeticism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 100&ndash;300 CE</span></div>
@@ -1960,6 +1855,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-book_of_jubilees" style="--btn-color:#b08fc0;--btn-bg:rgba(176,143,192,.12);--btn-glow:rgba(176,143,192,.35);" onclick="toggleBook('book_of_jubilees',this)">
       <span class="sb-icon">&#x1F4D6;</span><span>Book of Jubilees<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">R.H. Charles &middot; 1902</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 160&ndash;150 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-apocrypha" style="--btn-color:#c0955a;--btn-bg:rgba(192,149,90,.12);--btn-glow:rgba(192,149,90,.35);" onclick="toggleBook('apocrypha',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>The Apocrypha<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">KJV &middot; 1611 &middot; 16 Books</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400&ndash;100 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
   </div>
 
   <div class="srch-group-label">&#x2640;&#xFE0F;&ensp;Hermeticism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 100&ndash;300 CE</span></div>
@@ -2078,7 +1976,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <div class="page-header">
   <span class="page-symbol">✡️</span>
-  <h1 class="page-title"><span class="t-en">Tanakh <em>Falsehood</em> Hub</span><span class="t-he" style="display:none;font-family:'Assistant',sans-serif;">מרכז הביקורת של התנ״ך</span></h1>
+  <h1 class="page-title"><span class="t-en">Tanakh Falsehood Hub</span><span class="t-he" style="display:none;font-family:'Assistant',sans-serif;">מרכז הביקורת של התנ״ך</span></h1>
   <p class="page-subtitle t-en">Textual contradictions · Scientific errors · Moral failures · Direct verse analysis</p>
   <p class="page-subtitle sub-he">סתירות טקסטואליות · שגיאות מדעיות · כשלים מוסריים · ניתוח פסוקים ישיר</p>
   <div class="page-rule"></div>
@@ -3497,7 +3395,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <div class="page-header">
   <span class="page-symbol">✝️</span>
-  <h1 class="page-title"><span class="t-en">Bible <em>Falsehood</em> Hub</span><span class="t-hi" style="display:none;font-family:'Tiro Devanagari Sans',serif;">बाइबल आलोचना केंद्र</span></h1>
+  <h1 class="page-title"><span class="t-en">Bible Falsehood Hub</span><span class="t-hi" style="display:none;font-family:'Tiro Devanagari Sans',serif;">बाइबल आलोचना केंद्र</span></h1>
   <p class="page-subtitle t-en">Textual contradictions · Immoral teachings · Direct verse analysis</p>
   <p class="page-subtitle t-hi" style="display:none;font-family:'Tiro Devanagari Sans',serif">पाठ्य विरोधाभास · अनैतिक शिक्षाएँ · प्रत्यक्ष श्लोक विश्लेषण</p>
   <div class="page-rule"></div>
@@ -6993,7 +6891,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
 <div class="page-header">
   <span class="page-symbol">☪️</span>
-  <h1 class="page-title"><span class="t-en">Quran <em>Falsehood</em> Hub</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">مركز نقد القرآن</span></h1>
+  <h1 class="page-title"><span class="t-en">Quran Falsehood Hub</span><span class="t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl;">مركز نقد القرآن</span></h1>
   <p class="page-subtitle t-en">Scientific errors · Textual contradictions · Historical blunders · Moral failures</p>
   <p class="page-subtitle t-ar" style="display:none;font-family:'Amiri',serif;direction:rtl">الأخطاء العلمية · التناقضات النصية · المغالطات التاريخية · السقطات الأخلاقية</p>
   <div class="page-rule"></div>
@@ -11261,6 +11159,7 @@ const BOOK_CFG = {
   bible:   { label:'Holy Bible \u2014 Berean Standard Bible', sub:'BSB \u00B7 2022 \u00B7 Old &amp; New Testaments',                      icon:'\u271D\uFE0F', accent:'#c0392b', accentDim:'rgba(192,57,43,0.35)',   countLabel:'verse',   bookTitle:'Holy Bible',    bookEdition:'Berean Standard Bible (BSB) \u00B7 2022',      type:'bible'  },
   book_of_enoch:   { label:'Book of Enoch',   sub:'R. H. Charles \u00B7 1906 \u00B7 1 Enoch \u00B7 108 Chapters', icon:'\uD83D\uDCDC', accent:'#7c9edb', accentDim:'rgba(124,158,219,0.35)', countLabel:'passage', bookTitle:'Book of Enoch',   bookEdition:'Trans. R. H. Charles \u00B7 1906', type:'nikaya' },
   book_of_jubilees: { label:'Book of Jubilees', sub:'R. H. Charles \u00B7 1902 \u00B7 Little Genesis \u00B7 50 Chapters', icon:'\uD83D\uDCD6', accent:'#b08fc0', accentDim:'rgba(176,143,192,0.35)', countLabel:'passage', bookTitle:'Book of Jubilees', bookEdition:'Trans. R. H. Charles \u00B7 1902', type:'nikaya' },
+  apocrypha: { label:'The Apocrypha', sub:'King James Version \u00B7 1611 \u00B7 16 Books \u00B7 5,725 Verses', icon:'\uD83D\uDCDC', accent:'#c0955a', accentDim:'rgba(192,149,90,0.35)', countLabel:'verse', bookTitle:'The Apocrypha', bookEdition:'King James Version \u00B7 1611', type:'apocrypha' },
   quran_y: { label:'Quran \u2014 Yusuf Ali Translation',      sub:'Abdullah Yusuf Ali \u00B7 1934 \u00B7 The Meaning of the Holy Quran', icon:'\u262A\uFE0F', accent:'#2ecc8a', accentDim:'rgba(46,204,138,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Yusuf Ali Translation \u00B7 1934',            type:'quran'  },
   quran_p: { label:'Quran \u2014 Pickthall Translation',      sub:'Marmaduke William Pickthall \u00B7 1930 \u00B7 The Glorious Koran',   icon:'\u262A\uFE0F', accent:'#3ab5e6', accentDim:'rgba(58,181,230,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Pickthall Translation \u00B7 1930',            type:'quran'  },
   bukhari: { label:'Sahih al-Bukhari',                        sub:'Muhammad al-Bukhari \u00B7 Trans. M. Muhsin Khan \u00B7 9 Volumes \u00B7 93 Books', icon:'\uD83D\uDCDC', accent:'#4caf86', accentDim:'rgba(76,175,134,0.35)', countLabel:'hadith', bookTitle:'Sahih al-Bukhari', bookEdition:'M. Muhsin Khan Translation \u00B7 USC-MSA', type:'hadith' },
@@ -11411,6 +11310,11 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.nihon_shoki)) d.nihon_shoki.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.passage)-toNum(b.passage)));
   if(Array.isArray(d.book_of_enoch)) d.book_of_enoch.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter))||(toNum(a.verse)-toNum(b.verse)));
   if(Array.isArray(d.book_of_jubilees)) d.book_of_jubilees.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter))||(toNum(a.verse)-toNum(b.verse)));
+  if(Array.isArray(d.apocrypha)){
+    const APOC_ORDER=['Tobit','Judith','Additions to Esther','Wisdom of Solomon','Sirach','Baruch','Epistle of Jeremiah','Susanna','Bel and the Dragon','1 Maccabees','2 Maccabees','Prayer of Manasseh','1 Esdras','2 Esdras','Prayer of Azariah','Epistle to the Laodiceans'];
+    const apocBookMap=new Map(APOC_ORDER.map((b,i)=>[b,i]));
+    d.apocrypha.sort((a,b)=>((apocBookMap.has(a.book)?apocBookMap.get(a.book):99)-(apocBookMap.has(b.book)?apocBookMap.get(b.book):99))||(toNum(a.chapter)-toNum(b.chapter))||(toNum(a.verse)-toNum(b.verse)));
+  }
   if(Array.isArray(d.popol_vuh)) d.popol_vuh.sort((a,b)=>(toNum(a.part)-toNum(b.part))||(toNum(a.chapter)-toNum(b.chapter))||(toNum(a.passage)-toNum(b.passage)));
   if(Array.isArray(d.homeric_hymn_demeter)) d.homeric_hymn_demeter.sort((a,b)=>(toNum(a.chapter)-toNum(b.chapter)));
   if(Array.isArray(d.odyssey)) d.odyssey.sort((a,b)=>(toNum(a.book)-toNum(b.book))||cmpText(a.r,b.r));
@@ -11471,9 +11375,10 @@ function loadScriptures(cb){
     fetch('iqan.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('mahabharata.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, mahaData, pyrData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, mahaData, pyrData, apocData])=>{
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
@@ -11496,6 +11401,7 @@ function loadScriptures(cb){
       if(yogaData && Array.isArray(yogaData.yoga_sutras) && yogaData.yoga_sutras.length) d.yoga_sutras = yogaData.yoga_sutras;
       if(mahaData && Array.isArray(mahaData.maha) && mahaData.maha.length) d.maha = mahaData.maha;
       if(pyrData && Array.isArray(pyrData.pyramid_texts) && pyrData.pyramid_texts.length) d.pyramid_texts = pyrData.pyramid_texts;
+      if(apocData && Array.isArray(apocData.apocrypha) && apocData.apocrypha.length) d.apocrypha = apocData.apocrypha;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -11804,7 +11710,7 @@ function renderSegmentedPassage(container,cfg,baseRef,text){
 
 function _buildOtherNav(key,cfg,targetIdx){
   const data=SCRIPTURES[key];
-  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section',bod:'Chapter',homeric_hymn_demeter:'Hymn',odyssey:'Book',iliad:'Book',popol_vuh:'Part \u00B7 Chapter',book_of_enoch:'Chapter',book_of_jubilees:'Chapter',kojiki:'Section',nihon_shoki:'Book'};
+  const labels={quran_y:'Surah',quran_p:'Surah',gita:'Chapter',maha:'Parva \u00B7 Section',bod:'Chapter',homeric_hymn_demeter:'Hymn',odyssey:'Book',iliad:'Book',popol_vuh:'Part \u00B7 Chapter',book_of_enoch:'Chapter',book_of_jubilees:'Chapter',kojiki:'Section',nihon_shoki:'Book',apocrypha:'Chapter'};
   document.getElementById('lib-nav-label').textContent=labels[key]||'Chapter';
   const sel=document.getElementById('lib-other-sel');
   sel.innerHTML='';
@@ -11928,6 +11834,14 @@ function _buildOtherNav(key,cfg,targetIdx){
     data.forEach(v=>{ const k=`${v.book}|${v.c}`; if(!seen.has(k)){ seen.add(k); groups.push({book:v.book,c:v.c}); } });
     libChapterList=groups;
     groups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${g.book} \u2014 Chapter ${g.c}`; sel.appendChild(o); });
+  } else if(key==='apocrypha'){
+    const APOC_ORDER=['Tobit','Judith','Additions to Esther','Wisdom of Solomon','Sirach','Baruch','Epistle of Jeremiah','Susanna','Bel and the Dragon','1 Maccabees','2 Maccabees','Prayer of Manasseh','1 Esdras','2 Esdras','Prayer of Azariah','Epistle to the Laodiceans'];
+    const apocBookMap=new Map(APOC_ORDER.map((b,i)=>[b,i]));
+    const groups=[]; const seen=new Set();
+    data.forEach(v=>{ const k=`${v.book}|${v.chapter}`; if(!seen.has(k)){ seen.add(k); groups.push({book:v.book,chapter:v.chapter}); } });
+    groups.sort((a,b)=>((apocBookMap.has(a.book)?apocBookMap.get(a.book):99)-(apocBookMap.has(b.book)?apocBookMap.get(b.book):99))||(a.chapter-b.chapter));
+    libChapterList=groups;
+    groups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${g.book} \u2014 Chapter ${g.chapter}`; sel.appendChild(o); });
   } else if(key==='gilgamesh'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
@@ -12154,6 +12068,14 @@ window.libGoChapter=function(idxStr){
     const verses=data.filter(v=>v.book===grp.book&&v.c===grp.c);
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`${grp.book} \u2014 Chapter ${grp.c}`; container.appendChild(h);
+    const list=document.createElement('div'); list.className='lib-verse-list';
+    verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
+    container.appendChild(list);
+  } else if(libBook==='apocrypha'){
+    const grp=libChapterList[idx]; if(!grp) return;
+    const verses=data.filter(v=>v.book===grp.book&&v.chapter===grp.chapter);
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=`${grp.book} \u2014 Chapter ${grp.chapter}`; container.appendChild(h);
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
@@ -12472,6 +12394,7 @@ function chapLabel(book,v,cfg){
   if(book==='nihon_shoki')   return v.title ? `Book ${v.book} \u2014 ${v.title}` : `Book ${v.book}`;
   if(book==='book_of_enoch')    return `1 Enoch, Chapter ${v.chapter}`;
   if(book==='book_of_jubilees') return v.title ? v.title.slice(0,80) : `Jubilees, Chapter ${v.chapter}`;
+  if(book==='apocrypha')        return `${v.book}, Chapter ${v.chapter}`;
   return null;
 }
 function highlight(text,terms){ let r=text; terms.forEach(t=>{ const e=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); r=r.replace(new RegExp('('+e+')','gi'),'<mark>$1</mark>'); }); return r; }
