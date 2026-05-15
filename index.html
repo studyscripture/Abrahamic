@@ -1305,7 +1305,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
         <div class="lib-book-origin">c. 200 BCE&ndash;200 CE</div>
         <div class="lib-book-edition">Annie Besant &middot; 1895 &middot; The Lord&rsquo;s Song</div>
-        <div class="lib-book-count">694 Verses &middot; 18 Discourses</div>
+        <div class="lib-book-count">692 Verses &middot; 18 Discourses</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ef9a9a;" onclick="openLibBook('ramayana')">
         <div class="lib-book-icon">&#x1F3F9;</div>
@@ -11801,7 +11801,7 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='gita_besant'){
     const chs=[...new Set(data.map(v=>v.c))].sort((a,b)=>a-b);
     libChapterList=chs;
-    chs.forEach((ch,i)=>{ const s=data.find(v=>v.c===ch); const t=s?s.ct:`Chapter ${ch}`; const o=document.createElement('option'); o.value=i; o.textContent=`Chapter ${ch}: ${t}`; sel.appendChild(o); });
+    chs.forEach((ch,i)=>{ const s=data.find(v=>v.c===ch); const t=s?s.chapter_name:`Discourse ${ch}`; const o=document.createElement('option'); o.value=i; o.textContent=`Discourse ${ch}: ${t}`; sel.appendChild(o); });
   } else if(key==='sbg'){
     const chs=[...new Set(data.map(v=>v.c))].sort((a,b)=>a-b);
     libChapterList=chs;
