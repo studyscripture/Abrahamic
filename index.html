@@ -1342,6 +1342,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Charles Johnston &middot; 1912 &middot; The Book of the Spiritual Man</div>
         <div class="lib-book-count">4 P&#x0101;das &middot; 196 S&#x016B;tras &middot; R&#x0101;ja Yoga</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#e879a0;" onclick="openLibBook('devi_mahatmya')">
+        <div class="lib-book-icon">&#x1F9FF;</div>
+        <div class="lib-book-name">Dev&#x012B; M&#x0101;h&#x0101;tmya</div>
+        <div class="lib-book-origin">c. 400&ndash;600 CE &middot; Mārkaṇḍeya Purāṇa</div>
+        <div class="lib-book-edition">Swami Jagadiswarananda &middot; Ramakrishna Math</div>
+        <div class="lib-book-count">13 Chapters &middot; Glorification of the Goddess</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2000 BCE</span></div>
@@ -1564,27 +1571,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">King James Version &middot; 1611</div>
         <div class="lib-book-count">16 Books &middot; 5,725 Verses &middot; Tobit &middot; Maccabees &middot; Sirach</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#c77d52;" onclick="openLibBook('acts_of_andrew_matthias')">
-        <div class="lib-book-icon">&#x1F4DC;</div>
-        <div class="lib-book-name">Acts of Andrew and Matthias</div>
-        <div class="lib-book-origin">c. 2nd&ndash;3rd century CE &middot; Christian Apocrypha</div>
-        <div class="lib-book-edition">M. R. James &middot; New Testament Apocrypha</div>
-        <div class="lib-book-count">33 Sections &middot; Apostolic Acts Tradition</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#cf8e5d;" onclick="openLibBook('epistle_of_barnabas')">
-        <div class="lib-book-icon">&#x1F4DC;</div>
-        <div class="lib-book-name">Epistle of Barnabas</div>
-        <div class="lib-book-origin">c. 70&ndash;132 CE &middot; Early Christian Letter</div>
-        <div class="lib-book-edition">Kirsopp Lake Translation</div>
-        <div class="lib-book-count">21 Chapters &middot; Apostolic Fathers</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#d49b6a;" onclick="openLibBook('epistle_of_the_apostles')">
-        <div class="lib-book-icon">&#x1F4DC;</div>
-        <div class="lib-book-name">Epistle of the Apostles</div>
-        <div class="lib-book-origin">c. 150&ndash;180 CE &middot; Anti-Gnostic Christian Text</div>
-        <div class="lib-book-edition">M. R. James &middot; Apocrypha Selection</div>
-        <div class="lib-book-count">51 Sections &middot; Apostolic Discourse</div>
-      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x2640;&#xFE0F;&ensp;Hermeticism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 100&ndash;300 CE</span></div>
@@ -1801,6 +1787,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-yoga_sutras" style="--btn-color:#a5d6a7;--btn-bg:rgba(165,214,167,.12);--btn-glow:rgba(165,214,167,.35);" onclick="toggleBook('yoga_sutras',this)">
       <span class="sb-icon">&#x1F9D8;</span><span>Yoga S&#x016B;tras<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Johnston &middot; 1912</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400 BCE&ndash;400 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-devi_mahatmya" style="--btn-color:#e879a0;--btn-bg:rgba(232,121,160,.12);--btn-glow:rgba(232,121,160,.35);" onclick="toggleBook('devi_mahatmya',this)">
+      <span class="sb-icon">&#x1F9FF;</span><span>Dev&#x012B; M&#x0101;h&#x0101;tmya<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Jagadiswarananda</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400&ndash;600 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
   </div>
 
   <div class="srch-group-label">&#x1F33D;&ensp;Mayan <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 2000 BCE</span></div>
@@ -1918,15 +1907,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-apocrypha" style="--btn-color:#c0955a;--btn-bg:rgba(192,149,90,.12);--btn-glow:rgba(192,149,90,.35);" onclick="toggleBook('apocrypha',this)">
       <span class="sb-icon">&#x1F4DC;</span><span>The Apocrypha<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">KJV &middot; 1611 &middot; 16 Books</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400&ndash;100 BCE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-acts_of_andrew_matthias" style="--btn-color:#c77d52;--btn-bg:rgba(199,125,82,.12);--btn-glow:rgba(199,125,82,.35);" onclick="toggleBook('acts_of_andrew_matthias',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Acts of Andrew &amp; Matthias<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M. R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2nd&ndash;3rd century CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-epistle_of_barnabas" style="--btn-color:#cf8e5d;--btn-bg:rgba(207,142,93,.12);--btn-glow:rgba(207,142,93,.35);" onclick="toggleBook('epistle_of_barnabas',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Epistle of Barnabas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Kirsopp Lake</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 70&ndash;132 CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-epistle_of_the_apostles" style="--btn-color:#d49b6a;--btn-bg:rgba(212,155,106,.12);--btn-glow:rgba(212,155,106,.35);" onclick="toggleBook('epistle_of_the_apostles',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Epistle of the Apostles<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M. R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 150&ndash;180 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11233,9 +11213,6 @@ const BOOK_CFG = {
   book_of_enoch:   { label:'Book of Enoch',   sub:'R. H. Charles \u00B7 1906 \u00B7 1 Enoch \u00B7 108 Chapters', icon:'\uD83D\uDCDC', accent:'#7c9edb', accentDim:'rgba(124,158,219,0.35)', countLabel:'passage', bookTitle:'Book of Enoch',   bookEdition:'Trans. R. H. Charles \u00B7 1906', type:'nikaya' },
   book_of_jubilees: { label:'Book of Jubilees', sub:'R. H. Charles \u00B7 1902 \u00B7 Little Genesis \u00B7 50 Chapters', icon:'\uD83D\uDCD6', accent:'#b08fc0', accentDim:'rgba(176,143,192,0.35)', countLabel:'passage', bookTitle:'Book of Jubilees', bookEdition:'Trans. R. H. Charles \u00B7 1902', type:'nikaya' },
   apocrypha: { label:'The Apocrypha', sub:'King James Version \u00B7 1611 \u00B7 16 Books \u00B7 5,725 Verses', icon:'\uD83D\uDCDC', accent:'#c0955a', accentDim:'rgba(192,149,90,0.35)', countLabel:'verse', bookTitle:'The Apocrypha', bookEdition:'King James Version \u00B7 1611', type:'apocrypha' },
-  acts_of_andrew_matthias: { label:'Acts of Andrew and Matthias', sub:'M. R. James \u00B7 Christian Apocrypha \u00B7 33 Sections', icon:'\uD83D\uDCDC', accent:'#c77d52', accentDim:'rgba(199,125,82,0.35)', countLabel:'section', bookTitle:'Acts of Andrew and Matthias', bookEdition:'M. R. James Translation \u00B7 New Testament Apocrypha', type:'nikaya' },
-  epistle_of_barnabas: { label:'Epistle of Barnabas', sub:'Apostolic Fathers \u00B7 Kirsopp Lake \u00B7 21 Chapters', icon:'\uD83D\uDCDC', accent:'#cf8e5d', accentDim:'rgba(207,142,93,0.35)', countLabel:'chapter', bookTitle:'Epistle of Barnabas', bookEdition:'Kirsopp Lake Translation \u00B7 Apostolic Fathers', type:'nikaya' },
-  epistle_of_the_apostles: { label:'Epistle of the Apostles', sub:'M. R. James \u00B7 Early Christian Apocryphon \u00B7 51 Sections', icon:'\uD83D\uDCDC', accent:'#d49b6a', accentDim:'rgba(212,155,106,0.35)', countLabel:'section', bookTitle:'Epistle of the Apostles', bookEdition:'M. R. James Translation \u00B7 New Testament Apocrypha', type:'nikaya' },
   quran_y: { label:'Quran \u2014 Yusuf Ali Translation',      sub:'Abdullah Yusuf Ali \u00B7 1934 \u00B7 The Meaning of the Holy Quran', icon:'\u262A\uFE0F', accent:'#2ecc8a', accentDim:'rgba(46,204,138,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Yusuf Ali Translation \u00B7 1934',            type:'quran'  },
   quran_p: { label:'Quran \u2014 Pickthall Translation',      sub:'Marmaduke William Pickthall \u00B7 1930 \u00B7 The Glorious Koran',   icon:'\u262A\uFE0F', accent:'#3ab5e6', accentDim:'rgba(58,181,230,0.35)',  countLabel:'ayah',    bookTitle:'The Quran',     bookEdition:'Pickthall Translation \u00B7 1930',            type:'quran'  },
   bukhari: { label:'Sahih al-Bukhari',                        sub:'Muhammad al-Bukhari \u00B7 Trans. M. Muhsin Khan \u00B7 9 Volumes \u00B7 93 Books', icon:'\uD83D\uDCDC', accent:'#4caf86', accentDim:'rgba(76,175,134,0.35)', countLabel:'hadith', bookTitle:'Sahih al-Bukhari', bookEdition:'M. Muhsin Khan Translation \u00B7 USC-MSA', type:'hadith' },
@@ -11281,6 +11258,7 @@ const BOOK_CFG = {
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   corpus_hermeticum: { label:'Corpus Hermeticum', sub:'G.R.S. Mead \u00B7 1906 \u00B7 18 Tractates \u00B7 Hermetic Philosophy \u00B7 c. 100\u2013300 CE', icon:'\u2640\uFE0F', accent:'#f0c070', accentDim:'rgba(240,192,112,0.35)', countLabel:'tractate', bookTitle:'Corpus Hermeticum', bookEdition:'Trans. G.R.S. Mead \u00B7 Thrice-Greatest Hermes \u00B7 1906', type:'corpus_hermeticum' },
   bos:       { label:'Gardnerian Book of Shadows', sub:'Gerald B. Gardner \u00B7 c. 1949\u20131961 \u00B7 39 Sections \u00B7 Wicca', icon:'\uD83C\uDF19', accent:'#b39ddb', accentDim:'rgba(179,157,219,0.35)', countLabel:'section', bookTitle:'Gardnerian Book of Shadows', bookEdition:'Gerald B. Gardner \u00B7 GlobalGrey Edition \u00B7 Public Domain', type:'bos' },
+  devi_mahatmya: { label:'Dev\u012B M\u0101h\u0101tmya', sub:'Swami Jagadiswarananda \u00B7 Ramakrishna Math \u00B7 13 Chapters \u00B7 M\u0101rka\u1E47\u1E0Deya Pur\u0101\u1E47a', icon:'\uD83E\uDDFF', accent:'#e879a0', accentDim:'rgba(232,121,160,0.35)', countLabel:'chapter', bookTitle:'Dev\u012B M\u0101h\u0101tmya', bookEdition:'Trans. Swami Jagadiswarananda \u00B7 Ramakrishna Math', type:'nikaya' },
   yoga_sutras: { label:'Yoga S\u016Btras of Pata\xF1jali', sub:'Charles Johnston \u00B7 1912 \u00B7 4 P\u0101das \u00B7 196 S\u016Btras \u00B7 R\u0101ja Yoga', icon:'\uD83E\uDDD8', accent:'#a5d6a7', accentDim:'rgba(165,214,167,0.35)', countLabel:'section', bookTitle:'Yoga S\u016Btras of Pata\xF1jali', bookEdition:'Trans. Charles Johnston \u00B7 1912 \u00B7 The Book of the Spiritual Man', type:'yoga_sutras' },
   iqan:      { label:'Kit\u00E1b-i-Iq\u00E1n', sub:'Bah\u00E1\u02BCu\u02BCll\u00E1h \u00B7 c. 1861 CE \u00B7 Ali Kuli Khan 1904 \u00B7 Book of Certitude', icon:'\u2605', accent:'#e8c97a', accentDim:'rgba(232,201,122,0.35)', countLabel:'part', bookTitle:'Kit\u00E1b-i-Iq\u00E1n', bookEdition:'Trans. Ali Kuli Khan \u00B7 1904 \u00B7 Bah\u00E1\u02BC\u00ED Publishing Society', type:'iqan' },
   poetic_edda: { label:'Poetic Edda', sub:'Henry Adams Bellows \u00B7 1936 \u00B7 35 Poems \u00B7 Norse Mythology \u00B7 Codex Regius', icon:'\u26A1', accent:'#7ecbe6', accentDim:'rgba(126,203,230,0.35)', countLabel:'poem', bookTitle:'Poetic Edda', bookEdition:'Trans. Henry Adams Bellows \u00B7 1936 \u00B7 American-Scandinavian Foundation', type:'poetic_edda' },
@@ -11404,9 +11382,6 @@ function normalizeAndSortScriptures(d){
   // enuma_elish, ishtar_descent, seven_spirits, adapa are already in canonical tablet order
   if(Array.isArray(d.sggs)) d.sggs.sort((a,b)=>(toNum(a.mehl)-toNum(b.mehl))||(toNum(a.sn)-toNum(b.sn))||cmpText(a.r,b.r));
   if(Array.isArray(d.tattva)) d.tattva.sort((a,b)=>(toNum(a.c)-toNum(b.c))||(toNum(a.s)-toNum(b.s)));
-  if(Array.isArray(d.acts_of_andrew_matthias)) d.acts_of_andrew_matthias.sort((a,b)=>(toNum(a.c)-toNum(b.c))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
-  if(Array.isArray(d.epistle_of_barnabas)) d.epistle_of_barnabas.sort((a,b)=>(toNum(a.c)-toNum(b.c))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
-  if(Array.isArray(d.epistle_of_the_apostles)) d.epistle_of_the_apostles.sort((a,b)=>(toNum(a.c)-toNum(b.c))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
   if(Array.isArray(d.jaina_sutras)) d.jaina_sutras.sort((a,b)=>(toNum(a.c)-toNum(b.c))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
   if(Array.isArray(d.jps)){
     const tanakhBookOrder = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','I Samuel','II Samuel','I Kings','II Kings','Isaiah','Jeremiah','Ezekiel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi','Psalms','Proverbs','Job','Song of Songs','Ruth','Lamentations','Ecclesiastes','Esther','Daniel','Ezra','Nehemiah','I Chronicles','II Chronicles'];
@@ -11473,15 +11448,13 @@ function loadScriptures(cb){
     fetch('poetic_edda.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('iqan.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('devi_mahatmya.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('jaina_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('mahabharata.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('acts_of_andrew_matthias.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('epistle_of_barnabas.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('epistle_of_the_apostles.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, jainaData, mahaData, pyrData, apocData, actsData, barnabasData, apostlesData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, jainaData, mahaData, pyrData, apocData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11506,13 +11479,11 @@ function loadScriptures(cb){
       if(eddaData && Array.isArray(eddaData.poetic_edda) && eddaData.poetic_edda.length) d.poetic_edda = eddaData.poetic_edda;
       if(iqanData && Array.isArray(iqanData.iqan) && iqanData.iqan.length) d.iqan = iqanData.iqan;
       if(yogaData && Array.isArray(yogaData.yoga_sutras) && yogaData.yoga_sutras.length) d.yoga_sutras = yogaData.yoga_sutras;
+      if(deviData && Array.isArray(deviData.devi_mahatmya) && deviData.devi_mahatmya.length) d.devi_mahatmya = deviData.devi_mahatmya;
       if(jainaData && Array.isArray(jainaData.jaina_sutras) && jainaData.jaina_sutras.length) d.jaina_sutras = jainaData.jaina_sutras;
       if(mahaData && Array.isArray(mahaData.maha) && mahaData.maha.length) d.maha = mahaData.maha;
       if(pyrData && Array.isArray(pyrData.pyramid_texts) && pyrData.pyramid_texts.length) d.pyramid_texts = pyrData.pyramid_texts;
       if(apocData && Array.isArray(apocData.apocrypha) && apocData.apocrypha.length) d.apocrypha = apocData.apocrypha;
-      if(actsData && Array.isArray(actsData.acts_of_andrew_matthias) && actsData.acts_of_andrew_matthias.length) d.acts_of_andrew_matthias = actsData.acts_of_andrew_matthias;
-      if(barnabasData && Array.isArray(barnabasData.epistle_of_barnabas) && barnabasData.epistle_of_barnabas.length) d.epistle_of_barnabas = barnabasData.epistle_of_barnabas;
-      if(apostlesData && Array.isArray(apostlesData.epistle_of_the_apostles) && apostlesData.epistle_of_the_apostles.length) d.epistle_of_the_apostles = apostlesData.epistle_of_the_apostles;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -11998,6 +11969,9 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='yoga_sutras'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r} — ${s.subtitle}`; sel.appendChild(o); });
+  } else if(key==='devi_mahatmya'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r} — ${s.subtitle}`; sel.appendChild(o); });
   } else if(key==='jaina_sutras'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.title?`${s.r} — ${s.title}`:s.r; sel.appendChild(o); });
@@ -12279,6 +12253,12 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='devi_mahatmya'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='jaina_sutras'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12322,7 +12302,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,acts_of_andrew_matthias:true,epistle_of_barnabas:true,epistle_of_the_apostles:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12337,7 +12317,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','apocrypha','acts_of_andrew_matthias','epistle_of_barnabas','epistle_of_the_apostles','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','devi_mahatmya','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
