@@ -11222,8 +11222,8 @@ const BOOK_CFG = {
   seven_spirits: { label:'The Seven Evil Spirits', sub:'R.C. Thompson \u00B7 1903 \u00B7 Assyrian \u00B7 Evil Demon Series', icon:'\uD83C\uDF29\uFE0F', accent:'#a08060', accentDim:'rgba(160,128,96,0.35)', countLabel:'text', bookTitle:'The Seven Evil Spirits \u2014 Assyrian Cuneiform Texts', bookEdition:'Trans. R.C. Thompson \u00B7 The Devils and Evil Spirits of Babylonia \u00B7 1903', type:'gilgamesh' },
   adapa: { label:'Adapa and the Food of Life', sub:'Morris Jastrow \u00B7 1898 \u00B7 3 Tablets \u00B7 El-Amarna \u00B7 Akkadian', icon:'\uD83C\uDF47', accent:'#c07840', accentDim:'rgba(192,120,64,0.35)', countLabel:'tablet', bookTitle:'Adapa and the Food of Life', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
   dhammapada: { label:'Dhammapada', sub:'F. Max M\u00FCller \u00B7 1881 \u00B7 26 Chapters \u00B7 423 Verses \u00B7 Buddhism', icon:'\uD83D\uDCD6', accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse', bookTitle:'Dhammapada', bookEdition:'Trans. F. Max M\u00FCller \u00B7 Sacred Books of the East Vol. X \u00B7 1881', type:'dhammapada' },
-  heart_sutra: { label:'Heart S\u016Btra', sub:'Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya \u00B7 c. 1st cent. CE \u00B7 4 Sections \u00B7 Mah\u0101y\u0101na Buddhism', icon:'\uD83D\uDC9C', accent:'#f472b6', accentDim:'rgba(244,114,182,0.35)', countLabel:'section', bookTitle:'Heart S\u016Btra \u2014 Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'gilgamesh' },
-  diamond_sutra: { label:'Diamond S\u016Btra', sub:'Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101 \u00B7 c. 1st cent. CE \u00B7 32 Sections \u00B7 Mah\u0101y\u0101na', icon:'\uD83D\uDC8E', accent:'#67e8f9', accentDim:'rgba(103,232,249,0.35)', countLabel:'section', bookTitle:'Diamond S\u016Btra \u2014 Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'gilgamesh' },
+  heart_sutra: { label:'Heart S\u016Btra', sub:'Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya \u00B7 c. 1st cent. CE \u00B7 4 Sections \u00B7 Mah\u0101y\u0101na Buddhism', icon:'\uD83D\uDC9C', accent:'#f472b6', accentDim:'rgba(244,114,182,0.35)', countLabel:'section', bookTitle:'Heart S\u016Btra \u2014 Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'heart_sutra' },
+  diamond_sutra: { label:'Diamond S\u016Btra', sub:'Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101 \u00B7 c. 1st cent. CE \u00B7 32 Sections \u00B7 Mah\u0101y\u0101na', icon:'\uD83D\uDC8E', accent:'#67e8f9', accentDim:'rgba(103,232,249,0.35)', countLabel:'section', bookTitle:'Diamond S\u016Btra \u2014 Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'diamond_sutra' },
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   corpus_hermeticum: { label:'Corpus Hermeticum', sub:'G.R.S. Mead \u00B7 1906 \u00B7 18 Tractates \u00B7 Hermetic Philosophy \u00B7 c. 100\u2013300 CE', icon:'\u2640\uFE0F', accent:'#f0c070', accentDim:'rgba(240,192,112,0.35)', countLabel:'tractate', bookTitle:'Corpus Hermeticum', bookEdition:'Trans. G.R.S. Mead \u00B7 Thrice-Greatest Hermes \u00B7 1906', type:'corpus_hermeticum' },
   bos:       { label:'Gardnerian Book of Shadows', sub:'Gerald B. Gardner \u00B7 c. 1949\u20131961 \u00B7 39 Sections \u00B7 Wicca', icon:'\uD83C\uDF19', accent:'#b39ddb', accentDim:'rgba(179,157,219,0.35)', countLabel:'section', bookTitle:'Gardnerian Book of Shadows', bookEdition:'Gerald B. Gardner \u00B7 GlobalGrey Edition \u00B7 Public Domain', type:'bos' },
@@ -11879,6 +11879,12 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='dhammapada'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='heart_sutra'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='diamond_sutra'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='masnavi'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
@@ -12126,6 +12132,16 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     s.t.split('\n').forEach(line=>{ const m=line.match(/^(\d+)\.\s+(.+)$/); if(!m) return; const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">v. ${m[1]}</div><div class="lib-verse-text">${esc(m[2])}</div>`; row.addEventListener('click',()=>_copyVerse(s.r+':'+m[1], m[2])); list.appendChild(row); });
     container.appendChild(list);
+  } else if(libBook==='heart_sutra'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='diamond_sutra'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='masnavi'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12205,7 +12221,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12220,7 +12236,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -12312,6 +12328,7 @@ function makeCard(book,v,cfg,terms){
      cfg.type==='veda'||cfg.type==='avesta'||
      cfg.type==='homeric_hymn'||cfg.type==='sggs'||cfg.type==='tattva'||cfg.type==='tanakh'||cfg.type==='hadith'||
      cfg.type==='gilgamesh'||cfg.type==='dhammapada'||cfg.type==='masnavi'||
+     cfg.type==='heart_sutra'||cfg.type==='diamond_sutra'||
      cfg.type==='corpus_hermeticum'||cfg.type==='bos'||cfg.type==='zhuangzi'||
      cfg.type==='poetic_edda'||cfg.type==='iqan'||cfg.type==='yoga_sutras'){
     txt=extractMahaSnippet(v.t, terms);
@@ -12411,6 +12428,8 @@ function chapLabel(book,v,cfg){
   if(book==='gilgamesh')     return v.title || null;
   if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa'||book==='pyramid_texts') return v.title || null;
   if(book==='dhammapada')    return v.r || null;
+  if(book==='heart_sutra')   return v.r || null;
+  if(book==='diamond_sutra') return v.r || null;
   if(book==='masnavi')       return v.r || null;
   if(book==='corpus_hermeticum') return v.title ? `Tractate ${v.tractate}: ${v.title}` : null;
   if(book==='bos')           return v.title || null;
