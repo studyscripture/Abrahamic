@@ -1194,6 +1194,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
     <div class="lib-shelf-group-label">&#x1F3FA;&ensp;Ancient Mesopotamian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 5300 BCE</span></div>
     <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#d9b56d;" onclick="openLibBook('kesh_temple_hymn')">
+        <div class="lib-book-icon">&#x1F3DB;&#xFE0F;</div>
+        <div class="lib-book-name">Kesh Temple Hymn</div>
+        <div class="lib-book-origin">c. 2600 BCE &middot; Early Sumerian Temple Hymn</div>
+        <div class="lib-book-edition">Sumerian Liturgical Tradition &middot; House of Kesh</div>
+        <div class="lib-book-count">1 Tablet &middot; Temple Praise &middot; Sacred Foundation Text</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#d4944a;" onclick="openLibBook('gilgamesh')">
         <div class="lib-book-icon">&#x1F3FA;</div>
         <div class="lib-book-name">Epic of Gilgamesh</div>
@@ -1705,6 +1712,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div class="srch-group-label">&#x1F3FA;&ensp;Ancient Mesopotamian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 5300 BCE</span></div>
   <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-kesh_temple_hymn" style="--btn-color:#d9b56d;--btn-bg:rgba(217,181,109,.12);--btn-glow:rgba(217,181,109,.35);" onclick="toggleBook('kesh_temple_hymn',this)">
+      <span class="sb-icon">&#x1F3DB;&#xFE0F;</span><span>Kesh Temple Hymn<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sumerian liturgical hymn</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2600 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-gilgamesh" style="--btn-color:#d4944a;--btn-bg:rgba(212,148,74,.12);--btn-glow:rgba(212,148,74,.35);" onclick="toggleBook('gilgamesh',this)">
       <span class="sb-icon">&#x1F3FA;</span><span>Epic of Gilgamesh<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">George Smith &middot; 1876</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2100 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
@@ -11226,6 +11236,7 @@ const BOOK_CFG = {
   iliad: { label:'The Iliad', sub:'Homer - Samuel Butler - 1898 - 24 Books', icon:'\u2694\uFE0F', accent:'#e57373', accentDim:'rgba(229,115,115,0.35)', countLabel:'book', bookTitle:'The Iliad', bookEdition:'Trans. Samuel Butler - 1898', type:'nikaya' },
   sggs:    { label:'S\u012Br\u012B Guru Granth S\u0101hib', sub:'Sant Singh Khalsa \u00B7 1430 Ang \u00B7 Sikhism \u00B7 62 R\u0101gs', icon:'\uD83D\uDD2F', accent:'#f4a261', accentDim:'rgba(244,162,97,0.35)', countLabel:'shabad', bookTitle:'S\u012Br\u012B Guru Granth S\u0101hib', bookEdition:'Sant Singh Khalsa Translation \u00B7 Eternal Guru of the Sikhs', type:'sggs' },
   bom:     { label:'Book of Mormon', sub:'Joseph Smith \u00B7 1830 \u00B7 1981 Edition \u00B7 15 Books \u00B7 239 Chapters', icon:'\u26EA', accent:'#c0a060', accentDim:'rgba(192,160,96,0.35)', countLabel:'verse', bookTitle:'Book of Mormon', bookEdition:'Joseph Smith \u00B7 1981 Edition \u00B7 Wikisource \u00B7 Public Domain', type:'bom' },
+  kesh_temple_hymn: { label:'Kesh Temple Hymn', sub:'Sumerian Temple Hymn \u00B7 c. 2600 BCE \u00B7 Ancient Mesopotamian Liturgical Text', icon:'\uD83C\uDFDB\uFE0F', accent:'#d9b56d', accentDim:'rgba(217,181,109,0.35)', countLabel:'tablet', bookTitle:'Kesh Temple Hymn', bookEdition:'Early Sumerian Temple Praise Tradition \u00B7 House of Kesh', type:'gilgamesh' },
   gilgamesh: { label:'Epic of Gilgamesh', sub:'George Smith \u00B7 1876 \u00B7 Cuneiform Tablets \u00B7 Nineveh \u00B7 11 Tablets', icon:'\uD83C\uDFFA', accent:'#d4944a', accentDim:'rgba(212,148,74,0.35)', countLabel:'tablet', bookTitle:'Epic of Gilgamesh', bookEdition:'Trans. George Smith \u00B7 The Chaldean Account of Genesis \u00B7 1876', type:'gilgamesh' },
   enuma_elish: { label:'En\u016Bma Eli\u0161', sub:'L.W. King \u00B7 1902 \u00B7 7 Tablets \u00B7 Babylonian Creation Epic', icon:'\uD83C\uDF0C', accent:'#e8a060', accentDim:'rgba(232,160,96,0.35)', countLabel:'tablet', bookTitle:'En\u016Bma Eli\u0161 \u2014 Babylonian Creation Epic', bookEdition:'Trans. L.W. King \u00B7 The Seven Tablets of Creation \u00B7 1902', type:'gilgamesh' },
   ishtar_descent: { label:'Descent of Ishtar', sub:'Morris Jastrow \u00B7 1915 \u00B7 Babylonian \u00B7 Ishtar in the Underworld', icon:'\u2B50', accent:'#d4944a', accentDim:'rgba(212,148,74,0.35)', countLabel:'section', bookTitle:'Descent of the Goddess Ishtar into the Lower World', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
@@ -11415,6 +11426,7 @@ function loadScriptures(cb){
     fetch('muslim.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
     fetch('bom.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('gilgamesh.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('kesh_temple_hymn.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('mesopotamia.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('dhammapada.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetchJsonFirstAvailable(['prajnaparamita.json','prajnaparamita (1).json'], null),
@@ -11430,7 +11442,7 @@ function loadScriptures(cb){
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, jainaData, mahaData, pyrData, apocData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, jainaData, mahaData, pyrData, apocData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11438,6 +11450,7 @@ function loadScriptures(cb){
       if(Array.isArray(ms) && ms.length) d.muslim = ms;
       if(bomData && Array.isArray(bomData.bom) && bomData.bom.length) d.bom = bomData.bom;
       if(gilgData && Array.isArray(gilgData.gilgamesh) && gilgData.gilgamesh.length) d.gilgamesh = gilgData.gilgamesh;
+      if(keshData && Array.isArray(keshData.kesh_temple_hymn) && keshData.kesh_temple_hymn.length) d.kesh_temple_hymn = keshData.kesh_temple_hymn;
       if(mesopData){
         if(Array.isArray(mesopData.enuma_elish)&&mesopData.enuma_elish.length) d.enuma_elish=mesopData.enuma_elish;
         if(Array.isArray(mesopData.ishtar_descent)&&mesopData.ishtar_descent.length) d.ishtar_descent=mesopData.ishtar_descent;
@@ -11907,7 +11920,7 @@ function _buildOtherNav(key,cfg,targetIdx){
     groups.sort((a,b)=>((apocBookMap.has(a.book)?apocBookMap.get(a.book):99)-(apocBookMap.has(b.book)?apocBookMap.get(b.book):99))||(a.chapter-b.chapter));
     libChapterList=groups;
     groups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${g.book} \u2014 Chapter ${g.chapter}`; sel.appendChild(o); });
-  } else if(key==='gilgamesh'){
+  } else if(key==='gilgamesh'||key==='kesh_temple_hymn'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
   } else if(key==='enuma_elish'||key==='ishtar_descent'||key==='seven_spirits'||key==='adapa'||key==='pyramid_texts'){
@@ -12153,7 +12166,7 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
-  } else if(libBook==='gilgamesh'){
+  } else if(libBook==='gilgamesh'||libBook==='kesh_temple_hymn'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
@@ -12267,7 +12280,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12282,7 +12295,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -12471,6 +12484,7 @@ function chapLabel(book,v,cfg){
   if(book==='vishnu_purana') return (v.title?v.title.split('.')[0].slice(0,80):null);
   if(book==='popol_vuh')     return (v.part&&v.chapter)?`Part ${v.part}, Chapter ${v.chapter}`:(v.chapter?`Chapter ${v.chapter}`:null);
   if(book==='bom')           return v.book ? `${v.book} \u2014 Chapter ${v.c}` : null;
+  if(book==='kesh_temple_hymn') return v.title || null;
   if(book==='gilgamesh')     return v.title || null;
   if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa'||book==='pyramid_texts') return v.title || null;
   if(book==='dhammapada')    return v.r || null;
@@ -12717,6 +12731,9 @@ window.switchReligion  = switchReligion;
         var gs=[]; var seen={};
         data.forEach(function(x){var k=x.book+'|'+x.c;if(!seen[k]){seen[k]=true;gs.push({book:x.book,c:x.c});}});
         var i=gs.findIndex(function(g){return g.book===v.book&&g.c===v.c;}); return i>=0?i:0;
+      }
+      if(book==='kesh_temple_hymn'){
+        var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
       // Gilgamesh: each entry is its own tablet; idx = array position
       if(book==='gilgamesh'){
