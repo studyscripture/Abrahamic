@@ -1443,6 +1443,20 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">F. Max M&#xFC;ller &middot; 1881 &middot; Sacred Books of the East</div>
         <div class="lib-book-count">26 Chapters &middot; 423 Verses &middot; Path of Truth</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#f472b6;" onclick="openLibBook('heart_sutra')">
+        <div class="lib-book-icon">&#x1F49C;</div>
+        <div class="lib-book-name">Heart S&#x016B;tra</div>
+        <div class="lib-book-origin">c. 1st cent. CE &middot; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;h&#x1E5B;daya</div>
+        <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
+        <div class="lib-book-count">4 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra')">
+        <div class="lib-book-icon">&#x1F48E;</div>
+        <div class="lib-book-name">Diamond S&#x016B;tra</div>
+        <div class="lib-book-origin">c. 1st cent. CE &middot; Vajracchedik&#x0101; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;</div>
+        <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
+        <div class="lib-book-count">32 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
@@ -1808,6 +1822,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-dhammapada" style="--btn-color:#a78bfa;--btn-bg:rgba(167,139,250,.12);--btn-glow:rgba(167,139,250,.35);" onclick="toggleBook('dhammapada',this)">
       <span class="sb-icon">&#x1F4D6;</span><span>Dhammapada<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Max M&#xFC;ller &middot; 1881</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-heart_sutra" style="--btn-color:#f472b6;--btn-bg:rgba(244,114,182,.12);--btn-glow:rgba(244,114,182,.35);" onclick="toggleBook('heart_sutra',this)">
+      <span class="sb-icon">&#x1F49C;</span><span>Heart S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101; &middot; Taish&#x014D;</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st cent. CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-diamond_sutra" style="--btn-color:#67e8f9;--btn-bg:rgba(103,232,249,.12);--btn-glow:rgba(103,232,249,.35);" onclick="toggleBook('diamond_sutra',this)">
+      <span class="sb-icon">&#x1F48E;</span><span>Diamond S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Vajracchedik&#x0101; &middot; Taish&#x014D;</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st cent. CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11202,6 +11222,8 @@ const BOOK_CFG = {
   seven_spirits: { label:'The Seven Evil Spirits', sub:'R.C. Thompson \u00B7 1903 \u00B7 Assyrian \u00B7 Evil Demon Series', icon:'\uD83C\uDF29\uFE0F', accent:'#a08060', accentDim:'rgba(160,128,96,0.35)', countLabel:'text', bookTitle:'The Seven Evil Spirits \u2014 Assyrian Cuneiform Texts', bookEdition:'Trans. R.C. Thompson \u00B7 The Devils and Evil Spirits of Babylonia \u00B7 1903', type:'gilgamesh' },
   adapa: { label:'Adapa and the Food of Life', sub:'Morris Jastrow \u00B7 1898 \u00B7 3 Tablets \u00B7 El-Amarna \u00B7 Akkadian', icon:'\uD83C\uDF47', accent:'#c07840', accentDim:'rgba(192,120,64,0.35)', countLabel:'tablet', bookTitle:'Adapa and the Food of Life', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
   dhammapada: { label:'Dhammapada', sub:'F. Max M\u00FCller \u00B7 1881 \u00B7 26 Chapters \u00B7 423 Verses \u00B7 Buddhism', icon:'\uD83D\uDCD6', accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse', bookTitle:'Dhammapada', bookEdition:'Trans. F. Max M\u00FCller \u00B7 Sacred Books of the East Vol. X \u00B7 1881', type:'dhammapada' },
+  heart_sutra: { label:'Heart S\u016Btra', sub:'Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya \u00B7 c. 1st cent. CE \u00B7 4 Sections \u00B7 Mah\u0101y\u0101na Buddhism', icon:'\uD83D\uDC9C', accent:'#f472b6', accentDim:'rgba(244,114,182,0.35)', countLabel:'section', bookTitle:'Heart S\u016Btra \u2014 Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'gilgamesh' },
+  diamond_sutra: { label:'Diamond S\u016Btra', sub:'Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101 \u00B7 c. 1st cent. CE \u00B7 32 Sections \u00B7 Mah\u0101y\u0101na', icon:'\uD83D\uDC8E', accent:'#67e8f9', accentDim:'rgba(103,232,249,0.35)', countLabel:'section', bookTitle:'Diamond S\u016Btra \u2014 Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'gilgamesh' },
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   corpus_hermeticum: { label:'Corpus Hermeticum', sub:'G.R.S. Mead \u00B7 1906 \u00B7 18 Tractates \u00B7 Hermetic Philosophy \u00B7 c. 100\u2013300 CE', icon:'\u2640\uFE0F', accent:'#f0c070', accentDim:'rgba(240,192,112,0.35)', countLabel:'tractate', bookTitle:'Corpus Hermeticum', bookEdition:'Trans. G.R.S. Mead \u00B7 Thrice-Greatest Hermes \u00B7 1906', type:'corpus_hermeticum' },
   bos:       { label:'Gardnerian Book of Shadows', sub:'Gerald B. Gardner \u00B7 c. 1949\u20131961 \u00B7 39 Sections \u00B7 Wicca', icon:'\uD83C\uDF19', accent:'#b39ddb', accentDim:'rgba(179,157,219,0.35)', countLabel:'section', bookTitle:'Gardnerian Book of Shadows', bookEdition:'Gerald B. Gardner \u00B7 GlobalGrey Edition \u00B7 Public Domain', type:'bos' },
@@ -11370,6 +11392,7 @@ function loadScriptures(cb){
     fetch('gilgamesh.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('mesopotamia.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('dhammapada.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('prajnaparamita.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('masnavi.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('corpus_hermeticum.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('bos.json').then(r=>r.ok?r.json():null).catch(()=>null),
@@ -11381,7 +11404,7 @@ function loadScriptures(cb){
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, mahaData, pyrData, apocData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, mahaData, pyrData, apocData])=>{
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
@@ -11395,6 +11418,8 @@ function loadScriptures(cb){
         if(Array.isArray(mesopData.adapa)&&mesopData.adapa.length) d.adapa=mesopData.adapa;
       }
       if(dhamData && Array.isArray(dhamData.dhammapada) && dhamData.dhammapada.length) d.dhammapada = dhamData.dhammapada;
+      if(ppData && Array.isArray(ppData.heart_sutra) && ppData.heart_sutra.length) d.heart_sutra = ppData.heart_sutra;
+      if(ppData && Array.isArray(ppData.diamond_sutra) && ppData.diamond_sutra.length) d.diamond_sutra = ppData.diamond_sutra;
       if(masData && Array.isArray(masData.masnavi) && masData.masnavi.length) d.masnavi = masData.masnavi;
       if(chData && Array.isArray(chData.corpus_hermeticum) && chData.corpus_hermeticum.length) d.corpus_hermeticum = chData.corpus_hermeticum;
       if(bosData && Array.isArray(bosData.bos) && bosData.bos.length) d.bos = bosData.bos;
