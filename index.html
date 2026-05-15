@@ -1397,6 +1397,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
     <div class="lib-shelf-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 600 BCE</span></div>
     <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#d4af37;" onclick="openLibBook('jaina_sutras')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Jaina Sutras</div>
+        <div class="lib-book-origin">c. 6th-2nd century BCE (core strata)</div>
+        <div class="lib-book-edition">Hermann Jacobi &middot; Sacred Books of the East Vol. 22 + 45</div>
+        <div class="lib-book-count">Combined Part I + Part II &middot; Footnotes Removed</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('tattva')">
         <div class="lib-book-icon">&#x1F590;</div>
         <div class="lib-book-name">Tattvārthashāstra</div>
@@ -1801,6 +1808,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div class="srch-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 600 BCE</span></div>
   <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-jaina_sutras" style="--btn-color:#d4af37;--btn-bg:rgba(212,175,55,.12);--btn-glow:rgba(212,175,55,.35);" onclick="toggleBook('jaina_sutras',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Jaina Sutras<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Jacobi &middot; SBE 22 + 45</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Combined critical reading text</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-tattva" style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);" onclick="toggleBook('tattva',this)">
       <span class="sb-icon">&#x1F590;</span><span>Tattvārthashāstra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Umāsvāmi &middot; Vijay K. Jain</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2nd&ndash;5th cent. CE</small></span><span class="sb-check">&#10022;</span>
     </button>
@@ -11231,6 +11241,7 @@ const BOOK_CFG = {
   iqan:      { label:'Kit\u00E1b-i-Iq\u00E1n', sub:'Bah\u00E1\u02BCu\u02BCll\u00E1h \u00B7 c. 1861 CE \u00B7 Ali Kuli Khan 1904 \u00B7 Book of Certitude', icon:'\u2605', accent:'#e8c97a', accentDim:'rgba(232,201,122,0.35)', countLabel:'part', bookTitle:'Kit\u00E1b-i-Iq\u00E1n', bookEdition:'Trans. Ali Kuli Khan \u00B7 1904 \u00B7 Bah\u00E1\u02BC\u00ED Publishing Society', type:'iqan' },
   poetic_edda: { label:'Poetic Edda', sub:'Henry Adams Bellows \u00B7 1936 \u00B7 35 Poems \u00B7 Norse Mythology \u00B7 Codex Regius', icon:'\u26A1', accent:'#7ecbe6', accentDim:'rgba(126,203,230,0.35)', countLabel:'poem', bookTitle:'Poetic Edda', bookEdition:'Trans. Henry Adams Bellows \u00B7 1936 \u00B7 American-Scandinavian Foundation', type:'poetic_edda' },
   tattva:  { label:'Tattvārthashāstra', sub:'Ācārya Umāsvāmi \u00B7 Vijay K. Jain \u00B7 2018 \u00B7 10 Chapters \u00B7 357 Sūtras', icon:'\uD83D\uDD90', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'passage', bookTitle:'Tattvārthashāstra', bookEdition:'With Sarvārthasiddhi Commentary \u00B7 Vijay K. Jain \u00B7 2018', type:'tattva' },
+  jaina_sutras: { label:'Jaina Sutras', sub:'Hermann Jacobi \u00B7 SBE Vol. 22 + 45 \u00B7 Combined Part I & Part II \u00B7 Footnotes Removed', icon:'\uD83D\uDCDC', accent:'#d4af37', accentDim:'rgba(212,175,55,0.35)', countLabel:'section', bookTitle:'Jaina Sutras', bookEdition:'Sacred Books of the East \u00B7 Vol. 22 (1884) + Vol. 45 (1895) \u00B7 Continuous Reader Edition', type:'jaina_sutras' },
   jps:     { label:'Tanakh \u2014 Jewish Publication Society', sub:'JPS \u00B7 1917 \u00B7 Torah \u00B7 Nevi\u02BCim \u00B7 Ketuvim \u00B7 39 Books', icon:'\u2721\uFE0F', accent:'#c9a227', accentDim:'rgba(201,162,39,0.35)', countLabel:'verse', bookTitle:'Tanakh', bookEdition:'Jewish Publication Society \u00B7 1917 \u00B7 Masoretic Text', type:'tanakh' },
 };
 
@@ -11349,6 +11360,7 @@ function normalizeAndSortScriptures(d){
   // enuma_elish, ishtar_descent, seven_spirits, adapa are already in canonical tablet order
   if(Array.isArray(d.sggs)) d.sggs.sort((a,b)=>(toNum(a.mehl)-toNum(b.mehl))||(toNum(a.sn)-toNum(b.sn))||cmpText(a.r,b.r));
   if(Array.isArray(d.tattva)) d.tattva.sort((a,b)=>(toNum(a.c)-toNum(b.c))||(toNum(a.s)-toNum(b.s)));
+  if(Array.isArray(d.jaina_sutras)) d.jaina_sutras.sort((a,b)=>(toNum(a.c)-toNum(b.c))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
   if(Array.isArray(d.jps)){
     const tanakhBookOrder = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','I Samuel','II Samuel','I Kings','II Kings','Isaiah','Jeremiah','Ezekiel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi','Psalms','Proverbs','Job','Song of Songs','Ruth','Lamentations','Ecclesiastes','Esther','Daniel','Ezra','Nehemiah','I Chronicles','II Chronicles'];
     const jpsBookMap = new Map(tanakhBookOrder.map((b,i)=>[b,i]));
@@ -11413,11 +11425,12 @@ function loadScriptures(cb){
     fetch('poetic_edda.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('iqan.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('yoga_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('jaina_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('mahabharata.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, mahaData, pyrData, apocData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, mesopData, dhamData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, jainaData, mahaData, pyrData, apocData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11441,6 +11454,7 @@ function loadScriptures(cb){
       if(eddaData && Array.isArray(eddaData.poetic_edda) && eddaData.poetic_edda.length) d.poetic_edda = eddaData.poetic_edda;
       if(iqanData && Array.isArray(iqanData.iqan) && iqanData.iqan.length) d.iqan = iqanData.iqan;
       if(yogaData && Array.isArray(yogaData.yoga_sutras) && yogaData.yoga_sutras.length) d.yoga_sutras = yogaData.yoga_sutras;
+      if(jainaData && Array.isArray(jainaData.jaina_sutras) && jainaData.jaina_sutras.length) d.jaina_sutras = jainaData.jaina_sutras;
       if(mahaData && Array.isArray(mahaData.maha) && mahaData.maha.length) d.maha = mahaData.maha;
       if(pyrData && Array.isArray(pyrData.pyramid_texts) && pyrData.pyramid_texts.length) d.pyramid_texts = pyrData.pyramid_texts;
       if(apocData && Array.isArray(apocData.apocrypha) && apocData.apocrypha.length) d.apocrypha = apocData.apocrypha;
@@ -11929,6 +11943,9 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='yoga_sutras'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r} — ${s.subtitle}`; sel.appendChild(o); });
+  } else if(key==='jaina_sutras'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.title?`${s.r} — ${s.title}`:s.r; sel.appendChild(o); });
   }
   const isNikaya=BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya';
   const isVeda=BOOK_CFG[key]&&(BOOK_CFG[key].type==='veda'||BOOK_CFG[key].type==='avesta');
@@ -12207,6 +12224,12 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='jaina_sutras'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    if(s.title){ const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub); }
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='bukhari'){
     const grp=libChapterList[idx]; if(!grp) return;
     const hadiths=data.filter(v=>v.vol===grp.vol&&v.book===grp.book);
@@ -12244,7 +12267,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12259,7 +12282,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -12352,7 +12375,7 @@ function makeCard(book,v,cfg,terms){
      cfg.type==='homeric_hymn'||cfg.type==='sggs'||cfg.type==='tattva'||cfg.type==='tanakh'||cfg.type==='hadith'||
      cfg.type==='gilgamesh'||cfg.type==='dhammapada'||cfg.type==='masnavi'||
      cfg.type==='heart_sutra'||cfg.type==='diamond_sutra'||
-     cfg.type==='corpus_hermeticum'||cfg.type==='bos'||cfg.type==='zhuangzi'||
+     cfg.type==='corpus_hermeticum'||cfg.type==='bos'||cfg.type==='zhuangzi'||cfg.type==='jaina_sutras'||
      cfg.type==='poetic_edda'||cfg.type==='iqan'||cfg.type==='yoga_sutras'){
     txt=extractMahaSnippet(v.t, terms);
   } else if(cfg.type==='bod'){
@@ -12460,6 +12483,7 @@ function chapLabel(book,v,cfg){
   if(book==='poetic_edda')   return v.name ? `${v.name} — ${v.subtitle}` : null;
   if(book==='iqan')          return v.r ? `${v.r}: ${v.title}` : null;
   if(book==='yoga_sutras')   return v.r ? `${v.r} — ${v.subtitle}` : null;
+  if(book==='jaina_sutras')  return v.title ? `${v.r} — ${v.title}` : (v.r || null);
   if(book==='kojiki')        return v.title ? `Section ${v.section} \u2014 ${v.title}` : `Section ${v.section}`;
   if(book==='nihon_shoki')   return v.title ? `Book ${v.book} \u2014 ${v.title}` : `Book ${v.book}`;
   if(book==='book_of_enoch')    return `1 Enoch, Chapter ${v.chapter}`;
@@ -12718,6 +12742,9 @@ window.switchReligion  = switchReligion;
       }
       if(book==='yoga_sutras'){
         var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
+      }
+      if(book==='jaina_sutras'){
+        var i=data.findIndex(function(s){return s.c===v.c;}); return i>=0?i:0;
       }
       // All remaining books: libChapterList = data.map((_,i)=>i); idx = array position
       // (upanishads, ramayana, tao, analects, harivamsha, vishnu_purana)
