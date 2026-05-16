@@ -1471,7 +1471,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
         <div class="lib-book-count">4 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra','lotus_sutra')">
+      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra','lotus_sutra','anthology_of_discourses','heartfelt_sayings','so_it_was_said')">
         <div class="lib-book-icon">&#x1F48E;</div>
         <div class="lib-book-name">Diamond S&#x016B;tra</div>
         <div class="lib-book-origin">c. 1st cent. CE &middot; Vajracchedik&#x0101; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;</div>
@@ -1484,6 +1484,27 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 1st cent. BCE&ndash;2nd cent. CE &middot; Saddharmapun&#x1E0D;ar&#x012B;ka</div>
         <div class="lib-book-edition">H. Kern &middot; 1884 &middot; Sacred Books of the East Vol. XXI</div>
         <div class="lib-book-count">27 Chapters &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#86efac;" onclick="openLibBook('anthology_of_discourses')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Anthology of Discourses</div>
+        <div class="lib-book-origin">Suttanik&#x0101;ya &middot; P&#x0101;li Canon &middot; Therav&#x0101;da</div>
+        <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
+        <div class="lib-book-count">73 Suttas &middot; 5 Chapters (Vaggas)</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#fdba74;" onclick="openLibBook('heartfelt_sayings')">
+        <div class="lib-book-icon">&#x1F9E1;</div>
+        <div class="lib-book-name">Heartfelt Sayings</div>
+        <div class="lib-book-origin">Ud&#x0101;na &middot; P&#x0101;li Canon &middot; Khuddaka Nik&#x0101;ya</div>
+        <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
+        <div class="lib-book-count">80 Suttas &middot; 8 Chapters (Vaggas)</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c4b5fd;" onclick="openLibBook('so_it_was_said')">
+        <div class="lib-book-icon">&#x1F4AC;</div>
+        <div class="lib-book-name">So It Was Said</div>
+        <div class="lib-book-origin">Itivuttaka &middot; P&#x0101;li Canon &middot; Khuddaka Nik&#x0101;ya</div>
+        <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
+        <div class="lib-book-count">112 Suttas &middot; Nipatas</div>
       </div>
     </div>
 
@@ -1868,6 +1889,15 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-lotus_sutra" style="--btn-color:#fbbf24;--btn-bg:rgba(251,191,36,.12);--btn-glow:rgba(251,191,36,.35);" onclick="toggleBook('lotus_sutra',this)">
       <span class="sb-icon">&#x1F337;</span><span>Lotus S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Kern &middot; 1884</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st cent. BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-anthology_of_discourses" style="--btn-color:#86efac;--btn-bg:rgba(134,239,172,.12);--btn-glow:rgba(134,239,172,.35);" onclick="toggleBook('anthology_of_discourses',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Anthology of Discourses<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Suttanik&#x0101;ya</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-heartfelt_sayings" style="--btn-color:#fdba74;--btn-bg:rgba(253,186,116,.12);--btn-glow:rgba(253,186,116,.35);" onclick="toggleBook('heartfelt_sayings',this)">
+      <span class="sb-icon">&#x1F9E1;</span><span>Heartfelt Sayings<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Ud&#x0101;na</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-so_it_was_said" style="--btn-color:#c4b5fd;--btn-bg:rgba(196,181,253,.12);--btn-glow:rgba(196,181,253,.35);" onclick="toggleBook('so_it_was_said',this)">
+      <span class="sb-icon">&#x1F4AC;</span><span>So It Was Said<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Itivuttaka</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11264,6 +11294,9 @@ const BOOK_CFG = {
   adapa: { label:'Adapa and the Food of Life', sub:'Morris Jastrow \u00B7 1898 \u00B7 3 Tablets \u00B7 El-Amarna \u00B7 Akkadian', icon:'\uD83C\uDF47', accent:'#c07840', accentDim:'rgba(192,120,64,0.35)', countLabel:'tablet', bookTitle:'Adapa and the Food of Life', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
   dhammapada: { label:'Dhammapada', sub:'F. Max M\u00FCller \u00B7 1881 \u00B7 26 Chapters \u00B7 423 Verses \u00B7 Buddhism', icon:'\uD83D\uDCD6', accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse', bookTitle:'Dhammapada', bookEdition:'Trans. F. Max M\u00FCller \u00B7 Sacred Books of the East Vol. X \u00B7 1881', type:'dhammapada' },
   heart_sutra: { label:'Heart S\u016Btra', sub:'Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya \u00B7 c. 1st cent. CE \u00B7 4 Sections \u00B7 Mah\u0101y\u0101na Buddhism', icon:'\uD83D\uDC9C', accent:'#f472b6', accentDim:'rgba(244,114,182,0.35)', countLabel:'section', bookTitle:'Heart S\u016Btra \u2014 Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'heart_sutra' },
+  anthology_of_discourses: { label:'Anthology of Discourses', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 73 Suttas \u00B7 Suttanik\u0101ya \u00B7 P\u0101li Canon', icon:'\uD83D\uDCDC', accent:'#86efac', accentDim:'rgba(134,239,172,0.35)', countLabel:'sutta', bookTitle:'Anthology of Discourses \u2014 Suttanip\u0101ta', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
+  heartfelt_sayings: { label:'Heartfelt Sayings', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 80 Suttas \u00B7 Ud\u0101na \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83E\uDDE1', accent:'#fdba74', accentDim:'rgba(253,186,116,0.35)', countLabel:'sutta', bookTitle:'Heartfelt Sayings \u2014 Ud\u0101na', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
+  so_it_was_said: { label:'So It Was Said', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 112 Suttas \u00B7 Itivuttaka \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83D\uDCAC', accent:'#c4b5fd', accentDim:'rgba(196,181,253,0.35)', countLabel:'sutta', bookTitle:'So It Was Said \u2014 Itivuttaka', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   lotus_sutra: { label:'Lotus S\u016Btra', sub:'H. Kern \u00B7 1884 \u00B7 27 Chapters \u00B7 Saddharmapun\u1E0Dar\u012Bka \u00B7 Mah\u0101y\u0101na', icon:'\uD83C\uDF37', accent:'#fbbf24', accentDim:'rgba(251,191,36,0.35)', countLabel:'chapter', bookTitle:'Lotus S\u016Btra \u2014 Saddharmapun\u1E0Dar\u012Bkasad\u016Btra', bookEdition:'Trans. H. Kern \u00B7 Sacred Books of the East Vol. XXI \u00B7 1884', type:'nikaya' },
   diamond_sutra: { label:'Diamond S\u016Btra', sub:'Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101 \u00B7 c. 1st cent. CE \u00B7 32 Sections \u00B7 Mah\u0101y\u0101na', icon:'\uD83D\uDC8E', accent:'#67e8f9', accentDim:'rgba(103,232,249,0.35)', countLabel:'section', bookTitle:'Diamond S\u016Btra \u2014 Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'diamond_sutra' },
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
@@ -11452,6 +11485,9 @@ function loadScriptures(cb){
     fetch('mesopotamia.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('dhammapada.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('lotus_sutra.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('anthology_of_discourses.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('heartfelt_sayings.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('so_it_was_said.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetchJsonFirstAvailable(['prajnaparamita.json','prajnaparamita (1).json'], null),
     fetch('masnavi.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('corpus_hermeticum.json').then(r=>r.ok?r.json():null).catch(()=>null),
@@ -11467,7 +11503,7 @@ function loadScriptures(cb){
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11484,6 +11520,9 @@ function loadScriptures(cb){
       }
       if(dhamData && Array.isArray(dhamData.dhammapada) && dhamData.dhammapada.length) d.dhammapada = dhamData.dhammapada;
       if(lotusData && Array.isArray(lotusData.lotus_sutra) && lotusData.lotus_sutra.length) d.lotus_sutra = lotusData.lotus_sutra;
+      if(anthologyData && Array.isArray(anthologyData.anthology_of_discourses) && anthologyData.anthology_of_discourses.length) d.anthology_of_discourses = anthologyData.anthology_of_discourses;
+      if(heartfeltData && Array.isArray(heartfeltData.heartfelt_sayings) && heartfeltData.heartfelt_sayings.length) d.heartfelt_sayings = heartfeltData.heartfelt_sayings;
+      if(soitsaidData && Array.isArray(soitsaidData.so_it_was_said) && soitsaidData.so_it_was_said.length) d.so_it_was_said = soitsaidData.so_it_was_said;
       if(ppData && Array.isArray(ppData.heart_sutra) && ppData.heart_sutra.length) d.heart_sutra = ppData.heart_sutra;
       if(ppData && Array.isArray(ppData.diamond_sutra) && ppData.diamond_sutra.length) d.diamond_sutra = ppData.diamond_sutra;
       if(masData && Array.isArray(masData.masnavi) && masData.masnavi.length) d.masnavi = masData.masnavi;
@@ -11963,6 +12002,9 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='lotus_sutra'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}`; sel.appendChild(o); });
+  } else if(key==='anthology_of_discourses'||key==='heartfelt_sayings'||key==='so_it_was_said'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.subtitle}`; sel.appendChild(o); });
   } else if(key==='diamond_sutra'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
@@ -12224,6 +12266,14 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='anthology_of_discourses'||libBook==='heartfelt_sayings'||libBook==='so_it_was_said'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
+    if(s.pali){ const pl=document.createElement('div'); pl.className='lib-chapter-subhead'; pl.style.cssText='opacity:.5;font-style:italic;margin-top:-4px;'; pl.textContent=s.pali; container.appendChild(pl); }
+    if(s.vagga){ const vg=document.createElement('div'); vg.className='lib-chapter-subhead'; vg.style.cssText='opacity:.4;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;'; vg.textContent=s.vagga; container.appendChild(vg); }
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='diamond_sutra'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12320,7 +12370,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
