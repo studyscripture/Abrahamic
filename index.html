@@ -1471,7 +1471,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
         <div class="lib-book-count">4 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra','lotus_sutra','anthology_of_discourses','heartfelt_sayings','so_it_was_said')">
+      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra','lotus_sutra','anthology_of_discourses','heartfelt_sayings','so_it_was_said','theragatha','therigatha','vinaya_pitaka')">
         <div class="lib-book-icon">&#x1F48E;</div>
         <div class="lib-book-name">Diamond S&#x016B;tra</div>
         <div class="lib-book-origin">c. 1st cent. CE &middot; Vajracchedik&#x0101; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;</div>
@@ -1505,6 +1505,27 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">Itivuttaka &middot; P&#x0101;li Canon &middot; Khuddaka Nik&#x0101;ya</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
         <div class="lib-book-count">112 Suttas &middot; Nipatas</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#f87171;" onclick="openLibBook('theragatha')">
+        <div class="lib-book-icon">&#x1F9D8;&#x200D;&#x2642;&#xFE0F;</div>
+        <div class="lib-book-name">Therag&#x0101;th&#x0101;</div>
+        <div class="lib-book-origin">Verses of the Senior Monks &middot; Khuddaka Nik&#x0101;ya</div>
+        <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
+        <div class="lib-book-count">264 Poems &middot; 21 Nipatas</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#f9a8d4;" onclick="openLibBook('therigatha')">
+        <div class="lib-book-icon">&#x1F9D8;&#x200D;&#x2640;&#xFE0F;</div>
+        <div class="lib-book-name">Ther&#x012B;g&#x0101;th&#x0101;</div>
+        <div class="lib-book-origin">Verses of the Senior Nuns &middot; Khuddaka Nik&#x0101;ya</div>
+        <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
+        <div class="lib-book-count">73 Poems &middot; 16 Nipatas</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#94a3b8;" onclick="openLibBook('vinaya_pitaka')">
+        <div class="lib-book-icon">&#x2696;&#xFE0F;</div>
+        <div class="lib-book-name">Vinaya Pi&#x1E6D;aka</div>
+        <div class="lib-book-origin">P&#x0101;li Monastic Law &middot; Therav&#x0101;da &middot; P&#x0101;li Canon</div>
+        <div class="lib-book-edition">Bhikkhu Brahmali &middot; 2026 &middot; SuttaCentral</div>
+        <div class="lib-book-count">416 Rules &middot; Vibha&#x1E45;ga, Khandhaka, Pariv&#x0101;ra</div>
       </div>
     </div>
 
@@ -1898,6 +1919,15 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-so_it_was_said" style="--btn-color:#c4b5fd;--btn-bg:rgba(196,181,253,.12);--btn-glow:rgba(196,181,253,.35);" onclick="toggleBook('so_it_was_said',this)">
       <span class="sb-icon">&#x1F4AC;</span><span>So It Was Said<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Itivuttaka</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-theragatha" style="--btn-color:#f87171;--btn-bg:rgba(248,113,113,.12);--btn-glow:rgba(248,113,113,.35);" onclick="toggleBook('theragatha',this)">
+      <span class="sb-icon">&#x1F9D8;&#x200D;&#x2642;&#xFE0F;</span><span>Therag&#x0101;th&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Senior Monks</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-therigatha" style="--btn-color:#f9a8d4;--btn-bg:rgba(249,168,212,.12);--btn-glow:rgba(249,168,212,.35);" onclick="toggleBook('therigatha',this)">
+      <span class="sb-icon">&#x1F9D8;&#x200D;&#x2640;&#xFE0F;</span><span>Ther&#x012B;g&#x0101;th&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Senior Nuns</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-vinaya_pitaka" style="--btn-color:#94a3b8;--btn-bg:rgba(148,163,184,.12);--btn-glow:rgba(148,163,184,.35);" onclick="toggleBook('vinaya_pitaka',this)">
+      <span class="sb-icon">&#x2696;&#xFE0F;</span><span>Vinaya Pi&#x1E6D;aka<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Brahmali &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Monastic Law</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11294,6 +11324,9 @@ const BOOK_CFG = {
   adapa: { label:'Adapa and the Food of Life', sub:'Morris Jastrow \u00B7 1898 \u00B7 3 Tablets \u00B7 El-Amarna \u00B7 Akkadian', icon:'\uD83C\uDF47', accent:'#c07840', accentDim:'rgba(192,120,64,0.35)', countLabel:'tablet', bookTitle:'Adapa and the Food of Life', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
   dhammapada: { label:'Dhammapada', sub:'F. Max M\u00FCller \u00B7 1881 \u00B7 26 Chapters \u00B7 423 Verses \u00B7 Buddhism', icon:'\uD83D\uDCD6', accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse', bookTitle:'Dhammapada', bookEdition:'Trans. F. Max M\u00FCller \u00B7 Sacred Books of the East Vol. X \u00B7 1881', type:'dhammapada' },
   heart_sutra: { label:'Heart S\u016Btra', sub:'Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya \u00B7 c. 1st cent. CE \u00B7 4 Sections \u00B7 Mah\u0101y\u0101na Buddhism', icon:'\uD83D\uDC9C', accent:'#f472b6', accentDim:'rgba(244,114,182,0.35)', countLabel:'section', bookTitle:'Heart S\u016Btra \u2014 Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'heart_sutra' },
+  theragatha: { label:'Therag\u0101th\u0101', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 264 Poems \u00B7 Verses of the Senior Monks \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83E\uDDD8\u200D\u2642\uFE0F', accent:'#f87171', accentDim:'rgba(248,113,113,0.35)', countLabel:'poem', bookTitle:'Therag\u0101th\u0101 \u2014 Verses of the Senior Monks', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
+  therigatha: { label:'Ther\u012Bg\u0101th\u0101', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 73 Poems \u00B7 Verses of the Senior Nuns \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83E\uDDD8\u200D\u2640\uFE0F', accent:'#f9a8d4', accentDim:'rgba(249,168,212,0.35)', countLabel:'poem', bookTitle:'Ther\u012Bg\u0101th\u0101 \u2014 Verses of the Senior Nuns', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
+  vinaya_pitaka: { label:'Vinaya Pi\u1E6Daka', sub:'Bhikkhu Brahmali \u00B7 2026 \u00B7 416 Rules \u00B7 Therav\u0101da Monastic Law \u00B7 P\u0101li Canon', icon:'\u2696\uFE0F', accent:'#94a3b8', accentDim:'rgba(148,163,184,0.35)', countLabel:'rule', bookTitle:'Vinaya Pi\u1E6Daka \u2014 Therav\u0101da Collection on Monastic Law', bookEdition:'Trans. Bhikkhu Brahmali \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   anthology_of_discourses: { label:'Anthology of Discourses', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 73 Suttas \u00B7 Suttanik\u0101ya \u00B7 P\u0101li Canon', icon:'\uD83D\uDCDC', accent:'#86efac', accentDim:'rgba(134,239,172,0.35)', countLabel:'sutta', bookTitle:'Anthology of Discourses \u2014 Suttanip\u0101ta', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   heartfelt_sayings: { label:'Heartfelt Sayings', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 80 Suttas \u00B7 Ud\u0101na \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83E\uDDE1', accent:'#fdba74', accentDim:'rgba(253,186,116,0.35)', countLabel:'sutta', bookTitle:'Heartfelt Sayings \u2014 Ud\u0101na', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   so_it_was_said: { label:'So It Was Said', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 112 Suttas \u00B7 Itivuttaka \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83D\uDCAC', accent:'#c4b5fd', accentDim:'rgba(196,181,253,0.35)', countLabel:'sutta', bookTitle:'So It Was Said \u2014 Itivuttaka', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
@@ -11486,6 +11519,9 @@ function loadScriptures(cb){
     fetch('dhammapada.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('lotus_sutra.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('anthology_of_discourses.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('theragatha.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('therigatha.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('vinaya_pitaka.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('heartfelt_sayings.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('so_it_was_said.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetchJsonFirstAvailable(['prajnaparamita.json','prajnaparamita (1).json'], null),
@@ -11503,7 +11539,7 @@ function loadScriptures(cb){
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11521,6 +11557,9 @@ function loadScriptures(cb){
       if(dhamData && Array.isArray(dhamData.dhammapada) && dhamData.dhammapada.length) d.dhammapada = dhamData.dhammapada;
       if(lotusData && Array.isArray(lotusData.lotus_sutra) && lotusData.lotus_sutra.length) d.lotus_sutra = lotusData.lotus_sutra;
       if(anthologyData && Array.isArray(anthologyData.anthology_of_discourses) && anthologyData.anthology_of_discourses.length) d.anthology_of_discourses = anthologyData.anthology_of_discourses;
+      if(theragataData && Array.isArray(theragataData.theragatha) && theragataData.theragatha.length) d.theragatha = theragataData.theragatha;
+      if(therigataData && Array.isArray(therigataData.therigatha) && therigataData.therigatha.length) d.therigatha = therigataData.therigatha;
+      if(vinayaData && Array.isArray(vinayaData.vinaya_pitaka) && vinayaData.vinaya_pitaka.length) d.vinaya_pitaka = vinayaData.vinaya_pitaka;
       if(heartfeltData && Array.isArray(heartfeltData.heartfelt_sayings) && heartfeltData.heartfelt_sayings.length) d.heartfelt_sayings = heartfeltData.heartfelt_sayings;
       if(soitsaidData && Array.isArray(soitsaidData.so_it_was_said) && soitsaidData.so_it_was_said.length) d.so_it_was_said = soitsaidData.so_it_was_said;
       if(ppData && Array.isArray(ppData.heart_sutra) && ppData.heart_sutra.length) d.heart_sutra = ppData.heart_sutra;
@@ -12002,7 +12041,7 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='lotus_sutra'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}`; sel.appendChild(o); });
-  } else if(key==='anthology_of_discourses'||key==='heartfelt_sayings'||key==='so_it_was_said'){
+  } else if(key==='theragatha'||key==='therigatha'||key==='vinaya_pitaka'||key==='anthology_of_discourses'||key==='heartfelt_sayings'||key==='so_it_was_said'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.subtitle}`; sel.appendChild(o); });
   } else if(key==='diamond_sutra'){
@@ -12266,7 +12305,7 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
     renderProseChapter(container,cfg,s.t);
-  } else if(libBook==='anthology_of_discourses'||libBook==='heartfelt_sayings'||libBook==='so_it_was_said'){
+  } else if(libBook==='theragatha'||libBook==='therigatha'||libBook==='vinaya_pitaka'||libBook==='anthology_of_discourses'||libBook==='heartfelt_sayings'||libBook==='so_it_was_said'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
@@ -12370,7 +12409,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
