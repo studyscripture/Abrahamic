@@ -1345,7 +1345,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#e879a0;" onclick="openLibBook('devi_mahatmya')">
         <div class="lib-book-icon">&#x1F9FF;</div>
         <div class="lib-book-name">Dev&#x012B; M&#x0101;h&#x0101;tmya</div>
-        <div class="lib-book-origin">c. 400&ndash;600 CE &middot; M&#x0101;rka&#x1E47;&#x1E0Deya Pur&#x0101;&#x1E47;a</div>
+        <div class="lib-book-origin">c. 400&ndash;600 CE &middot; M&#x0101;rka&#x1E47;&#x1E0D;eya Pur&#x0101;&#x1E47;a</div>
         <div class="lib-book-edition">Swami Jagadiswarananda &middot; Ramakrishna Math</div>
         <div class="lib-book-count">13 Chapters &middot; Glorification of the Goddess</div>
       </div>
@@ -1471,12 +1471,19 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
         <div class="lib-book-count">4 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra')">
+      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra','lotus_sutra')">
         <div class="lib-book-icon">&#x1F48E;</div>
         <div class="lib-book-name">Diamond S&#x016B;tra</div>
         <div class="lib-book-origin">c. 1st cent. CE &middot; Vajracchedik&#x0101; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;</div>
         <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
         <div class="lib-book-count">32 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#fbbf24;" onclick="openLibBook('lotus_sutra')">
+        <div class="lib-book-icon">&#x1F337;</div>
+        <div class="lib-book-name">Lotus S&#x016B;tra</div>
+        <div class="lib-book-origin">c. 1st cent. BCE&ndash;2nd cent. CE &middot; Saddharmapun&#x1E0D;ar&#x012B;ka</div>
+        <div class="lib-book-edition">H. Kern &middot; 1884 &middot; Sacred Books of the East Vol. XXI</div>
+        <div class="lib-book-count">27 Chapters &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
       </div>
     </div>
 
@@ -1858,6 +1865,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-diamond_sutra" style="--btn-color:#67e8f9;--btn-bg:rgba(103,232,249,.12);--btn-glow:rgba(103,232,249,.35);" onclick="toggleBook('diamond_sutra',this)">
       <span class="sb-icon">&#x1F48E;</span><span>Diamond S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Vajracchedik&#x0101; &middot; Taish&#x014D;</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st cent. CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-lotus_sutra" style="--btn-color:#fbbf24;--btn-bg:rgba(251,191,36,.12);--btn-glow:rgba(251,191,36,.35);" onclick="toggleBook('lotus_sutra',this)">
+      <span class="sb-icon">&#x1F337;</span><span>Lotus S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Kern &middot; 1884</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st cent. BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11254,6 +11264,7 @@ const BOOK_CFG = {
   adapa: { label:'Adapa and the Food of Life', sub:'Morris Jastrow \u00B7 1898 \u00B7 3 Tablets \u00B7 El-Amarna \u00B7 Akkadian', icon:'\uD83C\uDF47', accent:'#c07840', accentDim:'rgba(192,120,64,0.35)', countLabel:'tablet', bookTitle:'Adapa and the Food of Life', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
   dhammapada: { label:'Dhammapada', sub:'F. Max M\u00FCller \u00B7 1881 \u00B7 26 Chapters \u00B7 423 Verses \u00B7 Buddhism', icon:'\uD83D\uDCD6', accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse', bookTitle:'Dhammapada', bookEdition:'Trans. F. Max M\u00FCller \u00B7 Sacred Books of the East Vol. X \u00B7 1881', type:'dhammapada' },
   heart_sutra: { label:'Heart S\u016Btra', sub:'Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya \u00B7 c. 1st cent. CE \u00B7 4 Sections \u00B7 Mah\u0101y\u0101na Buddhism', icon:'\uD83D\uDC9C', accent:'#f472b6', accentDim:'rgba(244,114,182,0.35)', countLabel:'section', bookTitle:'Heart S\u016Btra \u2014 Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'heart_sutra' },
+  lotus_sutra: { label:'Lotus S\u016Btra', sub:'H. Kern \u00B7 1884 \u00B7 27 Chapters \u00B7 Saddharmapun\u1E0Dar\u012Bka \u00B7 Mah\u0101y\u0101na', icon:'\uD83C\uDF37', accent:'#fbbf24', accentDim:'rgba(251,191,36,0.35)', countLabel:'chapter', bookTitle:'Lotus S\u016Btra \u2014 Saddharmapun\u1E0Dar\u012Bkasad\u016Btra', bookEdition:'Trans. H. Kern \u00B7 Sacred Books of the East Vol. XXI \u00B7 1884', type:'nikaya' },
   diamond_sutra: { label:'Diamond S\u016Btra', sub:'Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101 \u00B7 c. 1st cent. CE \u00B7 32 Sections \u00B7 Mah\u0101y\u0101na', icon:'\uD83D\uDC8E', accent:'#67e8f9', accentDim:'rgba(103,232,249,0.35)', countLabel:'section', bookTitle:'Diamond S\u016Btra \u2014 Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'diamond_sutra' },
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   corpus_hermeticum: { label:'Corpus Hermeticum', sub:'G.R.S. Mead \u00B7 1906 \u00B7 18 Tractates \u00B7 Hermetic Philosophy \u00B7 c. 100\u2013300 CE', icon:'\u2640\uFE0F', accent:'#f0c070', accentDim:'rgba(240,192,112,0.35)', countLabel:'tractate', bookTitle:'Corpus Hermeticum', bookEdition:'Trans. G.R.S. Mead \u00B7 Thrice-Greatest Hermes \u00B7 1906', type:'corpus_hermeticum' },
@@ -11440,6 +11451,7 @@ function loadScriptures(cb){
     fetch('kesh_temple_hymn.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('mesopotamia.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('dhammapada.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('lotus_sutra.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetchJsonFirstAvailable(['prajnaparamita.json','prajnaparamita (1).json'], null),
     fetch('masnavi.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('corpus_hermeticum.json').then(r=>r.ok?r.json():null).catch(()=>null),
@@ -11455,7 +11467,7 @@ function loadScriptures(cb){
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11471,6 +11483,7 @@ function loadScriptures(cb){
         if(Array.isArray(mesopData.adapa)&&mesopData.adapa.length) d.adapa=mesopData.adapa;
       }
       if(dhamData && Array.isArray(dhamData.dhammapada) && dhamData.dhammapada.length) d.dhammapada = dhamData.dhammapada;
+      if(lotusData && Array.isArray(lotusData.lotus_sutra) && lotusData.lotus_sutra.length) d.lotus_sutra = lotusData.lotus_sutra;
       if(ppData && Array.isArray(ppData.heart_sutra) && ppData.heart_sutra.length) d.heart_sutra = ppData.heart_sutra;
       if(ppData && Array.isArray(ppData.diamond_sutra) && ppData.diamond_sutra.length) d.diamond_sutra = ppData.diamond_sutra;
       if(masData && Array.isArray(masData.masnavi) && masData.masnavi.length) d.masnavi = masData.masnavi;
@@ -11947,6 +11960,9 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='heart_sutra'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='lotus_sutra'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}`; sel.appendChild(o); });
   } else if(key==='diamond_sutra'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
@@ -12202,6 +12218,12 @@ window.libGoChapter=function(idxStr){
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='lotus_sutra'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='diamond_sutra'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12298,7 +12320,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
