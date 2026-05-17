@@ -1822,13 +1822,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="srch-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3000+ BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-rig" style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);" onclick="toggleBook('rig',this)">
-      <span class="sb-icon">&#x1F549;&#xFE0F;</span><span>&#x1E5A;gveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">10,432 Verses &middot; 10 Ma&#x1E47;&#x1E0Dalas</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F549;&#xFE0F;</span><span>&#x1E5A;gveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1500&ndash;1200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-sama" style="--btn-color:#66bb6a;--btn-bg:rgba(102,187,106,.12);--btn-glow:rgba(102,187,106,.35);" onclick="toggleBook('sama',this)">
-      <span class="sb-icon">&#x1F3B5;</span><span>S&#x0101;maveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1893</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">1,781 Verses &middot; 15 Books</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F3B5;</span><span>S&#x0101;maveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1200&ndash;1000 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-yajur" style="--btn-color:#ffb300;--btn-bg:rgba(255,179,0,.12);--btn-glow:rgba(255,179,0,.35);" onclick="toggleBook('yajur',this)">
-      <span class="sb-icon">&#x1F525;</span><span>Yajurveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Keith &middot; 1914</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">642 Sections &middot; 7 Ka&#x1E47;&#x1E0Das</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F525;</span><span>Yajurveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Keith &middot; 1914</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1200&ndash;900 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-atharva" style="--btn-color:#ab47bc;--btn-bg:rgba(171,71,188,.12);--btn-glow:rgba(171,71,188,.35);" onclick="toggleBook('atharva',this)">
       <span class="sb-icon">&#x1F33F;</span><span>Atharvaveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1000&ndash;900 BCE</small></span><span class="sb-check">&#10022;</span>
@@ -11941,6 +11941,20 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='maha'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((sec,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${sec.b}: ${sec.p} \u2014 Sec. ${sec.s}`; sel.appendChild(o); });
+  } else if(BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya'){
+    // Group by unique r value so sub-sections of the same sutta are one chapter
+    const seenR=new Map(); const groups=[];
+    data.forEach((sutta,i)=>{
+      if(!seenR.has(sutta.r)){ seenR.set(sutta.r,groups.length); groups.push({r:sutta.r,firstIdx:i}); }
+    });
+    libChapterList=groups;
+    groups.forEach((g,i)=>{
+      const o=document.createElement('option'); o.value=i;
+      // Use sutta r as label; if only one item with this r and it has a unique title, show it
+      const matches=data.filter(s=>s.r===g.r);
+      const lbl=matches.length===1&&matches[0].title&&matches[0].title!==matches[0].r?`${g.r}: ${matches[0].title}`:g.r;
+      o.textContent=lbl; sel.appendChild(o);
+    });
   } else if(key==='rig'||key==='atharva'){
     // Group by book+hymn
     const hymns=[]; const seen=new Set();
@@ -12091,29 +12105,6 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='jaina_sutras'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.title?`${s.r} — ${s.title}`:s.r; sel.appendChild(o); });
-  } else if(key==='dn'||key==='mn'||key==='sn'||key==='an'){
-    const seenR=new Map(); const groups=[];
-    data.forEach((s,i)=>{ if(!seenR.has(s.r)){ seenR.set(s.r,groups.length); groups.push({r:s.r,firstIdx:i}); } });
-    libChapterList=groups;
-    groups.forEach((g,i)=>{ const matches=data.filter(s=>s.r===g.r); const lbl=matches.length===1&&matches[0].title&&matches[0].title!==g.r?`${g.r}: ${matches[0].title}`:g.r; const o=document.createElement('option'); o.value=i; o.textContent=lbl; sel.appendChild(o); });
-  } else if(key==='odyssey'||key==='iliad'){
-    libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
-  } else if(key==='garuda_purana'||key==='bhagavata_purana'){
-    libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
-  } else if(BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya'){
-    const seenR=new Map(); const groups=[];
-    data.forEach((sutta,i)=>{
-      if(!seenR.has(sutta.r)){ seenR.set(sutta.r,groups.length); groups.push({r:sutta.r,firstIdx:i}); }
-    });
-    libChapterList=groups;
-    groups.forEach((g,i)=>{
-      const o=document.createElement('option'); o.value=i;
-      const matches=data.filter(s=>s.r===g.r);
-      const lbl=matches.length===1&&matches[0].title&&matches[0].title!==matches[0].r?`${g.r}: ${matches[0].title}`:g.r;
-      o.textContent=lbl; sel.appendChild(o);
-    });
   }
   const isNikaya=BOOK_CFG[key]&&BOOK_CFG[key].type==='nikaya';
   const isVeda=BOOK_CFG[key]&&(BOOK_CFG[key].type==='veda'||BOOK_CFG[key].type==='avesta');
@@ -12166,7 +12157,22 @@ window.libGoChapter=function(idxStr){
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sec.ps; container.appendChild(sub);
     const _mahaRef=`Book ${sec.b}: ${sec.p} — Section ${sec.s}`;
     renderSegmentedPassage(container,cfg,_mahaRef,sec.t);
-    } else if(libBook==='rig'||libBook==='atharva'){
+    } else if(isNikaya){
+    const grp=libChapterList[idx]; if(!grp) return;
+    const sections=data.filter(s=>s.r===grp.r);
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    // Only embed the title in the heading when there is exactly one section and it has a distinct title
+    const lbl=sections.length===1&&sections[0].title&&sections[0].title!==grp.r?`${grp.r}: ${sections[0].title}`:grp.r;
+    h.textContent=lbl; container.appendChild(h);
+    sections.forEach(sutta=>{
+      // For multi-section suttas, show each section title as a subheading
+      if(sections.length>1&&sutta.title&&sutta.title!==grp.r){
+        const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.title; container.appendChild(sub);
+      }
+      if(sutta.chapter){const sub2=document.createElement('div'); sub2.className='lib-chapter-subhead'; sub2.textContent=sutta.chapter; container.appendChild(sub2);}
+      renderProseChapter(container,cfg,sutta.t);
+    });
+  } else if(libBook==='rig'||libBook==='atharva'){
     const grp=libChapterList[idx]; if(!grp) return;
     const verses=data.filter(v=>v.b===grp.b&&v.h===grp.h);
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12421,40 +12427,6 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     hadiths.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.n}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
-  } else if(libBook==='dn'||libBook==='mn'||libBook==='sn'||libBook==='an'){
-    const grp=libChapterList[idx]; if(!grp) return;
-    const sections=data.filter(s=>s.r===grp.r);
-    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    const lbl=sections.length===1&&sections[0].title&&sections[0].title!==grp.r?`${grp.r}: ${sections[0].title}`:grp.r;
-    h.textContent=lbl; container.appendChild(h);
-    sections.forEach(sutta=>{
-      if(sections.length>1&&sutta.title&&sutta.title!==grp.r){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.title; container.appendChild(sub);}
-      if(sutta.chapter){const sub2=document.createElement('div'); sub2.className='lib-chapter-subhead'; sub2.textContent=sutta.chapter; container.appendChild(sub2);}
-      renderProseChapter(container,cfg,sutta.t);
-    });
-  } else if(libBook==='odyssey'||libBook==='iliad'){
-    const s=data[idx]; if(!s) return;
-    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.r; container.appendChild(h);
-    renderProseChapter(container,cfg,s.t);
-  } else if(libBook==='garuda_purana'||libBook==='bhagavata_purana'){
-    const s=data[idx]; if(!s) return;
-    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.r; container.appendChild(h);
-    renderProseChapter(container,cfg,s.t);
-  } else if(isNikaya){
-    const grp=libChapterList[idx]; if(!grp) return;
-    const sections=data.filter(s=>s.r===grp.r);
-    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    const lbl=sections.length===1&&sections[0].title&&sections[0].title!==grp.r?`${grp.r}: ${sections[0].title}`:grp.r;
-    h.textContent=lbl; container.appendChild(h);
-    sections.forEach(sutta=>{
-      if(sections.length>1&&sutta.title&&sutta.title!==grp.r){
-        const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=sutta.title; container.appendChild(sub);
-      }
-      if(sutta.chapter){const sub2=document.createElement('div'); sub2.className='lib-chapter-subhead'; sub2.textContent=sutta.chapter; container.appendChild(sub2);}
-      renderProseChapter(container,cfg,sutta.t);
-    });
   }
 };
 
