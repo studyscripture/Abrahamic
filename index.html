@@ -1258,6 +1258,41 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
     <div class="lib-shelf-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3000+ BCE</span></div>
     <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#ff7043;" onclick="openLibBook('rig')">
+        <div class="lib-book-icon">&#x1F549;&#xFE0F;</div>
+        <div class="lib-book-name">&#x1E5A;gveda</div>
+        <div class="lib-book-origin">c. 1500&ndash;1200 BCE</div>
+        <div class="lib-book-edition">R. T. H. Griffith &middot; 1896 &middot; 10 Mandalas</div>
+        <div class="lib-book-count">9,667 Verses &middot; &#x15A;ruti</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#66bb6a;" onclick="openLibBook('sama')">
+        <div class="lib-book-icon">&#x1F3B5;</div>
+        <div class="lib-book-name">S&#x0101;maveda</div>
+        <div class="lib-book-origin">c. 1200&ndash;1000 BCE</div>
+        <div class="lib-book-edition">R. T. H. Griffith &middot; 1895</div>
+        <div class="lib-book-count">561 Verses &middot; &#x15A;ruti</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ffb300;" onclick="openLibBook('yajur')">
+        <div class="lib-book-icon">&#x1F525;</div>
+        <div class="lib-book-name">Yajurveda</div>
+        <div class="lib-book-origin">c. 1200&ndash;900 BCE</div>
+        <div class="lib-book-edition">A. B. Keith &middot; 1914 &middot; Black Yajurveda</div>
+        <div class="lib-book-count">142 Verses &middot; &#x15A;ruti</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ab47bc;" onclick="openLibBook('atharva')">
+        <div class="lib-book-icon">&#x1F33F;</div>
+        <div class="lib-book-name">Atharvaveda</div>
+        <div class="lib-book-origin">c. 1000&ndash;900 BCE</div>
+        <div class="lib-book-edition">R. T. H. Griffith &middot; 1895</div>
+        <div class="lib-book-count">1,766 Verses &middot; &#x15A;ruti</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('upanishads')">
+        <div class="lib-book-icon">&#x1F9D8;</div>
+        <div class="lib-book-name">Upani&#x1E63;ads</div>
+        <div class="lib-book-origin">c. 800&ndash;200 BCE</div>
+        <div class="lib-book-edition">F. Max M&#xFC;ller &middot; 1879&ndash;1884 &middot; 12 Upani&#x1E63;ads</div>
+        <div class="lib-book-count">53 Sections &middot; Sacred Books of the East</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#ffd54f;" onclick="openLibBook('sbg')">
         <div class="lib-book-icon">&#x2600;&#xFE0F;</div>
         <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
@@ -1772,6 +1807,21 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div class="srch-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3000+ BCE</span></div>
   <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-rig" style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);" onclick="toggleBook('rig',this)">
+      <span class="sb-icon">&#x1F549;&#xFE0F;</span><span>&#x1E5A;gveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1500&ndash;1200 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-sama" style="--btn-color:#66bb6a;--btn-bg:rgba(102,187,106,.12);--btn-glow:rgba(102,187,106,.35);" onclick="toggleBook('sama',this)">
+      <span class="sb-icon">&#x1F3B5;</span><span>S&#x0101;maveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1200&ndash;1000 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-yajur" style="--btn-color:#ffb300;--btn-bg:rgba(255,179,0,.12);--btn-glow:rgba(255,179,0,.35);" onclick="toggleBook('yajur',this)">
+      <span class="sb-icon">&#x1F525;</span><span>Yajurveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Keith &middot; 1914</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1200&ndash;900 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-atharva" style="--btn-color:#ab47bc;--btn-bg:rgba(171,71,188,.12);--btn-glow:rgba(171,71,188,.35);" onclick="toggleBook('atharva',this)">
+      <span class="sb-icon">&#x1F33F;</span><span>Atharvaveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1000&ndash;900 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-upanishads" style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);" onclick="toggleBook('upanishads',this)">
+      <span class="sb-icon">&#x1F9D8;</span><span>Upani&#x1E63;ads<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M&#xFC;ller &middot; 1879</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 800&ndash;200 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-sbg" style="--btn-color:#ffd54f;--btn-bg:rgba(255,213,79,.12);--btn-glow:rgba(255,213,79,.35);" onclick="toggleBook('sbg',this)">
       <span class="sb-icon">&#x2600;&#xFE0F;</span><span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Swarupananda &middot; 1909</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200 BCE&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
@@ -11259,7 +11309,7 @@ const BOOK_CFG = {
   sama:    { label:'S\u0101maveda',                           sub:'R. T. H. Griffith \u00B7 1895',                                               icon:'\uD83C\uDFB5', accent:'#66bb6a', accentDim:'rgba(102,187,106,0.35)', countLabel:'verse',   bookTitle:'S\u0101maveda',           bookEdition:'R. T. H. Griffith Translation \u00B7 1895',       type:'veda'   },
   atharva: { label:'Atharvaveda',                             sub:'R. T. H. Griffith \u00B7 1895',                                               icon:'\uD83C\uDF3F', accent:'#ab47bc', accentDim:'rgba(171,71,188,0.35)',  countLabel:'verse',   bookTitle:'Atharvaveda',       bookEdition:'R. T. H. Griffith Translation \u00B7 1895',       type:'veda'   },
   avesta:     { label:'Zend Avesta',                  sub:'James Darmesteter \u00B7 1880 \u00B7 Zoroastrian Scripture',                  icon:'\uD83D\uDCAB', accent:'#26c6da', accentDim:'rgba(38,198,218,0.35)',  countLabel:'verse',   bookTitle:'Zend Avesta',         bookEdition:'James Darmesteter Translation \u00B7 1880',         type:'avesta'     },
-  upanishads: { label:'Upani\u1E63ads', sub:'Robert Ernest Hume \u00B7 1921 \u00B7 13 Upani\u1E63ads \u00B7 Oxford University Press', icon:'\uD83E\uDDD8', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'upanishad', bookTitle:'The Thirteen Principal Upani\u1E63ads', bookEdition:'Trans. Robert Ernest Hume \u00B7 Oxford University Press \u00B7 1921', type:'upanishads_hume' },
+  upanishads: { label:'Upani\u1E63ads',              sub:'F. Max M\u00FCller \u00B7 1879\u20131884 \u00B7 12 Upani\u1E63ads',          icon:'\uD83E\uDDD8', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'section', bookTitle:'Upani\u1E63ads',     bookEdition:'F. Max M\u00FCller Translation \u00B7 1879\u20131884', type:'nikaya' },
   ramayana:   { label:'R\u0101m\u0101ya\u1E47a',  sub:'R. T. H. Griffith \u00B7 1870\u20131874 \u00B7 V\u0101lm\u012Bki',          icon:'\uD83C\uDFF9', accent:'#ef9a9a', accentDim:'rgba(239,154,154,0.35)', countLabel:'canto',   bookTitle:'R\u0101m\u0101ya\u1E47a', bookEdition:'R. T. H. Griffith Translation \u00B7 1870\u20131874', type:'nikaya' },
   tao:        { label:'Tao Te Ching',                 sub:'James Legge \u00B7 1891 \u00B7 Lao-Tze',                                     icon:'\u262F\uFE0F', accent:'#ffe082', accentDim:'rgba(255,224,130,0.35)', countLabel:'chapter', bookTitle:'Tao Te Ching',        bookEdition:'James Legge Translation \u00B7 1891',               type:'nikaya' },
   zhuangzi:   { label:'Zhuangzi',                      sub:'Herbert A. Giles \u00B7 1889 \u00B7 33 Chapters \u00B7 Taoist Classic',         icon:'\uD83E\uDD8B', accent:'#80deea', accentDim:'rgba(128,222,234,0.35)', countLabel:'chapter', bookTitle:'Zhuangzi (Chuang Tz\u016D)', bookEdition:'Trans. Herbert A. Giles \u00B7 1889 \u00B7 Mystic, Moralist, and Social Reformer', type:'zhuangzi' },
@@ -11429,7 +11479,18 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.bukhari)) d.bukhari.sort((a,b)=>(toNum(a.vol)-toNum(b.vol))||(toNum(a.book)-toNum(b.book))||(toNum(a.n)-toNum(b.n)));
   if(Array.isArray(d.muslim))  d.muslim.sort((a,b)=>(toNum(a.book)-toNum(b.book))||(toNum(a.n)-toNum(b.n)));
   if(Array.isArray(d.upanishads)){
-    d.upanishads.sort((a,b)=>a.chapter-b.chapter);
+    const upanOrder = new Map();
+    let upanIdx = 0;
+    d.upanishads.forEach(s=>{
+      if(!upanOrder.has(s.upan)) upanOrder.set(s.upan, upanIdx++);
+      s.t = stripUpanishadFootnotes(s.t);
+    });
+    d.upanishads.sort((a,b)=>
+      ((upanOrder.has(a.upan)?upanOrder.get(a.upan):99)-(upanOrder.has(b.upan)?upanOrder.get(b.upan):99)) ||
+      (toNum(a.section_num)-toNum(b.section_num)) ||
+      cmpText(a.section,b.section) ||
+      cmpText(a.r,b.r)
+    );
   }
 }
 
@@ -11903,7 +11964,7 @@ function _buildOtherNav(key,cfg,targetIdx){
     groups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${g.sec} \u2014 ${g.fg}`; sel.appendChild(o); });
   } else if(key==='upanishads'){
     libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.upan}${s.section?' \u2014 '+s.section:''}`; sel.appendChild(o); });
   } else if(key==='ramayana'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; sel.appendChild(o); });
@@ -12131,9 +12192,8 @@ window.libGoChapter=function(idxStr){
     } else if(libBook==='upanishads'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.r; container.appendChild(h);
-    const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);
-    renderProseChapter(container,cfg,s.t);
+    h.textContent=s.upan+(s.section?' — '+s.section:''); container.appendChild(h);
+    renderSegmentedPassage(container,cfg,s.r,s.t);
     } else if(libBook==='ramayana'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12568,7 +12628,7 @@ function chapLabel(book,v,cfg){
   }
   if(cfg.type==='tattva') return v.ct||null;
   // prose types using nikaya renderer
-  if(book==='upanishads') return v.r||v.subtitle||'';
+  if(book==='upanishads') return v.upan+(v.section?' \u2014 '+v.section:'');
   if(book==='ramayana')   return v.book_name||null;
   if(book==='tao')        return null;
   if(book==='analects')      return v.book_title||null;
