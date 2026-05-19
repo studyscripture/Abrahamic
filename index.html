@@ -11518,7 +11518,6 @@ function loadScriptures(cb){
   showStatus('<span class="srch-loader"></span> Loading scripture data\u2026');
   Promise.all([
     fetchJsonFirstAvailable('scriptures.json', {}),
-    fetchJsonFirstAvailable('vedas.json', {}),
     fetchJsonFirstAvailable('thevedas.json', {}),
     fetchJsonFirstAvailable('scripture3.json', {}),
     fetch('tanakh.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
@@ -11554,9 +11553,9 @@ function loadScriptures(cb){
     fetch('bhagavata_purana.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('garuda_purana.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, tv, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData])=>{
       d = (d && typeof d === 'object') ? d : {};
-      Object.assign(d, v, tv, s3);
+      Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
       if(Array.isArray(ms) && ms.length) d.muslim = ms;
