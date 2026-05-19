@@ -1286,12 +1286,19 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1895</div>
         <div class="lib-book-count">723 Hymns &middot; &#x15A;ruti</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('upanishads')">
-        <div class="lib-book-icon">&#x1F9D8;</div>
-        <div class="lib-book-name">Upani&#x1E63;ads</div>
-        <div class="lib-book-origin">c. 800&ndash;200 BCE &middot; The Thirteen Principal Upani&#x1E63;ads</div>
-        <div class="lib-book-edition">Robert Ernest Hume &middot; 1921 &middot; Oxford University Press</div>
-        <div class="lib-book-count">13 Upani&#x1E63;ads &middot; Complete Translation</div>
+      <div class="lib-book-card" style="--bk-accent:#f9a825;" onclick="openLibBook('bhagavata_purana')">
+        <div class="lib-book-icon">&#x1F31F;</div>
+        <div class="lib-book-name">Dev&#x012B; Bh&#x0101;gavata Pur&#x0101;&#x1E47;a</div>
+        <div class="lib-book-origin">c. 6th&ndash;14th century CE &middot; 12 Skandhas &middot; 18,000 Verses</div>
+        <div class="lib-book-edition">Swami Vijnanananda &middot; 1921&ndash;1922 &middot; Sacred Books of the Hindus</div>
+        <div class="lib-book-count">318 Chapters &middot; &#x15A;&#x0101;kta Mah&#x0101;pur&#x0101;&#x1E47;a</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c0ca33;" onclick="openLibBook('garuda_purana')">
+        <div class="lib-book-icon">&#x1F985;</div>
+        <div class="lib-book-name">Garu&#x1E0D;a Pur&#x0101;&#x1E47;a</div>
+        <div class="lib-book-origin">c. 800&ndash;1000 CE &middot; S&#x0101;roddh&#x0101;ra &middot; Extracted Essence</div>
+        <div class="lib-book-edition">Ernest Wood &amp; S. V. Subrahmanyam &middot; 1911 &middot; Sacred Books of the Hindus</div>
+        <div class="lib-book-count">16 Chapters &middot; Eschatology &middot; Yoga &middot; Liberation</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ffd54f;" onclick="openLibBook('sbg')">
         <div class="lib-book-icon">&#x2600;&#xFE0F;</div>
@@ -1819,8 +1826,11 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-atharva" style="--btn-color:#ab47bc;--btn-bg:rgba(171,71,188,.12);--btn-glow:rgba(171,71,188,.35);" onclick="toggleBook('atharva',this)">
       <span class="sb-icon">&#x1F33F;</span><span>Atharvaveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">723 Hymns &middot; 20 Books</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-upanishads" style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);" onclick="toggleBook('upanishads',this)">
-      <span class="sb-icon">&#x1F9D8;</span><span>Upani&#x1E63;ads<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Hume &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">13 Upani&#x1E63;ads</small></span><span class="sb-check">&#10022;</span>
+    <button class="srch-book-btn active" id="sbtn-bhagavata_purana" style="--btn-color:#f9a825;--btn-bg:rgba(249,168,37,.12);--btn-glow:rgba(249,168,37,.35);" onclick="toggleBook('bhagavata_purana',this)">
+      <span class="sb-icon">&#x1F31F;</span><span>Dev&#x012B; Bh&#x0101;gavata<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Vijnanananda &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">318 Chapters</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-garuda_purana" style="--btn-color:#c0ca33;--btn-bg:rgba(192,202,51,.12);--btn-glow:rgba(192,202,51,.35);" onclick="toggleBook('garuda_purana',this)">
+      <span class="sb-icon">&#x1F985;</span><span>Garu&#x1E0D;a Pur&#x0101;&#x1E47;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Wood &amp; Subr. &middot; 1911</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">16 Chapters</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-sbg" style="--btn-color:#ffd54f;--btn-bg:rgba(255,213,79,.12);--btn-glow:rgba(255,213,79,.35);" onclick="toggleBook('sbg',this)">
       <span class="sb-icon">&#x2600;&#xFE0F;</span><span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Swarupananda &middot; 1909</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200 BCE&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
@@ -11309,7 +11319,8 @@ const BOOK_CFG = {
   sama:    { label:'S\u0101maveda',                           sub:'R. T. H. Griffith \u00B7 1893 \u00B7 2 Parts \u00B7 15 Books \u00B7 1,781 Verses',   icon:'\uD83C\uDFB5', accent:'#66bb6a', accentDim:'rgba(102,187,106,0.35)', countLabel:'verse',   bookTitle:'S\u0101maveda',           bookEdition:'R. T. H. Griffith Translation \u00B7 1893', type:'veda'   },
   atharva: { label:'Atharvaveda',                             sub:'R. T. H. Griffith \u00B7 1895 \u00B7 20 Books \u00B7 723 Hymns',                   icon:'\uD83C\uDF3F', accent:'#ab47bc', accentDim:'rgba(171,71,188,0.35)',  countLabel:'hymn',    bookTitle:'Atharvaveda',       bookEdition:'R. T. H. Griffith Translation \u00B7 1895', type:'veda'   },
   avesta:     { label:'Zend Avesta',                  sub:'James Darmesteter \u00B7 1880 \u00B7 Zoroastrian Scripture',                  icon:'\uD83D\uDCAB', accent:'#26c6da', accentDim:'rgba(38,198,218,0.35)',  countLabel:'verse',   bookTitle:'Zend Avesta',         bookEdition:'James Darmesteter Translation \u00B7 1880',         type:'avesta'     },
-  upanishads: { label:'Upani\u1E63ads', sub:'Robert Ernest Hume \u00B7 1921 \u00B7 13 Upani\u1E63ads \u00B7 Oxford University Press', icon:'\uD83E\uDDD8', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'upanishad', bookTitle:'The Thirteen Principal Upani\u1E63ads', bookEdition:'Trans. Robert Ernest Hume \u00B7 Oxford University Press \u00B7 1921', type:'upanishads_hume' },
+  bhagavata_purana: { label:'Dev\u012B Bh\u0101gavata Pur\u0101\u1E47a', sub:'Swami Vijnanananda \u00B7 1921\u20131922 \u00B7 12 Skandhas \u00B7 318 Chapters', icon:'\uD83C\uDF1F', accent:'#f9a825', accentDim:'rgba(249,168,37,0.35)', countLabel:'chapter', bookTitle:'Dev\u012B Bh\u0101gavata Pur\u0101\u1E47a', bookEdition:'Swami Vijnanananda Translation \u00B7 1921\u20131922 \u00B7 Sacred Books of the Hindus', type:'gilgamesh' },
+  garuda_purana: { label:'Garu\u1E0Da Pur\u0101\u1E47a', sub:'Wood & Subrahmanyam \u00B7 1911 \u00B7 S\u0101roddh\u0101ra \u00B7 Sacred Books of the Hindus', icon:'\uD83E\uDD85', accent:'#c0ca33', accentDim:'rgba(192,202,51,0.35)', countLabel:'chapter', bookTitle:'Garu\u1E0Da Pur\u0101\u1E47a \u2014 S\u0101roddh\u0101ra', bookEdition:'Trans. Ernest Wood & S. V. Subrahmanyam \u00B7 1911 \u00B7 Sacred Books of the Hindus', type:'gilgamesh' },
   ramayana:   { label:'R\u0101m\u0101ya\u1E47a',  sub:'R. T. H. Griffith \u00B7 1870\u20131874 \u00B7 V\u0101lm\u012Bki',          icon:'\uD83C\uDFF9', accent:'#ef9a9a', accentDim:'rgba(239,154,154,0.35)', countLabel:'canto',   bookTitle:'R\u0101m\u0101ya\u1E47a', bookEdition:'R. T. H. Griffith Translation \u00B7 1870\u20131874', type:'nikaya' },
   tao:        { label:'Tao Te Ching',                 sub:'James Legge \u00B7 1891 \u00B7 Lao-Tze',                                     icon:'\u262F\uFE0F', accent:'#ffe082', accentDim:'rgba(255,224,130,0.35)', countLabel:'chapter', bookTitle:'Tao Te Ching',        bookEdition:'James Legge Translation \u00B7 1891',               type:'nikaya' },
   zhuangzi:   { label:'Zhuangzi',                      sub:'Herbert A. Giles \u00B7 1889 \u00B7 33 Chapters \u00B7 Taoist Classic',         icon:'\uD83E\uDD8B', accent:'#80deea', accentDim:'rgba(128,222,234,0.35)', countLabel:'chapter', bookTitle:'Zhuangzi (Chuang Tz\u016D)', bookEdition:'Trans. Herbert A. Giles \u00B7 1889 \u00B7 Mystic, Moralist, and Social Reformer', type:'zhuangzi' },
@@ -11507,7 +11518,7 @@ function loadScriptures(cb){
   showStatus('<span class="srch-loader"></span> Loading scripture data\u2026');
   Promise.all([
     fetchJsonFirstAvailable('scriptures.json', {}),
-    fetchJsonFirstAvailable('vedas.json', {}),
+    fetchJsonFirstAvailable('thevedas.json', {}),
     fetchJsonFirstAvailable('scripture3.json', {}),
     fetch('tanakh.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
     fetch('bukhari.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
@@ -11538,9 +11549,11 @@ function loadScriptures(cb){
     fetch('jaina_sutras.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('mahabharata.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('bhagavata_purana.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('garuda_purana.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData])=>{
+    .then(([d, v, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11579,6 +11592,8 @@ function loadScriptures(cb){
       if(mahaData && Array.isArray(mahaData.maha) && mahaData.maha.length) d.maha = mahaData.maha;
       if(pyrData && Array.isArray(pyrData.pyramid_texts) && pyrData.pyramid_texts.length) d.pyramid_texts = pyrData.pyramid_texts;
       if(apocData && Array.isArray(apocData.apocrypha) && apocData.apocrypha.length) d.apocrypha = apocData.apocrypha;
+      if(bhagavataData && Array.isArray(bhagavataData.bhagavata_purana) && bhagavataData.bhagavata_purana.length) d.bhagavata_purana = bhagavataData.bhagavata_purana;
+      if(garudaData && Array.isArray(garudaData.garuda_purana) && garudaData.garuda_purana.length) d.garuda_purana = garudaData.garuda_purana;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -11606,7 +11621,7 @@ function loadScriptures(cb){
       normalizeAndSortScriptures(d);
       SCRIPTURES=d; dataLoading=false; hideStatus(); dataCBs.splice(0).forEach(f=>f());
     })
-    .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load scripture data \u2014 place <strong>scriptures.json</strong> and <strong>vedas.json</strong> in the same folder as this file.'); console.error(e); });
+    .catch(e=>{ dataLoading=false; showStatus('\u26A0\uFE0F Could not load scripture data \u2014 place <strong>scriptures.json</strong> and <strong>thevedas.json</strong> in the same folder as this file.'); console.error(e); });
 }
 
 // ══ LIBRARY ═══════════════════════════════════════════
@@ -12422,7 +12437,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12437,7 +12452,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','upanishads','sbg','gita_besant','ramayana','maha','harivamsha','vishnu_purana','yoga_sutras','devi_mahatmya','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','sbg','gita_besant','ramayana','maha','harivamsha','vishnu_purana','bhagavata_purana','garuda_purana','yoga_sutras','devi_mahatmya','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
