@@ -1300,6 +1300,20 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Ernest Wood &amp; S. V. Subrahmanyam &middot; 1911 &middot; Sacred Books of the Hindus</div>
         <div class="lib-book-count">16 Chapters &middot; Eschatology &middot; Yoga &middot; Liberation</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#e040fb;" onclick="openLibBook('mahanirvana_tantra')">
+        <div class="lib-book-icon">&#x1F525;</div>
+        <div class="lib-book-name">Mah&#x0101;nirv&#x0101;&#x1E47;a Tantra</div>
+        <div class="lib-book-origin">c. 18th century CE &middot; K&#x0101;l&#x012Byuga Scripture &middot; &#x15A;&#x0101;kta Tantra</div>
+        <div class="lib-book-edition">Arthur Avalon (Sir John Woodroffe) &middot; 1913 &middot; Tantra of the Great Liberation</div>
+        <div class="lib-book-count">14 Ull&#x0101;sas &middot; Shiva &amp; Shakti Dialogue &middot; Kaula Tradition</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ff7043;" onclick="openLibBook('dakshinamurti_stotra')">
+        <div class="lib-book-icon">&#x1F442;</div>
+        <div class="lib-book-name">Dak&#x1E63;i&#x1E47;&#x0101;m&#x016B;rti Stotra</div>
+        <div class="lib-book-origin">&#x15A;r&#x012B; &#x15A;a&#x1E45;kar&#x0101;c&#x0101;rya &middot; c. 8th century CE &middot; Advaita Ved&#x0101;nta</div>
+        <div class="lib-book-edition">Alladi Mahadeva Sastri &middot; 1920 &middot; With Manasoll&#x0101;sa Commentary</div>
+        <div class="lib-book-count">10 Stanzas &middot; Hymn to &#x15A;iva as Guru of the Universe</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#ffd54f;" onclick="openLibBook('sbg')">
         <div class="lib-book-icon">&#x2600;&#xFE0F;</div>
         <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
@@ -1831,6 +1845,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-garuda_purana" style="--btn-color:#c0ca33;--btn-bg:rgba(192,202,51,.12);--btn-glow:rgba(192,202,51,.35);" onclick="toggleBook('garuda_purana',this)">
       <span class="sb-icon">&#x1F985;</span><span>Garu&#x1E0D;a Pur&#x0101;&#x1E47;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Wood &amp; Subr. &middot; 1911</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">16 Chapters</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-mahanirvana_tantra" style="--btn-color:#e040fb;--btn-bg:rgba(224,64,251,.12);--btn-glow:rgba(224,64,251,.35);" onclick="toggleBook('mahanirvana_tantra',this)">
+      <span class="sb-icon">&#x1F525;</span><span>Mah&#x0101;nirv&#x0101;&#x1E47;a Tantra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Avalon &middot; 1913</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">14 Ull&#x0101;sas</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-dakshinamurti_stotra" style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);" onclick="toggleBook('dakshinamurti_stotra',this)">
+      <span class="sb-icon">&#x1F442;</span><span>Dak&#x1E63;i&#x1E47;&#x0101;m&#x016B;rti Stotra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Mahadeva Sastri &middot; 1920</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">10 Stanzas</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-sbg" style="--btn-color:#ffd54f;--btn-bg:rgba(255,213,79,.12);--btn-glow:rgba(255,213,79,.35);" onclick="toggleBook('sbg',this)">
       <span class="sb-icon">&#x2600;&#xFE0F;</span><span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Swarupananda &middot; 1909</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200 BCE&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
@@ -11321,6 +11341,8 @@ const BOOK_CFG = {
   avesta:     { label:'Zend Avesta',                  sub:'James Darmesteter \u00B7 1880 \u00B7 Zoroastrian Scripture',                  icon:'\uD83D\uDCAB', accent:'#26c6da', accentDim:'rgba(38,198,218,0.35)',  countLabel:'verse',   bookTitle:'Zend Avesta',         bookEdition:'James Darmesteter Translation \u00B7 1880',         type:'avesta'     },
   bhagavata_purana: { label:'Dev\u012B Bh\u0101gavata Pur\u0101\u1E47a', sub:'Swami Vijnanananda \u00B7 1921\u20131922 \u00B7 12 Skandhas \u00B7 318 Chapters', icon:'\uD83C\uDF1F', accent:'#f9a825', accentDim:'rgba(249,168,37,0.35)', countLabel:'chapter', bookTitle:'Dev\u012B Bh\u0101gavata Pur\u0101\u1E47a', bookEdition:'Swami Vijnanananda Translation \u00B7 1921\u20131922 \u00B7 Sacred Books of the Hindus', type:'gilgamesh' },
   garuda_purana: { label:'Garu\u1E0Da Pur\u0101\u1E47a', sub:'Wood & Subrahmanyam \u00B7 1911 \u00B7 S\u0101roddh\u0101ra \u00B7 Sacred Books of the Hindus', icon:'\uD83E\uDD85', accent:'#c0ca33', accentDim:'rgba(192,202,51,0.35)', countLabel:'chapter', bookTitle:'Garu\u1E0Da Pur\u0101\u1E47a \u2014 S\u0101roddh\u0101ra', bookEdition:'Trans. Ernest Wood & S. V. Subrahmanyam \u00B7 1911 \u00B7 Sacred Books of the Hindus', type:'gilgamesh' },
+  mahanirvana_tantra: { label:'Mah\u0101nirv\u0101\u1E47a Tantra', sub:'Arthur Avalon (John Woodroffe) \u00B7 1913 \u00B7 14 Ullasas \u00B7 K\u0101l\u012Byuga Scripture', icon:'\uD83D\uDD31', accent:'#e040fb', accentDim:'rgba(224,64,251,0.35)', countLabel:'chapter', bookTitle:'Mah\u0101nirv\u0101\u1E47a Tantra', bookEdition:'Trans. Arthur Avalon (Sir John Woodroffe) \u00B7 1913 \u00B7 Tantra of the Great Liberation', type:'mahanirvana_tantra' },
+  dakshinamurti_stotra: { label:'Dak\u1E63i\u1E47\u0101m\u016Brti Stotra', sub:'\u015Aa\u1E45kar\u0101c\u0101rya \u00B7 Alladi Mahadeva Sastri \u00B7 1920 \u00B7 Advaita Vedanta', icon:'\uD83D\uDC42', accent:'#ff7043', accentDim:'rgba(255,112,67,0.35)', countLabel:'section', bookTitle:'Dak\u1E63i\u1E47\u0101m\u016Brti Stotra with Manasoll\u0101sa', bookEdition:'Trans. Alladi Mahadeva Sastri \u00B7 1920 \u00B7 Hymn to \u015Aiva as Guru of the Universe', type:'dakshinamurti_stotra' },
   ramayana:   { label:'R\u0101m\u0101ya\u1E47a',  sub:'R. T. H. Griffith \u00B7 1870\u20131874 \u00B7 V\u0101lm\u012Bki',          icon:'\uD83C\uDFF9', accent:'#ef9a9a', accentDim:'rgba(239,154,154,0.35)', countLabel:'canto',   bookTitle:'R\u0101m\u0101ya\u1E47a', bookEdition:'R. T. H. Griffith Translation \u00B7 1870\u20131874', type:'nikaya' },
   tao:        { label:'Tao Te Ching',                 sub:'James Legge \u00B7 1891 \u00B7 Lao-Tze',                                     icon:'\u262F\uFE0F', accent:'#ffe082', accentDim:'rgba(255,224,130,0.35)', countLabel:'chapter', bookTitle:'Tao Te Ching',        bookEdition:'James Legge Translation \u00B7 1891',               type:'nikaya' },
   zhuangzi:   { label:'Zhuangzi',                      sub:'Herbert A. Giles \u00B7 1889 \u00B7 33 Chapters \u00B7 Taoist Classic',         icon:'\uD83E\uDD8B', accent:'#80deea', accentDim:'rgba(128,222,234,0.35)', countLabel:'chapter', bookTitle:'Zhuangzi (Chuang Tz\u016D)', bookEdition:'Trans. Herbert A. Giles \u00B7 1889 \u00B7 Mystic, Moralist, and Social Reformer', type:'zhuangzi' },
@@ -11552,9 +11574,11 @@ function loadScriptures(cb){
     fetch('pyramid_texts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('apocrypha.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('bhagavata_purana.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('garuda_purana.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('garuda_purana.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('mahanirvana_tantra.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('dakshinamurti_stotra.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, tv, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData])=>{
+    .then(([d, v, tv, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, tv, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11595,6 +11619,8 @@ function loadScriptures(cb){
       if(apocData && Array.isArray(apocData.apocrypha) && apocData.apocrypha.length) d.apocrypha = apocData.apocrypha;
       if(bhagavataData && Array.isArray(bhagavataData.bhagavata_purana) && bhagavataData.bhagavata_purana.length) d.bhagavata_purana = bhagavataData.bhagavata_purana;
       if(garudaData && Array.isArray(garudaData.garuda_purana) && garudaData.garuda_purana.length) d.garuda_purana = garudaData.garuda_purana;
+      if(mahanirvanaData && Array.isArray(mahanirvanaData.mahanirvana_tantra) && mahanirvanaData.mahanirvana_tantra.length) d.mahanirvana_tantra = mahanirvanaData.mahanirvana_tantra;
+      if(dakshinamurtiData && Array.isArray(dakshinamurtiData.dakshinamurti_stotra) && dakshinamurtiData.dakshinamurti_stotra.length) d.dakshinamurti_stotra = dakshinamurtiData.dakshinamurti_stotra;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -12044,6 +12070,12 @@ function _buildOtherNav(key,cfg,targetIdx){
     groups.sort((a,b)=>((apocBookMap.has(a.book)?apocBookMap.get(a.book):99)-(apocBookMap.has(b.book)?apocBookMap.get(b.book):99))||(a.chapter-b.chapter));
     libChapterList=groups;
     groups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${g.book} \u2014 Chapter ${g.chapter}`; sel.appendChild(o); });
+  } else if(key==='bhagavata_purana'||key==='garuda_purana'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='mahanirvana_tantra'||key==='dakshinamurti_stotra'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}`; sel.appendChild(o); });
   } else if(key==='gilgamesh'||key==='kesh_temple_hymn'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
@@ -12297,6 +12329,17 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
+  } else if(libBook==='bhagavata_purana'||libBook==='garuda_purana'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='mahanirvana_tantra'||libBook==='dakshinamurti_stotra'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    if(s.subtitle&&s.subtitle!==s.r){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);}
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='gilgamesh'||libBook==='kesh_temple_hymn'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12438,7 +12481,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12453,7 +12496,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','sbg','gita_besant','ramayana','maha','harivamsha','vishnu_purana','bhagavata_purana','garuda_purana','yoga_sutras','devi_mahatmya','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','sbg','gita_besant','ramayana','maha','harivamsha','vishnu_purana','bhagavata_purana','garuda_purana','mahanirvana_tantra','dakshinamurti_stotra','yoga_sutras','devi_mahatmya','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
