@@ -11556,6 +11556,7 @@ function loadScriptures(cb){
   ])
     .then(([d, v, tv, s3, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData])=>{
       d = (d && typeof d === 'object') ? d : {};
+      ['rig','sama','yajur','atharva'].forEach(k=>{ delete v[k]; });
       Object.assign(d, v, tv, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
