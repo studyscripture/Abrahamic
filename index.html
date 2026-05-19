@@ -12047,9 +12047,6 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='gilgamesh'||key==='kesh_temple_hymn'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
-  } else if(key==='bhagavata_purana'||key==='garuda_purana'){
-    libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='enuma_elish'||key==='ishtar_descent'||key==='seven_spirits'||key==='adapa'||key==='pyramid_texts'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
@@ -12300,11 +12297,6 @@ window.libGoChapter=function(idxStr){
     const list=document.createElement('div'); list.className='lib-verse-list';
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
-  } else if(libBook==='bhagavata_purana'||libBook==='garuda_purana'){
-    const s=data[idx]; if(!s) return;
-    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.r; container.appendChild(h);
-    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='gilgamesh'||libBook==='kesh_temple_hymn'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
