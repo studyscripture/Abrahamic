@@ -1580,12 +1580,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Herbert A. Giles &middot; 1889 &middot; Chuang Tz&#x016D;: Mystic, Moralist, and Social Reformer</div>
         <div class="lib-book-count">33 Chapters &middot; Inner, Outer &amp; Miscellaneous</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#bcaaa4;" onclick="openLibBook('analects')">
+      <div class="lib-book-card" style="--bk-accent:#bcaaa4;" onclick="openLibBook('analects_new')">
         <div class="lib-book-icon">&#x1F4DC;</div>
         <div class="lib-book-name">Analects of Confucius</div>
-        <div class="lib-book-origin">c. 475&ndash;221 BCE</div>
-        <div class="lib-book-edition">James Legge &middot; 1861 &middot; Confucius</div>
-        <div class="lib-book-count">496 Chapters &middot; 20 Books</div>
+        <div class="lib-book-origin">c. 475&ndash;221 BCE &middot; Confucius &middot; 20 Books</div>
+        <div class="lib-book-edition">James Legge &middot; 1861 &middot; The Chinese Classics Vol. I</div>
+        <div class="lib-book-count">20 Books &middot; Lun Y&#x00FC; &middot; Confucian Canon</div>
       </div>
     </div>
 
@@ -1989,8 +1989,8 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-zhuangzi" style="--btn-color:#80deea;--btn-bg:rgba(128,222,234,.12);--btn-glow:rgba(128,222,234,.35);" onclick="toggleBook('zhuangzi',this)">
       <span class="sb-icon">&#x1F98B;</span><span>Zhuangzi<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Giles &middot; 1889</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-analects" style="--btn-color:#bcaaa4;--btn-bg:rgba(188,170,164,.12);--btn-glow:rgba(188,170,164,.35);" onclick="toggleBook('analects',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Analects<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1861</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 475&ndash;221 BCE</small></span><span class="sb-check">&#10022;</span>
+    <button class="srch-book-btn id="sbtn-analects_new" style="--btn-color:#bcaaa4;--btn-bg:rgba(188,170,164,.12);--btn-glow:rgba(188,170,164,.35);" onclick="toggleBook('analects_new',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Analects of Confucius<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1861</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">20 Books</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11358,6 +11358,7 @@ const BOOK_CFG = {
   tao:        { label:'Tao Te Ching',                 sub:'James Legge \u00B7 1891 \u00B7 Lao-Tze',                                     icon:'\u262F\uFE0F', accent:'#ffe082', accentDim:'rgba(255,224,130,0.35)', countLabel:'chapter', bookTitle:'Tao Te Ching',        bookEdition:'James Legge Translation \u00B7 1891',               type:'nikaya' },
   zhuangzi:   { label:'Zhuangzi',                      sub:'Herbert A. Giles \u00B7 1889 \u00B7 33 Chapters \u00B7 Taoist Classic',         icon:'\uD83E\uDD8B', accent:'#80deea', accentDim:'rgba(128,222,234,0.35)', countLabel:'chapter', bookTitle:'Zhuangzi (Chuang Tz\u016D)', bookEdition:'Trans. Herbert A. Giles \u00B7 1889 \u00B7 Mystic, Moralist, and Social Reformer', type:'zhuangzi' },
   analects:   { label:'Analects of Confucius',        sub:'James Legge \u00B7 1861 \u00B7 Confucius',                                   icon:'\uD83D\uDCDC', accent:'#bcaaa4', accentDim:'rgba(188,170,164,0.35)', countLabel:'chapter', bookTitle:'Analects of Confucius', bookEdition:'James Legge Translation \u00B7 1861',               type:'nikaya' },
+  analects_new: { label:'Analects of Confucius', sub:'James Legge \u00B7 1861 \u00B7 The Chinese Classics Vol. I', icon:'\uD83D\uDCDC', accent:'#bcaaa4', accentDim:'rgba(188,170,164,0.35)', countLabel:'book', bookTitle:'Analects of Confucius \u2014 Lun Y\u00FC', bookEdition:'James Legge \u00B7 1861 \u00B7 The Chinese Classics Vol. I', type:'analects_new' },
   harivamsha: { label:'Harivaṃśa',           sub:'Manmatha Nath Dutt · 1897 · Keshub Academy',                      icon:'🔱', accent:'#ff8a65', accentDim:'rgba(255,138,101,0.35)', countLabel:'chapter', bookTitle:'Harivaṃśa',        bookEdition:'Manmatha Nath Dutt Translation · 1897',          type:'harivamsha' },
   vishnu_purana: { label:'Viṣṇu Purāṇa',        sub:'Manmatha Nath Dutt · 1896 · Keshub Academy',                      icon:'🪔', accent:'#ffa726', accentDim:'rgba(255,167,38,0.35)',  countLabel:'section', bookTitle:'Viṣṇu Purāṇa',      bookEdition:'Manmatha Nath Dutt Translation · 1896',          type:'vishnu_purana' },
   bod:             { label:'Egyptian Book of the Dead', sub:'E. A. Wallis Budge · 1898 · Theban Recension · Coming Forth by Day', icon:'𓂀', accent:'#c8a96e', accentDim:'rgba(200,169,110,0.35)', countLabel:'chapter', bookTitle:'The Egyptian Book of the Dead', bookEdition:'E. A. Wallis Budge Translation · 1898 · Theban Recension', type:'bod' },
@@ -11552,6 +11553,7 @@ function loadScriptures(cb){
   showStatus('<span class="srch-loader"></span> Loading scripture data\u2026');
   Promise.all([
     fetchJsonFirstAvailable('scriptures.json', {}),
+    fetchJsonFirstAvailable('vedas.json', {}),
     fetchJsonFirstAvailable('thevedas.json', {}),
     fetchJsonFirstAvailable('scripture3.json', {}),
     fetch('upanishads.json').then(r=>r.ok?r.json():null).catch(()=>null),
@@ -11588,11 +11590,12 @@ function loadScriptures(cb){
     fetch('bhagavata_purana.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('garuda_purana.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('mahanirvana_tantra.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch('dakshinamurti_stotra.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch('dakshinamurti_stotra.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch('analects_new.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, tv, s3, upanishadsData, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData])=>{
+    .then(([d, v, tv, s3, upanishadsData, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData])=>{
       d = (d && typeof d === 'object') ? d : {};
-      Object.assign(d, tv, s3);
+      Object.assign(d, v, tv, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
       if(Array.isArray(bk) && bk.length) d.bukhari = bk;
       if(Array.isArray(ms) && ms.length) d.muslim = ms;
@@ -11634,6 +11637,7 @@ function loadScriptures(cb){
       if(mahanirvanaData && Array.isArray(mahanirvanaData.mahanirvana_tantra) && mahanirvanaData.mahanirvana_tantra.length) d.mahanirvana_tantra = mahanirvanaData.mahanirvana_tantra;
       if(dakshinamurtiData && Array.isArray(dakshinamurtiData.dakshinamurti_stotra) && dakshinamurtiData.dakshinamurti_stotra.length) d.dakshinamurti_stotra = dakshinamurtiData.dakshinamurti_stotra;
       if(upanishadsData && Array.isArray(upanishadsData.upanishads) && upanishadsData.upanishads.length) d.upanishads = upanishadsData.upanishads;
+      if(analectsNewData && Array.isArray(analectsNewData.analects_new) && analectsNewData.analects_new.length) d.analects_new = analectsNewData.analects_new;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -12013,6 +12017,9 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='tao'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='analects_new'){
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='analects'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${s.book}, Ch. ${s.chapter}${s.book_title?' — '+s.book_title:''}`; sel.appendChild(o); });
@@ -12250,7 +12257,12 @@ window.libGoChapter=function(idxStr){
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
     renderProseChapter(container,cfg,s.t);
-    } else if(libBook==='analects'){
+    } else if(libBook==='analects_new'){
+    const s=data[idx]; if(!s) return;
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=s.r; container.appendChild(h);
+    renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='analects'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Book ${s.book}, Chapter ${s.chapter}${s.book_title?' — '+s.book_title:''}`; container.appendChild(h);
@@ -12489,7 +12501,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,upanishads:true,ramayana:true,tao:true,analects:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,upanishads:true,ramayana:true,tao:true,analects_new:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -12504,7 +12516,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','sbg','gita_besant','ramayana','maha','harivamsha','vishnu_purana','bhagavata_purana','garuda_purana','mahanirvana_tantra','dakshinamurti_stotra','upanishads','yoga_sutras','devi_mahatmya','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['bod','pyramid_texts','rig','sama','yajur','atharva','sbg','gita_besant','ramayana','maha','harivamsha','vishnu_purana','bhagavata_purana','garuda_purana','mahanirvana_tantra','dakshinamurti_stotra','upanishads','yoga_sutras','devi_mahatmya','kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa','popol_vuh','jps','avesta','homeric_hymn_demeter','odyssey','iliad','poetic_edda','tattva','jaina_sutras','corpus_hermeticum','dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','tao','zhuangzi','analects_new','kojiki','nihon_shoki','kjv','bible','book_of_enoch','book_of_jubilees','quran_y','quran_p','bukhari','muslim','masnavi','sggs','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -12707,6 +12719,7 @@ function chapLabel(book,v,cfg){
   if(book==='iqan')          return v.r ? `${v.r}: ${v.title}` : null;
   if(book==='yoga_sutras')   return v.r ? `${v.r} — ${v.subtitle}` : null;
   if(book==='upanishads')    return v.r || null;
+  if(book==='analects_new')  return v.r || null;
   if(book==='jaina_sutras')  return v.title ? `${v.r} — ${v.title}` : (v.r || null);
   if(book==='kojiki')        return v.title ? `Section ${v.section} \u2014 ${v.title}` : `Section ${v.section}`;
   if(book==='nihon_shoki')   return v.title ? `Book ${v.book} \u2014 ${v.title}` : `Book ${v.book}`;
