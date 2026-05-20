@@ -1277,7 +1277,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-name">Yajurveda</div>
         <div class="lib-book-origin">c. 1200&ndash;900 BCE &middot; Taittir&#x012Bya Sa&#x1E43;hit&#x0101;</div>
         <div class="lib-book-edition">A. B. Keith &middot; 1914 &middot; Black Yajurveda</div>
-        <div class="lib-book-count">7 Ka&#x1E47;&#x1E0Das &middot; 642 Sections &middot; &#x15A;ruti</div>
+        <div class="lib-book-count">7 Ka&#x1E47;&#x1E0Das &middot; 7 K&#x0101;&#x1E47;&#x1E0D;as &middot; &#x15A;ruti</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ab47bc;" onclick="openLibBook('atharva')">
         <div class="lib-book-icon">&#x1F33F;</div>
@@ -1319,7 +1319,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-name">The Thirteen Principal Upani&#x1E63;ads</div>
         <div class="lib-book-origin">c. 800&ndash;200 BCE &middot; V&#x0101;lm&#x012Bki &middot; &#x15A;ruti &middot; Brahmopadesa</div>
         <div class="lib-book-edition">Robert Ernest Hume &middot; 1921 &middot; Oxford University Press</div>
-        <div class="lib-book-count">553 Sections &middot; 13 Upani&#x1E63;ads &middot; Advaita Ved&#x0101;nta</div>
+        <div class="lib-book-count">13 Upani&#x1E63;ads &middot; Bṛihad-Āraṇyaka to Maitri &middot; Advaita Ved&#x0101;nta</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ffd54f;" onclick="openLibBook('sbg')">
         <div class="lib-book-icon">&#x2600;&#xFE0F;</div>
@@ -1860,7 +1860,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <span class="sb-icon">&#x1F442;</span><span>Dak&#x1E63;i&#x1E47;&#x0101;m&#x016B;rti Stotra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Mahadeva Sastri &middot; 1920</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">10 Stanzas</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-upanishads" style="--btn-color:#f06292;--btn-bg:rgba(240,98,146,.12);--btn-glow:rgba(240,98,146,.35);" onclick="toggleBook('upanishads',this)">
-      <span class="sb-icon">&#x1F506;</span><span>Upani&#x1E63;ads<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Hume &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">553 Sections</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F506;</span><span>Upani&#x1E63;ads<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Hume &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">13 Upani&#x1E63;ads</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-sbg" style="--btn-color:#ffd54f;--btn-bg:rgba(255,213,79,.12);--btn-glow:rgba(255,213,79,.35);" onclick="toggleBook('sbg',this)">
       <span class="sb-icon">&#x2600;&#xFE0F;</span><span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Swarupananda &middot; 1909</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200 BCE&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
@@ -11466,7 +11466,7 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.sbg)) d.sbg.sort(cvCmp);
   if(Array.isArray(d.maha)) d.maha.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.s)-toNum(b.s))||cmpText(a.r,b.r));
   if(Array.isArray(d.rig)) d.rig.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
-  if(Array.isArray(d.yajur)) d.yajur.sort((a,b)=>(toNum(a.k)-toNum(b.k))||(toNum(a.s)-toNum(b.s))||cmpText(a.r,b.r));
+  if(Array.isArray(d.yajur)) d.yajur.sort((a,b)=>toNum(a.kanda)-toNum(b.kanda));
   if(Array.isArray(d.sama)) d.sama.sort((a,b)=>
     (toNum(a.pt)-toNum(b.pt)) ||
     (toNum(a.b)-toNum(b.b)) ||
@@ -11997,10 +11997,8 @@ function _buildOtherNav(key,cfg,targetIdx){
     libChapterList=groups;
     groups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Pt.${g.pt} Bk.${g.b} Ch.${g.ch} Dec.${g.d}: ${g.dt}`; sel.appendChild(o); });
   } else if(key==='yajur'){
-    // Group by kandika
-    const kands=[...new Set(data.map(v=>v.k))].sort((a,b)=>a-b);
-    libChapterList=kands;
-    kands.forEach((k,i)=>{ const o=document.createElement('option'); o.value=i; const e=data.find(v=>v.k===k); o.textContent=e?`${e.kanda}.${e.prapath}.${e.sec}`:`Section ${k}`; sel.appendChild(o); });
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((e,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Ka\u1E47\u1E0Da ${e.kanda}`; sel.appendChild(o); });
   } else if(key==='avesta'){
     const groups=[]; const seen=new Set();
     data.forEach(v=>{ const fg=v.fg||v.ch||v.yn||v.gn||1; const k=`${v.sec}.${fg}`; if(!seen.has(k)){ seen.add(k); groups.push({sec:v.sec,fg,idx:groups.length}); } });
@@ -12224,13 +12222,10 @@ window.libGoChapter=function(idxStr){
     verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
   } else if(libBook==='yajur'){
-    const kand=libChapterList[idx]; if(kand===undefined) return;
-    const verses=data.filter(v=>v.k===kand);
+    const e=data[idx]; if(!e) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    const ye=data.find(v=>v.k===kand); h.textContent=ye?`${ye.kanda}.${ye.prapath}.${ye.sec} \u2014 Ka\u1E47\u1E0Da ${ye.kanda}, Prap\u0101\u1E6Dhaka ${ye.prapath}`:String(kand); container.appendChild(h);
-    const list=document.createElement('div'); list.className='lib-verse-list';
-    verses.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.r}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
-    container.appendChild(list);
+    h.textContent=`Ka\u1E47\u1E0Da ${e.kanda} \u2014 Taittir\u012By\u0101 Br\u0101hma\u1E47a`; container.appendChild(h);
+    renderProseChapter(container,cfg,e.t);
   } else if(libBook==='avesta'){
     const grp=libChapterList[idx]; if(!grp) return;
     const verses=data.filter(v=>v.sec===grp.sec&&(v.fg||v.ch||v.yn||v.gn||1)===grp.fg);
@@ -12346,7 +12341,6 @@ window.libGoChapter=function(idxStr){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.upanishad; container.appendChild(h);
-    if(s.section){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.section; container.appendChild(sub);}
     renderProseChapter(container,cfg,s.t);
   } else if(libBook==='bhagavata_purana'||libBook==='garuda_purana'||libBook==='mahanirvana_tantra'||libBook==='dakshinamurti_stotra'){
     const s=data[idx]; if(!s) return;
@@ -12680,7 +12674,7 @@ function chapLabel(book,v,cfg){
   if(cfg.type==='veda'){
     if(book==='rig'||book==='atharva') return v.ht||null;
     if(book==='sama') return v.dt||null;
-    if(book==='yajur') return v.r||`${v.kanda||'?'}.${v.prapath||'?'}.${v.sec||'?'}`;
+    if(book==='yajur') return v.title||`Ka\u1E47\u1E0Da ${v.kanda}`;
     return null;
   }
   if(cfg.type==='avesta') return v.sec||null;
