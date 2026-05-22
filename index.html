@@ -2143,6 +2143,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
+
   <div class="srch-group-label">&#x1F9FF;&ensp;Norse <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-poetic_edda" style="--btn-color:#7ecbe6;--btn-bg:rgba(126,203,230,.12);--btn-glow:rgba(126,203,230,.35);" onclick="toggleBook('poetic_edda',this)">
@@ -2290,7 +2291,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-bos" style="--btn-color:#b39ddb;--btn-bg:rgba(179,157,219,.12);--btn-glow:rgba(179,157,219,.35);" onclick="toggleBook('bos',this)">
       <span class="sb-icon">&#x1F319;</span><span>Book of Shadows<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Gardner &middot; 1949&ndash;1961</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1954 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
-  </div>
   </div>
 
   <!-- Select All / Deselect All -->
@@ -11570,6 +11570,18 @@ const BOOK_CFG = {
   mencius: { label:'Mencius', sub:'James Legge \u00B7 1861 \u00B7 The Chinese Classics Vol. II \u00B7 7 Books', icon:'\uD83D\uDCDC', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'chapter', bookTitle:'Mencius', bookEdition:'Trans. James Legge \u00B7 1861 \u00B7 The Chinese Classics Vol. II', type:'mencius' },
   pistis_sophia: { label:'Pistis Sophia', sub:'G.R.S. Mead \u00B7 1921 \u00B7 6 Books \u00B7 148 Chapters \u00B7 Gnostic Scripture', icon:'\u2728', accent:'#9c7bb5', accentDim:'rgba(156,123,181,0.35)', countLabel:'chapter', bookTitle:'Pistis Sophia', bookEdition:'Trans. G.R.S. Mead \u00B7 1921', type:'pistis_sophia' },
   gospel_of_thomas: { label:'Gospel of Thomas', sub:'Nag Hammadi \u00B7 c. 50\u2013140 CE \u00B7 114 Sayings \u00B7 Gnostic', icon:'\uD83D\uDD4A\uFE0F', accent:'#bf8050', accentDim:'rgba(191,128,80,0.35)', countLabel:'saying', bookTitle:'Gospel of Thomas', bookEdition:'Nag Hammadi Codex II \u00B7 Trans. Mark M. Mattison', type:'gospel_of_thomas' },
+  acts_of_john: { label:'Acts of John', sub:'Anonymous \u00B7 c. 2nd\u20133rd century CE \u00B7 Apocryphal Acts \u00B7 115 Sections', icon:'\uD83D\uDCDC', accent:'#c87941', accentDim:'rgba(200,121,65,0.35)', countLabel:'section', bookTitle:'Acts of John', bookEdition:'Trans. Anonymous \u00B7 Ante-Nicene Fathers', type:'nikaya' },
+  acts_of_peter: { label:'Acts of Peter', sub:'M.R. James \u00B7 c. 2nd\u20133rd century CE \u00B7 Apocryphal Acts \u00B7 Vercelli Acts', icon:'\uD83D\uDD5D\uFE0F', accent:'#b07c60', accentDim:'rgba(176,124,96,0.35)', countLabel:'section', bookTitle:'Acts of Peter', bookEdition:'Trans. M.R. James \u00B7 Apocryphal New Testament', type:'nikaya' },
+  acts_of_thomas: { label:'Acts of Thomas', sub:'Ante-Nicene Fathers Vol. VIII \u00B7 c. 3rd century CE \u00B7 Mission to India', icon:'\uD83C\uDF0F', accent:'#9c8fc0', accentDim:'rgba(156,143,192,0.35)', countLabel:'passage', bookTitle:'Acts of Thomas', bookEdition:'Ante-Nicene Fathers Vol. VIII', type:'nikaya' },
+  epistle_of_barnabas: { label:'Epistle of Barnabas', sub:'Kirsopp Lake Translation \u00B7 c. 70\u2013135 CE \u00B7 21 Chapters', icon:'\u270D\uFE0F', accent:'#d4a870', accentDim:'rgba(212,168,112,0.35)', countLabel:'chapter', bookTitle:'Epistle of Barnabas', bookEdition:'Kirsopp Lake Translation \u00B7 Apostolic Fathers', type:'nikaya' },
+  fragments_of_early_gospels: { label:'Fragments of Early Gospels', sub:'M.R. James \u00B7 c. 1st\u20132nd century CE \u00B7 Hebrews \u00B7 Ebionites \u00B7 Egyptians', icon:'\uD83D\uDCC3', accent:'#8ab0c0', accentDim:'rgba(138,176,192,0.35)', countLabel:'fragment', bookTitle:'Fragments of Early Gospels', bookEdition:'Trans. M.R. James \u00B7 Apocryphal New Testament', type:'nikaya' },
+  gospel_of_barnabas: { label:'Gospel of Barnabas', sub:'Lonsdale &amp; Laura Ragg \u00B7 1907 \u00B7 222 Chapters \u00B7 Islamic-Christian Apocrypha', icon:'\uD83D\uDD4C', accent:'#c0a060', accentDim:'rgba(192,160,96,0.35)', countLabel:'chapter', bookTitle:'Gospel of Barnabas', bookEdition:'Trans. Lonsdale &amp; Laura Ragg \u00B7 1907', type:'nikaya' },
+  history_of_joseph: { label:'History of Joseph the Carpenter', sub:'Coptic Apocrypha \u00B7 c. 4th\u20136th century CE \u00B7 Narrated by Jesus', icon:'\uD83D\uDD28', accent:'#b09060', accentDim:'rgba(176,144,96,0.35)', countLabel:'chapter', bookTitle:'History of Joseph the Carpenter', bookEdition:'Wikisource \u00B7 Coptic Christian Tradition', type:'nikaya' },
+  martyrdom_of_bartholomew: { label:'Martyrdom of Bartholomew', sub:'Ante-Nicene Fathers \u00B7 c. 2nd\u20134th century CE \u00B7 Mission to India', icon:'\u2694\uFE0F', accent:'#a0a0c0', accentDim:'rgba(160,160,192,0.35)', countLabel:'section', bookTitle:'Martyrdom of the Holy and Glorious Apostle Bartholomew', bookEdition:'Trans. Anonymous \u00B7 Ante-Nicene Fathers', type:'nikaya' },
+  epistle_of_apostles: { label:'Epistle of the Apostles', sub:'M.R. James \u00B7 c. 160 CE \u00B7 Post-Resurrection Dialogue \u00B7 Asia Minor', icon:'\u2709\uFE0F', accent:'#9ab0c8', accentDim:'rgba(154,176,200,0.35)', countLabel:'section', bookTitle:'Epistle of the Apostles', bookEdition:'Trans. M.R. James \u00B7 Apocryphal New Testament', type:'nikaya' },
+  acts_of_andrew_matthias: { label:'Acts of Andrew &amp; Matthias', sub:'M.R. James \u00B7 c. 3rd\u20134th century CE \u00B7 Among the Cannibals', icon:'\u26F5\uFE0F', accent:'#7890b8', accentDim:'rgba(120,144,184,0.35)', countLabel:'section', bookTitle:'Acts of Andrew and Matthias', bookEdition:'Trans. M.R. James \u00B7 Apocryphal New Testament', type:'nikaya' },
+  acts_of_philip: { label:'Acts of Philip', sub:'Ante-Nicene Fathers Vol. VIII \u00B7 c. 3rd\u20134th century CE \u00B7 Mission of Philip', icon:'\uD83C\uDF3F', accent:'#88a888', accentDim:'rgba(136,168,136,0.35)', countLabel:'passage', bookTitle:'Acts of Philip', bookEdition:'Ante-Nicene Fathers Vol. VIII', type:'nikaya' },
+  gospel_of_nazaraeans: { label:'Gospel of the Nazaraeans', sub:'Wikisource Translation \u00B7 c. 1st\u20132nd century CE \u00B7 Jewish-Christian Gospel', icon:'\uD83D\uDCF0', accent:'#a8b890', accentDim:'rgba(168,184,144,0.35)', countLabel:'fragment', bookTitle:'Gospel of the Nazaraeans', bookEdition:'Wikisource Translation \u00B7 Parallel to Matthew', type:'nikaya' },
   gospel_of_judas: { label:'Gospel of Judas', sub:'Nag Hammadi &middot; c. 130–170 CE &middot; Betrayal Reframed', icon:'&#x1F480;', accent:'#78909c', accentDim:'rgba(120,144,156,0.35)', countLabel:'section', bookTitle:'Gospel of Judas', bookEdition:'Trans. Rodolphe Kasser, Marvin Meyer &middot; 2006', type:'gospel_of_judas' },
   gospel_of_philip: { label:'Gospel of Philip', sub:'Nag Hammadi &middot; c. 2nd–3rd century CE &middot; Valentinian', icon:'&#x1F54D;', accent:'#8d6e63', accentDim:'rgba(141,110,99,0.35)', countLabel:'section', bookTitle:'Gospel of Philip', bookEdition:'Nag Hammadi Codex II &middot; Trans. Wesley W. Isenberg', type:'gospel_of_philip' },
   gospel_of_truth: { label:'Gospel of Truth', sub:'Nag Hammadi &middot; c. 140–180 CE &middot; Valentinus', icon:'&#x1F4A1;', accent:'#a5c4a5', accentDim:'rgba(165,196,165,0.35)', countLabel:'section', bookTitle:'Gospel of Truth', bookEdition:'Nag Hammadi Codex I &middot; Valentinus', type:'gospel_of_truth' },
@@ -11814,8 +11826,20 @@ function loadScriptures(cb){
     fetch('pistis_sophia.json').then(r=>r.ok?r.json():null).catch(()=>null),
     fetch('gospel_of_thomas.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ,fetch('gnostic_gospels.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('acts_of_john.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('acts_of_peter.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('acts_of_thomas.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('epistle_of_barnabas.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('fragments_of_early_gospels.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('gospel_of_barnabas.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('history_of_joseph.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('martyrdom_of_bartholomew.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('epistle_of_apostles.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('acts_of_andrew_matthias.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('acts_of_philip.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('gospel_of_nazaraeans.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, tv, s3, upanishadsData, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData, sggsNewData, menciusData, pistisData, thomasData, gnosticData])=>{
+    .then(([d, v, tv, s3, upanishadsData, tk, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData, sggsNewData, menciusData, pistisData, thomasData, gnosticData, actsJohnData, actsPeterData, actsThomasData, epistleBarnabas, fragmentsData, gospelBarnabasData, histJosephData, martyrdomBartData, epistleApostlesData, actsAndrewData, actsPhilipData, gospelNazaraeans])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, tv, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11871,6 +11895,18 @@ function loadScriptures(cb){
         if(Array.isArray(gnosticData.gospel_of_mary) && gnosticData.gospel_of_mary.length) d.gospel_of_mary = gnosticData.gospel_of_mary;
         if(Array.isArray(gnosticData.gospel_of_peter) && gnosticData.gospel_of_peter.length) d.gospel_of_peter = gnosticData.gospel_of_peter;
       }
+      if(Array.isArray(actsJohnData) && actsJohnData.length) d.acts_of_john = actsJohnData;
+      if(Array.isArray(actsPeterData) && actsPeterData.length) d.acts_of_peter = actsPeterData;
+      if(Array.isArray(actsThomasData) && actsThomasData.length) d.acts_of_thomas = actsThomasData;
+      if(Array.isArray(epistleBarnabas) && epistleBarnabas.length) d.epistle_of_barnabas = epistleBarnabas;
+      if(Array.isArray(fragmentsData) && fragmentsData.length) d.fragments_of_early_gospels = fragmentsData;
+      if(Array.isArray(gospelBarnabasData) && gospelBarnabasData.length) d.gospel_of_barnabas = gospelBarnabasData;
+      if(Array.isArray(histJosephData) && histJosephData.length) d.history_of_joseph = histJosephData;
+      if(Array.isArray(martyrdomBartData) && martyrdomBartData.length) d.martyrdom_of_bartholomew = martyrdomBartData;
+      if(Array.isArray(epistleApostlesData) && epistleApostlesData.length) d.epistle_of_apostles = epistleApostlesData;
+      if(Array.isArray(actsAndrewData) && actsAndrewData.length) d.acts_of_andrew_matthias = actsAndrewData;
+      if(Array.isArray(actsPhilipData) && actsPhilipData.length) d.acts_of_philip = actsPhilipData;
+      if(Array.isArray(gospelNazaraeans) && gospelNazaraeans.length) d.gospel_of_nazaraeans = gospelNazaraeans;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
