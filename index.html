@@ -1404,7 +1404,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-name">Babylonian Talmud</div>
         <div class="lib-book-origin">c. 200&ndash;500 CE</div>
         <div class="lib-book-edition">Michael L. Rodkinson &middot; 1903&ndash;1918</div>
-        <div class="lib-book-count">10 Books &middot; 1,296 Sections &middot; Mishna &middot; Gemara</div>
+        <div class="lib-book-count">10 Books &middot; 1,443 Sections &middot; Mishna &middot; Gemara</div>
       </div>
     </div>
 
@@ -11637,7 +11637,7 @@ const BOOK_CFG = {
   tattva:  { label:'Tattvārthashāstra', sub:'Ācārya Umāsvāmi \u00B7 Vijay K. Jain \u00B7 2018 \u00B7 10 Chapters \u00B7 357 Sūtras', icon:'\uD83D\uDD90', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'passage', bookTitle:'Tattvārthashāstra', bookEdition:'With Sarvārthasiddhi Commentary \u00B7 Vijay K. Jain \u00B7 2018', type:'tattva' },
   jaina_sutras: { label:'Jaina Sutras', sub:'Hermann Jacobi \u00B7 SBE Vol. 22 + 45 \u00B7 Combined Part I & Part II \u00B7 Footnotes Removed', icon:'\uD83D\uDCDC', accent:'#d4af37', accentDim:'rgba(212,175,55,0.35)', countLabel:'section', bookTitle:'Jaina Sutras', bookEdition:'Sacred Books of the East \u00B7 Vol. 22 (1884) + Vol. 45 (1895) \u00B7 Continuous Reader Edition', type:'jaina_sutras' },
   jps:     { label:'Tanakh \u2014 Jewish Publication Society', sub:'JPS \u00B7 1917 \u00B7 Torah \u00B7 Nevi\u02BCim \u00B7 Ketuvim \u00B7 39 Books', icon:'\u2721\uFE0F', accent:'#c9a227', accentDim:'rgba(201,162,39,0.35)', countLabel:'verse', bookTitle:'Tanakh', bookEdition:'Jewish Publication Society \u00B7 1917 \u00B7 Masoretic Text', type:'tanakh' },
-  talmud:  { label:'Babylonian Talmud', sub:'Michael L. Rodkinson \u00B7 1903\u20131918 \u00B7 10 Books \u00B7 1,296 Sections', icon:'\u2721\uFE0F', accent:'#4a8fd4', accentDim:'rgba(74,143,212,0.35)', countLabel:'section', bookTitle:'Babylonian Talmud', bookEdition:'Trans. Michael L. Rodkinson \u00B7 1903\u20131918 \u00B7 Books 1\u201310', type:'gilgamesh' },
+  talmud:  { label:'Babylonian Talmud', sub:'Michael L. Rodkinson \u00B7 1903\u20131918 \u00B7 10 Books \u00B7 1,443 Sections', icon:'\u2721\uFE0F', accent:'#4a8fd4', accentDim:'rgba(74,143,212,0.35)', countLabel:'section', bookTitle:'Babylonian Talmud', bookEdition:'Trans. Michael L. Rodkinson \u00B7 1903\u20131918 \u00B7 10 Books', type:'talmud' },
 };
 
 const OT_BOOKS = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi'];
@@ -12403,6 +12403,13 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='bhagavata_purana'||key==='garuda_purana'||key==='mahanirvana_tantra'||key==='dakshinamurti_stotra'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
+  } else if(key==='talmud'){
+    // Group by book number (c field) — 10 books = 10 dropdown entries
+    const bookGroups=[]; const seenBooks=new Set();
+    data.forEach((s,i)=>{ if(!seenBooks.has(s.c)){ seenBooks.add(s.c); bookGroups.push({c:s.c,r:s.r,firstIdx:i}); } });
+    bookGroups.sort((a,b)=>a.c-b.c);
+    libChapterList=bookGroups;
+    bookGroups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=g.r; sel.appendChild(o); });
   } else if(key==='gilgamesh'||key==='kesh_temple_hymn'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
@@ -12716,6 +12723,17 @@ window.libGoChapter=function(idxStr){
     h.textContent=s.r; container.appendChild(h);
     if(s.subtitle&&s.subtitle!==s.r){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);}
     renderProseChapter(container,cfg,s.t);
+  } else if(libBook==='talmud'){
+    // Render all sections for this book (grouped by c)
+    const grp=libChapterList[idx]; if(!grp) return;
+    const sections=data.filter(s=>s.c===grp.c);
+    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
+    h.textContent=grp.r; container.appendChild(h);
+    sections.forEach(sec=>{
+      const sub=document.createElement('div'); sub.className='lib-chapter-subhead';
+      sub.textContent=sec.title; container.appendChild(sub);
+      renderProseChapter(container,cfg,sec.t);
+    });
   } else if(libBook==='gilgamesh'||libBook==='kesh_temple_hymn'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
@@ -12963,7 +12981,7 @@ function makeCard(book,v,cfg,terms){
      cfg.type==='harivamsha'||cfg.type==='vishnu_purana'||
      cfg.type==='veda'||cfg.type==='avesta'||
      cfg.type==='homeric_hymn'||cfg.type==='sggs'||cfg.type==='tattva'||cfg.type==='tanakh'||cfg.type==='hadith'||
-     cfg.type==='gilgamesh'||cfg.type==='dhammapada'||cfg.type==='masnavi'||
+     cfg.type==='talmud'||cfg.type==='gilgamesh'||cfg.type==='dhammapada'||cfg.type==='masnavi'||
      cfg.type==='heart_sutra'||cfg.type==='diamond_sutra'||
      cfg.type==='corpus_hermeticum'||cfg.type==='bos'||cfg.type==='zhuangzi'||cfg.type==='jaina_sutras'||
      cfg.type==='poetic_edda'||cfg.type==='iqan'||cfg.type==='yoga_sutras'||cfg.type==='mahanirvana_tantra'||cfg.type==='dakshinamurti_stotra'||cfg.type==='upanishads'||cfg.type==='analects_new'||cfg.type==='sggs_new'||cfg.type==='mencius'||cfg.type==='pistis_sophia'||cfg.type==='gospel_of_thomas'||cfg.type==='gospel_of_judas'||cfg.type==='gospel_of_philip'||cfg.type==='gospel_of_truth'||cfg.type==='gospel_of_mary'||cfg.type==='gospel_of_peter'||cfg.type==='gilgamesh'||cfg.type==='bhagavata_purana'||cfg.type==='garuda_purana'){
@@ -13036,6 +13054,7 @@ function fmtRef(book,v,cfg){
   if(cfg.type==='bhagavata_purana') return v.r;
   if(cfg.type==='garuda_purana') return v.r;
   if(cfg.type==='tattva') return v.r;
+  if(book==='talmud')     return v.r;
   if(book==='gilgamesh')  return v.r;
   return v.r;
 }
@@ -13069,6 +13088,7 @@ function chapLabel(book,v,cfg){
   if(book==='popol_vuh')     return (v.part&&v.chapter)?`Part ${v.part}, Chapter ${v.chapter}`:(v.chapter?`Chapter ${v.chapter}`:null);
   if(book==='bom')           return v.book ? `${v.book} \u2014 Chapter ${v.c}` : null;
   if(book==='kesh_temple_hymn') return v.title || null;
+  if(book==='talmud')        return v.title || null;
   if(book==='gilgamesh')     return v.title || null;
   if(book==='enuma_elish'||book==='ishtar_descent'||book==='seven_spirits'||book==='adapa'||book==='pyramid_texts') return v.title || null;
   if(book==='dhammapada')    return v.r || null;
