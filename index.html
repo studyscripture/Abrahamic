@@ -12404,12 +12404,9 @@ function _buildOtherNav(key,cfg,targetIdx){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='talmud'){
-    // Group by book number (c field) — 10 books = 10 dropdown entries
-    const bookGroups=[]; const seenBooks=new Set();
-    data.forEach((s,i)=>{ if(!seenBooks.has(s.c)){ seenBooks.add(s.c); bookGroups.push({c:s.c,r:s.r,firstIdx:i}); } });
-    bookGroups.sort((a,b)=>a.c-b.c);
-    libChapterList=bookGroups;
-    bookGroups.forEach((g,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=g.r; sel.appendChild(o); });
+    // One dropdown entry per TOC section (304 total), labeled "Book N — Section Title"
+    libChapterList=data.map((_,i)=>i);
+    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${s.c} — ${s.title}`; sel.appendChild(o); });
   } else if(key==='gilgamesh'||key==='kesh_temple_hymn'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
@@ -12724,16 +12721,13 @@ window.libGoChapter=function(idxStr){
     if(s.subtitle&&s.subtitle!==s.r){const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.subtitle; container.appendChild(sub);}
     renderProseChapter(container,cfg,s.t);
   } else if(libBook==='talmud'){
-    // Render all sections for this book (grouped by c)
-    const grp=libChapterList[idx]; if(!grp) return;
-    const sections=data.filter(s=>s.c===grp.c);
+    // Render exactly one TOC section at a time
+    const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=grp.r; container.appendChild(h);
-    sections.forEach(sec=>{
-      const sub=document.createElement('div'); sub.className='lib-chapter-subhead';
-      sub.textContent=sec.title; container.appendChild(sub);
-      renderProseChapter(container,cfg,sec.t);
-    });
+    h.textContent=`Book ${s.c} — ${s.title}`; container.appendChild(h);
+    const sub=document.createElement('div'); sub.className='lib-chapter-subhead';
+    sub.textContent=s.r; container.appendChild(sub);
+    renderProseChapter(container,cfg,s.t);
   } else if(libBook==='gilgamesh'||libBook==='kesh_temple_hymn'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
