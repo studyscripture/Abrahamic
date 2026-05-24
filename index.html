@@ -1440,6 +1440,11 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1898</div>
         <div class="lib-book-count">24 Books &middot; Greek Epic</div>
       </div>
+              <div class="lib-book-name">The Odyssey</div>
+        <div class="lib-book-origin">c. 800&ndash;700 BCE</div>
+        <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1900</div>
+        <div class="lib-book-count">24 Books &middot; Greek Epic</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#7ecfb3;" onclick="openLibBook('homeric_hymn_demeter')">
         <div class="lib-book-icon">&#x1F33E;</div>
         <div class="lib-book-name">Homeric Hymns</div>
@@ -2115,8 +2120,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-iliad" style="--btn-color:#e57373;--btn-bg:rgba(229,115,115,.12);--btn-glow:rgba(229,115,115,.35);" onclick="toggleBook('iliad',this)">
       <span class="sb-icon">&#x2694;&#xFE0F;</span><span>Iliad<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Butler &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 800&ndash;700 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    
-    <button class="srch-book-btn active" id="sbtn-homeric_hymn_demeter" style="--btn-color:#7ecfb3;--btn-bg:rgba(126,207,179,.12);--btn-glow:rgba(126,207,179,.35);" onclick="toggleBook('homeric_hymn_demeter',this)">
+        <button class="srch-book-btn active" id="sbtn-homeric_hymn_demeter" style="--btn-color:#7ecfb3;--btn-bg:rgba(126,207,179,.12);--btn-glow:rgba(126,207,179,.35);" onclick="toggleBook('homeric_hymn_demeter',this)">
       <span class="sb-icon">&#x1F33E;</span><span>Homeric Hymns<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Evelyn-White</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 700&ndash;400 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
@@ -12894,7 +12898,6 @@ window.libGoChapter=function(idxStr){
   syncBottomNav('other');
 };
 
-// ── Bottom nav sync ──────────────────────────────────
 function syncBottomNav(mode){
   const bn=document.getElementById('lib-bottom-nav');
   if(!bn) return;
@@ -12902,22 +12905,21 @@ function syncBottomNav(mode){
   if(mode==='bible'){
     document.getElementById('lib-bottom-other-nav').style.display='none';
     document.getElementById('lib-bottom-bible-nav').style.display='block';
-    const topSel=document.getElementById('lib-bible-ch-sel'), botSel=document.getElementById('lib-bottom-bible-ch-sel');
-    if(topSel&&botSel){ botSel.innerHTML=topSel.innerHTML; botSel.value=topSel.value; }
-    const topPos=document.getElementById('lib-bible-ch-pos'), botPos=document.getElementById('lib-bottom-bible-ch-pos');
+    const topSel=document.getElementById('lib-bible-ch-sel'),botSel=document.getElementById('lib-bottom-bible-ch-sel');
+    if(topSel&&botSel){botSel.innerHTML=topSel.innerHTML;botSel.value=topSel.value;}
+    const topPos=document.getElementById('lib-bible-ch-pos'),botPos=document.getElementById('lib-bottom-bible-ch-pos');
     if(topPos&&botPos) botPos.textContent=topPos.textContent;
   } else {
     document.getElementById('lib-bottom-bible-nav').style.display='none';
     document.getElementById('lib-bottom-other-nav').style.display='block';
-    const topLabel=document.getElementById('lib-nav-label'), botLabel=document.getElementById('lib-bottom-nav-label');
+    const topLabel=document.getElementById('lib-nav-label'),botLabel=document.getElementById('lib-bottom-nav-label');
     if(topLabel&&botLabel) botLabel.textContent=topLabel.textContent;
-    const topSel=document.getElementById('lib-other-sel'), botSel=document.getElementById('lib-bottom-other-sel');
-    if(topSel&&botSel){ botSel.innerHTML=topSel.innerHTML; botSel.value=topSel.value; }
-    const topPos=document.getElementById('lib-other-pos'), botPos=document.getElementById('lib-bottom-other-pos');
+    const topSel=document.getElementById('lib-other-sel'),botSel=document.getElementById('lib-bottom-other-sel');
+    if(topSel&&botSel){botSel.innerHTML=topSel.innerHTML;botSel.value=topSel.value;}
+    const topPos=document.getElementById('lib-other-pos'),botPos=document.getElementById('lib-bottom-other-pos');
     if(topPos&&botPos) botPos.textContent=topPos.textContent;
   }
 }
-
 window.libChapterStep=function(d){
   const total=libChapterList.length;
   const next=Math.max(0,Math.min(total-1,libChapterIdx+d));
@@ -12953,51 +12955,49 @@ window.doSearch=function(){
 
 // Canonical display order matching the library panel
 const BOOK_DISPLAY_ORDER=[
-  // Egyptian
-  'bod','pyramid_texts',
-  // Hindu
-  'rig','sama','yajur','atharva','sbg','gita_besant','ramayana','maha','harivamsha',
-  'vishnu_purana','bhagavata_purana','garuda_purana','mahanirvana_tantra','dakshinamurti_stotra',
-  'upanishads','yoga_sutras','devi_mahatmya',
-  // Ancient Mesopotamian
-  'kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa',
-  // Mayan
+  // Ancient Mesopotamian (~2600–1400 BCE)
+  'kesh_temple_hymn','pyramid_texts','enuma_elish','gilgamesh','ishtar_descent','seven_spirits','adapa',
+  // Vedic (~1500–900 BCE)
+  'rig','sama','yajur','atharva',
+  // Upanishads / Avesta / Homer (~900–600 BCE)
+  'upanishads','avesta','homeric_hymn_demeter','iliad','odyssey',
+  // Mayan (oral ~700 BCE)
   'popol_vuh',
-  // Jewish
+  // Axial Age — Jewish, Jain, Buddhist, Chinese (~600–200 BCE)
   'jps','talmud',
-  // Zoroastrian
-  'avesta',
-  // Greek
-  'homeric_hymn_demeter','odyssey','iliad',
-  // Norse
+  'jaina_sutras','tattva',
+  'dn','mn','sn','an','vinaya_pitaka','dhammapada','theragatha','therigatha',
+  'anthology_of_discourses','heartfelt_sayings','so_it_was_said','jataka_tales',
+  'tao','analects_new','mencius','zhuangzi',
+  // Second Temple / Intertestamental (~300–100 BCE)
+  'book_of_enoch','book_of_jubilees','apocrypha',
+  // Sanskrit Epics / Gita (~500 BCE–400 CE)
+  'ramayana','maha','sbg','gita_besant','harivamsha',
+  // Yoga / Prajnaparamita / Lotus (~400 BCE–300 CE)
+  'yoga_sutras','heart_sutra','diamond_sutra','lotus_sutra',
+  // New Testament / Early Christian (~1–100 CE)
+  'kjv','bible',
+  // Gnostic & Christian Apocrypha (~70–500 CE)
+  'epistle_of_barnabas','gospel_of_thomas','gospel_of_peter','gospel_of_barnabas',
+  'gospel_of_nazaraeans','gospel_of_mary','fragments_of_early_gospels',
+  'epistle_of_apostles','gospel_of_truth','gospel_of_judas','acts_of_john','acts_of_peter',
+  'corpus_hermeticum','gospel_of_philip','acts_of_thomas','acts_of_andrew_matthias',
+  'history_of_joseph','acts_of_philip','martyrdom_of_bartholomew','pistis_sophia',
+  // Later Hindu Puranas (~100–1400 CE)
+  'vishnu_purana','devi_mahatmya','bhagavata_purana','garuda_purana',
+  'dakshinamurti_stotra','mahanirvana_tantra',
+  // Bod / Tibetan (~800 CE compiled)
+  'bod',
+  // East Asian chronicles (~700 CE)
+  'kojiki','nihon_shoki',
+  // Norse (~800–1270 CE)
   'poetic_edda',
-  // Jain
-  'tattva','jaina_sutras',
-  // Hermetic
-  'corpus_hermeticum',
-  // Buddhist
-  'dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','lotus_sutra',
-  'anthology_of_discourses','heartfelt_sayings','so_it_was_said',
-  'theragatha','therigatha','vinaya_pitaka','jataka_tales',
-  // Taoist / Chinese
-  'tao','zhuangzi','analects_new','mencius','kojiki','nihon_shoki',
-  // Christian (canonical)
-  'kjv','bible','apocrypha','book_of_enoch','book_of_jubilees',
-  // Islamic
+  // Islam (~609 CE–1273 CE)
   'quran_y','quran_p','bukhari','muslim','masnavi',
-  // Sikh
+  // Sikh (~1604 CE)
   'sggs_new',
-  // Mormon / Bahai
-  'bom','iqan',
-  // Wiccan
-  'bos',
-  // Gnostic / Nag Hammadi
-  'pistis_sophia','gospel_of_thomas','gospel_of_judas','gospel_of_philip',
-  'gospel_of_truth','gospel_of_mary','gospel_of_peter',
-  // Christian Apocrypha
-  'acts_of_john','acts_of_peter','acts_of_thomas','acts_of_andrew_matthias','acts_of_philip',
-  'epistle_of_barnabas','fragments_of_early_gospels','gospel_of_barnabas',
-  'history_of_joseph','martyrdom_of_bartholomew','epistle_of_apostles','gospel_of_nazaraeans'
+  // Mormon / Bahai / Wiccan (~1830–1949 CE)
+  'bom','iqan','bos'
 ];
 
 function runSearch(query,books){
