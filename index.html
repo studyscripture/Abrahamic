@@ -996,6 +996,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .lib-chapter-arrow { background:var(--srch-surface); border:1px solid var(--srch-border); color:var(--muted); padding:7px 12px; border-radius:4px; cursor:pointer; font-size:13px; transition:all .18s; line-height:1; }
 .lib-chapter-arrow:hover { border-color:var(--srch); color:var(--srch); }
 .lib-chapter-pos { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.14em; color:var(--muted); }
+/* Bottom chapter nav */
+#lib-bottom-nav { margin-top:40px; padding-top:22px; border-top:1px solid var(--srch-border); }
+.lib-bottom-nav-inner { margin-bottom:16px; }
+.lib-bottom-nav-back { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding-bottom:40px; }
+.lib-bottom-scroll-top { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); cursor:pointer; border:1px solid var(--srch-border); border-radius:3px; padding:6px 14px; background:transparent; transition:all .18s; }
+.lib-bottom-scroll-top:hover { border-color:var(--srch); color:var(--srch); }
 .lib-chapter-heading { font-family:'Cinzel',serif; font-size:clamp(13px,2vw,18px); font-weight:600; letter-spacing:.06em; margin-bottom:6px; }
 .lib-chapter-subhead { font-family:'EB Garamond',serif; font-size:14px; font-style:italic; color:var(--muted); margin-bottom:20px; }
 .lib-verse-list { display:flex; flex-direction:column; }
@@ -1046,7 +1052,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .srch-book-btn.active .sb-check { opacity:1; }
 
 /* Search bar */
-.srch-bar-wrap { max-width:680px; margin:0 auto 24px; }
+.srch-bar-wrap { display:block; width:100%; max-width:680px; margin:0 auto 24px; clear:both; }
 .srch-input-row { display:flex; gap:10px; align-items:stretch; }
 .srch-input { flex:1; background:var(--srch-surface); border:1px solid var(--srch-border); border-radius:6px; padding:14px 20px; font-family:'Cinzel',serif; font-size:14px; letter-spacing:.08em; color:var(--white); outline:none; transition:all .2s; -webkit-user-select:text; user-select:text; }
 .srch-input::placeholder { color:var(--muted); font-style:italic; letter-spacing:.05em; }
@@ -1215,6 +1221,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">L.W. King &middot; 1902 &middot; The Seven Tablets of Creation</div>
         <div class="lib-book-count">7 Tablets &middot; Marduk &middot; Tiamat &middot; Origin of Mankind</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#c07840;" onclick="openLibBook('adapa')">
+        <div class="lib-book-icon">&#x1F347;</div>
+        <div class="lib-book-name">Adapa and the Food of Life</div>
+        <div class="lib-book-origin">c. 1400 BCE &middot; El-Amarna &middot; Akkadian</div>
+        <div class="lib-book-edition">Morris Jastrow &middot; 1898 &middot; Religion of Babylonia and Assyria</div>
+        <div class="lib-book-count">3 Tablets &middot; Origin of Human Mortality &middot; Ea &amp; Anu</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#d4944a;" onclick="openLibBook('ishtar_descent')">
         <div class="lib-book-icon">&#x2B50;</div>
         <div class="lib-book-name">Descent of Ishtar</div>
@@ -1228,13 +1241,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 700 BCE &middot; Assyrian &middot; Cuneiform Tablets</div>
         <div class="lib-book-edition">R.C. Thompson &middot; 1903 &middot; Devils and Evil Spirits of Babylonia</div>
         <div class="lib-book-count">2 Texts &middot; Evil Demon Series &middot; Eclipse Myth &middot; Incantations</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#c07840;" onclick="openLibBook('adapa')">
-        <div class="lib-book-icon">&#x1F347;</div>
-        <div class="lib-book-name">Adapa and the Food of Life</div>
-        <div class="lib-book-origin">c. 1400 BCE &middot; El-Amarna &middot; Akkadian</div>
-        <div class="lib-book-edition">Morris Jastrow &middot; 1898 &middot; Religion of Babylonia and Assyria</div>
-        <div class="lib-book-count">3 Tablets &middot; Origin of Human Mortality &middot; Ea &amp; Anu</div>
       </div>
     </div>
 
@@ -1286,54 +1292,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">R. T. H. Griffith &middot; 1895</div>
         <div class="lib-book-count">723 Hymns &middot; &#x15A;ruti</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#f9a825;" onclick="openLibBook('bhagavata_purana')">
-        <div class="lib-book-icon">&#x1F31F;</div>
-        <div class="lib-book-name">Dev&#x012B; Bh&#x0101;gavata Pur&#x0101;&#x1E47;a</div>
-        <div class="lib-book-origin">c. 6th&ndash;14th century CE &middot; 12 Skandhas &middot; 18,000 Verses</div>
-        <div class="lib-book-edition">Swami Vijnanananda &middot; 1921&ndash;1922 &middot; Sacred Books of the Hindus</div>
-        <div class="lib-book-count">318 Chapters &middot; &#x15A;&#x0101;kta Mah&#x0101;pur&#x0101;&#x1E47;a</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#c0ca33;" onclick="openLibBook('garuda_purana')">
-        <div class="lib-book-icon">&#x1F985;</div>
-        <div class="lib-book-name">Garu&#x1E0D;a Pur&#x0101;&#x1E47;a</div>
-        <div class="lib-book-origin">c. 800&ndash;1000 CE &middot; S&#x0101;roddh&#x0101;ra &middot; Extracted Essence</div>
-        <div class="lib-book-edition">Ernest Wood &amp; S. V. Subrahmanyam &middot; 1911 &middot; Sacred Books of the Hindus</div>
-        <div class="lib-book-count">16 Chapters &middot; Eschatology &middot; Yoga &middot; Liberation</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#e040fb;" onclick="openLibBook('mahanirvana_tantra')">
-        <div class="lib-book-icon">&#x1F525;</div>
-        <div class="lib-book-name">Mah&#x0101;nirv&#x0101;&#x1E47;a Tantra</div>
-        <div class="lib-book-origin">c. 18th century CE &middot; K&#x0101;l&#x012Byuga Scripture &middot; &#x15A;&#x0101;kta Tantra</div>
-        <div class="lib-book-edition">Arthur Avalon (Sir John Woodroffe) &middot; 1913 &middot; Tantra of the Great Liberation</div>
-        <div class="lib-book-count">14 Ull&#x0101;sas &middot; &#x15A;iva &amp; Shakti Dialogue &middot; Kaula Tradition</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#ff7043;" onclick="openLibBook('dakshinamurti_stotra')">
-        <div class="lib-book-icon">&#x1F442;</div>
-        <div class="lib-book-name">Dak&#x1E63;i&#x1E47;&#x0101;m&#x016B;rti Stotra</div>
-        <div class="lib-book-origin">&#x15A;r&#x012B; &#x15A;a&#x1E45;kar&#x0101;c&#x0101;rya &middot; c. 8th century CE &middot; Advaita Ved&#x0101;nta</div>
-        <div class="lib-book-edition">Alladi Mahadeva Sastri &middot; 1920 &middot; With Manasoll&#x0101;sa Commentary</div>
-        <div class="lib-book-count">10 Stanzas &middot; Hymn to &#x15A;iva as Guru of the Universe</div>
-      </div>
       <div class="lib-book-card" style="--bk-accent:#f06292;" onclick="openLibBook('upanishads')">
         <div class="lib-book-icon">&#x1F506;</div>
         <div class="lib-book-name">The Thirteen Principal Upani&#x1E63;ads</div>
         <div class="lib-book-origin">c. 800&ndash;200 BCE &middot; V&#x0101;lm&#x012Bki &middot; &#x15A;ruti &middot; Brahmopadesa</div>
         <div class="lib-book-edition">Robert Ernest Hume &middot; 1921 &middot; Oxford University Press</div>
         <div class="lib-book-count">13 Upani&#x1E63;ads &middot; Bṛihad-Āraṇyaka to Maitri &middot; Advaita Ved&#x0101;nta</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#ffd54f;" onclick="openLibBook('sbg')">
-        <div class="lib-book-icon">&#x2600;&#xFE0F;</div>
-        <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
-        <div class="lib-book-origin">c. 200 BCE&ndash;200 CE</div>
-        <div class="lib-book-edition">Swami Swarupananda &middot; 1909 &middot; Advaita Ashrama</div>
-        <div class="lib-book-count">671 Verses &middot; 18 Chapters</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#f59e42;" onclick="openLibBook('gita_besant')">
-        <div class="lib-book-icon">&#x1F33A;</div>
-        <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
-        <div class="lib-book-origin">c. 200 BCE&ndash;200 CE</div>
-        <div class="lib-book-edition">Annie Besant &middot; 1922 &middot; The Lord&rsquo;s Song</div>
-        <div class="lib-book-count">692 Verses &middot; 18 Discourses</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ef9a9a;" onclick="openLibBook('ramayana')">
         <div class="lib-book-icon">&#x1F3F9;</div>
@@ -1349,20 +1313,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">K. M. Ganguli &middot; 1883&ndash;1896</div>
         <div class="lib-book-count">18 Parvas &middot; 2,083 Sections</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#ff8a65;" onclick="openLibBook('harivamsha')">
-        <div class="lib-book-icon">&#x1F531;</div>
-        <div class="lib-book-name">Harива&#x1E43;&#x15A;a</div>
-        <div class="lib-book-origin">c. 1st&ndash;4th century CE</div>
-        <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1897</div>
-        <div class="lib-book-count">233 Chapters &middot; 3 Parvas</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#ffa726;" onclick="openLibBook('vishnu_purana')">
-        <div class="lib-book-icon">&#x1FA94;</div>
-        <div class="lib-book-name">Vi&#x1E63;&#x1E47;u Pur&#x0101;&#x1E47;a</div>
-        <div class="lib-book-origin">c. 1st&ndash;6th century CE</div>
-        <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1896</div>
-        <div class="lib-book-count">126 Sections &middot; 6 Parts</div>
-      </div>
       <div class="lib-book-card" style="--bk-accent:#a5d6a7;" onclick="openLibBook('yoga_sutras')">
         <div class="lib-book-icon">&#x1F9D8;</div>
         <div class="lib-book-name">Yoga S&#x016B;tras of Pata&#xF1;jali</div>
@@ -1370,12 +1320,68 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Charles Johnston &middot; 1912 &middot; The Book of the Spiritual Man</div>
         <div class="lib-book-count">4 P&#x0101;das &middot; 196 S&#x016B;tras &middot; R&#x0101;ja Yoga</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#f59e42;" onclick="openLibBook('gita_besant')">
+        <div class="lib-book-icon">&#x1F33A;</div>
+        <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
+        <div class="lib-book-origin">c. 200 BCE&ndash;200 CE</div>
+        <div class="lib-book-edition">Annie Besant &middot; 1922 &middot; The Lord&rsquo;s Song</div>
+        <div class="lib-book-count">692 Verses &middot; 18 Discourses</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ffd54f;" onclick="openLibBook('sbg')">
+        <div class="lib-book-icon">&#x2600;&#xFE0F;</div>
+        <div class="lib-book-name">Bhagavad-G&#x012B;t&#x0101;</div>
+        <div class="lib-book-origin">c. 200 BCE&ndash;200 CE</div>
+        <div class="lib-book-edition">Swami Swarupananda &middot; 1909 &middot; Advaita Ashrama</div>
+        <div class="lib-book-count">671 Verses &middot; 18 Chapters</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ff8a65;" onclick="openLibBook('harivamsha')">
+        <div class="lib-book-icon">&#x1F531;</div>
+        <div class="lib-book-name">Harива&#x1E43;&#x15A;a</div>
+        <div class="lib-book-origin">c. 100–400 CE</div>
+        <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1897</div>
+        <div class="lib-book-count">233 Chapters &middot; 3 Parvas</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ffa726;" onclick="openLibBook('vishnu_purana')">
+        <div class="lib-book-icon">&#x1FA94;</div>
+        <div class="lib-book-name">Vi&#x1E63;&#x1E47;u Pur&#x0101;&#x1E47;a</div>
+        <div class="lib-book-origin">c. 100–500 CE</div>
+        <div class="lib-book-edition">Manmatha Nath Dutt &middot; 1896</div>
+        <div class="lib-book-count">126 Sections &middot; 6 Parts</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#e879a0;" onclick="openLibBook('devi_mahatmya')">
         <div class="lib-book-icon">&#x1F9FF;</div>
         <div class="lib-book-name">Dev&#x012B; M&#x0101;h&#x0101;tmya</div>
         <div class="lib-book-origin">c. 400&ndash;600 CE &middot; M&#x0101;rka&#x1E47;&#x1E0D;eya Pur&#x0101;&#x1E47;a</div>
         <div class="lib-book-edition">Swami Jagadiswarananda &middot; Ramakrishna Math</div>
         <div class="lib-book-count">13 Chapters &middot; Glorification of the Goddess</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ff7043;" onclick="openLibBook('dakshinamurti_stotra')">
+        <div class="lib-book-icon">&#x1F442;</div>
+        <div class="lib-book-name">Dak&#x1E63;i&#x1E47;&#x0101;m&#x016B;rti Stotra</div>
+        <div class="lib-book-origin">c. 700–750 CE &middot; &#x15A;r&#x012B; &#x15A;a&#x1E45;kar&#x0101;c&#x0101;rya &middot; Advaita Ved&#x0101;nta</div>
+        <div class="lib-book-edition">Alladi Mahadeva Sastri &middot; 1920 &middot; With Manasoll&#x0101;sa Commentary</div>
+        <div class="lib-book-count">10 Stanzas &middot; Hymn to &#x15A;iva as Guru of the Universe</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#f9a825;" onclick="openLibBook('bhagavata_purana')">
+        <div class="lib-book-icon">&#x1F31F;</div>
+        <div class="lib-book-name">Dev&#x012B; Bh&#x0101;gavata Pur&#x0101;&#x1E47;a</div>
+        <div class="lib-book-origin">c. 500–1400 CE &middot; 12 Skandhas &middot; 18,000 Verses</div>
+        <div class="lib-book-edition">Swami Vijnanananda &middot; 1921&ndash;1922 &middot; Sacred Books of the Hindus</div>
+        <div class="lib-book-count">318 Chapters &middot; &#x15A;&#x0101;kta Mah&#x0101;pur&#x0101;&#x1E47;a</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c0ca33;" onclick="openLibBook('garuda_purana')">
+        <div class="lib-book-icon">&#x1F985;</div>
+        <div class="lib-book-name">Garu&#x1E0D;a Pur&#x0101;&#x1E47;a</div>
+        <div class="lib-book-origin">c. 800&ndash;1000 CE &middot; S&#x0101;roddh&#x0101;ra &middot; Extracted Essence</div>
+        <div class="lib-book-edition">Ernest Wood &amp; S. V. Subrahmanyam &middot; 1911 &middot; Sacred Books of the Hindus</div>
+        <div class="lib-book-count">16 Chapters &middot; Eschatology &middot; Yoga &middot; Liberation</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#e040fb;" onclick="openLibBook('mahanirvana_tantra')">
+        <div class="lib-book-icon">&#x1F525;</div>
+        <div class="lib-book-name">Mah&#x0101;nirv&#x0101;&#x1E47;a Tantra</div>
+        <div class="lib-book-origin">c. 1791 CE &middot; K&#x0101;l&#x012Byuga Scripture &middot; &#x15A;&#x0101;kta Tantra</div>
+        <div class="lib-book-edition">Arthur Avalon (Sir John Woodroffe) &middot; 1913 &middot; Tantra of the Great Liberation</div>
+        <div class="lib-book-count">14 Ull&#x0101;sas &middot; &#x15A;iva &amp; Shakti Dialogue &middot; Kaula Tradition</div>
       </div>
     </div>
 
@@ -1421,13 +1427,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
     <div class="lib-shelf-group-label">&#x1F3DB;&#xFE0F;&ensp;Ancient Greek <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 800 BCE</span></div>
     <div class="lib-shelf">
-      <div class="lib-book-card" style="--bk-accent:#7ecfb3;" onclick="openLibBook('homeric_hymn_demeter')">
-        <div class="lib-book-icon">&#x1F33E;</div>
-        <div class="lib-book-name">Homeric Hymns</div>
-        <div class="lib-book-origin">c. 700&ndash;400 BCE</div>
-        <div class="lib-book-edition">Hugh G. Evelyn-White &middot; 1914</div>
-        <div class="lib-book-count">33 Hymns &middot; Ancient Greek Epic</div>
-      </div>
       <div class="lib-book-card" style="--bk-accent:#4db6e5;" onclick="openLibBook('odyssey')">
         <div class="lib-book-icon">&#x1F30A;</div>
         <div class="lib-book-name">The Odyssey</div>
@@ -1442,6 +1441,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Homer &middot; Samuel Butler &middot; 1898</div>
         <div class="lib-book-count">24 Books &middot; Greek Epic</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#7ecfb3;" onclick="openLibBook('homeric_hymn_demeter')">
+        <div class="lib-book-icon">&#x1F33E;</div>
+        <div class="lib-book-name">Homeric Hymns</div>
+        <div class="lib-book-origin">c. 700&ndash;400 BCE</div>
+        <div class="lib-book-edition">Hugh G. Evelyn-White &middot; 1914</div>
+        <div class="lib-book-count">33 Hymns &middot; Ancient Greek Epic</div>
+      </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 600 BCE</span></div>
@@ -1449,14 +1455,14 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       <div class="lib-book-card" style="--bk-accent:#d4af37;" onclick="openLibBook('jaina_sutras')">
         <div class="lib-book-icon">&#x1F4DC;</div>
         <div class="lib-book-name">Jaina Sutras</div>
-        <div class="lib-book-origin">c. 6th-2nd century BCE (core strata)</div>
+        <div class="lib-book-origin">c. 600–200 BCE &middot; Core Strata</div>
         <div class="lib-book-edition">Hermann Jacobi &middot; Sacred Books of the East Vol. 22 + 45</div>
         <div class="lib-book-count">Combined Part I + Part II &middot; Footnotes Removed</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('tattva')">
         <div class="lib-book-icon">&#x1F590;</div>
         <div class="lib-book-name">Tattvārthashāstra</div>
-        <div class="lib-book-origin">c. 2nd&ndash;5th century CE</div>
+        <div class="lib-book-origin">c. 200–450 CE</div>
         <div class="lib-book-edition">Ācārya Umāsvāmi &middot; Vijay K. Jain &middot; 2018</div>
         <div class="lib-book-count">10 Chapters &middot; 357 S&#x016B;tras &middot; Jain Philosophy</div>
       </div>
@@ -1492,6 +1498,20 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2018 &middot; Numbered Discourses</div>
         <div class="lib-book-count">332 Sections &middot; P&#x0101;li Canon</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#86efac;" onclick="openLibBook('anthology_of_discourses')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Anthology of Discourses</div>
+        <div class="lib-book-origin">c. 500&ndash;200 BCE &middot; Suttanik&#x0101;ya &middot; P&#x0101;li Canon</div>
+        <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
+        <div class="lib-book-count">73 Suttas &middot; 5 Chapters (Vaggas)</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#94a3b8;" onclick="openLibBook('vinaya_pitaka')">
+        <div class="lib-book-icon">&#x2696;&#xFE0F;</div>
+        <div class="lib-book-name">Vinaya Pi&#x1E6D;aka</div>
+        <div class="lib-book-origin">c. 500&ndash;200 BCE &middot; P&#x0101;li Monastic Law &middot; Therav&#x0101;da</div>
+        <div class="lib-book-edition">Bhikkhu Brahmali &middot; 2026 &middot; SuttaCentral</div>
+        <div class="lib-book-count">420 Rules &middot; Vibha&#x1E45;ga, Khandhaka, Pariv&#x0101;ra</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#a78bfa;" onclick="openLibBook('dhammapada')">
         <div class="lib-book-icon">&#x1F4D6;</div>
         <div class="lib-book-name">Dhammapada</div>
@@ -1499,86 +1519,86 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">F. Max M&#xFC;ller &middot; 1881 &middot; Sacred Books of the East</div>
         <div class="lib-book-count">26 Chapters &middot; 423 Verses &middot; Path of Truth</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#f472b6;" onclick="openLibBook('heart_sutra')">
-        <div class="lib-book-icon">&#x1F49C;</div>
-        <div class="lib-book-name">Heart S&#x016B;tra</div>
-        <div class="lib-book-origin">c. 1st cent. CE &middot; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;h&#x1E5B;daya</div>
-        <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
-        <div class="lib-book-count">4 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra','lotus_sutra','anthology_of_discourses','heartfelt_sayings','so_it_was_said','theragatha','therigatha','vinaya_pitaka','jataka_tales')">
-        <div class="lib-book-icon">&#x1F48E;</div>
-        <div class="lib-book-name">Diamond S&#x016B;tra</div>
-        <div class="lib-book-origin">c. 1st cent. CE &middot; Vajracchedik&#x0101; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;</div>
-        <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
-        <div class="lib-book-count">32 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#fbbf24;" onclick="openLibBook('lotus_sutra')">
-        <div class="lib-book-icon">&#x1F337;</div>
-        <div class="lib-book-name">Lotus S&#x016B;tra</div>
-        <div class="lib-book-origin">c. 1st cent. BCE&ndash;2nd cent. CE &middot; Saddharmapun&#x1E0D;ar&#x012B;ka</div>
-        <div class="lib-book-edition">H. Kern &middot; 1884 &middot; Sacred Books of the East Vol. XXI</div>
-        <div class="lib-book-count">27 Chapters &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#86efac;" onclick="openLibBook('anthology_of_discourses')">
-        <div class="lib-book-icon">&#x1F4DC;</div>
-        <div class="lib-book-name">Anthology of Discourses</div>
-        <div class="lib-book-origin">Suttanik&#x0101;ya &middot; P&#x0101;li Canon &middot; Therav&#x0101;da</div>
-        <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
-        <div class="lib-book-count">73 Suttas &middot; 5 Chapters (Vaggas)</div>
-      </div>
       <div class="lib-book-card" style="--bk-accent:#fdba74;" onclick="openLibBook('heartfelt_sayings')">
         <div class="lib-book-icon">&#x1F9E1;</div>
         <div class="lib-book-name">Heartfelt Sayings</div>
-        <div class="lib-book-origin">Ud&#x0101;na &middot; P&#x0101;li Canon &middot; Khuddaka Nik&#x0101;ya</div>
+        <div class="lib-book-origin">c. 300&ndash;200 BCE &middot; Ud&#x0101;na &middot; Khuddaka Nik&#x0101;ya</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
         <div class="lib-book-count">80 Suttas &middot; 8 Chapters (Vaggas)</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#c4b5fd;" onclick="openLibBook('so_it_was_said')">
         <div class="lib-book-icon">&#x1F4AC;</div>
         <div class="lib-book-name">So It Was Said</div>
-        <div class="lib-book-origin">Itivuttaka &middot; P&#x0101;li Canon &middot; Khuddaka Nik&#x0101;ya</div>
+        <div class="lib-book-origin">c. 300&ndash;200 BCE &middot; Itivuttaka &middot; Khuddaka Nik&#x0101;ya</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
         <div class="lib-book-count">112 Suttas &middot; Nipatas</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#f87171;" onclick="openLibBook('theragatha')">
         <div class="lib-book-icon">&#x1F9D8;&#x200D;&#x2642;&#xFE0F;</div>
         <div class="lib-book-name">Therag&#x0101;th&#x0101;</div>
-        <div class="lib-book-origin">Verses of the Senior Monks &middot; Khuddaka Nik&#x0101;ya</div>
+        <div class="lib-book-origin">c. 300&ndash;200 BCE &middot; Verses of the Elder Monks &middot; Khuddaka Nik&#x0101;ya</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
         <div class="lib-book-count">264 Poems &middot; 21 Nipatas</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#f9a8d4;" onclick="openLibBook('therigatha')">
         <div class="lib-book-icon">&#x1F9D8;&#x200D;&#x2640;&#xFE0F;</div>
         <div class="lib-book-name">Ther&#x012B;g&#x0101;th&#x0101;</div>
-        <div class="lib-book-origin">Verses of the Senior Nuns &middot; Khuddaka Nik&#x0101;ya</div>
+        <div class="lib-book-origin">c. 300&ndash;200 BCE &middot; Verses of the Elder Nuns &middot; Khuddaka Nik&#x0101;ya</div>
         <div class="lib-book-edition">Bhikkhu Sujato &middot; 2026 &middot; SuttaCentral</div>
         <div class="lib-book-count">73 Poems &middot; 16 Nipatas</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#94a3b8;" onclick="openLibBook('vinaya_pitaka')">
-        <div class="lib-book-icon">&#x2696;&#xFE0F;</div>
-        <div class="lib-book-name">Vinaya Pi&#x1E6D;aka</div>
-        <div class="lib-book-origin">P&#x0101;li Monastic Law &middot; Therav&#x0101;da &middot; P&#x0101;li Canon</div>
-        <div class="lib-book-edition">Bhikkhu Brahmali &middot; 2026 &middot; SuttaCentral</div>
-        <div class="lib-book-count">420 Rules &middot; Vibha&#x1E45;ga, Khandhaka, Pariv&#x0101;ra</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#fb923c;" onclick="openLibBook('jataka_tales')">
         <div class="lib-book-icon">&#x1F335;</div>
         <div class="lib-book-name">J&#x0101;taka Tales</div>
-        <div class="lib-book-origin">Stories of the Buddha&rsquo;s Former Births &middot; P&#x0101;li Canon</div>
+        <div class="lib-book-origin">c. 300 BCE&ndash;200 CE &middot; Buddha&rsquo;s Former Births &middot; P&#x0101;li Canon</div>
         <div class="lib-book-edition">E.B. Cowell et al. &middot; 1895&ndash;1907 &middot; Cambridge University Press</div>
         <div class="lib-book-count">547 Stories &middot; Volumes I&ndash;VI</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#fbbf24;" onclick="openLibBook('lotus_sutra')">
+        <div class="lib-book-icon">&#x1F337;</div>
+        <div class="lib-book-name">Lotus S&#x016B;tra</div>
+        <div class="lib-book-origin">c. 100 BCE–200 CE &middot; Saddharmapun&#x1E0D;ar&#x012B;ka</div>
+        <div class="lib-book-edition">H. Kern &middot; 1884 &middot; Sacred Books of the East Vol. XXI</div>
+        <div class="lib-book-count">27 Chapters &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#f472b6;" onclick="openLibBook('heart_sutra')">
+        <div class="lib-book-icon">&#x1F49C;</div>
+        <div class="lib-book-name">Heart S&#x016B;tra</div>
+        <div class="lib-book-origin">c. 100–200 CE &middot; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;h&#x1E5B;daya</div>
+        <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
+        <div class="lib-book-count">4 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#67e8f9;" onclick="openLibBook('diamond_sutra','lotus_sutra','anthology_of_discourses','heartfelt_sayings','so_it_was_said','theragatha','therigatha','vinaya_pitaka','jataka_tales')">
+        <div class="lib-book-icon">&#x1F48E;</div>
+        <div class="lib-book-name">Diamond S&#x016B;tra</div>
+        <div class="lib-book-origin">c. 300 CE &middot; Vajracchedik&#x0101; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;</div>
+        <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
+        <div class="lib-book-count">32 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
       </div>
     </div>
 
     <div class="lib-shelf-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
     <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#bcaaa4;" onclick="openLibBook('analects_new')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Analects of Confucius</div>
+        <div class="lib-book-origin">c. 475&ndash;221 BCE &middot; Confucius &middot; 20 Books</div>
+        <div class="lib-book-edition">James Legge &middot; 1861 &middot; The Chinese Classics Vol. I</div>
+        <div class="lib-book-count">20 Books &middot; Lun Y&#x00FC; &middot; Confucian Canon</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#ffe082;" onclick="openLibBook('tao')">
         <div class="lib-book-icon">&#x262F;&#xFE0F;</div>
         <div class="lib-book-name">Tao Te Ching</div>
         <div class="lib-book-origin">c. 400&ndash;300 BCE</div>
         <div class="lib-book-edition">James Legge &middot; 1891 &middot; Lao-Tze</div>
         <div class="lib-book-count">81 Chapters &middot; Taoist Canon</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('mencius')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Mencius</div>
+        <div class="lib-book-origin">c. 380–289 BCE &middot; Meng Tzu &middot; Confucian Canon</div>
+        <div class="lib-book-edition">James Legge &middot; 1861 &middot; The Chinese Classics Vol. II</div>
+        <div class="lib-book-count">28 Chapters &middot; 7 Books &middot; Confucian Ethics</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#80deea;" onclick="openLibBook('zhuangzi')">
         <div class="lib-book-icon">&#x1F98B;</div>
@@ -1587,20 +1607,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Herbert A. Giles &middot; 1889 &middot; Chuang Tz&#x016D;: Mystic, Moralist, and Social Reformer</div>
         <div class="lib-book-count">33 Chapters &middot; Inner, Outer &amp; Miscellaneous</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#bcaaa4;" onclick="openLibBook('analects_new')">
-        <div class="lib-book-icon">&#x1F4DC;</div>
-        <div class="lib-book-name">Analects of Confucius</div>
-        <div class="lib-book-origin">c. 475&ndash;221 BCE &middot; Confucius &middot; 20 Books</div>
-        <div class="lib-book-edition">James Legge &middot; 1861 &middot; The Chinese Classics Vol. I</div>
-        <div class="lib-book-count">20 Books &middot; Lun Y&#x00FC; &middot; Confucian Canon</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#80cbc4;" onclick="openLibBook('mencius')">
-        <div class="lib-book-icon">&#x1F4DC;</div>
-        <div class="lib-book-name">Mencius</div>
-        <div class="lib-book-origin">c. 4th century BCE &middot; Meng Tzu &middot; Confucian Canon</div>
-        <div class="lib-book-edition">James Legge &middot; 1861 &middot; The Chinese Classics Vol. II</div>
-        <div class="lib-book-count">28 Chapters &middot; 7 Books &middot; Confucian Ethics</div>
-      </div>
+    
     </div>
 
 
@@ -1650,19 +1657,19 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Berean Standard Bible &middot; 2022</div>
         <div class="lib-book-count">66 Books &middot; 31,102 Verses</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#7c9edb;" onclick="openLibBook('book_of_enoch')">
-        <div class="lib-book-icon">&#x1F4DC;</div>
-        <div class="lib-book-name">Book of Enoch</div>
-        <div class="lib-book-origin">c. 300&ndash;100 BCE</div>
-        <div class="lib-book-edition">R. H. Charles &middot; 1906 &middot; 1 Enoch</div>
-        <div class="lib-book-count">479 Passages &middot; 108 Chapters</div>
-      </div>
       <div class="lib-book-card" style="--bk-accent:#b08fc0;" onclick="openLibBook('book_of_jubilees')">
         <div class="lib-book-icon">&#x1F4D6;</div>
         <div class="lib-book-name">Book of Jubilees</div>
         <div class="lib-book-origin">c. 160&ndash;150 BCE</div>
         <div class="lib-book-edition">R. H. Charles &middot; 1902 &middot; Little Genesis</div>
         <div class="lib-book-count">1,955 Passages &middot; 50 Chapters</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#7c9edb;" onclick="openLibBook('book_of_enoch')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Book of Enoch</div>
+        <div class="lib-book-origin">c. 300&ndash;100 BCE</div>
+        <div class="lib-book-edition">R. H. Charles &middot; 1906 &middot; 1 Enoch</div>
+        <div class="lib-book-count">479 Passages &middot; 108 Chapters</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#c0955a;" onclick="openLibBook('apocrypha')">
         <div class="lib-book-icon">&#x1F4DC;</div>
@@ -1675,12 +1682,12 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
     <div class="lib-shelf-group-label">&#x2728;&ensp;Gnosticism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 50 CE</span></div>
     <div class="lib-shelf">
-      <div class="lib-book-card" style="--bk-accent:#9c7bb5;" onclick="openLibBook('pistis_sophia')">
-        <div class="lib-book-icon">&#x2728;</div>
-        <div class="lib-book-name">Pistis Sophia</div>
-        <div class="lib-book-origin">c. 3rd–4th century CE &middot; Coptic Gnostic Scripture</div>
-        <div class="lib-book-edition">G.R.S. Mead &middot; 1921 &middot; 6 Books &middot; 148 Chapters</div>
-        <div class="lib-book-count">148 Chapters &middot; Sophia &middot; Valentinian Gnosis</div>
+      <div class="lib-book-card" style="--bk-accent:#d4a870;" onclick="openLibBook('epistle_of_barnabas')">
+        <div class="lib-book-icon">&#x270D;&#xFE0F;</div>
+        <div class="lib-book-name">Epistle of Barnabas</div>
+        <div class="lib-book-origin">c. 70–135 CE &middot; Early Christian Epistle</div>
+        <div class="lib-book-edition">Kirsopp Lake Translation &middot; Wikisource</div>
+        <div class="lib-book-count">Early Christian Theology &middot; Old Testament Allegory</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#bf8050;" onclick="openLibBook('gospel_of_thomas')">
         <div class="lib-book-icon">&#x1F54A;&#xFE0F;</div>
@@ -1689,96 +1696,26 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Mark M. Mattison &middot; Nag Hammadi &middot; 114 Sayings</div>
         <div class="lib-book-count">114 Sayings &middot; Hidden Sayings of the Living Jesus</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#78909c;" onclick="openLibBook('gospel_of_judas')">
-        <div class="lib-book-icon">&#x1F480;</div>
-        <div class="lib-book-name">Gospel of Judas</div>
-        <div class="lib-book-origin">Nag Hammadi &middot; c. 130–170 CE &middot; Betrayal Reframed</div>
-        <div class="lib-book-edition">Trans. Rodolphe Kasser, Marvin Meyer &middot; 2006</div>
-        <div class="lib-book-count">15 Sections &middot; Jesus &amp; Judas Dialogue</div>
+      <div class="lib-book-card" style="--bk-accent:#8ab0c0;" onclick="openLibBook('fragments_of_early_gospels')">
+        <div class="lib-book-icon">&#x1F4C3;</div>
+        <div class="lib-book-name">Fragments of Early Gospels</div>
+        <div class="lib-book-origin">c. 50–150 CE &middot; Gospel Fragments</div>
+        <div class="lib-book-edition">Trans. M.R. James &middot; Apocryphal New Testament</div>
+        <div class="lib-book-count">Gospel of Hebrews &middot; Nazaraeans &middot; Ebionites</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#8d6e63;" onclick="openLibBook('gospel_of_philip')">
-        <div class="lib-book-icon">&#x1F54D;</div>
-        <div class="lib-book-name">Gospel of Philip</div>
-        <div class="lib-book-origin">Nag Hammadi &middot; c. 2nd–3rd century CE &middot; Valentinian</div>
-        <div class="lib-book-edition">Nag Hammadi Codex II &middot; Trans. Wesley W. Isenberg</div>
-        <div class="lib-book-count">18 Sections &middot; Sacraments &amp; Bridal Chamber</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#a5c4a5;" onclick="openLibBook('gospel_of_truth')">
-        <div class="lib-book-icon">&#x1F4A1;</div>
-        <div class="lib-book-name">Gospel of Truth</div>
-        <div class="lib-book-origin">Nag Hammadi &middot; c. 140–180 CE &middot; Valentinus</div>
-        <div class="lib-book-edition">Nag Hammadi Codex I &middot; Valentinus</div>
-        <div class="lib-book-count">17 Sections &middot; Valentinian Homily</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#e8a0bf;" onclick="openLibBook('gospel_of_mary')">
-        <div class="lib-book-icon">&#x1F54A;&#xFE0F;</div>
-        <div class="lib-book-name">Gospel of Mary</div>
-        <div class="lib-book-origin">Berlin Codex &middot; c. 2nd century CE &middot; Mary Magdalene</div>
-        <div class="lib-book-edition">Berlin Gnostic Codex &middot; Trans. Mark M. Mattison</div>
-        <div class="lib-book-count">5 Sections &middot; Mary Magdalene &amp; the Savior</div>
+      <div class="lib-book-card" style="--bk-accent:#a8b890;" onclick="openLibBook('gospel_of_nazaraeans')">
+        <div class="lib-book-icon">&#x1F4F0;</div>
+        <div class="lib-book-name">Gospel of the Nazaraeans</div>
+        <div class="lib-book-origin">c. 50–150 CE &middot; Jewish-Christian Gospel</div>
+        <div class="lib-book-edition">Wikisource Translation &middot; Parallel to Matthew</div>
+        <div class="lib-book-count">Fragments &middot; Nazarene Tradition &middot; Hebrew Matthew</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#90a4ae;" onclick="openLibBook('gospel_of_peter')">
         <div class="lib-book-icon">&#x1F5FF;</div>
         <div class="lib-book-name">Gospel of Peter</div>
-        <div class="lib-book-origin">Akhmim Fragment &middot; c. 2nd century CE &middot; Docetic</div>
+        <div class="lib-book-origin">c. 110–160 CE &middot; Akhmim Fragment &middot; Docetic</div>
         <div class="lib-book-edition">Akhmim Fragment &middot; Trans. Mark M. Mattison</div>
         <div class="lib-book-count">14 Sections &middot; Passion &amp; Resurrection Narrative</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#c87941;" onclick="openLibBook('acts_of_john')">
-        <div class="lib-book-icon">&#x1F4DC;</div>
-        <div class="lib-book-name">Acts of John</div>
-        <div class="lib-book-origin">c. 2nd–3rd century CE &middot; Apocryphal Acts</div>
-        <div class="lib-book-edition">Trans. Anonymous &middot; Ante-Nicene Fathers</div>
-        <div class="lib-book-count">Miracles &amp; Teaching of John the Apostle</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#b07c60;" onclick="openLibBook('acts_of_peter')">
-        <div class="lib-book-icon">&#x1F5DD;&#xFE0F;</div>
-        <div class="lib-book-name">Acts of Peter</div>
-        <div class="lib-book-origin">c. 2nd–3rd century CE &middot; Apocryphal Acts</div>
-        <div class="lib-book-edition">Trans. M.R. James &middot; Apocryphal New Testament</div>
-        <div class="lib-book-count">Miracles &amp; Martyrdom of Peter</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#9c8fc0;" onclick="openLibBook('acts_of_thomas')">
-        <div class="lib-book-icon">&#x1F30F;</div>
-        <div class="lib-book-name">Acts of Thomas</div>
-        <div class="lib-book-origin">c. 3rd century CE &middot; Syriac Apocryphal Acts</div>
-        <div class="lib-book-edition">Ante-Nicene Fathers Vol. VIII</div>
-        <div class="lib-book-count">Apostle Thomas &middot; Mission to India</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#d4a870;" onclick="openLibBook('epistle_of_barnabas')">
-        <div class="lib-book-icon">&#x270D;&#xFE0F;</div>
-        <div class="lib-book-name">Epistle of Barnabas</div>
-        <div class="lib-book-origin">c. 70–135 CE &middot; Early Christian Epistle</div>
-        <div class="lib-book-edition">Kirsopp Lake Translation &middot; Wikisource</div>
-        <div class="lib-book-count">Early Christian Theology &middot; Old Testament Allegory</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#8ab0c0;" onclick="openLibBook('fragments_of_early_gospels')">
-        <div class="lib-book-icon">&#x1F4C3;</div>
-        <div class="lib-book-name">Fragments of Early Gospels</div>
-        <div class="lib-book-origin">c. 1st–2nd century CE &middot; Gospel Fragments</div>
-        <div class="lib-book-edition">Trans. M.R. James &middot; Apocryphal New Testament</div>
-        <div class="lib-book-count">Gospel of Hebrews &middot; Nazaraeans &middot; Ebionites</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#c0a060;" onclick="openLibBook('gospel_of_barnabas')">
-        <div class="lib-book-icon">&#x1F54C;</div>
-        <div class="lib-book-name">Gospel of Barnabas</div>
-        <div class="lib-book-origin">Medieval &middot; Islamic-Christian Apocrypha</div>
-        <div class="lib-book-edition">Lonsdale &amp; Laura Ragg &middot; 1907</div>
-        <div class="lib-book-count">222 Chapters &middot; Jesus as Prophet &middot; Pre-Islamic Themes</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#b09060;" onclick="openLibBook('history_of_joseph')">
-        <div class="lib-book-icon">&#x1F528;</div>
-        <div class="lib-book-name">History of Joseph the Carpenter</div>
-        <div class="lib-book-origin">c. 4th–6th century CE &middot; Coptic Apocrypha</div>
-        <div class="lib-book-edition">Wikisource &middot; Coptic Christian Tradition</div>
-        <div class="lib-book-count">Death &amp; Life of Joseph &middot; Narrated by Jesus</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#a0a0c0;" onclick="openLibBook('martyrdom_of_bartholomew')">
-        <div class="lib-book-icon">&#x2694;&#xFE0F;</div>
-        <div class="lib-book-name">Martyrdom of Bartholomew</div>
-        <div class="lib-book-origin">c. 2nd–4th century CE &middot; Apocryphal Acts</div>
-        <div class="lib-book-edition">Ante-Nicene Fathers &middot; Trans. Anonymous</div>
-        <div class="lib-book-count">Mission to India &middot; Martyrdom of the Apostle</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#9ab0c8;" onclick="openLibBook('epistle_of_apostles')">
         <div class="lib-book-icon">&#x2709;&#xFE0F;</div>
@@ -1787,26 +1724,96 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">Trans. M.R. James &middot; Apocryphal New Testament</div>
         <div class="lib-book-count">Post-Resurrection Dialogue &middot; Prophetic Discourse</div>
       </div>
+      <div class="lib-book-card" style="--bk-accent:#78909c;" onclick="openLibBook('gospel_of_judas')">
+        <div class="lib-book-icon">&#x1F480;</div>
+        <div class="lib-book-name">Gospel of Judas</div>
+        <div class="lib-book-origin">c. 130–170 CE &middot; Nag Hammadi &middot; Betrayal Reframed</div>
+        <div class="lib-book-edition">Trans. Rodolphe Kasser, Marvin Meyer &middot; 2006</div>
+        <div class="lib-book-count">15 Sections &middot; Jesus &amp; Judas Dialogue</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#a5c4a5;" onclick="openLibBook('gospel_of_truth')">
+        <div class="lib-book-icon">&#x1F4A1;</div>
+        <div class="lib-book-name">Gospel of Truth</div>
+        <div class="lib-book-origin">c. 140–180 CE &middot; Nag Hammadi &middot; Valentinus</div>
+        <div class="lib-book-edition">Nag Hammadi Codex I &middot; Valentinus</div>
+        <div class="lib-book-count">17 Sections &middot; Valentinian Homily</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#e8a0bf;" onclick="openLibBook('gospel_of_mary')">
+        <div class="lib-book-icon">&#x1F54A;&#xFE0F;</div>
+        <div class="lib-book-name">Gospel of Mary</div>
+        <div class="lib-book-origin">c. 120–180 CE &middot; Berlin Codex &middot; Mary Magdalene</div>
+        <div class="lib-book-edition">Berlin Gnostic Codex &middot; Trans. Mark M. Mattison</div>
+        <div class="lib-book-count">5 Sections &middot; Mary Magdalene &amp; the Savior</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#8d6e63;" onclick="openLibBook('gospel_of_philip')">
+        <div class="lib-book-icon">&#x1F54D;</div>
+        <div class="lib-book-name">Gospel of Philip</div>
+        <div class="lib-book-origin">c. 180–250 CE &middot; Nag Hammadi &middot; Valentinian</div>
+        <div class="lib-book-edition">Nag Hammadi Codex II &middot; Trans. Wesley W. Isenberg</div>
+        <div class="lib-book-count">18 Sections &middot; Sacraments &amp; Bridal Chamber</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c87941;" onclick="openLibBook('acts_of_john')">
+        <div class="lib-book-icon">&#x1F4DC;</div>
+        <div class="lib-book-name">Acts of John</div>
+        <div class="lib-book-origin">c. 150–250 CE &middot; Apocryphal Acts</div>
+        <div class="lib-book-edition">Trans. Anonymous &middot; Ante-Nicene Fathers</div>
+        <div class="lib-book-count">Miracles &amp; Teaching of John the Apostle</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#b07c60;" onclick="openLibBook('acts_of_peter')">
+        <div class="lib-book-icon">&#x1F5DD;&#xFE0F;</div>
+        <div class="lib-book-name">Acts of Peter</div>
+        <div class="lib-book-origin">c. 150–250 CE &middot; Apocryphal Acts</div>
+        <div class="lib-book-edition">Trans. M.R. James &middot; Apocryphal New Testament</div>
+        <div class="lib-book-count">Miracles &amp; Martyrdom of Peter</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#9c8fc0;" onclick="openLibBook('acts_of_thomas')">
+        <div class="lib-book-icon">&#x1F30F;</div>
+        <div class="lib-book-name">Acts of Thomas</div>
+        <div class="lib-book-origin">c. 200–250 CE &middot; Syriac Apocryphal Acts</div>
+        <div class="lib-book-edition">Ante-Nicene Fathers Vol. VIII</div>
+        <div class="lib-book-count">Apostle Thomas &middot; Mission to India</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#9c7bb5;" onclick="openLibBook('pistis_sophia')">
+        <div class="lib-book-icon">&#x2728;</div>
+        <div class="lib-book-name">Pistis Sophia</div>
+        <div class="lib-book-origin">c. 250–350 CE &middot; Coptic Gnostic Scripture</div>
+        <div class="lib-book-edition">G.R.S. Mead &middot; 1921 &middot; 6 Books &middot; 148 Chapters</div>
+        <div class="lib-book-count">148 Chapters &middot; Sophia &middot; Valentinian Gnosis</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#a0a0c0;" onclick="openLibBook('martyrdom_of_bartholomew')">
+        <div class="lib-book-icon">&#x2694;&#xFE0F;</div>
+        <div class="lib-book-name">Martyrdom of Bartholomew</div>
+        <div class="lib-book-origin">c. 150–400 CE &middot; Apocryphal Acts</div>
+        <div class="lib-book-edition">Ante-Nicene Fathers &middot; Trans. Anonymous</div>
+        <div class="lib-book-count">Mission to India &middot; Martyrdom of the Apostle</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#7890b8;" onclick="openLibBook('acts_of_andrew_matthias')">
         <div class="lib-book-icon">&#x26F5;&#xFE0F;</div>
         <div class="lib-book-name">Acts of Andrew &amp; Matthias</div>
-        <div class="lib-book-origin">c. 3rd–4th century CE &middot; Apocryphal Acts</div>
+        <div class="lib-book-origin">c. 250–400 CE &middot; Apocryphal Acts</div>
         <div class="lib-book-edition">Trans. M.R. James &middot; Apocryphal New Testament</div>
         <div class="lib-book-count">Andrew &amp; Matthias Among the Cannibals</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#88a888;" onclick="openLibBook('acts_of_philip')">
         <div class="lib-book-icon">&#x1F33F;</div>
         <div class="lib-book-name">Acts of Philip</div>
-        <div class="lib-book-origin">c. 3rd–4th century CE &middot; Apocryphal Acts</div>
+        <div class="lib-book-origin">c. 250–400 CE &middot; Apocryphal Acts</div>
         <div class="lib-book-edition">Ante-Nicene Fathers Vol. VIII</div>
         <div class="lib-book-count">Miracles &amp; Mission of Philip the Apostle</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#a8b890;" onclick="openLibBook('gospel_of_nazaraeans')">
-        <div class="lib-book-icon">&#x1F4F0;</div>
-        <div class="lib-book-name">Gospel of the Nazaraeans</div>
-        <div class="lib-book-origin">c. 1st–2nd century CE &middot; Jewish-Christian Gospel</div>
-        <div class="lib-book-edition">Wikisource Translation &middot; Parallel to Matthew</div>
-        <div class="lib-book-count">Fragments &middot; Nazarene Tradition &middot; Hebrew Matthew</div>
+      <div class="lib-book-card" style="--bk-accent:#b09060;" onclick="openLibBook('history_of_joseph')">
+        <div class="lib-book-icon">&#x1F528;</div>
+        <div class="lib-book-name">History of Joseph the Carpenter</div>
+        <div class="lib-book-origin">c. 400–600 CE &middot; Coptic Apocrypha</div>
+        <div class="lib-book-edition">Wikisource &middot; Coptic Christian Tradition</div>
+        <div class="lib-book-count">Death &amp; Life of Joseph &middot; Narrated by Jesus</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#c0a060;" onclick="openLibBook('gospel_of_barnabas')">
+        <div class="lib-book-icon">&#x1F54C;</div>
+        <div class="lib-book-name">Gospel of Barnabas</div>
+        <div class="lib-book-origin">c. 1300&ndash;1600 CE &middot; Islamic-Christian Apocrypha</div>
+        <div class="lib-book-edition">Lonsdale &amp; Laura Ragg &middot; 1907</div>
+        <div class="lib-book-count">222 Chapters &middot; Jesus as Prophet &middot; Pre-Islamic Themes</div>
       </div>
     </div>
 
@@ -1893,7 +1900,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
     </div>
 
-    <div class="lib-shelf-group-label">&#x1F319;&ensp;Wicca <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1954 CE</span></div>
+    <div class="lib-shelf-group-label">&#x1F319;&ensp;Wicca <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1949&ndash;1961 CE</span></div>
     <div class="lib-shelf">
       <div class="lib-book-card" style="--bk-accent:#b39ddb;" onclick="openLibBook('bos')">
         <div class="lib-book-icon">&#x1F319;</div>
@@ -1944,6 +1951,38 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
 
       <div id="lib-verse-content"></div>
+
+      <!-- Bottom chapter nav — mirrors top nav, always visible after content loads -->
+      <div id="lib-bottom-nav" style="display:none;">
+        <!-- Bible bottom nav -->
+        <div id="lib-bottom-bible-nav" style="display:none;">
+          <div class="lib-chapter-nav lib-bottom-nav-inner">
+            <span class="lib-chapter-label">Chapter</span>
+            <select class="lib-chapter-select" id="lib-bottom-bible-ch-sel" onchange="libBibleGoChapter(this.value); window.scrollTo({top:0,behavior:'smooth'});"></select>
+            <div class="lib-chapter-arrows">
+              <button class="lib-chapter-arrow" onclick="libBibleChapterStep(-1)">&larr;</button>
+              <button class="lib-chapter-arrow" onclick="libBibleChapterStep(1)">&rarr;</button>
+            </div>
+            <span class="lib-chapter-pos" id="lib-bottom-bible-ch-pos"></span>
+          </div>
+        </div>
+        <!-- Other bottom nav -->
+        <div id="lib-bottom-other-nav" style="display:none;">
+          <div class="lib-chapter-nav lib-bottom-nav-inner">
+            <span class="lib-chapter-label" id="lib-bottom-nav-label">Chapter</span>
+            <select class="lib-chapter-select" id="lib-bottom-other-sel" onchange="libGoChapter(this.value); window.scrollTo({top:0,behavior:'smooth'});"></select>
+            <div class="lib-chapter-arrows">
+              <button class="lib-chapter-arrow" onclick="libChapterStep(-1)">&larr;</button>
+              <button class="lib-chapter-arrow" onclick="libChapterStep(1)">&rarr;</button>
+            </div>
+            <span class="lib-chapter-pos" id="lib-bottom-other-pos"></span>
+          </div>
+        </div>
+        <div class="lib-bottom-nav-back">
+          <button class="lib-reader-back" onclick="closeLibReader()">&larr; Back to Library</button>
+          <button class="lib-bottom-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191; Top</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1952,7 +1991,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 <div id="srch-search-panel" style="display:none;">
 <div class="srch-wrap">
 
-  <div class="srch-book-select-label">Select Scriptures to Compare</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:2px;">
+    <div class="srch-book-select-label" style="margin-bottom:0;">Select Scriptures to Compare</div>
+    <div style="display:flex;gap:8px;">
+      <button onclick="toggleAllBooks(true)"  style="padding:5px 16px;font-size:11px;font-family:'EB Garamond',serif;letter-spacing:.06em;border:1px solid rgba(200,190,220,.3);background:rgba(200,190,220,.07);color:rgba(200,190,220,.6);border-radius:20px;cursor:pointer;" onmouseover="this.style.background='rgba(200,190,220,.18)'" onmouseout="this.style.background='rgba(200,190,220,.07)'">&#10022;&nbsp; Select All</button>
+      <button onclick="toggleAllBooks(false)" style="padding:5px 16px;font-size:11px;font-family:'EB Garamond',serif;letter-spacing:.06em;border:1px solid rgba(200,190,220,.3);background:rgba(200,190,220,.07);color:rgba(200,190,220,.6);border-radius:20px;cursor:pointer;" onmouseover="this.style.background='rgba(200,190,220,.18)'" onmouseout="this.style.background='rgba(200,190,220,.07)'">&#10007;&nbsp; Deselect All</button>
+    </div>
+  </div>
 
   <div class="srch-group-label">&#x1F3FA;&ensp;Ancient Mesopotamian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 5300 BCE</span></div>
   <div class="srch-book-row">
@@ -1965,61 +2010,43 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-enuma_elish" style="--btn-color:#e8a060;--btn-bg:rgba(232,160,96,.12);--btn-glow:rgba(232,160,96,.35);" onclick="toggleBook('enuma_elish',this)">
       <span class="sb-icon">&#x1F30C;</span><span>En&#x016B;ma Eli&#x0161;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">L.W. King &middot; 1902</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1800&ndash;1200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-adapa" style="--btn-color:#c07840;--btn-bg:rgba(192,120,64,.12);--btn-glow:rgba(192,120,64,.35);" onclick="toggleBook('adapa',this)">
+      <span class="sb-icon">&#x1F347;</span><span>Adapa &amp; Food of Life<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Morris Jastrow &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1400 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-ishtar_descent" style="--btn-color:#d4944a;--btn-bg:rgba(212,148,74,.12);--btn-glow:rgba(212,148,74,.35);" onclick="toggleBook('ishtar_descent',this)">
       <span class="sb-icon">&#x2B50;</span><span>Descent of Ishtar<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Morris Jastrow &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1000 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-seven_spirits" style="--btn-color:#a08060;--btn-bg:rgba(160,128,96,.12);--btn-glow:rgba(160,128,96,.35);" onclick="toggleBook('seven_spirits',this)">
       <span class="sb-icon">&#x1F329;&#xFE0F;</span><span>Seven Evil Spirits<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">R.C. Thompson &middot; 1903</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 700 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-adapa" style="--btn-color:#c07840;--btn-bg:rgba(192,120,64,.12);--btn-glow:rgba(192,120,64,.35);" onclick="toggleBook('adapa',this)">
-      <span class="sb-icon">&#x1F347;</span><span>Adapa &amp; Food of Life<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Morris Jastrow &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1400 BCE</small></span><span class="sb-check">&#10022;</span>
-    </button>
   </div>
 
   <div class="srch-group-label">𓂀&ensp;Ancient Egyptian <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 4000 BCE</span></div>
   <div class="srch-book-row">
-    <button class="srch-book-btn active" id="sbtn-bod" style="--btn-color:#c8a96e;--btn-bg:rgba(200,169,110,.12);--btn-glow:rgba(200,169,110,.35);" onclick="toggleBook('bod',this)">
-      <span class="sb-icon">𓂀</span><span>Book of the Dead<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Budge &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1550 BCE</small></span><span class="sb-check">&#10022;</span>
-    </button>
     <button class="srch-book-btn active" id="sbtn-pyramid_texts" style="--btn-color:#d4a843;--btn-bg:rgba(212,168,67,.12);--btn-glow:rgba(212,168,67,.35);" onclick="toggleBook('pyramid_texts',this)">
       <span class="sb-icon">𓇳</span><span>Pyramid Texts<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Faulkner &middot; trans.</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2375 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-bod" style="--btn-color:#c8a96e;--btn-bg:rgba(200,169,110,.12);--btn-glow:rgba(200,169,110,.35);" onclick="toggleBook('bod',this)">
+      <span class="sb-icon">𓂀</span><span>Book of the Dead<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Budge &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1550 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
   <div class="srch-group-label">&#x1F549;&#xFE0F;&ensp;Hinduism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 3000+ BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-rig" style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);" onclick="toggleBook('rig',this)">
-      <span class="sb-icon">&#x1F549;&#xFE0F;</span><span>&#x1E5A;gveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">10,432 Verses &middot; 10 Ma&#x1E47;&#x1E0D;alas</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F549;&#xFE0F;</span><span>&#x1E5A;gveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1500–1200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-sama" style="--btn-color:#66bb6a;--btn-bg:rgba(102,187,106,.12);--btn-glow:rgba(102,187,106,.35);" onclick="toggleBook('sama',this)">
-      <span class="sb-icon">&#x1F3B5;</span><span>S&#x0101;maveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1893</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">1,781 Verses &middot; 15 Books</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F3B5;</span><span>S&#x0101;maveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1893</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1200–1000 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-yajur" style="--btn-color:#ffb300;--btn-bg:rgba(255,179,0,.12);--btn-glow:rgba(255,179,0,.35);" onclick="toggleBook('yajur',this)">
-      <span class="sb-icon">&#x1F525;</span><span>Yajurveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Keith &middot; 1914</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">642 Sections &middot; 7 Ka&#x1E47;&#x1E0D;as</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F525;</span><span>Yajurveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Keith &middot; 1914</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1200–900 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-atharva" style="--btn-color:#ab47bc;--btn-bg:rgba(171,71,188,.12);--btn-glow:rgba(171,71,188,.35);" onclick="toggleBook('atharva',this)">
-      <span class="sb-icon">&#x1F33F;</span><span>Atharvaveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">723 Hymns &middot; 20 Books</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-bhagavata_purana" style="--btn-color:#f9a825;--btn-bg:rgba(249,168,37,.12);--btn-glow:rgba(249,168,37,.35);" onclick="toggleBook('bhagavata_purana',this)">
-      <span class="sb-icon">&#x1F31F;</span><span>Dev&#x012B; Bh&#x0101;gavata<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Vijnanananda &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">318 Chapters</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-garuda_purana" style="--btn-color:#c0ca33;--btn-bg:rgba(192,202,51,.12);--btn-glow:rgba(192,202,51,.35);" onclick="toggleBook('garuda_purana',this)">
-      <span class="sb-icon">&#x1F985;</span><span>Garu&#x1E0D;a Pur&#x0101;&#x1E47;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Wood &amp; Subr. &middot; 1911</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">16 Chapters</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-mahanirvana_tantra" style="--btn-color:#e040fb;--btn-bg:rgba(224,64,251,.12);--btn-glow:rgba(224,64,251,.35);" onclick="toggleBook('mahanirvana_tantra',this)">
-      <span class="sb-icon">&#x1F525;</span><span>Mah&#x0101;nirv&#x0101;&#x1E47;a Tantra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Avalon &middot; 1913</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">14 Ull&#x0101;sas</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-dakshinamurti_stotra" style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);" onclick="toggleBook('dakshinamurti_stotra',this)">
-      <span class="sb-icon">&#x1F442;</span><span>Dak&#x1E63;i&#x1E47;&#x0101;m&#x016B;rti Stotra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Mahadeva Sastri &middot; 1920</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">10 Stanzas</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F33F;</span><span>Atharvaveda<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1000–900 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-upanishads" style="--btn-color:#f06292;--btn-bg:rgba(240,98,146,.12);--btn-glow:rgba(240,98,146,.35);" onclick="toggleBook('upanishads',this)">
-      <span class="sb-icon">&#x1F506;</span><span>Upani&#x1E63;ads<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Hume &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">13 Upani&#x1E63;ads</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-sbg" style="--btn-color:#ffd54f;--btn-bg:rgba(255,213,79,.12);--btn-glow:rgba(255,213,79,.35);" onclick="toggleBook('sbg',this)">
-      <span class="sb-icon">&#x2600;&#xFE0F;</span><span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Swarupananda &middot; 1909</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200 BCE&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-        <button class="srch-book-btn active" id="sbtn-gita_besant" style="--btn-color:#f59e42;--btn-bg:rgba(245,158,66,.12);--btn-glow:rgba(245,158,66,.35);" onclick="toggleBook('gita_besant',this)">
-      <span class="sb-icon">&#x1F33A;</span><span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Besant &middot; 1922</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200 BCE&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F506;</span><span>Upani&#x1E63;ads<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Hume &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 800–200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-ramayana" style="--btn-color:#ef9a9a;--btn-bg:rgba(239,154,154,.12);--btn-glow:rgba(239,154,154,.35);" onclick="toggleBook('ramayana',this)">
       <span class="sb-icon">&#x1F3F9;</span><span>R&#x0101;m&#x0101;ya&#x1E47;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Griffith &middot; 1870</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 500&ndash;100 BCE</small></span><span class="sb-check">&#10022;</span>
@@ -2027,17 +2054,35 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-maha" style="--btn-color:#c084fc;--btn-bg:rgba(192,132,252,.12);--btn-glow:rgba(192,132,252,.35);" onclick="toggleBook('maha',this)">
       <span class="sb-icon">&#x1F418;</span><span>Mahabharata<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ganguli &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400 BCE&ndash;400 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-harivamsha" style="--btn-color:#ff8a65;--btn-bg:rgba(255,138,101,.12);--btn-glow:rgba(255,138,101,.35);" onclick="toggleBook('harivamsha',this)">
-      <span class="sb-icon">&#x1F531;</span><span>Harива&#x1E43;&#x15A;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Dutt &middot; 1897</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st&ndash;4th cent. CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-vishnu_purana" style="--btn-color:#ffa726;--btn-bg:rgba(255,167,38,.12);--btn-glow:rgba(255,167,38,.35);" onclick="toggleBook('vishnu_purana',this)">
-      <span class="sb-icon">&#x1FA94;</span><span>Vi&#x1E63;&#x1E47;u Pur&#x0101;&#x1E47;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Dutt &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st&ndash;6th cent. CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
     <button class="srch-book-btn active" id="sbtn-yoga_sutras" style="--btn-color:#a5d6a7;--btn-bg:rgba(165,214,167,.12);--btn-glow:rgba(165,214,167,.35);" onclick="toggleBook('yoga_sutras',this)">
       <span class="sb-icon">&#x1F9D8;</span><span>Yoga S&#x016B;tras<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Johnston &middot; 1912</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400 BCE&ndash;400 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-sbg" style="--btn-color:#ffd54f;--btn-bg:rgba(255,213,79,.12);--btn-glow:rgba(255,213,79,.35);" onclick="toggleBook('sbg',this)">
+      <span class="sb-icon">&#x2600;&#xFE0F;</span><span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Swarupananda &middot; 1909</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200 BCE&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-gita_besant" style="--btn-color:#f59e42;--btn-bg:rgba(245,158,66,.12);--btn-glow:rgba(245,158,66,.35);" onclick="toggleBook('gita_besant',this)">
+      <span class="sb-icon">&#x1F33A;</span><span>Bhagavad-G&#x012B;t&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Annie Besant &middot; 1922</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200 BCE&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-harivamsha" style="--btn-color:#ff8a65;--btn-bg:rgba(255,138,101,.12);--btn-glow:rgba(255,138,101,.35);" onclick="toggleBook('harivamsha',this)">
+      <span class="sb-icon">&#x1F531;</span><span>Harива&#x1E43;&#x15A;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Dutt &middot; 1897</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100–400 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-vishnu_purana" style="--btn-color:#ffa726;--btn-bg:rgba(255,167,38,.12);--btn-glow:rgba(255,167,38,.35);" onclick="toggleBook('vishnu_purana',this)">
+      <span class="sb-icon">&#x1FA94;</span><span>Vi&#x1E63;&#x1E47;u Pur&#x0101;&#x1E47;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Dutt &middot; 1896</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100–500 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-devi_mahatmya" style="--btn-color:#e879a0;--btn-bg:rgba(232,121,160,.12);--btn-glow:rgba(232,121,160,.35);" onclick="toggleBook('devi_mahatmya',this)">
       <span class="sb-icon">&#x1F9FF;</span><span>Dev&#x012B; M&#x0101;h&#x0101;tmya<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Jagadiswarananda</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400&ndash;600 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-dakshinamurti_stotra" style="--btn-color:#ff7043;--btn-bg:rgba(255,112,67,.12);--btn-glow:rgba(255,112,67,.35);" onclick="toggleBook('dakshinamurti_stotra',this)">
+      <span class="sb-icon">&#x1F442;</span><span>Dak&#x1E63;i&#x1E47;&#x0101;m&#x016B;rti Stotra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Mahadeva Sastri &middot; 1920</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 700–750 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-bhagavata_purana" style="--btn-color:#f9a825;--btn-bg:rgba(249,168,37,.12);--btn-glow:rgba(249,168,37,.35);" onclick="toggleBook('bhagavata_purana',this)">
+      <span class="sb-icon">&#x1F31F;</span><span>Dev&#x012B; Bh&#x0101;gavata<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Vijnanananda &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 500–1400 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-garuda_purana" style="--btn-color:#c0ca33;--btn-bg:rgba(192,202,51,.12);--btn-glow:rgba(192,202,51,.35);" onclick="toggleBook('garuda_purana',this)">
+      <span class="sb-icon">&#x1F985;</span><span>Garu&#x1E0D;a Pur&#x0101;&#x1E47;a<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Wood &amp; Subr. &middot; 1911</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 800–1000 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-mahanirvana_tantra" style="--btn-color:#e040fb;--btn-bg:rgba(224,64,251,.12);--btn-glow:rgba(224,64,251,.35);" onclick="toggleBook('mahanirvana_tantra',this)">
+      <span class="sb-icon">&#x1F525;</span><span>Mah&#x0101;nirv&#x0101;&#x1E47;a Tantra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Avalon &middot; 1913</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1791 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -2067,24 +2112,25 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div class="srch-group-label">&#x1F3DB;&#xFE0F;&ensp;Ancient Greek <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 800 BCE</span></div>
   <div class="srch-book-row">
-    <button class="srch-book-btn active" id="sbtn-homeric_hymn_demeter" style="--btn-color:#7ecfb3;--btn-bg:rgba(126,207,179,.12);--btn-glow:rgba(126,207,179,.35);" onclick="toggleBook('homeric_hymn_demeter',this)">
-      <span class="sb-icon">&#x1F33E;</span><span>Homeric Hymns<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Evelyn-White</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 700&ndash;400 BCE</small></span><span class="sb-check">&#10022;</span>
-    </button>
     <button class="srch-book-btn active" id="sbtn-odyssey" style="--btn-color:#4db6e5;--btn-bg:rgba(77,182,229,.12);--btn-glow:rgba(77,182,229,.35);" onclick="toggleBook('odyssey',this)">
       <span class="sb-icon">&#x1F30A;</span><span>Odyssey<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Butler &middot; 1900</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 800&ndash;700 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-iliad" style="--btn-color:#e57373;--btn-bg:rgba(229,115,115,.12);--btn-glow:rgba(229,115,115,.35);" onclick="toggleBook('iliad',this)">
       <span class="sb-icon">&#x2694;&#xFE0F;</span><span>Iliad<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Butler &middot; 1898</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 800&ndash;700 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    
+    <button class="srch-book-btn active" id="sbtn-homeric_hymn_demeter" style="--btn-color:#7ecfb3;--btn-bg:rgba(126,207,179,.12);--btn-glow:rgba(126,207,179,.35);" onclick="toggleBook('homeric_hymn_demeter',this)">
+      <span class="sb-icon">&#x1F33E;</span><span>Homeric Hymns<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Evelyn-White</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 700&ndash;400 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
   </div>
 
   <div class="srch-group-label">&#x1F590;&ensp;Jainism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 600 BCE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-jaina_sutras" style="--btn-color:#d4af37;--btn-bg:rgba(212,175,55,.12);--btn-glow:rgba(212,175,55,.35);" onclick="toggleBook('jaina_sutras',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Jaina Sutras<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Jacobi &middot; SBE 22 + 45</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Combined critical reading text</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F4DC;</span><span>Jaina Sutras<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Jacobi &middot; SBE 22 + 45</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 600–200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-tattva" style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);" onclick="toggleBook('tattva',this)">
-      <span class="sb-icon">&#x1F590;</span><span>Tattvārthashāstra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Umāsvāmi &middot; Vijay K. Jain</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2nd&ndash;5th cent. CE</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F590;</span><span>Tattvārthashāstra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Umāsvāmi &middot; Vijay K. Jain</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200–450 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -2102,55 +2148,56 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-an" style="--btn-color:#34d399;--btn-bg:rgba(52,211,153,.12);--btn-glow:rgba(52,211,153,.35);" onclick="toggleBook('an',this)">
       <span class="sb-icon">&#x1F4FF;</span><span>A&#x1E45;guttara Nik&#x0101;ya<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2018</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 500&ndash;300 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-anthology_of_discourses" style="--btn-color:#86efac;--btn-bg:rgba(134,239,172,.12);--btn-glow:rgba(134,239,172,.35);" onclick="toggleBook('anthology_of_discourses',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Anthology of Discourses<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 500–200 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-vinaya_pitaka" style="--btn-color:#94a3b8;--btn-bg:rgba(148,163,184,.12);--btn-glow:rgba(148,163,184,.35);" onclick="toggleBook('vinaya_pitaka',this)">
+      <span class="sb-icon">&#x2696;&#xFE0F;</span><span>Vinaya Pi&#x1E6D;aka<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Brahmali &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 500–200 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-dhammapada" style="--btn-color:#a78bfa;--btn-bg:rgba(167,139,250,.12);--btn-glow:rgba(167,139,250,.35);" onclick="toggleBook('dhammapada',this)">
       <span class="sb-icon">&#x1F4D6;</span><span>Dhammapada<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Max M&#xFC;ller &middot; 1881</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-heart_sutra" style="--btn-color:#f472b6;--btn-bg:rgba(244,114,182,.12);--btn-glow:rgba(244,114,182,.35);" onclick="toggleBook('heart_sutra',this)">
-      <span class="sb-icon">&#x1F49C;</span><span>Heart S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101; &middot; Taish&#x014D;</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st cent. CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-diamond_sutra" style="--btn-color:#67e8f9;--btn-bg:rgba(103,232,249,.12);--btn-glow:rgba(103,232,249,.35);" onclick="toggleBook('diamond_sutra',this)">
-      <span class="sb-icon">&#x1F48E;</span><span>Diamond S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Vajracchedik&#x0101; &middot; Taish&#x014D;</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st cent. CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-lotus_sutra" style="--btn-color:#fbbf24;--btn-bg:rgba(251,191,36,.12);--btn-glow:rgba(251,191,36,.35);" onclick="toggleBook('lotus_sutra',this)">
-      <span class="sb-icon">&#x1F337;</span><span>Lotus S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Kern &middot; 1884</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st cent. BCE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-anthology_of_discourses" style="--btn-color:#86efac;--btn-bg:rgba(134,239,172,.12);--btn-glow:rgba(134,239,172,.35);" onclick="toggleBook('anthology_of_discourses',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Anthology of Discourses<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Suttanik&#x0101;ya</small></span><span class="sb-check">&#10022;</span>
-    </button>
     <button class="srch-book-btn active" id="sbtn-heartfelt_sayings" style="--btn-color:#fdba74;--btn-bg:rgba(253,186,116,.12);--btn-glow:rgba(253,186,116,.35);" onclick="toggleBook('heartfelt_sayings',this)">
-      <span class="sb-icon">&#x1F9E1;</span><span>Heartfelt Sayings<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Ud&#x0101;na</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F9E1;</span><span>Heartfelt Sayings<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300–200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-so_it_was_said" style="--btn-color:#c4b5fd;--btn-bg:rgba(196,181,253,.12);--btn-glow:rgba(196,181,253,.35);" onclick="toggleBook('so_it_was_said',this)">
-      <span class="sb-icon">&#x1F4AC;</span><span>So It Was Said<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Itivuttaka</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F4AC;</span><span>So It Was Said<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300–200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-theragatha" style="--btn-color:#f87171;--btn-bg:rgba(248,113,113,.12);--btn-glow:rgba(248,113,113,.35);" onclick="toggleBook('theragatha',this)">
-      <span class="sb-icon">&#x1F9D8;&#x200D;&#x2642;&#xFE0F;</span><span>Therag&#x0101;th&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Senior Monks</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F9D8;&#x200D;&#x2642;&#xFE0F;</span><span>Therag&#x0101;th&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300–200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-therigatha" style="--btn-color:#f9a8d4;--btn-bg:rgba(249,168,212,.12);--btn-glow:rgba(249,168,212,.35);" onclick="toggleBook('therigatha',this)">
-      <span class="sb-icon">&#x1F9D8;&#x200D;&#x2640;&#xFE0F;</span><span>Ther&#x012B;g&#x0101;th&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Senior Nuns</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-vinaya_pitaka" style="--btn-color:#94a3b8;--btn-bg:rgba(148,163,184,.12);--btn-glow:rgba(148,163,184,.35);" onclick="toggleBook('vinaya_pitaka',this)">
-      <span class="sb-icon">&#x2696;&#xFE0F;</span><span>Vinaya Pi&#x1E6D;aka<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Brahmali &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Monastic Law</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F9D8;&#x200D;&#x2640;&#xFE0F;</span><span>Ther&#x012B;g&#x0101;th&#x0101;<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Sujato &middot; 2026</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300–200 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-jataka_tales" style="--btn-color:#fb923c;--btn-bg:rgba(251,146,60,.12);--btn-glow:rgba(251,146,60,.35);" onclick="toggleBook('jataka_tales',this)">
-      <span class="sb-icon">&#x1F335;</span><span>J&#x0101;taka Tales<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Cowell et al. &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">547 Stories</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F335;</span><span>J&#x0101;taka Tales<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Cowell et al. &middot; 1895</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300 BCE–200 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-lotus_sutra" style="--btn-color:#fbbf24;--btn-bg:rgba(251,191,36,.12);--btn-glow:rgba(251,191,36,.35);" onclick="toggleBook('lotus_sutra',this)">
+      <span class="sb-icon">&#x1F337;</span><span>Lotus S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Kern &middot; 1884</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100 BCE–200 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-heart_sutra" style="--btn-color:#f472b6;--btn-bg:rgba(244,114,182,.12);--btn-glow:rgba(244,114,182,.35);" onclick="toggleBook('heart_sutra',this)">
+      <span class="sb-icon">&#x1F49C;</span><span>Heart S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101; &middot; Taish&#x014D;</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100–200 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-diamond_sutra" style="--btn-color:#67e8f9;--btn-bg:rgba(103,232,249,.12);--btn-glow:rgba(103,232,249,.35);" onclick="toggleBook('diamond_sutra',this)">
+      <span class="sb-icon">&#x1F48E;</span><span>Diamond S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Vajracchedik&#x0101; &middot; Taish&#x014D;</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100–200 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
   <div class="srch-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
   <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-analects_new" style="--btn-color:#bcaaa4;--btn-bg:rgba(188,170,164,.12);--btn-glow:rgba(188,170,164,.35);" onclick="toggleBook('analects_new','mencius',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Analects of Confucius<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1861</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 475&ndash;221 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-tao" style="--btn-color:#ffe082;--btn-bg:rgba(255,224,130,.12);--btn-glow:rgba(255,224,130,.35);" onclick="toggleBook('tao',this)">
       <span class="sb-icon">&#x262F;&#xFE0F;</span><span>Tao Te Ching<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1891</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400&ndash;300 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-mencius" style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);" onclick="toggleBook('mencius',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Mencius<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1861</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 380–289 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-zhuangzi" style="--btn-color:#80deea;--btn-bg:rgba(128,222,234,.12);--btn-glow:rgba(128,222,234,.35);" onclick="toggleBook('zhuangzi',this)">
       <span class="sb-icon">&#x1F98B;</span><span>Zhuangzi<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Giles &middot; 1889</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-analects_new" style="--btn-color:#bcaaa4;--btn-bg:rgba(188,170,164,.12);--btn-glow:rgba(188,170,164,.35);" onclick="toggleBook('analects_new','mencius',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Analects of Confucius<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1861</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">20 Books</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-mencius" style="--btn-color:#80cbc4;--btn-bg:rgba(128,203,196,.12);--btn-glow:rgba(128,203,196,.35);" onclick="toggleBook('mencius',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Mencius<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1861</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">28 Chapters</small></span><span class="sb-check">&#10022;</span>
-    </button>
+  
   </div>
 
 
@@ -2179,73 +2226,75 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     <button class="srch-book-btn active" id="sbtn-bible" style="--btn-color:#c0392b;--btn-bg:rgba(192,57,43,.12);--btn-glow:rgba(192,57,43,.35);" onclick="toggleBook('bible',this)">
       <span class="sb-icon">&#x271D;&#xFE0F;</span><span>BSB Bible<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Berean Standard &middot; 2022</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1200 BCE&ndash;110 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-book_of_enoch" style="--btn-color:#7c9edb;--btn-bg:rgba(124,158,219,.12);--btn-glow:rgba(124,158,219,.35);" onclick="toggleBook('book_of_enoch',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Book of Enoch<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">R.H. Charles &middot; 1906</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300&ndash;100 BCE</small></span><span class="sb-check">&#10022;</span>
-    </button>
     <button class="srch-book-btn active" id="sbtn-book_of_jubilees" style="--btn-color:#b08fc0;--btn-bg:rgba(176,143,192,.12);--btn-glow:rgba(176,143,192,.35);" onclick="toggleBook('book_of_jubilees',this)">
       <span class="sb-icon">&#x1F4D6;</span><span>Book of Jubilees<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">R.H. Charles &middot; 1902</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 160&ndash;150 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-book_of_enoch" style="--btn-color:#7c9edb;--btn-bg:rgba(124,158,219,.12);--btn-glow:rgba(124,158,219,.35);" onclick="toggleBook('book_of_enoch',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Book of Enoch<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">R.H. Charles &middot; 1906</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300&ndash;100 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-apocrypha" style="--btn-color:#c0955a;--btn-bg:rgba(192,149,90,.12);--btn-glow:rgba(192,149,90,.35);" onclick="toggleBook('apocrypha',this)">
       <span class="sb-icon">&#x1F4DC;</span><span>The Apocrypha<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">KJV &middot; 1611 &middot; 16 Books</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400&ndash;100 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
+  </div>
+
   <div class="srch-group-label">&#x2728;&ensp;Gnosticism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 50 CE</span></div>
   <div class="srch-book-row">
-    <button class="srch-book-btn active" id="sbtn-pistis_sophia" style="--btn-color:#9c7bb5;--btn-bg:rgba(156,123,181,.12);--btn-glow:rgba(156,123,181,.35);" onclick="toggleBook('pistis_sophia',this)">
-      <span class="sb-icon">&#x2728;</span><span>Pistis Sophia<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Mead &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">148 Chapters</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-gospel_of_thomas" style="--btn-color:#bf8050;--btn-bg:rgba(191,128,80,.12);--btn-glow:rgba(191,128,80,.35);" onclick="toggleBook('gospel_of_thomas',this)">
-      <span class="sb-icon">&#x1F54A;&#xFE0F;</span><span>Gospel of Thomas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">114 Sayings</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-gospel_of_judas" style="--btn-color:#78909c;--btn-bg:rgba(120,144,156,0.12);--btn-glow:rgba(120,144,156,0.35);" onclick="toggleBook('gospel_of_judas',this)">
-      <span class="sb-icon">&#x1F480;</span><span>Gospel of Judas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">15 Sections</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-gospel_of_philip" style="--btn-color:#8d6e63;--btn-bg:rgba(141,110,99,0.12);--btn-glow:rgba(141,110,99,0.35);" onclick="toggleBook('gospel_of_philip',this)">
-      <span class="sb-icon">&#x1F54D;</span><span>Gospel of Philip<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">18 Sections</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-gospel_of_truth" style="--btn-color:#a5c4a5;--btn-bg:rgba(165,196,165,0.12);--btn-glow:rgba(165,196,165,0.35);" onclick="toggleBook('gospel_of_truth',this)">
-      <span class="sb-icon">&#x1F4A1;</span><span>Gospel of Truth<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">17 Sections</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-gospel_of_mary" style="--btn-color:#e8a0bf;--btn-bg:rgba(232,160,191,0.12);--btn-glow:rgba(232,160,191,0.35);" onclick="toggleBook('gospel_of_mary',this)">
-      <span class="sb-icon">&#x1F54A;&#xFE0F;</span><span>Gospel of Mary<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">5 Sections</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-gospel_of_peter" style="--btn-color:#90a4ae;--btn-bg:rgba(144,164,174,0.12);--btn-glow:rgba(144,164,174,0.35);" onclick="toggleBook('gospel_of_peter',this)">
-      <span class="sb-icon">&#x1F5FF;</span><span>Gospel of Peter<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Akhmim Frag.</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">14 Sections</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-acts_of_john" style="--btn-color:#c87941;--btn-bg:rgba(200,121,65,.12);--btn-glow:rgba(200,121,65,.35);" onclick="toggleBook('acts_of_john',this)">
-      <span class="sb-icon">&#x1F4DC;</span><span>Acts of John<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Apocryphal Acts</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2nd CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-acts_of_peter" style="--btn-color:#b07c60;--btn-bg:rgba(176,124,96,.12);--btn-glow:rgba(176,124,96,.35);" onclick="toggleBook('acts_of_peter',this)">
-      <span class="sb-icon">&#x1F5DD;&#xFE0F;</span><span>Acts of Peter<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M.R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2nd CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-acts_of_thomas" style="--btn-color:#9c8fc0;--btn-bg:rgba(156,143,192,.12);--btn-glow:rgba(156,143,192,.35);" onclick="toggleBook('acts_of_thomas',this)">
-      <span class="sb-icon">&#x1F30F;</span><span>Acts of Thomas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ante-Nicene Fathers</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 3rd CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
     <button class="srch-book-btn active" id="sbtn-epistle_of_barnabas" style="--btn-color:#d4a870;--btn-bg:rgba(212,168,112,.12);--btn-glow:rgba(212,168,112,.35);" onclick="toggleBook('epistle_of_barnabas',this)">
       <span class="sb-icon">&#x270D;&#xFE0F;</span><span>Ep. of Barnabas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Lake Translation</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 70–135 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-gospel_of_thomas" style="--btn-color:#bf8050;--btn-bg:rgba(191,128,80,.12);--btn-glow:rgba(191,128,80,.35);" onclick="toggleBook('gospel_of_thomas',this)">
+      <span class="sb-icon">&#x1F54A;&#xFE0F;</span><span>Gospel of Thomas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 50&ndash;140 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-fragments_of_early_gospels" style="--btn-color:#8ab0c0;--btn-bg:rgba(138,176,192,.12);--btn-glow:rgba(138,176,192,.35);" onclick="toggleBook('fragments_of_early_gospels',this)">
-      <span class="sb-icon">&#x1F4C3;</span><span>Gospel Fragments<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M.R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st–2nd CE</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F4C3;</span><span>Gospel Fragments<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M.R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 50–150 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-gospel_of_barnabas" style="--btn-color:#c0a060;--btn-bg:rgba(192,160,96,.12);--btn-glow:rgba(192,160,96,.35);" onclick="toggleBook('gospel_of_barnabas',this)">
-      <span class="sb-icon">&#x1F54C;</span><span>Gospel of Barnabas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ragg &middot; 1907</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">Medieval</small></span><span class="sb-check">&#10022;</span>
+    <button class="srch-book-btn active" id="sbtn-gospel_of_nazaraeans" style="--btn-color:#a8b890;--btn-bg:rgba(168,184,144,.12);--btn-glow:rgba(168,184,144,.35);" onclick="toggleBook('gospel_of_nazaraeans',this)">
+      <span class="sb-icon">&#x1F4F0;</span><span>Gospel of Nazaraeans<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Wikisource Trans.</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 50–150 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-history_of_joseph" style="--btn-color:#b09060;--btn-bg:rgba(176,144,96,.12);--btn-glow:rgba(176,144,96,.35);" onclick="toggleBook('history_of_joseph',this)">
-      <span class="sb-icon">&#x1F528;</span><span>Hist. of Joseph<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Coptic Apocrypha</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 4th–6th CE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-martyrdom_of_bartholomew" style="--btn-color:#a0a0c0;--btn-bg:rgba(160,160,192,.12);--btn-glow:rgba(160,160,192,.35);" onclick="toggleBook('martyrdom_of_bartholomew',this)">
-      <span class="sb-icon">&#x2694;&#xFE0F;</span><span>Martyrdom of Bartholomew<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ante-Nicene Fathers</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 2nd–4th CE</small></span><span class="sb-check">&#10022;</span>
+    <button class="srch-book-btn active" id="sbtn-gospel_of_peter" style="--btn-color:#90a4ae;--btn-bg:rgba(144,164,174,0.12);--btn-glow:rgba(144,164,174,0.35);" onclick="toggleBook('gospel_of_peter',this)">
+      <span class="sb-icon">&#x1F5FF;</span><span>Gospel of Peter<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Akhmim Frag.</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100&ndash;150 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-epistle_of_apostles" style="--btn-color:#9ab0c8;--btn-bg:rgba(154,176,200,.12);--btn-glow:rgba(154,176,200,.35);" onclick="toggleBook('epistle_of_apostles',this)">
       <span class="sb-icon">&#x2709;&#xFE0F;</span><span>Ep. of the Apostles<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M.R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 160 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
+    <button class="srch-book-btn active" id="sbtn-gospel_of_judas" style="--btn-color:#78909c;--btn-bg:rgba(120,144,156,0.12);--btn-glow:rgba(120,144,156,0.35);" onclick="toggleBook('gospel_of_judas',this)">
+      <span class="sb-icon">&#x1F480;</span><span>Gospel of Judas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 130&ndash;170 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-gospel_of_truth" style="--btn-color:#a5c4a5;--btn-bg:rgba(165,196,165,0.12);--btn-glow:rgba(165,196,165,0.35);" onclick="toggleBook('gospel_of_truth',this)">
+      <span class="sb-icon">&#x1F4A1;</span><span>Gospel of Truth<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 140&ndash;180 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-gospel_of_mary" style="--btn-color:#e8a0bf;--btn-bg:rgba(232,160,191,0.12);--btn-glow:rgba(232,160,191,0.35);" onclick="toggleBook('gospel_of_mary',this)">
+      <span class="sb-icon">&#x1F54A;&#xFE0F;</span><span>Gospel of Mary<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100&ndash;200 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-gospel_of_philip" style="--btn-color:#8d6e63;--btn-bg:rgba(141,110,99,0.12);--btn-glow:rgba(141,110,99,0.35);" onclick="toggleBook('gospel_of_philip',this)">
+      <span class="sb-icon">&#x1F54D;</span><span>Gospel of Philip<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Nag Hammadi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 150&ndash;300 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-acts_of_john" style="--btn-color:#c87941;--btn-bg:rgba(200,121,65,.12);--btn-glow:rgba(200,121,65,.35);" onclick="toggleBook('acts_of_john',this)">
+      <span class="sb-icon">&#x1F4DC;</span><span>Acts of John<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Apocryphal Acts</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 120–180 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-acts_of_peter" style="--btn-color:#b07c60;--btn-bg:rgba(176,124,96,.12);--btn-glow:rgba(176,124,96,.35);" onclick="toggleBook('acts_of_peter',this)">
+      <span class="sb-icon">&#x1F5DD;&#xFE0F;</span><span>Acts of Peter<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M.R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 120–180 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-acts_of_thomas" style="--btn-color:#9c8fc0;--btn-bg:rgba(156,143,192,.12);--btn-glow:rgba(156,143,192,.35);" onclick="toggleBook('acts_of_thomas',this)">
+      <span class="sb-icon">&#x1F30F;</span><span>Acts of Thomas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ante-Nicene Fathers</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 200–250 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-pistis_sophia" style="--btn-color:#9c7bb5;--btn-bg:rgba(156,123,181,.12);--btn-glow:rgba(156,123,181,.35);" onclick="toggleBook('pistis_sophia',this)">
+      <span class="sb-icon">&#x2728;</span><span>Pistis Sophia<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Mead &middot; 1921</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 250&ndash;400 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-martyrdom_of_bartholomew" style="--btn-color:#a0a0c0;--btn-bg:rgba(160,160,192,.12);--btn-glow:rgba(160,160,192,.35);" onclick="toggleBook('martyrdom_of_bartholomew',this)">
+      <span class="sb-icon">&#x2694;&#xFE0F;</span><span>Martyrdom of Bartholomew<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ante-Nicene Fathers</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 150–400 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-acts_of_andrew_matthias" style="--btn-color:#7890b8;--btn-bg:rgba(120,144,184,.12);--btn-glow:rgba(120,144,184,.35);" onclick="toggleBook('acts_of_andrew_matthias',this)">
-      <span class="sb-icon">&#x26F5;&#xFE0F;</span><span>Acts of Andrew &amp; Matthias<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M.R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 3rd–4th CE</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x26F5;&#xFE0F;</span><span>Acts of Andrew &amp; Matthias<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">M.R. James</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 250–400 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-acts_of_philip" style="--btn-color:#88a888;--btn-bg:rgba(136,168,136,.12);--btn-glow:rgba(136,168,136,.35);" onclick="toggleBook('acts_of_philip',this)">
-      <span class="sb-icon">&#x1F33F;</span><span>Acts of Philip<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ante-Nicene Fathers</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 3rd–4th CE</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x1F33F;</span><span>Acts of Philip<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ante-Nicene Fathers</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 250–400 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
-    <button class="srch-book-btn active" id="sbtn-gospel_of_nazaraeans" style="--btn-color:#a8b890;--btn-bg:rgba(168,184,144,.12);--btn-glow:rgba(168,184,144,.35);" onclick="toggleBook('gospel_of_nazaraeans',this)">
-      <span class="sb-icon">&#x1F4F0;</span><span>Gospel of Nazaraeans<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Wikisource Trans.</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1st–2nd CE</small></span><span class="sb-check">&#10022;</span>
+    <button class="srch-book-btn active" id="sbtn-history_of_joseph" style="--btn-color:#b09060;--btn-bg:rgba(176,144,96,.12);--btn-glow:rgba(176,144,96,.35);" onclick="toggleBook('history_of_joseph',this)">
+      <span class="sb-icon">&#x1F528;</span><span>Hist. of Joseph<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Coptic Apocrypha</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 400–600 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-gospel_of_barnabas" style="--btn-color:#c0a060;--btn-bg:rgba(192,160,96,.12);--btn-glow:rgba(192,160,96,.35);" onclick="toggleBook('gospel_of_barnabas',this)">
+      <span class="sb-icon">&#x1F54C;</span><span>Gospel of Barnabas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ragg &middot; 1907</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1300–1600 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -2278,7 +2327,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="srch-group-label">&#x262C;&ensp;Sikhism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1500 CE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-sggs_new" style="--btn-color:#f4a261;--btn-bg:rgba(244,162,97,.12);--btn-glow:rgba(244,162,97,.35);" onclick="toggleBook('sggs_new',this)">
-      <span class="sb-icon">&#x262C;</span><span>Guru Granth S&#x0101;hib<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Bh. Sant Singh Khalsa</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">1430 Ang</small></span><span class="sb-check">&#10022;</span>
+      <span class="sb-icon">&#x262C;</span><span>Guru Granth S&#x0101;hib<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Bh. Sant Singh Khalsa</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1604&ndash;1708 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -2296,20 +2345,15 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
   </div>
 
-  <div class="srch-group-label">&#x1F319;&ensp;Wicca <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1954 CE</span></div>
+  <div class="srch-group-label">&#x1F319;&ensp;Wicca <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 1949&ndash;1961 CE</span></div>
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-bos" style="--btn-color:#b39ddb;--btn-bg:rgba(179,157,219,.12);--btn-glow:rgba(179,157,219,.35);" onclick="toggleBook('bos',this)">
       <span class="sb-icon">&#x1F319;</span><span>Book of Shadows<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Gardner &middot; 1949&ndash;1961</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1954 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
-  <!-- Select All / Deselect All -->
-  <div style="display:flex;gap:8px;margin:10px 0 4px;flex-wrap:wrap;">
-    <button onclick="toggleAllBooks(true)"  style="padding:5px 16px;font-size:11px;font-family:'EB Garamond',serif;letter-spacing:.06em;border:1px solid rgba(200,190,220,.3);background:rgba(200,190,220,.07);color:rgba(200,190,220,.6);border-radius:20px;cursor:pointer;" onmouseover="this.style.background='rgba(200,190,220,.18)'" onmouseout="this.style.background='rgba(200,190,220,.07)'">&#10022;&nbsp; Select All</button>
-    <button onclick="toggleAllBooks(false)" style="padding:5px 16px;font-size:11px;font-family:'EB Garamond',serif;letter-spacing:.06em;border:1px solid rgba(200,190,220,.3);background:rgba(200,190,220,.07);color:rgba(200,190,220,.6);border-radius:20px;cursor:pointer;" onmouseover="this.style.background='rgba(200,190,220,.18)'" onmouseout="this.style.background='rgba(200,190,220,.07)'">&#10007;&nbsp; Deselect All</button>
-  </div>
-
   <!-- Search bar -->
+  <div style="display:block;width:100%;clear:both;height:0;"></div>
   <div class="srch-bar-wrap">
     <div class="srch-input-row">
       <input type="text" class="srch-input" id="srch-input"
@@ -11617,7 +11661,7 @@ const BOOK_CFG = {
   seven_spirits: { label:'The Seven Evil Spirits', sub:'R.C. Thompson \u00B7 1903 \u00B7 Assyrian \u00B7 Evil Demon Series', icon:'\uD83C\uDF29\uFE0F', accent:'#a08060', accentDim:'rgba(160,128,96,0.35)', countLabel:'text', bookTitle:'The Seven Evil Spirits \u2014 Assyrian Cuneiform Texts', bookEdition:'Trans. R.C. Thompson \u00B7 The Devils and Evil Spirits of Babylonia \u00B7 1903', type:'gilgamesh' },
   adapa: { label:'Adapa and the Food of Life', sub:'Morris Jastrow \u00B7 1898 \u00B7 3 Tablets \u00B7 El-Amarna \u00B7 Akkadian', icon:'\uD83C\uDF47', accent:'#c07840', accentDim:'rgba(192,120,64,0.35)', countLabel:'tablet', bookTitle:'Adapa and the Food of Life', bookEdition:'Trans. Morris Jastrow \u00B7 The Religion of Babylonia and Assyria \u00B7 1898', type:'gilgamesh' },
   dhammapada: { label:'Dhammapada', sub:'F. Max M\u00FCller \u00B7 1881 \u00B7 26 Chapters \u00B7 423 Verses \u00B7 Buddhism', icon:'\uD83D\uDCD6', accent:'#a78bfa', accentDim:'rgba(167,139,250,0.35)', countLabel:'verse', bookTitle:'Dhammapada', bookEdition:'Trans. F. Max M\u00FCller \u00B7 Sacred Books of the East Vol. X \u00B7 1881', type:'dhammapada' },
-  heart_sutra: { label:'Heart S\u016Btra', sub:'Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya \u00B7 c. 1st cent. CE \u00B7 4 Sections \u00B7 Mah\u0101y\u0101na Buddhism', icon:'\uD83D\uDC9C', accent:'#f472b6', accentDim:'rgba(244,114,182,0.35)', countLabel:'section', bookTitle:'Heart S\u016Btra \u2014 Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'heart_sutra' },
+  heart_sutra: { label:'Heart S\u016Btra', sub:'Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya \u00B7 c. 100–200 CE \u00B7 4 Sections \u00B7 Mah\u0101y\u0101na Buddhism', icon:'\uD83D\uDC9C', accent:'#f472b6', accentDim:'rgba(244,114,182,0.35)', countLabel:'section', bookTitle:'Heart S\u016Btra \u2014 Praj\u00F1\u0101p\u0101ramit\u0101h\u1E5Bdaya', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'heart_sutra' },
   theragatha: { label:'Therag\u0101th\u0101', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 264 Poems \u00B7 Verses of the Senior Monks \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83E\uDDD8\u200D\u2642\uFE0F', accent:'#f87171', accentDim:'rgba(248,113,113,0.35)', countLabel:'poem', bookTitle:'Therag\u0101th\u0101 \u2014 Verses of the Senior Monks', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   therigatha: { label:'Ther\u012Bg\u0101th\u0101', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 73 Poems \u00B7 Verses of the Senior Nuns \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83E\uDDD8\u200D\u2640\uFE0F', accent:'#f9a8d4', accentDim:'rgba(249,168,212,0.35)', countLabel:'poem', bookTitle:'Ther\u012Bg\u0101th\u0101 \u2014 Verses of the Senior Nuns', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   jataka_tales: { label:'J\u0101taka Tales', sub:'E.B. Cowell et al. \u00B7 1895\u20131907 \u00B7 547 Stories \u00B7 Cambridge University Press', icon:'\uD83C\uDF35', accent:'#fb923c', accentDim:'rgba(251,146,60,0.35)', countLabel:'story', bookTitle:'J\u0101taka Tales \u2014 Stories of the Buddha\'s Former Births', bookEdition:'Ed. E.B. Cowell \u00B7 Trans. Chalmers, Francis, Rouse et al. \u00B7 1895\u20131907', type:'nikaya' },
@@ -11626,7 +11670,7 @@ const BOOK_CFG = {
   heartfelt_sayings: { label:'Heartfelt Sayings', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 80 Suttas \u00B7 Ud\u0101na \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83E\uDDE1', accent:'#fdba74', accentDim:'rgba(253,186,116,0.35)', countLabel:'sutta', bookTitle:'Heartfelt Sayings \u2014 Ud\u0101na', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   so_it_was_said: { label:'So It Was Said', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 112 Suttas \u00B7 Itivuttaka \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83D\uDCAC', accent:'#c4b5fd', accentDim:'rgba(196,181,253,0.35)', countLabel:'sutta', bookTitle:'So It Was Said \u2014 Itivuttaka', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   lotus_sutra: { label:'Lotus S\u016Btra', sub:'H. Kern \u00B7 1884 \u00B7 27 Chapters \u00B7 Saddharmapun\u1E0Dar\u012Bka \u00B7 Mah\u0101y\u0101na', icon:'\uD83C\uDF37', accent:'#fbbf24', accentDim:'rgba(251,191,36,0.35)', countLabel:'chapter', bookTitle:'Lotus S\u016Btra \u2014 Saddharmapun\u1E0Dar\u012Bkasad\u016Btra', bookEdition:'Trans. H. Kern \u00B7 Sacred Books of the East Vol. XXI \u00B7 1884', type:'nikaya' },
-  diamond_sutra: { label:'Diamond S\u016Btra', sub:'Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101 \u00B7 c. 1st cent. CE \u00B7 32 Sections \u00B7 Mah\u0101y\u0101na', icon:'\uD83D\uDC8E', accent:'#67e8f9', accentDim:'rgba(103,232,249,0.35)', countLabel:'section', bookTitle:'Diamond S\u016Btra \u2014 Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'diamond_sutra' },
+  diamond_sutra: { label:'Diamond S\u016Btra', sub:'Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101 \u00B7 c. 100–200 CE \u00B7 32 Sections \u00B7 Mah\u0101y\u0101na', icon:'\uD83D\uDC8E', accent:'#67e8f9', accentDim:'rgba(103,232,249,0.35)', countLabel:'section', bookTitle:'Diamond S\u016Btra \u2014 Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'diamond_sutra' },
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   corpus_hermeticum: { label:'Corpus Hermeticum', sub:'G.R.S. Mead \u00B7 1906 \u00B7 18 Tractates \u00B7 Hermetic Philosophy \u00B7 c. 100\u2013300 CE', icon:'\u2640\uFE0F', accent:'#f0c070', accentDim:'rgba(240,192,112,0.35)', countLabel:'tractate', bookTitle:'Corpus Hermeticum', bookEdition:'Trans. G.R.S. Mead \u00B7 Thrice-Greatest Hermes \u00B7 1906', type:'corpus_hermeticum' },
   bos:       { label:'Gardnerian Book of Shadows', sub:'Gerald B. Gardner \u00B7 c. 1949\u20131961 \u00B7 39 Sections \u00B7 Wicca', icon:'\uD83C\uDF19', accent:'#b39ddb', accentDim:'rgba(179,157,219,0.35)', countLabel:'section', bookTitle:'Gardnerian Book of Shadows', bookEdition:'Gerald B. Gardner \u00B7 GlobalGrey Edition \u00B7 Public Domain', type:'bos' },
@@ -12065,6 +12109,7 @@ window.libBibleGoChapter = function(idxStr){
   const list=document.createElement('div'); list.className='lib-verse-list';
   verses.forEach(v=>{ const n=v.r.match(/:(\d+)$/); const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${n?n[1]:''}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
   container.appendChild(list);
+  syncBottomNav('bible');
 };
 
 window.libSetTestament = function(t,key,skipRender){
@@ -12849,7 +12894,48 @@ window.libGoChapter=function(idxStr){
     hadiths.forEach(v=>{ const row=document.createElement('div'); row.className='lib-verse'; row.title='Click to copy'; row.innerHTML=`<div class="lib-verse-num" style="color:${cfg.accent};">${v.n}</div><div class="lib-verse-text">${esc(v.t)}</div>`; row.addEventListener('click',()=>_copyVerse(v.r,v.t)); list.appendChild(row); });
     container.appendChild(list);
   }
+  syncBottomNav('other');
 };
+
+// ── Bottom nav sync ──────────────────────────────────
+function syncBottomNav(mode){
+  const bn = document.getElementById('lib-bottom-nav');
+  if(!bn) return;
+  bn.style.display = 'block';
+  if(mode === 'bible'){
+    document.getElementById('lib-bottom-other-nav').style.display = 'none';
+    const bbn = document.getElementById('lib-bottom-bible-nav');
+    bbn.style.display = 'block';
+    // Mirror options from top select
+    const topSel = document.getElementById('lib-bible-ch-sel');
+    const botSel = document.getElementById('lib-bottom-bible-ch-sel');
+    if(topSel && botSel){
+      botSel.innerHTML = topSel.innerHTML;
+      botSel.value = topSel.value;
+    }
+    const topPos = document.getElementById('lib-bible-ch-pos');
+    const botPos = document.getElementById('lib-bottom-bible-ch-pos');
+    if(topPos && botPos) botPos.textContent = topPos.textContent;
+  } else {
+    document.getElementById('lib-bottom-bible-nav').style.display = 'none';
+    const bon = document.getElementById('lib-bottom-other-nav');
+    bon.style.display = 'block';
+    // Mirror label
+    const topLabel = document.getElementById('lib-nav-label');
+    const botLabel = document.getElementById('lib-bottom-nav-label');
+    if(topLabel && botLabel) botLabel.textContent = topLabel.textContent;
+    // Mirror options from top select
+    const topSel = document.getElementById('lib-other-sel');
+    const botSel = document.getElementById('lib-bottom-other-sel');
+    if(topSel && botSel){
+      botSel.innerHTML = topSel.innerHTML;
+      botSel.value = topSel.value;
+    }
+    const topPos = document.getElementById('lib-other-pos');
+    const botPos = document.getElementById('lib-bottom-other-pos');
+    if(topPos && botPos) botPos.textContent = topPos.textContent;
+  }
+}
 
 window.libChapterStep=function(d){
   const total=libChapterList.length;
@@ -12860,6 +12946,7 @@ window.libChapterStep=function(d){
 window.closeLibReader=function(){
   document.getElementById('lib-reader').classList.remove('open');
   document.getElementById('lib-shelf-wrap').style.display='block';
+  const bn=document.getElementById('lib-bottom-nav'); if(bn) bn.style.display='none';
   libBook=null;
 };
 
@@ -12869,7 +12956,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,upanishads:true,ramayana:true,tao:true,analects_new:true,mencius:true,pistis_sophia:true,gospel_of_thomas:true,gospel_of_judas:true,gospel_of_philip:true,gospel_of_truth:true,gospel_of_mary:true,gospel_of_peter:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs_new:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,talmud:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,upanishads:true,ramayana:true,tao:true,analects_new:true,mencius:true,pistis_sophia:true,gospel_of_thomas:true,gospel_of_judas:true,gospel_of_philip:true,gospel_of_truth:true,gospel_of_mary:true,gospel_of_peter:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs_new:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,talmud:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,devi_mahatmya:true,acts_of_john:true,acts_of_peter:true,acts_of_thomas:true,epistle_of_barnabas:true,fragments_of_early_gospels:true,gospel_of_barnabas:true,history_of_joseph:true,martyrdom_of_bartholomew:true,epistle_of_apostles:true,acts_of_andrew_matthias:true,acts_of_philip:true,gospel_of_nazaraeans:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
