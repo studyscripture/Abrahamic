@@ -12952,56 +12952,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=[
-  // Ancient Mesopotamian
-  'kesh_temple_hymn','enuma_elish','gilgamesh','ishtar_descent','seven_spirits','adapa',
-  // Ancient Egyptian
-  'pyramid_texts','bod',
-  // Hinduism
-  'rig','sama','yajur','atharva','upanishads','sbg','gita_besant','ramayana','maha','harivamsha',
-  'vishnu_purana','bhagavata_purana','garuda_purana','devi_mahatmya','mahanirvana_tantra',
-  'dakshinamurti_stotra','yoga_sutras',
-  // Mayan
-  'popol_vuh',
-  // Judaism
-  'jps','book_of_enoch','book_of_jubilees','apocrypha','talmud',
-  // Zoroastrianism
-  'avesta',
-  // Ancient Greek
-  'homeric_hymn_demeter','iliad','odyssey',
-  // Jainism
-  'jaina_sutras','tattva',
-  // Buddhism
-  'dn','mn','sn','an','vinaya_pitaka','dhammapada','theragatha','therigatha',
-  'anthology_of_discourses','heartfelt_sayings','so_it_was_said','jataka_tales',
-  'heart_sutra','diamond_sutra','lotus_sutra',
-  // Taoism & Confucianism
-  'tao','zhuangzi','analects_new','mencius',
-  // Norse
-  'poetic_edda',
-  // Shinto
-  'kojiki','nihon_shoki',
-  // Christianity
-  'kjv','bible',
-  // Gnosticism & Christian Apocrypha
-  'gospel_of_thomas','gospel_of_peter','gospel_of_barnabas','gospel_of_nazaraeans',
-  'gospel_of_mary','fragments_of_early_gospels','epistle_of_barnabas','epistle_of_apostles',
-  'gospel_of_truth','gospel_of_judas','acts_of_john','acts_of_peter',
-  'gospel_of_philip','acts_of_thomas','acts_of_andrew_matthias','acts_of_philip',
-  'history_of_joseph','martyrdom_of_bartholomew','pistis_sophia',
-  // Hermeticism
-  'corpus_hermeticum',
-  // Islam
-  'quran_y','quran_p','bukhari','muslim','masnavi',
-  // Sikhism
-  'sggs_new',
-  // Mormonism
-  'bom',
-  // Bahai
-  'iqan',
-  // Wicca
-  'bos'
-];
+const BOOK_DISPLAY_ORDER=['kesh_temple_hymn','gilgamesh','enuma_elish','adapa','ishtar_descent','seven_spirits','pyramid_texts','bod','rig','sama','yajur','atharva','upanishads','ramayana','maha','yoga_sutras','sbg','gita_besant','harivamsha','vishnu_purana','devi_mahatmya','dakshinamurti_stotra','bhagavata_purana','garuda_purana','mahanirvana_tantra','popol_vuh','jps','talmud','avesta','odyssey','iliad','homeric_hymn_demeter','jaina_sutras','tattva','dn','mn','sn','an','anthology_of_discourses','vinaya_pitaka','dhammapada','heartfelt_sayings','so_it_was_said','theragatha','therigatha','jataka_tales','lotus_sutra','heart_sutra','diamond_sutra','analects_new','tao','mencius','zhuangzi','poetic_edda','kojiki','nihon_shoki','kjv','bible','book_of_jubilees','book_of_enoch','apocrypha','epistle_of_barnabas','gospel_of_thomas','fragments_of_early_gospels','gospel_of_nazaraeans','gospel_of_peter','epistle_of_apostles','gospel_of_judas','gospel_of_truth','gospel_of_mary','gospel_of_philip','acts_of_john','acts_of_peter','acts_of_thomas','pistis_sophia','martyrdom_of_bartholomew','acts_of_andrew_matthias','acts_of_philip','history_of_joseph','gospel_of_barnabas','corpus_hermeticum','quran_y','quran_p','bukhari','muslim','masnavi','sggs_new','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
