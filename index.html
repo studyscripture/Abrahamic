@@ -1955,8 +1955,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
       </div>
 
       <div id="lib-verse-content"></div>
-
-      <!-- Bottom chapter nav -->
       <div id="lib-bottom-nav" style="display:none;">
         <div id="lib-bottom-bible-nav" style="display:none;">
           <div class="lib-chapter-nav lib-bottom-nav-inner">
@@ -12955,49 +12953,54 @@ window.doSearch=function(){
 
 // Canonical display order matching the library panel
 const BOOK_DISPLAY_ORDER=[
-  // Ancient Mesopotamian (~2600–1400 BCE)
-  'kesh_temple_hymn','pyramid_texts','enuma_elish','gilgamesh','ishtar_descent','seven_spirits','adapa',
-  // Vedic (~1500–900 BCE)
-  'rig','sama','yajur','atharva',
-  // Upanishads / Avesta / Homer (~900–600 BCE)
-  'upanishads','avesta','homeric_hymn_demeter','iliad','odyssey',
-  // Mayan (oral ~700 BCE)
+  // Ancient Mesopotamian
+  'kesh_temple_hymn','enuma_elish','gilgamesh','ishtar_descent','seven_spirits','adapa',
+  // Ancient Egyptian
+  'pyramid_texts','bod',
+  // Hinduism
+  'rig','sama','yajur','atharva','upanishads','sbg','gita_besant','ramayana','maha','harivamsha',
+  'vishnu_purana','bhagavata_purana','garuda_purana','devi_mahatmya','mahanirvana_tantra',
+  'dakshinamurti_stotra','yoga_sutras',
+  // Mayan
   'popol_vuh',
-  // Axial Age — Jewish, Jain, Buddhist, Chinese (~600–200 BCE)
-  'jps','talmud',
+  // Judaism
+  'jps','book_of_enoch','book_of_jubilees','apocrypha','talmud',
+  // Zoroastrianism
+  'avesta',
+  // Ancient Greek
+  'homeric_hymn_demeter','iliad','odyssey',
+  // Jainism
   'jaina_sutras','tattva',
+  // Buddhism
   'dn','mn','sn','an','vinaya_pitaka','dhammapada','theragatha','therigatha',
   'anthology_of_discourses','heartfelt_sayings','so_it_was_said','jataka_tales',
-  'tao','analects_new','mencius','zhuangzi',
-  // Second Temple / Intertestamental (~300–100 BCE)
-  'book_of_enoch','book_of_jubilees','apocrypha',
-  // Sanskrit Epics / Gita (~500 BCE–400 CE)
-  'ramayana','maha','sbg','gita_besant','harivamsha',
-  // Yoga / Prajnaparamita / Lotus (~400 BCE–300 CE)
-  'yoga_sutras','heart_sutra','diamond_sutra','lotus_sutra',
-  // New Testament / Early Christian (~1–100 CE)
-  'kjv','bible',
-  // Gnostic & Christian Apocrypha (~70–500 CE)
-  'epistle_of_barnabas','gospel_of_thomas','gospel_of_peter','gospel_of_barnabas',
-  'gospel_of_nazaraeans','gospel_of_mary','fragments_of_early_gospels',
-  'epistle_of_apostles','gospel_of_truth','gospel_of_judas','acts_of_john','acts_of_peter',
-  'corpus_hermeticum','gospel_of_philip','acts_of_thomas','acts_of_andrew_matthias',
-  'history_of_joseph','acts_of_philip','martyrdom_of_bartholomew','pistis_sophia',
-  // Later Hindu Puranas (~100–1400 CE)
-  'vishnu_purana','devi_mahatmya','bhagavata_purana','garuda_purana',
-  'dakshinamurti_stotra','mahanirvana_tantra',
-  // Bod / Tibetan (~800 CE compiled)
-  'bod',
-  // East Asian chronicles (~700 CE)
-  'kojiki','nihon_shoki',
-  // Norse (~800–1270 CE)
+  'heart_sutra','diamond_sutra','lotus_sutra',
+  // Taoism & Confucianism
+  'tao','zhuangzi','analects_new','mencius',
+  // Norse
   'poetic_edda',
-  // Islam (~609 CE–1273 CE)
+  // Shinto
+  'kojiki','nihon_shoki',
+  // Christianity
+  'kjv','bible',
+  // Gnosticism & Christian Apocrypha
+  'gospel_of_thomas','gospel_of_peter','gospel_of_barnabas','gospel_of_nazaraeans',
+  'gospel_of_mary','fragments_of_early_gospels','epistle_of_barnabas','epistle_of_apostles',
+  'gospel_of_truth','gospel_of_judas','acts_of_john','acts_of_peter',
+  'gospel_of_philip','acts_of_thomas','acts_of_andrew_matthias','acts_of_philip',
+  'history_of_joseph','martyrdom_of_bartholomew','pistis_sophia',
+  // Hermeticism
+  'corpus_hermeticum',
+  // Islam
   'quran_y','quran_p','bukhari','muslim','masnavi',
-  // Sikh (~1604 CE)
+  // Sikhism
   'sggs_new',
-  // Mormon / Bahai / Wiccan (~1830–1949 CE)
-  'bom','iqan','bos'
+  // Mormonism
+  'bom',
+  // Bahai
+  'iqan',
+  // Wicca
+  'bos'
 ];
 
 function runSearch(query,books){
