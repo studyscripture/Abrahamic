@@ -996,6 +996,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .lib-chapter-arrow { background:var(--srch-surface); border:1px solid var(--srch-border); color:var(--muted); padding:7px 12px; border-radius:4px; cursor:pointer; font-size:13px; transition:all .18s; line-height:1; }
 .lib-chapter-arrow:hover { border-color:var(--srch); color:var(--srch); }
 .lib-chapter-pos { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.14em; color:var(--muted); }
+/* Bottom chapter nav */
 #lib-bottom-nav { margin-top:40px; padding-top:22px; border-top:1px solid var(--srch-border); }
 .lib-bottom-nav-inner { margin-bottom:16px; }
 .lib-bottom-nav-back { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding-bottom:40px; }
@@ -1951,8 +1952,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
       <div id="lib-verse-content"></div>
 
-      <!-- Bottom chapter nav -->
+      <!-- Bottom chapter nav — mirrors top nav, always visible after content loads -->
       <div id="lib-bottom-nav" style="display:none;">
+        <!-- Bible bottom nav -->
         <div id="lib-bottom-bible-nav" style="display:none;">
           <div class="lib-chapter-nav lib-bottom-nav-inner">
             <span class="lib-chapter-label">Chapter</span>
@@ -1964,6 +1966,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
             <span class="lib-chapter-pos" id="lib-bottom-bible-ch-pos"></span>
           </div>
         </div>
+        <!-- Other bottom nav -->
         <div id="lib-bottom-other-nav" style="display:none;">
           <div class="lib-chapter-nav lib-bottom-nav-inner">
             <span class="lib-chapter-label" id="lib-bottom-nav-label">Chapter</span>
@@ -12896,25 +12899,41 @@ window.libGoChapter=function(idxStr){
 
 // ── Bottom nav sync ──────────────────────────────────
 function syncBottomNav(mode){
-  const bn=document.getElementById('lib-bottom-nav');
+  const bn = document.getElementById('lib-bottom-nav');
   if(!bn) return;
-  bn.style.display='block';
-  if(mode==='bible'){
-    document.getElementById('lib-bottom-other-nav').style.display='none';
-    document.getElementById('lib-bottom-bible-nav').style.display='block';
-    const topSel=document.getElementById('lib-bible-ch-sel'), botSel=document.getElementById('lib-bottom-bible-ch-sel');
-    if(topSel&&botSel){ botSel.innerHTML=topSel.innerHTML; botSel.value=topSel.value; }
-    const topPos=document.getElementById('lib-bible-ch-pos'), botPos=document.getElementById('lib-bottom-bible-ch-pos');
-    if(topPos&&botPos) botPos.textContent=topPos.textContent;
+  bn.style.display = 'block';
+  if(mode === 'bible'){
+    document.getElementById('lib-bottom-other-nav').style.display = 'none';
+    const bbn = document.getElementById('lib-bottom-bible-nav');
+    bbn.style.display = 'block';
+    // Mirror options from top select
+    const topSel = document.getElementById('lib-bible-ch-sel');
+    const botSel = document.getElementById('lib-bottom-bible-ch-sel');
+    if(topSel && botSel){
+      botSel.innerHTML = topSel.innerHTML;
+      botSel.value = topSel.value;
+    }
+    const topPos = document.getElementById('lib-bible-ch-pos');
+    const botPos = document.getElementById('lib-bottom-bible-ch-pos');
+    if(topPos && botPos) botPos.textContent = topPos.textContent;
   } else {
-    document.getElementById('lib-bottom-bible-nav').style.display='none';
-    document.getElementById('lib-bottom-other-nav').style.display='block';
-    const topLabel=document.getElementById('lib-nav-label'), botLabel=document.getElementById('lib-bottom-nav-label');
-    if(topLabel&&botLabel) botLabel.textContent=topLabel.textContent;
-    const topSel=document.getElementById('lib-other-sel'), botSel=document.getElementById('lib-bottom-other-sel');
-    if(topSel&&botSel){ botSel.innerHTML=topSel.innerHTML; botSel.value=topSel.value; }
-    const topPos=document.getElementById('lib-other-pos'), botPos=document.getElementById('lib-bottom-other-pos');
-    if(topPos&&botPos) botPos.textContent=topPos.textContent;
+    document.getElementById('lib-bottom-bible-nav').style.display = 'none';
+    const bon = document.getElementById('lib-bottom-other-nav');
+    bon.style.display = 'block';
+    // Mirror label
+    const topLabel = document.getElementById('lib-nav-label');
+    const botLabel = document.getElementById('lib-bottom-nav-label');
+    if(topLabel && botLabel) botLabel.textContent = topLabel.textContent;
+    // Mirror options from top select
+    const topSel = document.getElementById('lib-other-sel');
+    const botSel = document.getElementById('lib-bottom-other-sel');
+    if(topSel && botSel){
+      botSel.innerHTML = topSel.innerHTML;
+      botSel.value = topSel.value;
+    }
+    const topPos = document.getElementById('lib-other-pos');
+    const botPos = document.getElementById('lib-bottom-other-pos');
+    if(topPos && botPos) botPos.textContent = topPos.textContent;
   }
 }
 
@@ -12952,53 +12971,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=[
-  // Egyptian
-  'bod','pyramid_texts',
-  // Hindu
-  'rig','sama','yajur','atharva','sbg','gita_besant','ramayana','maha','harivamsha',
-  'vishnu_purana','bhagavata_purana','garuda_purana','mahanirvana_tantra','dakshinamurti_stotra',
-  'upanishads','yoga_sutras','devi_mahatmya',
-  // Ancient Mesopotamian
-  'kesh_temple_hymn','gilgamesh','enuma_elish','ishtar_descent','seven_spirits','adapa',
-  // Mayan
-  'popol_vuh',
-  // Jewish
-  'jps','talmud',
-  // Zoroastrian
-  'avesta',
-  // Greek
-  'homeric_hymn_demeter','odyssey','iliad',
-  // Norse
-  'poetic_edda',
-  // Jain
-  'tattva','jaina_sutras',
-  // Hermetic
-  'corpus_hermeticum',
-  // Buddhist
-  'dn','mn','sn','an','dhammapada','heart_sutra','diamond_sutra','lotus_sutra',
-  'anthology_of_discourses','heartfelt_sayings','so_it_was_said',
-  'theragatha','therigatha','vinaya_pitaka','jataka_tales',
-  // Taoist / Chinese
-  'tao','zhuangzi','analects_new','mencius','kojiki','nihon_shoki',
-  // Christian (canonical)
-  'kjv','bible','apocrypha','book_of_enoch','book_of_jubilees',
-  // Islamic
-  'quran_y','quran_p','bukhari','muslim','masnavi',
-  // Sikh
-  'sggs_new',
-  // Mormon / Bahai
-  'bom','iqan',
-  // Wiccan
-  'bos',
-  // Gnostic / Nag Hammadi
-  'pistis_sophia','gospel_of_thomas','gospel_of_judas','gospel_of_philip',
-  'gospel_of_truth','gospel_of_mary','gospel_of_peter',
-  // Christian Apocrypha
-  'acts_of_john','acts_of_peter','acts_of_thomas','acts_of_andrew_matthias','acts_of_philip',
-  'epistle_of_barnabas','fragments_of_early_gospels','gospel_of_barnabas',
-  'history_of_joseph','martyrdom_of_bartholomew','epistle_of_apostles','gospel_of_nazaraeans'
-];
+const BOOK_DISPLAY_ORDER=['kesh_temple_hymn','gilgamesh','enuma_elish','adapa','ishtar_descent','seven_spirits','pyramid_texts','bod','rig','sama','yajur','atharva','upanishads','ramayana','maha','yoga_sutras','sbg','gita_besant','harivamsha','vishnu_purana','devi_mahatmya','dakshinamurti_stotra','bhagavata_purana','garuda_purana','mahanirvana_tantra','popol_vuh','jps','talmud','avesta','odyssey','iliad','homeric_hymn_demeter','jaina_sutras','tattva','dn','mn','sn','an','anthology_of_discourses','vinaya_pitaka','dhammapada','heartfelt_sayings','so_it_was_said','theragatha','therigatha','jataka_tales','lotus_sutra','heart_sutra','diamond_sutra','analects_new','tao','mencius','zhuangzi','poetic_edda','kojiki','nihon_shoki','kjv','bible','book_of_jubilees','book_of_enoch','apocrypha','epistle_of_barnabas','gospel_of_thomas','fragments_of_early_gospels','gospel_of_nazaraeans','gospel_of_peter','epistle_of_apostles','gospel_of_judas','gospel_of_truth','gospel_of_mary','gospel_of_philip','acts_of_john','acts_of_peter','acts_of_thomas','pistis_sophia','martyrdom_of_bartholomew','acts_of_andrew_matthias','acts_of_philip','history_of_joseph','gospel_of_barnabas','corpus_hermeticum','quran_y','quran_p','bukhari','muslim','masnavi','sggs_new','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -13013,7 +12986,7 @@ function runSearch(query,books){
     if(!SCRIPTURES[book]) continue;
     const matches=SCRIPTURES[book].filter(v=>{
       if(book==='gita_besant'&&isGitaGarbage(v)) return false;
-      return terms.every(t=>(v.t||'').toLowerCase().includes(t));
+      return terms.every(t=>v.t.toLowerCase().includes(t));
     });
     if(!matches.length) continue;
     bookMatches[book]=matches; totalFound+=matches.length; activeBooks.push(book);
