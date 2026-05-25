@@ -1320,13 +1320,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-edition">G. B&uuml;hler &middot; 1886 &middot; Sacred Books of the East Vol. XXV</div>
         <div class="lib-book-count">12 Chapters &middot; Law, Dharma &amp; Cosmology</div>
       </div>
-      <div class="lib-book-card" style="--bk-accent:#b39ddb;" onclick="openLibBook('ashtavakra_gita')">
-        <div class="lib-book-icon">&#x1F9D8;</div>
-        <div class="lib-book-name">A&#x1E63;&#x1E6D;&amacr;vakra G&imacr;t&amacr;</div>
-        <div class="lib-book-origin">c. 400&ndash;800 CE &middot; Advaita Ved&amacr;nta</div>
-        <div class="lib-book-edition">John Richards &middot; 1994 &middot; Wikisource</div>
-        <div class="lib-book-count">20 Chapters &middot; 298 Verses &middot; Non-dual Consciousness</div>
-      </div>
       <div class="lib-book-card" style="--bk-accent:#a5d6a7;" onclick="openLibBook('yoga_sutras')">
         <div class="lib-book-icon">&#x1F9D8;</div>
         <div class="lib-book-name">Yoga S&#x016B;tras of Pata&#xF1;jali</div>
@@ -1347,6 +1340,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 200 BCE&ndash;200 CE</div>
         <div class="lib-book-edition">Swami Swarupananda &middot; 1909 &middot; Advaita Ashrama</div>
         <div class="lib-book-count">671 Verses &middot; 18 Chapters</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#b39ddb;" onclick="openLibBook('ashtavakra_gita')">
+        <div class="lib-book-icon">&#x1F9D8;</div>
+        <div class="lib-book-name">A&#x1E63;&#x1E6D;&amacr;vakra G&imacr;t&amacr;</div>
+        <div class="lib-book-origin">c. 400&ndash;800 CE &middot; Advaita Ved&amacr;nta</div>
+        <div class="lib-book-edition">John Richards &middot; 1994 &middot; Wikisource</div>
+        <div class="lib-book-count">20 Chapters &middot; 298 Verses &middot; Non-dual Consciousness</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ff8a65;" onclick="openLibBook('harivamsha')">
         <div class="lib-book-icon">&#x1F531;</div>
@@ -1588,6 +1588,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 300 CE &middot; Vajracchedik&#x0101; Praj&#x00F1;&#x0101;p&#x0101;ramit&#x0101;</div>
         <div class="lib-book-edition">Classical Chinese Recension &middot; Taish&#x014D; Canon</div>
         <div class="lib-book-count">32 Sections &middot; Mah&#x0101;y&#x0101;na Buddhism</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#80deea;" onclick="openLibBook('vimalakirti_sutra')">
+        <div class="lib-book-icon">&#x1F3DB;&#xFE0F;</div>
+        <div class="lib-book-name">Vimalak&#x012B;rtinirde&#x015B;a</div>
+        <div class="lib-book-origin">c. 100 CE &middot; Mah&#x0101;y&#x0101;na Buddhism &middot; 84000</div>
+        <div class="lib-book-edition">Robert A. F. Thurman &middot; 1976 &middot; Penn State University Press</div>
+        <div class="lib-book-count">12 Chapters &middot; Inconceivable Liberation &middot; Non-duality</div>
       </div>
     </div>
 
@@ -2200,6 +2207,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-diamond_sutra" style="--btn-color:#67e8f9;--btn-bg:rgba(103,232,249,.12);--btn-glow:rgba(103,232,249,.35);" onclick="toggleBook('diamond_sutra',this)">
       <span class="sb-icon">&#x1F48E;</span><span>Diamond S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Vajracchedik&#x0101; &middot; Taish&#x014D;</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100–200 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-vimalakirti_sutra" style="--btn-color:#80deea;--btn-bg:rgba(128,222,234,.12);--btn-glow:rgba(128,222,234,.35);" onclick="toggleBook('vimalakirti_sutra',this)">
+      <span class="sb-icon">&#x1F3DB;&#xFE0F;</span><span>Vimalak&#x012B;rti S&#x016B;tra<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Thurman &middot; 1976</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 100 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11690,6 +11700,7 @@ const BOOK_CFG = {
   heartfelt_sayings: { label:'Heartfelt Sayings', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 80 Suttas \u00B7 Ud\u0101na \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83E\uDDE1', accent:'#fdba74', accentDim:'rgba(253,186,116,0.35)', countLabel:'sutta', bookTitle:'Heartfelt Sayings \u2014 Ud\u0101na', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   so_it_was_said: { label:'So It Was Said', sub:'Bhikkhu Sujato \u00B7 2026 \u00B7 112 Suttas \u00B7 Itivuttaka \u00B7 Khuddaka Nik\u0101ya', icon:'\uD83D\uDCAC', accent:'#c4b5fd', accentDim:'rgba(196,181,253,0.35)', countLabel:'sutta', bookTitle:'So It Was Said \u2014 Itivuttaka', bookEdition:'Trans. Bhikkhu Sujato \u00B7 SuttaCentral \u00B7 2026', type:'nikaya' },
   lotus_sutra: { label:'Lotus S\u016Btra', sub:'H. Kern \u00B7 1884 \u00B7 27 Chapters \u00B7 Saddharmapun\u1E0Dar\u012Bka \u00B7 Mah\u0101y\u0101na', icon:'\uD83C\uDF37', accent:'#fbbf24', accentDim:'rgba(251,191,36,0.35)', countLabel:'chapter', bookTitle:'Lotus S\u016Btra \u2014 Saddharmapun\u1E0Dar\u012Bkasad\u016Btra', bookEdition:'Trans. H. Kern \u00B7 Sacred Books of the East Vol. XXI \u00B7 1884', type:'nikaya' },
+  vimalakirti_sutra: { label:'Vimalakīrtinirdeśa', sub:'Robert Thurman · 1976 · 84000 · Mahāyāna', icon:'🏛️', accent:'#80deea', accentDim:'rgba(128,222,234,0.35)', countLabel:'chapter', bookTitle:'The Teaching of Vimalakīrti', bookEdition:'Trans. Robert A. F. Thurman · 1976 · 84000: Translating the Words of the Buddha', type:'vimalakirti_sutra' },
   diamond_sutra: { label:'Diamond S\u016Btra', sub:'Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101 \u00B7 c. 100–200 CE \u00B7 32 Sections \u00B7 Mah\u0101y\u0101na', icon:'\uD83D\uDC8E', accent:'#67e8f9', accentDim:'rgba(103,232,249,0.35)', countLabel:'section', bookTitle:'Diamond S\u016Btra \u2014 Vajracchedik\u0101 Praj\u00F1\u0101p\u0101ramit\u0101', bookEdition:'Classical Chinese Recension \u00B7 Trans. from Taish\u014D Canon', type:'diamond_sutra' },
   masnavi:   { label:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', sub:'Jal\u0101l al-D\u012Bn R\u016Bm\u012B \u00B7 c. 1258 CE \u00B7 6 Books \u00B7 86 Stories \u00B7 Sufi', icon:'\uD83C\uDF19', accent:'#c084fc', accentDim:'rgba(192,132,252,0.35)', countLabel:'story', bookTitle:'Masna\u012Bv\u012B i Ma\u02BFnav\u012B', bookEdition:'Trans. E.H. Whinfield \u00B7 1898 \u00B7 Abridged \u00B7 Wikisource', type:'masnavi' },
   corpus_hermeticum: { label:'Corpus Hermeticum', sub:'G.R.S. Mead \u00B7 1906 \u00B7 18 Tractates \u00B7 Hermetic Philosophy \u00B7 c. 100\u2013300 CE', icon:'\u2640\uFE0F', accent:'#f0c070', accentDim:'rgba(240,192,112,0.35)', countLabel:'tractate', bookTitle:'Corpus Hermeticum', bookEdition:'Trans. G.R.S. Mead \u00B7 Thrice-Greatest Hermes \u00B7 1906', type:'corpus_hermeticum' },
@@ -11919,8 +11930,9 @@ function loadScriptures(cb){
     ,fetch('taoteching.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ,fetch('ashtavakra_gita.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ,fetch('manusmriti.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('vimalakirti_sutra.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, tv, s3, upanishadsData, tk, talmudData, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData, sggsNewData, menciusData, pistisData, thomasData, gnosticData, actsJohnData, actsPeterData, actsThomasData, epistleBarnabas, fragmentsData, gospelBarnabasData, histJosephData, martyrdomBartData, epistleApostlesData, actsAndrewData, actsPhilipData, gospelNazaraeans, taotechingData, ashtavakraData, manusmritiData])=>{
+    .then(([d, v, tv, s3, upanishadsData, tk, talmudData, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData, sggsNewData, menciusData, pistisData, thomasData, gnosticData, actsJohnData, actsPeterData, actsThomasData, epistleBarnabas, fragmentsData, gospelBarnabasData, histJosephData, martyrdomBartData, epistleApostlesData, actsAndrewData, actsPhilipData, gospelNazaraeans, taotechingData, ashtavakraData, manusmritiData, vimalakirtiData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, tv, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11992,6 +12004,7 @@ function loadScriptures(cb){
       if(taotechingData && Array.isArray(taotechingData.tao) && taotechingData.tao.length) d.tao = taotechingData.tao;
       if(ashtavakraData && Array.isArray(ashtavakraData.ashtavakra_gita) && ashtavakraData.ashtavakra_gita.length) d.ashtavakra_gita = ashtavakraData.ashtavakra_gita;
       if(manusmritiData && Array.isArray(manusmritiData.manusmriti) && manusmritiData.manusmriti.length) d.manusmriti = manusmritiData.manusmriti;
+      if(vimalakirtiData && Array.isArray(vimalakirtiData.vimalakirti_sutra) && vimalakirtiData.vimalakirti_sutra.length) d.vimalakirti_sutra = vimalakirtiData.vimalakirti_sutra;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -12369,7 +12382,7 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='ramayana'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; sel.appendChild(o); });
-  } else if(key==='ashtavakra_gita'||key==='manusmriti'){
+  } else if(key==='ashtavakra_gita'||key==='manusmriti'||key==='vimalakirti_sutra'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='tao'){
@@ -12641,7 +12654,7 @@ window.libGoChapter=function(idxStr){
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; container.appendChild(h);
     renderSegmentedPassage(container,cfg,s.r,s.t);
-    } else if(libBook==='ashtavakra_gita'||libBook==='manusmriti'){
+    } else if(libBook==='ashtavakra_gita'||libBook==='manusmriti'||libBook==='vimalakirti_sutra'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
@@ -12992,7 +13005,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,upanishads:true,ramayana:true,tao:true,analects_new:true,mencius:true,pistis_sophia:true,gospel_of_thomas:true,gospel_of_judas:true,gospel_of_philip:true,gospel_of_truth:true,gospel_of_mary:true,gospel_of_peter:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs_new:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,talmud:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,ashtavakra_gita:true,manusmriti:true,devi_mahatmya:true,acts_of_john:true,acts_of_peter:true,acts_of_thomas:true,epistle_of_barnabas:true,fragments_of_early_gospels:true,gospel_of_barnabas:true,history_of_joseph:true,martyrdom_of_bartholomew:true,epistle_of_apostles:true,acts_of_andrew_matthias:true,acts_of_philip:true,gospel_of_nazaraeans:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,upanishads:true,ramayana:true,tao:true,analects_new:true,mencius:true,pistis_sophia:true,gospel_of_thomas:true,gospel_of_judas:true,gospel_of_philip:true,gospel_of_truth:true,gospel_of_mary:true,gospel_of_peter:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs_new:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,talmud:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,heart_sutra:true,diamond_sutra:true,vimalakirti_sutra:true,lotus_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,poetic_edda:true,iqan:true,yoga_sutras:true,ashtavakra_gita:true,manusmriti:true,devi_mahatmya:true,acts_of_john:true,acts_of_peter:true,acts_of_thomas:true,epistle_of_barnabas:true,fragments_of_early_gospels:true,gospel_of_barnabas:true,history_of_joseph:true,martyrdom_of_bartholomew:true,epistle_of_apostles:true,acts_of_andrew_matthias:true,acts_of_philip:true,gospel_of_nazaraeans:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -13007,7 +13020,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['kesh_temple_hymn','gilgamesh','enuma_elish','adapa','ishtar_descent','seven_spirits','pyramid_texts','bod','rig','sama','yajur','atharva','upanishads','ramayana','maha','manusmriti','yoga_sutras','ashtavakra_gita','sbg','gita_besant','harivamsha','vishnu_purana','devi_mahatmya','dakshinamurti_stotra','bhagavata_purana','garuda_purana','mahanirvana_tantra','popol_vuh','jps','talmud','avesta','odyssey','iliad','homeric_hymn_demeter','jaina_sutras','tattva','dn','mn','sn','an','anthology_of_discourses','vinaya_pitaka','dhammapada','heartfelt_sayings','so_it_was_said','theragatha','therigatha','jataka_tales','lotus_sutra','heart_sutra','diamond_sutra','analects_new','tao','mencius','zhuangzi','poetic_edda','kojiki','nihon_shoki','kjv','bible','book_of_jubilees','book_of_enoch','apocrypha','epistle_of_barnabas','gospel_of_thomas','fragments_of_early_gospels','gospel_of_nazaraeans','gospel_of_peter','epistle_of_apostles','gospel_of_judas','gospel_of_truth','gospel_of_mary','gospel_of_philip','acts_of_john','acts_of_peter','acts_of_thomas','pistis_sophia','martyrdom_of_bartholomew','acts_of_andrew_matthias','acts_of_philip','history_of_joseph','gospel_of_barnabas','corpus_hermeticum','quran_y','quran_p','bukhari','muslim','masnavi','sggs_new','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['kesh_temple_hymn','gilgamesh','enuma_elish','adapa','ishtar_descent','seven_spirits','pyramid_texts','bod','rig','sama','yajur','atharva','upanishads','ramayana','maha','manusmriti','yoga_sutras','sbg','gita_besant','ashtavakra_gita','harivamsha','vishnu_purana','devi_mahatmya','dakshinamurti_stotra','bhagavata_purana','garuda_purana','mahanirvana_tantra','popol_vuh','jps','talmud','avesta','odyssey','iliad','homeric_hymn_demeter','jaina_sutras','tattva','dn','mn','sn','an','anthology_of_discourses','vinaya_pitaka','dhammapada','heartfelt_sayings','so_it_was_said','theragatha','therigatha','jataka_tales','lotus_sutra','heart_sutra','diamond_sutra','vimalakirti_sutra','analects_new','tao','mencius','zhuangzi','poetic_edda','kojiki','nihon_shoki','kjv','bible','book_of_jubilees','book_of_enoch','apocrypha','epistle_of_barnabas','gospel_of_thomas','fragments_of_early_gospels','gospel_of_nazaraeans','gospel_of_peter','epistle_of_apostles','gospel_of_judas','gospel_of_truth','gospel_of_mary','gospel_of_philip','acts_of_john','acts_of_peter','acts_of_thomas','pistis_sophia','martyrdom_of_bartholomew','acts_of_andrew_matthias','acts_of_philip','history_of_joseph','gospel_of_barnabas','corpus_hermeticum','quran_y','quran_p','bukhari','muslim','masnavi','sggs_new','bom','iqan','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -13469,7 +13482,7 @@ window.switchReligion  = switchReligion;
         data.forEach(function(x){var k=x.book+'|'+x.c;if(!seen[k]){seen[k]=true;gs.push({book:x.book,c:x.c});}});
         var i=gs.findIndex(function(g){return g.book===v.book&&g.c===v.c;}); return i>=0?i:0;
       }
-      if(book==='ashtavakra_gita'||book==='manusmriti'){
+      if(book==='ashtavakra_gita'||book==='manusmriti'||book==='vimalakirti_sutra'){
         var i=data.findIndex(function(s){return s.r===v.r;}); return i>=0?i:0;
       }
       if(book==='kesh_temple_hymn'){
