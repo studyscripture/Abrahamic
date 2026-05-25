@@ -11894,8 +11894,9 @@ function loadScriptures(cb){
     ,fetch('acts_of_andrew_matthias.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ,fetch('acts_of_philip.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ,fetch('gospel_of_nazaraeans.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('taoteching.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, tv, s3, upanishadsData, tk, talmudData, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData, sggsNewData, menciusData, pistisData, thomasData, gnosticData, actsJohnData, actsPeterData, actsThomasData, epistleBarnabas, fragmentsData, gospelBarnabasData, histJosephData, martyrdomBartData, epistleApostlesData, actsAndrewData, actsPhilipData, gospelNazaraeans])=>{
+    .then(([d, v, tv, s3, upanishadsData, tk, talmudData, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, lotusData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData, sggsNewData, menciusData, pistisData, thomasData, gnosticData, actsJohnData, actsPeterData, actsThomasData, epistleBarnabas, fragmentsData, gospelBarnabasData, histJosephData, martyrdomBartData, epistleApostlesData, actsAndrewData, actsPhilipData, gospelNazaraeans, taotechingData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, tv, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -11964,6 +11965,7 @@ function loadScriptures(cb){
       if(Array.isArray(actsAndrewData) && actsAndrewData.length) d.acts_of_andrew_matthias = actsAndrewData;
       if(Array.isArray(actsPhilipData) && actsPhilipData.length) d.acts_of_philip = actsPhilipData;
       if(Array.isArray(gospelNazaraeans) && gospelNazaraeans.length) d.gospel_of_nazaraeans = gospelNazaraeans;
+      if(taotechingData && Array.isArray(taotechingData.tao) && taotechingData.tao.length) d.tao = taotechingData.tao;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
