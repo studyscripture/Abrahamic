@@ -1629,6 +1629,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
     <div class="lib-shelf-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
     <div class="lib-shelf">
+      <div class="lib-book-card" style="--bk-accent:#ffcc80;" onclick="openLibBook('book_of_odes')">
+        <div class="lib-book-icon">&#x1F3B6;</div>
+        <div class="lib-book-name">Book of Odes</div>
+        <div class="lib-book-origin">c. 1765&ndash;585 BCE &middot; Sh&#x012B; J&#x012B;ng &middot; Confucian Canon</div>
+        <div class="lib-book-edition">L. Cranmer-Byng &middot; 1908 &middot; Wisdom of the East</div>
+        <div class="lib-book-count">40 Odes &middot; Songs of the People &amp; Official Odes</div>
+      </div>
       <div class="lib-book-card" style="--bk-accent:#bcaaa4;" onclick="openLibBook('analects_new')">
         <div class="lib-book-icon">&#x1F4DC;</div>
         <div class="lib-book-name">Analects of Confucius</div>
@@ -1663,13 +1670,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 300 BCE &middot; Chuang Tz&#x016D;</div>
         <div class="lib-book-edition">Herbert A. Giles &middot; 1889 &middot; Chuang Tz&#x016D;: Mystic, Moralist, and Social Reformer</div>
         <div class="lib-book-count">33 Chapters &middot; Inner, Outer &amp; Miscellaneous</div>
-      </div>
-      <div class="lib-book-card" style="--bk-accent:#ffcc80;" onclick="openLibBook('book_of_odes')">
-        <div class="lib-book-icon">&#x1F3B6;</div>
-        <div class="lib-book-name">Book of Odes</div>
-        <div class="lib-book-origin">c. 1765&ndash;585 BCE &middot; Shi King &middot; Compiled by Confucius</div>
-        <div class="lib-book-edition">L. Cranmer-Byng &middot; 1908 &middot; Wisdom of the East</div>
-        <div class="lib-book-count">40 Odes &middot; Songs of the People &amp; Official Odes</div>
       </div>
       <div class="lib-book-card" style="--bk-accent:#ce93d8;" onclick="openLibBook('creative_unity')">
         <div class="lib-book-icon">&#x1F58C;&#xFE0F;</div>
@@ -1968,6 +1968,27 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div class="lib-book-origin">c. 1861 CE &middot; Bah&aacute;&#x02BC;u&#x02BC;ll&aacute;h</div>
         <div class="lib-book-edition">Ali Kuli Khan &middot; 1904 &middot; Book of Certitude</div>
         <div class="lib-book-count">2 Parts &middot; Bah&aacute;&#x02BC;&iacute; Scripture</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#f0d080;" onclick="openLibBook('kitab_i_aqdas')">
+        <div class="lib-book-icon">&#x2736;</div>
+        <div class="lib-book-name">Kit&aacute;b-i-Aqdas</div>
+        <div class="lib-book-origin">c. 1873 CE &middot; Bah&aacute;&#x02BC;u&#x02BC;ll&aacute;h &middot; Most Holy Book</div>
+        <div class="lib-book-edition">Universal House of Justice &middot; 1992 &middot; First Authorized English Translation</div>
+        <div class="lib-book-count">9 Sections &middot; Laws &amp; Ordinances &middot; Bah&aacute;&#x02BC;&iacute; Canon</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#ffb74d;" onclick="openLibBook('hidden_words')">
+        <div class="lib-book-icon">&#x1F48E;</div>
+        <div class="lib-book-name">The Hidden Words</div>
+        <div class="lib-book-origin">c. 1858 CE &middot; Bah&aacute;&#x02BC;u&#x02BC;ll&aacute;h</div>
+        <div class="lib-book-edition">Shoghi Effendi &middot; Arabic &amp; Persian</div>
+        <div class="lib-book-count">2 Parts &middot; Arabic &amp; Persian &middot; Mystical Aphorisms</div>
+      </div>
+      <div class="lib-book-card" style="--bk-accent:#a5d6a7;" onclick="openLibBook('prayers_meditations')">
+        <div class="lib-book-icon">&#x1F54A;&#xFE0F;</div>
+        <div class="lib-book-name">Prayers &amp; Meditations</div>
+        <div class="lib-book-origin">c. 1848&ndash;1892 CE &middot; Bah&aacute;&#x02BC;u&#x02BC;ll&aacute;h</div>
+        <div class="lib-book-edition">Shoghi Effendi &middot; 1938 &middot; Bah&aacute;&#x02BC;&iacute; Publishing Trust</div>
+        <div class="lib-book-count">184 Prayers &middot; Sections I&ndash;CLXXXIV</div>
       </div>
     </div>
 
@@ -2280,6 +2301,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 
   <div class="srch-group-label">&#x262F;&#xFE0F;&ensp;Taoism &amp; Confucianism <span style="opacity:.65;font-size:1em;letter-spacing:.06em;font-style:italic;text-transform:none;color:var(--srch);font-weight:400;">c. 500 BCE</span></div>
   <div class="srch-book-row">
+    <button class="srch-book-btn active" id="sbtn-book_of_odes" style="--btn-color:#ffcc80;--btn-bg:rgba(255,204,128,.12);--btn-glow:rgba(255,204,128,.35);" onclick="toggleBook('book_of_odes',this)">
+      <span class="sb-icon">&#x1F3B6;</span><span>Book of Odes<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Cranmer-Byng &middot; 1908</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1765&ndash;585 BCE</small></span><span class="sb-check">&#10022;</span>
+    </button>
     <button class="srch-book-btn active" id="sbtn-analects_new" style="--btn-color:#bcaaa4;--btn-bg:rgba(188,170,164,.12);--btn-glow:rgba(188,170,164,.35);" onclick="toggleBook('analects_new',this)">
       <span class="sb-icon">&#x1F4DC;</span><span>Analects of Confucius<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Legge &middot; 1861</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 475&ndash;221 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
@@ -2294,9 +2318,6 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
     </button>
     <button class="srch-book-btn active" id="sbtn-zhuangzi" style="--btn-color:#80deea;--btn-bg:rgba(128,222,234,.12);--btn-glow:rgba(128,222,234,.35);" onclick="toggleBook('zhuangzi',this)">
       <span class="sb-icon">&#x1F98B;</span><span>Zhuangzi<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Giles &middot; 1889</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 300 BCE</small></span><span class="sb-check">&#10022;</span>
-    </button>
-    <button class="srch-book-btn active" id="sbtn-book_of_odes" style="--btn-color:#ffcc80;--btn-bg:rgba(255,204,128,.12);--btn-glow:rgba(255,204,128,.35);" onclick="toggleBook('book_of_odes',this)">
-      <span class="sb-icon">&#x1F3B6;</span><span>Book of Odes<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Cranmer-Byng &middot; 1908</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1765&ndash;585 BCE</small></span><span class="sb-check">&#10022;</span>
     </button>
     <button class="srch-book-btn active" id="sbtn-creative_unity" style="--btn-color:#ce93d8;--btn-bg:rgba(206,147,216,.12);--btn-glow:rgba(206,147,216,.35);" onclick="toggleBook('creative_unity',this)">
       <span class="sb-icon">&#x1F58C;&#xFE0F;</span><span>Creative Unity<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Tagore &middot; 1922</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">1922 CE</small></span><span class="sb-check">&#10022;</span>
@@ -2446,6 +2467,15 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   <div class="srch-book-row">
     <button class="srch-book-btn active" id="sbtn-iqan" style="--btn-color:#e8c97a;--btn-bg:rgba(232,201,122,.12);--btn-glow:rgba(232,201,122,.35);" onclick="toggleBook('iqan',this)">
       <span class="sb-icon">&#x2605;</span><span>Kit&aacute;b-i-Iq&aacute;n<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Ali Kuli Khan &middot; 1904</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1861 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-kitab_i_aqdas" style="--btn-color:#f0d080;--btn-bg:rgba(240,208,128,.12);--btn-glow:rgba(240,208,128,.35);" onclick="toggleBook('kitab_i_aqdas',this)">
+      <span class="sb-icon">&#x2736;</span><span>Kit&aacute;b-i-Aqdas<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Universal House of Justice &middot; 1992</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1873 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-hidden_words" style="--btn-color:#ffb74d;--btn-bg:rgba(255,183,77,.12);--btn-glow:rgba(255,183,77,.35);" onclick="toggleBook('hidden_words',this)">
+      <span class="sb-icon">&#x1F48E;</span><span>The Hidden Words<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Shoghi Effendi</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1858 CE</small></span><span class="sb-check">&#10022;</span>
+    </button>
+    <button class="srch-book-btn active" id="sbtn-prayers_meditations" style="--btn-color:#a5d6a7;--btn-bg:rgba(165,214,167,.12);--btn-glow:rgba(165,214,167,.35);" onclick="toggleBook('prayers_meditations',this)">
+      <span class="sb-icon">&#x1F54A;&#xFE0F;</span><span>Prayers &amp; Meditations<br><small style="font-size:7px;opacity:.4;font-family:'EB Garamond',serif;display:block;margin-top:1px;font-style:italic;">Shoghi Effendi &middot; 1938</small><small style="font-size:8px;opacity:.7;font-family:'Cinzel',serif;font-weight:600;display:block;margin-top:2px;letter-spacing:.04em;">c. 1848&ndash;1892 CE</small></span><span class="sb-check">&#10022;</span>
     </button>
   </div>
 
@@ -11725,7 +11755,7 @@ const BOOK_CFG = {
   tao:        { label:'Tao Te Ching',                 sub:'James Legge \u00B7 1891 \u00B7 Lao-Tze',                                     icon:'\u262F\uFE0F', accent:'#ffe082', accentDim:'rgba(255,224,130,0.35)', countLabel:'chapter', bookTitle:'Tao Te Ching',        bookEdition:'James Legge Translation \u00B7 1891',               type:'nikaya' },
   liezi:      { label:'Liezi',                         sub:'Lie Yukou \u00B7 Lionel Giles \u00B7 8 Sections \u00B7 Taoist Classic',            icon:'\uD83C\uDF0C', accent:'#90caf9', accentDim:'rgba(144,202,249,0.35)', countLabel:'section', bookTitle:'Taoist Teachings from the Book of Lieh Tz\u016d', bookEdition:'Trans. Lionel Giles \u00B7 Chinese Texts Committee', type:'liezi' },
   zhuangzi:   { label:'Zhuangzi',                      sub:'Herbert A. Giles \u00B7 1889 \u00B7 33 Chapters \u00B7 Taoist Classic',         icon:'\uD83E\uDD8B', accent:'#80deea', accentDim:'rgba(128,222,234,0.35)', countLabel:'chapter', bookTitle:'Zhuangzi (Chuang Tz\u016D)', bookEdition:'Trans. Herbert A. Giles \u00B7 1889 \u00B7 Mystic, Moralist, and Social Reformer', type:'zhuangzi' },
-  book_of_odes: { label:'Book of Odes \u2014 Shi King', sub:'L. Cranmer-Byng \u00B7 1908 \u00B7 40 Odes \u00B7 Confucian Canon', icon:'\uD83C\uDFB6', accent:'#ffcc80', accentDim:'rgba(255,204,128,0.35)', countLabel:'ode', bookTitle:'The Book of Odes \u2014 Shi King', bookEdition:'L. Cranmer-Byng \u00B7 1908 \u00B7 Wisdom of the East Series', type:'book_of_odes' },
+  book_of_odes: { label:'Book of Odes \u2014 Sh\u012B J\u012Bng', sub:'L. Cranmer-Byng \u00B7 1908 \u00B7 40 Odes \u00B7 Confucian Canon', icon:'\uD83C\uDFB6', accent:'#ffcc80', accentDim:'rgba(255,204,128,0.35)', countLabel:'ode', bookTitle:'The Book of Odes \u2014 Sh\u012B J\u012Bng', bookEdition:'L. Cranmer-Byng \u00B7 1908 \u00B7 Wisdom of the East Series', type:'book_of_odes' },
   creative_unity: { label:'Creative Unity', sub:'Rabindranath Tagore \u00B7 1922 \u00B7 11 Essays \u00B7 Indian Philosophy', icon:'\uD83D\uDD8C\uFE0F', accent:'#ce93d8', accentDim:'rgba(206,147,216,0.35)', countLabel:'essay', bookTitle:'Creative Unity', bookEdition:'Rabindranath Tagore \u00B7 Macmillan \u00B7 1922', type:'creative_unity' },
   analects:   { label:'Analects of Confucius',        sub:'James Legge \u00B7 1861 \u00B7 Confucius',                                   icon:'\uD83D\uDCDC', accent:'#bcaaa4', accentDim:'rgba(188,170,164,0.35)', countLabel:'chapter', bookTitle:'Analects of Confucius', bookEdition:'James Legge Translation \u00B7 1861',               type:'nikaya' },
   analects_new: { label:'Analects of Confucius', sub:'James Legge \u00B7 1861 \u00B7 The Chinese Classics Vol. I', icon:'\uD83D\uDCDC', accent:'#bcaaa4', accentDim:'rgba(188,170,164,0.35)', countLabel:'book', bookTitle:'Analects of Confucius \u2014 Lun Y\u00FC', bookEdition:'James Legge \u00B7 1861 \u00B7 The Chinese Classics Vol. I', type:'analects_new' },
@@ -11790,6 +11820,9 @@ const BOOK_CFG = {
   manusmriti: { label:'Manusmr̥ti', sub:'G. Bühler · 1886 · Sacred Books of the East Vol. XXV · Dharmaśāstra', icon:'⚖️', accent:'#ffcc80', accentDim:'rgba(255,204,128,0.35)', countLabel:'chapter', bookTitle:'The Laws of Manu', bookEdition:'Trans. G. Bühler · 1886 · Sacred Books of the East Vol. XXV', type:'manusmriti' },
   yoga_sutras: { label:'Yoga S\u016Btras of Pata\xF1jali', sub:'Charles Johnston \u00B7 1912 \u00B7 4 P\u0101das \u00B7 196 S\u016Btras \u00B7 R\u0101ja Yoga', icon:'\uD83E\uDDD8', accent:'#a5d6a7', accentDim:'rgba(165,214,167,0.35)', countLabel:'section', bookTitle:'Yoga S\u016Btras of Pata\xF1jali', bookEdition:'Trans. Charles Johnston \u00B7 1912 \u00B7 The Book of the Spiritual Man', type:'yoga_sutras' },
   iqan:      { label:'Kit\u00E1b-i-Iq\u00E1n', sub:'Bah\u00E1\u02BCu\u02BCll\u00E1h \u00B7 c. 1861 CE \u00B7 Ali Kuli Khan 1904 \u00B7 Book of Certitude', icon:'\u2605', accent:'#e8c97a', accentDim:'rgba(232,201,122,0.35)', countLabel:'part', bookTitle:'Kit\u00E1b-i-Iq\u00E1n', bookEdition:'Trans. Ali Kuli Khan \u00B7 1904 \u00B7 Bah\u00E1\u02BC\u00ED Publishing Society', type:'iqan' },
+  kitab_i_aqdas: { label:'Kit\u00E1b-i-Aqdas \u2014 Most Holy Book', sub:'Bah\u00E1\u02BCu\u02BCll\u00E1h \u00B7 c. 1873 CE \u00B7 Universal House of Justice 1992 \u00B7 9 Sections', icon:'\u2736', accent:'#f0d080', accentDim:'rgba(240,208,128,0.35)', countLabel:'section', bookTitle:'Kit\u00E1b-i-Aqdas \u2014 The Most Holy Book', bookEdition:'Universal House of Justice \u00B7 1992 \u00B7 First Authorized English Translation', type:'kitab_i_aqdas' },
+  hidden_words: { label:'The Hidden Words', sub:'Bah\u00E1\u02BCu\u02BCll\u00E1h \u00B7 c. 1858 CE \u00B7 Shoghi Effendi \u00B7 2 Parts', icon:'\uD83D\uDC8E', accent:'#ffb74d', accentDim:'rgba(255,183,77,0.35)', countLabel:'part', bookTitle:'The Hidden Words of Bah\u00E1\u02BCu\u02BCll\u00E1h', bookEdition:'Trans. Shoghi Effendi \u00B7 Arabic & Persian', type:'hidden_words' },
+  prayers_meditations: { label:'Prayers & Meditations', sub:'Bah\u00E1\u02BCu\u02BCll\u00E1h \u00B7 c. 1848\u20131892 CE \u00B7 Shoghi Effendi 1938 \u00B7 184 Prayers', icon:'\uD83D\uDD4A\uFE0F', accent:'#a5d6a7', accentDim:'rgba(165,214,167,0.35)', countLabel:'prayer', bookTitle:'Prayers and Meditations by Bah\u00E1\u02BCu\u02BCll\u00E1h', bookEdition:'Trans. Shoghi Effendi \u00B7 1938 \u00B7 Bah\u00E1\u02BC\u00ED Publishing Trust', type:'prayers_meditations' },
   poetic_edda: { label:'Poetic Edda', sub:'Henry Adams Bellows \u00B7 1936 \u00B7 35 Poems \u00B7 Norse Mythology \u00B7 Codex Regius', icon:'\u26A1', accent:'#7ecbe6', accentDim:'rgba(126,203,230,0.35)', countLabel:'poem', bookTitle:'Poetic Edda', bookEdition:'Trans. Henry Adams Bellows \u00B7 1936 \u00B7 American-Scandinavian Foundation', type:'poetic_edda' },
   tattva:  { label:'Tattvārthashāstra', sub:'Ācārya Umāsvāmi \u00B7 Vijay K. Jain \u00B7 2018 \u00B7 10 Chapters \u00B7 357 Sūtras', icon:'\uD83D\uDD90', accent:'#80cbc4', accentDim:'rgba(128,203,196,0.35)', countLabel:'passage', bookTitle:'Tattvārthashāstra', bookEdition:'With Sarvārthasiddhi Commentary \u00B7 Vijay K. Jain \u00B7 2018', type:'tattva' },
   jaina_sutras: { label:'Jaina Sutras', sub:'Hermann Jacobi \u00B7 SBE Vol. 22 + 45 \u00B7 Combined Part I & Part II \u00B7 Footnotes Removed', icon:'\uD83D\uDCDC', accent:'#d4af37', accentDim:'rgba(212,175,55,0.35)', countLabel:'section', bookTitle:'Jaina Sutras', bookEdition:'Sacred Books of the East \u00B7 Vol. 22 (1884) + Vol. 45 (1895) \u00B7 Continuous Reader Edition', type:'jaina_sutras' },
@@ -12019,8 +12052,11 @@ function loadScriptures(cb){
     ,fetch('tractate_sanhedrin.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ,fetch('book_of_odes.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ,fetch('creative_unity.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('kitab_i_aqdas.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('hidden_words.json').then(r=>r.ok?r.json():null).catch(()=>null)
+    ,fetch('prayers_meditations.json').then(r=>r.ok?r.json():null).catch(()=>null)
   ])
-    .then(([d, v, tv, s3, upanishadsData, tk, talmudData, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, milindaData, lotusData, prajData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, lieziData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, shivaData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData, sggsNewData, menciusData, pistisData, thomasData, gnosticData, actsJohnData, actsPeterData, actsThomasData, epistleBarnabas, fragmentsData, gospelBarnabasData, histJosephData, martyrdomBartData, epistleApostlesData, actsAndrewData, actsPhilipData, gospelNazaraeans, taotechingData, ashtavakraData, manusmritiData, vimalakirtiData, tractSanhedrinData, bookOfOdesData, creativeUnityData])=>{
+    .then(([d, v, tv, s3, upanishadsData, tk, talmudData, bk, ms, bomData, gilgData, keshData, mesopData, dhamData, milindaData, lotusData, prajData, anthologyData, theragataData, therigataData, vinayaData, jatakaData, heartfeltData, soitsaidData, ppData, masData, chData, bosData, zhuData, lieziData, eddaData, iqanData, yogaData, deviData, gitaBesantData, jainaData, mahaData, pyrData, apocData, bhagavataData, shivaData, garudaData, mahanirvanaData, dakshinamurtiData, analectsNewData, sggsNewData, menciusData, pistisData, thomasData, gnosticData, actsJohnData, actsPeterData, actsThomasData, epistleBarnabas, fragmentsData, gospelBarnabasData, histJosephData, martyrdomBartData, epistleApostlesData, actsAndrewData, actsPhilipData, gospelNazaraeans, taotechingData, ashtavakraData, manusmritiData, vimalakirtiData, tractSanhedrinData, bookOfOdesData, creativeUnityData, kitabAqdasData, hiddenWordsData, prayersMeditationsData])=>{
       d = (d && typeof d === 'object') ? d : {};
       Object.assign(d, v, tv, s3);
       if(Array.isArray(tk) && tk.length) d.jps = tk;
@@ -12100,6 +12136,9 @@ function loadScriptures(cb){
       if(tractSanhedrinData && Array.isArray(tractSanhedrinData.tractate_sanhedrin) && tractSanhedrinData.tractate_sanhedrin.length) d.tractate_sanhedrin = tractSanhedrinData.tractate_sanhedrin;
       if(bookOfOdesData && Array.isArray(bookOfOdesData.book_of_odes) && bookOfOdesData.book_of_odes.length) d.book_of_odes = bookOfOdesData.book_of_odes;
       if(creativeUnityData && Array.isArray(creativeUnityData.creative_unity) && creativeUnityData.creative_unity.length) d.creative_unity = creativeUnityData.creative_unity;
+      if(kitabAqdasData && Array.isArray(kitabAqdasData.kitab_i_aqdas) && kitabAqdasData.kitab_i_aqdas.length) d.kitab_i_aqdas = kitabAqdasData.kitab_i_aqdas;
+      if(hiddenWordsData && Array.isArray(hiddenWordsData.hidden_words) && hiddenWordsData.hidden_words.length) d.hidden_words = hiddenWordsData.hidden_words;
+      if(prayersMeditationsData && Array.isArray(prayersMeditationsData.prayers_meditations) && prayersMeditationsData.prayers_meditations.length) d.prayers_meditations = prayersMeditationsData.prayers_meditations;
       // Fix Psalms chapter numbering: the source data stores chapters as single-digit
       // (mod 10), e.g. Psalms 10 \u2192 "Psalms 0:x", Psalms 11 \u2192 "Psalms 1:x".
       // Reconstruct actual chapter numbers (1\u2013150) by counting verse-1 boundaries.
@@ -12477,16 +12516,13 @@ function _buildOtherNav(key,cfg,targetIdx){
   } else if(key==='ramayana'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; sel.appendChild(o); });
-  } else if(key==='ashtavakra_gita'||key==='manusmriti'||key==='vimalakirti_sutra'||key==='prajnaparamita_sutra'||key==='milindapanha'||key==='liezi'){
+  } else if(key==='ashtavakra_gita'||key==='manusmriti'||key==='vimalakirti_sutra'||key==='prajnaparamita_sutra'||key==='milindapanha'||key==='liezi'||key==='book_of_odes'||key==='creative_unity'||key==='kitab_i_aqdas'||key==='hidden_words'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='tractate_sanhedrin'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${s.r}: ${s.title}`; sel.appendChild(o); });
-  } else if(key==='book_of_odes'){
-    libChapterList=data.map((_,i)=>i);
-    data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
-  } else if(key==='creative_unity'){
+  } else if(key==='prayers_meditations'){
     libChapterList=data.map((_,i)=>i);
     data.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=s.r; sel.appendChild(o); });
   } else if(key==='tao'){
@@ -12758,7 +12794,7 @@ window.libGoChapter=function(idxStr){
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`${s.book_name}, Canto ${s.canto}: ${s.title}`; container.appendChild(h);
     renderSegmentedPassage(container,cfg,s.r,s.t);
-    } else if(libBook==='ashtavakra_gita'||libBook==='manusmriti'||libBook==='vimalakirti_sutra'||libBook==='prajnaparamita_sutra'||libBook==='milindapanha'||libBook==='liezi'){
+    } else if(libBook==='ashtavakra_gita'||libBook==='manusmriti'||libBook==='vimalakirti_sutra'||libBook==='prajnaparamita_sutra'||libBook==='milindapanha'||libBook==='liezi'||libBook==='book_of_odes'||libBook==='creative_unity'||libBook==='kitab_i_aqdas'||libBook==='hidden_words'||libBook==='prayers_meditations'){
     const s=data[idx]; if(!s) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
@@ -12768,16 +12804,6 @@ window.libGoChapter=function(idxStr){
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=s.r; container.appendChild(h);
     const sub=document.createElement('div'); sub.className='lib-chapter-subhead'; sub.textContent=s.title; container.appendChild(sub);
-    renderProseChapter(container,cfg,s.t);
-    } else if(libBook==='book_of_odes'){
-    const s=data[idx]; if(!s) return;
-    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.r; container.appendChild(h);
-    renderProseChapter(container,cfg,s.t);
-    } else if(libBook==='creative_unity'){
-    const s=data[idx]; if(!s) return;
-    const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
-    h.textContent=s.r; container.appendChild(h);
     renderProseChapter(container,cfg,s.t);
     } else if(libBook==='tao'){
     const s=data[idx]; if(!s) return;
@@ -13125,7 +13151,7 @@ function scrollToContent(){
 }
 
 // ══ SEARCH ════════════════════════════════════════════
-const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,shiva_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,upanishads:true,ramayana:true,tao:true,liezi:true,analects_new:true,mencius:true,pistis_sophia:true,gospel_of_thomas:true,gospel_of_judas:true,gospel_of_philip:true,gospel_of_truth:true,gospel_of_mary:true,gospel_of_peter:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs_new:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,talmud:true,tractate_sanhedrin:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,milindapanha:true,heart_sutra:true,diamond_sutra:true,vimalakirti_sutra:true,lotus_sutra:true,prajnaparamita_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,book_of_odes:true,creative_unity:true,poetic_edda:true,iqan:true,yoga_sutras:true,ashtavakra_gita:true,manusmriti:true,devi_mahatmya:true,acts_of_john:true,acts_of_peter:true,acts_of_thomas:true,epistle_of_barnabas:true,fragments_of_early_gospels:true,gospel_of_barnabas:true,history_of_joseph:true,martyrdom_of_bartholomew:true,epistle_of_apostles:true,acts_of_andrew_matthias:true,acts_of_philip:true,gospel_of_nazaraeans:true};
+const selectedBooks={kjv:true,bible:true,book_of_enoch:true,book_of_jubilees:true,apocrypha:true,quran_y:true,quran_p:true,bukhari:true,muslim:true,gita_besant:true,sbg:true,maha:true,dn:true,mn:true,sn:true,an:true,rig:true,yajur:true,sama:true,atharva:true,avesta:true,bhagavata_purana:true,shiva_purana:true,garuda_purana:true,mahanirvana_tantra:true,dakshinamurti_stotra:true,upanishads:true,ramayana:true,tao:true,liezi:true,analects_new:true,mencius:true,pistis_sophia:true,gospel_of_thomas:true,gospel_of_judas:true,gospel_of_philip:true,gospel_of_truth:true,gospel_of_mary:true,gospel_of_peter:true,harivamsha:true,vishnu_purana:true,homeric_hymn_demeter:true,odyssey:true,iliad:true,bod:true,pyramid_texts:true,sggs_new:true,tattva:true,jaina_sutras:true,popol_vuh:true,kojiki:true,nihon_shoki:true,jps:true,talmud:true,tractate_sanhedrin:true,bom:true,kesh_temple_hymn:true,gilgamesh:true,enuma_elish:true,ishtar_descent:true,seven_spirits:true,adapa:true,dhammapada:true,milindapanha:true,heart_sutra:true,diamond_sutra:true,vimalakirti_sutra:true,lotus_sutra:true,prajnaparamita_sutra:true,anthology_of_discourses:true,heartfelt_sayings:true,so_it_was_said:true,theragatha:true,therigatha:true,vinaya_pitaka:true,jataka_tales:true,masnavi:true,corpus_hermeticum:true,bos:true,zhuangzi:true,book_of_odes:true,creative_unity:true,poetic_edda:true,iqan:true,kitab_i_aqdas:true,hidden_words:true,prayers_meditations:true,yoga_sutras:true,ashtavakra_gita:true,manusmriti:true,devi_mahatmya:true,acts_of_john:true,acts_of_peter:true,acts_of_thomas:true,epistle_of_barnabas:true,fragments_of_early_gospels:true,gospel_of_barnabas:true,history_of_joseph:true,martyrdom_of_bartholomew:true,epistle_of_apostles:true,acts_of_andrew_matthias:true,acts_of_philip:true,gospel_of_nazaraeans:true};
 
 window.toggleBook=function(key,btn){ selectedBooks[key]=!selectedBooks[key]; btn.classList.toggle('active',selectedBooks[key]); };
 window.toggleAllBooks=function(on){ Object.keys(selectedBooks).forEach(function(k){ selectedBooks[k]=on; var b=document.getElementById('sbtn-'+k); if(b) b.classList.toggle('active',on); }); };
@@ -13140,7 +13166,7 @@ window.doSearch=function(){
 };
 
 // Canonical display order matching the library panel
-const BOOK_DISPLAY_ORDER=['kesh_temple_hymn','gilgamesh','enuma_elish','adapa','ishtar_descent','seven_spirits','pyramid_texts','bod','rig','sama','yajur','atharva','upanishads','ramayana','maha','manusmriti','yoga_sutras','sbg','gita_besant','ashtavakra_gita','harivamsha','vishnu_purana','devi_mahatmya','dakshinamurti_stotra','bhagavata_purana','shiva_purana','garuda_purana','mahanirvana_tantra','popol_vuh','jps','talmud','tractate_sanhedrin','avesta','odyssey','iliad','homeric_hymn_demeter','jaina_sutras','tattva','dn','mn','sn','an','anthology_of_discourses','vinaya_pitaka','dhammapada','heartfelt_sayings','so_it_was_said','theragatha','therigatha','jataka_tales','milindapanha','lotus_sutra','prajnaparamita_sutra','vimalakirti_sutra','heart_sutra','diamond_sutra','analects_new','tao','liezi','mencius','zhuangzi','book_of_odes','creative_unity','poetic_edda','kojiki','nihon_shoki','kjv','bible','book_of_jubilees','book_of_enoch','apocrypha','epistle_of_barnabas','gospel_of_thomas','fragments_of_early_gospels','gospel_of_nazaraeans','gospel_of_peter','epistle_of_apostles','gospel_of_judas','gospel_of_truth','gospel_of_mary','gospel_of_philip','acts_of_john','acts_of_peter','acts_of_thomas','pistis_sophia','martyrdom_of_bartholomew','acts_of_andrew_matthias','acts_of_philip','history_of_joseph','gospel_of_barnabas','corpus_hermeticum','quran_y','quran_p','bukhari','muslim','masnavi','sggs_new','bom','iqan','bos'];
+const BOOK_DISPLAY_ORDER=['kesh_temple_hymn','gilgamesh','enuma_elish','adapa','ishtar_descent','seven_spirits','pyramid_texts','bod','rig','sama','yajur','atharva','upanishads','ramayana','maha','manusmriti','yoga_sutras','sbg','gita_besant','ashtavakra_gita','harivamsha','vishnu_purana','devi_mahatmya','dakshinamurti_stotra','bhagavata_purana','shiva_purana','garuda_purana','mahanirvana_tantra','popol_vuh','jps','talmud','tractate_sanhedrin','avesta','odyssey','iliad','homeric_hymn_demeter','jaina_sutras','tattva','dn','mn','sn','an','anthology_of_discourses','vinaya_pitaka','dhammapada','heartfelt_sayings','so_it_was_said','theragatha','therigatha','jataka_tales','milindapanha','lotus_sutra','prajnaparamita_sutra','vimalakirti_sutra','heart_sutra','diamond_sutra','book_of_odes','analects_new','tao','liezi','mencius','zhuangzi','creative_unity','poetic_edda','kojiki','nihon_shoki','kjv','bible','book_of_jubilees','book_of_enoch','apocrypha','epistle_of_barnabas','gospel_of_thomas','fragments_of_early_gospels','gospel_of_nazaraeans','gospel_of_peter','epistle_of_apostles','gospel_of_judas','gospel_of_truth','gospel_of_mary','gospel_of_philip','acts_of_john','acts_of_peter','acts_of_thomas','pistis_sophia','martyrdom_of_bartholomew','acts_of_andrew_matthias','acts_of_philip','history_of_joseph','gospel_of_barnabas','corpus_hermeticum','quran_y','quran_p','bukhari','muslim','masnavi','sggs_new','bom','iqan','kitab_i_aqdas','hidden_words','prayers_meditations','bos'];
 
 function runSearch(query,books){
   const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -13234,7 +13260,7 @@ function makeCard(book,v,cfg,terms){
      cfg.type==='talmud'||cfg.type==='gilgamesh'||cfg.type==='dhammapada'||cfg.type==='masnavi'||
      cfg.type==='heart_sutra'||cfg.type==='diamond_sutra'||
      cfg.type==='corpus_hermeticum'||cfg.type==='bos'||cfg.type==='zhuangzi'||cfg.type==='jaina_sutras'||
-     cfg.type==='poetic_edda'||cfg.type==='iqan'||cfg.type==='yoga_sutras'||cfg.type==='mahanirvana_tantra'||cfg.type==='dakshinamurti_stotra'||cfg.type==='upanishads'||cfg.type==='analects_new'||cfg.type==='sggs_new'||cfg.type==='mencius'||cfg.type==='pistis_sophia'||cfg.type==='gospel_of_thomas'||cfg.type==='gospel_of_judas'||cfg.type==='gospel_of_philip'||cfg.type==='gospel_of_truth'||cfg.type==='gospel_of_mary'||cfg.type==='gospel_of_peter'||cfg.type==='gilgamesh'||cfg.type==='bhagavata_purana'||cfg.type==='shiva_purana'||cfg.type==='garuda_purana'||cfg.type==='milindapanha'||cfg.type==='prajnaparamita_sutra'||cfg.type==='liezi'||cfg.type==='tractate_sanhedrin'||cfg.type==='book_of_odes'||cfg.type==='creative_unity'){
+     cfg.type==='poetic_edda'||cfg.type==='iqan'||cfg.type==='yoga_sutras'||cfg.type==='mahanirvana_tantra'||cfg.type==='dakshinamurti_stotra'||cfg.type==='upanishads'||cfg.type==='analects_new'||cfg.type==='sggs_new'||cfg.type==='mencius'||cfg.type==='pistis_sophia'||cfg.type==='gospel_of_thomas'||cfg.type==='gospel_of_judas'||cfg.type==='gospel_of_philip'||cfg.type==='gospel_of_truth'||cfg.type==='gospel_of_mary'||cfg.type==='gospel_of_peter'||cfg.type==='gilgamesh'||cfg.type==='bhagavata_purana'||cfg.type==='shiva_purana'||cfg.type==='garuda_purana'||cfg.type==='milindapanha'||cfg.type==='prajnaparamita_sutra'||cfg.type==='liezi'||cfg.type==='tractate_sanhedrin'||cfg.type==='book_of_odes'||cfg.type==='creative_unity'||cfg.type==='kitab_i_aqdas'||cfg.type==='hidden_words'||cfg.type==='prayers_meditations'){
     txt=extractMahaSnippet(v.t, terms);
   } else if(cfg.type==='bod'){
     txt=extractMahaSnippet(v.t, terms, 280);
@@ -13361,6 +13387,9 @@ function chapLabel(book,v,cfg){
   if(book==='tractate_sanhedrin') return v.r ? `${v.r}: ${v.title}` : null;
   if(book==='book_of_odes')   return v.r || null;
   if(book==='creative_unity') return v.r || null;
+  if(book==='kitab_i_aqdas')  return v.r || null;
+  if(book==='hidden_words')   return v.r || null;
+  if(book==='prayers_meditations') return v.r || null;
   if(book==='pistis_sophia')  return v.r || null;
   if(book==='gospel_of_thomas') return v.r || null;
   if(book==='gospel_of_judas') return v.r || null;
