@@ -1165,7 +1165,13 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   -webkit-backdrop-filter: blur(20px);
   padding: 10px 20px;
   font-family: 'Jost', sans-serif;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
 }
+#amp-wrap * { cursor: default; }
+#amp-btn-play, #amp-vol-icon, #amp-seek, #amp-vol { cursor: pointer !important; }
+#amp-seek::-webkit-slider-thumb, #amp-vol::-webkit-slider-thumb { cursor: pointer !important; }
 #amp-inner {
   max-width: 920px;
   margin: 0 auto;
@@ -2362,7 +2368,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div id="lib-bottom-bible-nav" style="display:none;">
           <div class="lib-chapter-nav lib-bottom-nav-inner">
             <span class="lib-chapter-label">Chapter</span>
-            <select class="lib-chapter-select" id="lib-bottom-bible-ch-sel" onchange="libBibleGoChapter(this.value); window.scrollTo({top:0,behavior:'smooth'});"></select>
+            <select class="lib-chapter-select" id="lib-bottom-bible-ch-sel" onchange="libBibleGoChapter(this.value); scrollToContent();"></select>
             <div class="lib-chapter-arrows">
               <button class="lib-chapter-arrow" onclick="libBibleChapterStep(-1)">&larr;</button>
               <button class="lib-chapter-arrow" onclick="libBibleChapterStep(1)">&rarr;</button>
@@ -2374,7 +2380,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
         <div id="lib-bottom-other-nav" style="display:none;">
           <div class="lib-chapter-nav lib-bottom-nav-inner">
             <span class="lib-chapter-label" id="lib-bottom-nav-label">Chapter</span>
-            <select class="lib-chapter-select" id="lib-bottom-other-sel" onchange="libGoChapter(this.value); window.scrollTo({top:0,behavior:'smooth'});"></select>
+            <select class="lib-chapter-select" id="lib-bottom-other-sel" onchange="libGoChapter(this.value); scrollToContent();"></select>
             <div class="lib-chapter-arrows">
               <button class="lib-chapter-arrow" onclick="libChapterStep(-1)">&larr;</button>
               <button class="lib-chapter-arrow" onclick="libChapterStep(1)">&rarr;</button>
