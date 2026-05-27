@@ -988,9 +988,9 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 .lib-bible-book-btn.active { border-color:var(--bk-color,var(--srch)); background:rgba(255,179,71,.1); color:var(--bk-color,var(--srch)); }
 
 /* Chapter nav */
-.lib-chapter-nav { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+.lib-chapter-nav { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:20px; min-width:0; max-width:100%; overflow:hidden; }
 .lib-chapter-label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.32em; text-transform:uppercase; color:var(--muted); flex-shrink:0; }
-.lib-chapter-select { background:var(--srch-surface); border:1px solid var(--srch-border); color:var(--cream); font-family:'EB Garamond',serif; font-size:14px; padding:7px 12px; border-radius:4px; cursor:pointer; outline:none; transition:border-color .2s; -webkit-appearance:none; min-width:180px; max-width:380px; }
+.lib-chapter-select { background:var(--srch-surface); border:1px solid var(--srch-border); color:var(--cream); font-family:'EB Garamond',serif; font-size:14px; padding:7px 12px; border-radius:4px; cursor:pointer; outline:none; transition:border-color .2s; -webkit-appearance:none; min-width:0; max-width:100%; flex:1 1 180px; overflow:hidden; text-overflow:ellipsis; }
 .lib-chapter-select:focus { border-color:var(--srch); }
 .lib-chapter-arrows { display:flex; gap:5px; }
 .lib-chapter-arrow { background:var(--srch-surface); border:1px solid var(--srch-border); color:var(--muted); padding:7px 12px; border-radius:4px; cursor:pointer; font-size:13px; transition:all .18s; line-height:1; }
@@ -1106,7 +1106,7 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
   .srch-book-btn { padding:8px 10px; font-size:9px; }
   .srch-interleaved-grid { grid-template-columns:1fr; }
   .lib-shelf { grid-template-columns:repeat(2,1fr); }
-  .lib-chapter-select { min-width:150px; }
+  .lib-chapter-select { min-width:0; width:100%; }
   .lib-bible-book-row { gap:4px; }
   .lib-bible-book-btn { font-size:12px; padding:3px 8px; }
 }
