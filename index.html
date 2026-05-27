@@ -12217,14 +12217,14 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.maha)) d.maha.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.s)-toNum(b.s))||cmpText(a.r,b.r));
   if(Array.isArray(d.rig)) d.rig.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
   if(Array.isArray(d.yajur)) d.yajur.sort((a,b)=>toNum(a.kanda)-toNum(b.kanda));
-  if(Array.isArray(d.sama)) d.sama.sort((a,b)=>
-    (toNum(a.pt)-toNum(b.pt)) ||
+  if(Array.isArray(d.sama)) d.sama.sort((a,b)=>{
+    const verseNum = r => { const m = String(r||'').match(/:(\d+)$/); return m ? parseInt(m[1],10) : 0; };
+    return (toNum(a.pt)-toNum(b.pt)) ||
     (toNum(a.b)-toNum(b.b)) ||
     (toNum(a.ch)-toNum(b.ch)) ||
     (toNum(a.d)-toNum(b.d)) ||
-    (toNum(a.v)-toNum(b.v)) ||
-    cmpText(a.r,b.r)
-  );
+    (verseNum(a.r)-verseNum(b.r));
+  });
   if(Array.isArray(d.atharva)) d.atharva.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
   if(Array.isArray(d.avesta)){
     const secOrder = new Map([['Vendidad',0],['Vispered',1],['Yasna',2]]);
@@ -13092,7 +13092,8 @@ window.libGoChapter=function(idxStr){
     const e=data[idx]; if(!e) return;
     const h=document.createElement('div'); h.className='lib-chapter-heading'; h.style.color=cfg.accent;
     h.textContent=`Ka\u1E47\u1E0Da ${e.kanda} \u2014 Taittir\u012By\u0101 Br\u0101hma\u1E47a`; container.appendChild(h);
-    renderProseChapter(container,cfg,e.t);
+    const yajurClean = String(e.t||'').replace(/\b([a-z])\.\s+(?=[A-Z'\(\[])/g, '');
+    renderProseChapter(container,cfg,yajurClean);
   } else if(libBook==='avesta'){
     const grp=libChapterList[idx]; if(!grp) return;
     const verses=data.filter(v=>v.sec===grp.sec&&(v.fg||v.ch||v.yn||v.gn||1)===grp.fg);
@@ -13571,6 +13572,7 @@ function makeCard(book,v,cfg,terms){
 
   // Text — find the snippet around search term for all prose/long-text types
   let txt=v.t;
+  if(book==='yajur') txt=String(txt||'').replace(/\b([a-z])\.\s+(?=[A-Z'\(\[])/g, '');
   if(cfg.type==='maha'||cfg.type==='gita_besant'||cfg.type==='nikaya'||
      cfg.type==='harivamsha'||cfg.type==='vishnu_purana'||
      cfg.type==='veda'||cfg.type==='avesta'||
