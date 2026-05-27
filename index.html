@@ -12215,7 +12215,7 @@ function normalizeAndSortScriptures(d){
   if(Array.isArray(d.gita_besant)) d.gita_besant.sort((a,b)=>(a.c-b.c)||(a.n-b.n));
   if(Array.isArray(d.sbg)) d.sbg.sort(cvCmp);
   if(Array.isArray(d.maha)) d.maha.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.s)-toNum(b.s))||cmpText(a.r,b.r));
-  if(Array.isArray(d.rig)) d.rig.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
+  if(Array.isArray(d.rig)) d.rig.sort((a,b)=>{ const rv=r=>{const m=String(r||'').match(/(\d+)$/);return m?parseInt(m[1],10):0;}; return (toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(rv(a.r)-rv(b.r)); });
   if(Array.isArray(d.yajur)) d.yajur.sort((a,b)=>toNum(a.kanda)-toNum(b.kanda));
   if(Array.isArray(d.sama)) d.sama.sort((a,b)=>{
     const verseNum = r => { const m = String(r||'').match(/:(\d+)$/); return m ? parseInt(m[1],10) : 0; };
@@ -12225,7 +12225,7 @@ function normalizeAndSortScriptures(d){
     (toNum(a.d)-toNum(b.d)) ||
     (verseNum(a.r)-verseNum(b.r));
   });
-  if(Array.isArray(d.atharva)) d.atharva.sort((a,b)=>(toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(toNum(a.v)-toNum(b.v))||cmpText(a.r,b.r));
+  if(Array.isArray(d.atharva)) d.atharva.sort((a,b)=>{ const rv=r=>{const m=String(r||'').match(/(\d+)$/);return m?parseInt(m[1],10):0;}; return (toNum(a.b)-toNum(b.b))||(toNum(a.h)-toNum(b.h))||(rv(a.r)-rv(b.r)); });
   if(Array.isArray(d.avesta)){
     const secOrder = new Map([['Vendidad',0],['Vispered',1],['Yasna',2]]);
     d.avesta.sort((a,b)=>
