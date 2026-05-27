@@ -12813,7 +12813,7 @@ function _buildOtherNav(key,cfg,targetIdx){
     const hymns=[]; const seen=new Set();
     data.forEach(v=>{ const k=`${v.b}.${v.h}`; if(!seen.has(k)){ seen.add(k); hymns.push({b:v.b,h:v.h,ht:v.ht,idx:hymns.length}); } });
     libChapterList=hymns;
-    hymns.forEach((hm,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`Book ${hm.b}, Hymn ${hm.h}: ${hm.ht}`; sel.appendChild(o); });
+    hymns.forEach((hm,i)=>{ const o=document.createElement('option'); o.value=i; const ht=hm.ht&&hm.ht.length>45?hm.ht.slice(0,45).trimEnd()+'…':hm.ht||''; o.textContent=ht?`Book ${hm.b}, Hymn ${hm.h}: ${ht}`:`Book ${hm.b}, Hymn ${hm.h}`; sel.appendChild(o); });
   } else if(key==='sama'){
     // Group by part+book+chapter+decade
     const groups=[]; const seen=new Set();
