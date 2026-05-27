@@ -1115,6 +1115,404 @@ footer .mantra { font-size:15px; color:var(--cream-dim); margin-bottom:8px; }
 </head>
 <body>
 
+<!-- ══ MUSIC PLAYER ══ -->
+<div id="amp-wrap">
+  <div id="amp-inner">
+    <div id="amp-left">
+      <div id="amp-vinyl">
+        <div id="amp-vinyl-disc">
+          <div id="amp-vinyl-label">
+            <span id="amp-vinyl-icon">♪</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="amp-center">
+      <div id="amp-meta">
+        <div id="amp-title">I Don't Like (Ft. Lil Reese)</div>
+        <div id="amp-artist">Chief Keef</div>
+      </div>
+      <div id="amp-controls">
+        <button id="amp-btn-play" onclick="ampToggle()" aria-label="Play/Pause">
+          <svg id="amp-icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          <svg id="amp-icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
+        </button>
+      </div>
+      <div id="amp-progress-wrap">
+        <span id="amp-time-cur">0:00</span>
+        <div id="amp-track" onclick="ampSeek(event)" onmousemove="ampHover(event)" onmouseleave="ampLeaveTrack()">
+          <div id="amp-track-fill"></div>
+          <div id="amp-track-thumb"></div>
+          <div id="amp-track-tooltip"></div>
+        </div>
+        <span id="amp-time-dur">0:00</span>
+      </div>
+    </div>
+    <div id="amp-right">
+      <div id="amp-vol-wrap">
+        <svg id="amp-vol-icon" viewBox="0 0 24 24" fill="currentColor" onclick="ampMute()">
+          <path id="amp-vol-path" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <div id="amp-vol-track" onclick="ampVolSeek(event)">
+          <div id="amp-vol-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <audio id="amp-audio" src="https://raw.githubusercontent.com/username/repo/main/I_Don_t_Like__Ft__Lil_Reese_.mp3" preload="metadata"></audio>
+</div>
+
+<style>
+#amp-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(6,6,10,0.97) 0%, rgba(18,12,28,0.97) 50%, rgba(6,6,10,0.97) 100%);
+  border-bottom: 1px solid rgba(180,140,255,0.18);
+  box-shadow: 0 2px 40px rgba(120,60,200,0.22), 0 1px 0 rgba(180,140,255,0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 10px 20px;
+  font-family: 'Jost', sans-serif;
+}
+#amp-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* VINYL */
+#amp-left { flex: 0 0 auto; }
+#amp-vinyl {
+  width: 48px; height: 48px;
+  position: relative;
+}
+#amp-vinyl-disc {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%,
+    #2a1a3e 0%, #1a0f2e 30%, #0d0818 60%, #1a0f2e 80%, #0d0818 100%);
+  border: 1px solid rgba(160,100,255,0.3);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 12px rgba(140,80,255,0.3), inset 0 0 8px rgba(0,0,0,0.6);
+  animation: ampSpin 4s linear infinite;
+  animation-play-state: paused;
+  position: relative;
+  overflow: hidden;
+}
+#amp-vinyl-disc::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(160,100,255,0.15);
+  box-shadow: inset 0 0 0 4px rgba(160,100,255,0.08), inset 0 0 0 8px rgba(160,100,255,0.05);
+}
+#amp-vinyl-disc::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(160,100,255,0.06) 30deg,
+    transparent 60deg,
+    rgba(160,100,255,0.04) 90deg,
+    transparent 120deg,
+    rgba(160,100,255,0.06) 150deg,
+    transparent 180deg,
+    rgba(160,100,255,0.04) 210deg,
+    transparent 240deg,
+    rgba(160,100,255,0.06) 270deg,
+    transparent 300deg,
+    rgba(160,100,255,0.04) 330deg,
+    transparent 360deg
+  );
+}
+#amp-vinyl-label {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #7c3aed, #4c1d95);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+  position: relative;
+  box-shadow: 0 0 6px rgba(124,58,237,0.8);
+}
+#amp-vinyl-icon {
+  font-size: 7px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1;
+}
+@keyframes ampSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+#amp-vinyl-disc.playing { animation-play-state: running; }
+
+/* CENTER */
+#amp-center {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#amp-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+#amp-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #e0d0ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 12px rgba(160,100,255,0.5);
+}
+#amp-artist {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: rgba(160,130,200,0.7);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#amp-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+#amp-btn-play {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #4c1d95);
+  color: white;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 14px rgba(124,58,237,0.6), 0 2px 8px rgba(0,0,0,0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+#amp-btn-play svg { width: 14px; height: 14px; }
+#amp-btn-play:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 22px rgba(124,58,237,0.9), 0 2px 12px rgba(0,0,0,0.5);
+}
+#amp-btn-play:active { transform: scale(0.95); }
+
+/* PROGRESS */
+#amp-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+#amp-time-cur, #amp-time-dur {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: rgba(160,130,200,0.6);
+  font-variant-numeric: tabular-nums;
+  min-width: 28px;
+  flex-shrink: 0;
+}
+#amp-time-dur { text-align: right; }
+#amp-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+#amp-track:hover { height: 5px; }
+#amp-track-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7c3aed, #c084fc);
+  border-radius: 4px;
+  position: relative;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 6px rgba(192,132,252,0.5);
+}
+#amp-track-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #c084fc;
+  box-shadow: 0 0 8px rgba(192,132,252,0.9);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+#amp-track:hover #amp-track-thumb { opacity: 1; }
+#amp-track-tooltip {
+  position: absolute;
+  bottom: 14px;
+  transform: translateX(-50%);
+  background: rgba(20,10,40,0.95);
+  border: 1px solid rgba(160,100,255,0.3);
+  color: #e0d0ff;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+  transition: opacity 0.1s;
+}
+
+/* RIGHT — VOLUME */
+#amp-right { flex: 0 0 auto; }
+#amp-vol-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+#amp-vol-icon {
+  width: 16px; height: 16px;
+  color: rgba(160,130,200,0.6);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+#amp-vol-icon:hover { color: #c084fc; }
+#amp-vol-track {
+  width: 64px; height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+#amp-vol-fill {
+  height: 100%;
+  width: 80%;
+  background: linear-gradient(90deg, #7c3aed, #c084fc);
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgba(192,132,252,0.4);
+  pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #amp-wrap { padding: 8px 12px; }
+  #amp-right { display: none; }
+  #amp-title { font-size: 10px; }
+  #amp-vinyl { width: 38px; height: 38px; }
+  #amp-vinyl-disc { width: 38px; height: 38px; }
+}
+</style>
+
+<script>
+(function() {
+  const audio = document.getElementById('amp-audio');
+  const btnPlay = document.getElementById('amp-btn-play');
+  const iconPlay = document.getElementById('amp-icon-play');
+  const iconPause = document.getElementById('amp-icon-pause');
+  const disc = document.getElementById('amp-vinyl-disc');
+  const fill = document.getElementById('amp-track-fill');
+  const thumb = document.getElementById('amp-track-thumb');
+  const tooltip = document.getElementById('amp-track-tooltip');
+  const timeCur = document.getElementById('amp-time-cur');
+  const timeDur = document.getElementById('amp-time-dur');
+  const track = document.getElementById('amp-track');
+  const volTrack = document.getElementById('amp-vol-track');
+  const volFill = document.getElementById('amp-vol-fill');
+  const volPath = document.getElementById('amp-vol-path');
+
+  function fmt(s) {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  window.ampToggle = function() {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  };
+
+  audio.addEventListener('play', () => {
+    iconPlay.style.display = 'none';
+    iconPause.style.display = '';
+    disc.classList.add('playing');
+  });
+  audio.addEventListener('pause', () => {
+    iconPlay.style.display = '';
+    iconPause.style.display = 'none';
+    disc.classList.remove('playing');
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    timeDur.textContent = fmt(audio.duration);
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    fill.style.width = pct + '%';
+    thumb.style.left = pct + '%';
+    timeCur.textContent = fmt(audio.currentTime);
+  });
+
+  window.ampSeek = function(e) {
+    const rect = track.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    audio.currentTime = pct * audio.duration;
+  };
+
+  window.ampHover = function(e) {
+    if (!audio.duration) return;
+    const rect = track.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const t = pct * audio.duration;
+    tooltip.style.left = (pct * 100) + '%';
+    tooltip.textContent = fmt(t);
+    tooltip.style.opacity = '1';
+  };
+
+  window.ampLeaveTrack = function() {
+    tooltip.style.opacity = '0';
+  };
+
+  window.ampVolSeek = function(e) {
+    const rect = volTrack.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    audio.volume = pct;
+    volFill.style.width = (pct * 100) + '%';
+  };
+
+  let muted = false;
+  window.ampMute = function() {
+    muted = !muted;
+    audio.muted = muted;
+    volPath.style.opacity = muted ? '0.3' : '1';
+  };
+
+  // Set initial volume
+  audio.volume = 0.8;
+})();
+</script>
+
 <!-- ══ MASTHEAD ══ -->
 <div class="masthead">
   <div class="masthead-eyebrow">Scripture · Criticism · Analysis</div>
